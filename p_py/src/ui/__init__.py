@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import web
 import sys
-
+import misc.static
 def _cookie_name():
     if web.ctx.host and ':' in web.ctx.host:
         return 'sid' + web.ctx.host.split(':')[1]
@@ -46,8 +46,11 @@ def main(argv=None):
     web.config.session_parameters['timeout'] = 30 * 24 * 3600
     web.config.session_parameters['secret_key'] = 'FENGFENG'
     web.config.session_parameters['cookie_path'] = '/'
-    port = 8080
+    port = 8822
     if len(argv) > 1:
         port = int(argv[1])
+    dirs=[]
+    web.wsgi.runwsgi = lambda func, addr=('0.0.0.0', port): misc.static.run_multiapp(func, addr, dirs)
+
     app = web.application(urls, globals())
     app.run()   

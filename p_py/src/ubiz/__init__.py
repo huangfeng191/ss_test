@@ -11,7 +11,7 @@ from ui.route import *
 from ui import *
 from web.contrib.template import render_mako
 from webservice import POST
-
+get_path_for_post="E:/d_project/ss_test/nms_new_rest/interface/"
 render_ubiz = render_mako(directories=['templates/ubiz'],input_encoding='utf-8',output_encoding='utf-8',)
 
 
@@ -44,7 +44,7 @@ class UbizLocal(POST):
         from misc.files import getContent
         import  json
         # 路径，文件名， 完整路径
-        pre,f,p="E:/d_project/s/json/test/","temp1","E:/d_project/s/json/test/temp1.json"
+        pre,f,p=get_path_for_post,"temp1",get_path_for_post+"/temp1.json"
 
         if kwArgs.get("file"):
            f=kwArgs.get("file")
@@ -70,7 +70,7 @@ class UbizLocalInfo(POST):
         from misc.files import getFiles
         import  json
          # 路径，
-        pre="E:/d_project/s/json/test/"
+        pre=get_path_for_post
 
         if kwArgs.get("prefix"):
             pre=kwArgs.get("prefix")   

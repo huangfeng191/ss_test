@@ -80,7 +80,7 @@
 
     <div  class="quarter-three-div top">
            
-            <input type="text" id="prefix" value="E:/d_project/s/json/test/">
+            <input type="text" id="prefix" style="width:300px" value="E:/d_project/ss_test/nms_new_rest/interface/">
             
             <button id='p'>测试post接口返回</button>
             <input type="text" id="file" value="temp1">
@@ -99,7 +99,7 @@ function getJsonInfo({file,prefix,path}){
     let $doc=document.getElementById("content");
     let $file=document.getElementById("file");
     let $postInfo=document.getElementById("postInfo");
-    
+        debugger
     API.ubizLocalPost({
         file,
         prefix,
