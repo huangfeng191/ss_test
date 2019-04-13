@@ -14,7 +14,7 @@ sys.setdefaultencoding("utf-8");  # @UndefinedVariable
  
 
 import web
-
+import misc.static
 urls = (
     '/', 'index'
 )
@@ -23,6 +23,11 @@ class index:
     def GET(self):
         return "Hello, world!"
 
+
+
 if __name__ == "__main__":
+    dirs = []
+    port = 8822
+    web.wsgi.runwsgi = lambda func, addr=('0.0.0.0', port): misc.static.run_multiapp(func, addr, dirs)
     app = web.application(urls, globals())
     app.run()
