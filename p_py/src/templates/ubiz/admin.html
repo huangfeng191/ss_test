@@ -1,0 +1,173 @@
+<%inherit file="layout.html" />
+<style>
+
+
+.quarter-div{
+
+    display:inline-block;
+    width: calc(25% );
+
+ }
+ .quarter-three-div{
+
+        display:inline-block;
+        width: calc(75% - 10px );
+        
+    }
+    .top{
+        vertical-align: top;
+    }
+    .list-content{
+        padding-top:20px;
+    }
+    .list-content a{
+        padding-left: 10px;
+
+        /* copy 样式 */
+        cursor: pointer;
+        display: inline-block;
+        color: #FFF;
+        background-color: #8ac007;
+        font-weight: 700;
+        font-size: 12px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        text-decoration: none;
+        margin-left: 5px;
+        margin-top: 0;
+        margin-bottom: 5px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        white-space: nowrap;
+
+    }
+
+    button{
+      
+        cursor: pointer;
+        display: inline-block;
+        color: #FFF;
+        background-color: #90b575;
+        font-weight: 700;
+        font-size: 12px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 20px;
+        padding-top: 3px;
+        padding-bottom: 4px;
+        text-decoration: none;
+        margin-left: 5px;
+        margin-top: 0;
+        margin-bottom: 5px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        white-space: nowrap;
+    }
+</style>
+<body>
+    <div  class="quarter-div top">
+                <button id='g' >获取目录接口</button>
+                <div class='list-content'>
+                    <a>首页</a>
+                </div>
+                <div>
+                   <textarea   id="postInfo"  style="width:100%;height: 300px" ></textarea>
+                </div>
+    </div>
+
+    <div  class="quarter-three-div top">
+           
+            <input type="text" id="prefix" value="E:/d_project/s/json/test/">
+            
+            <button id='p'>测试post接口返回</button>
+            <input type="text" id="file" value="temp1">
+            <div class="list-content"></div>
+           
+            <textarea   id="content"  style="width:100%;height: 500px" ></textarea>
+    </div>
+
+   
+
+<script type="module">
+import {API} from "/static/utils/se/service.js"
+
+function getJsonInfo({file,prefix,path}){
+   
+    let $doc=document.getElementById("content");
+    let $file=document.getElementById("file");
+    let $postInfo=document.getElementById("postInfo");
+    
+    API.ubizLocalPost({
+        file,
+        prefix,
+        path,
+    }).done(function(ret){
+        $doc.value=Proxy.Json.ToString(ret);
+        $file.value=file;
+        $postInfo.value="http//localhost:8080/ubiz/local/post.json";
+        $postInfo.value=$postInfo.value+"\n\n"+Proxy.Json.ToString({ file, prefix, path, });
+
+        LocalStorage.Set("admin-prefix",$("#prefix").val())
+        LocalStorage.Set("admin-file",$file.value)
+
+
+    }).fail(function(ret){
+        $doc.value=Proxy.Json.ToString(ret);
+    })
+};
+
+function bindDoc({paths}){
+    let $g=$("#g .list-content");
+    let $c=$("#g").parent().find(".list-content").html("")
+    if(paths){
+        paths.forEach(path => {
+            let doc= "<a >"+path.file+"</a>";
+            let $doc=$(doc).data("path",path).on("click",function(e){
+               let p= $(this).data("path")  ;
+               getJsonInfo({"path":p.path,"file":p.file});
+            });
+            $c.append($doc)
+        });
+    }
+    
+
+  
+}
+
+
+//  获取内容
+$("button#p").on("click",function(){
+    getJsonInfo({file:$("#file").val(),prefix:$("#prefix").val()})
+})
+
+if( LocalStorage.Get("admin-prefix")){
+    $("#prefix").val(LocalStorage.Get("admin-prefix"))
+}
+if( LocalStorage.Get("admin-file")){
+    $("#file").val(LocalStorage.Get("admin-file"))
+}
+    
+
+// 获取路径下文件
+$("button#g").on("click",function(){
+    API.ubizLocalInfo({
+        "prefix":$("#prefix").val()
+    }).done(function(ret){
+        bindDoc({"paths":ret})
+}).fail(function(ret){
+})
+}).click();
+
+// 自动获取json
+$(function(){
+    if($("#prefix").val()&&$("#file").val()){
+        $("button#p").click();
+    }
+})
+
+</script>
+
+</body>
