@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.1/angular-translate.js"></script>
+</head>
+<body>
+    <div>
+        <h1>{{ 'Hello' | translate }}</h1>
+        <span translate='what? A dog.'></span>
+    </div>
+    <script type="text/javascript">
+    var app = angular.module("MyApp",['pascalprecht.translate']);
+
+    app.config(['$translateProvider',function($translateProvider){
+          $translateProvider.translations('en',{
+            'Hello':'Hello',
+            'what? A dog.':'what? A dog.'
+        });
+
+          $translateProvider.translations('zh',{
+            'Hello':'你好',
+            'what? A dog.':'神马？这是一只旺财！'
+        });
+
+          $translateProvider.preferredLanguage('zh');
+    }]);
+    </script>
+</body>
+</html>

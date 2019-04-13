@@ -1,0 +1,11 @@
+@host = 127.0.0.1:8811
+
+POST /ubiz/local/tojson.json HTTP/1.1
+Host: {{host}}
+
+{"a":
+"
+设备编号 sbbh,时间 t  ,状态 state,增益 gain
+"}
+
+
