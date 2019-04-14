@@ -7,6 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="jquery-1.11.1.min.js"></script>
     12
+    <span id="isspan">
+
+
+    </span>
 </body>
+<script>
+    url="/crossDomain/index2.html"
+
+    $.ajax({
+        dataType:"json",
+        url:url    }).done(function(r){
+    debugger
+    }).ajaxError(function(event,request, settings){
+        debugger
+     $(this).append("<li>出错页面:" + settings.url + "</li>");
+});
+</script>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+    <span id='state'></span>
+
+</body>
+
+<script>
+var i=1
+    function getStatus(){
+        $.ajax({
+        url:"http://192.168.0.7/sddf"+i+".shtml",
+        timeout:1000*2,
+        complete:function(){
+            setTimeout(function(){
+                i=i+1;
+                getStatus();
+            }, 20*1000);
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            if(textStatus=="timeout"){
+                $("#state").html("超时");
+            }else{
+                $("#state").html("正常");
+            }
+        }
+    })
+    }
+
+    getStatus();
+</script>
+</html>

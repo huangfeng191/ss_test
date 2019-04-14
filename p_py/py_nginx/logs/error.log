@@ -26,3 +26,8 @@
 2019/04/13 22:15:51 [notice] 32112#13488: signal process started
 2019/04/13 22:16:17 [error] 32424#31948: *8 directory index of "E:/d_project/ss_test/h_html/" is forbidden, client: 127.0.0.1, server: localhost, request: "GET /h_html/ HTTP/1.1", host: "127.0.0.1:8882"
 2019/04/13 22:17:06 [error] 32424#31948: *8 directory index of "E:/d_project/ss_test/h_html/" is forbidden, client: 127.0.0.1, server: localhost, request: "GET /h_html/ HTTP/1.1", host: "127.0.0.1:8882"
+2019/04/14 10:10:55 [emerg] 11588#5976: CreateDirectory() "E:\d_project\ss_test\p_py\py_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2019/04/14 10:13:42 [emerg] 11332#10236: CreateDirectory() "E:\d_project\ss_test\p_py\py_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2019/04/14 11:36:45 [emerg] 12200#6960: CreateDirectory() "E:\d_project\ss_test\p_py\py_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2019/04/14 11:37:02 [emerg] 12440#12604: CreateDirectory() "E:\d_project\ss_test\p_py\py_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2019/04/14 11:41:40 [notice] 8500#12836: signal process started

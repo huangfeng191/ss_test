@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-  1212
+    <script src="jquery-1.11.1.min.js"></script>
+    
+    <iframe id="myiframe" src="/initialen.shtml" style="display:none;width:400px;height:200px;" ></iframe>
+    
+    <span>名称</span><span id="nm"></span>
+    <span>ip</span> <span id="ip"></span>
 </body>
+<script>
+   
+   var frm = document.getElementById('myiframe');
+//利用jQuery来判断iframe是否已经加载完毕  
+    $(frm).load(function(){//等iframe加载完毕  
+        //这里就是ifram加载完后做的事情
+
+        var nm= $(frm.contentDocument).find("table tr:eq(0) [align=left] b").html().replace("<!--#modname-->","")
+        var ip=$(frm.contentDocument).find("table tr:eq(1) [align=left]").html().replace("<!--#ipaddr-->","")
+        $("#ip").html(ip);
+        $("#nm").html(nm)
+    }); 
+
+ 
+</script>
 </html>
