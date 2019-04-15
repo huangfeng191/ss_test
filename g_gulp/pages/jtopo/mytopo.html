@@ -133,8 +133,8 @@
             setNewNode: function (imageUrl) {
                 var netNode = new JTopo.Node();
                 netNode.setImage(imageUrl, true);
-                netNode.setLocation(320, 80);
-                netNode.showSelected = false;
+                netNode.setLocation(120, 120);
+                // netNode.showSelected = false;
                 netNode.addEventListener('mouseup', function (e) {
                     if (e.button == 2) { // 右键
                         topologyO.createNode.currentNode = this;
@@ -226,6 +226,62 @@
                 scene = new JTopo.Scene(stage);
                 scene.background = '../../images/net_topo/bg.jpg';
 
+
+                $.ajax({
+                    url: "./jtopo.json",
+                    async: false,
+                    timeout: 1000
+                }).done(function (ret) {
+                    if (ret.data) {
+                        var for_nodes={}
+                        $.each(ret.data, function (indexInArray, valueOfElement) {
+                            if (valueOfElement.elementType == "node") {
+                                topologyO.createNode.setNewNode(valueOfElement.imageUrl);
+                                one_node = topologyO.createNode.newNode;
+                                one_node.setLocation(valueOfElement.x, valueOfElement.y);
+                                // one_node.visible=false;
+                                for_nodes[valueOfElement._id]=one_node
+                                scene.add(one_node);
+                            }
+                        });
+
+
+                        $.each(ret.data, function (indexInArray, valueOfElement) {
+                            if (valueOfElement.elementType == "link") {
+                              
+                                
+                            var l = new JTopo.Link(for_nodes[valueOfElement.nodeA_id], for_nodes[valueOfElement.nodeZ_id]);
+                            l.addEventListener('mouseup', function (e) {
+                                if (e.button == 2) { // 右键
+                                    topologyO.createNode.currentLink = this;
+                                    // 当前位置弹出菜单（div）
+                                    $("#contextmenu").css({
+                                        top: e.pageY,
+                                        left: e.pageX
+                                    }).show();
+                                    return;
+                                }
+                                if (e.target instanceof JTopo.Node) {
+                                    topologyO.createNode.currentLink = null;
+                                } else {
+                                    topologyO.createNode.currentNode = null;
+                                }
+                            })
+                            scene.add(l);
+
+
+
+
+                            }
+                        });
+
+
+
+                        
+                    }
+                })
+
+
                 stage.click(function (event) {
                     if (event.button == 0) { // 右键
                         // 关闭弹出菜单（div）
@@ -240,7 +296,7 @@
                 }
                 // 创建动作 生成topo node;
                 canvas.ondragenter = function (e) {
-                    console.log('handle_enter-当元素进入目的地时触发')
+
                     // 阻止浏览器默认行为
                     e.preventDefault()
                 }
@@ -249,11 +305,11 @@
                     e.preventDefault()
                 }
                 canvas.ondrop = function (e) {
-                    console.log('handle_drop-当元素在目的地放下时触发')
+
                     var t = Date.now()
                     if (topologyO.createNode.newNode) {
-                        topologyO.createNode.newNode["x"] = e.x
-                        topologyO.createNode.newNode["y"] = e.y
+                        // topologyO.createNode.newNode["x"] = e.x
+                        // topologyO.createNode.newNode["y"] = e.y
                         topologyO.canvasInfo.obj.scene.add(topologyO.createNode.newNode);
                     }
                     topologyO.createNode.newNode = null;
@@ -270,7 +326,6 @@
                 $("#contextmenu a").click(function () {
                     var text = $(this).text();
                     if (text == '删除该节点') {
-                        debugger
                         if (topologyO.createNode.currentNode) {
 
                             topologyO.canvasInfo.obj.scene.remove(topologyO.createNode.currentNode);
@@ -283,7 +338,6 @@
 
                     }
                     if (text == '连线起点') {
-                        debugger
                         topologyO.createNode.beginNode = topologyO.createNode.currentNode;
                     }
                     $("#contextmenu").hide();
@@ -292,8 +346,35 @@
 
 
                 $("#save").click(function () {
-                    debugger
+
+                    serialized = {
+                        "data": [],
+                        "sen":null
+                    };
+                    $.each(topologyO.canvasInfo.obj.stage.childs[0].childs, function (indexInArray,
+                        valueOfElement) {
+                        if (valueOfElement.elementType == "node") {
+                            var o = {
+                                "imageUrl": valueOfElement.image.src,
+                                "elementType": valueOfElement.elementType,
+                                "_id":valueOfElement._id,
+                                "x": valueOfElement.x,
+                                "y": valueOfElement.y,
+                            }
+                            serialized.data.push(o);
+                        } else {
+                            var o = {
+                                "path": valueOfElement.path,
+                                "_id":valueOfElement._id,
+                                "nodeA_id":valueOfElement.nodeA._id,
+                                "nodeZ_id":valueOfElement.nodeZ._id,
+                                "elementType": valueOfElement.elementType
+                            }
+                            serialized.data.push(o);
+                        }
+                    });
                     
+                    console.log(JSON.stringify(serialized));
                     // console.log(topologyO.canvasInfo.obj.stage.toJson())
                 })
             }
