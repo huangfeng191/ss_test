@@ -124,36 +124,60 @@
         createNode: {
             newNode: null,
             currentNode: null,
+            // 划线
+            beginNode:null,
+            endNode:null,
+            tempNodeA:null,
+            tempNodeZ:null,
             setNewNode: function (imageUrl) {
                 var netNode = new JTopo.Node();
                 netNode.setImage(imageUrl, true);
                 netNode.setLocation(320, 80);
                 netNode.showSelected = false;
-                netNode.addEventListener('mouseup', function (event) {
-                    if (event.button == 2) { // 右键
+                netNode.addEventListener('mouseup', function (e) {
+                    if (e.button == 2) { // 右键
                         topologyO.createNode.currentNode = this;
 
                         // 当前位置弹出菜单（div）
                         $("#contextmenu").css({
-                            top: event.pageY,
-                            left: event.pageX
+                            top: e.pageY,
+                            left: e.pageX
                         }).show();
-
+                        return;
                     }
+
+                    topologyO.createNode.tempNodeA = new JTopo.Node('tempA');;
+                    topologyO.createNode.tempNodeA .setSize(1, 1);
+                    topologyO.createNode.tempNodeZ = new JTopo.Node('tempZ');;
+                    topologyO.createNode.tempNodeZ.setSize(1, 1);
+
+                    var link = new JTopo.Link(topologyO.createNode.tempNodeA, topologyO.createNode.tempNodeZ);
+
+
+                    if (e.target != null && e.target instanceof JTopo.Node) {
+                        if (topologyO.createNode.beginNode == null) {
+                            topologyO.createNode.beginNode = e.target;
+                            topologyO.canvasInfo.obj.scene.add(link);
+                            topologyO.createNode.tempNodeA.setLocation(e.x, e.y);
+                            topologyO.createNode.tempNodeZ.setLocation(e.x, e.y);
+                        } else if (topologyO.createNode.beginNode !== e.target) {
+                            topologyO.createNode.endNode = e.target;
+                            var l = new JTopo.Link(topologyO.createNode.beginNode, topologyO.createNode.endNode);
+                            topologyO.canvasInfo.obj.scene.add(l);
+                            topologyO.createNode.beginNode = null;
+                            topologyO.canvasInfo.obj.scene.remove(link);
+                        } else {
+                            topologyO.createNode.beginNode = null;
+                        }
+                    } else {
+                           topologyO.canvasInfo.obj.scene.remove(link);
+                    }
+
                 });
 
                 topologyO.createNode.newNode = netNode;
             },
-            setLink: function (scene) {
-                var beginNode = null;
-                var tempNodeA = new JTopo.Node('tempA');;
-                tempNodeA.setSize(1, 1);
-
-                var tempNodeZ = new JTopo.Node('tempZ');;
-                tempNodeZ.setSize(1, 1);
-
-                var link = new JTopo.Link(tempNodeA, tempNodeZ);
-            },
+  
 
             init: function ($el) {
                 $el.ondragstart = function (e) {
