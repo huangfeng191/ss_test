@@ -79,7 +79,7 @@
 <body>
     <ul id="contextmenu" style="display:none;">
         <li><a>暂时无效</a></li>
-        <li><a>暂时无效</a></li>
+        <li><a>连线起点</a></li>
         <li><a>删除该节点</a></li>
     </ul>
 
@@ -145,27 +145,31 @@
                         }).show();
                         return;
                     }
+                    debugger
+                    if (e.target instanceof JTopo.Node) {
+                        topologyO.createNode.currentLink = null;
+                    } else {
+                        topologyO.createNode.currentNode = null;
+                    }
 
                     topologyO.createNode.tempNodeA = new JTopo.Node('tempA');;
                     topologyO.createNode.tempNodeA.setSize(1, 1);
                     topologyO.createNode.tempNodeZ = new JTopo.Node('tempZ');;
                     topologyO.createNode.tempNodeZ.setSize(1, 1);
 
-                    var link = new JTopo.Link(topologyO.createNode.tempNodeA, topologyO.createNode
-                        .tempNodeZ);
-                    
+                    // var link = new JTopo.Link(topologyO.createNode.tempNodeA, topologyO.createNode
+                    //     .tempNodeZ);
+
 
                     if (e.target != null && e.target instanceof JTopo.Node) {
                         if (topologyO.createNode.beginNode == null) {
-                            topologyO.createNode.beginNode = e.target;
-                            topologyO.canvasInfo.obj.scene.add(link);
-                            topologyO.createNode.tempNodeA.setLocation(e.x, e.y);
-                            topologyO.createNode.tempNodeZ.setLocation(e.x, e.y);
+                            // topologyO.createNode.beginNode = e.target;
+
                         } else if (topologyO.createNode.beginNode !== e.target) {
                             topologyO.createNode.endNode = e.target;
                             var l = new JTopo.Link(topologyO.createNode.beginNode, topologyO.createNode
                                 .endNode);
-                                l.addEventListener('mouseup', function (e) {
+                            l.addEventListener('mouseup', function (e) {
                                 if (e.button == 2) { // 右键
                                     topologyO.createNode.currentLink = this;
                                     // 当前位置弹出菜单（div）
@@ -175,15 +179,20 @@
                                     }).show();
                                     return;
                                 }
-                    })
+                                if (e.target instanceof JTopo.Node) {
+                                    topologyO.createNode.currentLink = null;
+                                } else {
+                                    topologyO.createNode.currentNode = null;
+                                }
+                            })
                             topologyO.canvasInfo.obj.scene.add(l);
                             topologyO.createNode.beginNode = null;
-                            topologyO.canvasInfo.obj.scene.remove(link);
+
                         } else {
                             topologyO.createNode.beginNode = null;
                         }
                     } else {
-                        topologyO.canvasInfo.obj.scene.remove(link);
+
                     }
 
                 });
@@ -261,16 +270,21 @@
                 $("#contextmenu a").click(function () {
                     var text = $(this).text();
                     if (text == '删除该节点') {
-                        if(topologyO.createNode.currentNode){
+                        debugger
+                        if (topologyO.createNode.currentNode) {
 
                             topologyO.canvasInfo.obj.scene.remove(topologyO.createNode.currentNode);
                             topologyO.createNode.currentNode = null;
-                        }else{
+                        } else {
                             topologyO.canvasInfo.obj.scene.remove(topologyO.createNode.currentLink);
                             topologyO.createNode.currentLink = null;
                         }
 
 
+                    }
+                    if (text == '连线起点') {
+                        debugger
+                        topologyO.createNode.beginNode = topologyO.createNode.currentNode;
                     }
                     $("#contextmenu").hide();
                 });
@@ -278,7 +292,9 @@
 
 
                 $("#save").click(function () {
-                    console.log(topologyO.canvasInfo.obj.stage.toJson())
+                    debugger
+                    
+                    // console.log(topologyO.canvasInfo.obj.stage.toJson())
                 })
             }
         }
