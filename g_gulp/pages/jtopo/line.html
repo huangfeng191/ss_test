@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="jquery-1.11.1.min.js"></script>
+<script src="jtopo-0.4.8-min.js"></script>
+
+
+<body>
+
+    <body>
+        <div style="border:1px red solid;">
+            <canvas id="canvas" width="1000px" height="880px"></canvas>
+        </div>
+
+    </body>
+    <script>
+        $(document).ready(function () {
+
+            var canvas = document.getElementById('canvas');
+            var stage = new JTopo.Stage(canvas);
+            var scene = new JTopo.Scene(stage);
+            
+            var nodeFrom = new JTopo.Node("from");
+            nodeFrom.setLocation(200,200);
+            scene.add(nodeFrom);
+            
+            var nodeTo = new JTopo.Node("To");
+            nodeTo.setLocation(300,200);
+            scene.add(nodeTo);
+            
+            var link = new JTopo.Link(nodeFrom, nodeTo); // 增加连线
+            scene.add(link);
+
+        });
+    </script>
+
+</html>

@@ -31,3 +31,4 @@
 2019/04/14 11:36:45 [emerg] 12200#6960: CreateDirectory() "E:\d_project\ss_test\p_py\py_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
 2019/04/14 11:37:02 [emerg] 12440#12604: CreateDirectory() "E:\d_project\ss_test\p_py\py_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
 2019/04/14 11:41:40 [notice] 8500#12836: signal process started
+2019/04/14 22:35:30 [error] 18844#19508: *6 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:8822/favicon.ico", host: "localhost:8882", referrer: "http://localhost:8882/h_html/jtopo/"
