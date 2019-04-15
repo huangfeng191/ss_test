@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../static/js/jquery-1.11.1.min.js"></script>
+    <script src="jtopo-0.4.8-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="../../static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+
+    <style>
+        .canvas-box {
+            position: relative;
+            height: 100%;
+        }
+
+        .canvas-box .canvas-content {
+            cursor: pointer;
+            border: 1px red solid;
+        }
+
+        .canvas-box .node-list {
+            position: absolute;
+            top: 20%;
+            height: 100px;
+            right: 30px;
+            width: 220px;
+            z-index: 999;
+        }
+
+        .canvas-box .node-list .node-list-right li {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .canvas-box .node-list .node-list-right li>img {
+            width: 30px;
+            height: 25px;
+            margin-right: 20px;
+        }
+
+        .cricle {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="canvas-box">
+        <canvas class="canvas-content" id="canvas" height="338" width="1350" style="cursor: default;">
+
+        </canvas>
+        <div class="node-list">
+            <ul class="node-list-right">
+                <li><button type="button" class="btn btn-default btn-xs save" id="save" data-index="2">保存</button></li>
+
+
+                <li><img src="../../images/net_topo/routerNode.png" class="nav-drag" draggable="true"
+                        data-type="router"><span class="cricle" style="background-color:#00FB00;"></span>
+                    <span>正常</span></li>
+                <li><img src="../../images/net_topo/netNode1.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#FF0000;"></span><span>严重警告</span>
+                </li>
+                <li><img src="../../images/net_topo/netNode2.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#FE7E1C;"></span><span>主要警告</span>
+                </li>
+                <li><img src="../../images/net_topo/netNode3.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#FFAA00;"></span><span>次要警告</span>
+                </li>
+                <li><img src="../../images/net_topo/netNode4.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#108EE9;"></span><span>事件</span>
+                </li>
+
+                <li><img src="../../images/net_topo/services.png" class="nav-drag" draggable="true" data-type="node">
+
+                    <img src="../../images/net_topo/connect.png" class="nav-drag" draggable="true" data-type="router">
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    var topologyO = {
+        createNode: {
+            newNode: null,
+            setNewNode: function (imageUrl) {
+                var netNode = new JTopo.Node();
+                netNode.setImage(imageUrl, true);
+                netNode.setLocation(320, 80);
+                netNode.showSelected = false;
+                netNode.addEventListener('mouseup', function (event) {
+                    var currentNode = this;
+                    if (event.button == 2) { // 右键
+                        topologyO.canvasInfo.obj.scene.remove(currentNode);
+                        currentNode = null;
+                    }
+                });
+
+                topologyO.createNode.newNode = netNode;
+            },
+
+            init: function ($el) {
+
+                $el.ondragstart = function (e) {
+                    topologyO.createNode.setNewNode($el.src);
+                }
+
+                $el.ondragend = function (e) {
+                    topologyO.createNode.newNode = null;
+                }
+
+
+
+            }
+        },
+
+        canvasInfo: {
+            obj: null,
+            init: function () {
+                var canvas = document.getElementById('canvas');
+                var stage ;
+                var scene;
+                $.ajax({
+                    url:"./jtopo1.json",
+                    async:false,
+                    timeout:1000
+                }).done(function(ret){
+                   debugger
+                    stage = JTopo.createStageFromJson(ret, canvas);
+                    
+                    debugger
+                    // scene = new JTopo.Scene(stage);
+
+                    // scene=stage.
+                }).fail(function(){
+                    stage = new JTopo.Stage(canvas);
+                    scene = new JTopo.Scene(stage);
+                    scene.background = '../../images/net_topo/bg.jpg';     
+                })
+               debugger
+             
+          
+
+
+
+                topologyO.canvasInfo.obj = {
+                    "stage": stage,
+                    "scene": scene,
+                }
+                // 创建动作 生成topo node;
+                canvas.ondragenter = function (e) {
+                    console.log('handle_enter-当元素进入目的地时触发')
+                    // 阻止浏览器默认行为
+                    e.preventDefault()
+                }
+
+                canvas.ondragover = function (e) {
+                    e.preventDefault()
+                }
+                canvas.ondrop = function (e) {
+                    console.log('handle_drop-当元素在目的地放下时触发')
+                    var t = Date.now()
+                    if (topologyO.createNode.newNode) {
+                        topologyO.createNode.newNode["x"] = e.x
+                        topologyO.createNode.newNode["y"] = e.y
+                        topologyO.canvasInfo.obj.scene.add(topologyO.createNode.newNode);
+                    }
+                    topologyO.createNode.newNode = null;
+                    e.preventDefault()
+                }
+
+
+                $.each($(".node-list-right img"), function (indexInArray, valueOfElement) {
+                    topologyO.createNode.init(valueOfElement);
+                });
+
+                $("#save").click(function () {
+                    console.log(topologyO.canvasInfo.obj.stage.toJson())
+                })
+            }
+        }
+
+
+    }
+    topologyO.canvasInfo.init();
+</script>
+
+
+</html>

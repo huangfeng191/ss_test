@@ -2378,6 +2378,7 @@
                 },
                 //设置节点的图片背景
                 this.setImage = function (b, c) {
+                    
                     if (null == b)
                         throw new Error("Node.setImage(): 参数Image对象为空!");
                     var d = this;

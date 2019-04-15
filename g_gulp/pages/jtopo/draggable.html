@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img id="img1" src="../../images/net_topo/netNode1.png" class="nav-drag" draggable="true" data-type="node"><span
+        class="cricle" style="background-color:#FF0000;">
+
+        <div id="div" ondrop='handle_drop(event)'  ondragover="allowDrop(event)" style="width:300px;height:400px;border:1px red solid;"></div>
+
+</body>
+
+<script>
+    var a = document.getElementById("img1");
+    var d= document.getElementById("div");
+    d.ondragenter = function (e) {
+        console.log('handle_enter-当元素进入目的地时触发')
+        // 阻止浏览器默认行为
+        e.preventDefault()
+    };
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+    function handle_drop(e) {
+            console.log('handle_drop-当元素在目的地放下时触发')
+            e.preventDefault()
+        };
+
+    d.ondrop = handle_drop
+
+    
+</script>
+
+</html>
