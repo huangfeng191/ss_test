@@ -13,6 +13,26 @@
 
 
     <style>
+        #contextmenu {
+            border: 1px solid #aaa;
+            border-bottom: 0;
+            background: #eee;
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+            z-index: 999;
+        }
+
+        #contextmenu li a {
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #aaa;
+            cursor: pointer;
+        }
+
+
         .canvas-box {
             position: relative;
             height: 100%;
@@ -57,6 +77,13 @@
 </head>
 
 <body>
+    <ul id="contextmenu" style="display:none;">
+        <li><a>暂时无效</a></li>
+        <li><a>暂时无效</a></li>
+        <li><a>删除该节点</a></li>
+    </ul>
+
+
     <div class="canvas-box">
         <canvas class="canvas-content" id="canvas" height="338" width="1350" style="cursor: default;">
 
@@ -96,28 +123,42 @@
     var topologyO = {
         createNode: {
             newNode: null,
+            currentNode: null,
             setNewNode: function (imageUrl) {
                 var netNode = new JTopo.Node();
                 netNode.setImage(imageUrl, true);
                 netNode.setLocation(320, 80);
                 netNode.showSelected = false;
                 netNode.addEventListener('mouseup', function (event) {
-                    var currentNode = this;
                     if (event.button == 2) { // 右键
-                        topologyO.canvasInfo.obj.scene.remove(currentNode);
-                        currentNode = null;
+                        topologyO.createNode.currentNode = this;
+
+                        // 当前位置弹出菜单（div）
+                        $("#contextmenu").css({
+                            top: event.pageY,
+                            left: event.pageX
+                        }).show();
+
                     }
                 });
 
                 topologyO.createNode.newNode = netNode;
             },
+            setLink: function (scene) {
+                var beginNode = null;
+                var tempNodeA = new JTopo.Node('tempA');;
+                tempNodeA.setSize(1, 1);
+
+                var tempNodeZ = new JTopo.Node('tempZ');;
+                tempNodeZ.setSize(1, 1);
+
+                var link = new JTopo.Link(tempNodeA, tempNodeZ);
+            },
 
             init: function ($el) {
-
                 $el.ondragstart = function (e) {
                     topologyO.createNode.setNewNode($el.src);
                 }
-
                 $el.ondragend = function (e) {
                     topologyO.createNode.newNode = null;
                 }
@@ -134,12 +175,17 @@
                 var stage;
                 var scene;
 
+
                 stage = new JTopo.Stage(canvas);
                 scene = new JTopo.Scene(stage);
                 scene.background = '../../images/net_topo/bg.jpg';
 
-
-
+                stage.click(function (event) {
+                    if (event.button == 0) { // 右键
+                        // 关闭弹出菜单（div）
+                        $("#contextmenu").hide();
+                    }
+                });
 
 
                 topologyO.canvasInfo.obj = {
@@ -172,6 +218,22 @@
                 $.each($(".node-list-right img"), function (indexInArray, valueOfElement) {
                     topologyO.createNode.init(valueOfElement);
                 });
+
+
+                /* 右键菜单处理 */
+                $("#contextmenu a").click(function () {
+                    var text = $(this).text();
+                    if (text == '删除该节点') {
+
+                        topologyO.canvasInfo.obj.scene.remove(topologyO.createNode.currentNode);
+                        topologyO.createNode.currentNode = null;
+
+
+                    }
+                    $("#contextmenu").hide();
+                });
+
+
 
                 $("#save").click(function () {
                     console.log(topologyO.canvasInfo.obj.stage.toJson())
