@@ -1,14 +1,47 @@
-@host79 = 127.0.0.1:8079
+@h8000 = 192.168.1.80:8000
+@token="8FE3B6D069447421BECBB13722A844C7"
 
-### 历史数据上传 
-POST /noise/spectrum/upload.json HTTP/1.1
-Host: {{host79}}
+### 获取区域信息 
+GET /nms/spring/device/area HTTP/1.1
+Host: {{h8000}}
+Content-Type: application/json;charset=UTF-8
 
-  {
-     "Token":"5771ee15a8d0241dd81378df",
-     "data":{
-         "sn":"1",
-         "base64":"eHgxMg==",
-         "t":1212
-     }
+{}
+
+### 获取区域信息 
+GET /nms/spring/device/page
+?page=&pageSize=200
+&token={{token}}
+&name=
+&ip=
+&deviceStatus=
+&deviceType=
+&areaId=
+&user=admin
+&NEType=
+&Vendor= HTTP/1.1
+Host: {{h8000}}
+Content-Type: application/json;charset=UTF-8
+
+
+
+
+### 拓扑信息统计列表 
+
+GET /nms/spring/viewData/statisticsPathCount  HTTP/1.1
+Host: {{h8000}}
+Content-Type: application/json;charset=UTF-8
+
+
+###  
+
+GET /nms/spring/alarm/activeAlarm/fliter HTTP/1.1
+Host: {{h8000}}
+Content-Type: application/json;charset=UTF-8
+
+{
+  token:{{token}}
 }
+
+
+

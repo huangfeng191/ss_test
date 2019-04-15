@@ -86,6 +86,8 @@ console:
 
 Ctrl shift c 检查代码 elements
 
+Shift + Ctrl + i 显示/隐藏开发者工具面板
+Shift + Ctrl + j 显示/隐藏 DOM 检查器 =F12
 
 sources:
 ctrl+g 切换到多上行

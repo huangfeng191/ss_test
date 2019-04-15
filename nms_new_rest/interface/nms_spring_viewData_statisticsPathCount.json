@@ -1,0 +1,25 @@
+{
+    "code": 100000,
+    "data": [{
+        "countNum": 0,
+        "section": "一段链路"
+    }, {
+        "countNum": 0,
+        "section": "二段链路"
+    }, {
+        "countNum": 0,
+        "section": "三段链路"
+    }, {
+        "countNum": 0,
+        "section": "四段链路"
+    }, {
+        "countNum": 0,
+        "section": "五段链路"
+    }, {
+        "countNum": 0,
+        "section": "六段链路"
+    }, {
+        "countNum": 0,
+        "section": "七段链路"
+    }]
+}
