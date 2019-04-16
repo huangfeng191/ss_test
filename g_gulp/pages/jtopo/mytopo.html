@@ -85,9 +85,14 @@
 
 
     <div class="canvas-box">
-        <canvas class="canvas-content" id="canvas" height="338" width="1350" style="cursor: default;">
+       
+        <canvas class="canvas-content" id="canvas" height="2800" width="1350" style="cursor: default;">
 
         </canvas>
+
+     
+
+
         <div class="node-list">
             <ul class="node-list-right">
                 <li><button type="button" class="btn btn-default btn-xs save" id="save" data-index="2">保存</button></li>
@@ -275,6 +280,12 @@
                             }
                         });
 
+                        if(ret.scene.translateX){
+                            scene.translateX=ret.scene.translateX;
+                        }
+                        if(ret.scene.translateY){
+                            scene.translateY=ret.scene.translateY;
+                        }
 
 
                         
@@ -349,7 +360,7 @@
 
                     serialized = {
                         "data": [],
-                        "sen":null
+                        "scene":null
                     };
                     $.each(topologyO.canvasInfo.obj.stage.childs[0].childs, function (indexInArray,
                         valueOfElement) {
@@ -373,7 +384,8 @@
                             serialized.data.push(o);
                         }
                     });
-                    
+                    var sen=topologyO.canvasInfo.obj.stage.childs[0];
+                    serialized.scene={translateX:sen.translateX,translateY:sen.translateY};
                     console.log(JSON.stringify(serialized));
                     // console.log(topologyO.canvasInfo.obj.stage.toJson())
                 })

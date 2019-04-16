@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="jquery-1.11.1.min.js"></script>
+<script src="jtopo-0.4.8-min.js"></script>
+<!-- <script src="http://www.jtopo.com/demo/js/toolbar.js"></script> -->
+
+<body>
+
+    <body>
+        <div style="border:1px red solid;">
+            <canvas id="canvas" width="1000px" height="880px"></canvas>
+        </div>
+
+    </body>
+    <script>
+        $(document).ready(function () {
+
+            var canvas = document.getElementById('canvas');
+            var stage = new JTopo.Stage(canvas); // 创建一个舞台对象
+            
+           
+            var scene = new JTopo.Scene(stage); // 创建一个场景对象
+            // 鼠标单平移
+            scene.translateX=400;
+            debugger
+            var node = new JTopo.Node("Hello"); // 创建一个节点
+            node.setLocation(300, 200); // 设置节点坐标     
+            node.elementType="CircleNode"      ;         
+            scene.add(node); // 放入到场景中
+
+            node = new JTopo.CircleNode("Second"); // 创建一个节点
+            node.setLocation(500, 800); // 设置节点坐标                    
+            scene.add(node); // 放入到场景中
+
+        });
+    </script>
+
+</html>
