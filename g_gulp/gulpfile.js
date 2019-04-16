@@ -46,8 +46,11 @@ gulp.task('browser-sync-static', function() {
         server: {
           // 服务开启的目录
             baseDir: config.baseDir,
-            middleware: [middleware]
-      }
+            middleware: [middleware],
+            // 默认首页
+            index: "/pages/jtopo/mytopo2.html"
+      },
+   
     });
     const log = console.log.bind(console);
     // 服务开启的目录下的路径

@@ -1,6 +1,6 @@
 @host82 = 127.0.0.1:82
-# 倒叙
-@order_last =[{"Field": "created",  "Type": true }] 
+# 倒叙 默认
+@order_last =[{"Field": "created",  "Type": true }]  
 @order_first =[{"Field": "created",  "Type": false }] 
 
 ### 历史数据上传 
@@ -10,15 +10,13 @@ Host: {{host82}}
 
 
 ### nms 
-POST /nms/misc_info/query.json HTTP/1.1
+POST /nms/misc_info/one.json HTTP/1.1
 Host: {{host82}}
 
 {
     "query":{
         "tp":"net_topo"
-    },
-    "size":1,
-    "order":{{order_last}}
+    }
 }
 ### 历史数据上传 
 POST /nms/misc_info/insert.json HTTP/1.1
