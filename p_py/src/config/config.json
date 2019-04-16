@@ -1,7 +1,8 @@
 {
   "sys":{
    "mongodb":{"host":"mongodb://127.0.0.1:27017"},
-   "db_prefix":"s_", # 数据库前缀
+    "customs":["nms"],
+    "db_prefix":"s_", # 数据库前缀
   },
     "web": {
         "index" : "/ubiz/index.html" # 默认首页

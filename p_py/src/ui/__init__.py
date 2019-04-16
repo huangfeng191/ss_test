@@ -38,6 +38,9 @@ def wildcard(base, suffix='\.json'):
 
 import biz
 
+# 导入模块
+import modules
+
 def main(argv=None):
     argv = argv or sys.argv
     web.config.session_parameters['cookie_name'] = _cookie_name

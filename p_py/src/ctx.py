@@ -47,9 +47,12 @@ def get_db(module):
   return mdb[DB_PREFIX + module]
 # 配置数据库
 cmdb = get_db("config")
-
+nmsdb = get_db("nms")
 # 结点前缀
 ND_PREFIX = get("sys","node_prefix","")
+
+#导入客户系统
+customs = get("sys", "customs", [])
 
 # Endless loop!
 while True:
