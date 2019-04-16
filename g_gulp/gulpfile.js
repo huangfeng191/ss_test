@@ -11,12 +11,42 @@ var uglify = require("gulp-uglify");
 
 var bs=require('browser-sync').create();
 
+//👇 http://yangblink.com/2016/09/17/%E4%B8%BAbrowser-sync%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/
+var proxy = require('http-proxy-middleware')
+
+// var middleware = proxy('**', {target: 'http://127.0.0.1:82', changeOrigin: true,});
+// 设置代理
+// request **/*.json 全匹配
+
+var filter = function(pathname, req) {
+  // && req.method === 'GET'
+  // 按正则匹配
+  // console.log("pathname"+pathname);
+  // 跳过代理
+  if(pathname.match("jtopo.json")){
+    return false
+  }
+  return pathname.match('^.*/.*\.json') ;
+};
+
+var middleware = proxy(filter, {
+	target: 'http://127.0.0.1:82',
+	changeOrigin: true,
+	logLevel: 'debug',
+	pathRewrite: {
+        // '^/test/testa' : '/apiA',
+  },
+
+});
+// 
+
 // 静态服务器
 gulp.task('browser-sync-static', function() {
      bs.init({
         server: {
           // 服务开启的目录
-            baseDir: config.baseDir
+            baseDir: config.baseDir,
+            middleware: [middleware]
       }
     });
     const log = console.log.bind(console);

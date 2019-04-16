@@ -1,3 +1,4 @@
 /g_gulp/node_modules/
 /g_gulp/build/
 *.pyc
+*.idea

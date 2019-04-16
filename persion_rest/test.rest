@@ -1,0 +1,12 @@
+@host82 = 127.0.0.1:82
+
+### 历史数据上传 
+POST /api/jtopo.json HTTP/1.1
+Host: {{host82}}
+
+
+
+### 历史数据上传 
+POST /ubiz/local/post.json HTTP/1.1
+Host: {{host82}}
+
