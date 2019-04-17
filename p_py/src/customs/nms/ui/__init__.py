@@ -33,7 +33,9 @@ class NmsMiscCRUD(CRUD):
               return CRUD.action(self, act, *args, **kwArgs)
 
     def one(self,order=None, record=None, *args, **kwArgs):
+        print 1
         if not order:
+            print 2
             # 最后一条
             order= [{"Field": "created", "Type": True}]
         l=self.module.items(query=kwArgs.get("query"),order=order,size=1)

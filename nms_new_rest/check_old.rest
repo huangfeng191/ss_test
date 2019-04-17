@@ -1,0 +1,11 @@
+@h8080 = 172.16.103.12:8080
+
+### 获取区域信息 
+POST /nms/spring/role?token=342C575639AD273F041F7CBF08F56F9C HTTP/1.1
+Host: {{h8080}}
+Content-Type: application/json;charset=UTF-8
+
+{"roleName":"11","roleDesc":"2","deviceList":[{"id":"3745e4df-11f6-4565-9df8-0a06d71e4a15"}]}
+
+
+

@@ -242,7 +242,7 @@
                         }
                     })
                 }).done(function(r){
-                    if(r.Response){
+                    if(r.Response && r.Code==0){
                         ret=r.Response;
                     }
                 });
@@ -386,6 +386,7 @@
 
                     serialized = {
                         "data": [],
+                        "tp":"net_topo",
                         "scene": null
                     };
                     $.each(topologyO.canvasInfo.obj.stage.childs[0].childs, function (indexInArray,
@@ -415,8 +416,18 @@
                         translateX: sen.translateX,
                         translateY: sen.translateY
                     };
-                    console.log(JSON.stringify(serialized));
+                    console.log(JSON.stringify());
+                    topologyO.methods.saveTopo(serialized)
+                    
                     // console.log(topologyO.canvasInfo.obj.stage.toJson())
+                })
+            }
+        },
+        methods:{
+            saveTopo:function(data){
+                var d={"record":data}
+                $.post("/nms/misc_info/insert.json",JSON.stringify(d)).done(function(){
+                    alert("保存成功");
                 })
             }
         }

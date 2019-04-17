@@ -49,7 +49,7 @@ def main(argv=None):
     web.config.session_parameters['timeout'] = 30 * 24 * 3600
     web.config.session_parameters['secret_key'] = 'FENGFENG'
     web.config.session_parameters['cookie_path'] = '/'
-    port = 8822
+    port = 82
     if len(argv) > 1:
         port = int(argv[1])
     dirs=[]

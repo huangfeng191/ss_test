@@ -5,3 +5,9 @@ sys 用户   admin  admin
 
 用户名：saisinms 密码：saisi
 root 123456
+
+
+
+git 地址 ：
+
+git@192.168.90.10:NMS/sgit_nms/nms_be
