@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- alarm  -->
 
 <head>
     <meta charset="UTF-8">
@@ -126,6 +127,10 @@
 </body>
 
 <script>
+      // "tp": "net_topo_all"
+    //   "tp": "net_topo_test"
+                            // "tp": "net_topo"
+    var net_tp="net_topo_test";
     var topologyO = {
         createNode: {
             newNode: null,
@@ -136,8 +141,14 @@
             endNode: null,
             tempNodeA: null,
             tempNodeZ: null,
-            setNewNode: function (imageUrl) {
-                var netNode = new JTopo.Node();
+            setNewNode: function (imageUrl, node_nm) {
+                var netNode;
+                if (node_nm) {
+                    netNode = new JTopo.Node(node_nm);
+                } else {
+                    netNode = new JTopo.Node();
+
+                }
                 netNode.setImage(imageUrl, true);
                 netNode.setLocation(120, 120);
                 // netNode.showSelected = false;
@@ -226,20 +237,20 @@
                 var canvas = document.getElementById('canvas');
                 var stage;
                 var scene;
-                
-                if(isEdit){
+
+                if (isEdit) {
                     topologyO.canvasInfo.obj.scene.clear();
-                    topologyO.canvasInfo.obj.stage.removeAllEventListener() ;
-                    stage=topologyO.canvasInfo.obj.stage;
-                    scene=topologyO.canvasInfo.obj.scene;
-                    
+                    topologyO.canvasInfo.obj.stage.removeAllEventListener();
+                    stage = topologyO.canvasInfo.obj.stage;
+                    scene = topologyO.canvasInfo.obj.scene;
+
                     // topologyO.canvasInfo.obj.scene.clear()
-                  
-                }else{
-                    
-                      stage = new JTopo.Stage(canvas);
-                      scene = new JTopo.Scene(stage);
-                      
+
+                } else {
+
+                    stage = new JTopo.Stage(canvas);
+                    scene = new JTopo.Scene(stage);
+
                 }
                 scene.background = '../../images/net_topo/bg.jpg';
                 var ret = null;
@@ -251,7 +262,8 @@
                     data: JSON.stringify({
                         "query": {
                             // "tp": "net_topo_all"
-                            "tp": "net_topo"
+                            "tp": net_tp
+                            // "tp": "net_topo"
                         }
                     })
                 }).done(function (r) {
@@ -280,15 +292,18 @@
                     $.each(ret.data, function (indexInArray, valueOfElement) {
                         if (valueOfElement.elementType == "node") {
 
-                            topologyO.createNode.setNewNode(valueOfElement.imageUrl);
+                            topologyO.createNode.setNewNode(valueOfElement.imageUrl,valueOfElement.nm);
                             one_node = topologyO.createNode.newNode;
-                            if (!isEdit||isEdit==2) {
+                            if (!isEdit || isEdit == 2) {
                                 one_node.dragable = false;
 
-                                if(valueOfElement.imageUrl.indexOf("connect")>=0){
-                                    debugger
-                                    one_node.visible=false;
+                                if (valueOfElement.imageUrl.indexOf("connect") >= 0) {
+                                    one_node.visible = false;
                                 }
+
+
+
+
                             }
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
                             // one_node.visible=false;
@@ -330,7 +345,7 @@
                     if (isEdit) {
                         var old_secen = topologyO.canvasInfo.obj;
                         if (old_secen && old_secen.scene) {
-                            old_secen=old_secen.scene;
+                            old_secen = old_secen.scene;
                             if (old_secen.translateX != undefined) {
                                 scene.translateX = old_secen.translateX;
                             }
@@ -432,11 +447,25 @@
             }
         },
         methods: {
+            setAlarm: function () {
+                // 暂未实现
+                if (topologyO.canvasInfo.obj && topologyO.canvasInfo.obj.scene) {
+                    alarmO = {
+                        "1": "我是报警1",
+                        "2": "我是报警二"
+                    }
+                    $.each(topologyO, function (indexInArray, valueOfElement) {
+                        if (valueOfElement.topoId == "") {
+
+                        }
+                    });
+                }
+            },
             beforeSave: function () {
 
                 serialized = {
                     "data": [],
-                    "tp": "net_topo",
+                    "tp": net_tp,
                     "scene": null
                 };
                 $.each(topologyO.canvasInfo.obj.stage.childs[0].childs, function (indexInArray,
