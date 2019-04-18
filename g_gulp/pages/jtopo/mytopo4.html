@@ -162,7 +162,7 @@
                         }).show();
                         return;
                     }
-                    debugger
+                    
                     if (e.target instanceof JTopo.Node) {
                         topologyO.createNode.currentLink = null;
                     } else {
@@ -271,7 +271,7 @@
                         ret = r.Response;
                     }
                 });
-                debugger
+                
                 if (ret == null) {
                     $.ajax({
                         // url: "./jtopo.json",
@@ -304,6 +304,11 @@
 
 
 
+                            }
+                            if(valueOfElement.nm){
+                                one_node.fontColor="black";
+                                one_node.textOffsetY=5;
+                                one_node.alarmType=valueOfElement.alarmType
                             }
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
                             // one_node.visible=false;
@@ -477,6 +482,10 @@
                             "_id": valueOfElement._id,
                             "x": valueOfElement.x,
                             "y": valueOfElement.y,
+                            "nm":valueOfElement.text|| "",
+                            "alarm":valueOfElement.alarmType||"normal"
+                            // 正常 严重警告   主要警告 次要警告  事件
+                            // normal serious  major  minor incident
                         }
                         serialized.data.push(o);
                     } else {

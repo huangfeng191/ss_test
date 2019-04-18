@@ -1,0 +1,33 @@
+<button id="i_say_no">i_say_no</button>
+
+<script src="../../static/js/jquery-1.11.1.min.js"></script>
+
+    <script>
+
+// function deleteCookie(name){
+//               var date=new Date();
+//               date.setTime(date.getTime()-10000);
+//               document.cookie=name+"=v; expire="+date.toGMTString();
+// }
+//         deleteCookie("JSESSIONID");
+
+        document.cookie="JSESSIONID=C443761FCA3E200A5A8DEF4F44E6A194"
+        $("#i_say_no").click(function(){
+            $.ajax({"url":"/nms/spring/role",
+                    "type":"POST",
+                    "headers":{
+                        // "token":"4FC4E9B406F712FFBCF134EBCCEFCBD9"
+                        "token":"C443761FCA3E200A5A8DEF4F44E6A194"
+                    },
+                    contentType:"application/json;charset=UTF-8",
+                    data: JSON.stringify(
+                        {"roleName":"144","roleDesc":"144","deviceList":[{"id":"3745e4df-11f6-4565-9df8-0a06d71e4a15"}]}
+                    )
+            }).done(function(ret){
+                debugger
+            }).fail(function(){
+              debugger
+            })
+        },)
+    
+    </script>
