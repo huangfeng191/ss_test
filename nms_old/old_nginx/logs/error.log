@@ -19,3 +19,29 @@
 2019/04/13 20:43:55 [error] 23008#3484: *47 CreateFile() "E:/d_project/s/static/test/undefined" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /static/test/undefined HTTP/1.1", host: "127.0.0.1:8090", referrer: "http://127.0.0.1:8090/static/test/"
 2019/04/13 20:44:55 [error] 23008#3484: *47 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:8822/favicon.ico", host: "127.0.0.1:8090", referrer: "http://127.0.0.1:8090/static/test/"
 2019/04/13 20:46:59 [error] 23008#3484: *54 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while connecting to upstream, client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:8822/favicon.ico", host: "127.0.0.1:8090", referrer: "http://127.0.0.1:8090/static/test/"
+2019/04/18 08:35:55 [emerg] 7260#10160: invalid host in upstream "http://172.16.103.12:8080" in E:\d_project\ss_test\nms_old\old_nginx/conf/nginx.conf:39
+2019/04/18 08:36:49 [emerg] 11832#8456: invalid host in upstream "http://172.16.103.12:8080" in E:\d_project\ss_test\nms_old\old_nginx/conf/nginx.conf:39
+2019/04/18 08:37:16 [emerg] 2188#4076: CreateDirectory() "E:\d_project\ss_test\nms_old\old_nginx/temp/client_body_temp" failed (3: The system cannot find the path specified)
+2019/04/18 08:53:28 [warn] 13436#8004: "user" is not supported, ignored in E:\d_project\ss_test\nms_old\old_nginx/conf/nginx.conf:2
+2019/04/18 08:53:28 [emerg] 13436#8004: CreateFile() "E:/opt/nmsdevs/nginx/nginx.pid" failed (3: The system cannot find the path specified)
+2019/04/18 08:53:48 [emerg] 9660#9656: CreateFile() "E:/opt/nmsdevs/nginx/nginx.pid" failed (3: The system cannot find the path specified)
+2019/04/18 08:54:46 [emerg] 11148#5292: CreateFile() "E:/var/log/nginx/access.log" failed (3: The system cannot find the path specified)
+2019/04/18 08:55:33 [notice] 12672#12688: signal process started
+2019/04/18 08:55:54 [notice] 10576#14308: signal process started
+2019/04/18 08:55:56 [error] 10448#4368: *774 CreateFile() "E:/c_project/Server/src/main/webapp/nms/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /nms/index.html HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 08:55:57 [error] 10448#4368: *774 CreateFile() "E:/c_project/Server/src/main/webapp/nms/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /nms/index.html HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 08:55:59 [error] 10448#4368: *774 CreateFile() "E:/c_project/Server/src/main/webapp/nms/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /nms/index.html HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 08:56:11 [error] 10448#4368: *774 CreateFile() "E:/c_project/Server/src/main/webapp/nms/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /nms/index.html HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 08:57:37 [notice] 9676#9656: signal process started
+2019/04/18 09:01:43 [notice] 8084#14060: signal process started
+2019/04/18 09:02:42 [notice] 7260#10236: signal process started
+2019/04/18 09:03:32 [notice] 1932#12532: signal process started
+2019/04/18 09:03:41 [error] 13908#10052: *796 CreateFile() "E:/c_project/Server/src/main/webapp/js/angular-file-upload.min.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/angular-file-upload.min.js.map HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 09:05:52 [error] 13908#10052: *802 CreateFile() "E:/c_project/Server/src/main/webapp/js/angular-file-upload.min.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/angular-file-upload.min.js.map HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 09:05:58 [error] 13908#10052: *808 CreateFile() "E:/c_project/Server/src/main/webapp/js/angular-file-upload.min.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/angular-file-upload.min.js.map HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 09:24:27 [error] 13908#10052: *838 CreateFile() "E:/c_project/Server/src/main/webapp/nms/index2.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /nms/index2.html HTTP/1.1", host: "127.0.0.1:801"
+2019/04/18 09:35:07 [notice] 14200#9868: signal process started
+2019/04/18 09:37:58 [notice] 14112#13888: signal process started
+2019/04/18 09:40:21 [notice] 13480#13684: signal process started
+2019/04/18 09:43:03 [error] 8120#7944: *903 upstream timed out (10060: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond) while reading response header from upstream, client: 127.0.0.1, server: , request: "POST /nms/spring/role HTTP/1.1", upstream: "http://192.168.92.170:8080/nms/spring/role", host: "127.0.0.1:801", referrer: "http://127.0.0.1:801/index2.html"
+2019/04/18 09:44:30 [error] 8120#7944: *905 CreateFile() "E:/c_project/Server/src/main/webapp/nms/index.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: , request: "GET /nms/index.html HTTP/1.1", host: "127.0.0.1:801"

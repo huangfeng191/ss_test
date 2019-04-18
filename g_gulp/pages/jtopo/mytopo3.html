@@ -45,7 +45,8 @@
 
         .canvas-box .node-list {
             position: absolute;
-            top: 20%;
+            /* top: 20%; */
+            top: 200px;
             height: 100px;
             right: 30px;
             width: 220px;
@@ -249,7 +250,7 @@
                     timeout: 100,
                     data: JSON.stringify({
                         "query": {
-                            "tp": "net_topo"
+                            "tp": "net_topo_all"
                         }
                     })
                 }).done(function (r) {
@@ -282,6 +283,11 @@
                             one_node = topologyO.createNode.newNode;
                             if (!isEdit||isEdit==2) {
                                 one_node.dragable = false;
+
+                                if(valueOfElement.imageUrl.indexOf("connect")>=0){
+                                    debugger
+                                    one_node.visible=false;
+                                }
                             }
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
                             // one_node.visible=false;
