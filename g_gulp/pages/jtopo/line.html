@@ -35,8 +35,13 @@
             nodeTo.setLocation(300,200);
             scene.add(nodeTo);
             
+            // 直线
             var link = new JTopo.Link(nodeFrom, nodeTo); // 增加连线
             scene.add(link);
+            // 折线
+            var FoldLink = new JTopo.FoldLink(nodeFrom, nodeTo); // 增加连线
+            scene.add(FoldLink);
+
 
         });
     </script>
