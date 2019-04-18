@@ -127,10 +127,10 @@
 </body>
 
 <script>
-      // "tp": "net_topo_all"
+    // "tp": "net_topo_all"
     //   "tp": "net_topo_test"
-                            // "tp": "net_topo"
-    var net_tp="net_topo_test";
+    // "tp": "net_topo"
+    var net_tp = "net_topo_test";
     var topologyO = {
         createNode: {
             newNode: null,
@@ -162,7 +162,7 @@
                         }).show();
                         return;
                     }
-                    
+
                     if (e.target instanceof JTopo.Node) {
                         topologyO.createNode.currentLink = null;
                     } else {
@@ -271,7 +271,7 @@
                         ret = r.Response;
                     }
                 });
-                
+
                 if (ret == null) {
                     $.ajax({
                         // url: "./jtopo.json",
@@ -289,12 +289,19 @@
 
                 if (ret && ret.data) {
                     var for_nodes = {}
+                    var alarm_reg=/normal|serious|major|minor|incident|net_topo/g;
                     $.each(ret.data, function (indexInArray, valueOfElement) {
                         if (valueOfElement.elementType == "node") {
 
-                            topologyO.createNode.setNewNode(valueOfElement.imageUrl,valueOfElement.nm);
-                            one_node = topologyO.createNode.newNode;
+
                             if (!isEdit || isEdit == 2) {
+                                var alarmUrl=valueOfElement.imageUrl;
+                                if(valueOfElement.alarmType){
+                                    alarmUrl=alarmUrl.replace(alarm_reg,valueOfElement.alarmType)
+                                }
+                                topologyO.createNode.setNewNode(alarmUrl, valueOfElement
+                                    .nm);
+                                one_node = topologyO.createNode.newNode;
                                 one_node.dragable = false;
 
                                 if (valueOfElement.imageUrl.indexOf("connect") >= 0) {
@@ -304,11 +311,15 @@
 
 
 
+                            } else {
+                                topologyO.createNode.setNewNode(valueOfElement.imageUrl, valueOfElement
+                                    .nm);
+                                one_node = topologyO.createNode.newNode;
                             }
-                            if(valueOfElement.nm){
-                                one_node.fontColor="black";
-                                one_node.textOffsetY=5;
-                                one_node.alarmType=valueOfElement.alarmType
+                            if (valueOfElement.nm) {
+                                one_node.fontColor = "black";
+                                one_node.textOffsetY = 5;
+                                one_node.alarmType = valueOfElement.alarmType
                             }
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
                             // one_node.visible=false;
@@ -482,8 +493,8 @@
                             "_id": valueOfElement._id,
                             "x": valueOfElement.x,
                             "y": valueOfElement.y,
-                            "nm":valueOfElement.text|| "",
-                            "alarm":valueOfElement.alarmType||"normal"
+                            "nm": valueOfElement.text || "",
+                            "alarm": valueOfElement.alarmType || "normal"
                             // 正常 严重警告   主要警告 次要警告  事件
                             // normal serious  major  minor incident
                         }
