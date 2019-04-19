@@ -139,6 +139,7 @@
     // "tp": "net_topo_all"
     //   "tp": "net_topo_test"
     // "tp": "net_topo"
+    // var net_tp = "net_topo";
     var net_tp = "net_topo_test";
     var alldel=1;
 
@@ -367,7 +368,12 @@
                                 one_node.textOffsetY = 5;
                                 one_node.alarmType = valueOfElement.alarmType
                             }
+                            one_node.physicsId=valueOfElement.physicsId;
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
+                            debugger
+                            if(valueOfElement.draggable==false){
+                                one_node.dragable = false;
+                            }
                             // one_node.visible=false;
                             for_nodes[valueOfElement._id] = one_node
                             scene.add(one_node);
@@ -565,7 +571,8 @@
                             "x": valueOfElement.x,
                             "y": valueOfElement.y,
                             "nm": valueOfElement.text || "",
-                            "alarmType": valueOfElement.alarmType || "normal"
+                            "alarmType": valueOfElement.alarmType || "normal",
+                            "physicsId":valueOfElement.physicsId||""
                             // 正常 严重警告   主要警告 次要警告  事件
                             // normal serious  major  minor incident
                         }
