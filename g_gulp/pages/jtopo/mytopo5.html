@@ -139,14 +139,15 @@
     // "tp": "net_topo_all"
     //   "tp": "net_topo_test"
     // "tp": "net_topo"
-    // var net_tp = "net_topo";
-    var net_tp = "net_topo_test";
+    var net_tp = "net_topo";
+    // var net_tp = "net_topo_test";
     var alldel=1;
+    // var alldel=0;
 
     if(alldel){
         $("#alldel").css("display","none");
         $(".node-list").find("#alldel").css("display","none");
-        debugger
+        
         $(".node-list").find("img").attr("draggable",false);
     }
     // var net_tp = "net_topo_all";
@@ -342,7 +343,7 @@
                             if (!isEdit || isEdit == 2) {
                                 var alarmUrl=valueOfElement.imageUrl;
                                 if(valueOfElement.alarmType){
-                                    if(alarmUrl.indexOf("Node")>=0){
+                                    if(alarmUrl.indexOf("netNode")>=0){
                                         alarmUrl=alarmUrl.replace(alarm_reg,valueOfElement.alarmType)
                                     }
                                 }
@@ -370,7 +371,7 @@
                             }
                             one_node.physicsId=valueOfElement.physicsId;
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
-                            debugger
+                            
                             if(valueOfElement.draggable==false){
                                 one_node.dragable = false;
                             }
@@ -395,9 +396,12 @@
                             l=new JTopo.Link(for_nodes[valueOfElement.nodeA_id],
                                 for_nodes[valueOfElement.nodeZ_id]);
                            } 
+                          
                            if(valueOfElement.lineWidth){
                               l.lineWidth= valueOfElement.lineWidth;
                            }
+                           l.strokeColor = "175,175,175"; 
+                            
                             l.addEventListener('mouseup', function (e) {
                                 if (e.button == 2) { // 右键
                                     topologyO.createNode.currentLink = this;

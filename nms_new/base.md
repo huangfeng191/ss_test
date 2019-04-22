@@ -11,3 +11,6 @@ root 123456
 git 地址 ：
 
 git@192.168.90.10:NMS/sgit_nms/nms_be
+
+测试前台：
+    http://192.168.1.80:8080/nms/index.html 
