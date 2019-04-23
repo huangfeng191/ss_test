@@ -1,0 +1,12 @@
+git 地址 ：
+    项目文档
+    git@192.168.90.10:NMS/sgit_nms/info-docs
+    \TR2需求设计及原型\1009(1)\1009
+    老网管：
+       git@192.168.90.10:NMS/SRCDOC/Server.git
+
+    新网管：
+        git@192.168.90.10:NMS/sgit_nms/nms_be
+
+
+        
