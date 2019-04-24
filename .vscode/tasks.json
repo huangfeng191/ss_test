@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "new-nginx-start",
+            "type": "shell",
+            "command": " cd .\\nms_new\\new_nginx\\;./nginx.exe",
+            "problemMatcher": []
+        },
+        {
+            "label": "new-nginx-stop",
+            "type": "shell",
+            "command": " cd .\\nms_new\\new_nginx\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
+            "label": "new-nginx-reload",
+            "type": "shell",
+            "command": " cd .\\nms_new\\new_nginx\\;./nginx.exe -s reload",
+            "problemMatcher": []
+        },
+        {
+            "label": "old-nginx-start",
+            "type": "shell",
+            "command": " cd .\\nms_old\\old_nginx\\;./nginx.exe",
+            "problemMatcher": []
+        },
+        {
+            "label": "old-nginx-stop",
+            "type": "shell",
+            "command": " cd .\\nms_old\\old_nginx\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
+            "label": "old-nginx-reload",
+            "type": "shell",
+            "command": " cd .\\nms_old\\old_nginx\\;./nginx.exe -s reload",
+            "problemMatcher": []
+        }
+    ]
+}

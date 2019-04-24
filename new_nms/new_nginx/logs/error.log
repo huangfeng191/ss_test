@@ -39,3 +39,5 @@
 2019/04/23 17:39:53 [error] 12912#13744: *60 CreateFile() "E:/c_project/nms_be/src/main/webapp/lib/Highcharts-6.2.0/code/highcharts.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nms/lib/Highcharts-6.2.0/code/highcharts.js.map HTTP/1.1", host: "127.0.0.1:60"
 2019/04/23 17:40:11 [error] 12912#13744: *77 CreateFile() "E:/c_project/nms_be/src/main/webapp/lib/Highcharts-6.2.0/code/highcharts.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nms/lib/Highcharts-6.2.0/code/highcharts.js.map HTTP/1.1", host: "127.0.0.1:60"
 2019/04/23 17:40:20 [error] 12912#13744: *94 CreateFile() "E:/c_project/nms_be/src/main/webapp/lib/Highcharts-6.2.0/code/highcharts.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /nms/lib/Highcharts-6.2.0/code/highcharts.js.map HTTP/1.1", host: "127.0.0.1:60"
+2019/04/24 08:58:26 [notice] 11440#8128: signal process started
+2019/04/24 08:58:59 [notice] 14872#11136: signal process started
