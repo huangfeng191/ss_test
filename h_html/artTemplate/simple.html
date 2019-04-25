@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>basic-demo</title>
+    <script src="./lib/template-web.js"></script>
+    <!-- <script src="require.js"></script> -->
+</head>
+
+<body>
+    <div id="content">
+
+    </div>
+
+
+    <script id="tpl-user" type="text/html">
+        {{if user}}
+        <h2>{{user.name}}</h2>
+        {{/if}}
+    </script>
+    <script>
+        window.onload = function () {
+            var data = {
+                user: {
+                    "name": "myGod"
+                }
+            }
+            document.getElementById("content").innerHTML = (template("tpl-user", data))
+
+        }
+    </script>
+</body>
+
+</html>

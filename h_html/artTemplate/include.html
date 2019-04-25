@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<!-- 不支持夸文件 -->
+<head>
+    <meta charset="UTF-8">
+    <title>basic-demo</title>
+    <script src="../lib/jquery-1.11.1.min.js"></script>
+    <script src="../lib/lib.js"></script>
+    <script src="./lib/template-web.js"></script>
+    <!-- <script src="require.js"></script> -->
+</head>
+
+<body>
+    <div id="content">
+
+    </div>
+
+
+
+
+    <script id="tpl-head" type="text/html">
+        <div>
+            <span>i`m head-ok </span>
+        </div>
+    </script>
+
+
+    <script id="tpl-user" type="text/html">
+     {{include "tpl-head"}}
+        {{if user}}
+        <h2>{{user.name}}</h2>
+        {{/if}}
+    </script>
+    <script>
+        window.onload = function () {
+            var data = {
+                user: {
+                    "name": "myGod"
+                }
+            }
+            document.getElementById("content").innerHTML = (template("tpl-user", data))
+
+        }
+    </script>
+</body>
+
+</html>
