@@ -4,40 +4,46 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "new-nginx-start",
+            "label": "start-new-nginx",
             "type": "shell",
-            "command": " cd .\\nms_new\\new_nginx\\;./nginx.exe",
+            "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe",
             "problemMatcher": []
         },
         {
-            "label": "new-nginx-stop",
+            "label": "stop-nginx-new",
             "type": "shell",
-            "command": " cd .\\nms_new\\new_nginx\\;./nginx.exe -s stop",
+            "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
         {
-            "label": "new-nginx-reload",
+            "label": "reload-nginx-new",
             "type": "shell",
-            "command": " cd .\\nms_new\\new_nginx\\;./nginx.exe -s reload",
+            "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe -s reload",
             "problemMatcher": []
         },
         {
-            "label": "old-nginx-start",
+            "label": "start-nginx-old",
             "type": "shell",
-            "command": " cd .\\nms_old\\old_nginx\\;./nginx.exe",
+            "command": " cd .\\old_nms\\old_nginx\\;./nginx.exe",
             "problemMatcher": []
         },
         {
-            "label": "old-nginx-stop",
+            "label": "stop-nginx-old",
             "type": "shell",
-            "command": " cd .\\nms_old\\old_nginx\\;./nginx.exe -s stop",
+            "command": " cd .\\old_nms\\old_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
         {
-            "label": "old-nginx-reload",
+            "label": "reload-nginx-old",
             "type": "shell",
-            "command": " cd .\\nms_old\\old_nginx\\;./nginx.exe -s reload",
+            "command": " cd .\\old_nms\\old_nginx\\;./nginx.exe -s reload",
             "problemMatcher": []
-        }
+        },
+        {
+            "label": "gulp-run",
+            "type": "shell",
+            "command": " cd .\\g_gulp\\;./gulp",
+            "problemMatcher": []
+        },
     ]
 }

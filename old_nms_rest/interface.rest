@@ -1,0 +1,32 @@
+@host40 = 127.0.0.1:40
+@token=B1954E1A9817D05005A266792EB0AA4F
+
+
+### 获取菜单 
+GET /nms/spring/user/getMenu
+# deviceType 设备类型
+?type=deviceType
+&token={{token}}
+Host: {{host40}}
+Cookie:JSESSIONID={{token}}
+
+
+### 获取配置信息 
+### 所有的设备类型（形成设备树）
+### configName  配置名称 *
+GET /nms/spring/systemManage/getParamConfig
+# deviceType 设备类型
+?type=deviceType
+&token={{token}}
+Host: {{host40}}
+Cookie:JSESSIONID={{token}}
+
+
+### 区域管理
+GET /nms/spring/device/area
+?token={{token}}
+Host: {{host40}}
+Cookie:JSESSIONID={{token}}
+
+
+
