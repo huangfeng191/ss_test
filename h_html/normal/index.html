@@ -17,19 +17,179 @@
   <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 
 
+  <script src="../lib/lib.js"></script>
+  <script src="../artTemplate/lib/template-web.js"></script>
+
+
 
 </head>
 
+<style>
+  tr td:first-child {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  select,
+  input {
+    height: 25px;
+    line-height: 25px;
+    margin-top: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+    border: 1px solid #B0B0B0;
+  }
+</style>
+
 <body id="test">
-  <i>
-    <a href="./part/first.html" target="content">first</a>
-    <a href="./part/second.html" target="content">second</a>
-  </i>
 
 
-  <div >
-    <iframe src="./part/first.html" name="content" id="content" style="border: none;" width="100%" height="100%"></iframe>
+  <!-- 
+
+
+
+        {
+          
+          bindings:{
+            "code":[
+            
+            ]
+          },
+          form:[
+           {
+             Style:"",
+             Inputs:[
+              [
+             {field:sn,nm:"nm",showType:"text",value:0,binding:}
+            ]
+            ]
+           }
+          ]
+        ,
+        init:{
+
+        },
+        get:{
+
+        },
+        set:{
+
+        }
+
+
+
+
+        对象. 
+   -->
+
+  <div>
+    我的测试
+    <div id="form1">
+
+    </div>
+
   </div>
+
+  <script>
+    $.fn.ssForm = function(method) {
+      if ($.fn.ssForm[method]) {
+        return $.fn.ssForm[method].apply(this, Array.prototype.slice.call(arguments, 1));
+      } else if (typeof method === "object" || !method) {
+        return initialize.apply(this, arguments);
+      } else {
+        $.error("Method " + method + " does not exist on jQuery.ssForm");
+      }
+    };
+    var defaults = $.fn.ssForm.defaults = {
+      
+      "temp": template.compile(jQuery.GetTemplate(function() {
+        /*
+           {{each Form  Group g}}
+
+          <table style="{{Group.Style}}">
+            {{each Group.Inputs  Row r}}
+
+               {{each Row  Cell c}}
+                       {{if Cell.Field}}
+                        <td class="label" field_label="{{Cell.Field}}"  >{{Cell.Name}}</td>
+
+                        {{if Cell.ShowType=="text"}}
+                              <td>
+                                <input field={{Cell.Field}} {{if Cell.Value}} value=Cell.Value {{/if}}>
+                              </td>
+
+                        {{else if Cell.ShowType=="select"}}
+
+                              <td>
+                                <select field={{Cell.Field}}  >
+                                </select>
+                              </td>
+
+
+                        {{/if}}
+
+
+
+                       {{/if}}
+
+               {{/each}}
+               
+
+
+            {{/each}}
+
+
+          </table>
+
+
+           {{/each}}
+        */
+      })),
+      Form: [],
+      BeforeRender: null
+
+
+    }
+
+    function initialize(options) {
+      var opts = $.extend(true, {}, defaults, options);
+      var ssForm = $(this);
+      if (opts.BeforeRender) {
+        opts.BeforeRender(ssForm);
+      }
+
+      for (var i = 0; i < opts.Form.length; i++) {
+
+        if (opts.Form[i]['Inputs']) {
+          for (var x = 0; x < opts.Form[i]['Inputs'].length; x++) {
+            var inpS = opts.Form[i]['Inputs'][x];
+            for (var j = 0; j < inpS.length; j++) {
+              var input = inpS[j];
+              opts.Form[i]['Inputs'][x][j] = $.extend(true, { Ext: "", ShowType: "text" }, input);
+            }
+          }
+        }
+      }
+      ssForm.addClass("ss_framework");
+      ssForm.html('<div class="form_container" style="border:0px;"></div>');
+      ssForm.find(".form_container").html(opts.temp({ Form: opts.Form }));
+
+
+    }
+
+
+
+    $("#form1").ssForm({
+      "Form": [{
+        "Inputs": [
+          [
+            { Name: "Name",Sn: "Sn" },
+            { Name:"LiSi",Sn: "001" },
+          ]
+        ]
+      }]
+    })
+  </script>
 
 </body>
 

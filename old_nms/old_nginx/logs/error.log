@@ -21,3 +21,6 @@
 2019/04/26 17:24:07 [error] 12892#9500: *41 CreateFile() "E:/c_project/Server/src/main/webapp/js/angular-file-upload.min.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/angular-file-upload.min.js.map HTTP/1.1", host: "127.0.0.1:40"
 2019/04/26 17:51:21 [alert] 14616#10784: worker process 14712 exited with code C0000142
 2019/04/26 17:51:21 [alert] 14616#10784: could not respawn worker
+2019/04/28 10:22:13 [notice] 14268#11348: signal process started
+2019/04/28 10:22:13 [error] 14268#11348: OpenEvent("Global\ngx_reload_14616") failed (2: The system cannot find the file specified)
+2019/04/28 13:07:31 [error] 8748#6396: *32 CreateFile() "E:/c_project/Server/src/main/webapp/js/angular-file-upload.min.js.map" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: , request: "GET /js/angular-file-upload.min.js.map HTTP/1.1", host: "127.0.0.1:40"
