@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!-- 引入 less -->
+  <link rel="stylesheet/less" type="text/css" href="../less/temp.less" />
+  <script src="../less/lib/less.min.js"></script>
+
+  <!-- 引入bootstrap -->
+  <script src="../../g_gulp/static/js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+
+  <script src="../lib/lib.js"></script>
+  <script src="../artTemplate/lib/template-web.js"></script>
+
+
+
+</head>
+
+<style>
+  .ss_label {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  .ss_framework .form_container {
+    margin: 0 auto;
+
+  }
+
+  .ss_framework select,
+  .ss_framework input {
+    height: 25px;
+    line-height: 25px;
+    margin-top: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+    border: 1px solid #B0B0B0;
+  }
+
+  .ss_framework .button_container {
+    text-align: center;
+  }
+
+  .that {
+    width: 600px;
+    height: 400px;
+
+  }
+</style>
+
+<body id="test">
+
+
+  <!-- 
+
+
+
+        {
+          
+          bindings:{
+            "code":[
+            
+            ]
+          },
+          form:[
+           {
+             Style:"",
+             Inputs:[
+              [
+             {field:sn,nm:"nm",showType:"text",value:0,binding:}
+            ]
+            ]
+           }
+          ]
+        ,
+        init:{
+
+        },
+        get:{
+
+        },
+        set:{
+
+        }
+
+
+
+
+        对象. 
+   -->
+
+  <div>
+    我的测试
+    <div id="form1">
+
+    </div>
+
+  </div>
+
+  <script>
+    function getField(Object, Field) {
+      var fieldRegexp = new RegExp("\\.|\\[|\\]\\.");
+      if (fieldRegexp.test(Field)) {
+        var F = Field.split(fieldRegexp)[0];
+        var Cur = Object[F];
+        if (Cur) {
+          return getField(Cur, Field.replace(new RegExp("^" + F + "(\\.|\\[|\\]\\.)"), ""));
+        } else {
+          return null;
+        }
+      } else if (Object && Object.hasOwnProperty(Field)) {
+        return Object[Field];
+      } else {
+        return '';
+      }
+    }
+
+    function setValue(Record, container) {
+      for (var i = 0, Eles = jQuery(container), len = Eles.length; i < len; i++) {
+        var Ele = jQuery(Eles[i]);
+        var Field = Ele.attr("field");
+        var Type = Ele.attr("showType");
+        var Value = getField(Record, Field);
+        switch (Type) {
+          default:
+            {
+              if (Value != null) {
+                Ele.val(Value);
+              } else {
+                Ele.val("");
+              }
+            }
+            break;
+        }
+      }
+    }
+    $.fn.ssForm = function(method) {
+      if ($.fn.ssForm[method]) {
+        return $.fn.ssForm[method].apply(this, Array.prototype.slice.call(arguments, 1));
+      } else if (typeof method === "object" || !method) {
+        return initialize.apply(this, arguments);
+      } else {
+        $.error("Method " + method + " does not exist on jQuery.ssForm");
+      }
+    };
+
+    $.fn.ssForm.Set = function(record) {
+      var opts = $(this).data("ssForm");
+      if (opts && opts.BeforeSet) {
+        opts.BeforeSet(record, opts);
+      }
+      setValue(record, this.children(".form_container").find("[field]"));
+      if (opts && opts.AfterSet) {
+        opts.AfterSet(record, opts);
+      }
+    };
+
+
+    $.fn.ssForm.Get = function() {
+      var opts = $(this).data("ssForm");
+      if (opts && opts.BeforeGet) {
+        opts.BeforeGet(opts);
+      }
+      var record = {}
+      var container = this.children(".form_container").find("[field]");
+      for (var i = 0, Eles = jQuery(container), len = Eles.length; i < len; i++) {
+        var Ele = jQuery(Eles[i]);
+        var Field = Ele.attr("field");
+        var Type = Ele.attr("showType");
+        record[Field] = Ele.val()
+
+      }
+      if (opts && opts.AfterGet) {
+        opts.AfterGet(record, opts);
+      }
+      return record;
+    };
+
+
+
+    $.fn.ssForm.Clear = function(Fields) {
+      opts = this.data("ssForm");
+      if (opts.BeforeClear) {
+        opts.BeforeClear(Fields);
+      }
+      this.children(".form_container").find("[field]").val("");
+
+    }
+    var defaults = $.fn.ssForm.defaults = {
+
+      "temp": template.compile(jQuery.GetTemplate(function() {
+        /*
+
+        {{each Form  Group g}}
+
+          <table style="margin: 0 auto;{{Group.Style}}">
+            {{each Group.Inputs  Row r}}
+              <tr>
+                {{each Row  Cell c}}
+                      {{if Cell.Field}}
+                        <td class="ss_label" field_label="{{Cell.Field}}"  >{{Cell.Label}}:</td>
+                        {{if Cell.ShowType=="text"}}
+                              <td>
+                                <input field={{Cell.Field}} showType={{Cell.ShowType}} {{if Cell.Value}} value=Cell.Value {{/if}}>
+                              </td>
+
+                        {{else if Cell.ShowType=="select"}}
+
+                              <td>
+                                <select field={{Cell.Field}}   showType={{Cell.ShowType}}>
+                                   {{each Cell.options  option o}}
+                                      <option value={{option.Value}}>{{option.Name}}</option>
+                                   {{/each}}
+                                </select>
+                              </td>
+                        {{/if}}
+
+
+
+                      {{/if}}
+                {{/each}}
+              </tr> 
+            {{/each}}
+          </table>
+
+
+          {{if Group.Buttons &&Group.Buttons.length>0 }}
+              <div class="button_container" style="clear:both;margin-top:10px;">
+                  {{each Group.Buttons  Btn b}}
+
+                  <button type="button" command="{{Btn.Cmd}}"  class="btn btn-default {{if Btn.Class}}{{Btn.Class}}{{/if}} " data-dismiss="modal">{{(Btn.Name||'&nbsp')}}</button>
+
+                  {{/each}}
+              </div>
+          {{/if}}
+
+
+        {{/each}}
+
+
+        */
+      })),
+      Form: [],
+      BeforeRender: null
+
+
+    }
+
+    function initialize(options) {
+      var opts = $.extend(true, {}, defaults, options);
+      var ssForm = $(this);
+      if (opts.BeforeRender) {
+        opts.BeforeRender(ssForm);
+      }
+
+      for (var i = 0; i < opts.Form.length; i++) {
+
+        if (opts.Form[i]['Inputs']) {
+          for (var x = 0; x < opts.Form[i]['Inputs'].length; x++) {
+            var inpS = opts.Form[i]['Inputs'][x];
+            for (var j = 0; j < inpS.length; j++) {
+              var input = inpS[j];
+              opts.Form[i]['Inputs'][x][j] = $.extend(true, { Ext: "", ShowType: "text" }, input);
+              if (input.ShowType == "select") {
+                if (opts.Bindings[input.Binding]) {
+                  opts.Form[i]['Inputs'][x][j]["options"] = opts.Bindings[input.Binding] //[]
+                }
+              }
+            }
+          }
+        }
+      }
+      ssForm.addClass("ss_framework");
+      if (opts.Class) {
+        ssForm.addClass(opts.Class);
+      }
+      ssForm.html('<div class="form_container" style="border:0px;"></div>');
+
+      ssForm.find(".form_container").html(opts.temp({ Form: opts.Form }));
+      ssForm.data("ssForm", opts);
+
+      if (opts.AfterRender) {
+        opts.AfterRender(ssForm, opts);
+      }
+
+    }
+
+
+
+    $("#form1").ssForm({
+      "Class": "that",
+      "Bindings": {
+        "STATE": [
+          { "Name": "", "Value": null },
+          { "Name": "开始", "Value": "start" },
+          { "Name": "结束", "Value": "end" },
+        ]
+      },
+      "Form": [{
+        "Buttons": [
+          { "Cmd": "insert", "Name": "设置", "Class": "btn-primary" },
+          { "Cmd": "print", "Name": "打印", "Class": "btn-primary" }
+        ],
+        "Inputs": [
+          [
+            { Label: "Name", Field: "Sn" },
+          ],
+          [
+            { Label: "LiSa001", Field: "Lisa001" },
+          ],
+          [
+            { Label: "LiSa001", Field: "Lisa002", ShowType: "select", Binding: "STATE" },
+          ]
+        ]
+      }]
+    })
+  </script>
+
+</body>
+
+</html>

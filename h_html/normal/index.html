@@ -8,7 +8,7 @@
   <title>Document</title>
 
   <!-- 引入 less -->
-  <link rel="stylesheet/less" type="text/css" href="../less/test.less" />
+  <link rel="stylesheet/less" type="text/css" href="../less/temp.less" />
   <script src="../less/lib/less.min.js"></script>
 
   <!-- 引入bootstrap -->
@@ -19,19 +19,25 @@
 
   <script src="../lib/lib.js"></script>
   <script src="../artTemplate/lib/template-web.js"></script>
+  <script src="./ssform.js"></script>
 
 
 
 </head>
 
 <style>
-  tr td:first-child {
+  .ss_label {
     text-align: right;
     padding-right: 5px;
   }
 
-  select,
-  input {
+  .ss_framework .form_container {
+    margin: 0 auto;
+
+  }
+
+  .ss_framework select,
+  .ss_framework input {
     height: 25px;
     line-height: 25px;
     margin-top: 10px;
@@ -39,48 +45,24 @@
     margin-bottom: 10px;
     border: 1px solid #B0B0B0;
   }
+
+  .ss_framework .button_container {
+    text-align: center;
+  }
+
+  
+  .that {
+    width: 600px;
+    height: 400px;
+
+  }
+
 </style>
 
 <body id="test">
 
 
-  <!-- 
 
-
-
-        {
-          
-          bindings:{
-            "code":[
-            
-            ]
-          },
-          form:[
-           {
-             Style:"",
-             Inputs:[
-              [
-             {field:sn,nm:"nm",showType:"text",value:0,binding:}
-            ]
-            ]
-           }
-          ]
-        ,
-        init:{
-
-        },
-        get:{
-
-        },
-        set:{
-
-        }
-
-
-
-
-        对象. 
-   -->
 
   <div>
     我的测试
@@ -91,101 +73,34 @@
   </div>
 
   <script>
-    $.fn.ssForm = function(method) {
-      if ($.fn.ssForm[method]) {
-        return $.fn.ssForm[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === "object" || !method) {
-        return initialize.apply(this, arguments);
-      } else {
-        $.error("Method " + method + " does not exist on jQuery.ssForm");
-      }
-    };
-    var defaults = $.fn.ssForm.defaults = {
-      
-      "temp": template.compile(jQuery.GetTemplate(function() {
-        /*
-           {{each Form  Group g}}
-
-          <table style="{{Group.Style}}">
-            {{each Group.Inputs  Row r}}
-
-               {{each Row  Cell c}}
-                       {{if Cell.Field}}
-                        <td class="label" field_label="{{Cell.Field}}"  >{{Cell.Name}}</td>
-
-                        {{if Cell.ShowType=="text"}}
-                              <td>
-                                <input field={{Cell.Field}} {{if Cell.Value}} value=Cell.Value {{/if}}>
-                              </td>
-
-                        {{else if Cell.ShowType=="select"}}
-
-                              <td>
-                                <select field={{Cell.Field}}  >
-                                </select>
-                              </td>
-
-
-                        {{/if}}
-
-
-
-                       {{/if}}
-
-               {{/each}}
-               
-
-
-            {{/each}}
-
-
-          </table>
-
-
-           {{/each}}
-        */
-      })),
-      Form: [],
-      BeforeRender: null
-
-
-    }
-
-    function initialize(options) {
-      var opts = $.extend(true, {}, defaults, options);
-      var ssForm = $(this);
-      if (opts.BeforeRender) {
-        opts.BeforeRender(ssForm);
-      }
-
-      for (var i = 0; i < opts.Form.length; i++) {
-
-        if (opts.Form[i]['Inputs']) {
-          for (var x = 0; x < opts.Form[i]['Inputs'].length; x++) {
-            var inpS = opts.Form[i]['Inputs'][x];
-            for (var j = 0; j < inpS.length; j++) {
-              var input = inpS[j];
-              opts.Form[i]['Inputs'][x][j] = $.extend(true, { Ext: "", ShowType: "text" }, input);
-            }
-          }
-        }
-      }
-      ssForm.addClass("ss_framework");
-      ssForm.html('<div class="form_container" style="border:0px;"></div>');
-      ssForm.find(".form_container").html(opts.temp({ Form: opts.Form }));
-
-
-    }
-
+    
 
 
     $("#form1").ssForm({
+      "Class": "that",
+      "bindings": {
+        "STATE": [
+          { "Name": "", "Value": null },
+          { "Name": "开始", "Value": "start" },
+          { "Name": "结束", "Value": "end" },
+        ]
+      },
       "Form": [{
+        "Buttons": [
+          { "Cmd": "insert", "Name": "设置", "Class": "btn-primary" },
+          { "Cmd": "print", "Name": "打印", "Class": "btn-primary" }
+        ],
         "Inputs": [
           [
-            { Name: "Name",Sn: "Sn" },
-            { Name:"LiSi",Sn: "001" },
+            { title: "Name", field: "Sn" },
+          ],
+          [
+            { title: "LiSa001", field: "Lisa001" },
+          ],
+          [
+            { title: "LiSa001", field: "Lisa002", showType: "select", binding: "STATE" },
           ]
+          
         ]
       }]
     })
