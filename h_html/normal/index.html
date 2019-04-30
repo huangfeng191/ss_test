@@ -50,13 +50,12 @@
     text-align: center;
   }
 
-  
+
   .that {
     width: 600px;
     height: 400px;
 
   }
-
 </style>
 
 <body id="test">
@@ -73,17 +72,27 @@
   </div>
 
   <script>
-    
-
-
     $("#form1").ssForm({
       "Class": "that",
       "bindings": {
-        "STATE": [
-          { "Name": "", "Value": null },
-          { "Name": "开始", "Value": "start" },
-          { "Name": "结束", "Value": "end" },
+        GnssState: [
+          { "Name": "请选择", "Value": "" },
+          { "Name": "disable", "Value": "0" },
+          { "Name": "enable", "Value": "1" }
+        ],
+        GnssMode: [
+          { "Name": "请选择", "Value": "" },
+          { "Name": "Auto", "Value": "0" },
+          { "Name": "Manual", "Value": "1" }
+        ],
+        GnssTrackMode: [
+          { "Name": "请选择", "Value": "" },
+          { "Name": "beidou", "Value": "0" },
+          { "Name": "gps", "Value": "1" },
+          { "Name": "priority-beidou", "Value": "2" },
+          { "Name": "priority-gps", "Value": "3" }
         ]
+
       },
       "Form": [{
         "Buttons": [
@@ -91,16 +100,17 @@
           { "Cmd": "print", "Name": "打印", "Class": "btn-primary" }
         ],
         "Inputs": [
-          [
-            { title: "Name", field: "Sn" },
-          ],
-          [
-            { title: "LiSa001", field: "Lisa001" },
-          ],
-          [
-            { title: "LiSa001", field: "Lisa002", showType: "select", binding: "STATE" },
-          ]
-          
+          [{ "title": "GNSS1使能", "field": "gnss1State", "showType": "select", binding: "GnssState" }],
+          [{ "title": "优先级", "field": "gnss1Priority", "showType": "text", }],
+          [{ "title": "跟踪模式", "field": "gnss1TrackMode", "showType": "select", binding: "GnssTrackMode" }],
+          [{ "title": "天线延迟", "field": "gnss1CableDelay", "showType": "text", }],
+          [{ "title": "质量优先级状态", "field": "gnss1PQLState", "showType": "select", binding: "GnssState" }],
+          [{ "title": "质量优先级值", "field": "gnss1PQL", "showType": "text", }],
+          [{ "title": "GNSS1模式", "field": "gnss1Mode", "showType": "select", binding: "GnssMode" }],
+          [{ "title": "经度", "field": "gnss1CurrentPositionJ", "showType": "text", }],
+          [{ "title": "纬度", "field": "gnss1CurrentPositionW", "showType": "text", }],
+          [{ "title": "高度", "field": "gnss1CurrentPositionH", "showType": "text", }],
+
         ]
       }]
     })

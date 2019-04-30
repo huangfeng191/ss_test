@@ -1,4 +1,3 @@
-
 GNSS1使能  gnss1State  c GnssState
 优先级     gnss1Priority
 跟踪模式   gnss1TrackMode c GnssTrackMode
@@ -34,4 +33,23 @@ GnssTrackMode:[
 ]
 
 }
+
+
+
+{ "Cmd": "reset", "Name": "重置性能检测", "Class": "btn-default" },
+{ "Cmd": "set", "Name": "设置", "Class": "btn-default" },
+{ "Cmd": "print", "Name": "打印", "Class": "btn-default" },
+{ "Cmd": "export", "Name": "导出", "Class": "btn-default" }
+
+
+<button type="button" class="btn btn-default" data-dismiss="modal">重置性能检测
+</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">设置
+</button>
+<button type="button" class="btn btn-default" data-dismiss="modal">打印
+</button>
+<button type="button" class="btn btn-default">
+    导出
+</button>
+
 

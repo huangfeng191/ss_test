@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="click1()">wantSay</button>
+  <input id="Cs">
+</body>
+
+<script>
+  function click1(params) {
+    document.getElementById("Cs").value = (document.getElementById("Cs").value || 0 )+ 1;
+    window.iSave=document.getElementById("Cs").value;
+  }
+</script>
+
+</html>

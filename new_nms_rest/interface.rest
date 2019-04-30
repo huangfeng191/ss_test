@@ -1,0 +1,42 @@
+@host60 = 127.0.0.1:60
+@token=CE4952A2FB89B2FB9A0A6847CEA17621
+
+
+### 获取菜单 
+GET /nms/spring/user/getMenu
+# deviceType 设备类型
+?type=deviceType
+&token={{token}}
+Host: {{host60}}
+Cookie:JSESSIONID={{token}}
+
+
+### 获取配置信息 
+### 所有的设备类型（形成设备树）
+### configName  配置名称 *
+GET /nms/spring/systemManage/getParamConfig
+# deviceType 设备类型
+?type=deviceType
+&token={{token}}
+Host: {{host60}}
+Cookie:JSESSIONID={{token}}
+
+
+### 区域管理
+GET /nms/spring/device/area
+?token={{token}}
+Host: {{host60}}
+Cookie:JSESSIONID={{token}}
+
+
+
+
+### 获取设备信息 
+# content 具体设备信息
+GET /nms/spring/device/page?token={{token}}&page=&pageSize=200&name=&ip=&deviceStatus=&areaId=&user=admin&deviceType=&NEType=&Vendor= HTTP/1.1
+Host: {{host60}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+
