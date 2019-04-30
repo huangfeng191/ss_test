@@ -3,12 +3,18 @@
 
 
 ### 获取菜单 
+
 GET /nms/spring/user/getMenu
 # deviceType 设备类型
 ?type=deviceType
 &token={{token}}
 Host: {{host60}}
 Cookie:JSESSIONID={{token}}
+
+
+
+
+
 
 
 ### 获取配置信息 

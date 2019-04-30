@@ -1743,7 +1743,7 @@ routerApp.config(['$stateProvider', '$urlRouterProvider', "$translateProvider", 
         outputNTPbroadcastInterval : "广播间隔",
         outputNTPbroadcastConfig : "广播配置",
         CableDelay : "链路延时",
-        FRAME_TYPE : "帧类型",
+        FRAME_TYPE : "帧类型",  // todo 
         PORT_ENABLE : "端口使能",
         CURRENT_DEVICE : "当前设备",
         SET : "设置",

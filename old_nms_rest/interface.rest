@@ -1,11 +1,11 @@
 @host40 = 127.0.0.1:40
-@token=B1954E1A9817D05005A266792EB0AA4F
+@token=1DE8DD14D66A63020618F31C5A8A68B4
 
 
 ### 获取菜单 
 GET /nms/spring/user/getMenu
 # deviceType 设备类型
-?type=deviceType
+?type=
 &token={{token}}
 Host: {{host40}}
 Cookie:JSESSIONID={{token}}
