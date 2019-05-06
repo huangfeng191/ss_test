@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- width height   -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../static/js/jquery-1.11.1.min.js"></script>
+    <script src="jtopo-0.4.8-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="../../static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+
+    <style>
+        #contextmenu {
+            border: 1px solid #aaa;
+            border-bottom: 0;
+            background: #eee;
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: none;
+            z-index: 999;
+        }
+
+        #contextmenu li a {
+            display: block;
+            padding: 10px;
+            border-bottom: 1px solid #aaa;
+            cursor: pointer;
+        }
+
+
+        .canvas-box {
+            position: relative;
+            
+            width: 100%;
+            overflow: auto;
+            overflow-x: hidden;
+            height: 338px;
+            background-image: url('../../images/net_topo/bg.jpg');            
+        }
+        .canvas-box #canvas{
+            display: none;
+        }
+
+        .canvas-box .canvas-content {
+            cursor: pointer;
+            /* border: 1px red solid; */
+        }
+
+        .canvas-box .node-list {
+            position: absolute;
+            /* top: 20%; */
+            top: 80px;
+            height: 100px;
+            right: 30px;
+            width: 220px;
+            z-index: 999;
+        }
+
+        .canvas-box .node-list .node-list-right li {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .canvas-box .node-list .node-list-right li>img {
+            width: 30px;
+            height: 25px;
+            margin-right: 20px;
+        }
+
+        .cricle {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <ul id="contextmenu" style="display:none;">
+        <li><a id="save">修改</a></li>
+        <li><a id="cancel" style="display:none;">取消</a></li>
+        <li><a>连线起点</a></li>
+        <li><a id="alldel">删除该节点</a></li>
+    </ul>
+
+
+    <div class="canvas-box">
+
+        <canvas class="canvas-content" id="canvas" height="2800" width="1350" style="cursor: default;">
+
+        </canvas>
+
+
+
+
+        <div class="node-list">
+            <ul class="node-list-right">
+                <!-- <li><button type="button" class="btn btn-primary btn-xs save" id="save" data-index="2">修改</button></li> -->
+
+
+                <li><img src="../../images/net_topo/routerNode.png" class="nav-drag" draggable="true"
+                        data-type="router"><span class="cricle" style="background-color:#00FB00;"></span>
+                    <span>正常</span></li>
+                <li><img src="../../images/net_topo/netNode1.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#FF0000;"></span><span>严重警告</span>
+                </li>
+                <li><img src="../../images/net_topo/netNode2.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#FE7E1C;"></span><span>主要警告</span>
+                </li>
+                <li><img src="../../images/net_topo/netNode3.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#FFAA00;"></span><span>次要警告</span>
+                </li>
+                <li><img src="../../images/net_topo/netNode4.png" class="nav-drag" draggable="true"
+                        data-type="node"><span class="cricle" style="background-color:#108EE9;"></span><span>事件</span>
+                </li>
+
+                <li id="alldel" style="display: none;"><img src="../../images/net_topo/services.png" class="nav-drag" draggable="true" data-type="node">
+
+                    <img src="../../images/net_topo/connect.png" class="nav-drag" draggable="true" data-type="router">
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+<script>
+    // "tp": "net_topo_all"
+    //   "tp": "net_topo_test"
+    // "tp": "net_topo"
+    var net_tp = "net_topo";
+    // var net_tp = "net_topo_test";
+    var alldel=0;
+    // var alldel=0;
+
+    if(alldel){
+       
+        $(".node-list").find("#alldel").css("display","none");
+        
+        $(".node-list").find("img").attr("draggable",false);
+    }else{
+        $("#alldel").css("display","block"); 
+    }
+    // var net_tp = "net_topo_all";
+    var topologyO = {
+        createNode: {
+            newNode: null,
+            currentNode: null,
+            // 划线
+            beginNode: null,
+            currentLink: null,
+            endNode: null,
+            tempNodeA: null,
+            tempNodeZ: null,
+            setNewNode: function (imageUrl, node_nm) {
+                var netNode;
+                if (node_nm) {
+                    netNode = new JTopo.Node(node_nm);
+                } else {
+                    netNode = new JTopo.Node();
+
+                }
+                netNode.setImage(imageUrl, true);
+                netNode.setLocation(0, 0);
+                // netNode.showSelected = false;
+                netNode.addEventListener('mouseup', function (e) {
+                    if (e.button == 2) { // 右键
+                        topologyO.createNode.currentNode = this;
+                        // 当前位置弹出菜单（div）
+
+                        debugger
+                        $("#contextmenu").css({
+                            top: e.pageY,
+                            left: e.pageX
+                        }).show();
+                        if(e.target.image&&e.target.image.src.match("routerNode")|| alldel==0){
+                            $("#contextmenu #alldel").css("display","block");
+                        }else{
+                            $("#contextmenu #alldel").css("display","none")
+                        }
+                        return;
+
+                    }
+
+                    if (e.target instanceof JTopo.Node) {
+                        topologyO.createNode.currentLink = null;
+                    } else {
+                        topologyO.createNode.currentNode = null;
+                    }
+
+                    topologyO.createNode.tempNodeA = new JTopo.Node('tempA');;
+                    topologyO.createNode.tempNodeA.setSize(1, 1);
+                    topologyO.createNode.tempNodeZ = new JTopo.Node('tempZ');;
+                    topologyO.createNode.tempNodeZ.setSize(1, 1);
+
+                    // var link = new JTopo.Link(topologyO.createNode.tempNodeA, topologyO.createNode
+                    //     .tempNodeZ);
+
+
+                    if (e.target != null && e.target instanceof JTopo.Node) {
+                        if (topologyO.createNode.beginNode == null) {
+                            // topologyO.createNode.beginNode = e.target;
+
+                        } else if (topologyO.createNode.beginNode !== e.target) {
+
+                            
+
+                            topologyO.createNode.endNode = e.target;
+                            
+                            // 有控制点的必须连路由器
+                            var beg_node=topologyO.createNode.beginNode;
+                            var end_node=topologyO.createNode.endNode;
+                            var l ;
+                            
+                            if(beg_node.image.src.match("connect")||end_node.image.src.match("connect")){
+                                if(beg_node.image.src.match("routerNode")||end_node.image.src.match("routerNode")) {
+
+                                    l = new JTopo.FoldLink(beg_node, end_node);
+                                    l.lineWidth=1;
+                                }else if(beg_node.image.src.match("connect")&&end_node.image.src.match("connect")){
+                                    l = new JTopo.Link(beg_node, end_node);
+                                    l.lineWidth=2
+                                }else{
+                                    topologyO.createNode.beginNode=null;
+                                    topologyO.createNode.currentLink = null;
+                                    topologyO.createNode.currentNode = null;
+                                    return ;
+                                }
+                            }else{
+                                 l = new JTopo.Link(beg_node, end_node);
+                            }
+                            // 默认宽度为1；
+                            
+                            l.addEventListener('mouseup', function (e) {
+                                if (e.button == 2) { // 右键
+                                    topologyO.createNode.currentLink = this;
+                                    // 当前位置弹出菜单（div）
+                                    $("#contextmenu").css({
+                                        top: e.pageY,
+                                        left: e.pageX
+                                    }).show();
+                                    return;
+                                }
+                                if (e.target instanceof JTopo.Node) {
+                                    topologyO.createNode.currentLink = null;
+                                } else {
+                                    topologyO.createNode.currentNode = null;
+                                }
+                            })
+                            topologyO.canvasInfo.obj.scene.add(l);
+                            topologyO.createNode.beginNode = null;
+
+                        } else {
+                            topologyO.createNode.beginNode = null;
+                        }
+                    } else {
+
+                    }
+
+                });
+
+                topologyO.createNode.newNode = netNode;
+            },
+
+
+            init: function ($el) {
+                $el.ondragstart = function (e) {
+                    topologyO.createNode.setNewNode($el.src);
+                }
+                $el.ondragend = function (e) {
+                    topologyO.createNode.newNode = null;
+                }
+
+
+
+            }
+        },
+
+        canvasInfo: {
+            obj: null,
+            init: function (isEdit) {
+                var canvas = document.getElementById('canvas');
+                var stage;
+                var scene;
+                if(!isEdit){
+                    setTimeout(function(){
+                        $(".canvas-box #canvas").css("display","block")
+                    },1000);
+                }
+                if (isEdit) {
+                    topologyO.canvasInfo.obj.scene.clear();
+                    topologyO.canvasInfo.obj.stage.removeAllEventListener();
+                    stage = topologyO.canvasInfo.obj.stage;
+                    scene = topologyO.canvasInfo.obj.scene;
+
+                    // topologyO.canvasInfo.obj.scene.clear()
+
+                } else {
+
+                    stage = new JTopo.Stage(canvas);
+                    scene = new JTopo.Scene(stage);
+
+                }
+                scene.background = '../../images/net_topo/bg.jpg';
+                var ret = null;
+                $.ajax({
+                    // url: "./jtopo.json",
+                    url: "/nms/misc_info/one.json",
+                    async: false,
+                    timeout: 100,
+                    data: JSON.stringify({
+                        "query": {
+                            // "tp": "net_topo_all"
+                            "tp": net_tp
+                            // "tp": "net_topo"
+                        }
+                    })
+                }).done(function (r) {
+                    if (r.Response && r.Code == 0) {
+                        ret = r.Response;
+                    }
+                });
+
+                if (ret == null) {
+                    $.ajax({
+                        // url: "./jtopo.json",
+                        url: "./jtopo.json",
+                        async: false,
+                        timeout: 1000
+                    }).done(function (r) {
+                        ret = r;
+                    })
+                }
+
+
+
+
+
+                if (ret && ret.data) {
+                    var for_nodes = {}
+                    var alarm_reg=/normal|serious|major|minor|incident|net_topo/g;
+                    $.each(ret.data, function (indexInArray, valueOfElement) {
+                        if (valueOfElement.elementType == "node") {
+
+
+                            if (!isEdit || isEdit == 2) {
+                                var alarmUrl=valueOfElement.imageUrl;
+                                if(valueOfElement.alarmType){
+                                    if(alarmUrl.indexOf("netNode")>=0){
+                                        alarmUrl=alarmUrl.replace(alarm_reg,valueOfElement.alarmType)
+                                    }
+                                }
+                                topologyO.createNode.setNewNode(alarmUrl, valueOfElement
+                                    .nm);
+                                one_node = topologyO.createNode.newNode;
+                                one_node.dragable = false;
+
+                                if (valueOfElement.imageUrl.indexOf("connect") >= 0) {
+                                    one_node.visible = false;
+                                }
+
+
+
+
+                            } else {
+                                topologyO.createNode.setNewNode(valueOfElement.imageUrl, valueOfElement
+                                    .nm);
+                                one_node = topologyO.createNode.newNode;
+                            }
+                            if (valueOfElement.nm) {
+                                one_node.fontColor = "black";
+                                one_node.textOffsetY = 5;
+                                one_node.alarmType = valueOfElement.alarmType
+                            }
+                            one_node.physicsId=valueOfElement.physicsId;
+                            one_node.setLocation(valueOfElement.x, valueOfElement.y);
+                            
+                            if(valueOfElement.draggable==false){
+                                one_node.dragable = false;
+                            }
+                            // one_node.visible=false;
+                            for_nodes[valueOfElement._id] = one_node
+                            scene.add(one_node);
+                        }
+                    });
+
+
+                    $.each(ret.data, function (indexInArray, valueOfElement) {
+                        if (valueOfElement.elementType == "link" ||valueOfElement.elementType == "foldLink"  ) {
+
+                            if(!for_nodes[valueOfElement.nodeA_id]||!for_nodes[valueOfElement.nodeZ_id]){
+                                return true;
+                            }
+                            var l ;
+                           if(valueOfElement.elementType=="foldLink"){
+                            l=new JTopo.FoldLink(for_nodes[valueOfElement.nodeA_id],
+                                for_nodes[valueOfElement.nodeZ_id]);
+                           }else{
+                            l=new JTopo.Link(for_nodes[valueOfElement.nodeA_id],
+                                for_nodes[valueOfElement.nodeZ_id]);
+                           } 
+                          
+                           if(valueOfElement.lineWidth){
+                              l.lineWidth= valueOfElement.lineWidth;
+                           }
+                           l.strokeColor = "175,175,175"; 
+                            
+                            l.addEventListener('mouseup', function (e) {
+                                if (e.button == 2) { // 右键
+                                    topologyO.createNode.currentLink = this;
+                                    // 当前位置弹出菜单（div）
+                                    $("#contextmenu").css({
+                                        top: e.pageY,
+                                        left: e.pageX
+                                    }).show();
+                                    $("#contextmenu #alldel").css("display","block");
+                                    return;
+                                }
+                                if (e.target instanceof JTopo.Node) {
+                                    topologyO.createNode.currentLink = null;
+                                } else {
+                                    topologyO.createNode.currentNode = null;
+                                }
+                            })
+                            scene.add(l);
+
+
+
+
+                        }
+                    });
+                    if (isEdit) {
+                        var old_secen = topologyO.canvasInfo.obj;
+                        if (old_secen && old_secen.scene) {
+                            old_secen = old_secen.scene;
+                            if (old_secen.translateX != undefined) {
+                                scene.translateX = old_secen.translateX;
+                            }
+                            if (old_secen.translateY != undefined) {
+                                scene.translateY = old_secen.translateY;
+                            }
+                        }
+                    } else {
+
+                        if (ret.scene.translateX != undefined) {
+                            scene.translateX = ret.scene.translateX;
+                        }
+                        if (ret.scene.translateY != undefined) {
+                            scene.translateY = ret.scene.translateY;
+                        }
+                    }
+
+
+
+                }
+
+
+
+                stage.click(function (event) {
+                    if (event.button == 0) { // 右键
+                        // 关闭弹出菜单（div）
+                        $("#contextmenu").hide();
+                        $("contextmenu #alldel").css("display","none");
+                    }
+                });
+
+
+                topologyO.canvasInfo.obj = {
+                    "stage": stage,
+                    "scene": scene,
+                }
+                // 创建动作 生成topo node;
+                canvas.ondragenter = function (e) {
+
+                    // 阻止浏览器默认行为
+                    e.preventDefault()
+                }
+
+                canvas.ondragover = function (e) {
+                    e.preventDefault()
+                }
+                canvas.ondrop = function (e) {
+
+                    var t = Date.now()
+                    if (topologyO.createNode.newNode) {
+                        // topologyO.createNode.newNode["x"] = e.x
+                        // topologyO.createNode.newNode["y"] = e.y
+                        topologyO.canvasInfo.obj.scene.add(topologyO.createNode.newNode);
+                    }
+                    topologyO.createNode.newNode = null;
+                    e.preventDefault()
+                }
+
+
+                $.each($(".node-list-right img"), function (indexInArray, valueOfElement) {
+                    topologyO.createNode.init(valueOfElement);
+                });
+
+
+                /* 右键菜单处理 */
+                $("#contextmenu a").click(function () {
+                    var text = $(this).text();
+                    if (text == '删除该节点') {
+                        if (topologyO.createNode.currentNode) {
+
+                            topologyO.canvasInfo.obj.scene.remove(topologyO.createNode.currentNode);
+                            topologyO.createNode.currentNode = null;
+                        } else {
+                            topologyO.canvasInfo.obj.scene.remove(topologyO.createNode.currentLink);
+                            topologyO.createNode.currentLink = null;
+                        }
+
+
+                    }
+                    if (text == '连线起点') {
+                        topologyO.createNode.beginNode = topologyO.createNode.currentNode;
+                    }
+                    $("#contextmenu").hide();
+                    $("contextmenu #alldel").css("display","none");
+                    $("contextmenu #alldel").css("display","none");
+                    
+                });
+
+
+
+                $("#save").unbind("click").click(function (e) {
+
+                    if (e.target.innerHTML == "修改") {
+                        topologyO.canvasInfo.init(1);
+                        e.target.innerHTML = "保存";
+                        $("#cancel").show();
+                        $(".node-list").find("img:first").attr("draggable",true);
+                        $("#contextmenu").hide();
+                        $("contextmenu #alldel").css("display","none");
+                    } else
+                    if (e.target.innerHTML == "保存") {
+                        
+                        topologyO.methods.beforeSave();
+
+                    }
+                })
+                $("#cancel").unbind("click").click(function (e) {
+
+                 
+                    $("#save").html("修改")
+                    $("#contextmenu").hide();
+                    $("contextmenu #alldel").css("display","none");
+                    $("contextmenu #alldel").css("display","none");
+                    $("#cancel").hide();
+                    $(".node-list").find("img:first").attr("draggable",false);
+                    topologyO.canvasInfo.init(2);
+
+
+                    })
+            }
+        },
+        methods: {
+            setAlarm: function () {
+                // 暂未实现
+                if (topologyO.canvasInfo.obj && topologyO.canvasInfo.obj.scene) {
+                    alarmO = {
+                        "1": "我是报警1",
+                        "2": "我是报警二"
+                    }
+                    $.each(topologyO, function (indexInArray, valueOfElement) {
+                        if (valueOfElement.topoId == "") {
+
+                        }
+                    });
+                }
+            },
+            beforeSave: function () {
+
+                serialized = {
+                    "data": [],
+                    "tp": net_tp,
+                    "scene": null
+                };
+                $.each(topologyO.canvasInfo.obj.stage.childs[0].childs, function (indexInArray,
+                    valueOfElement) {
+                    if (valueOfElement.elementType == "node") {
+                        var o = {
+                            "imageUrl": valueOfElement.image.src,
+                            "elementType": valueOfElement.elementType,
+                            "_id": valueOfElement._id,
+                            "x": valueOfElement.x,
+                            "y": valueOfElement.y,
+                            "nm": valueOfElement.text || "",
+                            "alarmType": valueOfElement.alarmType || "normal",
+                            "physicsId":valueOfElement.physicsId||""
+                            // 正常 严重警告   主要警告 次要警告  事件
+                            // normal serious  major  minor incident
+                        }
+                        serialized.data.push(o);
+                    } else {
+                        var o = {
+                            "path": valueOfElement.path,
+                            "_id": valueOfElement._id,
+                            "nodeA_id": valueOfElement.nodeA._id,
+                            "nodeZ_id": valueOfElement.nodeZ._id,
+                            "elementType": valueOfElement.elementType,
+                            "lineWidth":valueOfElement.lineWidth||2
+                        }
+                        if(valueOfElement.path&&valueOfElement.path.length>2){
+                            o.elementType="foldLink";
+                        }
+                        serialized.data.push(o);
+                    }
+                });
+                var sen = topologyO.canvasInfo.obj.stage.childs[0];
+                serialized.scene = {
+                    translateX: sen.translateX,
+                    translateY: sen.translateY
+                };
+                // console.log(JSON.stringify());
+                topologyO.methods.saveTopo(serialized)
+
+                // console.log(topologyO.canvasInfo.obj.stage.toJson())
+            },
+            saveTopo: function (data) {
+                var d = {
+                    "record": data
+                }
+                $.ajax({
+                    type: "POST",
+                    // url: "/nms/misc_info/insert.json",
+                    url: "/nms/misc_info/insert.json",
+                    async: false,
+                    data: JSON.stringify(d),
+                }).done(function () {
+                    alert("保存成功");
+                    $("#save").html("修改")
+                    $("#contextmenu").hide();
+                    $("contextmenu #alldel").css("display","none");
+                    $("#cancel").hide();
+                    $(".node-list").find("img:first").attr("draggable",false);
+                    topologyO.canvasInfo.init(2);
+
+                })
+            }
+        }
+
+
+    }
+    topologyO.canvasInfo.init();
+</script>
+
+
+</html>

@@ -1,0 +1,48 @@
+{
+    "_id" : "5cb83ddf2d88522c0469733b",
+    "created" : 1555578335,
+    "changed" : 1555578335,
+    "translateX" : 245,
+    "translateY" : 311,
+    "tp" : "net_topo_test",
+    "data" : [ 
+        {
+            "_id" : "822082087525",
+            "nm" : "我是节点1\n192.168.1.1",
+            "imageUrl" : "http://localhost:3000/images/net_topo/routerNode.png",
+            "y" : -216,
+            "x" : 17,
+            "elementType" : "node",
+            "alarmType" : "major",
+            "physicsId" : "121",
+            "draggable" : false
+        }, 
+        {
+            "_id" : "91683419395",
+            "nm" : "我是节点2\n192.168.1.1",
+            "imageUrl" : "http://localhost:3000/images/net_topo/routerNode.png",
+            "y" : -212,
+            "x" : 334,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "physicsId" : ""
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "822082087525",
+            "nodeZ_id" : "91683419395",
+            "path" : [ 
+                {
+                    "y" : -207.5,
+                    "x" : 28.5
+                }, 
+                {
+                    "y" : -203.5,
+                    "x" : 345.5
+                }
+            ],
+            "_id" : "449397093006"
+        }
+    ]
+}

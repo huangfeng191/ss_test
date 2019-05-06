@@ -1,5 +1,5 @@
 @host60 = 127.0.0.1:60
-@token=0CAD036531C26F8CD9D0341863F0EA0D
+@token=9215BDB27028C772FA3602189774CDD8
 
 
 ### 获取菜单 
@@ -45,4 +45,35 @@ Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
+### 获取拓扑信息
 
+GET /nms/spring/device/netTopu?token={{token}}
+Host: {{host60}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+### 保存拓扑
+POST /nms/spring/device/netTopu?token={{token}}
+Host: {{host60}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+{
+  "_id": "string",
+  "netTopuList": [
+    {
+      "deviceId": "string",
+      "draggable": "string",
+      "elementType": "string",
+      "id": "string",
+      "imageUrl": "string",
+      "name": "string",
+      "nodeA_id": "string",
+      "nodeZ_id": "string",
+      "x": "string",
+      "y": "string"
+    }
+  ],
+  "translateX": "string",
+  "translateY": "string"
+}

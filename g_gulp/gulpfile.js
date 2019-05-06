@@ -31,7 +31,9 @@ var filter = function(pathname, req) {
 
 var middleware = proxy(filter, {
 	// target: 'http://127.0.0.1:82',
-	target: 'http://192.168.92.177:8080',
+  // target: 'http://192.168.92.177:8080',
+  target: 'http://127.0.0.1:60',
+  
 	changeOrigin: true,
 	logLevel: 'debug',
 	pathRewrite: {
