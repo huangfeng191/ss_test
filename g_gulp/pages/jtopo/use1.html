@@ -179,7 +179,7 @@
                         topologyO.createNode.currentNode = this;
                         // 当前位置弹出菜单（div）
 
-                        debugger
+                        
                         $("#contextmenu").css({
                             top: e.pageY,
                             left: e.pageX
@@ -316,7 +316,7 @@
                 var ret = null;
                 $.ajax({
                     // url: "./jtopo.json",
-                    url: "/nms/misc_info/one.json",
+                    url: "/nms/misc_info/one1.json",
                     async: false,
                     timeout: 100,
                     data: JSON.stringify({
@@ -603,10 +603,14 @@
                             // 正常 严重警告   主要警告 次要警告  事件
                             // normal serious  major  minor incident
                         }
+                        if(o["imageUrl"]){
+                            
+                            o["imageUrl"]=o["imageUrl"].replace("http://","").replace(location.host,"")
+                        }
                         serialized.netTopuList.push(o);
                     } else {
                         var o = {
-                            "path": valueOfElement.path,
+                            // "path": valueOfElement.path,
                             "_id": valueOfElement._id,
                             "nodeA_id": valueOfElement.nodeA._id,
                             "nodeZ_id": valueOfElement.nodeZ._id,

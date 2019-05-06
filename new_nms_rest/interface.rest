@@ -58,22 +58,3 @@ Host: {{host60}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
-{
-  "_id": "string",
-  "netTopuList": [
-    {
-      "deviceId": "string",
-      "draggable": "string",
-      "elementType": "string",
-      "id": "string",
-      "imageUrl": "string",
-      "name": "string",
-      "nodeA_id": "string",
-      "nodeZ_id": "string",
-      "x": "string",
-      "y": "string"
-    }
-  ],
-  "translateX": "string",
-  "translateY": "string"
-}
