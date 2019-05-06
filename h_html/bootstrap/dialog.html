@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!-- 引入 less -->
+  <link rel="stylesheet/less" type="text/css" href="../less/test.less" />
+  <script src="../less/lib/less.min.js"></script>
+
+  <!-- 引入bootstrap -->
+  <script src="../../g_gulp/static/js/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body id="test">
+
+
+  <button class="btn btn-default">确定</button>
+
+
+  <div class="modal fade" id="myModalTips" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    我的老家
+  </div>
+
+</body>
+
+<script>
+  $(function() {
+    $("button").click(function() {
+      $("#myModalTips").modal("show");
+    })
+  })
+</script>
+
+</html>
