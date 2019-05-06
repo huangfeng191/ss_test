@@ -26,13 +26,16 @@ var filter = function(pathname, req) {
   if(pathname.match("jtopo.json")){
     return false
   }
+  if(pathname.match("jtopouse.json")){
+    return false
+  }
   return pathname.match('^.*/.*\.json') ;
 };
 
 var middleware = proxy(filter, {
-	// target: 'http://127.0.0.1:82',
+	target: 'http://127.0.0.1:82',
   // target: 'http://192.168.92.177:8080',
-  target: 'http://127.0.0.1:60',
+  // target: 'http://127.0.0.1:60',
   
 	changeOrigin: true,
 	logLevel: 'debug',

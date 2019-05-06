@@ -163,10 +163,10 @@
             endNode: null,
             tempNodeA: null,
             tempNodeZ: null,
-            setNewNode: function (imageUrl, node_nm) {
+            setNewNode: function (imageUrl, node_name) {
                 var netNode;
-                if (node_nm) {
-                    netNode = new JTopo.Node(node_nm);
+                if (node_name) {
+                    netNode = new JTopo.Node(node_name);
                 } else {
                     netNode = new JTopo.Node();
 
@@ -329,17 +329,19 @@
                 }).done(function (r) {
                     if (r.Response && r.Code == 0) {
                         ret = r.Response;
+                        ret["data"]=ret["netTopuList"]
                     }
                 });
 
                 if (ret == null) {
                     $.ajax({
                         // url: "./jtopo.json",
-                        url: "./jtopo.json",
+                        url: "./jtopouse.json",
                         async: false,
                         timeout: 1000
                     }).done(function (r) {
                         ret = r;
+                        ret["data"]=ret["netTopuList"]
                     })
                 }
 
@@ -362,7 +364,7 @@
                                     }
                                 }
                                 topologyO.createNode.setNewNode(alarmUrl, valueOfElement
-                                    .nm);
+                                    .name);
                                 one_node = topologyO.createNode.newNode;
                                 one_node.dragable = false;
 
@@ -375,15 +377,15 @@
 
                             } else {
                                 topologyO.createNode.setNewNode(valueOfElement.imageUrl, valueOfElement
-                                    .nm);
+                                    .name);
                                 one_node = topologyO.createNode.newNode;
                             }
-                            if (valueOfElement.nm) {
+                            if (valueOfElement.name) {
                                 one_node.fontColor = "black";
                                 one_node.textOffsetY = 5;
                                 one_node.alarmType = valueOfElement.alarmType
                             }
-                            one_node.physicsId=valueOfElement.physicsId;
+                            one_node.deviceId=valueOfElement.deviceId;
                             one_node.setLocation(valueOfElement.x, valueOfElement.y);
                             
                             if(valueOfElement.draggable==false){
@@ -442,8 +444,7 @@
                     });
                     if (isEdit) {
                         var old_secen = topologyO.canvasInfo.obj;
-                        if (old_secen && old_secen.scene) {
-                            old_secen = old_secen.scene;
+                        if (old_secen) {
                             if (old_secen.translateX != undefined) {
                                 scene.translateX = old_secen.translateX;
                             }
@@ -453,11 +454,11 @@
                         }
                     } else {
 
-                        if (ret.scene.translateX != undefined) {
-                            scene.translateX = ret.scene.translateX;
+                        if (ret.translateX != undefined) {
+                            scene.translateX = ret.translateX;
                         }
-                        if (ret.scene.translateY != undefined) {
-                            scene.translateY = ret.scene.translateY;
+                        if (ret.translateY != undefined) {
+                            scene.translateY = ret.translateY;
                         }
                     }
 
@@ -583,7 +584,7 @@
             beforeSave: function () {
 
                 serialized = {
-                    "data": [],
+                    "netTopuList": [],
                     "tp": net_tp,
                     "scene": null
                 };
@@ -596,13 +597,13 @@
                             "_id": valueOfElement._id,
                             "x": valueOfElement.x,
                             "y": valueOfElement.y,
-                            "nm": valueOfElement.text || "",
+                            "name": valueOfElement.text || "",
                             "alarmType": valueOfElement.alarmType || "normal",
-                            "physicsId":valueOfElement.physicsId||""
+                            "deviceId":valueOfElement.deviceId||""
                             // 正常 严重警告   主要警告 次要警告  事件
                             // normal serious  major  minor incident
                         }
-                        serialized.data.push(o);
+                        serialized.netTopuList.push(o);
                     } else {
                         var o = {
                             "path": valueOfElement.path,
@@ -615,14 +616,14 @@
                         if(valueOfElement.path&&valueOfElement.path.length>2){
                             o.elementType="foldLink";
                         }
-                        serialized.data.push(o);
+                        serialized.netTopuList.push(o);
                     }
                 });
                 var sen = topologyO.canvasInfo.obj.stage.childs[0];
-                serialized.scene = {
-                    translateX: sen.translateX,
-                    translateY: sen.translateY
-                };
+                serialized.translateX=sen.translateX;
+                serialized.translateY=sen.translateY;
+              
+                
                 // console.log(JSON.stringify());
                 topologyO.methods.saveTopo(serialized)
 

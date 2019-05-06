@@ -1,48 +1,378 @@
 {
-    "_id" : "5cb83ddf2d88522c0469733b",
-    "created" : 1555578335,
-    "changed" : 1555578335,
-    "translateX" : 245,
-    "translateY" : 311,
-    "tp" : "net_topo_test",
-    "data" : [ 
+    "_id" : "5ccfca8ec9c3753dfc9e4660",
+    "translateX" : 0,
+    "translateY" : 0,
+    "created" : 1557121678,
+    "changed" : 1557121678,
+    "scene" : null,
+    "tp" : "net_topo",
+    "netTopuList" : [ 
         {
-            "_id" : "822082087525",
-            "nm" : "我是节点1\n192.168.1.1",
-            "imageUrl" : "http://localhost:3000/images/net_topo/routerNode.png",
-            "y" : -216,
-            "x" : 17,
-            "elementType" : "node",
-            "alarmType" : "major",
-            "physicsId" : "121",
-            "draggable" : false
-        }, 
-        {
-            "_id" : "91683419395",
-            "nm" : "我是节点2\n192.168.1.1",
-            "imageUrl" : "http://localhost:3000/images/net_topo/routerNode.png",
-            "y" : -212,
-            "x" : 334,
+            "_id" : "978985306769",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/services.png",
+            "y" : 28,
+            "x" : 391,
             "elementType" : "node",
             "alarmType" : "normal",
-            "physicsId" : ""
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "883823046463",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/services.png",
+            "y" : 27,
+            "x" : 555,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "202174116861",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/routerNode.png",
+            "y" : 108,
+            "x" : 399,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "636524405719",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/routerNode.png",
+            "y" : 113,
+            "x" : 562,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "721577293023",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 153,
+            "x" : 122,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "1497194822696",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 152,
+            "x" : 774,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "950346932272",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 153,
+            "x" : 405,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "1395869829565",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 154,
+            "x" : 570,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "979222826152",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 257,
+            "x" : 123,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "218219463100",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 257,
+            "x" : 774,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "1437889368338",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 356,
+            "x" : 123,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "349990626603",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 352,
+            "x" : 774,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "1071228635391",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 463,
+            "x" : 127,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "808105404421",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 454,
+            "x" : 776,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "24302028267",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 569,
+            "x" : 126,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "1338557187615",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 564,
+            "x" : 776,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "272465767129",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 706,
+            "x" : 127,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
+        }, 
+        {
+            "_id" : "320957424948",
+            "name" : "",
+            "imageUrl" : "http://localhost:3000/images/net_topo/connect.png",
+            "y" : 699,
+            "x" : 782,
+            "elementType" : "node",
+            "alarmType" : "normal",
+            "deviceId" : ""
         }, 
         {
             "lineWidth" : 2,
             "elementType" : "link",
-            "nodeA_id" : "822082087525",
-            "nodeZ_id" : "91683419395",
+            "nodeA_id" : "978985306769",
+            "nodeZ_id" : "202174116861",
             "path" : [ 
                 {
-                    "y" : -207.5,
-                    "x" : 28.5
+                    "y" : 54.5,
+                    "x" : 409.5
                 }, 
                 {
-                    "y" : -203.5,
-                    "x" : 345.5
+                    "y" : 116.5,
+                    "x" : 410.5
                 }
             ],
-            "_id" : "449397093006"
+            "_id" : "536599894574"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "883823046463",
+            "nodeZ_id" : "636524405719",
+            "path" : [ 
+                {
+                    "y" : 53.5,
+                    "x" : 573.5
+                }, 
+                {
+                    "y" : 121.5,
+                    "x" : 573.5
+                }
+            ],
+            "_id" : "912445771565"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "202174116861",
+            "nodeZ_id" : "950346932272",
+            "path" : [ 
+                {
+                    "y" : 116.5,
+                    "x" : 410.5
+                }, 
+                {
+                    "y" : 157.5,
+                    "x" : 409.5
+                }
+            ],
+            "_id" : "780154099229"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "636524405719",
+            "nodeZ_id" : "1395869829565",
+            "path" : [ 
+                {
+                    "y" : 121.5,
+                    "x" : 573.5
+                }, 
+                {
+                    "y" : 158.5,
+                    "x" : 574.5
+                }
+            ],
+            "_id" : "1290195596573"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "979222826152",
+            "nodeZ_id" : "218219463100",
+            "path" : [ 
+                {
+                    "y" : 261.5,
+                    "x" : 127.5
+                }, 
+                {
+                    "y" : 261.5,
+                    "x" : 778.5
+                }
+            ],
+            "_id" : "307342068865"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "1437889368338",
+            "nodeZ_id" : "349990626603",
+            "path" : [ 
+                {
+                    "y" : 360.5,
+                    "x" : 127.5
+                }, 
+                {
+                    "y" : 356.5,
+                    "x" : 778.5
+                }
+            ],
+            "_id" : "1175431052472"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "1071228635391",
+            "nodeZ_id" : "808105404421",
+            "path" : [ 
+                {
+                    "y" : 467.5,
+                    "x" : 131.5
+                }, 
+                {
+                    "y" : 458.5,
+                    "x" : 780.5
+                }
+            ],
+            "_id" : "512723792771"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "24302028267",
+            "nodeZ_id" : "1338557187615",
+            "path" : [ 
+                {
+                    "y" : 573.5,
+                    "x" : 130.5
+                }, 
+                {
+                    "y" : 568.5,
+                    "x" : 780.5
+                }
+            ],
+            "_id" : "139858207991"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "272465767129",
+            "nodeZ_id" : "320957424948",
+            "path" : [ 
+                {
+                    "y" : 710.5,
+                    "x" : 131.5
+                }, 
+                {
+                    "y" : 703.5,
+                    "x" : 786.5
+                }
+            ],
+            "_id" : "27853022917"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "721577293023",
+            "nodeZ_id" : "272465767129",
+            "path" : [ 
+                {
+                    "y" : 157.5,
+                    "x" : 126.5
+                }, 
+                {
+                    "y" : 710.5,
+                    "x" : 131.5
+                }
+            ],
+            "_id" : "507470762431"
+        }, 
+        {
+            "lineWidth" : 2,
+            "elementType" : "link",
+            "nodeA_id" : "721577293023",
+            "nodeZ_id" : "1497194822696",
+            "path" : [ 
+                {
+                    "y" : 157.5,
+                    "x" : 126.5
+                }, 
+                {
+                    "y" : 156.5,
+                    "x" : 778.5
+                }
+            ],
+            "_id" : "1056450338504"
         }
     ]
 }
