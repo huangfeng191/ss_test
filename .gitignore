@@ -2,3 +2,5 @@
 /g_gulp/build/
 *.pyc
 *.idea
+access.log
+error.log
