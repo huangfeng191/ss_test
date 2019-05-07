@@ -1,20 +1,8 @@
 body {
-  padding-left: 100px;
-}
-body i {
   border: 1px red solid;
 }
-body i a {
-  margin-right: 10px;
-  border-right: 1px red solid;
-}
-body div {
-  margin-top: 5px;
-  width: 500px;
-  height: 500px;
-  border: 1px red solid;
-}
-body .height_100 {
-  width: 100%;
-  height: 100%;
+body .simple-div {
+  width: 70%;
+  left: 100px;
+  top: 100px;
 }
