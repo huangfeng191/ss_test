@@ -243,7 +243,7 @@
                   topologyO.createNode.currentLink = this;
                   // 当前位置弹出菜单（div）
                   $(".net-canvas-box #net-menu").css({
-                    top: e.pageY,
+                    top: e.pageY+(document.getElementsByClassName("net-canvas-box")[0].scrollTop||0),
                     left: e.pageX
                   }).show();
                   return;
@@ -435,7 +435,7 @@
                   topologyO.createNode.currentLink = this;
                   // 当前位置弹出菜单（div）
                   $(".net-canvas-box #net-menu").css({
-                    top: e.pageY,
+                    top: e.pageY+(document.getElementsByClassName("net-canvas-box")[0].scrollTop||0),
                     left: e.pageX
                   }).show();
                   $(".net-canvas-box #net-menu #net_all_del").css("display", "block");

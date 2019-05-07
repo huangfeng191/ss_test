@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.right{
+    width: 500px;
+    height: 300px;
+    background-color: yellow;
+}
+</style>
+<!-- <script src="../../static/js/jquery-1.11.1.min.js"></script> -->
+<body>
+    <div class="right">
+
+    </div>
+    
+</body>
+<script>
+
+
+window.onload = function(){
+   var right = document.querySelector('.right');
+   //去掉默认的contextmenu事件，否则会和右键事件同时出现。
+   right.oncontextmenu = function(e){
+       e.preventDefault();
+   };
+
+   right.onmousedown = function(e){
+       debugger
+       if(e.button ==2){
+           alert("你点了右键");
+       }else if(e.button ==0){
+           alert("你点了左键");
+       }else if(e.button ==1){
+           alert("你点了滚轮");
+       }
+   }
+}
+
+</script>
+</html>

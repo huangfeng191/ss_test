@@ -1,5 +1,5 @@
 @host60 = 127.0.0.1:60
-@token=9215BDB27028C772FA3602189774CDD8
+@token=8ACCF1A373EFE96F192068F71578CAE8
 
 
 ### 获取菜单 
@@ -58,3 +58,18 @@ Host: {{host60}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
+
+
+### 根据类型获取告警总数，
+GET /nms/spring/report/statsnetype
+Host: {{host60}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+### 获取告警
+# GET /nms/spring/alarm/activeAlarm/fliter  HTTP/1.1
+# Host: {{host60}}
+# token:{{token}}
+# Content-Type: application/json;charset=UTF-8
+# Cookie:JSESSIONID={{token}}

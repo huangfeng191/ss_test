@@ -46,3 +46,30 @@ myModalAlarm
 网元组名称
 网元组地址
 指定网元
+
+
+
+
+
+
+
+
+
+
+# device info
+>   to object details  by SsCenter
+"deviceType": "SM2000",
+"imageVersion": null,
+"owner": "",
+"name": "白广路SM2000_PRC",
+"location": "",
+"id": "0e575aed-32d4-4b76-b154-15f6a98a1e91",
+"NEType": "PRC",
+"timestamp": 1556616650000,
+"deviceStatus": 0,
+"isDelete": 0,
+>self
+"isAlarm":1,
+"alarm":{   
+
+}

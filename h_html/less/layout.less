@@ -1,0 +1,25 @@
+@normal-width:500px;
+@normal-left:100px;
+@normal-border:1px red solid;
+body {
+    padding-left:@normal-left;
+    i{
+        border:@normal-border;
+        
+        a{
+            margin-right: 10px;
+            border-right: @normal-border;
+        }
+    }
+    div {
+        margin-top:5px;
+        width:@normal-width;
+        height: @normal-width;
+        border:@normal-border;
+    }
+    // never used;
+    .height_100{
+        width: 100%;
+        height: 100%;
+    }
+}
