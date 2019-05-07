@@ -45,5 +45,11 @@
             "command": " cd .\\g_gulp\\;./gulp",
             "problemMatcher": []
         },
+        {
+            "label": "python-w",
+            "type": "shell",
+            "command": " cd .\\p_py\\src\\;python w.py",
+            "problemMatcher": []
+        },
     ]
 }
