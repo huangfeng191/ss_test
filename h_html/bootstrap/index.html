@@ -27,8 +27,6 @@
 
 
   <div id="cs">
-
-
   </div>
 
 </body>
@@ -55,6 +53,15 @@
   }
 
   data = {
+    head:{
+      id:"cardTableHead",
+      title:"当前设备是",
+      buttons: [
+              { "cmd": "print", "name": "打印", "class": "btn-default  " },
+              { "cmd": "export", "name": "导出", "class": "btn-default  " }
+            ],
+
+    },
     columns: [{ "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
       { "title": "IO/类型", "field": "ioSignal", "showType": "text", },
       { "title": "信号类型", "field": "ioType", "showType": "text", },

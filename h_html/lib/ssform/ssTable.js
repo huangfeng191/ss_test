@@ -74,7 +74,24 @@ var tableDefaults = $.fn.ssTable.defaults = {
 
     "temp": template.compile(jQuery.GetTemplate(function() {
         /*
+{{if head}}
 
+  <div class="table_head">
+        <div class="left">
+        <span {{if head.id}} id={{head.id}} {{/if}}> {{head.title}}</span>
+        </div>
+        <div  class="right {{head.buttonsClass}}">
+        
+              {{if head.buttons}}
+              {{each head.buttons btn iB }}
+                <button   class="btn  {{btn.class}}" command="{{btn.cmd}}"  {{if btn.click}} onclick={{btn.click}} {{/if}}>{{(btn.name||'&nbsp')}}</button>
+              {{/each}}
+                {{/if}}
+        </div>
+  </div>
+
+
+{{/if}}
 
 <div class="table_middle">
   <table class="card-info table table-striped" width="100%">
@@ -132,6 +149,7 @@ function initialize(options) {
     ssTable.html('<div class="ss_table_container" style="border:0px;"></div>');
 
     ssTable.find(".ss_table_container").html(opts.temp({
+      "head":opts.head,
         "columns": opts.columns,
         "footShow": opts.footShow ? true : false
 
