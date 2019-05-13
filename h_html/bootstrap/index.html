@@ -15,6 +15,7 @@
   <script src="../lib/ssform/lib.js"></script>
   <script src="../lib/ssform/ssform.js"></script>
   <script src="../lib/ssform/ssTable.js"></script>
+  <script src="../js/sscode/lib.js"></script>
 
 </head>
 
@@ -34,23 +35,53 @@
 
 <script>
   // showType : text , button ,format:
+  function rowFormatButtons(r, index, field) {
+    var str = ""
+    if (field == "bindMethod") {
+      str = "<button class='btn btn-default' onclick='rowFormatDialog(" + index + ")'>绑定</button>"
+    } else if (field == "cardConfig") {
+      str = "<button class='btn btn-default' onclick='rowFormatDialog(" + index + ")'>配置</button>"
+    } else {
+      str = "<button class='btn btn-default' >未开通</button>"
+    }
+    return str;
+
+  }
+
+  function rowFormatDialog(index) {
+    debugger
+    alert(JSON.stringify($("#cs").data("ssTableData")[index]))
+
+  }
 
   data = {
     columns: [{ "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
       { "title": "IO/类型", "field": "ioSignal", "showType": "text", },
       { "title": "信号类型", "field": "ioType", "showType": "text", },
-      { "title": "冗余使能", "field": "ioStatusRedundancy", "showType": "c", },
+      { "title": "冗余使能", "field": "ioStatusRedundancy"  ,"showType": "text",format:function(d,i,f){
+        if(d[f]&&window.top.bindings["EnableDisable"]){
+          var ret=""
+          $.each(window.top.bindings["EnableDisable"],function(oi,ov){
+            if(ov.Value==d[f]){
+              ret=d[f].Name;
+              return false;
+            } 
+          })
+        }
+        return "";
+      }},
       { "title": "主卡", "field": "ioStatusActive", "showType": "text", },
       { "title": "版本信息", "field": "isSignal", "showType": "text", },
-      { "title": "冗余操作", "field": "ioStatusRedundancyKey", "showType": "text", },
-      { "title": "绑定", "field": "bindMethod", "showType": "text", },
-      { "title": "卡配置", "field": "cardConfig", "showType": "text", },
+      { "title": "冗余操作", "field": "ioStatusRedundancyKey","showType": "select","binding":"EnableDisable" },
+      { "title": "绑定", "field": "bindMethod", "showType": "text", "format": rowFormatButtons },
+      { "title": "卡配置", "field": "cardConfig", "showType": "text", "format": rowFormatButtons },
     ],
     footShow: false,
     width: "400px"
 
-
   }
+  
+
 
 
   $(function() {
@@ -59,10 +90,10 @@
     $(".btn-default").click(function() {
       $("#cs").ssTable("Set",
         [
-          { ioStatusSlotIDfsf: "我的老家", "myGod": "我的天哪" },
-          { ioStatusSlotIDfsf: "我的老妈", "myGod": "我的天哪" },
-          { ioStatusSlotIDfsf: "我的老家", "myGod": "我的天哪" },
-          { ioStatusSlotIDfsf: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪", "ioStatusRedundancy": 11 },
+          { ioStatusSlotID: "我的老妈", "myGod": "我的天哪" ,"ioStatusRedundancyKey":"1"},
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
         ]
       )
     })

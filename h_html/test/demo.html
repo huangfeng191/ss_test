@@ -8,13 +8,23 @@
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="../less/test.css" />
   <script src="../lib/jquery-1.11.1.min.js"></script>
-
+  <script src="../js/test.js"></script>
 </head>
 
 <body>
   <div>
-    1
+    <button>forClickf</button>
   </div>
 </body>
+<script>
+function showOtherPageMethod (){
+  alert("i`m after load;")
+}
+
+$(function () {
+    $("button").click(forClick);
+});
+
+</script>
 
 </html>
