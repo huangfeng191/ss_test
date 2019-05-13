@@ -1,0 +1,18 @@
+@host = 192.168.1.99:8080
+@token=DBC1DE7A1535CC179CC959B27989A192
+@deviceId=dcd44ff7-9129-4802-b456-f3f73113cdf9
+
+
+
+### 获取单个设备的板卡信息
+GET /nms/spring/deviceConfig/{{deviceId}}/getIoStatus?token={{token}}
+&shelfIndex=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+###
+GET /nms/spring/deviceConfig/{{deviceId}}/configs/outputRedundancyTable?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}

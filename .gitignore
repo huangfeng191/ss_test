@@ -1,6 +1,7 @@
-/g_gulp/node_modules/
+node_modules/
 /g_gulp/build/
 *.pyc
 *.idea
 access.log
 error.log
+nginx.pid

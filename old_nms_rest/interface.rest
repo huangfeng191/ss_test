@@ -25,7 +25,7 @@ Cookie:JSESSIONID={{token}}
 ### 区域管理
 GET /nms/spring/device/area
 ?token={{token}}
-Host: {{host40}}
+Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
 

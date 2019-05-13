@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/layout.css">
+  <script src="../lib/ssform/template-web.js"></script>
+  <script src="../lib/ssform/lib.js"></script>
+  <script src="../lib/ssform/ssform.js"></script>
+  <script src="../lib/ssform/ssTable.js"></script>
+
+</head>
+
+<body id="test">
+
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default">Go!</button>
+  </span>
+
+
+  <div id="cs">
+
+
+  </div>
+
+</body>
+
+<script>
+  // showType : text , button ,format:
+
+  data = {
+    columns: [{ "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
+      { "title": "IO/类型", "field": "ioSignal", "showType": "text", },
+      { "title": "信号类型", "field": "ioType", "showType": "text", },
+      { "title": "冗余使能", "field": "ioStatusRedundancy", "showType": "c", },
+      { "title": "主卡", "field": "ioStatusActive", "showType": "text", },
+      { "title": "版本信息", "field": "isSignal", "showType": "text", },
+      { "title": "冗余操作", "field": "ioStatusRedundancyKey", "showType": "text", },
+      { "title": "绑定", "field": "bindMethod", "showType": "text", },
+      { "title": "卡配置", "field": "cardConfig", "showType": "text", },
+    ],
+    footShow: false,
+    width: "400px"
+
+
+  }
+
+
+  $(function() {
+    debugger
+    $("#cs").ssTable(data);
+    $(".btn-default").click(function() {
+      $("#cs").ssTable("Set",
+        [
+          { ioStatusSlotIDfsf: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotIDfsf: "我的老妈", "myGod": "我的天哪" },
+          { ioStatusSlotIDfsf: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotIDfsf: "我的老家", "myGod": "我的天哪" },
+        ]
+      )
+    })
+  });
+</script>
+
+
+
+</html>

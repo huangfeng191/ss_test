@@ -1,5 +1,6 @@
-@host60 = 127.0.0.1:60
-@token=8ACCF1A373EFE96F192068F71578CAE8
+@host = 127.0.0.1:60
+@token=FE1199CD59C95ED1998F9F7A688D5736
+@deviceId=dcd44ff7-9129-4802-b456-f3f73113cdf9
 
 
 ### 获取菜单 
@@ -8,7 +9,7 @@ GET /nms/spring/user/getMenu
 # deviceType 设备类型
 ?type=deviceType
 &token={{token}}
-Host: {{host60}}
+Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
 
@@ -24,37 +25,51 @@ GET /nms/spring/systemManage/getParamConfig
 # deviceType 设备类型
 ?type=deviceType
 &token={{token}}
-Host: {{host60}}
+Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
 
 ### 区域管理
 GET /nms/spring/device/area
 ?token={{token}}
-Host: {{host60}}
+Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
 
 
 
-### 获取设备信息 
-# content 具体设备信息
-GET /nms/spring/device/page?token={{token}}&page=&pageSize=200&name=&ip=&deviceStatus=&areaId=&user=admin&deviceType=&NEType=&Vendor= HTTP/1.1
-Host: {{host60}}
+### 获取设备的拓扑信息 
+
+GET /nms/spring/viewData?areaId=
+&token={{token}}
+Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+### 获取各区域的信息以及设备信息 children
+# [area->children(device)->children(deviceEquipments info)]
+#  primary Key:  device: type (judge alarmType)
+GET /nms/spring/device/parents?type=all
+&token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+
+
 
 
 ### 获取拓扑信息
 
 GET /nms/spring/device/netTopu?token={{token}}
-Host: {{host60}}
+Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 ### 保存拓扑
 POST /nms/spring/device/netTopu?token={{token}}
-Host: {{host60}}
+Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
@@ -62,14 +77,16 @@ Cookie:JSESSIONID={{token}}
 
 ### 根据类型获取告警总数，
 GET /nms/spring/report/statsnetype
-Host: {{host60}}
+Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
-### 获取告警
-# GET /nms/spring/alarm/activeAlarm/fliter  HTTP/1.1
-# Host: {{host60}}
-# token:{{token}}
-# Content-Type: application/json;charset=UTF-8
-# Cookie:JSESSIONID={{token}}
+
+POST /nms/spring/deviceConfig/dcd44ff7-9129-4802-b456-f3f73113cdf9/getIoStatus?token={{token}}
+shelfIndex=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+

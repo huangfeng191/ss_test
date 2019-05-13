@@ -18,3 +18,41 @@ Vendor  厂商
 "华为" "hw"
 "大唐" "dt
 "迅腾" "xt"
+
+
+
+topLevel
+
+NORMAL greent
+EVENT  blue 
+MINOR  yellow
+MAJOR  pink
+CRITI  red  
+
+
+
+
+deviceType:
+
+正常 greent
+离线 gery
+red
+pink
+yellow
+
+
+device:
+  name     		 设备名称  
+  value         坐标（显示点在图中的位置）经度，纬度
+  type     		 时钟类型
+  id	                        设备ID		
+  group 		组，用来搜索的
+  parent        type为NEG类型的设备的ID  
+  status        当前状态，参照pointStatus  
+  value         自定义，
+  company       设备厂商
+  ip            设备IP
+  clockLevel    时钟等级
+  model         设备类型
+  warningNum    告警数量
+  查询所有设备

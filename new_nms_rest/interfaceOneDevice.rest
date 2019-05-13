@@ -1,0 +1,12 @@
+@host = 127.0.0.1:60
+@token=FE1199CD59C95ED1998F9F7A688D5736
+@deviceId=dcd44ff7-9129-4802-b456-f3f73113cdf9
+
+
+
+POST /nms/spring/deviceConfig/{{deviceId}}/getIoStatus?token={{token}}
+&shelfIndex=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
