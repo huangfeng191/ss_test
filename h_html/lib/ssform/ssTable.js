@@ -126,6 +126,9 @@ function initialize(options) {
     if (opts.Class) {
         ssTable.addClass(opts.Class);
     }
+    if(opts.width){
+      ssTable.css("width",opts.width);
+    }
     ssTable.html('<div class="ss_table_container" style="border:0px;"></div>');
 
     ssTable.find(".ss_table_container").html(opts.temp({

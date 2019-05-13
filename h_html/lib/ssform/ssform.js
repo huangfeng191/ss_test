@@ -117,9 +117,9 @@ var defaults = $.fn.ssForm.defaults = {
             {{each query.conditions condition q}}
                 <span>{{condition.title}}</span>
                 {{if condition.showType=="input"}}
-                  <input qField={{condition.field}} showType={{condition.showType}}  >
+                  <input qField={{condition.field}} showType={{condition.showType}} {{if condition.value}} value=condition.value {{/if}} >
                 {{else if condition.showType=="select"}}
-                    <select {{if query.change}} onchange={{query.change}}  {{/if}}  qField={{condition.field}} >
+                    <select {{if query.change}} onchange={{query.change}}  {{/if}}  qField={{condition.field}} {{if condition.value}} value=condition.value {{/if}}>
                         {{each condition.options  option o}}
                           <option value={{option.Value}}>{{option.Name}}</option>
                         {{/each}}
