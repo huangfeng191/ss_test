@@ -3,7 +3,7 @@
     .table_head {
         width: 100%;
         float: left;
-
+        margin-bottom:10px;
         .left {
             float: left;
             line-height: 34px;
@@ -11,8 +11,38 @@
 
         .right {
             float: right;
+            width:180px;
             margin-right: 30px;
         }
+    }
+
+    
+
+    .table_middle{
+        .table-striped{
+            >tbody{
+                >tr:nth-of-type(even) {
+                    background-color: #f2ebce
+                }
+                
+            }
+        }
+        table{
+            th{
+                text-align: left;
+            }
+            tr{
+                
+                td{
+                    text-align: left;
+                    select{
+                        height: 34px;
+                        line-height: 34px;
+                    }
+                }
+            }
+        }
+     
     }
 
 
@@ -44,6 +74,7 @@
             ;
 
             table {
+                margin:0 auto;
                 tr:nth-of-type(odd) {
                     background: #fbf7d6 !important
                 }

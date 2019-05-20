@@ -4,8 +4,16 @@ https://blog.csdn.net/crper/article/details/54099319
 
 # close command 关闭
 
-| shortuct       | view                     | rating |
+| shortcut       | view                     | rating |
 | -------------- | ------------------------ | ------ |
+ / 
+
+| Ctrl+k +o    | show active file in new window             |**        |
+| Ctrl+k +p    |copy path of active file            |**        |
+| Ctrl+u    |undo last cursor operator            |*        |
+| Ctrl+Shift+PgUp    |PgDn Move editor left/right            |*        |
+| alt+shift+right arrow    |expand (扩展)选区            |*        |
+| alt+shift+left arrow    | shrink (缩小)选区            |*        |
 | alt+鼠标左键    | 选择不同单词              |*        |
 | alt+n          | 聚焦下一个终端(self)       |*        |
 | alt+left       | 向后（预览，不修改文件） |        |
@@ -15,9 +23,12 @@ https://blog.csdn.net/crper/article/details/54099319
 | ctrl+shift+v   | 预览markdown             |        |
 | ctrl+shift+t   | 重新打开关闭页面         |        |
 | ctrl+shift+[   | 代码折叠                 |        |
+
 | ctrl+shift+]   | 代码展开                 |        |
 | ctrl+k+ctrl+0  | 全部折叠                 |        |
 | ctrl+k+ctrl+j  | 全部展开                 |        |
+| ctrl+alt+left arrow  | 切屏左右切换(分屏模式)       |**        |
+| ctrl+k j  | 关闭其他打开的编辑器       |**        |
 
 
 
@@ -52,7 +63,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | ctrl+alt+ up    | 光标向上                         |        |
 | ctrl+alt+ down  | 光标向下                         |        |
 | ctrl+u          | 撤销上一次光标操作               |        |
-| Shift + Alt + I | 插入光标到选中范围内所有行结束符 |    *    |
+| Shift + Alt + I | 插入光标到选中范围内所有行结束符 |    **    |
 | ctrl+k o        | 在新的编辑器中打开当前编辑的文件 |        |
  
 
@@ -303,3 +314,24 @@ alt+f12 速览定义
 
 | ctrl+alt+k      | 书签选择            |        |
 | ctrl+alt+j      | 上一个书签            |        |
+
+
+
+
+# integrate terminal 
+
+| shortuct       | view                     | rating |
+| -------------- | ------------------------ | ------ |
+
+| shift+pageUp/ pageDown      | scroll up /down            |        |
+| ctrl+home /end     | scroll to top/bottom             |        |
+
+
+
+
+# plugins relative keybinds 
+
+| shortuct       | view                     | rating |
+| -------------- | ------------------------ | ------ |
+
+| ctrl+alt+r      | REST to run             |        |

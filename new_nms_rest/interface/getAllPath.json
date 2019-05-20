@@ -1,0 +1,19 @@
+{
+    "code": 100000,
+    "data": [
+        { "zNe": "961100964071", "pathName": "602643103856", "isDelete": 0, "aNe": "213321427080", "remark": "2", "id": "01d929da-eebe-4c99-8fc0-fdb98345076c", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "1", "pathName": "白广路SM2000_LPR,", "isDelete": 0, "aNe": "951d1cef-08f1-4185-9b0a-e512855544bb", "remark": "", "id": "0afdb46c-d0d6-43c2-8bf8-3a781c58b40a", "pathType": 1, "timestamp": 1558064467000 },
+        { "zNe": "1270105984158", "pathName": "1217527095053", "isDelete": 0, "aNe": "1476882044074", "remark": "2", "id": "1ee43934-0062-46d9-aca8-15cd3a9c1403", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "411474840562", "pathName": "677510967803", "isDelete": 0, "aNe": "1544368906060", "remark": "2", "id": "21a0f04e-e2f0-4b00-9fad-f328b3a91909", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "838017731780", "pathName": "469777169864", "isDelete": 0, "aNe": "560354999408", "remark": "2", "id": "3e6d9935-9c4c-4b4a-bcfd-67d0c065c7bb", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "662522287917", "pathName": "1343076558568", "isDelete": 0, "aNe": "1129360129373", "remark": "2", "id": "41abdff4-e833-4dde-8d57-89b0a1b70f42", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "657897058411", "pathName": "362090447568", "isDelete": 0, "aNe": "531569694707", "remark": "2", "id": "420dff17-6ef6-49fa-ad1e-620468ec533e", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "1095774742815", "pathName": "21404364263", "isDelete": 0, "aNe": "241171108417", "remark": "2", "id": "55bb904a-2599-4174-be71-80e3593ebeb6", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "354885835123", "pathName": "311650125425", "isDelete": 0, "aNe": "1476882044074", "remark": "2", "id": "6f5e2d75-6e2a-4576-86e0-198f0ffad629", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "213321427080", "pathName": "727756244873", "isDelete": 0, "aNe": "542556935452", "remark": "2", "id": "74d6cbe7-7c11-4507-a6b0-168f6959cbd2", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "1466441788303", "pathName": "681959918494", "isDelete": 0, "aNe": "1221041884284", "remark": "2", "id": "83b81b86-b9f4-4128-abef-41fe391b3aca", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "1555378012486", "pathName": "647836625086", "isDelete": 0, "aNe": "542556935452", "remark": "2", "id": "8d418eea-76b2-4fbf-bf41-384a4754ddfc", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "560354999408", "pathName": "625790033835", "isDelete": 0, "aNe": "44768223697", "remark": "2", "id": "a46b9433-ff77-4278-9a9a-4998efa82051", "pathType": 3, "timestamp": 1557214755000 },
+        { "zNe": "265404579957", "pathName": "1335142393052", "isDelete": 0, "aNe": "657897058411", "remark": "2", "id": "a56fe645-0118-4c12-a2ea-505db176997b", "pathType": 3, "timestamp": 1557214755000 }
+    ]
+}

@@ -14,11 +14,20 @@
 <body>
   <div>
     <button>forClickf</button>
+    <div id="show">
+
+
+    </div>
   </div>
 </body>
 <script>
   function showOtherPageMethod() {
-    debugger
+    var creatingDom = document.createElement("div");
+    var purposeDom = document.createElement("div");
+    purposeDom.setAttribute('id', 'forDialogShow');
+    
+    creatingDom.appendChild(purposeDom)
+    $("show").html(creatingDom.innerHTML);
   }
 
   $(function() {

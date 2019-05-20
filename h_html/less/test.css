@@ -6,3 +6,7 @@ body .simple-div {
   left: 100px;
   top: 100px;
 }
+
+.show-border{
+  border: 1px red solid;
+}

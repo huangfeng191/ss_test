@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+
+<body>
+  <div>
+    <button>forClick</button>
+  </div>
+</body>
+<script>
+  function showOtherPageMethod() {
+    
+    var A=function(){
+      // debugger
+      var innerA=1;  // 只是赋值了 变量，并不是对象的属性
+      var innerB=2;
+      this.innerC=3;
+      this.innerD=4;
+      var l=[1,2,3];
+      function showOk(params) {
+        l.push(4);
+        return 11;
+      }
+      this.ok=showOk();
+      this.csFunction=function(){
+          console.log("l"+l); // 修改内部变量
+        var kk=showOk();  //内部可以使用外部定义的方法
+      }
+    
+    };
+    
+    b=new A(); // 创建多个对象时 各自保留内部属性
+    
+
+
+  }
+  
+
+
+  $(function() {
+    
+    $("button").click(showOtherPageMethod);
+  });
+</script>
+
+</html

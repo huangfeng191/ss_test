@@ -20,3 +20,31 @@ IO/类型 ioSignal
 ioSignal 分类：E1-T1
 
 
+端口使能 outputConfigMainState  c EnableDisable
+帧类型 outputConfigMainFrameType c FrameType
+CRC状态 outputConfigMainCRCState  c EnableDisable
+SSM状态 outputConfigMainSSMState  c EnableDisable
+SSMBit outputConfigMainSSMBit c OutSsmBit
+预热 outE1Warmup c OutE1State
+自由 outE1Freerun c OutE1State
+守时 outE1Holdover c OutE1State
+快捕 outE1Fasttrack c OutE1State
+
+
+
+
+端口号 portNo
+端口使能 outputConfigMainState v EnableDisable
+帧类型 outputConfigMainFrameType v FrameType
+CRC状态 outputConfigMainCRCState v EnableDisable
+SSM状态 outputConfigMainSSMState v EnableDisable
+SSMBit outputConfigMainSSMBit v OutSsmBit
+业务名 portName
+
+
+
+
+
+
+
+

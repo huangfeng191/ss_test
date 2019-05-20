@@ -6,6 +6,9 @@ sys 用户   admin  admin
 用户名：saisinms 密码：saisi
 root 123456
 
+发布程序存放路径 /opt/nmsdevs
+
+war 包地址 ：/opt/nmsdevs/apache-tomcat-8.0.47/webapps
 
 
 git 地址 ：

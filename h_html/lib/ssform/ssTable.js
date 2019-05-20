@@ -2,7 +2,7 @@ $.fn.ssTable = function(method) {
     if ($.fn.ssTable[method]) {
         return $.fn.ssTable[method].apply(this, Array.prototype.slice.call(arguments, 1));
     } else if (typeof method === "object" || !method) {
-        return initialize.apply(this, arguments);
+        return ssTableInitialize.apply(this, arguments);
     } else {
         $.error("Method " + method + " does not exist on jQuery.ssForm");
     }
@@ -70,7 +70,7 @@ $.fn.ssTable.Set = function(records) {
 
 
 
-var tableDefaults = $.fn.ssTable.defaults = {
+$.fn.ssTable.defaults = {
 
     "temp": template.compile(jQuery.GetTemplate(function() {
         /*
@@ -94,7 +94,7 @@ var tableDefaults = $.fn.ssTable.defaults = {
 {{/if}}
 
 <div class="table_middle">
-  <table class="card-info table table-striped" width="100%">
+  <table class=" table table-striped" width="100%">
     <thead>
       <tr>
         {{each columns  column i}}
@@ -129,8 +129,8 @@ var tableDefaults = $.fn.ssTable.defaults = {
 
 };
 
-function initialize(options) {
-    var opts = $.extend(true, {}, tableDefaults, options);
+function ssTableInitialize(options) {
+    var opts = $.extend(true, {}, this.ssTable.defaults, options);
     var ssTable = $(this);
 
     $.each(opts.columns, function(oi, ov) {

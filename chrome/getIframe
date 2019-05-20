@@ -1,0 +1,4 @@
+function getIframe(id){
+ return document.getElementById(id).contentWindow;
+    
+}

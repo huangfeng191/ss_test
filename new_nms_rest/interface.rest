@@ -1,9 +1,10 @@
 @host = 127.0.0.1:60
-@token=FE1199CD59C95ED1998F9F7A688D5736
-@deviceId=dcd44ff7-9129-4802-b456-f3f73113cdf9
+@token=F3B87D91D082F86F98C4231544A2DFE6
+@deviceId=951d1cef-08f1-4185-9b0a-e512855544bb
+@deviceId2=0e575aed-32d4-4b76-b154-15f6a98a1e91
 
 
-### 获取菜单 
+### 获取菜单信息
 
 GET /nms/spring/user/getMenu
 # deviceType 设备类型
@@ -13,7 +14,19 @@ Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
 
+### 获取所有的设备信息 
+GET /nms/spring/device/page
+?page=&pageSize=200&token={{token}}&name=&ip=&deviceStatus=&deviceType=&areaId=&user=admin
+&NEType=&Vendor=
+Host: {{host}}
+Cookie:JSESSIONID={{token}}
 
+
+### 区域管理 include devices
+GET /nms/spring/device/area
+?token={{token}}
+Host: {{host}}
+Cookie:JSESSIONID={{token}}
 
 
 
@@ -29,22 +42,9 @@ Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
 
-### 区域管理
-GET /nms/spring/device/area
-?token={{token}}
-Host: {{host}}
-Cookie:JSESSIONID={{token}}
 
 
 
-
-### 获取设备的拓扑信息 
-
-GET /nms/spring/viewData?areaId=
-&token={{token}}
-Host: {{host}}
-Content-Type: application/json;charset=UTF-8
-Cookie:JSESSIONID={{token}}
 
 ### 获取各区域的信息以及设备信息 children
 # [area->children(device)->children(deviceEquipments info)]
@@ -60,6 +60,8 @@ Cookie:JSESSIONID={{token}}
 
 
 
+
+### network topology  to see  down 
 ### 获取拓扑信息
 
 GET /nms/spring/device/netTopu?token={{token}}
@@ -72,7 +74,7 @@ POST /nms/spring/device/netTopu?token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
-
+###  to see up
 
 
 ### 根据类型获取告警总数，
@@ -82,11 +84,106 @@ Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
+### 获取板卡信息
 
-POST /nms/spring/deviceConfig/dcd44ff7-9129-4802-b456-f3f73113cdf9/getIoStatus?token={{token}}
-shelfIndex=0
+
+GET /nms/spring/deviceConfig/{{deviceId}}/getIoStatus?token={{token}}
+&shelfIndex=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+### 同步单个设备
+
+GET /nms/spring/device/{{deviceId}}/syncAlarms
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+### 获取报警信息
+GET  /nms/spring/alarm/activeAlarm/fliter?vandor=&area=
+&token={{token}}
+&page=1&pageSize=1000&deviceId=&state=1%2C2&activeAlarmSource=&activeAlarmLevel=&activeAlarmReason=&activeAlarmId=&activeAlarmtimeBgn=&activeAlarmtimeEnd=&clearTimeBgn=&clearTimeEnd=&confirmTimeBgn=&confirmTimeEnd=&confirmOperator=
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
+### logic chart 
+GET /nms/spring/viewData/getAllPath?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+
+### 获取设备的拓扑信息 (返回值根据ip )
+
+GET /nms/spring/viewData?areaId=
+&token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+### 新增设备
+
+POST /nms/spring/device
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+{
+    "areaId": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506",
+    "deviceType": "SM2000",
+    "ip": "192.168.99.98",
+    "name": "白广路SM2000_PRC98",
+    "neType": "PRC",
+    "vendor": "ss",
+    "phyX": "100.86",
+    "phyY": "39.25",
+    "aliasName": "",
+    "location": "",
+    "owner": "",
+    "token": "70268A44218E222A804921FD3122E905",
+    "port": 0,
+    "addType": "1"
+}
+
+
+### 新增链路
+POST /nms/spring/viewData/addPath
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+{"path":{"aNe":"192.168.1.33","zNe":"192.168.99.98","pathName":"白广路SM2000_LPR,白广路SM2000_PRC98","pathType":"2","remark":""},
+"pathLinkIdList":[
+    {"aNode":"192.168.1.33","zNode":"192.168.99.98",
+                            "aSlot":"100.86,39.25","aPort":"87.77,34.67",
+                            "zSlot":"","zPort":"","linkName":"cs","linkStatus":"0","linkType":2}
+]}
+
+
+### 删除链路
+delete  /nms/spring/viewData/deletePathByObject
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+{"aNe":"192.168.1.33","zNe":"192.168.99.98","pathType":"2"}
+
+
+### index.html  right 
+
+#时钟类型 RPC LPR SSUT SSUL
+GET /nms/spring/report/statsnetype
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+###
+# 链路统计   同步链接 dom .sync-connet
+GET /nms/spring/viewData/statisticsPathCount
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}

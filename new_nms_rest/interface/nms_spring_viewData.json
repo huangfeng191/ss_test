@@ -1,0 +1,35 @@
+{
+    "code": 100000,
+    "data": [{
+            "networkY": "0",
+            "phyX": "107.19",
+            "networkX": "0",
+            "data": "{\"possion\":{\"left\":\"0px\",\"top\":\"0px\"}}",
+            "isDelete": 0,
+            "ip": "192.168.1.5",
+            "groupId": "",
+            "remark": "",
+            "topoType": "1",
+            "phyY": "35.17",
+            "areaId": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506",
+            "id": "22742607-9bcd-4b4a-885f-9043079c0b9d",
+            "timestamp": 1557218063000
+        },
+        {
+            "networkY": "0",
+            "phyX": "105.02",
+            "networkX": "0",
+            "data": "{\"possion\":{\"left\":\"0px\",\"top\":\"0px\"}}",
+            "isDelete": 0,
+            "ip": "192.168.1.99",
+            "groupId": "",
+            "remark": "",
+            "topoType": "1",
+            "phyY": "33.39",
+            "areaId": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506",
+            "id": "a7c4c4d3-8f3d-4958-bdf9-305f52f4ead7",
+            "timestamp": 1556616650000
+        },
+        { "networkY": "0", "phyX": "87.77", "networkX": "0", "data": "{\"possion\":{\"left\":\"0px\",\"top\":\"0px\"}}", "isDelete": 0, "ip": "192.168.1.33", "groupId": "", "remark": "", "topoType": "1", "phyY": "34.67", "areaId": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506", "id": "b85e7de7-494f-4446-a74e-41bc1a716485", "timestamp": 1556613422000 }
+    ]
+}

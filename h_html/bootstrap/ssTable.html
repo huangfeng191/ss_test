@@ -26,7 +26,7 @@
   </span>
 
 
-  <div id="cs">
+  <div id="card-board-list">
   </div>
 
 </body>
@@ -48,7 +48,7 @@
 
   function rowFormatDialog(index) {
     debugger
-    alert(JSON.stringify($("#cs").data("ssTableData")[index]))
+    alert(JSON.stringify($("#card-board-list").data("ssTableData")[index]))
 
   }
 
@@ -92,9 +92,9 @@
 
   $(function() {
     debugger
-    $("#cs").ssTable(data);
+    $("#card-board-list").ssTable(data);
     $(".btn-default").click(function() {
-      $("#cs").ssTable("Set",
+      $("#card-board-list").ssTable("Set",
         [
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪", "ioStatusRedundancy": 11 },
           { ioStatusSlotID: "我的老妈", "myGod": "我的天哪" ,"ioStatusRedundancyKey":"1"},
