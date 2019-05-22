@@ -1,10 +1,21 @@
 var config = {
     baseDir: 'E:/c_project/nms_be/src/main/webapp/',
+    defaultProxyUrl: "",
+    testProxyUrl: "http://192.168.2.102:8080",
+    developProxyUry: "http://192.168.92.177:8080"
 }
+// d develop  t:test 
+var flag = (process.argv.slice(2) || "develop");
+console.log("flag-----" + flag);
+if (flag == "t") {
+    config.defaultProxyUrl = config.testProxyUrl;
+} else {
+    config.defaultProxyUrl = config.developProxyUry;
+}
+
 
 var gulp = require('gulp');
 var babel = require("gulp-babel");
-
 var uglify = require("gulp-uglify");
 
 
@@ -22,12 +33,12 @@ var filter = function(pathname, req) {
     // 按正则匹配
     // console.log("pathname"+pathname);
     // 跳过代理
-// websocket 未进入
+    // websocket 未进入
     return pathname.match('^/nms/spring/');
 };
 
 var middleware = proxy(filter, {
-    target: 'http://192.168.92.177:8080',
+    target: config.defaultProxyUrl,
     // target: 'http://192.168.92.177:8080',
     // target: 'http://127.0.0.1:60',
 
@@ -43,10 +54,10 @@ var middleware = proxy(filter, {
 // 静态服务器
 gulp.task('browser-sync-static', function() {
     bs.init({
-        port:60,
+        port: 60,
         ui: {
             port: 61,
-            
+
         },
         notify: false,
         server: {
@@ -70,7 +81,7 @@ gulp.task('browser-sync-static', function() {
     //  **不仅匹配路径中的某一段,而且可以匹配 'a/b/c' 这样带有'/'的内容,所以,它还可以匹配子文件夹下的文件. 
     bs.watch([
         // 指定文件成功
-        "/**/js/*.js", 
+        "/**/js/*.js",
         "/**/src/page/*.html",
         // "/**/*.html" 减少监视
     ], { ignored: /(^|[\/\\])\../ }).on("change", bs.reload);
@@ -82,10 +93,10 @@ gulp.task('browser-sync-static', function() {
 // 静态服务器
 gulp.task('browser-sync-static-none', function() {
     bs.init({
-        port:60,
+        port: 60,
         ui: {
             port: 61,
-            
+
         },
         notify: false,
         server: {

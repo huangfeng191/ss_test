@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=F3B87D91D082F86F98C4231544A2DFE6
+@token=75C8D1B63397D7D386F91909B78A9C43
 @deviceId=951d1cef-08f1-4185-9b0a-e512855544bb
 @deviceId2=0e575aed-32d4-4b76-b154-15f6a98a1e91
 
@@ -192,7 +192,6 @@ Cookie:JSESSIONID={{token}}
 
 ### 查询所有网元组
 GET /nms/spring/viewData/getAllGroup?token={{token}}
-
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}

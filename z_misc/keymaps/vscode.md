@@ -1,3 +1,8 @@
+# self tips and tricks
+
+self project is first;  press win+1  once
+current project is second ; press win1 twice
+
 
 # page
 https://blog.csdn.net/crper/article/details/54099319
@@ -6,9 +11,10 @@ https://blog.csdn.net/crper/article/details/54099319
 
 | shortcut       | view                     | rating |
 | -------------- | ------------------------ | ------ |
- / 
+ 
 
 | Ctrl+k +o    | show active file in new window             |**        |
+| Ctrl+shift+\    | 括号跳转             |**        |
 | Ctrl+k +p    |copy path of active file            |**        |
 | Ctrl+u    |undo last cursor operator            |*        |
 | Ctrl+Shift+PgUp    |PgDn Move editor left/right            |*        |
