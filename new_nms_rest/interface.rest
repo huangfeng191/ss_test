@@ -188,7 +188,25 @@ Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
-
+#-----------down  网元组信息
+### 添加网元组
+POST /nms/spring/viewData/addNodeGroup
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+{
+    "nodeGroup": {# 网元组信息
+        "areaId": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506",
+        "groupName": "123",
+        "xCoordinate": "100.27",
+        "yCoordinate": "36.00",
+        "groupAddress": "123",
+        "parentId": "",
+        "remark": ""
+    },
+    # 相关的设备列表
+    "deviceIdList": ["0e575aed-32d4-4b76-b154-15f6a98a1e91", "1d295901-3745-44d5-88a6-c9e51bba5d95"]
+}
 
 ### 查询所有网元组
 GET /nms/spring/viewData/getAllGroup?token={{token}}

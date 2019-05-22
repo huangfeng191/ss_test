@@ -9,7 +9,7 @@
 > F6 左右菜单切换， Alt+up 目录的上一级
 
 
-| shortuct | user default tab rule | rating |
+| shortcut | user default tab rule | rating |
 | -------- | --------------------- | ------ |
 | ctrl+1   | vscode                |        |
 | ctrl+2   | pycharm/IntelliJ idea |        |
@@ -19,16 +19,16 @@
 
 
 
-| shortuct            | 通用应用程序                 | rating |
+| shortcut            | 通用应用程序                 | rating |
 | ------------------- | ---------------------------- | ------ |
 | F6                  | 在左右窗格中切换             |        |
 | Shift+F10           | 会出现右键快捷菜单           |        |
 | F10+ALT             | 激活当前程序的菜单栏         |        |
-| alt +space          | 窗口控制 ，最左上角功能      |        |
+| alt +space          | 窗口控制 ，最左上角功能      |    *    |
 | CTRL+F4             | 关闭当前应用程序中的当前文本 |        |
 | SHIFT+F10或鼠标右击 | 打开当前活动项目的快捷菜单   |***        |
 
-| shortuct  | 任务栏                                      | rating |
+| shortcut  | 任务栏                                      | rating |
 | --------- | ------------------------------------------- | ------ |
 | win+B     | 切换到系统托盘                              |        |
 | alt + tab | 默认切换到上一个使用的程序                  |        |
@@ -41,7 +41,7 @@ win + shift + t 切换到任务栏的下一个任务
 
 
 
-| shortuct  | 浏览文件                                                               | rating |
+| shortcut  | 浏览文件                                                               | rating |
 | --------- | ---------------------------------------------------------------------- | ------ |
 | alt+up    | 文件上一级                                                             |        |
 | alt+←     | 向后移动到上一个视图                                                   |        |
@@ -50,7 +50,7 @@ win + shift + t 切换到任务栏的下一个任务
 | BACKSPACE | 如果在“另存为”或“打开”对话框中选中了某个文件夹，则打开上一级文件夹 |        |
 
 
-| shortuct           | 系统                                         | rating   |
+| shortcut           | 系统                                         | rating   |
 | ------------------ | -------------------------------------------- | -------- |
 | win + +++          | 放大镜                                       | rating   |
 | win + l            | 锁屏                                         | rating   |
@@ -73,7 +73,7 @@ win + shift + t 切换到任务栏的下一个任务
 
 
 
-| shortuct                    | 多屏显示   | rating |
+| shortcut                    | 多屏显示   | rating |
 | --------------------------- | ---------- | ------ |
 | win+shift+ left/right arrow | 将程序换屏 |        |
 | alt+tab | 切换屏幕 |        |
