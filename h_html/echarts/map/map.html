@@ -1,0 +1,114 @@
+<script src="../../lib/jquery-1.11.1.min.js"></script>
+<script src="../js/echarts.js"></script>
+<!-- <script type="text/javascript" src="js/china.js"></script> -->
+<!-- <script src="map/js/china.js"></script> -->
+<link rel="stylesheet" type="text/css" href="../../less/test.css" />
+
+<body>
+
+  <button>forClick</button>
+  <input value="china">
+  <div id="main" class="fix-width-height normal-border">
+
+  </div>
+</body>
+<script>
+  o = {
+    showMap: function(mapName) {
+      if (mapName == 'china') {
+        jsonUrl = 'json/china.json';
+      } else {
+        jsonUrl = 'json/province/' + mapName + '.json';
+      }
+      $.get(jsonUrl, function(geoJson) {
+        debugger
+        echarts.registerMap('china', geoJson);
+        var myChart = echarts.init(document.getElementById('main'));
+        // 地图内的坐标触发
+        myChart.on("click", function(params) {
+          debugger
+        });
+        myChart.on("mousedown", function() {
+          console.log("params" + "i`m mousedown");
+        })
+        myChart.on("mouseup", function() {
+          console.log("params" + "i`m mouseup");
+        })
+
+        var option={
+          series: [{
+            type: 'map',
+            map: 'china'
+          }],
+          geo: {
+            id: 'mainGeo',
+            map: mapName,
+            scaleLimit: { min: 1, max: 3 },
+            roam: true, //是否允许拖动、缩放地图
+            zoom: 1,
+            itemStyle: {
+              color: 'rgba(210, 209, 192, 1)',
+              borderColor: '#FFFFFF',
+              borderWidth: 1,
+              borderType: 'solid'
+            },
+            regions: [{
+              name: geoJson.features[0].properties.name,
+              itemStyle: {
+                color: '#FFFFFF',
+                borderColor: '#AFAC9D',
+                borderWidth: 5,
+                borderType: 'solid',
+                shadowColor: '#787762',
+                shadowOffsetX: -5,
+                shadowOffsetY: -5,
+                opacity: 1
+              },
+              emphasis: {
+                itemStyle: {
+                  color: 'rgba(0,0,0,0)',
+                  borderColor: '#AFAC9D',
+                  borderWidth: 5,
+                  borderType: 'solid',
+                  shadowColor: '#787762',
+                  shadowOffsetX: -5,
+                  shadowOffsetY: -5,
+                  opacity: 1
+                },
+                label: false
+              }
+            }]
+          },
+          layoutCenter: ['30%', '30%']
+        };
+
+        myChart.setOption(option);
+      })
+    },
+  }
+  $(function() {
+    o.showMap("china");
+    $("button").click(function() {
+
+      o.showMap($("input").val() || "china");
+    });
+  });
+</script>
+
+<style>
+
+body {
+    font-family: inherit;
+    font-size: 14px;
+    background: #FCF7D5;
+    color: #000;
+    background-image: url(../../images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-background-origin: content-box;
+    /* Safari */
+    background-origin: content-box;
+    background: #f9f4d4;
+}
+
+</style>

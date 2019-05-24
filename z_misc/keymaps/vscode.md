@@ -18,10 +18,10 @@ https://blog.csdn.net/crper/article/details/54099319
 | Ctrl+k +p    |copy path of active file            |**        |
 | Ctrl+u    |undo last cursor operator            |*        |
 | Ctrl+Shift+PgUp    |PgDn Move editor left/right            |*        |
-| alt+shift+right arrow    |expand (扩展)选区            |*        |
-| alt+shift+left arrow    | shrink (缩小)选区            |*        |
+| alt+shift+right arrow    |expand (扩展)选区            |**        |
+| alt+shift+left arrow    | shrink (缩小)选区            |**        |
 | alt+鼠标左键    | 选择不同单词              |*        |
-| alt+n          | 聚焦下一个终端(self)       |*        |
+
 | alt+left       | 向后（预览，不修改文件） |        |
 | alt+right      | 向前（预览）             |        |
 | ctrl+shift+tab | 切换到最近使用的 tab     |        |
@@ -156,7 +156,7 @@ alt+f12 速览定义
 
 ## self keyboard
    alt+delete close 面板
-
+ | alt+n          | 聚焦下一个终端(self)       |*        | 
 
 
 
@@ -305,8 +305,6 @@ f12  转到定义
 alt+f12 速览定义
  
 
-## self keyboard
-   alt+delete close 面板
 
 
 
@@ -341,3 +339,17 @@ alt+f12 速览定义
 | -------------- | ------------------------ | ------ |
 
 | ctrl+alt+r      | REST to run             |        |
+
+
+#  self keyboard
+
+| shortuct       | view                     | rating |
+| -------------- | ------------------------ | ------ |
+
+| alt+delete close      | 面板             |        |
+| ctrl+q      | 大纲 (outline )             |        |
+
+
+
+##
+    

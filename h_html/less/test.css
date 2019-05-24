@@ -1,12 +1,15 @@
 body {
   border: 1px red solid;
 }
+body .normal-border {
+  border: 1px red solid;
+}
 body .simple-div {
   width: 70%;
   left: 100px;
   top: 100px;
 }
-
-.show-border{
-  border: 1px red solid;
+body .fix-width-height {
+  width: 1300px;
+  height: 600px;
 }

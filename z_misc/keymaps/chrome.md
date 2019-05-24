@@ -114,7 +114,9 @@ Ctrl + [切换到后一个使用的面板，类似于前进
 
 
 
-tips:
+tips and tricks:
+
+查看样式，淡颜色的样式表示是继承下来的 ***
 
 error infos  may closest info is error row then expand 
 
