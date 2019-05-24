@@ -97,72 +97,73 @@
 
         echarts.registerMap(mapName, geoJson);
         var option = {
-          "toolbox": {
-            "itemSize": 20,
-            "itemGap": 20,
-            "feature": {
-              "myTool2": {
-                "show": true,
-                "title": "全国地图",
-                "itemSize": 30,
-                "itemGap": 20,
-                "icon": "path://M24,2A22,22,0,1,0,44,33.1651514 M24,2A22,22,0,0,1,44,14.8348486 M46,16.8348486 h-10 M46,16.8348486 v-10",
-                "iconStyle": {
-                  "borderColor": "#BEBEBE",
-                  "borderWidth": 2
-                }
-              }
-            }
-          },
-          "tooltip": {
-            "trigger": "item"
-          },
+          // "toolbox": {
+          //   "itemSize": 20,
+          //   "itemGap": 20,
+          //   "feature": {
+          //     "myTool2": {
+          //       "show": true,
+          //       "title": "全国地图",
+          //       "itemSize": 30,
+          //       "itemGap": 20,
+          //       "icon": "path://M24,2A22,22,0,1,0,44,33.1651514 M24,2A22,22,0,0,1,44,14.8348486 M46,16.8348486 h-10 M46,16.8348486 v-10",
+          //       "iconStyle": {
+          //         "borderColor": "#BEBEBE",
+          //         "borderWidth": 2
+          //       }
+          //     }
+          //   }
+          // },
+          // "tooltip": {
+          //   "trigger": "item"
+          // },
           "geo": {
             "id": "mainGeo",
             "map": "xinjiang",
-            "scaleLimit": {
-              "min": 1,
-              "max": 3
-            },
-            "roam": true,
-            "zoom": 1,
-            "itemStyle": {
-              "color": "rgba(210, 209, 192, 1)",
-              "borderColor": "#FFFFFF",
-              "borderWidth": 1,
-              "borderType": "solid"
-            },
-            "regions": [{
-              "name": "新疆",
-              "itemStyle": {
-                "color": "#FFFFFF",
-                "borderColor": "#AFAC9D",
-                "borderWidth": 5,
-                "borderType": "solid",
-                "shadowColor": "#787762",
-                "shadowOffsetX": -5,
-                "shadowOffsetY": -5,
-                "opacity": 1
-              },
-              "emphasis": {
-                "itemStyle": {
-                  "color": "rgba(0,0,0,0)",
-                  "borderColor": "#AFAC9D",
-                  "borderWidth": 5,
-                  "borderType": "solid",
-                  "shadowColor": "#787762",
-                  "shadowOffsetX": -5,
-                  "shadowOffsetY": -5,
-                  "opacity": 1
-                },
-                "label": false
-              }
-            }]
+            // "scaleLimit": {
+            //   "min": 1,
+            //   "max": 3
+            // },
+            // "roam": true,
+            // "zoom": 1,
+            // "itemStyle": {
+            //   "color": "rgba(210, 209, 192, 1)",
+            //   "borderColor": "#FFFFFF",
+            //   "borderWidth": 1,
+            //   "borderType": "solid"
+            // },
+            // "regions": [{
+            //   "name": "新疆",
+            //   "itemStyle": {
+            //     "color": "#FFFFFF",
+            //     "borderColor": "#AFAC9D",
+            //     "borderWidth": 5,
+            //     "borderType": "solid",
+            //     "shadowColor": "#787762",
+            //     "shadowOffsetX": -5,
+            //     "shadowOffsetY": -5,
+            //     "opacity": 1
+            //   },
+            //   // "emphasis": {
+            //   //   "itemStyle": {
+            //   //     "color": "rgba(0,0,0,0)",
+            //   //     "borderColor": "#AFAC9D",
+            //   //     "borderWidth": 5,
+            //   //     "borderType": "solid",
+            //   //     "shadowColor": "#787762",
+            //   //     "shadowOffsetX": -5,
+            //   //     "shadowOffsetY": -5,
+            //   //     "opacity": 1
+            //   //   },
+            //   //   "label": false
+            //   // }
+            // }]
+         
           },
-          "layoutCenter": [
-            "100%",
-            "100%"
-          ]
+          // "layoutCenter": [
+          //   "100%",
+          //   "100%"
+          // ]
         };
 
         o.eMap.setOption(option);
