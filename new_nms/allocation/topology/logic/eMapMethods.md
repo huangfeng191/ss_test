@@ -33,7 +33,7 @@ reflashGraphic
 ```
 - dragPointDataClear 还原右下角的可拖动按钮
 - reflashGraphic 绑定按钮
-
+- reflashEffectPoints bind   series customs of charts 
 - init 
   -dragPointDataClear 
 
