@@ -1,17 +1,15 @@
-// normal tables 
-select * from menu ;
-select * from role_menu_ref ;
-select * from site ;
-select * from nms_log ;
-select * from shelf ;
-select * from field_data_dictionary ;
-select * from param_config ;
-select * from area ;
-select * from device_additional_info ;
-select * from device ;
-select * from alarm ;
-select * from device_role_ref ;
-select * from view_location_data ;
-select * from role ;
-select * from user_role_ref ;
-select * from users ;
+
+
+                myData.forEach(function(x) {
+                    x.value[0] = parseFloat(x.value[0]);
+                    x.value[1] = parseFloat(x.value[1]);
+                    x.value[2]=  {
+                  "id": "db9df08c"+Math.ceil(Math.random()*10000),
+                  "type": "NEG",
+                  "status": "greent",
+                  "nodeOrDevice": "2",
+                  "groupAddress": "cs111",
+                  "remark": ""
+                  }
+                    x.name=x.name+Math.ceil(Math.random()*10000);
+                  })

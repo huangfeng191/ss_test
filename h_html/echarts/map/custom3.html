@@ -40,10 +40,10 @@
     var data = [
       [10, 16, 3, 'A'],
       [16, 18, 15, 'B'],
-    //   [18, 26, 12, 'C'],
-    //   [26, 32, 22, 'D'],
-    //   [32, 56, 7, 'E'],
-    //   [56, 62, 17, 'F']
+      //   [18, 26, 12, 'C'],
+      //   [26, 32, 22, 'D'],
+      //   [32, 56, 7, 'E'],
+      //   [56, 62, 17, 'F']
     ];
     var colorList = ['#4f81bd', '#c0504d', '#9bbb59', '#604a7b', '#948a54', '#e46c0b'];
 
@@ -85,9 +85,18 @@
           tooltip: [0, 1, 2],
           itemName: 3
         },
-        data: data
+        data: [{
+            "value": [ 10, 16, 3, "A" ],
+            "itemStyle": { "normal": { "color": "#4f81bd" } }
+          },
+          {
+            "value": [ 16, 18, 15, "B" ],
+            "itemStyle": { "normal": { "color": "#c0504d" } }
+          }
+        ]
       }]
     };;
+    debugger
     myChart = echarts.init(document.getElementById("main"));
     myChart.setOption(option)
 

@@ -10,3 +10,6 @@ Object.values(Object.assign(...b))
 
 
 Object.values(a.formDefinition.formDefinitions)
+
+>判断对象是否未空，
+ Object.values(option||{}).length==0

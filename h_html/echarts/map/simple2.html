@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="../../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/echarts.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../less/test.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>重新生成</button>
+  <input value="simpleBar" id="option">
+  <div id="main" class="fix-width-height normal-border">
+
+  </div>
+</body>
+<script>
+  function render({ type, constraint, chart }) {
+    var option = {
+      xAxis: {
+        type: 'category',
+        data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
+      },
+      yAxis: {},
+      series: [{
+          type: 'bar',
+          name: '2015',
+          data: [89.3, 92.1, 94.4, 85.4]
+        },
+        {
+          type: 'bar',
+          name: '2016',
+          data: [95.8, 89.4, 91.2, 76.9]
+        },
+        {
+          type: 'bar',
+          name: '2017',
+          data: [97.7, 83.1, 92.5, 78.1]
+        }
+      ]
+    }
+
+    chart.setOption(option);
+  }
+
+  $(function() {
+    myChart = echarts.init(document.getElementById("main"));
+    var type = $("#option").val()
+    render({ chart: myChart });
+    $("button").on("click", function() {
+
+
+      function renderItem(params, api) {
+        debugger
+        var yValue = api.value(2);
+        var start = api.coord([api.value(0), yValue]);
+        var size = api.size([api.value(1) - api.value(0), yValue]);
+        var style = api.style();
+
+        return {
+          type: 'rect',
+          shape: {
+            x: start[0] + 1,
+            y: start[1],
+            width: size[0] - 2,
+            height: size[1]
+          },
+          style: style
+        };
+      }
+
+      series = {
+
+        xAxis: [{
+          type: 'value'
+
+        }],
+        yAxis: [{
+          type: 'value',
+        }],
+        series: {
+          name: 'height',
+          type: 'custom',
+          renderItem: renderItem,
+          label: {
+            normal: {
+              show: true,
+              position: 'insideTop'
+            }
+          },
+          encode: {
+            // x: [0, 1],
+            y: 2,
+          },
+          data: [
+            [8, 10, 3],
+            [10, 12, 11],
+            [12, 14, 6],
+            [14, 16, 3],
+            [16, 18, 5],
+            [18, 20, 2],
+            [20, 22, 1]
+          ]
+        }
+      };
+      myChart.clear();
+      myChart.setOption(series);
+
+    })
+
+    $("button").click();
+
+
+  });
+</script>
+
+</html>
