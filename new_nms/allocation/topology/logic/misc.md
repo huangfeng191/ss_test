@@ -172,3 +172,54 @@ getEffectLines(true) 获取线段，起止都是设备
 /nms/spring/viewData/deletePathByObject
 
 {"aNe":"192.168.1.33","zNe":"192.168.99.98","pathType":"2"}
+
+
+
+此方法  获取设备 拓扑  etc information ,render map ..
+
+queryDevice
+
+
+getAllVOPath
+
+path 链路信息
+pathLinkIdList
+
+
+
+```json
+
+{"path":{"aNe":"192.168.1.39","zNe":"192.168.1.99","pathName":"白广路SM2000_PRC1,白广路SM2000_PRC","pathType":"2","remark":""},"pathLinkIdList":[{"aNode":"192.168.1.39","zNode":"192.168.1.99","aSlot":"102.53,29.14","aPort":"106.07,28.11","zSlot":"","zPort":"","linkName":"45","linkStatus":"0","linkType":2},{"aNode":"192.168.1.39","zNode":"192.168.1.99","aSlot":"105.02,33.39","aPort":"102.53,29.14","zSlot":"","zPort":"","linkStatus":"0","linkType":2}]}
+```
+
+
+
+
+
+reflashEffectPoints end 
+
+
+setTimeout
+
+reflashLine
+
+reflashEffectPoints
+
+
+reflashEffectPoints
+
+reflashGraphic
+
+reflashLine
+
+reflashEffectPoints
+
+reflashGraphic
+
+reflashLine
+
+reflashLine remove  lines.length =0
+
+
+
+同步所有报警接口 /nms/spring/device/1d295901-3745-44d5-88a6-c9e51bba5d95/syncAlarms
