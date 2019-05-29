@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/raphael.js"></script>
+  <link rel="stylesheet" href="../less/test.css">
+</head>
+
+<body>
+
+  <div id="paper" class="main main1 show-border">
+  </div>
+  
+
+
+</body>
+<script>
+  window.onload = function() {
+    
+
+    var R = Raphael("paper", 400, 300);
+    var p = R.path('M0 0L100 0L50 80Z');
+
+    p.attr({ "fill": "green", 'opacity': 0.8 });
+
+    var start = function(x, y) {
+        this.attr({ opacity: 1 });
+        this.lastX = x;
+        this.lastY = y;
+      },
+      move = function(dx, dy, x, y) {
+        var deltaX = x - this.lastX;
+        var deltaY = y - this.lastY;
+        this.translate(deltaX, deltaY);
+        this.lastX = x;
+        this.lastY = y;
+      },
+      up = function() {
+        this.attr({ opacity: 0.8 });
+      };
+
+    p.drag(move, start, up);
+  }
+</script>
+
+</html>

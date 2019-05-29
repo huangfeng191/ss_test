@@ -3,8 +3,16 @@
 2. base.md
 3. concept.md
 4. readme.md
-   
-## do new module
+5. temporary.js 
+
+## create module  
+1. common.js
+2. common.md
+3. recycle.md
+4. recycle.js
+
+
+### do new sub-module
 1. misc.md  第一次的时候写的代码
 2. misc.js
 3. concept.md 模块中用到的字段及其含义

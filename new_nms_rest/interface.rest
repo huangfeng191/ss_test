@@ -111,7 +111,7 @@ Cookie:JSESSIONID={{token}}
 
 
 
-### 获取设备的拓扑信息 (返回值根据ip )
+### 获取设备的拓扑信息 (返回值根据ip ) 物理 逻辑 
 
 GET /nms/spring/viewData?areaId=
 &token={{token}}
@@ -233,7 +233,7 @@ Cookie:JSESSIONID={{token}}
 
 
 
-### logic chart 
+### pathType lines : logic  1 , physical 2 
 GET /nms/spring/viewData/getAllPath?token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
