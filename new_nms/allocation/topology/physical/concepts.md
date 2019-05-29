@@ -30,11 +30,12 @@ var lineStatus = {
 ```
 
 
-SSM 编码  优选顺序   质量等级描述  对应我国时钟等级
-0010     最高       QL_PRC        1级基准时钟          PLR 也是一级基准时钟
-0000     ↓          QL_UNK        质量等级未知
-0100     ↓          QL_SSUT       2级节点时钟
-1000     ↓          QL_SSUL       3级节点时钟
-1011     ↓          QL_SEC        SDH网元设备时钟
-1111     最低        QL_DNU       同步信号不可用
+
+
+
+physical topology
+
+myData:  nodeOrDevice 2 NEG    netElenetGroup
+         nodeOrDevice 1 point 
+
 

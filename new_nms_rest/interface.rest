@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=4920492F770BF0E287A4ED6CF93EA74B
+@token=4B360BCB310E8E761222B94F2B3259BF
 @deviceId=951d1cef-08f1-4185-9b0a-e512855544bb
 @deviceId2=0e575aed-32d4-4b76-b154-15f6a98a1e91
 
@@ -108,12 +108,6 @@ Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
-
-### logic chart 
-GET /nms/spring/viewData/getAllPath?token={{token}}
-Host: {{host}}
-Content-Type: application/json;charset=UTF-8
-Cookie:JSESSIONID={{token}}
 
 
 
@@ -224,10 +218,23 @@ Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
-### 获取所有的 路径
+# ### 获取所有的 链路 pyhsical topo
+# path 链路信息
+# pathLinkIdList   
+
 POST /nms/spring/viewData/getAllVOPath?token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 {"path":{}}
+
+
+
+
+
+### logic chart 
+GET /nms/spring/viewData/getAllPath?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
