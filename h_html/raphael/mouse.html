@@ -1,0 +1,206 @@
+<!-- can delete obj  -->
+<!DOCTYPE html>
+<html lang="en" class="normal-fill-in">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/raphael.js"></script>
+  <link rel="stylesheet" href="../less/test.css">
+</head>
+
+<body class="normal-background  normal-margin-left overflow-hidden normal-fill-in">
+  <button onclick="operate('line')">deleteLine</button>
+  <button onclick="operate('shape')">deleteShape</button>
+  <div id="paper" class="normal-border normal-margin-center overflow-auto normal-fill-in" style="width:580px;height:580px;">
+  </div>
+
+
+
+</body>
+<script>
+  Raphael.fn.connection = function(obj1, obj2, line, bg) {
+    if (obj1.line && obj1.from && obj1.to) {
+      line = obj1;
+      obj1 = line.from;
+      obj2 = line.to;
+    }
+    var bb1 = obj1.getBBox(),
+      bb2 = obj2.getBBox(),
+      p = [{ x: bb1.x + bb1.width / 2, y: bb1.y - 1 },
+        { x: bb1.x + bb1.width / 2, y: bb1.y + bb1.height + 1 },
+        { x: bb1.x - 1, y: bb1.y + bb1.height / 2 },
+        { x: bb1.x + bb1.width + 1, y: bb1.y + bb1.height / 2 },
+        { x: bb2.x + bb2.width / 2, y: bb2.y - 1 },
+        { x: bb2.x + bb2.width / 2, y: bb2.y + bb2.height + 1 },
+        { x: bb2.x - 1, y: bb2.y + bb2.height / 2 },
+        { x: bb2.x + bb2.width + 1, y: bb2.y + bb2.height / 2 }
+      ],
+      d = {},
+      dis = [];
+    for (var i = 0; i < 4; i++) {
+      for (var j = 4; j < 8; j++) {
+        var dx = Math.abs(p[i].x - p[j].x),
+          dy = Math.abs(p[i].y - p[j].y);
+        if ((i == j - 4) || (((i != 3 && j != 6) || p[i].x < p[j].x) && ((i != 2 && j != 7) || p[i].x > p[j].x) && ((i != 0 && j != 5) || p[i].y > p[j].y) && ((i != 1 && j != 4) || p[i].y < p[j].y))) {
+          dis.push(dx + dy);
+          d[dis[dis.length - 1]] = [i, j];
+        }
+      }
+    }
+    if (dis.length == 0) {
+      var res = [0, 4];
+    } else {
+      res = d[Math.min.apply(Math, dis)];
+    }
+    var x1 = p[res[0]].x,
+      y1 = p[res[0]].y,
+      x4 = p[res[1]].x,
+      y4 = p[res[1]].y;
+    dx = Math.max(Math.abs(x1 - x4) / 2, 10);
+    dy = Math.max(Math.abs(y1 - y4) / 2, 10);
+    var x2 = [x1, x1, x1 - dx, x1 + dx][res[0]].toFixed(3),
+      y2 = [y1 - dy, y1 + dy, y1, y1][res[0]].toFixed(3),
+      x3 = [0, 0, 0, 0, x4, x4, x4 - dx, x4 + dx][res[1]].toFixed(3),
+      y3 = [0, 0, 0, 0, y1 + dy, y1 - dy, y4, y4][res[1]].toFixed(3);
+    var path = ["M", x1.toFixed(3), y1.toFixed(3), "C", x2, y2, x3, y3, x4.toFixed(3), y4.toFixed(3)].join(",");
+    if (line && line.line) {
+      line.bg && line.bg.attr({ path: path });
+      line.line.attr({ path: path });
+    } else {
+      var color = typeof line == "string" ? line : "#000";
+      return {
+        bg: bg && bg.split && this.path(path).attr({ stroke: bg.split("|")[0], fill: "none", "stroke-width": bg.split("|")[1] || 3 }),
+        line: this.path(path).attr({ stroke: color, fill: "none" }),
+        from: obj1,
+        to: obj2
+      };
+    }
+  };
+  
+
+  function operate(target) {
+    if(target=="line"){
+      var c = connections;
+    deleteShape(connections[0].line.node)
+    }
+    if(target=="shape"){
+      var c = shapes;
+      debugger
+    deleteShape(shapes[0].node)
+    shapes.splice(0,1)
+    }
+    debugger
+  }
+
+  function deleteShape(ele) {
+    ele.parentElement.removeChild(ele)
+
+  }
+
+
+  window.onload = function() {
+
+    var paperDocument = document.getElementById("paper")
+
+
+
+
+    images = {
+      "ss": "../images/netTopu/netNode1.png"
+    }
+
+    shapeImages = [{
+      "type": "ss",
+      "id":"1",
+      "position": { "left": 20, "top": 30 }
+    }, {
+      "type": "ss",
+      "id":"2",
+      "position": { "left": 120, "top": 30 }
+    }, {
+      "type": "ss",
+      "id":"3",
+      "position": { "left": 220, "top": 30 }
+    }]
+
+
+
+
+
+    R = Raphael("paper", paperDocument.clientWidth - 4, paperDocument.clientHeight - 4);
+    // var p = R.path('M0 0L100 0L50 80Z');
+    // var p= R.image()
+    // 引入图片
+    // Raphael可以使用paper.image()方法引入图片。该方法有五个参数：src、x、y、width、height（源图像的URI、x坐标、y坐标、宽度、高度）。
+
+
+
+
+
+
+    var start = function(x, y) {
+        this.attr({ opacity: 1 });
+        this.lastX = x;
+        this.lastY = y;
+      },
+      move = function(dx, dy, x, y) {
+        var deltaX = x - this.lastX;
+        var deltaY = y - this.lastY;
+
+        var minTop = this.paper.canvas.parentElement.offsetTop;
+        var paperHeight = this.paper.height;
+        var shapeHeight = this.attrs.height / 2;
+        var scrollTop = this.paper.canvas.parentElement.scrollTop;
+        if (y < minTop + shapeHeight ||
+          y + shapeHeight + scrollTop > minTop + paperHeight
+        ) {
+          deltaY = 0;
+        }
+        var minLeft = this.paper.canvas.parentElement.offsetLeft;
+        var paperWidth = this.paper.width;
+        var shapeWidth = this.attrs.width / 2;
+        if (x < minLeft + shapeWidth ||
+          x + shapeWidth > minLeft + paperWidth
+        ) {
+          deltaX = 0;
+        }
+
+
+
+        this.translate(deltaX, deltaY);
+        this.lastX = x;
+        this.lastY = y;
+
+        for (var i = connections.length; i--;) {
+          R.connection(connections[i]);
+        }
+
+
+      },
+      up = function() {
+        this.attr({ opacity: 0.8 });
+      };
+    connections = []
+    shapes = [
+
+    ];
+    shapeImages.forEach(function(x) {
+      var position = x.position;
+      var p = R.image("../images/netTopu/netNode1.png", position.left, position.top, 20, 20);
+      p.attr({ "fill": "green", 'opacity': 0.8 }).data("o", x);
+      p.drag(move, start, up);
+      shapes.push(p);
+    })
+    connection=R.connection(shapes[0], shapes[1], "#fff")
+    connection.line.mousedown(function(handler){
+      debugger
+    })
+    connections.push(connection);
+
+  }
+</script>
+
+</html>
