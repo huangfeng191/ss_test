@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "git commit",
+            "label": "git commit-a",
             "type": "shell",
             "command": "git commit -a -m sys",
             "problemMatcher": []
@@ -14,6 +14,10 @@
             "type": "shell",
             "command": "git push",
             "problemMatcher": []
+        },
+        {
+            "label": "git-commit-push",
+            "dependsOn": ["git commit-a", "git push"]
         },
         {
             "label": "start-new-nginx",
