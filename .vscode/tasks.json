@@ -17,7 +17,9 @@
         },
         {
             "label": "git-commit-push",
-            "dependsOn": ["git commit-a", "git push"]
+            "type": "shell",
+            "command": "git push",
+            "dependsOn": ["git commit-a"]
         },
         {
             "label": "start-new-nginx",
