@@ -10,13 +10,7 @@
             "problemMatcher": []
         },
         {
-            "label": "git push",
-            "type": "shell",
-            "command": "git push",
-            "problemMatcher": []
-        },
-        {
-            "label": "git-commit-push",
+            "label": "git-commit-a -push",
             "type": "shell",
             "command": "git push",
             "dependsOn": ["git commit-a"]
