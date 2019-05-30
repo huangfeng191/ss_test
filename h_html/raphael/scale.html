@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/raphael.js"></script>
+  <link rel="stylesheet" href="../less/test.css">
+</head>
+
+<body>
+
+  <div id="paper" class="normal-border">
+  </div>
+
+
+
+</body>
+<script>
+  window.onload = function() {
+// suppose decimals
+    var paperDocument = document.getElementById("paper")
+    var paper = Raphael("paper", paperDocument.clientWidth, paperDocument.clientHeight);
+    // x  y with height 
+
+
+    var rect = paper.rect(200, 100, 60, 40).attr({
+      "fill": "green",
+      "stroke": "red" // border color of the rectangle 
+    });
+    rect.click(function() {
+      alert("hahah!");
+    })
+    // clone doesn't contain methods
+    var el = rect.clone();
+    // Each letter is a command. There are four commands:
+    //  t is for translate,
+    //  r is for rotate,
+    //  s is for scale and
+    //  m is for matrix.
+    // r45 顺时针 45 度  
+    el.transform("t300,0");
+    //  图像的所有转换
+
+// horizontal  sx number scale amount
+// vertical sy number scale amount
+// x coordinate  cx number of the centre of scale
+// y coordinate cy number of the centre of scale
+
+    el.scale(1.0,1.1)
+    console.log(el.transform());
+
+
+  }
+</script>
+
+</html>

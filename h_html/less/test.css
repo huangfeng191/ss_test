@@ -1,15 +1,37 @@
-body {
+.normal-fill-in {
+  width: 100%;
+  height: 100%;
+}
+html .overflow-hidden {
+  overflow: hidden;
+}
+html .overflow-auto {
+  overflow: auto;
+}
+html .normal-margin-top {
+  margin-top: 100px;
+}
+html .normal-margin-center {
+  margin: 0 auto ;
+}
+html .normal-margin-left {
+  margin-left: 100px;
+}
+html body {
   border: 1px red solid;
 }
-body .normal-border {
+html body.normal-background {
+  background-color: gray;
+}
+html body .normal-border {
   border: 1px red solid;
 }
-body .simple-div {
+html body .simple-div {
   width: 70%;
   left: 100px;
   top: 100px;
 }
-body .fix-width-height {
-  width: 1300px;
-  height: 600px;
+html body .fix-width-height {
+  width: 400px;
+  height: 400px;
 }

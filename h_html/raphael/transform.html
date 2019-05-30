@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/raphael.js"></script>
+  <link rel="stylesheet" href="../less/test.css">
+</head>
+
+<body>
+
+  <div id="paper" class="normal-border">
+  </div>
+
+
+
+</body>
+<script>
+  window.onload = function() {
+
+    var paperDocument = document.getElementById("paper")
+    var paper = Raphael("paper", paperDocument.clientWidth, paperDocument.clientHeight);
+    // x  y with height 
+
+
+    var rect = paper.rect(200, 200, 60, 40).attr({
+      "fill": "green",
+      "stroke": "red" // border color of the rectangle 
+    });
+    rect.click(function() {
+      alert("hahah!");
+    })
+    // clone doesn't contain methods
+    var el = rect.clone();
+    // Each letter is a command. There are four commands:
+    //  t is for translate,
+    //  r is for rotate,
+    //  s is for scale and
+    //  m is for matrix.
+    // r45 顺时针 45 度  
+    el.transform("t200,0,r45t-100,0 ");
+
+    // translate 100, 100, rotate 45°, translate -100, 0
+    // el.transform("t100,100r45t-100,0");
+
+    // if you want you can append or prepend transformations
+    el.transform("...t50,50");
+    //  dx ,dy 
+    el.translate(100,-200);
+    // el.transform(-100,-100 );
+    // el.transform("s2...");
+    // // or even wrap
+    // el.transform("t50,50...t-50-50");
+    // // to reset transformation call method with empty string
+    // el.transform("");
+    // to get current value call it without parameters
+    //  图像的所有转换
+    console.log(el.transform());
+
+
+  }
+</script>
+
+</html>
