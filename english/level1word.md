@@ -178,3 +178,13 @@ decimal
 adj. 小数的；十进位的
 n. 小数
 TOEFL | SAT | GMAT | CET6 | 商务英语 | 考研
+
+
+
+compound 
+英 /'kɒmpaʊnd/  美 /ˈkɑmˌpaʊnd/  全球(英国)  
+简明 牛津 新牛津  朗文 韦氏  柯林斯 例句  百科
+n. [化学] 化合物；混合物；复合词
+adj. 复合的；混合的
+v. 合成；混合；恶化，加重；和解，妥协
+TOEFL | SAT | GMAT | IELTS | CET6 | GRE | CET4 | 考研
