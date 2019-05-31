@@ -188,3 +188,12 @@ n. [化学] 化合物；混合物；复合词
 adj. 复合的；混合的
 v. 合成；混合；恶化，加重；和解，妥协
 TOEFL | SAT | GMAT | IELTS | CET6 | GRE | CET4 | 考研
+
+
+
+comply 
+英 /kəm'plaɪ/  美 /kəm'plaɪ/  全球(英国)  
+简明 牛津 新牛津  朗文 韦氏  柯林斯 例句  百科
+vi. 遵守；顺从，遵从；答应
+过去式 complied过去分词 complied现在分词 complying
+TOEFL | GMAT | IELTS | CET6 | GRE | 考研
