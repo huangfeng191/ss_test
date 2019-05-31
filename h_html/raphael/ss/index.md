@@ -1,0 +1,1 @@
+logicTopology.draggableShapes.init() : 创建图形拖拽
