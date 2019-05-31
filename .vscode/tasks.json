@@ -17,10 +17,10 @@
             "problemMatcher": []
         },
         {
-            "label": "git-commit-a-push",
+            "label": "git-silent-commit",
             "type": "shell",
-            "command": "git push",
-            "dependsOn": ["git commit-a"]
+            "command": "./gitSilentCommit.bat",
+            "dependsOn": []
         },
         {
             "label": "start-new-nginx",
