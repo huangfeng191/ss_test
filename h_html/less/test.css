@@ -12,7 +12,7 @@ html .normal-margin-top {
   margin-top: 100px;
 }
 html .normal-margin-center {
-  margin: 0 auto ;
+  margin: 0 auto;
 }
 html .normal-margin-left {
   margin-left: 100px;
@@ -20,8 +20,11 @@ html .normal-margin-left {
 html body {
   border: 1px red solid;
 }
-html body.normal-background {
+html body.normal-background-color {
   background-color: gray;
+}
+html body.normal-background-image {
+  background-image: url('../images/bg.jpg');
 }
 html body .normal-border {
   border: 1px red solid;
