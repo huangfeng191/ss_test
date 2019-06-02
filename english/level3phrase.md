@@ -13,3 +13,7 @@ IELTS
 The format of  的格式
 
 be similar to 与... 相似
+
+
+as for
+至于  关于   就就……方面说
