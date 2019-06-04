@@ -82,3 +82,19 @@ function render() {
     renderNodes();
 }
 render();
+
+
+
+
+
+getEffectPoints  (sync)
+
+setLineData
+    getEffectLines
+
+    reflashEffectPoints (async)
+        reflashLine (async)
+
+
+
+        getLinesAvgPoints (sync) //获取关联的点

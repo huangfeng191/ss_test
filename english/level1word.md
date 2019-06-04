@@ -197,3 +197,13 @@ comply
 vi. 遵守；顺从，遵从；答应
 过去式 complied过去分词 complied现在分词 complying
 TOEFL | GMAT | IELTS | CET6 | GRE | 考研
+
+
+stable 
+n. 马厩；牛棚
+adj. 稳定的；牢固的；坚定的
+vi. 被关在马厩
+vt. 赶入马房
+n. (Stable)人名；(英)斯特布尔
+过去式 stabled过去分词 stabled现在分词 stabling
+TOEFL | 高中 | IELTS | CET6 | CET4 | 商务英语 | 考研
