@@ -27,7 +27,7 @@
      
 
     images = {
-      "ss": "../images/netTopu/netNode1.png"
+      "ss": "../images/net_topo/netNode1.png"
     }
 
     shapeImages = [{
@@ -95,7 +95,7 @@
 
       shapeImages.forEach(function(x){
         var position=x.position;
-        var p = R.image("../images/netTopu/netNode1.png", position.left, position.top, 20, 20);
+        var p = R.image("../images/net_topo/netNode1.png", position.left, position.top, 20, 20);
         p.attr({ "fill": "green", 'opacity': 0.8 }).data("o",x);
         p.drag(move, start, up);
     })

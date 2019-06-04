@@ -20,9 +20,6 @@ html .normal-margin-center {
 html .normal-margin-left {
   margin-left: 100px;
 }
-html body {
-  border: 1px red solid;
-}
 html body.normal-background-color {
   background-color: gray;
 }

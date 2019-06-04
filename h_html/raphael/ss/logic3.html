@@ -1,0 +1,51 @@
+<!-- can delete obj  -->
+<!DOCTYPE html>
+<html lang="en" class="normal-fill-in">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../lib/raphael.js"></script>
+  <script src="./lib.js"></script>
+<script src="./logic_topo.js"></script>
+  <script src="../../lib/jquery-1.11.1.min.js"></script>
+
+  <link rel="stylesheet" href="../../less/test.css">
+
+
+</head>
+
+<body class="normal-background-image  normal-margin-left overflow-hidden normal-fill-in">
+  <button onclick="operate('line')">deleteLine</button>
+  <button onclick="operate('shape')">deleteShape</button>
+  <div class="normal-border normal-margin-center overflow-auto normal-fill-in">
+    <div id="paper" class="normal-border normal-margin-center overflow-auto normal-fill-in" style="width:580px;height:580px;">
+    </div>
+
+
+    <div class="logic-list">
+      <ul class="logic-list-right">
+        <li><img src="../../images/net_topo/netNode1.png" vendor="ss" class="nav-drag" draggable="true" data-type="node"><span class="cricle" style="background-color:#FF0000;"></span><span>严重警告</span>
+        </li>
+        <li><img src="../../images/net_topo/netNode2.png" vendor="hw" class="nav-drag" draggable="true" data-type="node"><span class="cricle" style="background-color:#FE7E1C;"></span><span>主要警告</span>
+        </li>
+        <li><img src="../../images/net_topo/netNode3.png" vendor="dt" class="nav-drag" draggable="true" data-type="node"><span class="cricle" style="background-color:#FFAA00;"></span><span>次要警告</span>
+        </li>
+        <li><img src="../../images/net_topo/netNode4.png" vendor="xt" class="nav-drag" draggable="true" data-type="node"><span class="cricle" style="background-color:#108EE9;"></span><span>事件</span>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+
+
+
+</body>
+<script>
+  logicTopology.init();
+</script>
+
+</html>

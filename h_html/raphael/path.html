@@ -22,10 +22,24 @@
   window.onload = function() {
     // suppose decimals
     var paperDocument = document.getElementById("paper")
+
+    paperDocument.oncontextmenu=function(e){
+      e.preventDefault();
+    }
+      console.log("12"+12)
+
     var paper = Raphael("paper", paperDocument.clientWidth, paperDocument.clientHeight);
     // x  y with height 
 
     var c = paper.path("M10 10L90 90L45 10Z");
+    c.mousedown(function(x){
+      console.log("x"+x)
+    })
+  
+    var p = paper.image("../images/net_topo/netNode1.png", 300, 20, 20, 20);
+      p.attr({ "fill": "green", 'opacity': 0.8 }).mousedown(function(x){
+        console.log("x"+x)
+      });
     // draw a diagonal line:
     // move to 10,10, line to 90,90
 
