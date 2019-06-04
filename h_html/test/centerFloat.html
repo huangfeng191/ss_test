@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+</head>
+
+<body>
+
+    <!-- 
+    conditions:
+     1 居中，属性是需要加在被居中元素上的
+     2 居中元素必须要有宽度
+    
+     3 针对 float: 元素如果需要居中，那么对父元素margin 0 auto;当然必须指定宽度
+    -->
+
+  <div class="normal-border">
+   
+    <div style="margin:0 auto;width:300px;">
+        <div class="fixed-width-height normal-border" style="float:left;">
+            1
+          </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

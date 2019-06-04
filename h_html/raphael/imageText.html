@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/raphael.js"></script>
+  <link rel="stylesheet" href="../less/test.css">
+</head>
+
+<body>
+
+  <div id="paper" class="normal-border">
+  </div>
+
+
+
+</body>
+<script>
+  window.onload = function() {
+
+    var paperDocument = document.getElementById("paper")
+    var paper = Raphael("paper", paperDocument.clientWidth, paperDocument.clientHeight);
+    
+    var warehouses=[1]
+    var warehousesNodes = new Array();
+    var warehousesText = new Array();
+    var radius = 30;
+    var initx = radius * 1.5;
+    var interdistance = 10;
+    var i = 0;
+    for (i = 0; i < warehouses.length; i++) {
+      warehousesNodes[i] = paper.circle(initx, i * interdistance + i * radius * 2 + initx, radius).attr({
+        gradient: '90-#FFFFFF-#64a0c1',
+        stroke: '#64a0c1',
+        cursor: 'pointer',
+        'stroke-width': 1,
+        'stroke-linejoin': 'round'
+      });
+      warehousesText[i] = paper.text(warehousesNodes[i].attr("cx"),
+        warehousesNodes[i].attr("cy")+40,
+        warehouses[i]).attr({
+        cursor: 'pointer'
+      });
+      warehousesNodes[i].pair = warehousesText[i];
+      warehousesText[i].pair = warehousesNodes[i];
+      var start = function() {
+          // storing original coordinates
+          this.ox = this.attr("cx");
+          this.oy = this.attr("cy");
+          this.attr({ opacity: 0.5 });
+          this.pair.hide();
+        },
+        move = function(dx, dy) {
+          // move will be called with dx and dy
+          this.attr({ cx: this.ox + dx, cy: this.oy + dy });
+        },
+        up = function() {
+          // restoring state
+          this.pair.attr({ x: this.attr("cx"), y: this.attr("cy") });
+          this.pair.show();
+          this.attr({ opacity: 1 });
+        };
+      warehousesNodes[i].drag(move, start, up);
+      //warehousesText[i].drag(move, start, up);
+
+    }
+
+  }
+</script>
+
+</html>

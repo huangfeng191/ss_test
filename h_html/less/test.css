@@ -34,7 +34,8 @@ html body .simple-div {
   left: 100px;
   top: 100px;
 }
-html body .fix-width-height {
+html body .fix-width-height,
+html body .fixed-width-height {
   width: 400px;
   height: 400px;
 }

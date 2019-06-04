@@ -22,31 +22,40 @@
   window.onload = function() {
 
     var paperDocument=document.getElementById("paper")
-    var R = Raphael("paper",  paperDocument.clientWidth, paperDocument.clientHeight);
+    var paper = Raphael("paper",  paperDocument.clientWidth, paperDocument.clientHeight);
     // var p = R.path('M0 0L100 0L50 80Z');
     // var p= R.image()
     // 引入图片
     // Raphael可以使用paper.image()方法引入图片。该方法有五个参数：src、x、y、width、height（源图像的URI、x坐标、y坐标、宽度、高度）。
 
 
-    var p = R.image("../images/net_topo/netNode1.png", 10, 20, 20, 20);
+    var p = paper.image("../images/net_topo/netNode1.png", 10, 20, 20, 20);
     p.attr({ "fill": "green", 'opacity': 0.8 });
+    var t=paper.text(p.attr("x")+20,
+             p.attr("y")+25,
+        "oh my god").attr({
+        cursor: 'pointer'
+      });
+      p.pair=t;
+      t.pair=p;
 
-    var start = function(x, y) {
-        this.attr({ opacity: 1 });
-        this.lastX = x;
-        this.lastY = y;
-      },
-      move = function(dx, dy, x, y) {
-        var deltaX = x - this.lastX;
-        var deltaY = y - this.lastY;
-        this.translate(deltaX, deltaY);
-        this.lastX = x;
-        this.lastY = y;
-      },
-      up = function() {
-        this.attr({ opacity: 0.8 });
-      };
+      var start = function() {
+          // storing original coordinates
+          this.ox = this.attr("x");
+          this.oy = this.attr("y");
+          this.attr({ opacity: 0.5 });
+          this.pair.hide();
+        },
+        move = function(dx, dy) {
+          // move will be called with dx and dy
+          this.attr({ x: this.ox + dx, y: this.oy + dy });
+        },
+        up = function() {
+          // restoring state
+          this.pair.attr({ x: this.attr("x")+20, y: this.attr("y")+25 });
+          this.pair.show();
+          this.attr({ opacity: 1 });
+        };
 
     p.drag(move, start, up);
   }
