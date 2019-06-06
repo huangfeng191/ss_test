@@ -25,7 +25,7 @@
          "aliasName": "",
          "phyX": "157px",  // 设备变更的时候 会影响
          "phyY": "3px",    // 设备变更的时候 会影响 
-         "addType": "2",   // 逻辑拓扑
+         "addType": "2",   // 逻辑拓扑 
          "token": "A5FC8DBCF0FD6423E266D57D53A84CBD",
          "port": 0
      }

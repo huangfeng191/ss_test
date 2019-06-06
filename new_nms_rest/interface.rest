@@ -141,7 +141,7 @@ Cookie:JSESSIONID={{token}}
     "owner": "",
     "token": "70268A44218E222A804921FD3122E905",
     "port": 0,
-    "addType": "1"
+    "addType": "1"   // 1 物理拓扑  2  /
 }
 
 
