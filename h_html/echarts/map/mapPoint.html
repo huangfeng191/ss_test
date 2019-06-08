@@ -1,0 +1,245 @@
+<script src="../../lib/jquery-1.11.1.min.js"></script>
+<script src="../js/echarts.js"></script>
+<script src="./local.js"></script>
+<!-- <script type="text/javascript" src="js/china.js"></script> -->
+<!-- <script src="map/js/china.js"></script> -->
+<link rel="stylesheet" type="text/css" href="../../less/test.css" />
+
+<body>
+
+  <button>forClick</button>
+  <input value="china">
+  <div id="main" class="fix-width-height normal-border">
+
+  </div>
+</body>
+<script>
+  o = {
+    eMap: null,
+    areaFlag: {
+      '安徽': 'anhui',
+      '澳门': 'aomen',
+      '北京': 'beijing',
+      '重庆': 'chongqing',
+      '福建': 'fujian',
+      '甘肃': 'gansu',
+      '广东': 'guangdong',
+      '广西': 'guangxi',
+      '贵州': 'guizhou',
+      '海南': 'hainan',
+      '河北': 'hebei',
+      '黑龙江': 'heilongjiang',
+      '河南': 'henan',
+      '湖北': 'hubei',
+      '湖南': 'hunan',
+      '江苏': 'jiangsu',
+      '江西': 'jiangxi',
+      '吉林': 'jilin',
+      '辽宁': 'liaoning',
+      '内蒙古': 'neimenggu',
+      '宁夏': 'ningxia',
+      '青海': 'qinghai',
+      '山东': 'shandong',
+      '上海': 'shanghai',
+      '山西': 'shanxi',
+      '陕西': 'shanxi1',
+      '四川': 'sichuan',
+      '台湾': 'taiwan',
+      '天津': 'tianjin',
+      '香港': 'xianggang',
+      '新疆': 'xinjiang',
+      '西藏': 'xizang',
+      '云南': 'yunnan',
+      '浙江': 'zhejiang'
+    },
+    init: function() {
+      var myChart = echarts.init(document.getElementById('main'));
+      // 地图内的坐标触发
+      myChart.on("click", function(params) {
+        
+        if (o["areaFlag"][params.name]) {
+          o.showMap(o["areaFlag"][params.name]);
+        } else {
+          o.showMap("china");
+        }
+
+      });
+      myChart.on("mousedown", function() {
+        console.log("params" + "i`m mousedown");
+      })
+      myChart.on("mouseup", function() {
+        console.log("params" + "i`m mouseup");
+      })
+
+
+      // myChart.on("mousemove",function(params){
+      //   console.log("params"+params.name);
+      //   
+      // })
+      myChart.on('mouseover', echarts.util.curry(function(map, params) {
+
+        console.log("params" + params.name);
+        if (params.componentType && params.componentType == 'geo' && params.geoIndex == 0) {
+          map.dispatchAction({ type: 'geoUnSelect' });
+        }
+      }, myChart));
+      o.eMap = myChart;
+    },
+    showMap: function(mapName) {
+      if (mapName == 'china') {
+        jsonUrl = 'json/china.json';
+      } else {
+        jsonUrl = 'json/province/' + mapName + '.json';
+      }
+      $.get(jsonUrl, function(geoJson) {
+
+        echarts.registerMap(mapName, geoJson);
+        var option = {
+          "toolbox": {
+            "itemSize": 20,
+            "itemGap": 20,
+            "feature": {
+              "myTool2": {
+                "show": true,
+                "title": "全国地图",
+                "itemSize": 30,
+                "itemGap": 20,
+                "icon": "path://M24,2A22,22,0,1,0,44,33.1651514 M24,2A22,22,0,0,1,44,14.8348486 M46,16.8348486 h-10 M46,16.8348486 v-10",
+                "iconStyle": {
+                  "borderColor": "#BEBEBE",
+                  "borderWidth": 2
+                }
+              }
+            }
+          },
+          "tooltip": {
+            "trigger": "item"
+          },
+          "geo": {
+            "id": "mainGeo",
+            "map": mapName,
+            "scaleLimit": {
+              "min": 1,
+              "max": 3
+            },
+            // "roam": true,
+            "zoom": 1,
+            "itemStyle": {
+              "color": "rgba(210, 209, 192, 1)",
+              "borderColor": "#FFFFFF",
+              "borderWidth": 1,
+              "borderType": "solid"
+            },
+            "regions": [{
+              "name": "中华人民共和国",
+              "itemStyle": {
+                "color": "#FFFFFF",
+                "borderColor": "#AFAC9D",
+                "borderWidth": 5,
+                "borderType": "solid",
+                "shadowColor": "#787762",
+                "shadowOffsetX": -5,
+                "shadowOffsetY": -5,
+                "opacity": 1
+              },
+              "emphasis": {
+                "itemStyle": {
+                  "color": "rgba(0,0,0,0)",
+                  "borderColor": "#AFAC9D",
+                  "borderWidth": 5,
+                  "borderType": "solid",
+                  "shadowColor": "#787762",
+                  "shadowOffsetX": -5,
+                  "shadowOffsetY": -5,
+                  "opacity": 1
+                },
+                "label": false
+              }
+            }]
+          },
+          "layoutCenter": [
+            "100%",
+            "100%"
+          ]
+        };
+
+        o.eMap.setOption(option);
+      })
+    },
+  }
+  $(function() {
+
+
+    function renderItem(params, api) {
+      var position = api.coord([api.value(0), api.value(1)]);
+      var style = api.style();
+      var styleEmphasis = api.styleEmphasis();
+      var size = 20;
+      var scale = 1;
+      
+      var type = customPoints[params.dataIndex].value[2].type;
+
+
+      return {
+        id: customPoints[params.dataIndex].value[2].id,
+        type: 'path',
+        position: [position[0] - size / 2 * scale, position[1] - size / 2 * scale],
+        scale: [scale, scale],
+        shape: {
+          d: pointPaths[type],
+          width: size,
+          height: size
+        },
+        style: {
+          stroke: style.stroke,
+          strokeWidth: style.lineWidth,
+          fill: style.fill
+        }
+      };
+
+    };
+
+
+    o.init();
+    o.showMap("china");
+    $("button").click(function() {
+
+      var points = customPoints;
+      o.eMap.setOption({
+        series: {
+          id: 'points',
+          name: 'points',
+          type: 'custom',
+          coordinateSystem: 'geo',
+          itemStyle: {
+            borderColor: '#BEBEBE',
+            borderWidth: 1,
+            color: function(params) {
+              return "yellow";
+            }
+          },
+          renderItem: renderItem,
+          zlevel: 99,
+          data: points
+        }
+      })
+
+    });
+  });
+</script>
+
+<style>
+  body {
+    font-family: inherit;
+    font-size: 14px;
+    background: #FCF7D5;
+    color: #000;
+    background-image: url(../../images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-background-origin: content-box;
+    /* Safari */
+    background-origin: content-box;
+    background: #f9f4d4;
+  }
+</style>

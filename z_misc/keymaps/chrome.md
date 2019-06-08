@@ -41,6 +41,8 @@ Elements 面板	Windows	Mac
 | alt+j        | 查看下载(sample) |  |
 | shift+w      | 当前页面重新打开浏览器  |  |
 | ctrl+shift+w | 将多窗口合并到主窗口   |  |
+| ctrl+shift+a | selected into watch   |  |
+
 
   
 
