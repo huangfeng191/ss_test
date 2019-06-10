@@ -133,6 +133,8 @@ gulp.task('default', ['browser-sync-static-none']); //定义默认任务
 
 gulp.task('ss', ['browser-sync-static']);
 
+gulp.task('t', ['browser-sync-static']);
+
 //  *********************************** build
 
 gulp.task('static_js', function() {
