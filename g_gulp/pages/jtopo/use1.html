@@ -243,7 +243,7 @@
                   topologyO.createNode.currentLink = this;
                   // 当前位置弹出菜单（div）
                   $(".net-canvas-box #net-menu").css({
-                    top: e.pageY+(document.getElementsByClassName("net-canvas-box")[0].scrollTop||0),
+                    top: e.pageY + (document.getElementsByClassName("net-canvas-box")[0].scrollTop || 0),
                     left: e.pageX
                   }).show();
                   return;
@@ -336,28 +336,28 @@
             timeout: 1000
           }).done(function(r) {
             ret = r;
-           
+
           })
         }
 
         ret["data"] = ret["netTopuList"]
-        if (ret["translateX"]){
-          ret["translateX"]=Number.parseInt(ret["translateX"]);
+        if (ret["translateX"]) {
+          ret["translateX"] = Number.parseInt(ret["translateX"]);
         }
-        if (ret["translateY"]){
-          ret["translateY"]=Number.parseInt(ret["translateY"]);
+        if (ret["translateY"]) {
+          ret["translateY"] = Number.parseInt(ret["translateY"]);
         }
 
-        $.each(ret["data"]||[],function(ai,av){
-           if(av.x){
-            av.x=Number.parseInt(av.x);
-           }
-           if(av.y){
-            av.y=Number.parseInt(av.y);
-           }
-           if(av.lineWidth){
-            av.lineWidth=Number.parseInt(av.lineWidth);
-           }
+        $.each(ret["data"] || [], function(ai, av) {
+          if (av.x) {
+            av.x = Number.parseInt(av.x);
+          }
+          if (av.y) {
+            av.y = Number.parseInt(av.y);
+          }
+          if (av.lineWidth) {
+            av.lineWidth = Number.parseInt(av.lineWidth);
+          }
         })
 
 
@@ -435,7 +435,7 @@
                   topologyO.createNode.currentLink = this;
                   // 当前位置弹出菜单（div）
                   $(".net-canvas-box #net-menu").css({
-                    top: e.pageY+(document.getElementsByClassName("net-canvas-box")[0].scrollTop||0),
+                    top: e.pageY + (document.getElementsByClassName("net-canvas-box")[0].scrollTop || 0),
                     left: e.pageX
                   }).show();
                   $(".net-canvas-box #net-menu #net_all_del").css("display", "block");
@@ -509,6 +509,32 @@
           if (topologyO.createNode.newNode) {
             // topologyO.createNode.newNode["x"] = e.x
             // topologyO.createNode.newNode["y"] = e.y
+
+
+            var t = Date.now()
+            var scrollTop = e.target.parentElement.scrollTop;
+            var scrollLeft = e.target.parentElement.scrollLeft;
+            debugger
+            if (topologyO.createNode.newNode.image.src && topologyO.createNode.newNode.image.src.match("routerNode")) {
+
+              topologyO.createNode.newNode["x"] = e.offsetX
+            } else {
+              topologyO.createNode.newNode["x"] = e.offsetX
+            }
+
+            topologyO.createNode.newNode["y"] = e.offsetY
+
+            if(topologyO.canvasInfo.obj.scene.translateX){
+              topologyO.createNode.newNode["x"]=topologyO.createNode.newNode["x"]-topologyO.canvasInfo.obj.scene.translateX
+            }
+
+            
+            if(topologyO.canvasInfo.obj.scene.translateY){
+              topologyO.createNode.newNode["y"]=topologyO.createNode.newNode["y"]-topologyO.canvasInfo.obj.scene.translateY
+            }
+
+
+
             topologyO.canvasInfo.obj.scene.add(topologyO.createNode.newNode);
           }
           topologyO.createNode.newNode = null;
