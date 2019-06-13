@@ -65,7 +65,7 @@ https://blog.csdn.net/crper/article/details/54099319
 
 
 
-| shortuct        | eidt                             | rating |
+| shortuct        | edit                             | rating |
 | --------------- | -------------------------------- | ------ |
 | ctrl+alt+ up    | 光标向上                         |        |
 | ctrl+alt+ down  | 光标向下                         |        |
@@ -216,7 +216,7 @@ https://blog.csdn.net/crper/article/details/54099319
 
 
 
-| shortuct        | eidt                             | rating |
+| shortuct        | edit                             | rating |
 | --------------- | -------------------------------- | ------ |
 | ctrl+alt+ up    | 光标向上                         |        |
 | ctrl+alt+ down  | 光标向下                         |        |
