@@ -260,3 +260,148 @@ function loadChart(y, x) {
     }
 }
 
+
+
+
+
+
+// 配置
+
+
+
+
+$scope.paginationConf = {
+    currentPage: 1,
+    totalItems: 0,
+    itemsPerPage: 10,
+    pagesLength: 15,
+    perPageOptions: [10, 20, 30, 40, 50],
+    rememberPerPage: 'perPageItems',
+    onChange: function(self){
+        if(!self) return;
+        var _self = this,
+            obj = {
+            page : _self.currentPage || 1,
+            pageSize : _self.itemsPerPage,    
+            deviceId : self.seachMod.deviceId || "",
+            performanceType : self.seachMod.performanceType  || "",
+            port : self.seachMod.port  || ""
+        };
+        publicService.loading('start');
+        publicService.doRequest("GET", "/nms/spring/performances/pMP/page", obj).success(function(r){
+            $scope.performanceConfigList = r.data.content;
+            _self.currentPage = parseInt(r.data.number + 1);
+            _self.totalItems = r.data.totalElements;
+            _self.itemsPerPage = r.data.size;
+        })
+    }
+}
+
+
+
+// 性能设置
+performanceConfig.html
+
+    设备 device.name
+    端口 port
+    类型 performanceType
+    检测周期 monitorPeriod
+    检测状态 monitorStatus  (0 否 ,其他 是)
+    监测开始时间 monitorStartTime
+    监测结束时间 monitorEndTime
+    是否自动上报 autoTrapFlag  (0 否 ，其他是)
+    操作 operate   edit: performanceConfigEditAdd(item)  delete :performanceConfigDel(item)
+
+<tr ng-repeat="item in performanceConfigList">
+    <td class="t-middle ng-block">{{item.device.name}}</td>
+    <td class="t-middle ng-block">{{item.port}}</td>
+    <td class="t-middle ng-block">{{item.performanceType}}</td>
+    <td class="t-middle ng-block">{{item.monitorPeriod}}</td>
+    <td translate="NO" class="t-middle ng-block" ng-if="item.monitorStatus === 0">否</td>
+    <td translate="YES" class="t-middle ng-block" ng-if="item.monitorStatus !== 0">是</td>
+    <td class="t-middle ng-block">{{item.monitorStartTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+    <td class="t-middle ng-block">{{item.monitorEndTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+    <td translate="NO" class="t-middle ng-block" ng-if="item.autoTrapFlag === 0">否</td>
+    <td translate="YES" class="t-middle ng-block" ng-if="item.autoTrapFlag !== 0">是</td>
+    <td class="text-center">
+        <span title="edit" ng-click="performanceConfigEditAdd(item)" class="glyphicon glyphicon-cog editBtn" style=""></span> |
+        <span title="delete" ng-click="performanceConfigDel(item)" class="glyphicon glyphicon-trash deleteBtn" style=""></span>
+    </td>
+</tr>
+<tr ng-if="performanceConfigList.length == 0"><td colspan="9" class="textCenter"><span translate="NULL_DATA">暂无数据！</span></td></tr>
+</tbody>
+
+
+
+
+
+
+performanceConfigEditAdd:
+
+
+
+设备 device.name
+端口 port
+类型 performanceType
+检测周期（秒） monitorPeriod
+检测状态 monitorStatus  c NotYes
+监测开始时间 monitorStartTime
+监测结束时间 monitorEndTime
+是否自动上报 autoTrapFlag  c NotYes
+操作 operate   edit: performanceConfigEditAdd(item)  delete :performanceConfigDel(item)
+
+
+
+
+nms/spring/performances/pMP/page?token=0F239E20BE4AD97E5E13C5F36E8BBBCD&deviceId=&page=1&pageSize=10&performanceType=&port=
+
+
+
+$scope.performanceConfigSub = function(m){
+    if(!verify.performanceConfigEditAdd(m,publicService,$translate)) {return;}
+    publicService.loading('start');
+    m.device = {id : m.device};
+    // 添加检测，检测当前端口的性能曲线是否有返回值，若无返回值，则返回失败到的提示，告诉用户无法添加该性能曲线的监测
+    publicService.doRequest("POST", "/nms/spring/performances/checkDevicePort", m).success(function(r){
+        if(r.errCode == "1"){// 失败
+            publicService.ngAlert(r.message, "danger");
+            return;
+        }else{
+            // 提交性能监测配置
+            publicService.doRequest("POST", "/nms/spring/performances/performanceMonitorParam", m).success(function(r){
+                if (r && r.errCode) {
+                    publicService.ngAlert(r.message, "danger");
+                }else{
+                    publicService.ngAlert(r.message,"success");
+                }
+            });
+        }
+    });
+}
+
+
+
+
+// 删除
+
+$scope.performanceConfigDel = function(m){ 
+    var self = this;
+        t = $translate.use() === "ch" ? "确认删除?" : "confirm delete？";
+    if(confirm(t)){
+        self.performanceConfigList.splice(self.performanceConfigList.indexOf(m),1)
+        m.delete = 1;
+        publicService.loading('start');
+        publicService.doRequest("DELETE", "/nms/spring/performances/PerformanceMonitorParam/" + m.id, {}).success(function(data){
+            publicService.loading('end');
+            var tt = $translate.use() === 'ch' ? "删除成功！" : "Delete success！";
+            publicService.ngAlert(tt,"success");
+        });
+    }
+}
+
+
+
+#current
+#history
+#set 
+#count
