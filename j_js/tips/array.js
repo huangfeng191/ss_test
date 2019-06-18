@@ -43,3 +43,10 @@ a.sort(function(x,y){
 });
 console.log("a="+a)
 
+
+
+
+// judge is null
+a=[]
+if(a){console.log(1)}else{console.log(2)}
+// console output 1 

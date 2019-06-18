@@ -15,9 +15,9 @@ Port
 
 
 设备  deviceId 
-类型 performanceFrameM c  PerformanceType 
+类型 performanceFrameM c  Performance_PerformanceType 
 端口 port    
-展示日期 endTime
+展示日期 endTime 
 模板 modelType c PerformanceModelType
 
 
@@ -302,14 +302,15 @@ $scope.paginationConf = {
 // 性能设置
 performanceConfig.html
 
-    设备 device.name
-    端口 port
-    类型 performanceType
-    检测周期 monitorPeriod
-    检测状态 monitorStatus  (0 否 ,其他 是)
-    监测开始时间 monitorStartTime
-    监测结束时间 monitorEndTime
-    是否自动上报 autoTrapFlag  (0 否 ，其他是)
+设备 deviceName  c XXX
+端口 port 
+类型 performanceType c PerformanceType
+检测周期 monitorPeriod
+检测状态 monitorStatus  NotYes
+监测开始时间 monitorStartTime d 
+监测结束时间 monitorEndTime d 
+是否自动上报 autoTrapFlag c NotYes
+
     操作 operate   edit: performanceConfigEditAdd(item)  delete :performanceConfigDel(item)
 
 <tr ng-repeat="item in performanceConfigList">
@@ -405,3 +406,184 @@ $scope.performanceConfigDel = function(m){
 #history
 #set 
 #count
+
+
+
+
+if(!verify.performanceConfigEditAdd(m,publicService,$translate)) {return;}
+		publicService.loading('start');
+		m.device = {id : m.device};
+		// 添加检测，检测当前端口的性能曲线是否有返回值，若无返回值，则返回失败到的提示，告诉用户无法添加该性能曲线的监测
+		publicService.doRequest("POST", "/nms/spring/performances/checkDevicePort", m).success(function(r){
+			if(r.errCode == "1"){// 失败
+				publicService.ngAlert(r.message, "danger");
+				return;
+			}else{
+				// 提交性能监测配置
+				publicService.doRequest("POST", "/nms/spring/performances/performanceMonitorParam", m).success(function(r){
+					if (r && r.errCode) {
+						publicService.ngAlert(r.message, "danger");
+					}else{
+						publicService.ngAlert(r.message,"success");
+					}
+				});
+			}
+        });
+        
+
+
+
+
+
+        function setValue(Record, container) {
+            for (var i = 0, Eles = jQuery(container), len = Eles.length; i < len; i++) {
+                var Ele = jQuery(Eles[i]);
+                var Field = Ele.attr("field");
+                var Type = Ele.attr("showtype");
+                var Value = getField(Record, Field);
+                switch (Type) {
+                    case "combo":
+                        {
+                            if (Value != null) {
+                                Ele.combobox("setValue", Value);
+                            }
+                            else if (Ele.attr("require") == "require") {
+                                var Items = Ele.combobox("getData");
+                                if (Items.length > 0) {
+                                    /* if (V && V.BindingDefaults && V.BindingDefaults[Ele.attr("source")])
+                                    {
+                                    Ele.combobox("setValue", V.BindingDefaults[Ele.attr("source")]);
+                                    }
+                                    else
+                                    {
+                                    Ele.combobox("setValue", Items[0].value);
+                                    }*/
+                                    Ele.combobox("setValue", Items[0].value);
+                                }
+                                else {
+                                    Ele.combobox("clear");
+                                }
+                            }
+                            else {
+                                Ele.combobox("clear");
+                            }
+                        }
+                        break;
+                    case "combotree":
+                        {
+                            if (Value != null) {
+                                Ele.combotree("setValue", Value);
+                            }
+                            else if (Ele.attr("require") == "require") {
+                                var Items = Ele.combotree("getData");
+                                //if (Items.length > 0) {
+                                //    Ele.combotree("setValue", Items[0].value);
+                                //}
+                                //else {
+                                //    Ele.combotree("clear");
+                                //}
+                            }
+                            else {
+                                Ele.combotree("clear");
+                            }
+                        }
+                        break;
+                    case "combocheck":
+                        {
+                            if (Value != null) {
+                                Ele.combobox("setValues", Value);
+                            }
+                            else if (Ele.attr("require") == "require") {
+                                var Items = Ele.combobox("getData");
+                                if (Items.length > 0) {
+                                    /*    if (V && V.BindingDefaults && V.BindingDefaults[Ele.attr("source")])
+                                    {
+                                    Ele.combobox("setValues", V.BindingDefaults[Ele.attr("source")]);
+                                    }
+                                    else
+                                    {
+                                    Ele.combobox("setValues", [Items[0].value]);
+                                    }*/
+                                    Ele.combobox("setValues", [Items[0].value]);
+                                }
+                                else {
+                                    Ele.combobox("clear");
+                                }
+                            }
+                            else {
+                                Ele.combobox("clear");
+                            }
+                        }
+                        break;
+                    case "checkbox":
+                        {
+                            if (Value == "1") {
+                                //Ele.prop("checked", "checked");
+                                Ele[0].checked = true;
+                            }
+                            else {
+                                //Ele.removeProp("checked");
+                                Ele[0].checked = false;
+                            }
+                        }
+                        break;
+                    case "datetime":
+                        {
+                            if (Value) {
+                                if (Ele.attr("valuetype") == "Number") {
+                                    Ele.val(new Date(Value * 1000).FormatString(Ele.attr("format")));
+                                }
+                                else {
+                                    Ele.val(Value);
+                                }
+                            }
+                            else {
+                                Ele.val("");
+                            }
+                        }
+                        break;
+                    default:
+                        {
+                            if (Value != null) {
+                                Ele.val(Value);
+                            }
+                            else {
+                                Ele.val("");
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <tr><td class="ta-c"><span class="circle bg-red"></span></td>
+        <td>10000</td>
+        <td>河北冀北公司SM2000_LPR</td>
+        <td>产生</td>
+        <td>MC</td>
+        <td>CRITI</td>
+        <td>Device Disconnected</td>
+        <td>2019-06-14 16:48:48</td>
+        <td>0</td>
+        <td>dt</td>
+        <td>河北</td><td id="" style="display:none">7fd8e202-1aa0-4325-983e-504652521489</td></tr>
+
+
+
+
+/nms/spring/performances/PerformanceMonitorParam/c70e663e-dd4b-43fd-839c-a8339b931ec0?token=B60CF71E4E43955C7213EB0A2960C884
+/nms/spring/performances/performanceMonitorParam/2ddb66c1-2dd3-4da3-a627-4ff1d3a59375        
