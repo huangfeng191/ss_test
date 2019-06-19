@@ -22,19 +22,16 @@
         <!-- <path d="M10 10 H 90 V 90 H 10 L 10 10" /> -->
         <!-- <path d="M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52" /> -->
         <!-- <path d="M2 2 H 42 V 12 H 12 V 42 H 2 Z M 12 12 H 52 V 52 H 12 Z" /> -->
-       <!--   <path d="M2 2 H 52 V 52 H 2 Z" /> -->
+        <!--   <path d="M2 2 H 52 V 52 H 2 Z" /> -->
         <!-- <path d="M52,25.6506 39.5,4 14.5,4 2,25.6506 14.5,47.4013 39.5,47.4013 Z" /> -->
         <!-- <path d="M52,27 27,52 2,27 27,2" />-->
-       <!-- <path d="M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 5" />  -->
-        <path d="M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52Z"
-        style="fill:rgb(255,255,255);stroke-width:1;
-stroke:rgb(0,0,0)"
-        ></path>
+        <!-- <path d="M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 5" />  -->
+        <path d="M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52Z" style="fill:rgb(255,255,255);stroke-width:1;
+stroke:rgb(0,0,0)"></path>
 
-        <rect width="16" height="16" x=18 y=17
-style="fill:rgb(255,255,255);stroke-width:1;stroke-dasharray: 1 2;
-stroke:rgb(0,0,0)"/>
-       
+        <rect width="16" height="16" x=18 y=17 style="fill:rgb(255,255,255);stroke-width:1;stroke-dasharray: 1 2;
+stroke:rgb(0,0,0)" />
+
       </svg>
 
     </div>
@@ -45,25 +42,25 @@ stroke:rgb(0,0,0)"/>
 
   }
 
-  
-/* 
-    Command	Name	Parameters
-M	moveto	(x y)+
-Z	closepath	(none)
-L	lineto	(x y)+
-H	horizontal lineto	x+
-V	vertical lineto	y+
-C	curveto	(x1 y1 x2 y2 x y)+   曲线
-S	smooth curveto	(x2 y2 x y)+
-Q	quadratic Bézier curveto	(x1 y1 x y)+
-T	smooth quadratic Bézier curveto	(x y)+
-A	elliptical arc	(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
-R	Catmull-Rom curveto*	x1 y1 (x y)+
-* Catmull-Rom curveto is a not standard SVG command and added in 2.0 to make life easier.
- */
+
+  /* 
+      Command	Name	Parameters
+  M	moveto	(x y)+
+  Z	closepath	(none)
+  L	lineto	(x y)+
+  H	horizontal lineto	x+
+  V	vertical lineto	y+
+  C	curveto	(x1 y1 x2 y2 x y)+   曲线
+  S	smooth curveto	(x2 y2 x y)+
+  Q	quadratic Bézier curveto	(x1 y1 x y)+
+  T	smooth quadratic Bézier curveto	(x y)+
+  A	elliptical arc	(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+
+  R	Catmull-Rom curveto*	x1 y1 (x y)+
+  * Catmull-Rom curveto is a not standard SVG command and added in 2.0 to make life easier.
+   */
 
 
-  $(function() {
+  $(function () {
     $("button").click(forClick);
   });
 </script>

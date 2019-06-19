@@ -34,15 +34,30 @@
     
 // <type>(<coords>)<colors>.
 //  l 线性    x1, y1, x2, y2
-var g = p1.gradient("l(0, 0, 1, 1)#000-#f00-#000");
-
-   var shape1 = p1.rect(10,20,100,30,4).attr(
+var g = p1.gradient("l(0, 0,0, 1)blue-#fff-blue");
+var gy = p1.gradient("l(0, 0,1, 0)blue-#fff-blue");
+   var shape1 = p1.rect(10,20,100,20).attr(
         {
-         "fill":"white",
-          "stroke":g,
-            "stroke-width":8
+         "fill":g,
+         
         }
     );
+
+    var shape3 = p1.rect(10,120,100,20).attr(
+        {
+         "fill":g,
+         
+        }
+    );
+
+// x y width height  
+    var shape2 = p1.rect(40,30,20,100,10).attr(
+        {
+         "fill":gy,
+         
+        }
+    );
+
     debugger
 
     

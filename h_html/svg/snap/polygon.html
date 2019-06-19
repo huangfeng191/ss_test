@@ -33,16 +33,22 @@
     // [point,point,point ]
 
 
-    var g = p1.gradient("l(0, 0, 1, 1)#000-#f00-#000");
+    var g = p1.gradient("l(0, 0,0, 1)blue-grey");
 
 
-    var shape1 = p1.polyline([10, 10, 100, 100]).attr(
+    var shape2 = p1.polyline([10, 10, 200, 10]).attr(
         {
-            "stroke":g,
-            "stroke-width":10
+            "stroke":"green"
+           
         }
     );
-    debugger
+    //   var shape1 =p1.line(50, 50, 100, 55).attr(
+    //     {
+    //         "stroke":g,
+    //         "stroke-width":10
+           
+    //     }
+    // );
 
     var shape2 = p2.polygon(10, 100, 100, 100,100,150).attr({
         "stroke":"#000",
