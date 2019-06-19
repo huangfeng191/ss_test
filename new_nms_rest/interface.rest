@@ -1,6 +1,6 @@
 @host = 127.0.0.1:60
-@token=6B01E3ECAFCF91C5FBF0D8AA33889AC8
-@deviceId=951d1cef-08f1-4185-9b0a-e512855544bb
+@token=E43AD561ABC00D8EBB25B064165B657E
+@deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=0e575aed-32d4-4b76-b154-15f6a98a1e91
 
 
@@ -247,3 +247,15 @@ GET /nms/spring/viewData/statisticsPath
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+
+
+
+### tab 板卡状态灯显示
+GET /nms/spring/deviceConfig/{{deviceId}}/getCardLed?token={{token}}&shelfIndex=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+

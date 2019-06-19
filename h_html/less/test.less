@@ -1,4 +1,9 @@
 @normal-width: 500px;
+
+@smallest-size: 16px;
+@smaller-size: 40px;
+@thin-size: 80px;
+@normal-height: 500px;
 @normal-left: 100px;
 @normal-top: 100px;
 @normal-border: 1px red solid;
@@ -10,7 +15,21 @@
     height: 100%;
 }
 
+
+.normal-float {
+    float:left;
+}
+
+.normal-fixed-size {
+    width: @normal-width;
+    height: @normal-width;
+}
+
 html {
+    margin: 0 ;
+    padding:0;
+    width: 100%;
+    height: 100%;
     font-size: 14px;
     .overflow-hidden {
         overflow: hidden;
@@ -81,6 +100,43 @@ html {
 
 
         }
-
+        .board-card{
+            width:100%;
+            height: 100%;
+            border:2px #000 solid;
+            position: relative;
+            .top-line{
+                position: absolute;
+                z-index: 999;
+                top:@thin-size;
+                width:100%;
+                height: @smallest-size;
+                box-sizing: border-box;
+                
+                border-width: 10px 0px 2px 0px;
+                border-color:#000;
+                border-style:solid;
+            }
+            .one{
+                height: 100%;
+                width:120px;
+                border-width:0 2px 0 0 ;
+                border-style: solid;
+                float:left;
+                .title{
+                    width:100%;
+                    height:@thin-size;
+                    line-height:@thin-size;
+                    text-align: center; 
+                    vertical-align: middle;
+                    margin-bottom:@smallest-size+@smaller-size;
+                }
+                .state-lamp{
+                    width:85px;
+                    margin: 0 auto;
+                    margin-bottom:@smallest-size;
+                }
+            }
+        }
     }
 }

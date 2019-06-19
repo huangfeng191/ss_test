@@ -587,3 +587,937 @@ if(!verify.performanceConfigEditAdd(m,publicService,$translate)) {return;}
 
 /nms/spring/performances/PerformanceMonitorParam/c70e663e-dd4b-43fd-839c-a8339b931ec0?token=B60CF71E4E43955C7213EB0A2960C884
 /nms/spring/performances/performanceMonitorParam/2ddb66c1-2dd3-4da3-a627-4ff1d3a59375        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function queryInfo(event, tab, id) {
+    var $dom;
+    if (tab == "set" || tab == "current" || tab == "history") {
+      if (id) {
+        $dom = $($("#" + id));
+      } else {
+        $dom = $(event.target).offsetParent(".search-row");
+
+      }
+      var params = {}
+      if ($dom.find("[qField='deviceId']")) { params.deviceId = $dom.find("[qField='deviceId']").val() }
+      if ($dom.find("[qField='performanceFrameM']")) { params.performanceFrameM = $dom.find("[qField='performanceFrameM']").val() }
+      if ($dom.find("[qField='port']")) { params.port = $dom.find("[qField='port']").val() }
+
+      if (tab == "history") {
+        if ($dom.find("[qField='startTime']")) { params.startTime = $dom.find("[qField='startTime']").val() }
+        if ($dom.find("[qField='endTime']")) { params.endTime = $dom.find("[qField='endTime']").val() }
+      }
+
+      $.each(params, function(oi, ov) {
+        if (ov == "请选择") params[oi] = "";
+      })
+
+      if (tab == "current" || tab == "history") {
+
+
+        HighChartQuery(params, tab, id);
+        return;
+      }
+
+
+
+      top.SsServer.getPerformancesSet(params).done(function(d) {
+
+        var fields = [{
+            "title": "设备",
+            "field": "deviceName",
+            format: function(v) {
+              return v.device.name;
+            }
+          },
+          { "title": "端口", "field": "port" },
+          { "title": "类型", "field": "performanceType", binding: "Performance_PerformanceType" },
+          { "title": "检测周期", "field": "monitorPeriod" },
+          // { "title": "检测状态", "field": "monitorStatus" },
+          { "title": "监测开始时间", "field": "monitorStartTime", format: "TimeFormatter" },
+          { "title": "监测结束时间", "field": "monitorEndTime", format: "TimeFormatter" },
+          { "title": "是否自动上报", "field": "autoTrapFlag", binding: "NotYes" },
+          {
+            "title": "操作",
+            "field": "operate",
+            format: function() {
+              return '<a class="set m-r5" href="#"  onclick="addOrEditPerformerSet(event)"></a>' +
+                '<a class="deleted" href="#" onclick="deletePerformer(event)"></a>'
+            }
+          },
+        ];
+
+        top.SsComm.setTableInfo($("#setting-table"), fields, d.content || []);
+
+
+
+      })
+    }
+  }
+
+  function HighChartQuery(params, tab, id) {
+    var data = [];
+    if (!params) {
+      return;
+    }
+    if (tab == "history") {
+      if (!params.startTime || params.startTime.match("_")) {
+        if (id) {
+          return;
+        }
+        alert("请选择开始时间");
+        return;
+      }
+
+      if (!params.endTime || params.endTime.match("_")) {
+        if (id) {
+          return;
+        }
+        alert("请选择结束");
+        return;
+      }
+
+
+    }
+
+    // 设备检查
+    if (!params.deviceId) {
+      if (id) {
+        return;
+      }
+      alert("请选择设备");
+      return;
+    }
+
+    if (!params.performanceFrameM) {
+      if (id) {
+        return;
+      }
+      alert("请选择类型");
+      return;
+    }
+    // 端口检查
+    if (!params.port) {
+      if (id) {
+        return;
+      }
+      alert("请选择端口");
+      return;
+    }
+
+    var deviceInfo = top.SsCenter.deviceInfo.details[params.deviceId] || {};
+    if (params.performanceFrameM == "mtie") {
+      time = 13;
+      if (deviceInfo.deviceType == 'SSU2000') {
+        time = 8;
+      } else if (deviceInfo.deviceType == 'TP1100') {
+        time = 6;
+      }
+    } else if (params.performanceFrameM == 'tdev') {
+      time = 11;
+      if (deviceInfo.deviceType == 'SSU2000') {
+        time = 12;
+      } else if (deviceInfo.deviceType == 'TP1100') {
+        time = 9;
+      }
+    } else if (params.performanceFrameM == "freq") {
+      time = 11;
+      if (deviceInfo.deviceType == 'TP1100') {
+        time = 60;
+      }
+    } else if (params.performanceFrameM == "phase1M") {
+      time = 11;
+      if (deviceInfo.deviceType == 'TP1100') {
+        time = 60;
+      }
+    }
+    params["limit"] = time;
+    if (tab == "current") {
+      params["startTime"] = top.SsComm.TSToString(new Date().getTime(), "yyyy-MM-dd")
+      params["endTime"] = top.SsComm.TSToString(new Date().getTime(), "yyyy-MM-dd")
+    }
+
+    top.SsServer.getForChart(params).done(function(ret) {
+      var labelData;
+      if (ret && ret.length > 0) {
+
+        if (params.performanceFrameM == "mtie" || params.performanceFrameM == "tdev") {
+          var obj = {};
+          obj.data = ret[0].coordinate;
+          obj.name = '数值';
+          data.push(obj);
+          labelData = ret[0].x;
+        } else {
+          var obj = {};
+          obj.data = ret[0].y;
+          obj.name = '数值';
+          data.push(obj);
+          labelData = ret[0].x;
+        }
+
+      } else {
+        data = 0;
+      }
+      params["domId"]=tab+"-chart";
+      if (labelData) {
+        loadChart(data, labelData, params);
+      } else {
+        loadChart(0, 0, params);
+
+      }
+    })
+
+    // 加载图表
+    function loadChart(y, x, params) {
+      if (params.performanceFrameM == "mtie") {
+        var chartName = 'MTIE';
+      } else if (params.performanceFrameM == 'tdev') {
+        var chartName = 'TDEV';
+      } else if (params.performanceFrameM == 'freq') {
+        var chartName = 'FREQ';
+      } else if (params.performanceFrameM == "phase1M") {
+        var chartName = 'Phase1M';
+      }
+      y == 0 ? datay = [{
+        name: '数值',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }] : datay = y;
+
+      if (params.performanceFrameM == "mtie") { // 初始化MTIE模板数据
+        if (params.modelType == 1) {
+          var arr = [
+            [1, 25.3],
+            [4, 26.1],
+            [10, 27.8],
+            [40, 36.0],
+            [100, 52.5],
+            [300, 126.6],
+            [900, 283.5],
+            [1800, 309.4],
+            [3600, 324.8],
+            [7200, 383.7],
+            [14400, 413.3],
+            [28800, 569.9],
+            [86400, 930.6]
+          ];
+        } else {
+          var arr = [
+            [1, 24],
+            [4, 24],
+            [10, 24],
+            [40, 50.6],
+            [100, 80],
+            [300, 133.5],
+            [900, 160],
+            [1800, 160],
+            [3600, 160],
+            [7200, 160],
+            [14400, 160],
+            [28800, 160],
+            [86400, 160]
+          ];
+        }
+        var baseData = {
+          name: '模版',
+          data: arr
+        };
+        if (y == 0) {
+          datay = [{
+            name: '数值',
+            data: [
+              [1, 0],
+              [4, 0],
+              [10, 0],
+              [40, 0],
+              [100, 0],
+              [300, 0],
+              [900, 0],
+              [1800, 0],
+              [3600, 0],
+              [7200, 0],
+              [14400, 0],
+              [28800, 0],
+              [86400, 0]
+            ]
+          }]
+        }
+        datay.push(baseData);
+      } else if (params.performanceFrameM == "tdev") { // 初始化TDEV模板数据
+        if (params.modelType == 1) {
+          var arr = [
+            [1, 3],
+            [2, 3],
+            [4, 3],
+            [8, 3],
+            [16, 3],
+            [32, 4.5],
+            [64, 15],
+            [128, 30],
+            [256, 30],
+            [512, 30],
+            [1024, 30]
+          ];
+        } else {
+          var arr = [
+            [1, 3],
+            [2, 3],
+            [4, 3],
+            [8, 4.8],
+            [16, 3],
+            [32, 4.5],
+            [64, 12],
+            [128, 12],
+            [256, 12],
+            [512, 12],
+            [1024, 12]
+          ];
+        }
+        var baseData = {
+          name: '模版',
+          data: arr
+        };
+        if (y == 0) {
+          datay = [{
+            name: '数值',
+            data: [
+              [1, 0],
+              [2, 0],
+              [4, 0],
+              [8, 0],
+              [16, 0],
+              [32, 0],
+              [64, 0],
+              [128, 0],
+              [256, 0],
+              [512, 0],
+              [1024, 0]
+            ]
+          }]
+        }
+        datay.push(baseData);
+      }
+
+      if (params.performanceFrameM == "freq" || params.performanceFrameM == "phase1M") {
+        x == 0 ? datax = arr : datax = arr;
+        var tmp_name = '性能图表';
+        $('#'+params.domId).highcharts({
+          title: {
+            text: chartName + tmp_name,
+            x: -20
+          },
+          xAxis: {
+            title: {
+              text: '/s'
+            },
+            gridLineWidth: 1,
+            categories: x,
+          },
+          yAxis: {
+            title: {
+              text: '/ns'
+            },
+            gridLineWidth: 1,
+            plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#808080'
+            }]
+          },
+          tooltip: {
+            valueSuffix: '/ns'
+          },
+          legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+          },
+          series: datay
+        });
+      } else if (params.performanceFrameM == "mtie") {
+        var tmp_name = '性能图表' ;
+        $('#'+params.domId).highcharts({
+          title: { // 标题
+            text: chartName + tmp_name
+          },
+          xAxis: { // x轴设置
+            type: 'logarithmic', // 对数
+            min: 1,
+            max: 100000,
+            endOnTick: false,
+            tickInterval: 1,
+            gridLineWidth: 1,
+            title: {
+              text: '/s'
+            }
+          },
+          yAxis: { // y轴设置
+            title: {
+              text: '/ns'
+            },
+            type: 'logarithmic',
+            minorTickInterval: 10,
+            min: 1,
+            labels: {
+              format: '{value}'
+            }
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br />',
+            pointFormat: 'x={point.x}/s,y = {point.y}/ns'
+          },
+          // 数据
+          series: datay
+        });
+      } else if (params.performanceFrameM == "tdev") {
+        var tmp_name = '性能图表';
+        $('#'+params.domId).highcharts({
+          title: { // 标题
+            text: chartName + tmp_name
+          },
+          xAxis: { // x轴设置
+            type: 'logarithmic', // 对数
+            min: 1,
+            max: 10000,
+            endOnTick: false,
+            tickInterval: 1,
+            gridLineWidth: 1,
+            title: {
+              text: '/s'
+            }
+          },
+          yAxis: { // y轴设置
+            title: {
+              text: '/ns'
+            },
+            type: 'logarithmic',
+            minorTickInterval: 10,
+            min: 0.1,
+            labels: {
+              format: '{value}'
+            }
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br />',
+            pointFormat: 'x={point.x}/s,y = {point.y}/ns'
+          },
+          // 数据
+          series: datay
+        });
+      } else {
+        var tmp_name = '性能图表'
+        $('#'+params.domId).highcharts({
+          title: {
+            text: chartName + tmp_name
+          },
+          xAxis: {
+            title: {
+              text: '/s'
+            },
+            gridLineWidth: 1,
+            tickInterval: 1,
+            categories: ['0.1', '2', '4', '10', '21', '45', '100', '213', '457', '1000', '2137', '4570', '10000', '21379', '45708', '100000', ]
+          },
+          yAxis: {
+            title: {
+              text: '/ns'
+            },
+            type: 'logarithmic',
+            minorTickInterval: 0.1
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br />',
+            pointFormat: 'y = {point.y}/ns'
+          },
+          series: datay
+        });
+      }
+    }
+
+
+  }
+
+  var setForm = {
+    render: function() {
+
+        var q = {
+          "deviceId": {
+            "data": function() {
+              a = [{ "Name": "请选择", "Value": "" }]
+              Object.values(top.SsCenter.deviceInfo.details || {}).forEach(function(device) {
+                a.push({ "Name": device.name, "Value": device.id });
+              })
+              return a;
+            },
+            "change": function(el) {
+              $el = $(el.target);
+              var $port = $el.offsetParent(".modal-content").find("[field='port']");
+              if ($el.val()) {
+                top.SsServer.getPerformancePortList($el.val()).done(function(data) {
+
+                  a = [{ "Name": "请选择", "Value": "" }]
+                  Object.values(data || {}).forEach(function(one) {
+                    a.push({ "Name": one.key, "Value": one.value });
+                  })
+
+                  top.SsComm.setSelectOption($port, a)
+                }).fail(function() {
+                  a = [{ "Name": "请选择", "Value": "" }]
+                  top.SsComm.setSelectOption($port, a)
+                })
+
+              } else {
+                a = [{ "Name": "请选择", "Value": "" }]
+                top.SsComm.setSelectOption($port, a)
+              }
+
+            }
+          },
+          "performanceType": {
+            "data": "Performance_PerformanceType"
+          },
+
+          "monitorStatus": {
+            "data": "NotYes"
+          },
+          "autoTrapFlag": {
+            "data": "NotYes"
+          },
+
+
+        }
+        $.each(q, function(oi, ov) {
+          if (typeof ov.data == "function") {
+            top.SsComm.setSelectOption($(".modal-content").find("[field=" + oi + "]"), ov.data())
+          } else {
+            top.SsComm.setSelectOption($(".modal-content").find("[field=" + oi + "]"), ov.data)
+          }
+          if (ov.change) {
+            $(".modal-content").find("[field=" + oi + "]").on("change", ov.change);
+          }
+
+        })
+
+      }
+
+      ,
+
+  }
+
+
+  function addOrEditPerformance() {
+    o = top.SsComm.getValue($(".modal-content"));
+    var verify = {
+      "deviceId": "请先选择设备",
+      "monitorPeriod": "检测周期不能未空",
+      port: "端口",
+      monitorStartTime: "监测开始时间不能未空",
+      monitorEndTime: "监测结束时间不能未空"
+    }
+    var err = ""
+    $.each(verify, function(oi, ov) {
+      if (!o[oi]) {
+        err = ov;
+        return false;
+      }
+    })
+    if (err) {
+      alert(err);
+      return
+    }
+
+
+    o.device = { id: o.deviceId };
+    var deviceDom = $("#setAddModal").find("[field='deviceId']");
+    if (deviceDom.data("id")) {
+      o["id"] = deviceDom.data("id");
+    }
+    top.SsServer.checkDevicePort(o).done(function(r) {
+        if (r && r.errCode == "1") {
+          alert(r.message)
+          return;
+        }
+        top.SsServer.setPerformanceMonitorParam(o).done(function(ret) {
+          if (ret && ret.code == "100000") {
+            queryInfo("event", 'set', 'settingQueryButton');
+            $('#setAddModal').modal("hide");
+            $('#myModalTips').html(window.top.showTips("操作成功"));
+            $('#myModalTips').modal('show');
+          } else {
+
+            alert(ret.message)
+
+          }
+        })
+      }
+
+    )
+
+
+
+
+  }
+
+  function deletePerformer($event) {
+    data = $($event.target).closest("tr").data("data");
+    data = $.extend({}, data);
+    data.delete = 1;
+
+    if (confirm("确定删除?")) {
+      top.SsServer.deletePerformanceMonitorParam(data).done(function(ret) {
+        if (ret && ret.code == "100000") {
+
+          $('#myModalTips').html(window.top.showTips("操作成功"));
+          queryInfo("event", 'set', 'settingQueryButton');
+          $('#myModalTips').modal('show');
+        } else {
+
+          alert(ret.message)
+
+        }
+      })
+
+
+
+    }
+
+  }
+
+  function addOrEditPerformerSet($event) {
+    // setForm.render();
+    var data = {
+      performanceType: "freq",
+      autoTrapFlag: "0",
+      monitorStatus: "0",
+      // monitorPeriod: 8,
+      // monitorStartTime: "2019-06-14",
+      // monitorEndTime: "2019-06-24",
+    };
+    var deviceDom = $("#setAddModal").find("[field='deviceId']");
+    if ($event) {
+      // 修改
+      $("#setAddModal .modal-title").html("性能设置修改");
+      if ($($event.target).closest("tr").data("data")) {
+        data = $($event.target).closest("tr").data("data");
+        data = $.extend({}, data);
+        data.deviceId = data.device.id;
+        data.monitorStartTime = top.SsComm.TSToString(data.monitorStartTime, "yyyy-MM-dd");
+        data.monitorEndTime = top.SsComm.TSToString(data.monitorEndTime, "yyyy-MM-dd");
+
+        deviceDom.val(data.device.id).data("id", data.id);
+        beforeSet(deviceDom);
+        $("#setAddModal").modal();
+
+        function beforeSet($el) {
+
+          var $port = $el.offsetParent(".modal-content").find("[field='port']");
+          if ($el.val()) {
+            top.SsServer.getPerformancePortList($el.val()).done(function(ret) {
+
+              a = [{ "Name": "请选择", "Value": "" }]
+              Object.values(ret || {}).forEach(function(one) {
+                a.push({ "Name": one.key, "Value": one.value });
+              })
+              top.SsComm.setSelectOption($port, a)
+
+              top.SsComm.setValue(data, $(".modal-content").find("[field]"));
+              // $("#setAddModal").modal();
+
+
+            }).fail(function() {
+              a = [{ "Name": "请选择", "Value": "" }]
+              top.SsComm.setSelectOption($port, a)
+              top.SsComm.setValue(data, $(".modal-content").find("[field]"));
+              // $("#setAddModal").modal();
+
+            })
+
+          } else {
+            a = [{ "Name": "请选择", "Value": "" }]
+            top.SsComm.setSelectOption($port, a)
+            top.SsComm.setValue(data, $(".modal-content").find("[field]"));
+          }
+
+        }
+
+
+
+      }
+    } else {
+      deviceDom.val("").data("id", "");
+      $("#setAddModal .modal-title").html("性能设置添加");
+      top.SsComm.setValue(data, $(".modal-content").find("[field]"));
+      $("#setAddModal").modal();
+    }
+
+  }
+  $(document).ready(function() {
+
+    //显示
+    window.parent.showNMRight();
+    $.datetimepicker.setLocale('ch');
+
+    setQFieldOptions();
+    setForm.render();
+
+    function setQFieldOptions() {
+      var q = {
+        "[qField='deviceId']": {
+          "data": function() {
+            a = [{ "Name": "请选择", "Value": "" }]
+            Object.values(top.SsCenter.deviceInfo.details || {}).forEach(function(device) {
+              a.push({ "Name": device.name, "Value": device.id });
+            })
+            return a;
+          },
+          "change": function(el) {
+            $el = $(el.target);
+            var $port = $el.offsetParent(".search-row").find("[qField='port']");
+            if ($el.val()) {
+              top.SsServer.getPerformancePortList($el.val()).done(function(data) {
+
+                a = [{ "Name": "请选择", "Value": "" }]
+                Object.values(data || {}).forEach(function(one) {
+                  a.push({ "Name": one.key, "Value": one.value });
+                })
+
+                top.SsComm.setSelectOption($port, a)
+              }).fail(function() {
+                a = [{ "Name": "请选择", "Value": "" }]
+                top.SsComm.setSelectOption($port, a)
+              })
+            } else {
+              a = [{ "Name": "请选择", "Value": "" }]
+              top.SsComm.setSelectOption($port, a)
+            }
+
+          }
+        },
+        "[qField='performanceFrameM']": {
+          "data": "Performance_PerformanceType"
+        }
+      }
+      $.each(q, function(oi, ov) {
+        if (typeof ov.data == "function") {
+          top.SsComm.setSelectOption($(oi), ov.data())
+        } else {
+          top.SsComm.setSelectOption($(oi), ov.data)
+        }
+        if (ov.change) {
+          $(oi).on("change", ov.change);
+        }
+      })
+
+    }
+
+
+
+
+    //日期时间选择器
+    $('.datetimepicker').datetimepicker({
+      lang: "ch", //语言选择中文 注：旧版本 新版方法：$.datetimepicker.setLocale('ch');
+      //   format: "Y-m-d h:i", //格式化日期yyyy-mm-dd hh:ii
+
+      format: "Y-m-d", //格式化日期yyyy-mm-dd
+      timepicker: false, //关闭时间选项
+      mask: true
+      //          yearStart:2000,     //设置最小年份
+      //          yearEnd:2050,        //设置最大年份
+      //          todayButton:false    //关闭选择今天按钮
+    });
+
+    //图表 告警类型
+    var data1 = [{
+      name: '数据',
+      data: [
+        [1, 3],
+        [10, 4],
+        [100, 5],
+        [1000, 30],
+        [10000, 40],
+        [100000, 100],
+      ]
+    }, {
+      name: '模板',
+      data: [
+        [1, 30],
+        [6, 32],
+        [9, 40],
+        [20, 50],
+        [600, 140],
+        [1000, 300],
+        [10000, 400],
+        [100000, 1000],
+      ]
+    }];
+    initChar('current-chart', 'MTIE性能表', data1);
+
+
+    var data2 = [{
+      name: '数据',
+      data: [
+        [1, 3],
+        [10, 4],
+        [100, 5],
+        [1000, 30],
+        [10000, 40],
+        [100000, 100],
+      ]
+    }, {
+      name: '模板',
+      data: [
+        [1, 30],
+        [6, 32],
+        [9, 40],
+        [20, 60],
+        [600, 140],
+        [1000, 300],
+        [10000, 400],
+        [100000, 1000],
+      ]
+    }];
+    initChar('history-chart', 'MTIE性能表', data2);
+
+
+
+
+
+
+
+  });
+
+
+  //tagId string 节点id
+  //title string 表格标题
+  //data array 数据
+  function initChar(tagId, title, data) {
+
+    var chart = Highcharts.chart(tagId, {
+      chart: {
+        backgroundColor: '#F6F3D6',
+        type: 'spline'
+      },
+      title: {
+        text: title
+      },
+      subtitle: {
+        text: ''
+      },
+      xAxis: {
+        type: 'logarithmic', // 对数
+        min: 1,
+        max: 100000,
+        logBase: 10,
+        endOnTick: false,
+        tickInterval: 1,
+        gridLineWidth: 1,
+        title: {
+          text: '/s'
+        }
+      },
+      colors: ['#0D908B', '#000'],
+      yAxis: {
+        title: {
+          text: 'ns'
+        },
+        type: 'logarithmic',
+        minorTickInterval: 10,
+        min: 1,
+        labels: {
+          format: '{value}'
+        }
+      },
+      tooltip: {
+        headerFormat: '<b>{series.name}</b><br>',
+        //  pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+      },
+      plotOptions: {
+        spline: {
+          marker: {
+            enabled: true
+          }
+        }
+      },
+      series: data
+    });
+
+  }
+
+
+
+
+
+
+
+
+  var tmp_name = '性能图表' ;
+  $('#'+params.domId).highcharts({
+    chart: {
+  backgroundColor: '#F6F3D6',
+  type: 'spline'
+},
+    title: { // 标题
+      text: chartName + tmp_name
+    },
+    subtitle: {
+  text: ''
+},
+    xAxis: { // x轴设置
+      type: 'logarithmic', // 对数
+      min: 1,
+      max: 100000,
+      endOnTick: false,
+      tickInterval: 1,
+      gridLineWidth: 1,
+      title: {
+        text: '/s'
+      }
+    },
+    colors: ['#0D908B', '#000'],
+    yAxis: { // y轴设置
+      title: {
+        text: '/ns'
+      },
+      type: 'logarithmic',
+      minorTickInterval: 10,
+      min: 1,
+      labels: {
+        format: '{value}'
+      }
+    },
+    plotOptions: {
+      spline: {
+        marker: {
+          enabled: true
+        }
+      }
+    },
+    tooltip: {
+      headerFormat: '<b>{series.name}</b><br />',
+      // pointFormat: 'x={point.x}/s,y = {point.y}/ns'
+    },
+    // 数据
+    series: datay
+  });
+
+
+
+

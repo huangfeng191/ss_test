@@ -47,3 +47,13 @@ Communication to peer card failed
 
 
 配置管理这块坐下来
+
+
+
+
+
+show status 
+
+show ref
+
+
