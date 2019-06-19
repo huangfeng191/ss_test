@@ -85,7 +85,7 @@ html body .board-card .top-line {
 }
 html body .board-card .one {
   height: 100%;
-  width: 120px;
+  width: 90px;
   border-width: 0 2px 0 0 ;
   border-style: solid;
   float: left;
@@ -101,7 +101,8 @@ html body .board-card .one .title {
 html body .board-card .one .state-lamp {
   width: 80px;
   margin: 0 auto;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
+  padding-left: 6px;
 }
 html body .board-card .one .state-lamp span {
   display: inline-block;

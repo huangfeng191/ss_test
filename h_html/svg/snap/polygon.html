@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/snap.svg.js"></script>
+</head>
+
+<body>
+
+  <?xml version="1.0" standalone="no"?>
+
+  <svg style="float:left;border:1px red solid;" width="500px" height="500px" id="paper1" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  </svg>
+
+  <svg style="float:left;border:1px red solid;" width="500px" height="500px" id="paper2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  </svg>
+
+
+</body>
+
+<script>
+  window.onload = function() {
+    var p1 = Snap("#paper1");
+    var p2 = Snap("#paper2");
+    debugger
+    // Lets create big circle in the middle:
+    // var bigCircle = paper.circle(150, 150, 100);
+    // point=[x,y]
+    // [point,point,point ]
+
+
+    var g = p1.gradient("l(0, 0, 1, 1)#000-#f00-#000");
+
+
+    var shape1 = p1.polyline([10, 10, 100, 100]).attr(
+        {
+            "stroke":g,
+            "stroke-width":10
+        }
+    );
+    debugger
+
+    var shape2 = p2.polygon(10, 100, 100, 100,100,150).attr({
+        "stroke":"#000",
+        "stroke-width":10,
+        "fill":"blue"
+    });
+  }
+</script>
+
+</html>

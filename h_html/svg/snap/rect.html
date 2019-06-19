@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/snap.svg.js"></script>
+</head>
+
+<body>
+
+  <?xml version="1.0" standalone="no"?>
+
+  <svg style="float:left;border:1px red solid;" width="500px" height="500px" id="paper1" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  </svg>
+
+  <svg style="float:left;border:1px red solid;" width="500px" height="500px" id="paper2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  </svg>
+
+
+</body>
+
+<script>
+  window.onload = function() {
+    var p1 = Snap("#paper1");
+    var p2 = Snap("#paper2");
+    debugger
+
+//  x y width height   rx  ry 
+// rx horizontal radius for rounded corners, default is 0 圆角
+// ry vertical radius for rounded corners, default is rx or 0
+    
+// <type>(<coords>)<colors>.
+//  l 线性    x1, y1, x2, y2
+var g = p1.gradient("l(0, 0, 1, 1)#000-#f00-#000");
+
+   var shape1 = p1.rect(10,20,100,30,4).attr(
+        {
+         "fill":"white",
+          "stroke":g,
+            "stroke-width":8
+        }
+    );
+    debugger
+
+    
+  }
+</script>
+
+</html>
