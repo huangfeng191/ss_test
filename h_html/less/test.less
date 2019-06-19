@@ -2,6 +2,8 @@
 
 @smallest-size: 16px;
 @smaller-size: 40px;
+@small-size: 85px;
+@thinner-size: 42px;
 @thin-size: 80px;
 @normal-height: 500px;
 @normal-left: 100px;
@@ -132,9 +134,14 @@ html {
                     margin-bottom:@smallest-size+@smaller-size;
                 }
                 .state-lamp{
-                    width:85px;
+                    width:@thin-size;
                     margin: 0 auto;
                     margin-bottom:@smallest-size;
+                    span{
+                        display: inline-block;
+                        width: @thinner-size;
+                        font-size:12px;
+                    }
                 }
             }
         }

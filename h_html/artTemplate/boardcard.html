@@ -13,13 +13,13 @@
   <script src="../js/test.js"></script>
 </head>
 
+<button>生成</button>
+
 <body class="normal-fill-in" style="width:calc(100% - 20px);height: calc(100% - 100px);">
-
-
-  <div class="normal-fill-in">
+  <div class="normal-fill-in" id="main-board-card">
     <div class="board-card">
       <div class="top-line"></div>
-      <div class="one">
+      <!-- <div class="one">
         <div class="title">钟卡</div>
         <div>
           <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/grey.png" alt=""></div>
@@ -34,14 +34,54 @@
           <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/blink-green.gif" alt=""></div>
           <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/green.png" alt=""></div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
 </body>
 <script>
-  function showOtherPageMethod() {
+  function forClick() {
     debugger
+
+    var temp = template.compile(jQuery.GetTemplate(function() {
+      /*
+            {{each data o i}}
+                <div class="one">
+                  <div class="title">{{o.title}}</div>
+                  <div>
+                    {{each o.cardLed led j }}
+                        <div class ='state-lamp'>
+                          <span>{{led.name}}</span> 
+                          
+                          <img style="width:15px;" src="../images/board-card/{{led.img}}" alt=""></div>
+                    {{/each}}
+                    
+                  </div>
+                </div>
+            {{/each}}    
+
+
+              */
+    }));
+
+    var a = [{
+      "title": "钟卡",
+      "cardLed": [
+        { "name": "freeRun", "img": "green.png" },
+        { "name": "freeRun", "img": "green.png" },
+      ]
+
+    }, {
+      "title": "",
+      "cardLed": []
+
+    }]
+
+    var a=integrateData(boardInfo)
+    dom = temp({ "data": a });
+    $("#main-board-card .board-card").html('<div class="top-line"></div>');
+    $("#main-board-card .board-card").append(dom);
+
   }
 
   $(function() {
