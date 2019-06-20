@@ -7,9 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script src="./lib/snap.svg.js"></script>
+  <script src="./logic-board.js"></script>
 </head>
 
-<body>
+<body style="background-color:#fcf9d5  ">
 
   <?xml version="1.0" standalone="no"?>
 
@@ -26,15 +27,11 @@
 <script>
   window.onload = function() {
     var p1 = Snap("#paper1");
-    var p2 = Snap("#paper2");
     
+    logicBoard.svg=p1;
+    var p2 = Snap("#paper2");
 
-    //  x y width height   rx  ry 
-    // rx horizontal radius for rounded corners, default is 0 圆角
-    // ry vertical radius for rounded corners, default is rx or 0
 
-    // <type>(<coords>)<colors>.
-    //  l 线性    x1, y1, x2, y2
     var baseColor = "#00dfdf"; // blue
     var borderColor = "#565656";
     var greyColor = "#cbcccc";
@@ -48,32 +45,21 @@
     var gyGrey = p1.gradient("l(0, 0,1, 0)" + greyColor + "-#fff-" + greyColor);
     var gcGrey = p1.gradient("r(0.4,0.4,0.5, 0.5)" + greyColor + "-#fff-" + greyColor);
 
+    var basicShape=logicBoard.basicShape;
 
+    basicShape.clock.set({x:0,y:50});
+    
+    basicShape.output.set({x:100,y:50});
+    basicShape.slot.set({x:200,y:200});
+    basicShape.slot.set({x:200,y:300},{"state":"grey"});
+    basicShape.input.set({x:200,y:400},{"name":"inp1"});
 
-    var shape10 = p1.rect(10, 20, 100, 20).attr({
-      "fill": gx,
-    });
-
-    var shape11 = p1.rect(10, 120, 100, 20, 10).attr({
-      "fill": gx,
-
-    });
-
+    
+    
+    
     var text1 = p2.text(50, 50, "Snap").attr({
       "fill": baseColor,
       "font-size": 12
-
-    });
-
-
-    // 图标
-    var circle14 = p1.circle(40, 240, 40).attr({
-      "fill": gx,
-
-    });
-
-    var shape15 = p1.rect(70, 230, 120, 20, 10).attr({
-      "fill": gx,
 
     });
 
@@ -88,9 +74,8 @@
       "stroke-dasharray": "1,1"
 
     }).click(function(e) {
-        debugger
+      alert(e);
     });
-
     var lineX = 280;
     var lineY = 280;
     var lineWidth = 100;
@@ -100,30 +85,13 @@
       "fill": gx,
 
     });
-
-
-    var arrow2 = p2.polygon(lineX + lineWidth, lineY - 3, lineX + lineWidth + 15, lineY + 4.5, lineX + lineWidth, lineY + 15).attr({
-      "fill": baseColor,
-      "stroke": borderColor,
-      "stroke-width": 2,
-      "stroke-dasharray": "1,1"
-
-    });
-
-     g1= p2.g(axisX,arrow2)
-
-    g1.attr({ fill: "#000"})
-
     var axisX2 = p2.rect(lineX - 200, lineY, lineWidth, lineThick, radius).attr({
       "fill": gx,
     });
-
     // 图标
     var circle2 = p2.circle(lineX - 200, lineY + 5, 9).attr({
       "fill": gc,
-
     });
-
 
     // 灰色
     var axisX2 = p2.rect(lineX - 200, lineY + 30, lineWidth, lineThick, radius).attr({
@@ -138,6 +106,17 @@
 
 
 
+
+
+    var arrow2 = p2.polygon(lineX + lineWidth, lineY - 3, lineX + lineWidth + 15, lineY + 4.5, lineX + lineWidth, lineY + 15).attr({
+      "fill": baseColor,
+      "stroke": borderColor,
+      "stroke-width": 2,
+      "stroke-dasharray": "1,1"
+
+    });
+
+
     var lineHeight = 100;
 
     var axisY = p2.rect(lineX, lineY, lineThick, lineHeight, radius).attr({
@@ -146,13 +125,7 @@
     });
 
 
-    // x y width height  
-    // var shape13= p1.rect(40,30,20,100,10).attr(
-    //     {
-    //      "fill":gy,
 
-    //     }
-    // );
 
 
     var shape21 = p2.rect(40, 30, 80, 200).attr({
@@ -167,8 +140,6 @@
       "stroke": borderColor,
       "stroke-width": 2
     });
-
-
 
 
 
