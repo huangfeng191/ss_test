@@ -138,14 +138,47 @@ var logicBoard = {
 
 
         },
-        "line": {
-            "set":function(shape1,shape2){
+        "toLine": {
+            "set":function(point,option){
+
+                var gradientSample = logicBoard.state.normal.gradient;
+                var x = point.x;
+                var y = point.y;
+                var lineWidth = 190;
+                var name="";
+                var isVertical=false;
+                if (option) {
+                    if (option.state != null) {
+                        gradientSample = logicBoard.state[option.state].gradient;
+                    }
+                    if (option.lineWidth) {
+                        lineWidth = option.lineWidth
+                    }
+                    if (option.name != null) {
+                        name = name + option.name;
+                    }
+                    if (option.vertical != null) {
+                        isVertical=true;
+                    }
+                }
+                var rect,gx;
+                if(isVertical){
+                    gx = logicBoard.svg.gradient("l(0, 0,1, 0)" + gradientSample + "-#fff-" + gradientSample);
+                    rect=logicBoard.svg.rect(x, y, logicBoard.resource.lineThick, lineWidth).attr({
+                        "fill": gx,
+                    })
+                }else{
+                    gx = logicBoard.svg.gradient("l(0, 0,0, 1)" + gradientSample + "-#fff-" + gradientSample);
+                    rect=logicBoard.svg.rect(x, y, lineWidth, logicBoard.resource.lineThick).attr({
+                        "fill": gx,
+                    })
+                }
+                
 
 
                 debugger
-
             }
-
-        }
+        },
+       
     }
 }
