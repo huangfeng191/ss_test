@@ -202,6 +202,17 @@
         }
       })
 
+      setTimeout(() => {
+        debugger
+        o.eMap.dispatchAction({
+
+        type: 'showTip',
+        seriesIndex: 0, // 显示第几个series
+        dataIndex: 0 // 显示第几个数据
+      })
+
+    }, 1000);
+
     };
     handlePoints();
     $("button").click();
