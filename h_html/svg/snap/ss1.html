@@ -8,130 +8,29 @@
   <title>Document</title>
   <script src="./lib/snap.svg.js"></script>
   <script src="./logic-board.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../less/test.css" />
 </head>
 
-<body style="background-color:#fcf9d5  ">
+<body style="background-color:#fcf9d5  " class="normal-fill-in">
 
-  <?xml version="1.0" standalone="no"?>
+    <div style="width:900px; height:630px;margin:0 auto ;">
+      <?xml version="1.0" standalone="no"?>
+      <svg style="border:0px red solid; width:100%;height:100%;"   id="logicDeviceSvg" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      </svg>
+    </div>
 
-
-  <svg style="float:left;border:1px red solid;" width="900px" height="630px" id="paper1" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  </svg>
-
-  <svg style="float:left;border:1px red solid;" width="700px" height="600px" id="paper2" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  </svg>
+  <!-- <svg style="float:left;border:1px red solid;" width="700px" height="600px" id="paper2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  </svg> -->
 
 
 </body>
 
 <script>
-  window.onload = function() {
-    var p1 = Snap("#paper1");
 
-    logicBoard.svg = p1;
-    var p2 = Snap("#paper2");
+window.onload=function(){
+  setLogicDevice();
+}
 
-
-
-    var basicShape = logicBoard.basicShape;
-
-    // basicShape.clock.set({x:0,y:50});
-
-    // basicShape.output.set({x:100,y:50});
-    // basicShape.slot.set({x:200,y:200});
-    // basicShape.slot.set({x:200,y:300},{"state":"grey"});
-    // basicShape.input.set({x:200,y:400},{"name":"inp1"});
-    // clock  width 80 height:200
-    // input width 190 height 10
-    // slot  width 70 height 10
-    // output  width 70 height 70
-
-    var baseInputTop = 80;
-    var baseInputX = 68;
-    var baseInputY = 40;
-
-    var baseOutputTop = 30;
-    var baseClockX = 350;
-    var baseClockX = 350;
-
-    var baseOutputTop = 100;
-    var baseOutputX = 520;
-    var baseOutputY = 60;
-
-    var clickLineWidth = 40;
-
-
-
-    var data = {
-      "clock": [
-        { x: baseClockX, y: 60, index: 0 },
-        { x: baseClockX, y: 370, index: 1 },
-      ],
-      "input": [
-        { x: baseInputX, y: baseInputTop, "name": "GNSS1" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 1, "name": "GNSS2" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 2, "name": "input1", "state": "grey" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 3, "name": "input2" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 4, "name": "input3" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 5, "name": "input4" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 6, "name": "input5" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 7, "name": "input6" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 8, "name": "input7" },
-        { x: baseInputX, y: baseInputTop + baseInputY * 9, "name": "input8" },
-
-
-
-      ],
-      "output": [
-        { x: baseOutputX, y: baseOutputTop },
-        { x: baseOutputX, y: baseOutputTop + baseOutputY * 1 },
-        { x: baseOutputX, y: baseOutputTop + baseOutputY * 2, "state": "grey" },
-        { x: baseOutputX, y: baseOutputTop + baseOutputY * 3 },
-        { x: baseOutputX, y: baseOutputTop + baseOutputY * 4 },
-        { x: baseOutputX, y: baseOutputTop + baseOutputY * 5, "state": "grey" },
-        { x: baseOutputX, y: baseOutputTop + baseOutputY * 6 },
-        // { x: baseOutputX, y: baseOutputTop + baseOutputY * 7 },
-
-
-
-      ]
-    }
-
-    var logicShapes = { "input": [], "clock": [], "output": [], "slot": [] }
-
-    data.input.forEach(function(o) {
-      logicShapes.input.push(basicShape.input.set({ x: o.x, y: o.y }, { name: o.name, state: o.state }));
-    })
-
-    var verticalHeight = data.input[9].y - data.input[0].y
-    basicShape.toLine.set({ x: data.clock[0].x - clickLineWidth, y: data.input[0].y }, { "lineWidth": clickLineWidth });
-    basicShape.toLine.set({ x: data.clock[0].x - clickLineWidth, y: data.input[9].y }, { "lineWidth": clickLineWidth });
-    basicShape.toLine.set({ x: data.clock[0].x - clickLineWidth, y: data.input[0].y }, { "lineWidth": verticalHeight, "vertical": true });
-
-    verticalHeight = data.output[6].y - data.output[0].y
-    basicShape.toLine.set({ x: data.clock[0].x + 80, y: data.output[0].y }, { "lineWidth": clickLineWidth });
-    basicShape.toLine.set({ x: data.clock[0].x + 80 + clickLineWidth, y: data.output[0].y }, { "lineWidth": verticalHeight + 24, "vertical": true });
-    basicShape.toLine.set({ x: data.clock[0].x + 80, y: data.output[6].y+15 }, { "lineWidth": clickLineWidth+10 });
-
-
-
-
-
-    data.clock.forEach(function(o) {
-      logicShapes.clock.push(basicShape.clock.set({ x: o.x, y: o.y }, { name: o.name, state: o.state }));
-    })
-
-
-
-    data.output.forEach(function(o) {
-      basicShape.toLine.set({ x: o.x - 40, y: o.y + 15 }, { "lineWidth": 40 });
-      logicShapes.slot.push(basicShape.slot.set({ x: o.x + 40, y: o.y + 15 }, { name: o.name, state: o.state }));
-      logicShapes.output.push(basicShape.output.set({ x: o.x, y: o.y }, { name: o.name, state: o.state }));
-    })
-    basicShape.line.set(logicShapes.clock[0], logicShapes.output[0]);
-
-
-  }
 </script>
 
 </html>

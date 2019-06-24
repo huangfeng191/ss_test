@@ -1,0 +1,31 @@
+{
+    "code": 100000,
+    "data": [{
+            "ioType": null,
+            "index": 0,
+            "redundancy": null,
+            "card": {
+                "type": "CC",
+                "cardName": null,
+                "active": "yes",
+                "portCount": null,
+                "cardLed": { "freeRun": 0, "active": 1, "lock": 1, "alarm": 0 }
+            }
+        },
+        { "ioType": null, "index": 1, "redundancy": null, "card": { "type": "CC", "cardName": null, "active": "yes", "portCount": null, "cardLed": { "freeRun": 0, "active": 0, "lock": 1, "alarm": 0 } } },
+        
+
+        { "ioType": null, "index": 2, "redundancy": null, "card": { "type": "MC", "cardName": null, "active": "yes", "portCount": null, "cardLed": { "pwrA": 0, "pwrB": 1, "system": 3, "alarm": 1 } } },
+        
+
+        { "ioType": null, "index": 3, "redundancy": "--", "card": { "type": "4-E1", "cardName": null, "active": "--", "portCount": null, "cardLed": { "sys": 3, "gnss": 3, "port1": 1, "port2": 1, "port3": 0, "port4": 0 } } },
+        
+
+        
+        { "ioType": null, "index": 4, "redundancy": "disable", "card": null }, { "ioType": null, "index": 5, "redundancy": "disable", "card": null },
+        { "ioType": null, "index": 6, "redundancy": "disable", "card": { "type": "E1-T1", "cardName": null, "active": "yes", "portCount": null, "cardLed": { "pwr": 1, "enable": 1 } } },
+        { "ioType": null, "index": 7, "redundancy": "disable", "card": { "type": "E1-T1", "cardName": null, "active": "yes", "portCount": null, "cardLed": { "pwr": 1, "enable": 1 } } },
+        { "ioType": null, "index": 8, "redundancy": "disable", "card": null },
+        { "ioType": null, "index": 9, "redundancy": "disable", "card": null }, { "ioType": null, "index": 10, "redundancy": "disable", "card": null }, { "ioType": null, "index": 11, "redundancy": "disable", "card": null }
+    ]
+}

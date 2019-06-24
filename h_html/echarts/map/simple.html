@@ -15,48 +15,67 @@
   <button>重新生成</button>
   <input value="simpleBar" id="option">
   <div id="main" class="fix-width-height normal-border">
-
   </div>
 </body>
 <script>
-  function render({type,constraint,chart}) {
+  function render({ type, constraint, chart }) {
     var option = {
-    xAxis: {
-      type: 'category',
-      data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
-    },
-    yAxis: {},
-    series: [{
-        type: 'bar',
-        name: '2015',
-        data: [89.3, 92.1, 94.4, 85.4]
+      title: {
+        text: '未来一周气温变化',
+        subtext: '纯属虚构'
       },
-      {
-        type: 'bar',
-        name: '2016',
-        data: [95.8, 89.4, 91.2, 76.9]
+      tooltip: {
+        trigger: 'axis'
       },
-      {
-        type: 'bar',
-        name: '2017',
-        data: [97.7, 83.1, 92.5, 78.1]
-      }
-    ]
-  }
-    
+      legend: {
+        data: ['最高气温']
+      },
+      toolbox: {
+        show: true,
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          formatter: '{value} °C'
+        }
+      },
+      series: [{
+        name: '最高气温',
+        type: 'line',
+        data: [11, 11, 15, 13, 12, 13, 10],
+
+
+      }]
+    }
     chart.setOption(option);
+    setTimeout(() => {
+      chart.dispatchAction({
+
+        type: 'showTip',
+        seriesIndex: 0, // 显示第几个series
+        dataIndex: 2 // 显示第几个数据
+      })
+
+    }, 1000);
   }
 
   $(function() {
     myChart = echarts.init(document.getElementById("main"));
     var type = $("#option").val()
-    render({chart:myChart});
+    render({ chart: myChart });
     $("button").on("click", function() {
-      series={
-          "type":"custom",
+      series = {
+        "type": "custom"
       };
       myChart.setOption(series);
-        
+
+
+
     })
 
 
