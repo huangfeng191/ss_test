@@ -101,9 +101,12 @@ Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 ### 获取报警信息
-GET  /nms/spring/alarm/activeAlarm/fliter?vandor=&area=
+### state 历史报警 0 消失   3  清除  当前告警 1 产生  2 确认 
+
+
+GET  /nms/spring/alarm/activeAlarm/fliter
 &token={{token}}
-&page=1&pageSize=1000&deviceId=&state=1%2C2&activeAlarmSource=&activeAlarmLevel=&activeAlarmReason=&activeAlarmId=&activeAlarmtimeBgn=&activeAlarmtimeEnd=&clearTimeBgn=&clearTimeEnd=&confirmTimeBgn=&confirmTimeEnd=&confirmOperator=
+?vandor=&area=&page=1&pageSize=1000&deviceId=&state=1%2C2&activeAlarmSource=&activeAlarmLevel=&activeAlarmReason=&activeAlarmId=&activeAlarmtimeBgn=&activeAlarmtimeEnd=&clearTimeBgn=&clearTimeEnd=&confirmTimeBgn=&confirmTimeEnd=&confirmOperator=
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}

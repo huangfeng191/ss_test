@@ -41,22 +41,42 @@
   $(function() {
 
     function getData(option) {
-      return []
+      var ret={
+        totalElements: 100
+      }
+      if(option&&option.total){
+        ret.totalElements=option.total;
+      }
+      return ret
+    }
+
+
+
+
+
+    var getAlarmData = {
+      "init": function($ele,params) {
+        var data = getData(params);
+        function setTableData($el, data) {
+
+        }
+        var op = {
+          "onPageClick": function(pageNumber, event) {
+            var data = getData(params)
+            setTableData($ele, data)
+            var option = op;
+            option.items = data.totalElements
+            option.currentPage=pageNumber;
+            $ele.pagination(option);
+          }
+        }
+        op.items = data.totalElements
+        $ele.pagination(op);
+      }
     }
     
+    getAlarmData.init($("#pagination"),{"total":100})
 
-
-
-    
-
-    var option = {
-      "items": 70,
-      "onPageClick": function(pageNumber, event) {
-          getData({})
-
-      }
-    };
-    $("#pagination").pagination(option);
   });
 </script>
 

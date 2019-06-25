@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" class='normal-fill-in'>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../../less/test.css" />
+  <script src="../../lib/jquery-1.11.1.min.js"></script>
+  <script src="../../js/test.js"></script>
+</head>
+
+<!--iframe width height: 为 iframe  的宽度 以及高度 -->
+<body class='normal-fill-in'>
+  <div class="normal-fixed-size">1</div>
+  <div style="height:100%">
+    <iframe src="./simple.html" style="width:calc(100% - 600px );height:calc(100% - 200px)" frameborder="0"></iframe>
+  </div>
+</body>
+<script>
+  function showOtherPageMethod() {
+    debugger
+  }
+
+  $(function() {
+    $("button").click(forClick);
+  });
+</script>
+
+</html
