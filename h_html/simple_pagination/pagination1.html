@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+  <script src="./lib/jquery.simplePagination.js"></script>
+  <link type="text/css" rel="stylesheet" href="./lib/simplePagination.css" />
+  <link>
+</head>
+
+<body class="normal-background-image">
+  <div id="pagination"></div>
+
+</body>
+<script>
+  $(function() {
+    var option={
+        "items": 70,
+        "onPageClick":function(pageNumber,event){
+          debugger
+        }
+    };
+    $("#pagination").pagination(option);
+  });
+</script>
+
+</html>

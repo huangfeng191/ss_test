@@ -14,7 +14,7 @@
 		init: function(options) {
 			var o = $.extend({
 				items: 1,
-				itemsOnPage: 1,
+				itemsOnPage: 20,
 				pages: 0,
 				displayedPages: 5,
 				edges: 2,
@@ -22,8 +22,8 @@
 				useAnchors: true,
 				hrefTextPrefix: '#page-',
 				hrefTextSuffix: '',
-				prevText: 'Prev',
-				nextText: 'Next',
+				prevText: '&nbsp;',
+				nextText: '&nbsp;',
 				ellipseText: '&hellip;',
 				ellipsePageSet: true,
 				cssStyle: 'light-theme',

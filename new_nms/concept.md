@@ -72,3 +72,17 @@ device:
   model         设备类型
   warningNum    告警数量
   查询所有设备
+
+
+
+
+
+
+  pagination  setting 
+
+query:
+  page=1&
+  pageSize=1000
+
+response:
+  data.totalElements
