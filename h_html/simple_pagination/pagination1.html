@@ -15,16 +15,46 @@
 </head>
 
 <body class="normal-background-image">
-  <div id="pagination"></div>
+  <div>
+    <div>
+      <table>
+        <th>first</th>
+        <th>second</th>
+        <th>third</th>
+        <th>fourth</th>
+        <tr>
+          <td>first</td>
+          <td>second</td>
+          <td>tdird</td>
+          <td>fourtd</td>
+
+
+        </tr>
+      </table>
+    </div>
+    <div id="pagination"></div>
+  </div>
+
 
 </body>
 <script>
   $(function() {
-    var option={
-        "items": 70,
-        "onPageClick":function(pageNumber,event){
-          debugger
-        }
+
+    function getData(option) {
+      return []
+    }
+    
+
+
+
+    
+
+    var option = {
+      "items": 70,
+      "onPageClick": function(pageNumber, event) {
+          getData({})
+
+      }
     };
     $("#pagination").pagination(option);
   });

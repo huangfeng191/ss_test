@@ -41,7 +41,7 @@ https://blog.csdn.net/crper/article/details/54099319
 
 
 | ctrl+d  | 选中相似单词                 |        |
-| alt+shift+downArrow  | 向下复制行                  |        |
+| alt+shift+downArrow  | 向下复制 selected rows                   |        |
 | ctrl+l  | 选择整行                  |***        |
   
 
