@@ -11,10 +11,17 @@
   <script src="../../js/test.js"></script>
 </head>
 
-<!-- height:100% 是针对父元素的，因为 html 的 %100 是整个屏幕，所以继承下来的元素，也是100% -->
+<!-- height:100% 是针对父元素的，因为 html 的 %100 是整个屏幕，所以继承下来的元素，也是100% 
+  也就是说： 如果父元素 是 有固定高宽度的 ，那么 %100 就是父元素的 高宽
+-->
 <body class='normal-fill-in'>
-  <!-- <div class="normal-fixed-size">1</div> -->
-  <div class="normal-fill-in normal-background-color">
+  <div class="normal-fixed-size">
+      <div class="normal-fill-in normal-border">
+        2
+      </div>
+
+  </div>
+  <div class="normal-fill-in ">
     <button>forClick</button>
   </div>
 </body>
