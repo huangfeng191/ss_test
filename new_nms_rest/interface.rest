@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=E43AD561ABC00D8EBB25B064165B657E
+@token=BA9289C49771D48CA30D70144EFD570B
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=0e575aed-32d4-4b76-b154-15f6a98a1e91
 
@@ -261,4 +261,25 @@ Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
+# ### 获取板卡的状态  
+# response: {
+#       "ioType": "input",
+#       "ioStatusSlotID": "1",  // Slot 槽位从1 开始  输入卡开始(去掉钟卡 跟管理卡 ) ，
+#       "ioStatusRedundancy": "--",
+#       "ioSignal": "4-E1",
+#       "ioStatusIndex": "0",   // 0 表示主机框  sm2000 最多可以接4个扩展机框
+#       "ioStatusPortCount": 6,
+#       "ioStatusActive": "--"
+#     },
+GET /nms/spring/deviceConfig/{{deviceId}}/configs/ioStatusTable?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
 
+
+### 设置告警等级
+
+GET /nms/spring/alarm/alarmAccuRule/get?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}

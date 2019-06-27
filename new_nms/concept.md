@@ -1,3 +1,34 @@
+CC: clockCard 钟卡
+MC: manageCard 管理卡
+4-E1: e1 输入卡 由一个 GNSS 卡及 4个  E1 输入口组成
+E1-T1: e1 t1 输出卡
+
+
+# 项目使用设备
+SM2000   
+SM2000_GN 接收模块 
+SYNLOCKV3 华为
+GNSS97  大唐
+TSG3800 迅腾   
+TP1100 迅腾   
+
+输入配置管理：
+    帧类型：
+    freq1544KHz 北美 日本 无帧 (不用)
+    d4    有帧                             
+    esf 有帧
+
+
+    freq2048KHz 2M 中国 欧洲 common 无帧
+    ccs   2M 有帧
+    cas  2M  有帧 
+
+
+    CRC状态 校验 完整性
+    SSM状态: 信号同步报文 
+
+
+
 
 SSM 编码  优选顺序   质量等级描述  对应我国时钟等级
 0010     最高       QL_PRC        1级基准时钟          PLR 也是一级基准时钟
@@ -76,13 +107,11 @@ device:
 
 
 
+针对配置：虽然未插卡，但可以提前配置；
+
+SM2000  可配置 (4e1+1Gnss)*2 
+
+GNSS1 
 
 
-  pagination  setting 
 
-query:
-  page=1&
-  pageSize=1000
-
-response:
-  data.totalElements
