@@ -6,6 +6,8 @@ level:"ST2",
 mod:"Auto",
 bit:4
 };
+
+aid 选择的板卡及端口位置。
 x 板卡  y 端口
 INPx[-y] 输入板卡slot[-端口]      
 aid=INP, INPx, INPx[-y], ALL

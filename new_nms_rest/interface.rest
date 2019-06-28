@@ -1,7 +1,7 @@
 @host = 127.0.0.1:60
-@token=BA9289C49771D48CA30D70144EFD570B
+@token=30AC979C4CE52316134F1F35725E6E13
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
-@deviceId2=0e575aed-32d4-4b76-b154-15f6a98a1e91
+@deviceId2=41075f91-4b3b-491c-8977-869337574182
 
 
 ### 获取菜单信息
@@ -283,3 +283,24 @@ GET /nms/spring/alarm/alarmAccuRule/get?token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+
+
+
+
+### 
+POST /spring/deviceConfig/tsg3800/{{deviceId2}}/executeTL1?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+{
+    "devParams": {
+    "command": "SET-PRMTR-SQL", 
+    "aid": "INP1[-1]", 
+    "level":"ST2",
+    "mod":"Auto",
+    "bit":4
+    }
+}
+
