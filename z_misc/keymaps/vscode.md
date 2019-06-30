@@ -35,7 +35,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | ctrl+shift+]   | 代码展开                 |        |
 | ctrl+k+ctrl+0  | 全部折叠                 |        |
 | ctrl+k+ctrl+j  | 全部展开                 |        |
-| ctrl+alt+left arrow  | 切屏左右切换(分屏模式)       |**        |
+| ctrl+alt+left arrow  | 切屏左右切换(分屏模式)       |***        |
 | ctrl+k j  | 关闭其他打开的编辑器       |**        |
 
 

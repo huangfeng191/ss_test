@@ -7,7 +7,9 @@
 SSM模式,SET-PRMTR-SQL,mode=Auto, On, Prov, Off
 SSM位,SET-PRMTR-SQL,bit = 4, 5, 6, 7, 8
 
-频率格式,SET-PRMTR-INPT,Freq=1, 1.544, 2.048, 5, 10
+频率格式,SET-PRMTR-INPT,Freq=1, 1.544,
+
+2.048, 5, 10
 端接电阻,SET-PRMTR-INPT,term=50, 75, 100, 120, 3300
 帧格式,SET-PRMTR-INPT,mode=D4, ESF, CLK
 CRC开关,SET-PRMTR-INPT,crc=On,Off
@@ -94,3 +96,10 @@ var settingCommandDual={
 
 }
 
+
+
+
+
+
+
+// otherFields:["clock"]
