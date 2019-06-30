@@ -77,7 +77,7 @@ var settingCommandDual={
    init:function(type){
       settingCommandDual.currentFieldsData=$.extend({},settingCommandDual.getFields(type));
    },
-   getDeal:function(){
+   makeAGoodDeal:function(){
       var todoCommand=[]
       newO={
          "inputCardState":"enable"

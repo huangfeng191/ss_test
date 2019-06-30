@@ -49,3 +49,23 @@ mod1, mod2 = Fail, Alrm, Rept, Ignr
 tmper = 100, 1000, -->
 
 
+
+
+
+
+
+系统相关功能：
+
+            command         field    possible
+质量等级,SET-PRMTR-SQL,level   PRS, ST2, ST3 DUS, STU
+
+    
+自动返回 autoReturn SET-PRMTR-AR mode = On or Off
+自动转换 autoSwitch SET-PRMTR-AS mode = On or Off
+SSM延时  setDelay SET-PRMTR-DELAY delay = 1 to 30
+选源模式 setReferenc2e SET-PRMTR-REF mode = PRI, BEST, SQL
+
+
+钟卡功能：
+   使能：
+   当前输出时钟 setClock SET-CLK  aid=CLK A, CLK B

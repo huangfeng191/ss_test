@@ -67,3 +67,33 @@ Set Disable
 
 Command Syntax SET-DIS:[tid]:[aid]:ctag;
 Valid aid CLKx, FGx, INPx, INPx[-y], TL1_SECU
+
+<!-- 系统 -->
+set AutoSwitch
+Command Syntax SET-PRMTR-AS:tid::ctag::mode;
+Valid aid none required
+mode = On or Off
+
+set Delay
+Command Syntax SET-PRMTR-DELAY:[tid]::ctag::delay;
+Valid aid none
+delay = 1 to 30
+
+
+Set Reference
+
+Command Syntax SET-PRMTR-REF:[tid]::ctag::mode;
+Valid aid none
+mode = PRI, BEST, SQL
+
+set AutoReturn
+Command Syntax SET-PRMTR-AR:tid::ctag::mode;
+Valid aid none required
+mode = On or Off
+
+
+set Cl
+Command Syntax SET-CLK:[tid]:[aid]:ctag;
+Valid aid CLK A, CLK B
+
+
