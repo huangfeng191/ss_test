@@ -110,3 +110,17 @@ SET-CHAN-RETEST:[<tid>]:<aid>:[<ctag>];
 <aid>：取值为LCIM输入通道的名称、 CLK输入通道或卫星信号的名称，即CLCIM1-1
 ～CLCIM1-8、 CLCIM2-1～CLCIM2-8、 CSCLK1～CSCLK4、 CSSR1、 CSSR2、
 CPNSU1或PNSU2。
+
+
+
+
+
+18.8.7 设置 LCIM 板的通道输入信号类型
+输入命令语法
+SET-CHANPM-LCIM:[<tid>]:<aid>:[<ctag>]::<CMDTYPE>,<VALUE>;
+说明
+1. <aid>：取值为CLCIM1-1～CLCIMA-8。
+2. <CMDTYPE> 为CHANTYPE。
+<VALUE>：取值为10M|5M|1M|2048K|CC|E1|NONE，表示设定的通道类型。
+3. <CMDTYPE>为CHANMEAS。
+<VALUE>取值为Y | N，代表进行测试和不进行测试

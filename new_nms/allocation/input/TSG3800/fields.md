@@ -60,19 +60,23 @@ CRC开关 CRCSwitch ,SET-PRMTR-INPT,crc c OnOff //On,Off
 {"Name": "CLKB", "Value":"CLKB" },
 ]
 
-
-系统：
-
 质量等级 qualityGrade,SET-PRMTR-SQL,level  c QualityGrade3800 c // PRS, ST2, ST3 DUS, STU   
 SSM模式 ssmMode,SET-PRMTR-SQL,mode c SSMMode3800 //Auto, On, Prov, Off
 SSM位 ssmBit,SET-PRMTR-SQL,bit  c Number4To8  // 4, 5, 6, 7, 8
 
 
+系统：
+
+<!-- 不需要aid -->
 
 自动返回 autoReturn,SET-PRMTR-AR, mode  c OnOff //= On or Off
 自动转换 autoSwitch,SET-PRMTR-AS,mode c OnOff //= On or Off
 SSM延时  setDelay,SET-PRMTR-DELAY, delay c Number1To30 //= 1 to 30
 选源模式 reference2e SET-PRMTR-REF mode c Reference2e3800//= PRI, BEST, SQL
+
+
+
+
 
 qualityGrade aid :all
 none aid : autoReturn autoSwitch  setDelay setReference2e
@@ -80,11 +84,19 @@ Number1To30 //= 1 to 30
 Reference2e3800//= PRI, BEST, SQL
 
 
+
+
+
+
 钟卡功能：
-   端口使能 inputEnable,value," ",c,EnableDisableNormal     // aid :Valid aid CLKx
-   当前输出时钟 setClock SET-CLK  aid=CLK A, CLK B
+   端口使能 inputEnable,value,1,c,EnableDisableNormal   
+   当前输出时钟 setClock SET-CLK,1,c, SetPhaseZero3800//  aid=CLK A, CLK B
 
 grade: "clock","system","input","output" 
+
+
+  // aid :Valid aid CLKx
+
 
 <!-- 等级 -->
    if(tp=="频率输入"){}

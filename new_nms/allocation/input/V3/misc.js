@@ -21,3 +21,17 @@ SSM控制   SET-SQL-INP mode //AUTO|PROV
 SSM响应时延   SET-SSMT-INP SSMtime // 1~1000 unit:0.1
 LOS恢复时间  SET-LOS-INP LOStime // 1～100
 测试重置  SET-CHAN-RETEST 
+
+
+
+
+
+
+
+工作模式：
+
+多数表决控制：
+
+LCIM板卡类型：SET-PRMTR-INP，TYPE参数
+
+运行状态： （查询 RTRV-COND-INP）
