@@ -358,3 +358,9 @@ alt+f12 速览定义
 
 ctrl+m   切换Tab $移动焦点
     
+
+
+
+## plugins
+
+ files utils can create files   

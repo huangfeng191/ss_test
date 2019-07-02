@@ -5,11 +5,17 @@
 4. readme.md
 5. temporary.js 
 6. todo.md
+
+index.md >base.md >concept.md >readme.md >temporary.js >todo.md
+
+
 ## create module  
 1. common.js
 2. common.md
 3. recycle.md
 4. recycle.js
+
+common.js>common.md>recycle.md>recycle.js
 
 
 ### do new sub-module
@@ -25,4 +31,4 @@
 
    
 
-misc.md >misc.js >concept.md >fields.js >reuse.md >issue.md >index.js >dustbin.js
+misc.md >misc.js >concept.md >fields.md >reuse.md >issue.md >index.js >dustbin.js
