@@ -1,4 +1,4 @@
-
+v3  input  multi   clock output sys single
 # input 
 CLCIM1-1～CLCIM2-8
 
@@ -18,8 +18,84 @@ SSM响应时延  ssmTime  SET-SSMT-INP SSMtime   // 1~1000 unit:0.1
 LOS恢复时间 losTime SET-LOS-INP LOStime   // 1～100
 测试重置  reset SET-CHAN-RETEST 
 
+纬度
+
+# clock 
+锁时状态延时 lockDelay SET-PRMTR-SCLK,VALUE  //others:{"PRMTRTYPE":"LOCKDELAY"},"group":"delay" 3～86400 (PRMTRTYPE=LOCKDELAY)  //<VALUE>值域为3～86400，表示设置时钟板锁时状态的延迟时间。
+源切换延时   sourceDelay SET-PRMTR-SCLK,VALUE2  //others:{"PRMTRTYPE":"LOCKDELAY"},"group":"delay" 10～86400 //<VALUE2>值域为10～86400，表示源切换的延迟时间。
+锁相状态延时 lockStateDelay SET-PRMTR-SCLK,VALUE3  //others:{"PRMTRTYPE":"LOCKDELAY"},"group":"WM" 90～86400   //<VALUE3>值域为90～86400，表示设置时钟板锁相状态的延迟时间。
+卫星卡类型 moonCardType SET-PRMTR-SCLK,VALUE  c MoonCardTypeV3 //others:{"PRMTRTYPE":"SCARDTYPE"}  GLOGPS|GPS| BEIDOU|NONE (PRMTRTYPE=SCARDTYPE)<VALUE>取值为GLOGPS|GPS| BEIDOU|NONE
+卫星卡工作模式 moonWorkMode SET-PRMTR-SCLK,VALUE c MoonWorkModeV3  //others:{"PRMTRTYPE":"WM"},"group":"WM" (PRMTRTYPE=WM) //<VALUE>：取值为DUAL|GPS|GLO|BD，
+卫星卡时间基准 moonWorkMode SET-PRMTR-SCLK,VALUE2 c MoonWorkMode2V3  //others:{"PRMTRTYPE":"WM"},"group":"WM" – <VALUE2>：取值为GPS|GLO|BD
+可视卫星门限 visibleMoonLimit SET-PRMTR-SCLK VALUE,c Number0To8 //others:{"PRMTRTYPE":"SATNUMTH"} (PRMTRTYPE=SATNUMTH) //取值为SATNUMTH表示配置卫星卡的可视卫星门限。 <VALUE>值域为0～8
+仰角门限 angleDoorLimit SET-PRMTR-SCLK, VALUE,c Number0To10  //others:{"PRMTRTYPE":"SATELETH"} (PRMTRTYPE=SATELETH) //取值为SATELETH表示配置卫星卡仰角门限。 <VALUE>值域为0～10
+纬度 latitude SET-PRMTR-SCLK VALUE     //others:{"PRMTRTYPE":"SCARDPOS"},"group":"position"
+经度 longitude SET-PRMTR-SCLK VALUE2  //others:{"PRMTRTYPE":"SCARDPOS"},"group":"position"
+高度 high SET-PRMTR-SCLK VALUE3  // others:{"PRMTRTYPE":"SCARDPOS"} ,"group":"position"
 
 
+
+QClockV3
+SRCU1/SOCU1/SRCU2/SOCU2
+single
+
+ [{ "title": "锁时状态延时","field": "lockDelay","command": "SET-PRMTR-SCLK","key": "VALUE","showType": "text","min":3,"max":86400,others:{"PRMTRTYPE":"LOCKDELAY"},"group":"delay"}],
+ [{ "title": "源切换延时","field": "sourceDelay","command": "SET-PRMTR-SCLK","key": "VALUE2","showType": "text","min":10,"max":86400, others:{"PRMTRTYPE":"LOCKDELAY"},"group":"delay" }],
+ [{ "title": "锁相状态延时","field": "lockStateDelay","command": "SET-PRMTR-SCLK","key": "VALUE3","showType": "text","min":90,"max":86400,others:{"PRMTRTYPE":"LOCKDELAY"},"group":"delay"  }],
+ [{ "title": "卫星卡类型","field": "moonCardType","command": "SET-PRMTR-SCLK","key": "VALUE","showType": "select", binding:"MoonCardTypeV3" ,others:{"PRMTRTYPE":"SCARDTYPE"}}],
+ [{ "title": "卫星卡工作模式","field": "moonWorkMode","command": "SET-PRMTR-SCLK","key": "VALUE","showType": "select", binding:"MoonWorkModeV3" ,others:{"PRMTRTYPE":"WM"},"group":"WM" }],
+ [{ "title": "卫星卡时间基准","field": "moonWorkMode","command": "SET-PRMTR-SCLK","key": "VALUE2","showType": "select", binding:"MoonWorkMode2V3",others:{"PRMTRTYPE":"WM"},"group":"WM" }],
+ [{ "title": "可视卫星门限","field": "visibleMoonLimit","command": "SET-PRMTR-SCLK","key": "VALUE","showType": "select", binding:"Number0To8",others:{"PRMTRTYPE":"SATNUMTH"} }],
+ [{ "title": "仰角门限","field": "angleDoorLimit","command": "SET-PRMTR-SCLK","key": "VALUE","showType": "select", binding:"Number0To10" ,others:{"PRMTRTYPE":"SATELETH"}}],
+ [{ "title": "纬度","field": "latitude","command": "SET-PRMTR-SCLK","key": "VALUE","showType": "text",  }],
+ [{ "title": "经度","field": "longitude","command": "SET-PRMTR-SCLK","key": "VALUE2","showType": "text",  }],
+ [{ "title": "高度","field": "high","command": "SET-PRMTR-SCLK","key": "VALUE3","showType": "text",  }],
+
+
+<!-- 位置 SET-PRMTR-SCLK, (PRMTRTYPE=SCARDPOS) // <PRMTRTYPE>：取值为SCARDPOS表示卫星卡的位置信息 -->
+                                          //– <VALUE>： <VALUE>表示设置卫星卡的纬度信息。
+                                          //– <VALUE2>： <VALUE2>表示设置卫星卡的经度信息。
+                                          //– <VALUE3>：表示设置卫星卡的高度信息。
+
+
+
+
+
+4、测试相关功能  //<aid>：取值为CLCIM1-1～CLCIMA-8 
+single
+信号类型 signalType SET-CHANPM-LCIM,VALUE c FrameTypeInputV3 //,others:{"CMDTYPE":"CHANTYPE"} <CMDTYPE> 为CHANTYPE。 <VALUE>：取值为10M|5M|1M|2048K|CC|E1|NONE
+测试使能 testEnable SET-CHANPM-LCIM ,VALUE c YESNO  //,others:{"CMDTYPE":"CHANMEAS"}   <CMDTYPE>为CHANMEAS。 <VALUE>取值为Y | N，代表进行测试和不进行测试。 
+通道测试模板 montype SET-PMTH-INP montype c MonTypeV3 ,//  montype=WG/WT/FT <montype>：取值为WG|WE|WT|WJ|FT|G812。
+
+ [{ "title": "信号类型","field": "signalType","command": "SET-CHANPM-LCIM","key": "VALUE","showType": "select", binding:"FrameTypeInputV3",others:{"CMDTYPE":"CHANTYPE"} }],
+ [{ "title": "测试使能","field": "testEnable","command": "SET-CHANPM-LCIM","key": "VALUE","showType": "select", binding:"YESNO",others:{"CMDTYPE":"CHANMEAS"} }],
+ [{ "title": "通道测试模板","field": "montype","command": "SET-PMTH-INP","key": "montype","showType": "select", binding:"MonTypeV3" }],
+
+
+5、输出相关功能 
+{/* <aid>：取值为GTSOU10-01～GTSOU45-20。 */}
+
+端口使能 inputEnable  SET-CHPRMTR-TSOU VALUE c CLOSEOPEN  //,others:{"CHPMTYPE":"CHANBLOCK"}  <CHPMTYPE>取值为CHANBLOCK，表示设置通道信号关闭打开状态。 <VALUE>取值为CLOSE|OPEN 
+信号类型 signalType SET-CHPRMTR-TSOU VALUE c FrameTypeClockV3 //(CHPMTYPE=CHANTYPE //,others:{"CHPMTYPE":"CHANTYPE"}  <CHPMTYPE>取值为CHANTYPE，表示设置通道信号类型。 <VALUE>取值为10M|5M|1M|2048K|1544K|E1|T1。  (查询 RTRV-STATE-TSOU)
+
+single
+
+ [{ "title": "端口使能","field": "inputEnable","command": "SET-CHPRMTR-TSOU","key": "VALUE","showType": "select", binding:"CLOSEOPEN" ,others:{"CHPMTYPE":"CHANBLOCK"}}],
+ [{ "title": "信号类型","field": "signalType","command": "SET-CHPRMTR-TSOU","key": "VALUE","showType": "select", binding:"FrameTypeClockV3",others:{"CHPMTYPE":"CHANTYPE"} }],
+
+
+
+
+MonTypeV3
+WG/WT/FT
+
+
+
+MoonCardTypeV3
+GLOGPS|GPS| BEIDOU|NONE
+
+MoonWorkMode2V3
+GPS|GLO|BD
 
 
 

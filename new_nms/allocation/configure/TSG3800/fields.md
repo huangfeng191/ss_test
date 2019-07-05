@@ -86,11 +86,11 @@ Reference2e3800//= PRI, BEST, SQL
 
 
 
-
+<!--  位完成 -->
 
 钟卡功能：
    端口使能 inputEnable,value,1,c,EnableDisableNormal   
-   当前输出时钟 setClock SET-CLK,1,c, SetPhaseZero3800//  aid=CLK A, CLK B
+   当前输出时钟 setClock SET-CLK,aid,c, SetPhaseZero3800//  aid=CLK A, CLK B
 
 grade: "clock","system","input","output" 
 
