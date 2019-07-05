@@ -26,7 +26,7 @@ LOS恢复时间 losTime SET-LOS-INP LOStime   // 1～100
 锁相状态延时 lockStateDelay SET-PRMTR-SCLK,VALUE3  //others:{"PRMTRTYPE":"LOCKDELAY"},"group":"WM" 90～86400   //<VALUE3>值域为90～86400，表示设置时钟板锁相状态的延迟时间。
 卫星卡类型 moonCardType SET-PRMTR-SCLK,VALUE  c MoonCardTypeV3 //others:{"PRMTRTYPE":"SCARDTYPE"}  GLOGPS|GPS| BEIDOU|NONE (PRMTRTYPE=SCARDTYPE)<VALUE>取值为GLOGPS|GPS| BEIDOU|NONE
 卫星卡工作模式 moonWorkMode SET-PRMTR-SCLK,VALUE c MoonWorkModeV3  //others:{"PRMTRTYPE":"WM"},"group":"WM" (PRMTRTYPE=WM) //<VALUE>：取值为DUAL|GPS|GLO|BD，
-卫星卡时间基准 moonWorkMode SET-PRMTR-SCLK,VALUE2 c MoonWorkMode2V3  //others:{"PRMTRTYPE":"WM"},"group":"WM" – <VALUE2>：取值为GPS|GLO|BD
+卫星卡时间基准 moonWorkMode2 SET-PRMTR-SCLK,VALUE2 c MoonWorkMode2V3  //others:{"PRMTRTYPE":"WM"},"group":"WM" – <VALUE2>：取值为GPS|GLO|BD
 可视卫星门限 visibleMoonLimit SET-PRMTR-SCLK VALUE,c Number0To8 //others:{"PRMTRTYPE":"SATNUMTH"} (PRMTRTYPE=SATNUMTH) //取值为SATNUMTH表示配置卫星卡的可视卫星门限。 <VALUE>值域为0～8
 仰角门限 angleDoorLimit SET-PRMTR-SCLK, VALUE,c Number0To10  //others:{"PRMTRTYPE":"SATELETH"} (PRMTRTYPE=SATELETH) //取值为SATELETH表示配置卫星卡仰角门限。 <VALUE>值域为0～10
 纬度 latitude SET-PRMTR-SCLK VALUE     //others:{"PRMTRTYPE":"SCARDPOS"},"group":"position"
@@ -168,3 +168,20 @@ AutoProvV3:[//nm
 {"Name": "AUTO", "Value":"AUTO" },
 {"Name": "PROV", "Value":"PROV" },
 ]
+
+
+
+
+<!-- 系统  -->
+1、系统相关功能 
+
+<!-- query -->
+LCIM板卡类型 boardType SET-PRMTR-LCIM, VALUE c Number1ToA      //others:{"PRMTRTYPE":"TYPE"} INPUT|MEASURE  <aid>：取值为BLCIM1～BLCIMA。 
+TSOU输出备份方式 backMode SET-PRMTR-TSOU VALUE c Number11To4A  // BK|EN  (PRMTRTYPE=TYPE) (查询 RTRV-STATE-TSOU) //<aid>：取值为BTSOU11～BTSOU4A。
+
+
+
+工作模式 workMode SET-PRMTR-SYS VALUE c, WorkModeV3    //VALUE MAN|INT1  (TYPE=WORKMODE) (查询 RTRV-PRMTR-SYS)
+多数表决控制 majorityVote SET-PRMTR-SYS,VALUE c YESNO  //VALUE Y|N   (TYPE=VOTECTRL) （查询 RTRV-PRMTR-SYS）
+LCIM板卡类型 boardType SET-PRMTR-LCIM, VALUE c BoardTypeV3      //others:{"PRMTRTYPE":"TYPE"} INPUT|MEASURE  <aid>：取值为BLCIM1～BLCIMA。 
+TSOU输出备份方式 backMode SET-PRMTR-TSOU VALUE c BackModeV3  // BK|EN  (PRMTRTYPE=TYPE) (查询 RTRV-STATE-TSOU) //<aid>：取值为BTSOU11～BTSOU4A。
