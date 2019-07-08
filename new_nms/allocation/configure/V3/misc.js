@@ -105,3 +105,60 @@ SSM位	RTRV-SQL-INP	bit 	{}	SSM
 SSM控制	RTRV-SQL-INP	mode	{}	SSM
 SSM响应时延	RTRV-SSMT-INP	SSMtime	{}	
 LOS恢复时间	RTRV-LOS-INP	LOStime	{}	
+
+
+
+
+
+
+
+condtype
+
+
+– MASTNOR：表示该板卡主用正常。
+– MASTERR：表示该板卡主用异常。
+– BACKNOR：表示该板卡备用正常。
+– BACKERR：表示该板卡备用异常。
+
+
+
+
+信号类型 RTRV-PRMTR-LCIM  {"cmdtype": "CHANTYPE"}
+
+
+信号类型	RTRV-PRMTR-LCIM	aid: BLCIM1 ~ BLCIMA
+	channelID
+channelType
+测试使能	RTRV-PRMTR-LCIM	aid: BLCIM1 ~ BLCIMA
+cmdtype: CHANMEAS	channelID
+measureable
+测试模板	RTRV-TH-INP	aid: 
+CSCLK1~CSCLK4，
+BLCIM1-1~BLCIM1-8,
+BLCIM2-1~BLCIM2-8
+montype: MTIE/TDEV/FREQ/...	montype
+threshold
+
+
+信号类型 channelType	RTRV-PRMTR-LCIM	 {"cmdtype":"CHANTYPE"} //aid: BLCIM1 ~ BLCIMA cmdtype: CHANTYPE	channelID channelType	
+测试使能 measureable 	RTRV-PRMTR-LCIM	 {"cmdtype":"CHANMEAS"} //aid: BLCIM1 ~ BLCIMA cmdtype: CHANMEAS	channelID measureable	
+// 测试模板	RTRV-TH-INP	                //aid: montype: MTIE/TDEV/FREQ/...	montype threshold	
+
+
+
+
+
+工作模式	 WORKMODE RTRV-PRMTR-SYS		
+多数表决控制			VOTECTRL
+LCIM板卡类型 boardtype	RTRV-STATE-LCIM  cmdtype=TYPE
+TSOU输出备份方式	type RTRV-STATE-TSOU cmdtype=TYPE	
+
+
+
+
+
+板卡运行状态	RTRV-COND-EQPT		aid:
+condtype
+ver
+syncmode
+PlState
