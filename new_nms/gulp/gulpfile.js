@@ -21,7 +21,9 @@ var babel = require("gulp-babel");
 var uglify = require("gulp-uglify");
 
 
-var bs = require('browser-sync').create();
+var bs = require('browser-sync').create()
+
+;
 
 //👇 http://yangblink.com/2016/09/17/%E4%B8%BAbrowser-sync%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/
 var proxy = require('http-proxy-middleware')

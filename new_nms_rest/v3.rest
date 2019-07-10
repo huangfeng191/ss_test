@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=A0B2BE4B44BC33560CBD5B61D659D7AC
+@token=2BA3E22D9F1F29B6D4922F6A01EF9E8B
 @deviceId=8311224e-0d95-429d-816d-b02d482ee97b
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 
@@ -11,8 +11,15 @@ Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
-#  获取单个板卡的状态 主要是输入还是测试卡
-# {"aid":"BLCIM6","command":"RTRV-STATE-LCIM","cmdtype":"TYPE"}
+
 #所有板卡状态
 # SOCU /SRCU   钟卡(晶体钟，铷钟 ) (0~12)   LCIM 测试输入 TSOU 输出  TODI 时间同步接口   MITU 维护接口  
-{"aid":"","command":"RTRV-COND-EQPT"}
+# {"aid":"","command":"RTRV-COND-EQPT"}
+#  获取单个板卡的状态 主要是输入还是测试卡
+# {"aid":"BLCIM6","command":"RTRV-STATE-LCIM","cmdtype":"TYPE"}
+# 获取业务名下下的通道名 输入卡
+# {"aid":"BLCIM6","command":"RTRV-STATE-LCIM","cmdtype":"CHANTYPE"}
+# 获取业务名下下的通道名 钟卡
+# {"aid":"BSRCU1","command":"RTRV-STATE-SCLK","cmdtype":"CHANTYPE"}
+# 查询软件上配置的业务名
+{"aid":"","command":"RTRV-COND-INP"}

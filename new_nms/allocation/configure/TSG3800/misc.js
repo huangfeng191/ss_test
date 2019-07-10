@@ -103,3 +103,25 @@ var settingCommandDual={
 
 
 // otherFields:["clock"]
+
+
+
+
+ 1 1 $04 $2 
+  2 $08 $0 
+ 2 3 $0C $4 
+ 3 4 $10 $8 
+ $22 
+ 4 6 $28 
+ $30 $F 
+ UA $40 
+
+
+1 PRS
+2 STU
+3 ST2
+4 ST3
+5 SMC
+6 ST4
+7 DUS
+UA RES

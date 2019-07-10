@@ -1,7 +1,7 @@
 
  <!-- "valueCommand": { "disable": "SET-DIS", "enable": "SET-EN" } -->
 
-
+input 
 端口使能 inputEnable,value,"''",c,EnableDisableNormal
 质量等级 qualityGrade,SET-PRMTR-SQL,level  c QualityGrade3800 c //PRS, ST2, ST3 DUS, STU
 SSM模式 ssmMode,SET-PRMTR-SQL,mode c SSMMode3800 //Auto, On, Prov, Off
@@ -14,6 +14,22 @@ CRC开关 CRCSwitch ,SET-PRMTR-INPT,crc c OnOff //On,Off
 相位清零 setPhaseZero,SET-PHASE_ZERO,clksrc c SetPhaseZero3800 //CLKA or CLKB
 
 优先级 priority,SET-PRMTR-PRI,priority c Number0To4  // 0, 1, 2, 3, 4
+
+
+INPx-y
+
+使能 	mode RTRV-COND-INP	 //	          对应DIS mode=OK|REF|MON对应ENA	
+质量等级 level	RTRV-PRMTR-REF			SQL
+SSM模式	mode RTRV-PRMTR-REF			SQL
+SSM位 ssmBit RTRV-PRMTR-REF		  	SQL
+频率格式 xx	RTRV-CONF		 	CONF
+端接电阻 termination	RTRV-CONF			CONF
+帧格式 xx	RTRV-CONF		 	CONF
+CRC开关 CRC	RTRV-CONF			CONF
+优先级	xx RTRV-PRMTR-PRI		// 可能值为 1～4，Mon，Dis	
+
+
+{"aid":"INP","command":"RTRV-COND-INP"}
 
 
 

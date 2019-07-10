@@ -175,7 +175,7 @@ AutoProvV3:[//nm
 <!-- 系统  -->
 1、系统相关功能 
 
-<!-- query -->
+
 LCIM板卡类型 boardType SET-PRMTR-LCIM, VALUE c Number1ToA      //others:{"PRMTRTYPE":"TYPE"} INPUT|MEASURE  <aid>：取值为BLCIM1～BLCIMA。 
 TSOU输出备份方式 backMode SET-PRMTR-TSOU VALUE c Number11To4A  // BK|EN  (PRMTRTYPE=TYPE) (查询 RTRV-STATE-TSOU) //<aid>：取值为BTSOU11～BTSOU4A。
 
@@ -183,5 +183,32 @@ TSOU输出备份方式 backMode SET-PRMTR-TSOU VALUE c Number11To4A  // BK|EN  (
 
 工作模式 workMode SET-PRMTR-SYS VALUE c, WorkModeV3    //VALUE MAN|INT1  (TYPE=WORKMODE) (查询 RTRV-PRMTR-SYS)
 多数表决控制 majorityVote SET-PRMTR-SYS,VALUE c YESNO  //VALUE Y|N   (TYPE=VOTECTRL) （查询 RTRV-PRMTR-SYS）
+
+
+
+工作模式 workMode SET-PRMTR-SYS VALUE c, WorkModeV3    //VALUE MAN|INT1  (TYPE=WORKMODE) (查询 RTRV-PRMTR-SYS)
+多数表决控制 majorityVote SET-PRMTR-SYS,VALUE c YESNO  //VALUE Y|N   (TYPE=VOTECTRL) （查询 RTRV-PRMTR-SYS）
+
+
+工作模式	workmode RTRV-PRMTR-SYS		 sys
+多数表决控制 clockclass	RTRV-PRMTR-SYS			 sys
+
+
+
+运行状态  condtype  
+版本号  ver  
+同步模式   syncmode  
+PlState PlState  
+
+qLevel=11
+<!-- query -->
+运行状态  condtype RTRV-COND-EQPT running card#condtype
+版本号  ver RTRV-COND-EQPT running card#ver
+同步模式   syncmode RTRV-COND-EQPT running  card#syncmode
+PlState  PlState RTRV-COND-EQPT  running card#PlState
+
+
+
+
 LCIM板卡类型 boardType SET-PRMTR-LCIM, VALUE c BoardTypeV3      //others:{"PRMTRTYPE":"TYPE"} INPUT|MEASURE  <aid>：取值为BLCIM1～BLCIMA。 
 TSOU输出备份方式 backMode SET-PRMTR-TSOU VALUE c BackModeV3  // BK|EN  (PRMTRTYPE=TYPE) (查询 RTRV-STATE-TSOU) //<aid>：取值为BTSOU11～BTSOU4A。

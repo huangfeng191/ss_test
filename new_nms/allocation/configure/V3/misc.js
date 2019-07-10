@@ -140,25 +140,141 @@ montype: MTIE/TDEV/FREQ/...	montype
 threshold
 
 
-信号类型 channelType	RTRV-PRMTR-LCIM	 {"cmdtype":"CHANTYPE"} //aid: BLCIM1 ~ BLCIMA cmdtype: CHANTYPE	channelID channelType	
-测试使能 measureable 	RTRV-PRMTR-LCIM	 {"cmdtype":"CHANMEAS"} //aid: BLCIM1 ~ BLCIMA cmdtype: CHANMEAS	channelID measureable	
+
+// 测试输入
+信号类型 channelType	RTRV-PRMTR-LCIM	 cmdtype=CHANTYPE  //aid: BLCIM1 ~ BLCIMA cmdtype: CHANTYPE	channelID channelType	
+测试使能 measureable 	RTRV-PRMTR-LCIM	 cmdtype=CHANMEAS  //aid: BLCIM1 ~ BLCIMA cmdtype: CHANMEAS	channelID measureable	
 // 测试模板	RTRV-TH-INP	                //aid: montype: MTIE/TDEV/FREQ/...	montype threshold	
 
 
 
 
 
-工作模式	 WORKMODE RTRV-PRMTR-SYS		
-多数表决控制			VOTECTRL
-LCIM板卡类型 boardtype	RTRV-STATE-LCIM  cmdtype=TYPE
-TSOU输出备份方式	type RTRV-STATE-TSOU cmdtype=TYPE	
+
+// 
+// CLCIM1  channel LCIM
+
+// 配置通道
+
+
+// 输出
+
+,"qIndexKey":"channelID" ,"qIndexLevel":"2","qIndexBase":{"CLOCK":"CSCLK","default":"BLCIM"}
+
+
+
+端口使能	RTRV-STATE-TSOU	cmdtype=CHANSTATE	channelID#block
+信号类型	RTRV-STATE-TSOU	Cmdtype=CHANTYPE	chnannelID#channeltype
 
 
 
 
 
-板卡运行状态	RTRV-COND-EQPT		aid:
-condtype
-ver
-syncmode
-PlState
+
+// 钟卡
+
+锁时状态延时 value1	RTRV-STATE-SCLK	 cmdtype=LOCKDELAY	defer 
+源切换延时	value2 RTRV-STATE-SCLK		defer	
+锁相状态延时 value3	RTRV-STATE-SCLK	 	defer	
+卫星卡类型	scardtype RTRV-STATE-SCLK	 cmdtype=SCARDTYPE	
+卫星卡工作模式 WORKMODE  RTRV-STATE-SCLK	 cmdtype=WM	 WM
+卫星卡工作模式 TBase     RTRV-STATE-SCLK	 cmdtype=WM	 WM
+可视卫星门限 thVssr	RTRV-PRMTR-SCLK	 cmdtype=SATNUMTH	
+仰角门限	elevation RTRV-PRMTR-SCLK	 cmdtype=SATELETH	
+纬度 latitude	RTRV-PRMTR-SCLK	 cmdtype=SCARDREALPOS	 position
+经度 longitude	RTRV-PRMTR-SCLK	 cmdtype=SCARDREALPOS	 position
+高度 altitude 	RTRV-PRMTR-SCLK	 cmdtype=SCARDREALPOS	 position
+
+
+// 系统
+
+工作模式  WORKMODE	RTRV-PRMTR-SYS			sys
+多数表决控制	VOTECTRL		RTRV-PRMTR-SYS	 	sys
+LCIM板卡类型 boardtype		RTRV-STATE-LCIM cmdtype=TYPE	
+TSOU输出备份方式 type		RTRV-STATE-TSOU cmdtype=TYPE	
+
+板卡运行状态	 	condtype RTRV-COND-EQPT	 running 
+单板软件的版本号	 	ver RTRV-COND-EQPT	 running 	 
+工作模式	 	syncmode RTRV-COND-EQPT	 running 	 
+PlState	 	PlState RTRV-COND-EQPT	 running 	 	
+
+
+// input 
+
+signalType 
+
+信号类型  ""  RTRV-PRMTR-LCIM  cmdtype=CHANTYPE channelID#channeltype
+
+
+, "qCommand": "RTRV-PRMTR-LCIM", "qKey": "channelType", "qOthers": { "cmdtype": "CHANTYPE" }, "qGroup": ""
+
+
+
+
+
+// 1号板卡 输入 
+{"aid":"BLCIM1","command":"RTRV-STATE-LCIM","cmdtype":"CHANTYPE"}
+   // 1 card  2 cardPort 11 板卡业务名  21 端口业务名
+
+qCommandOther:{
+    "CLOCK":"SCLK",
+    "default":"LCIM"
+}
+
+信号类型 "" RTRV-STATE-LCIM   cmdtype=CHANTYPE  channelID#channeltype
+
+
+,"qCommand": "RTRV-STATE-LCIM","qKey": "channeltype","qOthers": {"cmdtype":"CHANTYPE"},"qGroup": "" ,"qIndexKey":"channelID" ,"qIndexLevel":"2"
+
+,"qAid":"21"  
+
+
+
+{"aid":"BSRCU1","command":"RTRV-STATE-SCLK","cmdtype":"CHANTYPE"}
+{"aid":"BLCIM1","command":"RTRV-STATE-LCIM","cmdtype":"CHANTYPE"}
+
+信号类型
+
+
+
+
+
+if ($(".nav-left a.three-active").html() == "输入测试") {
+    if (isMeasure == false && (consilient == 1 || consilient == 2)) {
+      return true;
+    }
+
+  } 
+
+  params.devParams.command = "RTRV-STATE-LCIM"
+  params.devParams.cmdtype = "TYPE"
+  params.devParams.aid = v.card.name;
+  top.SsServer[doPost](params).done(function(r) {
+    if (r.data.boardtype == "MEASUR") {
+      isMeasure = true;
+    }
+  });
+
+
+
+
+
+
+  {"aid":"CSCLK1","priority":"8","command":"SET-PRIOR-INP"}
+
+  {"aid":"CSCLK1","SSMtime":"0","command":"SET-SSMT-INP"}
+
+  {"aid":"CSCLK1","LOStime":"0","command":"SET-LOS-INP"}
+
+
+
+ // 1 card  2 cardPort 11 板卡业务名  21 端口业务名
+
+  qLevel="21"
+
+
+
+  信号类型 "" RTRV-STATE-LCIM   cmdtype=CHANTYPE  channelID#channeltype
+
+
+
