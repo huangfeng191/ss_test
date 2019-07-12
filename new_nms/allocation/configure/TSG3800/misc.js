@@ -125,3 +125,9 @@ var settingCommandDual={
 6 ST4
 7 DUS
 UA RES
+
+
+
+
+{"aid":"ALL","command":"RTRV-COND-INP"} 
+

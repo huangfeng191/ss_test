@@ -29,6 +29,46 @@ CRC开关 CRC	RTRV-CONF			CONF
 优先级	xx RTRV-PRMTR-PRI		// 可能值为 1～4，Mon，Dis	
 
 
+
+
+// system
+[{ "title": "自动返回", "field": "autoReturn", "command": "SET-PRMTR-AR", "key": "mode", "showType": "select", binding: "OnOff" }],
+[{ "title": "自动转换", "field": "autoSwitch", "command": "SET-PRMTR-AS", "key": "mode", "showType": "select", binding: "OnOff" }],
+[{ "title": "选源模式", "field": "reference2e", "command": "SET-PRMTR-REF", "key": "mode", "showType": "select", binding: "Reference2e3800" }]
+ [{ "title": "当前参考源","field": "cRef","command": "","key": "","showType": "text",  }],
+ [{ "title": "当前输入源","field": "cInput","command": "","key": "","showType": "text",  }],
+[{ "title": "SSM延时", "field": "setDelay", "command": "SET-PRMTR-DELAY", "key": "delay", "showType": "select", binding: "Number1To30" }],
+
+当前参考源 cRef	 RTRV-PRMTR-REF		// 	ref
+当前输入源 cInput	  RTRV-COND-INP	// 	aid=ALL   mode#REF       INPx-y   对应选中	
+
+
+自动返回	ar RTRV-PRMTR-REF			ref
+自动切换	as RTRV-PRMTR-REF			ref
+选源模式	mode RTRV-PRMTR-REF			ref
+当前参考源 	aid RTRV-PRMTR-REF		ref
+当前输入源 	"" RTRV-COND-INP		aid=ALL   mode#REF  //      INPx-y   对应选中	
+SSM延时	xxx RTRV-PRMTR-DELAY			
+
+
+// clock
+
+使能	RTRV-COND-EQPT		CLKx  Status=OK|REF|FAIL对应ENA Status=DIS         对应DIS	CLK
+当前输出时钟	RTRV-COND-EQPT		CLKx  Status=REF        对应选中	CLK
+
+
+
+
+,"qCommand": "RTRV-PRMTR-REF","qKey": "ar","qOthers": "","qGroup": "ref"  
+,"qCommand": "RTRV-PRMTR-REF","qKey": "as","qOthers": "","qGroup": "ref"  
+,"qCommand": "RTRV-PRMTR-DELAY","qKey": "xxx","qOthers": ,"qGroup": ""  
+,"qCommand": "RTRV-PRMTR-REF","qKey": "mode","qOthers": "","qGroup": "ref"  
+,"qCommand": "RTRV-PRMTR-REF","qKey": "aid","qOthers": "","qGroup": "ref"  
+,"qCommand": "RTRV-COND-INP","qKey": "REF","qOthers": {"aid":"ALL"},"qGroup": "" ,"qIndexKey":"mode" ,"qIndexLevel":"2" 
+
+
+
+
 {"aid":"INP","command":"RTRV-COND-INP"}
 
 
@@ -107,6 +147,17 @@ Reference2e3800//= PRI, BEST, SQL
 钟卡功能：
    端口使能 inputEnable,value,1,c,EnableDisableNormal   
    当前输出时钟 setClock SET-CLK,aid,c, SetPhaseZero3800//  aid=CLK A, CLK B
+
+
+aid  CLKA, CLKB,
+
+
+使能	RTRV-COND-EQPT		CLKx  Status=OK|REF|FAIL对应ENA Status=DIS         对应DIS	CLK
+当前输出时钟	RTRV-COND-EQPT		CLKx  Status=REF        对应选中	CLK
+
+
+
+
 
 grade: "clock","system","input","output" 
 

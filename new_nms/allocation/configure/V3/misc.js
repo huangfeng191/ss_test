@@ -163,12 +163,11 @@ threshold
 
 
 
-端口使能	RTRV-STATE-TSOU	cmdtype=CHANSTATE	channelID#block
-信号类型	RTRV-STATE-TSOU	Cmdtype=CHANTYPE	chnannelID#channeltype
+端口使能 ""	RTRV-STATE-TSOU	cmdtype=CHANSTATE	channelID#channelstate
+信号类型 "" 	RTRV-STATE-TSOU	cmdtype=CHANTYPE	chnannelID#channeltype
 
-
-
-
+,"qCommand": "RTRV-STATE-TSOU","qKey": "channelstate","qOthers": {"cmdtype":"CHANSTATE"},"qGroup": ""   ,"qIndexKey":"channelID" ,"qIndexLevel":"21" 
+,"qCommand": "RTRV-STATE-TSOU","qKey": "channeltype","qOthers": {"cmdtype":"CHANTYPE"},"qGroup": ""   ,"qIndexKey":"chnannelID" ,"qIndexLevel":"21" 
 
 
 // 钟卡
@@ -176,11 +175,14 @@ threshold
 锁时状态延时 value1	RTRV-STATE-SCLK	 cmdtype=LOCKDELAY	defer 
 源切换延时	value2 RTRV-STATE-SCLK		defer	
 锁相状态延时 value3	RTRV-STATE-SCLK	 	defer	
-卫星卡类型	scardtype RTRV-STATE-SCLK	 cmdtype=SCARDTYPE	
-卫星卡工作模式 WORKMODE  RTRV-STATE-SCLK	 cmdtype=WM	 WM
+卫星卡类型	scardType RTRV-STATE-SCLK	 cmdtype=SCARDTYPE	
+卫星卡工作模式 workmode  RTRV-STATE-SCLK	 cmdtype=WM	 WM
 卫星卡工作模式 TBase     RTRV-STATE-SCLK	 cmdtype=WM	 WM
 可视卫星门限 thVssr	RTRV-PRMTR-SCLK	 cmdtype=SATNUMTH	
 仰角门限	elevation RTRV-PRMTR-SCLK	 cmdtype=SATELETH	
+
+
+
 纬度 latitude	RTRV-PRMTR-SCLK	 cmdtype=SCARDREALPOS	 position
 经度 longitude	RTRV-PRMTR-SCLK	 cmdtype=SCARDREALPOS	 position
 高度 altitude 	RTRV-PRMTR-SCLK	 cmdtype=SCARDREALPOS	 position
