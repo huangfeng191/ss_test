@@ -357,6 +357,24 @@
           renderItem: echarts.util.curry(renderItem, o.eMap, points, pointIndex),
           "zlevel": 99,
           "data": points
+        },
+        {
+          id: 'line1',
+          name: 'line1',
+          type: 'lines',
+          zlevel: 3,
+          polyline: true,
+          //       '上海': [121.4648,31.2891],
+          // '东莞': [113.8953,22.901],
+          data: [{
+            "name": '1212',
+            "coords": [
+              [121, 31],
+              [113, 22],
+              [117, 29]
+            ]
+
+          }]
         }
         ]
       })
