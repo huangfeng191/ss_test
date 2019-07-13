@@ -25,3 +25,15 @@ clock
 {"PRMTRTYPE":"WM","aid":"BSRCU1","VALUE":"GPS","VALUE2":"GPS","command":"SET-PRMTR-SCLK"}
 SET-PRMTR-SCLK::BSRCU1:269::WM,GPS;
 
+
+
+
+
+
+3800  SSM延时 设置成功查询 无
+
+
+<!-- {"command":"SET-PRMTR-DELAY","value":"{\"delay\":\"4\"}","aid":"ALL"} -->
+
+
+{"command":"SET-CLK","value":"{\"validaid\":\"CLK A\"}","aid":"ALL"}

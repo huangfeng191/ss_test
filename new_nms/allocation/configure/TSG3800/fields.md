@@ -30,6 +30,21 @@ CRC开关 CRC	RTRV-CONF			CONF
 
 
 
+qLevel:"21"
+
+使能 mode	RTRV-COND-INP		//INPx-y Mode=DIS         对应DIS mode=OK|REF|MON对应ENA	
+SQL等级 level	RTRV-DATA-SQL			  //aid=INPx[-y]    //
+SQL模式 ssm 	RTRV-CONF		CONF  //aid=INPx[-y]
+SSM位	e1SSMbit  RTRV-CONF	  	CONF  //aid=INPx[-y] 
+频率格式	signalfrequency RTRV-CONF			CONF  //aid=INPx[-y]
+端接电阻	termination RTRV-CONF			CONF  //aid=INPx[-y]
+帧格式	signaltype RTRV-CONF			CONF  //aid=INPx[-y]
+CRC开关 crc	RTRV-CONF			 CONF  //aid=INPx[-y]
+优先级	level RTRV-PRMTR-PRI		   //可能值为 1～4，Mon，Dis	  //aid=INPx[-y]
+
+
+
+
 
 // system
 [{ "title": "自动返回", "field": "autoReturn", "command": "SET-PRMTR-AR", "key": "mode", "showType": "select", binding: "OnOff" }],
@@ -56,7 +71,8 @@ SSM延时	xxx RTRV-PRMTR-DELAY
 使能	RTRV-COND-EQPT		CLKx  Status=OK|REF|FAIL对应ENA Status=DIS         对应DIS	CLK
 当前输出时钟	RTRV-COND-EQPT		CLKx  Status=REF        对应选中	CLK
 
-
+使能	       "" RTRV-PRMTR-REF	Status#aid#1		ref
+当前输出时钟  "" RTRV-PRMTR-REF   Status#aid#1	 ref  // "setClock" : {default:"N","REF":"N"}
 
 
 ,"qCommand": "RTRV-PRMTR-REF","qKey": "ar","qOthers": "","qGroup": "ref"  
@@ -65,6 +81,11 @@ SSM延时	xxx RTRV-PRMTR-DELAY
 ,"qCommand": "RTRV-PRMTR-REF","qKey": "mode","qOthers": "","qGroup": "ref"  
 ,"qCommand": "RTRV-PRMTR-REF","qKey": "aid","qOthers": "","qGroup": "ref"  
 ,"qCommand": "RTRV-COND-INP","qKey": "REF","qOthers": {"aid":"ALL"},"qGroup": "" ,"qIndexKey":"mode" ,"qIndexLevel":"2" 
+
+
+
+,"qCommand": "RTRV-PRMTR-REF","qKey": "Status","qOthers": "","qGroup": "ref" ,"qIndexLevel":"1" 
+,"qCommand": "RTRV-PRMTR-REF","qKey": "Status","qOthers": "","qGroup": "ref"   ,"qIndexLevel":"1"  
 
 
 

@@ -13,6 +13,23 @@ SysModeTP1100:[//nm
 ]
 
 
+
+
+系统运行模式  syncmode	rtrvCraft 	CRAFT // SYS:  RTRV-CRAFT
+源选择方式	refmode rtrvCraft 		 	CRAFT //SYS: RTRV-CRAFT
+当前源    inpref 	rtrvCraft 		  	CRAFT //SYS: RTRV-CRAFT
+
+
+
+{
+  "commandword":"",
+  "value":"",
+  "tid":"",
+  "aid":""
+  }
+
+
+
   SysPerModeTP1100:[//nm
 {"Name": "AUTO", "Value":"AUTO" },
 {"Name": "FORCED", "Value":"FORCED" },
@@ -23,6 +40,12 @@ SysModeTP1100:[//nm
 时钟卡模式 clockMode ED-EQPT IOCMODE c ClockModeTP1100 // (IOCMODE=ACTIVE/STANDBY)  // aid IOC1 2
 状态 clockState ED-EQPT,IOCSTATE c ClockStateTP1100 //（IOCSTATE=INSRV/OOSRV    
 类型 clockType ED-EQPT,CLKTYPE c ClockTypeTP1100 //（CLKTYPE=ST2/TYPEII/ST3E/TYPE）// 
+
+
+
+
+
+
 
 ClockModeTP1100:[//nm
 {"Name": "ACTIVE", "Value":"ACTIVE" },

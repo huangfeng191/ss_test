@@ -1,0 +1,253 @@
+{
+    "code": 100000,
+    "data": [
+        {
+            "name": "SYS",
+            "pwra": "ALM",
+            "pwrb": "OK",
+            "expeqpt": "UNEQPT",
+            "extalm1": "OK",
+            "extalm2": "OK",
+            "ioc1eqpt": "EQPT",
+            "ioc2eqpt": "EQPT",
+            "sysqlevel": "4",
+            "lastdat": "2003-01-01",
+            "lasttim": "20-24-50",
+            "syncmode": "SSU",
+            "refmode": "AUTO",
+            "inpref": "NONE",
+            "clrdelay": "5",
+            "fltdelay": "5",
+            "inacttime": "0",
+            "logecho": "ENABLE"
+        },
+        {
+            "name": "IMC",
+            "ioc1comm": "ALM",
+            "ioc2comm": "OK"
+        },
+        {
+            "name": "COML",
+            "baud": "9600",
+            "flow": "NONE",
+            "echo": "DISABLE"
+        },
+        {
+            "name": "COMR",
+            "baud": "9600",
+            "flow": "NONE",
+            "echo": "DISABLE"
+        },
+        {
+            "name": "COMI",
+            "ipaddr": "192.168.20.18",
+            "ipgate": "0.0.0.0",
+            "ipsubnet": "255.255.255.0",
+            "echo": "DISABLE"
+        },
+        {
+            "name": "IOC1",
+            "iocstatus": "OK",
+            "ioccomm": "IOC1TO2COMM-OK",
+            "imccomm": "IMC1COMM-OK",
+            "iocstate": "",
+            "iocmode": "",
+            "clkmode": "",
+            "clktype": ""
+        },
+        {
+            "name": "IOC2",
+            "iocstatus": "OK",
+            "ioccomm": "IOC2TO1COMM-ALM",
+            "imccomm": "IMC2COMM-OK",
+            "iocstate": "INSRV",
+            "iocmode": "ACTIVE",
+            "clkmode": "FREERUN",
+            "clktype": "TYPEI"
+        },
+        {
+            "name": "GPS",
+            "gpsstatus": "OK",
+            "instate": "DISABLE",
+            "qlevel": "1",
+            "priority": "1",
+            "utc": "",
+            "mode": "",
+            "pos": "",
+            "elevmask": ""
+        },
+        {
+            "name": "PRS",
+            "prsstatus": "OK",
+            "instate": "DISABLE",
+            "qlevel": "2",
+            "priority": "3",
+            "frmtype": "2M"
+        },
+        {
+            "name": "INP1",
+            "inpstatus": "ALM",
+            "instate": "ENABLE",
+            "qlevel": "2",
+            "priority": "4",
+            "frmtype": "2M",
+            "rqlevel": "2",
+            "crcena": "DISABLE",
+            "ssmena": "DISABLE",
+            "ssmbit": "8"
+        },
+        {
+            "name": "INP2",
+            "inpstatus": "ALM",
+            "instate": "ENABLE",
+            "qlevel": "2",
+            "priority": "1",
+            "frmtype": "2M",
+            "rqlevel": "2",
+            "crcena": "DISABLE",
+            "ssmena": "DISABLE",
+            "ssmbit": "4"
+        },
+        {
+            "name": "OUTA",
+            "outstatus": "OK",
+            "outstate": "ENABLE",
+            "frmtype": "2M",
+            "freeflt": "ON",
+            "holdflt": "ON"
+        },
+        {
+            "name": "OUTB",
+            "outstatus": "OK",
+            "outstate": "ENABLE",
+            "frmtype": "2M",
+            "freeflt": "ON",
+            "holdflt": "ON"
+        },
+        {
+            "name": "OUTC",
+            "outstatus": "OK",
+            "outstate": "ENABLE",
+            "frmtype": "CAS",
+            "freeflt": "ON",
+            "holdflt": "ON"
+        },
+        {
+            "name": "OUTD",
+            "outstatus": "OK",
+            "outstate": "ENABLE",
+            "frmtype": "CAS",
+            "freeflt": "ON",
+            "holdflt": "ON"
+        },
+        {
+            "name": "RTMA-1",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMA-2",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMB-1",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMB-2",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMC-1",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMC-2",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMD-1",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "RTMD-2",
+            "rtmstatus": "UNEQUIPPED",
+            "rtmstate": "ENABLE",
+            "rtmlbo": "0",
+            "freeflt": "RETIME",
+            "holdflt": "RETIME",
+            "rtmslip": "0"
+        },
+        {
+            "name": "E422A",
+            "outstatus": "UNEQUIPPED",
+            "outstate": "DISABLE",
+            "frmtype": "1.544M",
+            "freeflt": "SQUELCH",
+            "holdflt": "ON"
+        },
+        {
+            "name": "E422B",
+            "outstatus": "UNEQUIPPED",
+            "outstate": "DISABLE",
+            "frmtype": "1.544M",
+            "freeflt": "SQUELCH",
+            "holdflt": "ON"
+        },
+        {
+            "name": "E422C",
+            "outstatus": "UNEQUIPPED",
+            "outstate": "DISABLE",
+            "frmtype": "1.544M",
+            "freeflt": "SQUELCH",
+            "holdflt": "ON"
+        },
+        {
+            "name": "E422D",
+            "outstatus": "UNEQUIPPED",
+            "outstate": "DISABLE",
+            "frmtype": "1.544M",
+            "freeflt": "SQUELCH",
+            "holdflt": "ON"
+        },
+        {
+            "name": "NTPAUTHEN",
+            "authen": "DISABLE"
+        }
+    ],
+    "message": "操作成功"
+}

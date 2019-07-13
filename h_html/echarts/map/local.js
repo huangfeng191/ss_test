@@ -55,10 +55,10 @@ var customShape = {
 
 
 var customPoints = [{
-    "name": "白广路SM2000_LPR",
+    "name": "11",
     "value": [
-        107.19,
-        35.17,
+        121,
+        31,
         {
             "type": "LPR",
             "id": "951d1cef-08f1-4185-9b0a-e512855544bb",
@@ -70,7 +70,22 @@ var customPoints = [{
             "show": true
         }
     ]
-}]
+},
+{
+    "name": "22",
+    "value": [ 113, 22,
+        {
+            "type": "LPR",
+            "id": "951d1cef-08f1-4185-9b0a-e512855544bb",
+            "value": 160,
+            "company": "1",
+            "areaId": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506",
+            "areaName": "北京",
+            "show": true
+        }
+    ]
+}
+]
 
 var customPoints1 = [{
         "name": "白广路SM2000_LPR",

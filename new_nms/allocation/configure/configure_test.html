@@ -1,0 +1,4306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>国家电网骨干频率同步网网管系统</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1" />
+  <link rel="stylesheet" type="text/css" href="../../lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/base.css">
+  <link rel="stylesheet" type="text/css" href="../../css/configure.css">
+  <link rel="StyleSheet" href="../../css/page3.css" type="text/css" />
+  <link rel="StyleSheet" href="../../font/iconfont.css" type="text/css" />
+  <link rel="StyleSheet" href="../../lib/jqueryPagination/css/jquery.pagination.css" type="text/css" />
+  <link rel="StyleSheet" href="../../css/page2.css" type="text/css" />
+
+
+
+  <style>
+    .configure-box {
+      height: 100% !important;
+    }
+
+    .layer-table {
+      margin-top: 10px;
+    }
+
+    .layer-table thead tr {
+      background: transparent
+    }
+
+    .layer-table tbody tr:nth-of-type(even) {
+      background: #666
+    }
+
+    .layer-table tbody tr:nth-of-type(odd) {
+      background: transparent
+    }
+
+    #tbody-left td:first-child {
+      text-align: left;
+    }
+
+    #myModalTips tbody>tr:nth-of-type(even) {
+      background-color: #f6f6f6;
+    }
+
+    #myModalTips table thead tr {
+      background-color: #f6f6f6;
+    }
+
+    .form_middle select {
+      color: #000000;
+    }
+
+    .form_middle {
+      margin-top: 50px;
+    }
+
+    .col-md-6 svg {
+      height: 300px;
+      height: 300px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="mask">
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="box configure-box">
+    <div class="top" style="border-bottom:none;overflow: auto;">
+      <div class="left" style="margin-right:0;">
+        <ul id="myTab" class="nav nav-tabs">
+          <li class="active">
+            <!-- <a href="#configure" onclick="displayContent(0)" data-toggle="tab">网元配置</a> -->
+            <a href="#configure" onclick="displayContent(0)" data-toggle="tab">网元配置</a>
+          </li>
+          <li>
+            <a href="#manage" data-toggle="tab">网元管理</a>
+          </li>
+          <li>
+            <a href="#EMS" data-toggle="tab">EMS配置</a>
+          </li>
+          <li>
+            <a href="#count" data-toggle="tab">配置信息统计</a>
+          </li>
+        </ul>
+        <div id="myTabContent" class="tab-content m-t40">
+          <!--网元配置 -->
+          <div class="tab-pane fade in active " id="configure" style="position: relative">
+            <div class="nav-left">
+              <div class="close-arrow"></div>
+              <div class="open-arrow"></div>
+              <ul>
+                <li class="active">
+                  <a href="#" to="config"><span></span>配置</a>
+                </li>
+                <li data-collapse="in-collapse">
+                  <a href="#" to="system"><span></span>系统</a>
+                </li>
+
+                <li class="">
+                  <a href="#" to="clock"><span></span>钟卡</a>
+                </li>
+                <li class="" data-collapse="in-collapse">
+                  <a to="input" data-toggle="collapse" href="#collapseexample2"><span></span>输入<span class="nav-open nav-arrow-down"></span></a>
+                </li>
+                <div id="collapseexample2" class="panel-collapse collapse nav-collapse my-collapse">
+                  <a class="nav-three three-active" data-target="item-box-input" grade="input" item="GNSS1" data-index="nav-three-3">GNSS1</a>
+                  <a class="nav-three" data-target="item-box-input" grade="input" item="GNSS2" data-index="nav-three-4">GNSS2</a>
+                  <a class="nav-three" data-target="item-box-input" grade="input" item="Freq" data-index="nav-three-5">频率输入</a>
+                  <!-- <a class="nav-three" data-target="item-box-input" grade="input" item="Test" data-index="nav-three-5" style="display:none;">输入测试</a> -->
+                  <!-- <a class="nav-three" data-target="item-box-input" data-index="nav-three-6">PPS-TOD1</a>
+                  <a class="nav-three" data-target="item-box-input" data-index="nav-three-7">PPS-TOD2</a>
+                  <a class="nav-three" data-target="item-box-input" data-index="nav-three-8">IRIG</a>
+                  <a class="nav-three" data-target="item-box-input" data-index="nav-three-9">其他参数</a> -->
+                </div>
+                <li class="">
+                  <a to="output" href="#"><span></span>输出</a>
+                </li>
+              </ul>
+            </div>
+            <div class="public-content" style="height:calc(100% - 48px);">
+              <!--配置-->
+              <div class="item-box" id="item-box-config" style="height:100%;overflow-y:auto;">
+                <div id="net-map" class="net-y">
+                  <div class="net-top clearfix">
+                    <div class="net-banner">
+                      <ul>
+                        <li style="width: 40%"><span class="status status4 " id="currentDeviceState"></span><span id="currentDeviceName">未选择</li>
+                        <li style="width: 30%">
+                          <div style="line-height: 20px;" id="currentDeviceVendor"> </div>
+                          <div style="line-height: 18px;" id="currentDeviceIp"> </div>
+                        </li>
+                        <li style="width: 10%"><span class="status status2"></span>CR</li>
+                        <li style="width: 10%"><span class="status status3"></span>MJ</li>
+                        <li style="width: 10%"><span class="status status4"></span>MN</li>
+                      </ul>
+                    </div>
+                    <button id="huabanshitu" onclick="displayContent(1)" class="huabanshitu">面板视图</button>
+                  </div>
+                  <div class="net-table" style="height:580px; overflow:hidden;margin-top:10px;">
+
+
+
+                    <div style="width:740px; height:580px;margin:0 auto ;overflow:hidden;">
+                      <?xml version="1.0" standalone="no"?>
+                      <svg style="border:0px red solid; width:100%;height:100%;" id="logicDeviceSvg" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                      </svg>
+                    </div>
+
+                  </div>
+                </div>
+                <div id="net-table" style="display: none;height:100%;" class="net-y">
+                  <div class="preview-img clearfix">
+                    <img src="../../images/bitmap.png" style="float:left" />
+                    <img src="../../images/bitmap.png" style="float:right" />
+                  </div>
+                  <div style="width:100%;height: calc(100% - 185px);overflow:auto;">
+
+                    <div class="preivew-table " id="main-board-card" style="min-height: 510px;min-width:1100px;border-width:0px ;width:100%;height:calc(100% - 30px);">
+
+                      <div class="board-card">
+                        <div class="top-line"></div>
+                        <!-- <div class="one">
+                              <div class="title">钟卡</div>
+                              <div>
+                                <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/grey.png" alt=""></div>
+                                <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/green.png" alt=""></div>
+                                <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/blink-green.gif" alt=""></div>
+                              </div>
+                            </div>
+                            <div class="one">
+                              <div class="title">钟卡</div>
+                              <div>
+                                <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/grey.png" alt=""></div>
+                                <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/blink-green.gif" alt=""></div>
+                                <div class ='state-lamp'>freeRun <img style="width:15px;" src="../images/board-card/green.png" alt=""></div>
+                              </div>
+                            </div> -->
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- 弹出框 -->
+              <div class="modal fade" id="myModalTips" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+              <!-- 系统 -->
+              <div class="item-box" id="item-box-system" style="display: none;" id="item-box-system">
+
+                <div id="nav-three-0" class="d-b">
+
+                  <div id="device_config_system">
+
+                  </div>
+
+
+                </div>
+              </div>
+              <!-- 钟卡 -->
+              <div class="item-box" style="display: none;" id="item-box-clock">
+
+
+                <div id="device_config_clock">
+
+                </div>
+
+
+              </div>
+              <!-- 输入 -->
+              <div class="item-box" style="display: none;" id="item-box-input">
+                <!--GNSS1-->
+                <div id="nav-three-3" class="net-y">
+                  <!-- <div class="option-top clearfix">
+                    <span style="float:left" class="option-top-span">
+                      当前设备：<span id="currentDeviceNm"></span>
+                    </span>
+                  </div> -->
+                  <div id="device_config_input">
+
+                  </div>
+                </div>
+
+                <!-- V3频率参考源输入 -->
+                <div id="nav-three-3" class="net-y" style="display:none;">
+                  <!-- div class="tab-pane fade   public-content" id="mv"> -->
+                  <div class="search-box">
+                    <form method="get" action="#" class="search-box">
+                      <div class="search-row">
+                        <input class="bg-btn" id="searchBtnv3" type="button" value="搜索" />
+                        <a href="#" id="manageAddBtnv3" class="bg-btn f-r ">添加</a>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="table-box">
+                    <table class="table-data m-t30">
+                      <thead>
+                        <tr>
+                          <td>通道号</td>
+                          <td>信号名称</td>
+                          <td>信号类型</td>
+                          <td>是否作为主用</td>
+                          <td>参考源级别</td>
+                          <td>是否参与多数表决</td>
+                          <td>FREQ参与控制</td>
+                          <td>MITE参与控制</td>
+                          <td>TDEV参与控制</td>
+                          <td>备份参考源</td>
+                          <td>操作</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>CSSR1</td> 
+                          <td>CSSR1</td> 
+                          <td>PPS</td> 
+                          <td>N</td> 
+                          <td>2</td> 
+                          <td>N</td> 
+                          <td>N</td> 
+                          <td>N</td> 
+                          <td>N</td> 
+                          <td>Null</td> 
+                          <td>
+                            <a class="set m-r5" href="#"></a>
+                            <a class="deleted" href="#"></a>
+                            <a class="refresh" href="#" style="vertical-align: unset;margin-left: 4px;"></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- 输出 -->
+              <div class="item-box" style="display: none;height:100%" id="item-box-output">
+                <div class="net-y " id="config-1" style="height:100%">
+                  <div class="card-table" style="height:100%">
+
+                    <div id="card-board-list" style="height: calc(100% - 130px);">
+                    </div>
+
+                  </div>
+                  <div id="output-one-set" style="height:100%"></div>
+                </div>
+                <div style="display: none;" class="net-y" id="outputConfigView">
+                  <div class="option-top clearfix">
+                    <span style="float:left" class="option-top-span">
+                      槽位：<span class="slot"></span>&nbsp;&nbsp;信号类型：<span class="signalType"></span>&nbsp;
+                      选择：<select name="port" class="emitChange">
+                        <option value="1" selected="selected">port1</option>
+                        <option value="2">port2</option>
+                        <option value="3">port3</option>
+                        <option value="4">port4</option>
+                        <option value="5">port5</option>
+                        <option value="6">port6</option>
+                        <option value="7">port7</option>
+                        <option value="8">port8</option>
+                        <option value="9">port9</option>
+                        <option value="10">port10</option>
+                        <option value="11">port11</option>
+                        <option value="12">port12</option>
+                        <option value="13">port13</option>
+                        <option value="14">port14</option>
+                        <option value="15">port15</option>
+                        <option value="16">port16</option>
+                      </select>
+                    </span>
+                  </div>
+                  <div class="option-table">
+                    <div>
+                      <table class="nocolor device_add">
+                        <tbody>
+                          <tr>
+                            <td>端口使能:</td>
+                            <td>
+                              <select name="outputConfigState">
+                                <option value="0">disabled</option>
+                                <option value="1">enable</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>帧类型:</td>
+                            <td>
+                              <select name="outputConfigFrameType">
+                                <option value="0">freq1544KHz</option>
+                                <option value="1">freq2048kHz</option>
+                                <option value="2">ccs</option>
+                                <option value="3">cas</option>
+                                <option value="4">d4</option>
+                                <option value="5">esf</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>CPC状态:</td>
+                            <td>
+                              <select name="outputConfigCRCState">
+                                <option value="0">disabled</option>
+                                <option value="1">enable</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SSM状态:</td>
+                            <td>
+                              <select name="outputConfigSSMState">
+                                <option value="0">disabled</option>
+                                <option value="1">enable</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>SSM Bit:</td>
+                            <td>
+                              <select name="outputConfigSSMBit">
+                                <option value="4">ssm-bit4</option>
+                                <option value="5">ssm-bit5</option>
+                                <option value="6">ssm-bit6</option>
+                                <option value="7">ssm-bit7</option>
+                                <option value="8">ssm-bit8</option>
+                                <option value="15">ssm-bit15</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>预热:</td>
+                            <td>
+                              <select name="outE1Warmup">
+                                <option value="0">squelch</option>
+                                <option value="1">on</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>运行:</td>
+                            <td>
+                              <select name="outE1Freerun">
+                                <option value="0">squelch</option>
+                                <option value="1">on</option>
+                                <option value="2">ais</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>守时:</td>
+                            <td>
+                              <select name="outE1Holdover">
+                                <option value="0">squelch</option>
+                                <option value="1">on</option>
+                                <option value="2">ais</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>快速通道:</td>
+                            <td>
+                              <select name="outE1Fasttrack">
+                                <option value="0">squelch</option>
+                                <option value="1">on</option>
+                                <option value="2">ais</option>
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div style="margin-top: 75px;padding-left: 90px;">
+                      <button type="button" class="btn btn-default" id="returnList">返回
+                      </button>
+                      <button type="button" class="btn btn-default set" data-dismiss="modal">设置
+                      </button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">打印
+                      </button>
+                      <button type="button" class="btn btn-default">
+                        导出
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="display: none;" class="net-y chirs print" id="sidebarRenderContent">
+            </div>
+            <!--侧边栏-->
+            <div class="sidebar s-close" style="display:none">
+              <div class="s"></div>
+              <!-- <div class="z"></div> -->
+              <div class="chirs">
+              </div>
+            </div>
+            <!--/侧边栏-->
+          </div>
+          <!--网元管理 -->
+          <div class="tab-pane fade   public-content" id="manage" style="padding-left:20px;">
+            <div class="search-box">
+              <form method="get" action="#" class="search-box">
+                <div class="search-row">
+                  <div class="search-col">
+                    <label>设备:</label>
+                    <input id="device" type="text" placeholder="请输入" value="">
+                  </div>
+                  <div class="search-col">
+                    <label>厂商:</label>
+                    <select id="vendor" class="last">
+                      <option value="">请选择</option>
+                      <option value="hw">华为</option>
+                      <option value="dt">大唐</option>
+                      <option value="xt">讯腾</option>
+                      <option value="ss">赛思</option>
+                    </select>
+                  </div>
+                  <div class="search-col">
+                    <label>设备类型:</label>
+                    <select id="deviceType">
+                      <option value="">请选择</option>
+                      <option value="SM2000">SM2000</option>
+                      <option value="SM2000_GN">SM2000_GN</option>
+                      <option value="GNSS97">GNSS97</option>
+                      <option value="TP1100">TP1100</option>
+                      <option value="TSG3800">TSG3800</option>
+                      <option value="synlockV3">synlockV3</option>
+                    </select>
+                  </div>
+                  <input class="bg-btn" id="searchBtn" type="button" value="搜索" />
+                  <a href="#" id="manageAddBtn" class="bg-btn f-r">添加</a>
+                </div>
+              </form>
+            </div>
+            <div class="table-box">
+              <table class="table-data m-t30">
+                <thead>
+                  <tr>
+                    <td>网元名称</td>
+                    <td>网元IP </td>
+                    <td>网元描述</td>
+                    <td>厂家</td>
+                    <td>设备类型</td>
+                    <td>网元状态</td>
+                    <td>操作</td>
+                  </tr>
+                </thead>
+                <tbody id="tbody-left">
+                  <tr>
+                    <td style="text-align:left">河北省调 V3_RPC</td> 
+                    <td>河北省调 V3_PRC</td> 
+                    <td>192.168.1.1</td> 
+                    <td>177</td> 
+                    <td>华为</td> 
+                    <td>JJSLKJJWLEROIUWEN23423</td> 
+                    <td>在线</td>
+                    <td>
+                      <a class="set m-r5" href="#"></a>
+                      <a class="deleted" href="#"></a>
+                      <a class="refresh" href="#" style="vertical-align: unset;margin-left: 4px;"></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="page-box m-t47">
+              <div class="page f-r" id="managePage">
+              </div>
+              <div class="f-r totalNum" id="manageTotalPages"></div>
+            </div>
+          </div>
+          <!-- 删除设备确定模态框 -->
+          <div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">请确认</h4>
+                </div>
+                <div class="content">确定要删除此设备么？</div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary submit">确定</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          <!--EMS配置 -->
+          <div class="tab-pane fade" id="EMS">
+            <div style="margin: 0 auto;color: red;text-align: center;">超级管理员可见</div>
+          </div>
+          <!--配置信息统计-->
+          <div class="tab-pane fade" id="count">
+            <form method="get" action="#" class="search-box">
+              <div class="search-row" style="overflow: hidden;">
+                <a href="#" class="bg-btn f-r m-r5" data-toggle="modal" data-target="#countPrintModal" onclick="screenshot()">打印</a>
+              </div>
+            </form>
+            <div class="row chart-box">
+              <div class="col-md-6">
+                <div id="chart1" class="m-t10">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div id="chart2" class="m-t10">
+                </div>
+              </div>
+              <div class="col-md-6" style="margin-top: -80px;">
+                <div id="chart3" class="m-t10">
+                </div>
+              </div>
+              <div class="col-md-6" style="margin-top: -80px;">
+                <div id="chart4" class="m-t10">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 板卡配置 模态框（Modal） -->
+      <div class="modal fade public-modal" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                板卡配置
+              </h4>
+            </div>
+            <div class="modal-body" style="padding-left:15px;padding-right:15px;">
+              <h5 style="padding: 15px 0px;">槽位：<span>3</span>&nbsp;&nbsp;信号类型：<span>E1-T1</span></h5>
+              <table class="modal-table1 m-b20">
+                <thead>
+                  <tr>
+                    <th>端口号</th>
+                    <th>端口使能</th>
+                    <th>帧类型</th>
+                    <th>CRC状态</th>
+                    <th>SSM状态</th>
+                    <th>SSM Bit</th>
+                    <th>业务名</th>
+                  <tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>enable</td>
+                    <td>freq2048KHz</td>
+                    <td>enable</td>
+                    <td>diabled</td>
+                    <td>ssm-bit4</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>enable</td>
+                    <td>freq2048KHz</td>
+                    <td>enable</td>
+                    <td>diabled</td>
+                    <td>ssm-bit4</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>enable</td>
+                    <td>freq2048KHz</td>
+                    <td>enable</td>
+                    <td>diabled</td>
+                    <td>ssm-bit4</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>enable</td>
+                    <td>freq2048KHz</td>
+                    <td>enable</td>
+                    <td>diabled</td>
+                    <td>ssm-bit4</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+      </div>
+      <!-- 网元祖添加 模态框（Modal） -->
+      <div class="modal fade public-modal" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title" id="">
+                网元祖添加
+              </h4>
+            </div>
+            <div class="modal-body ">
+              <form method="post" action="#">
+                <div class="form-row">
+                  <div class="left w-p35"><span style="color:red;">*</span><label>区域选择:</label></div>
+                  <div class="right-row w-p65">
+                    <select class="w-300">
+                      <option>请选择</option>
+                      <option selected>北京</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="left w-p35"><label>网元组名称:</label></div>
+                  <div class="right-row w-p65">
+                    <input class="w-300" placeholder="国网信通网元祖" type="text">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="left w-p35"><label>网元组地址:</label></div>
+                  <div class="right-row w-p65">
+                    <input class="w-300" placeholder="北京西域白广路二条" type="text">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="left w-p35"><label>指定网元:</label></div>
+                  <div class="right-row w-p65">
+                    <input class="w-300 edit-password" placeholder="北京市调 V3_PRC" type="text">
+                    <div class="diy-box w-300">
+                      <div style="overflow: hidden">
+                        <a href="#" class="f-l diy-btn m-r10" onclick="changeDiySearchValue(1)">
+                          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                          全选
+                        </a>
+                        <a href="#" class="f-l diy-btn " onclick="changeDiySearchValue(0)">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          全部取消
+                        </a>
+                        <a href="#" class="diy-btn f-r">
+                          <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                          重置
+                        </a>
+                      </div>
+                      <input id="diy-search" class="diy-search" placeholder="搜索" type="text">
+                      <div class="log-box">
+                        <span>北京市调 V3_PRC</span>
+                        <span>北京市调 SM2000_PRC</span>
+                        <span>北京市调 TP1100_PRC</span>
+                        <span>北京西单 V3_PRC</span>
+                      </div>
+                      <div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消
+              </button>
+              <button type="button" class="btn btn-primary">
+                确定
+              </button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+      </div>
+
+
+      <!-- 设备添加 模态框（Modal） -->
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myAddModalLabel">设备添加</h4>
+            </div>
+            <div class="modal-body device_add-modal">
+              <table class="nocolor device_add">
+                <tbody>
+                  <tr>
+                    <td>区域选择</td>
+                    <td><select id="areaId" onchange="onchangeAreaName()">
+                        <option value="">请选择</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>站点名</td>
+                    <td><select id="siteName" onchange="onchangeName()">
+                        <script type="text/javascript">
+                          /*   */
+                        </script>
+                      </select></td>
+                  </tr>
+                  <tr>
+                    <td>网元类型</td>
+                    <td><select id="neType" onchange="onchangeName()">
+                        <option value="PRC">PRC</option>
+                        <option value="LPR">LPR</option>
+                        <option value="SSUT">SSUT</option>
+                        <option value="SSUL">SSUL</option>
+                      </select></td>
+                  </tr>
+                  <tr>
+                    <td>类型使能</td>
+                    <td><select id="">
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                      </select></td>
+                  </tr>
+                  <tr>
+                    <td>设备型号</td>
+                    <td><select id="deviceTypeM" onchange="onchangeName();onchVendor()">
+                        <option value="SM2000">SM2000</option>
+                        <option value="SM2000_GN">SM2000_GN</option>
+                        <option value="SYNLOCKV3">SYNLOCKV3</option>
+                        <option value="GNSS97">GNSS97</option>
+                        <option value="TSG3800">TSG3800</option>
+                        <option value="TP1100">TP1100</option>
+                      </select></td>
+                  </tr>
+                  <tr>
+                    <td>网元IP</td>
+                    <td><input id="ip" type="text" placeholder="xxx.xxx.xxx.xxx" /></td>
+                  </tr>
+                  <tr>
+                    <td>网元与网管连接方式</td>
+                    <td><select id="linkMode">
+                        <option value="SNMP">SNMP</option>
+                        <option value="TL1">TL1</option>
+                      </select></td>
+                  </tr>
+                  <tr>
+                    <td>网元名称</td>
+                    <td><input id="name" type="text" /></td>
+                  </tr>
+                  <tr>
+                    <td>厂商</td>
+                    <td><input id="vendorM" type="text" value="赛思"></input></td>
+                  </tr>
+                  <tr>
+                    <td>资产归属</td>
+                    <td><input type="text" id="owner"></input></td>
+                  </tr>
+                  <tr>
+                    <td>网元地址</td>
+                    <td><textarea rows="2" cols="30" id="aliasName" style="border: 1px solid #b0b0b0"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>机架位置</td>
+                    <td><input id="location" type="text" placeholder="" /></td>
+                  </tr>
+                  <tr>
+                    <td>经度</td>
+                    <td><input id="longitude" type="text" placeholder="" /></td>
+                  </tr>
+                  <tr>
+                    <td>纬度</td>
+                    <td><input id="latitude" type="text" placeholder="" /></td>
+                  </tr>
+                </tbody>
+              </table>
+              <input type="text" id="judge" readonly="readonly" style="display:none;">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="queryDevice()">取消
+              </button>
+              <button type="button" class="btn btn-primary submit" onclick="addOrUpdateDevice()" id="deviceConfirm">确定</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+      </div>
+      <!-- 设备添加 模态框（Modal）end -->
+
+
+      <!-- 告警统计 添加 模态框（Modal） -->
+      <div class="modal fade public-modal " id="countPrintModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog w-640 " style="margin-top:80px;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title">
+                打印
+              </h4>
+            </div>
+            <div class="modal-body o-h">
+              <form method="post" action="#">
+                <div class="w-p45 f-l">
+                  <div class="form-row">
+                    <div class="left w-p40"><label>目标打印机</label></div>
+                    <div class="right-row w-p60">
+                      <select class="w-140">
+                        <option>请选择</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="left w-p40"><label>布局</label></div>
+                    <div class="right-row w-p60">
+                      <select class="w-140">
+                        <option>横向</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="left w-p40"><label>纸张尺寸</label></div>
+                    <div class="right-row w-p60">
+                      <select class="w-140">
+                        <option>A4</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="left w-p40"><label>边距</label></div>
+                    <div class="right-row w-p60">
+                      <select class="w-140">
+                        <option>默认</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="left w-p40"><label>缩放</label></div>
+                    <div class="right-row w-p60">
+                      <select class="w-140">
+                        <option>100</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-p55 f-r">
+                  <div id="chart-canvas"></div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="modal-btn no" data-dismiss="modal">取消</button>
+              <button type="button" class="modal-btn yes">
+                打印
+              </button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+      </div>
+      <!-- 链路详情浮层 -->
+      <div class="layer link-layer" style="position: absolute;left: 0px; top: 300px; width: 400px; display: none">
+        <h3>链路详情<a href="javascript:void(0)" class="close">✕</a></h3>
+        <div class="content">
+          <style>
+            .layer-table {
+              margin-top: 10px;
+            }
+
+            .layer-table thead tr {
+              background: transparent
+            }
+
+            .layer-table tbody tr:nth-of-type(even) {
+              background: #666
+            }
+
+            .layer-table tbody tr:nth-of-type(odd) {
+              background: transparent
+            }
+          </style>
+          <table class="layer-table">
+            <thead>
+              <tr>
+                <th>设备端口</th>
+                <th>设备输出端口</th>
+                <th>链路状态</th>
+                <th>系统名</th>
+                <th>物理节点信息</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>11</td>
+                <td>3232</td>
+                <td>3</td>
+                <td></td>
+                <td>节点1-节点2</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>3232</td>
+                <td>3</td>
+                <td></td>
+                <td>节点1-节点2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 链路详情浮层 end -->
+      <!-- 设备详情浮层 -->
+      <div class="layer device-layer" style="position: absolute;left: 0; top: 0; display: none;">
+        <h3>设备详情<a href="javascript:void(0)" class="close">✕</a></h3>
+        <div class="content">
+          <table class="nocolor">
+            <tbody>
+              <tr>
+                <td>设备名称：</td>
+                <td>山东省</td>
+              </tr>
+              <tr>
+                <td>时钟类型：</td>
+                <td>LPR</td>
+              </tr>
+              <tr>
+                <td>设备类型：</td>
+                <td>SM0000</td>
+              </tr>
+              <tr>
+                <td>设备厂商：</td>
+                <td>华为</td>
+              </tr>
+              <tr>
+                <td>IP地址：</td>
+                <td>192.168.1.1</td>
+              </tr>
+              <tr>
+                <td>告警数量：</td>
+                <td>10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 设备详情浮层 end -->
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../../lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../lib/Highcharts-6.2.0/code/highcharts.js"></script>
+<script type="text/javascript" src="../../lib/html2canvas.min.js"></script>
+<script type="text/javascript" src="../../lib/canvas2image.js"></script>
+<!--图表插件-->
+<script type="text/javascript" src="../../js/share.js"></script>
+<script type="text/javascript" src="../../lib/jqueryPagination/js/jquery.pagination.min.js"></script>
+<script type="text/javascript" src="../../js/render.js"></script>
+<script type="text/javascript" src="../../lib/comm.js"></script>
+
+<script src="../../lib/ssform/lib.js"></script>
+<script src="../../lib/ssform/template-web.js"></script>
+<script src="../../lib/ssform/ssform.js"></script>
+<script src="../../lib/ssform/ssTable.js"></script>
+<script src="../../lib/ssform/Loading/Loading.js"></script>
+<script src="../../lib/snap.svg.js"></script>
+<script src="../../js/logic-board.js"></script>
+<!-- <script src="../../js/personal.js"></script> -->
+
+<script type="text/javascript" src="../../js/configure.js"></script>
+<script type="text/javascript" src="../../lib/map/echarts.js"></script>
+
+<script>
+  $("#myModalTips").on("hidden.bs.modal", function() {
+    $(this).removeData("bs.modal");
+  });
+
+  function showOrHideElement(){
+    if(top.SsCenter.deviceInfo.current){
+      var deviceType=top.SsCenter.deviceInfo.current.deviceType
+      if (deviceType == "TSG3800") {
+          $(".nav-left [to='output']").parent().css("display", "none");
+          
+      } else {
+          $(".nav-left  [to='output']").parent().css("display", "block");
+      }
+
+      if(deviceType!="SM2000"&&deviceType!="SM2000_SN"){
+        if($("#collapseexample2").css("display")=="block"){
+              $("#collapseexample2 [item=GNSS1]").css("display", "none");
+              $("#collapseexample2 [item=GNSS2]").css("display", "none");
+        }
+        $(".nav-left  [to='system']").parent().css("display", "block");
+        $(".nav-left  [to='clock']").parent().css("display", "block");
+      }else{
+        $(".nav-left  [to='system']").parent().css("display", "none");
+        $(".nav-left  [to='clock']").parent().css("display", "none");
+        if($("#collapseexample2").css("display")=="block"){
+              $("#collapseexample2 [item=GNSS1]").css("display", "block");
+              $("#collapseexample2 [item=GNSS2]").css("display", "block");
+        }
+      }
+    }
+ 
+  }
+  
+
+  var Loading = jQuery.Loading({ Message: "加载中……", Timeout: 120 });
+  // Loading.Show();
+
+  function queryDevice() {
+    var mauto = {
+      token: sessionID,
+      page: '',
+      pageSize: 200,
+      name: '',
+      ip: '',
+      deviceStatus: '',
+      areaId: '',
+      user: 'admin',
+      deviceType: '',
+      NEType: '',
+      Vendor: ''
+    }
+    $.ajax({
+      url: '/nms/spring/device/page',
+      headers: { 'token': sessionID },
+      type: "GET",
+      async: false,
+      data: mauto,
+      dataType: "json",
+      contentType: "application/json;charset=UTF-8",
+      success: function(result) {
+        $.ajax({
+          url: '/nms/spring/viewData?areaId=',
+          headers: { 'token': sessionID },
+          type: "GET",
+          async: false,
+          dataType: "json",
+          contentType: "application/json;charset=UTF-8",
+          success: function(results) {
+            $.ajax({
+              url: "/nms/spring/device/parents?type=all&token=" + sessionID,
+              headers: { 'token': sessionID },
+              type: "GET",
+              async: false,
+              dataType: "json",
+              contentType: "application/json;charset=UTF-8",
+              success: function(resultType) {
+                console.log(result);
+                var data = result.data.content;
+                var phyData = results.data;
+                var myData = new Array();
+                for (var j = 0; j < phyData.length; j++) {
+                  for (var i = 0; i < data.length; i++) {
+                    for (var k = 0; k < resultType.data.length; k++) {
+                      var resultData = resultType.data[k].children
+                      for (var n = 0; n < resultData.length; n++) {
+                        if (data[i].ip == phyData[j].ip && resultData[n].ip == phyData[j].ip && phyData[j].topoType != 3) {
+                          var obj = new Object();
+                          var deviceObj = new Object();
+                          obj.name = data[i].name;
+                          var valArr = new Array();
+                          valArr[0] = phyData[j].phyX;
+                          valArr[1] = phyData[j].phyY;
+                          deviceObj.type = data[i].netype;
+                          deviceObj.id = data[i].id;
+                          deviceObj.group = data[i].deviceType;
+                          deviceObj.parent = "abcd-200";
+                          deviceObj.status = resultData[n].type;
+                          deviceObj.value = 160;
+                          deviceObj.company = "1";
+                          deviceObj.ip = data[i].ip;
+                          deviceObj.clockLevel = 2;
+                          deviceObj.model = "V1.0";
+                          deviceObj.nodeOrDevice = "1";
+                          deviceObj.warningNum = resultData[n].alarmsCount;
+
+                          deviceObj.aliasName = data[i].aliasName;
+                          deviceObj.location = data[i].location;
+                          deviceObj.owner = data[i].owner;
+                          deviceObj.areaId = data[i].area.id;
+                          deviceObj.areaName = data[i].area.name;
+                          valArr[2] = deviceObj
+                          obj.value = valArr;
+                          myData.push(obj);
+                          if (top.SsCenter) {
+                            top.SsCenter.setDeviceOne({
+                              "id": deviceObj.id,
+                              "status": deviceObj.status,
+                              "alarmsCount": deviceObj.warningNum,
+                              "vendor": data[i].Vendor,
+                              "name": data[i].name,
+                              "ip": data[i].ip,
+                              "areaId": data[i].area.id,
+                              "deviceType": data[i].deviceType
+                            });
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                //查询所有网元组
+                $.ajax({
+                  url: "/nms/spring/viewData/getAllGroup",
+                  headers: { 'token': sessionID },
+                  type: "GET",
+                  async: false,
+                  dataType: "json",
+                  contentType: "application/json;charset=UTF-8",
+                  success: function(result) {
+                    var data = result.data;
+                    for (var i = 0; i < data.length; i++) {
+                      var obj = new Object();
+                      obj.name = data[i].groupName;
+                      var nodeGroupObj = new Object();
+                      var valArr = new Array();
+                      valArr[0] = data[i].xCoordinate;
+                      valArr[1] = data[i].yCoordinate;
+                      nodeGroupObj.id = data[i].id;
+                      nodeGroupObj.type = "NEG";
+                      nodeGroupObj.status = "greent";
+                      nodeGroupObj.nodeOrDevice = "2";
+                      nodeGroupObj.groupAddress = data[i].groupAddress;
+                      nodeGroupObj.remark = data[i].remark;
+                      valArr[2] = nodeGroupObj
+                      obj.value = valArr;
+                      myData.push(obj);
+                    }
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown) { // 状态码
+
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息   
+                    console.log(textStatus);
+                  }
+                });
+                // console.log(JSON.stringify(myData));
+                var dom = document.getElementById("container");
+                var myChart = new eMap();
+                myChart.init(dom);
+                myChart.showMap('china', null, function() {
+                  var data = {
+
+                  }
+                  $.ajax({
+                    url: '/nms/spring/viewData/getAllVOPath',
+                    headers: { 'token': sessionID },
+                    type: "POST",
+                    async: false,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    contentType: "application/json;charset=UTF-8",
+                    success: function(result) {
+                      var linkData = new Array();
+                      for (var i = 0; i < result.length; i++) {
+                        var pathLinkIdList = result[i].pathLinkIdList || [];
+                        for (var j = 0; j < pathLinkIdList.length; j++) {
+                          if (result[i].path.aNe == pathLinkIdList[j].aNode && result[i].path.zNe == pathLinkIdList[j].zNode) {
+                            var nodeObj = new Object();
+                            var objInfo = new Object();
+                            var nodeArrALL = new Array();
+                            var zNodeArr = new Array();
+                            var linkName = "";
+                            var pathName = result[i].path.pathName.split(',');
+                            var aNodeSplit = pathLinkIdList[j].aPort.split(",");
+                            var zNodeSplit = pathLinkIdList[j].aSlot.split(",");
+                            nodeArrALL.push(aNodeSplit);
+                            zNodeArr.push(zNodeSplit);
+                            nodeArrALL = nodeArrALL.concat(zNodeArr);
+                            nodeObj.coords = nodeArrALL;
+                            objInfo.id = pathLinkIdList[j].id;
+                            objInfo.aNode = pathLinkIdList[j].aNode;
+                            objInfo.zNode = pathLinkIdList[j].zNode;
+                            objInfo.group = "123";
+                            objInfo.parent = "abcd-200";
+                            objInfo.port = pathName[0];
+                            objInfo.outPort = pathName[1];
+                            objInfo.status = "Normal";
+                            objInfo.systemName = result[i].path.pathName;
+                            for (var k = 0; k < pathLinkIdList.length; k++) {
+                              linkName += pathLinkIdList[k].linkName + "-"
+                            }
+                            var newLinkName = linkName.substring(0, linkName.length - 1);
+                            objInfo.info = newLinkName;
+                            objInfo.childrenNum = 3;
+                            nodeObj.info = objInfo;
+                            linkData.push(nodeObj);
+                          }
+                        }
+
+                      }
+                      console.log(JSON.stringify(linkData));
+
+                      myChart.setPointData(myData);
+                      myChart.setLineData(linkData);
+                      refreshStatData();
+                      window.onresize = function() {
+                        myChart.resize();
+                      }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) { // 状态码
+                      console.log(XMLHttpRequest.status);
+                      // 状态
+                      console.log(XMLHttpRequest.readyState);
+                      // 错误信息   
+                      console.log(textStatus);
+                    }
+                  });
+
+                });
+
+                var areaFlag = [{
+                  '安徽': 'anhui',
+                  '澳门': 'aomen',
+                  '北京': 'beijing',
+                  '重庆': 'chongqing',
+                  '福建': 'fujian',
+                  '甘肃': 'gansu',
+                  '广东': 'guangdong',
+                  '广西': 'guangxi',
+                  '贵州': 'guizhou',
+                  '海南': 'hainan',
+                  '河北': 'hebei',
+                  '黑龙江': 'heilongjiang',
+                  '河南': 'henan',
+                  '湖北': 'hubei',
+                  '湖南': 'hunan',
+                  '江苏': 'jiangsu',
+                  '江西': 'jiangxi',
+                  '吉林': 'jilin',
+                  '辽宁': 'liaoning',
+                  '内蒙古': 'neimenggu',
+                  '宁夏': 'ningxia',
+                  '青海': 'qinghai',
+                  '山东': 'shandong',
+                  '上海': 'shanghai',
+                  '山西': 'shanxi',
+                  '陕西': 'shanxi1',
+                  '四川': 'sichuan',
+                  '台湾': 'taiwan',
+                  '天津': 'tianjin',
+                  '香港': 'xianggang',
+                  '新疆': 'xinjiang',
+                  '西藏': 'xizang',
+                  '云南': 'yunnan',
+                  '浙江': 'zhejiang'
+                }];
+                myChart.on('click', function(params) {
+                  if (!params.seriesType && myChart.geteMap().getOption().geo[0].map == 'china') {
+                    console.log(params.name);
+                    console.log(areaFlag[0][params.name]);
+                    if (params.name) {
+                      console.log(this._dom.id);
+                      __eMapGlobalVar[this._dom.id + '_eMapMenu'].curChart.showMap(areaFlag[0][params.name], "refresh");
+                    }
+                  }
+                });
+                myChart.on('addLine', function(newLine, params, isNew) {
+                  var data = newLine.coords
+                  var dataLength = data.length - 1;
+                  var aNodeLink = data[0];
+                  var nodeArr = new Array();
+                  $("#myChartAddLine").off("click");
+                  $("#myChartAddLine").on("click", function() {
+                    var nodeDetail = $("#nodeDetail").val();
+                    var nodeName = nodeDetail.split("-");
+                    for (var i = 0; i < data.length - 1; i++) {
+                      var obj = new Object();
+                      var aNodeLinks = data[i];
+                      var aNodeIp = data[0];
+                      var aNodes = parseFloat(aNodeLinks[0]).toFixed(2) + "," + parseFloat(aNodeLinks[1]).toFixed(2);
+                      obj.aNode = aNodeIp[2];
+                      var zNodeLinks = data[i + 1];
+                      var zNodes = parseFloat(zNodeLinks[0]).toFixed(2) + "," + parseFloat(zNodeLinks[1]).toFixed(2);
+                      obj.zNode = params.data.value[2].ip;
+                      obj.aSlot = zNodes;
+                      obj.aPort = aNodes;
+                      obj.zSlot = "";
+                      obj.zPort = "";
+                      obj.linkName = nodeName[i];
+                      obj.linkStatus = $("#linkStatus").val();
+                      obj.linkType = 2;
+                      nodeArr.push(obj);
+                    }
+                    console.log(JSON.stringify(nodeArr));
+                    var aNode = aNodeLink[2];
+                    var zNode = params.data.value[2].ip;
+                    var pathName = aNodeLink[3] + "," + params.name;
+                    addLink(aNode, zNode, nodeArr, pathName);
+                    console.log(params);
+                    console.log('addLine');
+
+
+                  });
+                  $("#eInput").val(aNodeLink[3]);
+                  $("#eOutput").val(params.name);
+                  $("#linkStatus").val(0);
+                  $("#linkStatus").data("isNew", true);
+                  $("#linkStatus").data("newLine", newLine);
+                  $("#systemName").val(aNodeLink[3] + "," + params.name);
+                  $('#myModal_btn').click();
+                  console.log(newLine);
+                });
+                myChart.on('editLine', function(editLine, params) {
+                  console.log(params);
+                  console.log('editLine');
+                  console.log(editLine);
+                  $('#myModal_btn').click();
+                });
+                myChart.on('syncClick', function(syncClick, params) {
+                  var syncId = syncClick.data.value[2].id;
+                  synchronousDevice(syncId);
+                });
+                myChart.on('addPoint', function(newPoint, params) {
+                  if (newPoint.name == "PRC" || newPoint.name == "LPR" || newPoint.name == "SSUT" || newPoint.name == "SSUL") {
+                    $("#myAddModalLabel").html("设备添加");
+                    $("#judge").val(1)
+                    console.log(params);
+
+                    $("#longitude").val(newPoint.value[0].toFixed(2));
+                    $("#latitude").val(newPoint.value[1].toFixed(2));
+                    if (__eMapGlobalVar["currentProvince"] && top.SsCenter.province) {
+                      if (top.SsCenter.province[__eMapGlobalVar["currentProvince"]]) {
+                        $("#areaId").val(top.SsCenter.province[__eMapGlobalVar["currentProvince"]])
+                      }
+                    }
+
+
+                    $("#ip").attr("readonly", false);
+                    $("#name").attr("readonly", false);
+                    $("#aliasName").val("");
+                    $("#location").val("");
+                    $("#owner").val("");
+                    $("#vendor").val("赛思");
+                    $("#ip").val("");
+                    $("#neType").find("option[value='" + newPoint.name + "']").attr("selected", true);
+                    var selfName = $("#areaId").find("option:selected").text();
+                    selfName = selfName + $("#siteName").find("option:selected").text();
+                    selfName = selfName + "_" + $("#neType").find("option:selected").text();
+                    $("#name").val(selfName);
+                  } else {
+                    $("#groupPhyX").val(newPoint.value[0].toFixed(2));
+                    $("#groupPhyY").val(newPoint.value[1].toFixed(2));
+
+                    $("#groupName").val("");
+                    $("#groupAddress").val("");
+                    if (__eMapGlobalVar["currentProvince"] && top.SsCenter.province) {
+                      if (top.SsCenter.province[__eMapGlobalVar["currentProvince"]]) {
+                        $("#nodeGroupId").val(top.SsCenter.province[__eMapGlobalVar["currentProvince"]])
+                      }
+                    }
+
+                  }
+                  console.log('addPoint');
+                  if ("网元组" == newPoint.name) $('#myModal3_btn').click();
+                  else $('#myModal2_btn').click();
+                  console.log(newPoint);
+                });
+                myChart.on('editPoint', function(editPoint, params) {
+
+                  $.extend(editPoint.value[2], top.SsCenter.deviceInfo.details[editPoint.value[2].id] || {})
+                  $("#areaId").val(editPoint.value[2].areaId);
+                  $("#myAddModalLabel").html("设备编辑");
+                  $("#judge").val(2);
+                  $("#longitude").val(editPoint.value[0]);
+                  $("#latitude").val(editPoint.value[1]);
+                  $("#name").attr("value", editPoint.name);
+                  $("#neType").find("option[value='" + editPoint.value[2].type + "']").attr("selected", true);
+                  $("#ip").val(editPoint.value[2].ip);
+                  $("#ip").attr("readOnly", "true");
+                  $("#deviceType").val(editPoint.value[2].group);
+
+
+                  $("#name").val(editPoint.name);
+                  $("#name").attr("readOnly", "true");
+                  $("#aliasName").val(editPoint.value[2].aliasName);
+                  $("#location").val(editPoint.value[2].location);
+                  $("#owner").val(editPoint.value[2].owner);
+
+
+
+
+
+                  var deviceType = editPoint.value[2].group;
+                  var siteName = editPoint.name;
+                  var arrSiteName = "";
+                  if (deviceType == 'SM2000') {
+                    arrSiteName = siteName.split("SM2000");
+                    $("#siteName").find("option[value='" + arrSiteName[0] + "']").attr("selected", true);
+                  } else if (deviceType == 'SM2000_GN') {
+                    arrSiteName = siteName.split("SM2000_GN");
+                    $("#siteName").find("option[value='" + arrSiteName[0] + "']").attr("selected", true);
+                  } else if (deviceType == 'SYNLOCKV3') {
+                    arrSiteName = siteName.split("SYNLOCKV3");
+                    $("#siteName").find("option[value='" + arrSiteName[0] + "']").attr("selected", true);
+                  } else if (deviceType == 'GNSS97') {
+                    arrSiteName = siteName.split("GNSS97");
+                    $("#siteName").find("option[value='" + arrSiteName[0] + "']").attr("selected", true);
+                  } else if (deviceType == 'TSG3800') {
+                    arrSiteName = siteName.split("TSG3800");
+                    $("#siteName").find("option[value='" + arrSiteName[0] + "']").attr("selected", true);
+                  } else if (deviceType == 'TP1100') {
+                    arrSiteName = siteName.split("TP1100");
+                    $("#siteName").find("option[value='" + arrSiteName[0] + "']").attr("selected", true);
+                  }
+                  console.log(params);
+                  console.log('editPoint');
+                  console.log(editPoint);
+                  if (params.data && "NEG" == params.data.value[2].type) $('#myModal3_btn').click();
+                  else $('#myModal2_btn').click();
+                });
+                myChart.on('removePoint', function(params) {
+                  var delDeviceId = params.value[2].id;
+                  var nodeOrDevice = params.value[2].nodeOrDevice;
+                  if (nodeOrDevice == "1") {
+                    deleteDevice(delDeviceId);
+
+
+                  } else {
+                    deleteNodeGroup(delDeviceId);
+                  }
+                  console.log(params);
+                  //params.Cancel=true;//取消操作
+                  params.Cancel = false;
+
+
+                });
+                myChart.on('removeLine', function(params) {
+                  var aNode = params.data.info.aNode;
+                  var zNode = params.data.info.zNode;
+                  deleteTopoLink(aNode, zNode);
+                  console.log(params);
+                });
+
+                console.log(lineData);
+                // myChart.highlight(2);
+
+              },
+              error: function(XMLHttpRequest, textStatus, errorThrown) { // 状态码
+
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息   
+                console.log(textStatus);
+              }
+            });
+
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息   
+            console.log(textStatus);
+          }
+        });
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        // 状态码
+        console.log(XMLHttpRequest.status);
+        // 状态
+        console.log(XMLHttpRequest.readyState);
+        // 错误信息   
+        console.log(textStatus);
+      }
+    });
+  }
+  // forbind
+  var settingCommandDual = {
+    deviceType: null, // 设备类型：
+    business: "input",
+    single: false,
+    formDom: "#device_config_input",
+    currentBoard: null,
+    queriesToSet: {
+      "SYNLOCKV3": {
+        "input": {
+          "masterable": { // field: binding
+            "MASTER": "N",
+            "AVAILABLE": "Y"
+          },
+          "inputEnable": {
+            "NORMAL": "enable",
+            "ERROR": "disable"
+          }
+        },
+        "output":{
+  
+        }
+      },
+      "TSG3800": {
+        "input": {
+
+          "inputEnable": {
+            "DIS": "disable",
+            "default": "enable"
+
+          },
+       
+        },
+        "clock":{
+          "inputEnable": {
+            "DIS": "disable",
+            "default": "enable"
+          },
+          "setClock" : 
+          {"default":"N",
+          "REF":"Y"}
+        }
+      }
+    },
+    getInputs: function(type) {
+      var inputs = null;
+      if (type == "TSG3800") {
+        inputs = [
+          // [{ "title": "端口使能", "field": "inputEnable", "command": "value", "key": "", "showType": "select", binding: "EnableDisableNormal", "valueCommand": { "disable": "SET-DIS", "enable": "SET-EN" },"qCommand": "RTRV-COND-INP","qKey": "mode","qOthers": "","qGroup": "" ,"qLevel":"21"     }],
+          [{ "title": "质量等级", "field": "qualityGrade", "command": "SET-PRMTR-SQL", "key": "level", "showType": "select", binding: "QualityGrade3800", "others": { "validaid": 1 },"qCommand": "RTRV-DATA-SQL","qKey": "level","qOthers": "","qGroup": "" ,"qLevel":"21"   ,"sLevel":"21"   }],
+          [{ "title": "SSM模式", "field": "ssmMode", "command": "SET-PRMTR-SQL", "key": "mode", "showType": "select", binding: "SSMMode3800","qCommand": "RTRV-CONF","qKey": "ssm","qOthers": "","qGroup": "CONF"   ,"qLevel":"21"    }],
+          [{ "title": "SSM位", "field": "ssmBit", "command": "SET-PRMTR-SQL", "key": "bit", "showType": "select", binding: "Number4To8","qCommand": "RTRV-CONF","qKey": "e1SSMbit","qOthers": "","qGroup": "CONF" ,"qLevel":"21"      }],
+          [{ "title": "频率格式", "field": "freqType", "command": "SET-PRMTR-INPT", "key": "Freq", "showType": "select", binding: "FreqType3800", "others": { "validaid": 1 },"qCommand": "RTRV-CONF","qKey": "signalfrequency","qOthers": "","qGroup": "CONF"  ,"qLevel":"21"     }],
+          [{ "title": "端接电阻", "field": "resistance", "command": "SET-PRMTR-INPT", "key": "term", "showType": "select", binding: "Resistance3800","qCommand": "RTRV-CONF","qKey": "termination","qOthers": "","qGroup": "CONF"   ,"qLevel":"21"    }],
+          [{ "title": "帧格式", "field": "frameType", "command": "SET-PRMTR-INPT", "key": "mode", "showType": "select", binding: "FrameType3800","qCommand": "RTRV-CONF","qKey": "signaltype","qOthers": "","qGroup": "CONF"  ,"qLevel":"21"     }],
+          [{ "title": "CRC开关", "field": "CRCSwitch", "command": "SET-PRMTR-INPT", "key": "crc", "showType": "select", binding: "ONOFF","qCommand": "RTRV-CONF","qKey": "crc","qOthers": "","qGroup": "CONF"   ,"qLevel":"21"    }],
+          [{ "title": "优先级", "field": "priority", "command": "SET-PRMTR-PRI", "key": "priority", "showType": "select", binding: "Number0To4MonDis", "others": { "validaid": 1 },"qCommand": "RTRV-PRMTR-PRI","qKey": "level","qOthers": "","qGroup": ""  ,"qLevel":"21"     }],
+
+          // [{ "title": "相位清零", "field": "setPhaseZero", "command": "SET-PHASE_ZERO", "key": "clksrc", "showType": "select", binding: "SetPhaseZero3800" }],
+        ]
+        if (settingCommandDual.business == "system") {
+          inputs = [
+            [{ "title": "自动返回", "field": "autoReturn", "command": "SET-PRMTR-AR", "key": "validaid", "showType": "select", binding: "ONOFF", "qCommand": "RTRV-PRMTR-REF", "qKey": "ar", "qOthers": "", "qGroup": "ref" }],
+            [{ "title": "自动转换", "field": "autoSwitch", "command": "SET-PRMTR-AS", "key": "validaid", "showType": "select", binding: "ONOFF", "qCommand": "RTRV-PRMTR-REF", "qKey": "as", "qOthers": "", "qGroup": "ref" }],
+            [{ "title": "选源模式", "field": "reference2e", "command": "SET-PRMTR-REF", "key": "mode", "showType": "select", binding: "Reference2e3800", "qCommand": "RTRV-PRMTR-REF", "qKey": "mode", "qOthers": "", "qGroup": "ref" }],
+            [{ "title": "SSM延时", "field": "setDelay", "command": "SET-PRMTR-DELAY", "key": "delay", "showType": "select", binding: "Number1To30", "qCommand": "RTRV-PRMTR-DELAY", "qKey": "delay", "qOthers": "", "qGroup": "" }],
+           
+            [{ "title": "当前参考源", "field": "cRef", "command": "","disabled":"true", "key": "", "showType": "text", "qCommand": "RTRV-PRMTR-REF", "qKey": "aid", "qOthers": "", "qGroup": "ref" }],
+            // [{ "title": "当前输入源", "field": "cInput", "command": "", "key": "", "showType": "text", "qCommand": "RTRV-COND-INP", "qKey": "aid", "qOthers": { "aid": "ALL" }, "qGroup": "", "qIndexKey": "mode", "qIndexBase": {  "default": "REF" } }],
+
+          ];
+        }
+
+        if (settingCommandDual.business == "clock") {
+          inputs = [
+            [{ "title": "使能", "field": "inputEnable", "command": "value", "key": "validaid", "showType": "select", binding: "EnableDisableNormal",  "valueCommand": { "disable": "SET-DIS", "enable": "SET-ENA" } ,"qCommand": "RTRV-COND-EQPT","qKey": "status","qOthers": "","qGroup": "ref" ,"qIndexLevel":"1","qIndexKey":"aid","sLevel":'1' }],
+            [{ "title": "当前输出时钟", "field": "setClock", "command": "SET-CLK", "key": "validaid", "showType": "select", binding: "YESNO" , "qCommand": "RTRV-COND-EQPT","qKey": "status","qOthers": "","qGroup": "ref"   ,"qIndexLevel":"1","qIndexKey":"aid" ,"sLevel":'1'  }],
+          ];
+        }
+
+        if (settingCommandDual.business == "output") {
+          inputs = [
+
+          ];
+        }
+//3800in
+
+      } else if (type == "TP1100") {
+        inputs = [
+          [{ "title": "状态", "field": "inputEnable", "command": "edEqpt", "key": "INSTATE", "showType": "select", binding: "InputEnableTP1100" }],
+          [{ "title": "信号类型", "field": "signalType", "command": "edEqpt", "key": "FRMTYPE", "showType": "select", binding: "FrameTypeTP1100" }],
+          [{ "title": "质量等级", "field": "qualityGrade", "command": "edEqpt", "key": "QLEVEL", "showType": "select", binding: "QualityGradeTP1100" }],
+          [{ "title": "优先级", "field": "priority", "command": "edEqpt", "key": "PRIORITY", "showType": "select", binding: "PriorityTP1100" }],
+          [{ "title": "SSM使能", "field": "SSMEnable", "command": "edEqpt", "key": "SSMENA", "showType": "select", binding: "EnableDisableNormal" }],
+          [{ "title": "SSM位", "field": "SSMBit", "command": "edEqpt", "key": "SSMBIT", "showType": "select", binding: "Number4To8" }],
+          [{ "title": "CRC4使能", "field": "CRCEnable", "command": "edEqpt", "key": "CRCENA", "showType": "select", binding: "EnableDisableNormal" }],
+        ]
+        if (settingCommandDual.business == "system") {
+          inputs = [
+            [{ "title": "系统运行模式", "field": "sysModeTP1100", "command": "setSysMode", "key": "SYSMODE", "showType": "select", binding: "SysModeTP1100" }],
+            [{ "title": "源选择方式", "field": "sysPerModeTP1100", "command": "edEqpt", "key": "REFMODE", "showType": "select", binding: "SysPerModeTP1100" }],
+            [{ "title": "当前源", "field": "sysInpRefTP1100", "command": "edEqpt", "key": "INPREF", "showType": "select", binding: "InputTypeTP1100" }],
+          ];
+        }
+
+        if (settingCommandDual.business == "clock") {
+          inputs = [
+            [{ "title": "时钟卡模式", "field": "clockMode", "command": "edEqpt", "key": "IOCMODE", "showType": "select", binding: "ClockModeTP1100" }],
+            [{ "title": "状态", "field": "clockState", "command": "edEqpt", "key": "IOCSTATE", "showType": "select", binding: "ClockStateTP1100" }],
+            [{ "title": "类型", "field": "clockType", "command": "edEqpt", "key": "CLKTYPE", "showType": "select", binding: "ClockTypeTP1100" }],
+          ];
+        }
+        if (settingCommandDual.business == "output") {
+          inputs = [
+
+          ];
+        }
+        // v3in
+      } else if (type = "SYNLOCKV3") {
+        inputs = [
+
+          [{ "title": "端口使能", "field": "inputEnable", "command": "value", "key": "", "showType": "select", binding: "EnableDisableNormal", "valueCommand": { "disable": "SET-DIS", "enable": "SET-ENA" }, "qCommand": "RTRV-STATE-LCIM", "qKey": "channelstate", "qOthers": { "cmdtype": "CHANSTATE" }, "qGroup": "", "qIndexKey": "channelID", "qIndexBase": { "CLOCK": "CSCLK", "default": "CLCIM" }, "qIndexLevel": "21" }],
+          [{ "title": "信号类型", "field": "signalType", "command": "SET-CHANPM-LCIM", "key": "VALUE", "showType": "select", binding: "FrameTypeInputV3", "others": { "CMDTYPE": "CHANTYPE" }, "qCommand": "RTRV-STATE-LCIM", "qKey": "channeltype", "qOthers": { "cmdtype": "CHANTYPE" }, "qGroup": "", "qIndexKey": "channelID", "qIndexLevel": "21", "qIndexBase": { "CLOCK": "CSCLK", "default": "CLCIM" } }],
+          // // [{ "title": "主用性设置", "field": "masterable", "command": "SET-MASTER-INP", "key": "MASTERABLE", "showType": "select", binding: "YESNO", "qCommand": "RTRV-MASTER-INP", "qKey": "masterable", "qOthers": {}, "qGroup": "" }],
+          [{ "title": "优先级", "field": "priority", "command": "SET-PRIOR-INP", "key": "priority", "showType": "select", binding: "Number1To23And255", "qCommand": "RTRV-PRIOR-INP", "qKey": "priority", "qOthers": {}, "qGroup": "" }],
+          [{ "title": "SSM等级", "field": "qualityGrade", "command": "SET-SQL-INP", "key": "level", "showType": "select", binding: "QualityGradeV3", "group": "SSM", "qCommand": "RTRV-SQL-INP", "qKey": "level", "qOthers": {}, "qGroup": "SSM" }],
+          [{ "title": "SSM位", "field": "ssmBit", "command": "SET-SQL-INP", "key": "bit", "showType": "select", binding: "Number4To8", "group": "SSM", "qCommand": "RTRV-SQL-INP", "qKey": "bit", "qOthers": {}, "qGroup": "SSM" }],
+          [{ "title": "SSM控制", "field": "ssmMode", "command": "SET-SQL-INP", "key": "mode", "showType": "select", binding: "AutoProvV3", "group": "SSM", "qCommand": "RTRV-SQL-INP", "qKey": "mode", "qOthers": {}, "qGroup": "SSM" }],
+          [{ "title": "SSM响应时延", "field": "ssmTime", "command": "SET-SSMT-INP", "key": "SSMtime", "showType": "text", unit: "(<=1000)0.1秒", "qCommand": "RTRV-SSMT-INP", "qKey": "ssmtime", "qOthers": {}, "qGroup": "" }],
+          [{ "title": "LOS恢复时间", "field": "losTime", "command": "SET-LOS-INP", "key": "LOStime", "showType": "text", unit: "<=100秒", "qCommand": "RTRV-LOS-INP", "qKey": "lostime", "qOthers": {}, "qGroup": "" }],
+
+
+
+          // [{ "title": "测试重置", "field": "reset", "command": "SET-CHAN-RETEST", "key": "", "showType": "text", }]
+        ];
+        if ($(".nav-left a.three-active").html() == "输入测试") {
+
+          inputs = [
+
+            [{ "title": "信号类型", "field": "signalType", "command": "SET-CHANPM-LCIM", "key": "VALUE", "showType": "select", binding: "FrameTypeInputV3", others: { "CMDTYPE": "CHANTYPE" }, "qCommand": "channelType", "qKey": "RTRV-PRMTR-LCIM", "qOthers": { "cmdtype": "CHANTYPE" }, "qGroup": "", "qIndexKey": "channelID" }],
+            [{ "title": "测试使能", "field": "testEnable", "command": "SET-CHANPM-LCIM", "key": "VALUE", "showType": "select", binding: "YESNO", others: { "CMDTYPE": "CHANMEAS" }, "qCommand": "measureable", "qKey": "RTRV-PRMTR-LCIM", "qOthers": { "cmdtype": "CHANMEAS" }, "qGroup": "", "qIndexKey": "channelID" }],
+            // [{ "title": "通道测试模板", "field": "montype", "command": "SET-PMTH-INP", "key": "montype", "showType": "select", binding: "MonTypeV3" }],
+
+          ];
+
+
+        }
+
+        if (settingCommandDual.business == "system") {
+          inputs = [
+            [{ "title": "工作模式", "field": "workMode", "command": "SET-PRMTR-SYS", "key": "VALUE", "showType": "select", binding: "WorkModeV3", others: { "TYPE": "WORKMODE" }, "qCommand": "RTRV-PRMTR-SYS", "qKey": "value", "qOthers": "", "qGroup": "sys", "qIndexKey": "type", "qIndexBase": { "default": "WORKMODE" } }],
+            [{ "title": "多数表决控制", "field": "majorityVote", "command": "SET-PRMTR-SYS", "key": "VALUE", "showType": "select", binding: "YESNO", others: { "TYPE": "VOTECTRL" }, "qCommand": "RTRV-PRMTR-SYS", "qKey": "value", "qOthers": "", "qGroup": "sys", "qIndexKey": "type", "qIndexBase": { "default": "VOTECTRL" } }],
+
+
+            [{ "title": "运行状态", "field": "condtype", "command": "","disabled":"true", "key": "", "showType": "text", "qCommand": "RTRV-COND-EQPT", "qKey": "condtype", "qOthers": "", "qGroup": "running", "qIndexKey": "card", "qLevel": "11" }],
+            [{ "title": "版本号", "field": "ver", "command": "","disabled":"true", "key": "", "showType": "text", "qCommand": "RTRV-COND-EQPT", "qKey": "ver", "qOthers": "", "qGroup": "running", "qIndexKey": "card" }],
+            [{ "title": "同步模式", "field": "syncmode", "command": "","disabled":"true", "key": "", "showType": "text", "qCommand": "RTRV-COND-EQPT", "qKey": "syncmode", "qOthers": "", "qGroup": "running", "qIndexKey": "card" }],
+            [{ "title": "PlState", "field": "PlState", "command": "","disabled":"true", "key": "", "showType": "text", "qCommand": "RTRV-COND-EQPT", "qKey": "PlState", "qOthers": "", "qGroup": "running", "qIndexKey": "card" }],
+
+
+            // [{ "title": "LCIM板卡类型", "field": "boardType", "command": "SET-PRMTR-LCIM", "key": "VALUE", "showType": "select", binding: "BoardTypeV3", others: { "PRMTRTYPE": "TYPE" },"qLevel":"11" }],
+            // [{ "title": "TSOU输出备份方式", "field": "backMode", "command": "SET-PRMTR-TSOU", "key": "VALUE", "showType": "select", binding: "BackModeV3", others: { "PRMTRTYPE": "TYPE" },"qLevel":"21" }],
+          ];
+        }
+
+        if (settingCommandDual.business == "clock") {
+          inputs = [
+            // [{ "title": "锁时状态延时", "field": "lockDelay", "command": "SET-PRMTR-SCLK", "key": "VALUE", "showType": "text", "unit": "3~86400秒", "min": 3, "max": 86400, others: { "PRMTRTYPE": "LOCKDELAY" }, "group": "delay", "qCommand": "RTRV-STATE-SCLK", "qKey": "value1", "qOthers": { "cmdtype": "LOCKDELAY" }, "qGroup": "defer", "qLevel": "11" }],
+            // [{ "title": "源切换延时", "field": "sourceDelay", "command": "SET-PRMTR-SCLK", "key": "VALUE2", "showType": "text", "unit": "10~86400秒", "min": 10, "max": 86400, others: { "PRMTRTYPE": "LOCKDELAY" }, "group": "delay", "qCommand": "RTRV-STATE-SCLK", "qKey": "value2", "qOthers": "", "qGroup": "defer" }],
+            // [{ "title": "锁相状态延时", "field": "lockStateDelay", "command": "SET-PRMTR-SCLK", "key": "VALUE3", "showType": "text", "unit": "90~86400秒", "min": 90, "max": 86400, others: { "PRMTRTYPE": "LOCKDELAY" }, "group": "delay", "qCommand": "RTRV-STATE-SCLK", "qKey": "value3", "qOthers": "", "qGroup": "defer" }],
+
+            [{ "title": "卫星卡类型", "field": "moonCardType", "command": "SET-PRMTR-SCLK", "key": "VALUE", "showType": "select", binding: "MoonCardTypeV3", others: { "PRMTRTYPE": "SCARDTYPE" }, "qCommand": "RTRV-STATE-SCLK", "qKey": "scardType", "qOthers": { "cmdtype": "SCARDTYPE" }, "qGroup": "", "qLevel": "11" ,"sLevel":"11"}],
+            [{ "title": "卫星卡工作模式", "field": "moonWorkMode", "command": "SET-PRMTR-SCLK", "key": "VALUE", "showType": "select", binding: "MoonWorkModeV3", others: { "PRMTRTYPE": "WM" }, "group": "WM", "qCommand": "RTRV-STATE-SCLK", "qKey": "workmode", "qOthers": { "cmdtype": "WM" }, "qGroup": "WM", "qLevel": "11" ,"sLevel":"11"}],
+            [{ "title": "卫星卡时间基准", "field": "moonWorkMode2", "command": "SET-PRMTR-SCLK", "key": "VALUE2", "showType": "select", binding: "MoonWorkMode2V3", others: { "PRMTRTYPE": "WM" }, "group": "WM", "qCommand": "RTRV-STATE-SCLK", "qKey": "tbase", "qOthers": { "cmdtype": "WM" }, "qGroup": "WM", "qLevel": "11" ,"sLevel":"11"}],
+            [{ "title": "可视卫星门限", "field": "visibleMoonLimit", "command": "SET-PRMTR-SCLK", "key": "VALUE", "showType": "select", binding: "Number0To8", others: { "PRMTRTYPE": "SATNUMTH" }, "qCommand": "RTRV-PRMTR-SCLK", "qKey": "thVssr", "qOthers": { "cmdtype": "SATNUMTH" }, "qGroup": "", "qLevel": "11" ,"sLevel":"11"}],
+            [{ "title": "仰角门限", "field": "angleDoorLimit", "command": "SET-PRMTR-SCLK", "key": "VALUE", "showType": "select", binding: "Number0To10", others: { "PRMTRTYPE": "SATELETH" }, "qCommand": "RTRV-PRMTR-SCLK", "qKey": "elevation", "qOthers": { "cmdtype": "SATELETH" }, "qGroup": "", "qLevel": "11" ,"sLevel":"11"}],
+           
+            // [{ "title": "纬度", "field": "latitude", "command": "SET-PRMTR-SCLK", "key": "VALUE", "showType": "text", "qCommand": "RTRV-PRMTR-SCLK", "qKey": "latitude", "qOthers": { "cmdtype": "SCARDREALPOS" }, "qGroup": "position", "qLevel": "11" }],
+            // [{ "title": "经度", "field": "longitude", "command": "SET-PRMTR-SCLK", "key": "VALUE2", "showType": "text", "qCommand": "RTRV-PRMTR-SCLK", "qKey": "longitude", "qOthers": { "cmdtype": "SCARDREALPOS" }, "qGroup": "position", "qLevel": "11" }],
+            // [{ "title": "高度", "field": "high", "command": "SET-PRMTR-SCLK", "key": "VALUE3", "showType": "text", "qCommand": "RTRV-PRMTR-SCLK", "qKey": "altitude", "qOthers": { "cmdtype": "SCARDREALPOS" }, "qGroup": "position", "qLevel": "11" }],
+          ];
+        }
+        if (settingCommandDual.business == "output") {
+          inputs = [
+
+            [{ "title": "端口使能", "field": "inputEnable", "command": "SET-CHPRMTR-TSOU", "key": "VALUE", "showType": "select", binding: "CLOSEOPEN", others: { "CHPMTYPE": "CHANBLOCK" } ,"qCommand": "RTRV-STATE-TSOU","qKey": "channelblock","qOthers": {"cmdtype":"CHANSTATE"},"qGroup": ""   ,"qIndexKey":"channelID" ,"qIndexLevel":"21" ,"sLevel":"21", "qLevel":"11"  }],
+            [{ "title": "信号类型", "field": "signalType", "command": "SET-CHPRMTR-TSOU", "key": "VALUE", "showType": "select", binding: "FrameTypeClockV3", others: { "CHPMTYPE": "CHANTYPE" } ,"qCommand": "RTRV-STATE-TSOU","qKey": "channeltype","qOthers": {"cmdtype":"CHANTYPE"},"qGroup": ""   ,"qIndexKey":"chnannelID" ,"qIndexLevel":"21" ,"sLevel":"21", "qLevel":"11" }],
+
+          ];
+        }
+
+      }
+
+      // ,"valueCommand":{ "disable":"SET-DIS", "enable":"SET-EN" }
+
+      return inputs
+    },
+    getQueries: function(type, selectedCard) {
+      if (!type) {
+        type = top.SsCenter.deviceInfo.current.deviceType;
+      }
+      var queries = null;
+      if (type == "TSG3800") {
+        queries = {
+          "id": "currentDeviceNm",
+          "title": "当前设备：未选择",
+          "change": "broadcastMethod.refreshInput()",
+          "conditions": [
+            { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "Number1To4" },
+            { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number1To3" }
+          ]
+        };
+        if (settingCommandDual.business == "system") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择"
+          }
+        } else if (settingCommandDual.business == "clock") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "钟卡", "field": "inputCardConfigId", "showType": "select", "value": "", binding: "ClockAB3800" },
+            ]
+          };
+        }
+      } else if (type == "TP1100") {
+        queries = {
+          "id": "currentDeviceNm",
+          "title": "当前设备：未选择",
+          "change": "broadcastMethod.refreshInput()",
+          "conditions": [
+            { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "PRS", binding: "InputTypeTP1100" },
+
+          ]
+        };
+        if (settingCommandDual.business == "system") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择"
+          }
+        } else if (settingCommandDual.business == "clock") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "IOC1", binding: "IOC1IOC2" },
+
+            ]
+          }
+        }
+      } else if (type = "SYNLOCKV3") {
+        queries = {
+          "id": "currentDeviceNm",
+          "title": "当前设备：未选择",
+          "change": "broadcastMethod.refreshInput()",
+          "conditions": [
+            { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "CLOCK", binding: "BoardV3" },
+            { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number1To4" }
+          ]
+        }
+        if ($(".nav-left a.three-active").html() == "输入测试") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "Number1ToA" },
+              { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number1To8" }
+            ]
+          }
+        }
+        if (settingCommandDual.business == "system") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "板卡", "field": "inputCardConfigId", "showType": "select", "value": "", binding: "Number1ToA" },
+              // { "title": "TSOU输出", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number11To4A" }
+            ]
+          }
+        } else if (settingCommandDual.business == "clock") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "BSRCU1", binding: "QClockV3" },
+
+            ]
+          }
+
+        } else if (settingCommandDual.business == "output") {
+          queries = {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "Number01To20" },
+              { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number10To45" }
+            ]
+          }
+        }
+
+      }
+      if (type == "SYNLOCKV3" || (type == "TSG3800" && (settingCommandDual.business == "input"))) {
+        settingCommandDual.reBindQueries(queries, selectedCard);
+      }
+      return queries
+    },
+    getDefaultOneCommand: function(command, cmdtype) {
+      params = {}
+      params["deviceId"] = window.top.SsCenter.deviceInfo.current.id;
+      params["devParams"] = { "aid": "" }
+      params["devParams"]["command"] = ""
+      if (command) {
+        params["devParams"]["command"] = command
+      }
+      if (cmdtype) {
+        params["devParams"]["cmdtype"] = cmdtype
+      }
+      return params
+    },
+    reBindQueries: function(queries, selectedCard) {
+      // Loading.Show();
+      $("#myTab li:last").html("show 1838" )
+      alert(1);
+      // return;
+      console.error(new Date().getTime() +"show 1838 ")
+        var doPost = ""
+        var params = {}
+        var deviceType = top.SsCenter.deviceInfo.current.deviceType;
+        var business = settingCommandDual.business;
+        if (deviceType == "SYNLOCKV3") {
+          doPost = "setSYNLOCKV3executeTL1_Sync";
+          params = settingCommandDual.getDefaultOneCommand("RTRV-COND-EQPT")
+
+        }
+        var bindCard = settingCommandDual.currentCards = []
+        if (deviceType == "TSG3800") {
+          if (settingCommandDual.business == "input") {
+            doPost = "setTSG3800executeTL1_Sync";
+            params = { "aid": "INP", "command": "RTRV-COND-INP" }
+
+            var oCard = {}
+            top.SsServer[doPost + "_n"](params).done(function(ret) {
+              (ret.data || []).forEach(function(r) {
+
+                if (r.aid && r.aid.match(/(\d+)-(\d+)$/)) {
+                  var matched = r.aid.match(/(\S+)(\d+)-(\d+)$/)
+                  // type card port 
+                  if (!(matched[2] in oCard)) {
+                    oCard[matched[2]] = { "card": matched[2], "ports": [], "name": matched[1] + matched[2] }
+                  }
+                  oCard[matched[2]]["ports"].push({ "port": matched[3], "name": r.aid })
+                }
+
+              })
+              bindCard = Object.values(oCard) || [];
+              bindCard.sort(function(x, y) {
+                return x.card - y.card;
+              })
+              settingCommandDual.currentCards = bindCard;
+
+            })
+          } else {
+
+          }
+
+        }
+
+        if (!doPost) { return }
+        // 板卡  业务名  ，端口名  [{"板卡":{"name":1,ports:["1":{}]}]
+        var ret = []
+
+        if (deviceType == "SYNLOCKV3") {
+          top.SsServer[doPost](params).done(function(result) {
+            ret = result.data || [];
+
+            $.each(ret, function(oi, ov) {
+              if (deviceType == "SYNLOCKV3") {
+                var oneCard = ov.card;
+
+
+                var re = "";
+                if (settingCommandDual.business == "input") {
+                  if (oneCard.condtype != "MASTNOR") {
+                    return true;
+                  }
+                  re = /LCIM(\d+)/
+                  if (oneCard.name.match(re)) {
+                    var uncentainty = oneCard.name.match(re)[1] == 1 || oneCard.name.match(re)[1] == 2;
+                    isMeasure = true;
+                    if (uncentainty) {
+
+                      top.SsServer[doPost + "_n"]({ "command": "RTRV-STATE-LCIM", "cmdtype": "TYPE", "aid": oneCard.name }).done(function(r) {
+                        if (r.data.boardtype == "INPUT") {
+                          isMeasure = false;
+                        }
+                        if (r.data.boardtype == "UNCFG") {
+                          return true;
+                        }
+                      });
+                    }
+                    if ($(".nav-left a.three-active").html() == "输入测试") {
+                      if (isMeasure) {
+                        bindCard.push({ "ports": [], "cardType": "LCIM", "card": oneCard.name.match(re)[1], "name": oneCard.name, "condtype": oneCard.condtype })
+                      }
+                      return true;
+                    } else {
+                      if (!isMeasure) {
+                        bindCard.push({ "ports": [], "cardType": "LCIM", "card": oneCard.name.match(re)[1], "name": oneCard.name, "condtype": oneCard.condtype })
+                      } else {
+                        return true;
+                      }
+                    }
+
+                  }
+                  if ($(".nav-left a.three-active").html() != "输入测试") {
+                    re = /SOCU(\d+)|SRCU(\d+)/
+                    if (oneCard.name.match(re)) {
+                      bindCard.push({ "ports": [], "cardType": "SCLK", "card": "CLOCK", "name": oneCard.name, "condtype": oneCard.condtype })
+                    }
+                    return true;
+                  }
+
+
+                }
+                if (settingCommandDual.business == "output") {
+                  if (oneCard.condtype != "MASTNOR") {
+                    return true;
+                  }
+                  re = /TSOU(\d+)/
+                  if (oneCard.name.match(re)) {
+                    bindCard.push({ "ports": [], "cardType": "TSOU", "card": oneCard.name.match(re)[1], "name": oneCard.name, "condtype": oneCard.condtype })
+                  }
+                  return true;
+                }
+                if (settingCommandDual.business == "clock") {
+                  if (oneCard.condtype != "MASTNOR" && oneCard.condtype != "BACKNOR") {
+                    return true;
+                  }
+                  re = /SOCU(\d+)|SRCU(\d+)/
+                  if (oneCard.name.match(re)) {
+                    bindCard.push({ "ports": [], "card": oneCard.name.match(re)[1] || oneCard.name.match(re)[2], "name": oneCard.name, "condtype": oneCard.condtype })
+                  }
+                  return true;
+
+                }
+                if (settingCommandDual.business == "system") {
+                  // if (oneCard.condtype != "MASTNOR"&&oneCard.condtype != "BACKNOR") {
+                  //    return true;
+                  // }
+                  bindCard.push({ "ports": [], "card": oneCard.name, "name": oneCard.name, "condtype": oneCard.condtype })
+                  return true;
+
+                }
+
+
+
+
+
+              }
+            })
+            if (bindCard.length > 0 && ($.inArray(settingCommandDual.business, ["input", "output"]) >= 0)) {
+              var toGetPort = null;
+              if (selectedCard) {
+                var tempCard = bindCard.filter(function(x) { return x.card == selectedCard })
+                if (tempCard.length > 0) {
+                  toGetPort = tempCard[0]
+                }
+              } else {
+                toGetPort = bindCard[0];
+              }
+              if (toGetPort && toGetPort.name) {
+                var todoPost = []
+                todoPost.push(top.SsServer[doPost + "_n"]({ "aid": toGetPort.name, "command": "RTRV-STATE-" + toGetPort.cardType, "cmdtype": "CHANTYPE" }))
+               if(settingCommandDual.business=="input"){
+                todoPost.push(top.SsServer[doPost + "_n"]({ "aid": "", "command": "RTRV-COND-INP" }))
+               }
+               
+                $.when(...todoPost).done(function(...ret) {
+                  if(todoPost.length==1){
+                    ret = [ret]
+                    var ports = ret[0][0].data.channelList;
+                    ports = ports.map(function(x) {
+                     
+                        var simpPort = x.channelID.match(/(\d+)$/)
+                        if (simpPort) {
+                          simpPort = simpPort[1]
+                        }
+                        return { "port": simpPort, "name": x.channelID, "channeltype": x.channeltype }
+                    })
+                    ports = ports.filter(function(x) { return x })
+                    toGetPort["ports"] = ports;
+                    
+                  }else{
+
+                    if (ret[0][1] == "success" || ret[1][1] == "success") {
+                    var ports = ret[0][0].data.channelList;
+                    var buss = ret[1][0].data;
+                    var buss = buss.map(function(x) { return x.aid });
+                    ports = ports.map(function(x) {
+                      if ($.inArray(x.channelID, buss) >= 0 && x.channeltype != "NONE") {
+                        var simpPort = x.channelID.match(/(\d+)$/)
+                        if (simpPort) {
+                          simpPort = simpPort[1]
+                        }
+                        return { "port": simpPort, "name": x.channelID, "channeltype": x.channeltype }
+                      }
+                    })
+                    ports = ports.filter(function(x) { return x })
+                    toGetPort["ports"] = ports;
+
+                  }
+                  
+                  }
+
+                })
+
+
+              }
+            }
+
+
+          }).fail(function(err) {
+
+          })
+        }
+
+
+        if (queries.conditions) {
+          settingCommandDual.qBindings = {};
+
+
+
+          queries.conditions.forEach(function(c) {
+            if (c.field == "inputCardConfigId") {
+              var cardBind = settingCommandDual.qBindings[c["binding"]] = []
+              bindCard.forEach(function(one) {
+                cardBind.push({ "Name": one.card, "Value": one.card });
+              })
+            }
+          })
+          queries.conditions.forEach(function(c) {
+            if (c.field == "inputCardConfigPortId") {
+
+              if (bindCard.length > 0) {
+                var toGetPort = bindCard[0];
+                if (selectedCard) {
+                  var tempCard = bindCard.filter(function(x) { return x.Name == selectedCard })
+                  if (tempCard.length > 0) {
+                    toGetPort = tempCard[0]
+                  }
+                }
+
+
+                settingCommandDual.qBindings[c["binding"]] = []
+
+                $.each((toGetPort.ports || []), function(oi, one) {
+                  settingCommandDual.qBindings[c["binding"]].push({ "Name": one.port, "Value": one.port });
+                })
+              }
+            }
+
+          })
+
+        }
+      }
+
+
+
+
+
+
+      ,
+    doQueries: function(deviceType) {
+      // $("#myTab li:last").html("text show 2088" )
+      // console.error(new Date().getTime() +" text show 2088 ")
+      // return ;
+      // Loading.Show();
+      // a = [
+      //   { "qCommand": "RTRV-PRMTR-LCIM", "qKey": "channelType","qIndexKey":"channelID", "qOthers": {"cmdtype":"CHANTYPE"}, "qGroup": "" },
+
+      // ]
+      // var inputs = settingCommandDual.getInputs(deviceType);
+      var inputs = settingCommandDual.getInputs(deviceType);
+   
+      // 针对数组数据按某个字段分组可以 采用 对象 {k:[field]}  模式
+      // 不分组的情况下命令可能也是一致的，但是field 肯定不同
+
+      var qGroup = {}
+      inputs.forEach(function(aOne) {
+        var one = aOne[0];
+
+        if (one.qGroup) {
+          if (!(one.qGroup in qGroup)) {
+
+            qGroup[one.qGroup] = { "qOthers": one.qOthers || {}, "qCommand": one.qCommand, "qIndexKey": one.qIndexKey, "qLevel": one.qLevel, "fields": [{ "qKey": one.qKey, "qIndexKey": one.qIndexKey, "qIndexBase": one.qIndexBase, "qIndexLevel": one.qIndexLevel, "field": one.field }] };
+          } else {
+            qGroup[one.qGroup]["fields"].push({ "qKey": one.qKey, "qIndexKey": one.qIndexKey, "qLevel": one.qLevel, "qIndexBase": one.qIndexBase, "qIndexLevel": one.qIndexLevel, "field": one.field })
+          }
+        } else {
+          qGroup[one.field] = { "qOthers": one.qOthers || {}, "qCommand": one.qCommand, "qIndexKey": one.qIndexKey, "qLevel": one.qLevel, "fields": [{ "qKey": one.qKey, "qIndexKey": one.qIndexKey, "qIndexBase": one.qIndexBase, "qIndexLevel": one.qIndexLevel, "field": one.field }] };
+        }
+      })
+      var qCommands = Object.values(qGroup) || [];
+      var toSendCommand = [];
+      var toSendField = [];
+      $("#myTab li:last").html("text show 2123" )
+      console.error(new Date().getTime() +" text show 2123 ")
+      $.each(qCommands, function(oi, v) {
+
+        if (!v.qCommand) {
+          return true;
+        }
+
+        var postCommand = v.qCommand;
+        var card = $("" + settingCommandDual.formDom + " [qfield='inputCardConfigId']").val(); // 槽位 
+        var cardPort = $("" + settingCommandDual.formDom + " [qfield='inputCardConfigPortId']").val(); //端口 
+        settingCommandDual.cardId = card;
+        settingCommandDual.cardPort = cardPort;
+        var toPost = "";
+        var option = { "aid": "" }
+        var currentCards = settingCommandDual.currentCards;
+
+        if (settingCommandDual.deviceType == "TSG3800") {
+          toPost = "setTSG3800executeTL1"
+          if (settingCommandDual.business == "input") {
+            option = { "aid": "INP" + card + "-" + cardPort + "" };
+          } else if (settingCommandDual.business == "system") {
+
+          }
+        } else if (settingCommandDual.deviceType == "TP1100") {
+          toPost = "setExecuteTP1100Command"
+          if (settingCommandDual.business == "input") {
+            option = { "aid": card };
+          } else if (settingCommandDual.business == "system") {
+            option = { "aid": "SYS" };
+          } else if (settingCommandDual.business == "clock") {
+            option = { "aid": card };
+          }
+        } else if (settingCommandDual.deviceType == "SYNLOCKV3") {
+          toPost = "setSYNLOCKV3executeTL1"
+          if (settingCommandDual.business == "input") {
+            var aid = ""
+            if (card == "CLOCK") {
+              aid = "CSCLK" + cardPort
+              if (v.qCommand == "RTRV-PRMTR-LCIM") {
+                aid = currentCards[0].name; // 钟卡
+                postCommand = "RTRV-PRMTR-SCLK";
+              } else if (v.qCommand == "RTRV-STATE-LCIM") {
+                aid = currentCards[0].name;
+                postCommand = "RTRV-STATE-SCLK";
+              }
+            } else {
+              aid = "CLCIM" + card + "-" + cardPort
+              // 说明查的是板子
+              if (v.qIndexKey) {
+                aid = "BLCIM" + card
+              }
+            }
+
+            option["aid"] = aid;
+
+          } else if (settingCommandDual.business == "clock") {
+            var aid = card
+            option = { "aid": aid };
+
+
+          } else if (settingCommandDual.business == "output") {
+            var aid = "GTSOU" + card + "-" + cardPort
+            option = { "aid": aid };
+          }
+
+        } else if (settingCommandDual.deviceType == "GNSS97") {
+          toPost = "setGNSS97executeTL1"
+          if (settingCommandDual.business == "input") {}
+        }
+        if (v.qLevel == "11") {
+          $.each(settingCommandDual.currentCards, function(oi, x) {
+            if (x.card == card) {
+              option.aid = x.name;
+            }
+          })
+        }
+
+        if (v.qLevel == "21") {
+          $.each(settingCommandDual.currentCards, function(oi, x) {
+            if (x.card == card) {
+              $.each(x.ports || [], function(portI, portV) {
+                if (cardPort == portV.port) {
+                  option.aid = portV.name;
+                }
+              })
+            }
+          })
+        }
+
+        var oneCommand = {
+          deviceId: window.top.SsCenter.deviceInfo.current.id,
+          devParams: $.extend({}, v.qOthers, option)
+        }
+        oneCommand.devParams.command = postCommand;
+        // toSendCommand.push(top.SsServer[toPost + "_Sync"](oneCommand))
+        toSendCommand.push(top.SsServer[toPost](oneCommand))
+        toSendField.push(v.fields);
+
+        $("#myTab li:last").html("text show 1" )
+      console.error(new Date().getTime() +" text show 1 ")
+      // debugger
+
+      })
+      debugger
+      // $("#myTab li:last").html("text show 2220" )
+      // console.error(new Date().getTime() +" text show 2220 ")
+      $.when(...toSendCommand).done(function(...a1) {
+        $("#myTab li:last").html("text show 2223" )
+      console.error(new Date().getTime() +" text show 2223 ")
+        if (toSendCommand.length == 1) {
+          a1 = [a1]
+        }
+        var o = {}
+        var isErr = false;
+        $.each(a1, function(oi, ov) {
+          if (ov[1] != "success") {
+            alert("查询错误");
+            return false;
+          }
+          var oneData = ov[0].data // 未查询到数据
+          if (!oneData) {
+            return true;
+          }
+          if (top.SsComm.isArray(oneData)) {
+            if (oneData.length == 0) {
+              return true;
+            }
+          }
+          var fs = toSendField[oi]; // 每个请求可设置的字段 可多个
+          $.each(fs, function(fsi, fsv) {
+            if (!fsv.qIndexKey) {
+              if (top.SsComm.isArray(oneData)) {
+                o[fsv.field] = oneData[0][fsv.qKey]
+              } else {
+                o[fsv.field] = oneData[fsv.qKey]
+              }
+            } else {
+              var businessId = ""
+              if (fsv.qIndexBase) {
+                businessId = fsv.qIndexBase[settingCommandDual.cardId]
+                if (!businessId) {
+                  businessId = fsv.qIndexBase["default"] || "";
+                }
+              }
+              //  // 1 card  2 cardPort 11 板卡业务名  21 端口业务名 
+              if (fsv.qIndexLevel == 1) {
+                businessId = businessId + settingCommandDual.cardId;
+              }
+              if (fsv.qIndexLevel == 2) {
+                businessId = businessId + settingCommandDual.cardPort;
+              }
+              if (fsv.qIndexLevel == 21) {
+                $.each(settingCommandDual.currentCards, function(oi, x) {
+                  if (x.card == settingCommandDual.cardId) {
+                    $.each(x.ports || [], function(portI, portV) {
+                      if (settingCommandDual.cardPort == portV.port) {
+                        businessId = portV.name;
+                      }
+                    })
+                  }
+                })
+              }
+
+              if (businessId) {
+                var get1 = null;
+                if (top.SsComm.isArray(oneData)) {
+                  get1 = oneData.filter(function(x) {
+                    return x[fsv.qIndexKey] == businessId;
+                  })
+                } else {
+                  get1 = (oneData[fsv.qKey] || oneData["channelList"] || []).filter(function(x) {
+                    return x[fsv.qIndexKey] == businessId;
+                  })
+                }
+
+                if (get1.length > 0) {
+                  o[fsv.field] = get1[0][fsv.qKey];
+                }
+              } else {
+                get1 = oneData[0][fsv.qIndexKey];
+                o[fsv.field] = get1[fsv.qKey]
+              }
+
+
+
+            }
+
+          })
+        })
+        var parDom = $(".nav-left").find("li.active").find("[to]").attr("to");
+        parDom = $("#item-box-" + parDom);
+        if (settingCommandDual.queriesToSet[deviceType] && settingCommandDual.queriesToSet[deviceType][settingCommandDual.business]) {
+          changeBinds = settingCommandDual.queriesToSet[deviceType][settingCommandDual.business];
+          $.each(o, function(ok, ov) {
+            if (ok in changeBinds) {
+              o[ok] = changeBinds[ok][ov] || changeBinds[ok]["default"];
+
+            }
+          })
+        }
+        if (settingCommandDual.deviceType == "SYNLOCKV3") {
+          if (!o["signalType"]) {
+            (settingCommandDual.currentCards || []).forEach(function(x) {
+              if (x.card == settingCommandDual.cardId) {
+                (x.ports || []).forEach(function(port) {
+                  if (port.port == settingCommandDual.cardPort) {
+                    o["signalType"] = port.channeltype
+                  }
+                })
+              }
+            })
+          }
+        }
+        parDom.find(settingCommandDual.formDom).ssForm("Set", o);
+        parDom.find(settingCommandDual.formDom).data("old", o);
+        // $("#myTab li:last").html("hide 2322" )
+        // Loading.Hide();
+       
+        console.error(new Date().getTime()+" hide2322")
+      }).fail(function(err) {
+      
+        // console.log("error" + err)
+        $('#myModalTips').html(window.top.showTips(err.statusText));
+        $('#myModalTips').modal('show');
+      })
+      
+    },
+    getButtons: function(type) {
+      var buttons = null
+      if (type == "SYNLOCKV3") {
+        buttons = [
+          { "cmd": "set", "name": "设置", "class": "btn-default  btn-grey" },
+          { "cmd": "print", "name": "打印", "class": "btn-default  btn-grey" },
+          { "cmd": "export", "name": "导出", "class": "btn-default  btn-grey" }
+        ];
+        if (settingCommandDual.business == "input" && $(".nav-left a.three-active").html() != "输入测试") {
+
+          buttons = [
+            { "cmd": "reset", "name": "测试重置", "class": "btn-default btn-grey" },
+            { "cmd": "set", "name": "设置", "class": "btn-default  btn-grey" },
+            { "cmd": "print", "name": "打印", "class": "btn-default  btn-grey" },
+            { "cmd": "export", "name": "导出", "class": "btn-default  btn-grey" }
+
+          ]
+        }
+
+
+      }
+      if (type == "TSG3800") {
+        if (settingCommandDual.business == "system") {
+          buttons = [
+            { "cmd": "set", "name": "设置", "class": "btn-default  btn-grey" },
+            { "cmd": "print", "name": "打印", "class": "btn-default  btn-grey" },
+            { "cmd": "export", "name": "导出", "class": "btn-default  btn-grey" }
+          ]
+        }
+      }
+      return buttons
+    },
+    getFields: function(deviceType) {
+      settingCommandDual.deviceType = deviceType;
+      var inputs = settingCommandDual.getInputs(deviceType);
+      // command  others  key  field group
+
+
+
+
+      var ret = { "fieldsData": null, "possibleCommand": [], "getData": [] }
+      var o = {}
+      inputs.forEach(function(v) {
+        var o1 = v[0];
+        o[o1.field] = { "old": "", "now": "", "command": o1.command, "key": o1.key, "valueCommand": o1.valueCommand }
+      })
+
+      // 2 single  or  multi  // 针对 cammand 来说的 
+      // 可以把所有可能找出来 ，在把有变化的命令找出来
+
+
+      var possibleCommand = [];
+
+      var groupInputs = inputs.filter(function(vv) {
+        var v = vv[0]
+        return v.group;
+      })
+      groupInputs.forEach(function(vv) {
+        var v = vv[0]
+        var exists = possibleCommand.filter(function(p) {
+          if (v.command == p.command && v.group == p.group) {
+            return true
+          }
+        })
+        if (exists.length == 0) {
+          possibleCommand.push({"sLevel":v.sLevel ,"command": v.command, "group": v.group, "fields": [], "others": v.others || {} })
+        }
+      })
+
+
+      possibleCommand.forEach(function(p) {
+        groupInputs.forEach(function(gg) {
+          var g = gg[0]
+          if (g.command == p.command && p.group == g.group) {
+            p.fields.push(g.field);
+          }
+        })
+      })
+
+      var normalInputs = inputs.filter(function(vv) {
+        var v = vv[0]
+        return !v.group;
+      })
+      if (settingCommandDual.single) {
+
+        normalInputs.forEach(function(nn) {
+          var n = nn[0]
+          possibleCommand.push({"sLevel":n.sLevel ,"command": n.command, "group": n.group, "fields": [n.field], "others": n.others || {} })
+        })
+      } else {
+
+        normalInputs.forEach(function(nn) {
+          var n = nn[0]
+          var exists = possibleCommand.filter(function(p) {
+            if (n.command == p.command && n.group == p.group) {
+              return true
+            }
+          })
+          if (exists.length == 0) {
+            possibleCommand.push({"sLevel":n.sLevel, "command": n.command, "group": n.group, "fields": [], "others": n.others || {}, "others": n.others || {} })
+          }
+        })
+        // 处理非分组的情况
+        possibleCommand.forEach(function(p) {
+          if (!p.group) {
+            normalInputs.forEach(function(nn) {
+              var n = nn[0]
+              if (n.command == p.command && p.group == n.group) {
+                p.fields.push(n.field);
+              }
+            })
+          }
+        })
+
+
+      }
+
+      ret["fieldsData"] = o;
+      ret["possibleCommand"] = possibleCommand
+
+
+
+      return ret;
+    },
+    saveN: function(todoCommand) {
+      todoCommand = todoCommand.filter(function(x) {
+        return x.command;
+      })
+      var errInfo = [];
+      var parDom = $(".nav-left").find("li.active").find("[to]").attr("to");
+      parDom = $("#item-box-" + parDom);
+
+      var card = parDom.find("[qfield='inputCardConfigId']").val(); // 槽位 
+      var cardPort = parDom.find("[qfield='inputCardConfigPortId']").val(); //端口 
+      var toPost = "";
+      var option = { "aid": "" }
+      // beforeSave dual with;
+      if (settingCommandDual.deviceType == "TSG3800") {
+        toPost = "setTSG3800executeTL1_up_Sync"
+        if (settingCommandDual.business == "input") {
+          option = { "aid": "INP" + card + "-" + cardPort + "" };
+        } else if (settingCommandDual.business == "system") {
+
+        }else if (settingCommandDual.business == "clock") {
+
+          }
+      } else if (settingCommandDual.deviceType == "TP1100") {
+        toPost = "setExecuteTP1100Command"
+        if (settingCommandDual.business == "input") {
+          option = { "aid": card };
+        } else if (settingCommandDual.business == "system") {
+          option = { "aid": "SYS" };
+        } else if (settingCommandDual.business == "clock") {
+          option = { "aid": card };
+        }
+      } else if (settingCommandDual.deviceType == "SYNLOCKV3") {
+        // toPost = "setSYNLOCKV3executeTL1"
+        toPost = "setSYNLOCKV3executeTL1_Sync"
+        if (settingCommandDual.business == "input") {
+          var aid = ""
+          if (card == "CLOCK") {
+            aid = "CSCLK" + cardPort
+          } else {
+            aid = "CLCIM" + card + "-" + cardPort
+          }
+          option = { "aid": aid };
+
+        } else if (settingCommandDual.business == "clock") {
+          var aid = card
+          option = { "aid": aid };
+
+
+        } else if (settingCommandDual.business == "output") {
+          var aid = "GTSOU" + card + "-" + cardPort
+          option = { "aid": aid };
+        }
+
+      } else if (settingCommandDual.deviceType == "GNSS97") {
+        toPost = "setGNSS97executeTL1"
+        if (settingCommandDual.business == "input") {}
+      }
+
+
+      
+
+      // todo new 
+      var toSendCommand = []
+      var formData = settingCommandDual.currentFieldsData;
+      $.each(todoCommand, function(i, v) {
+        if(v.others&&v.others.validaid){
+           v.others.validaid=option.aid;
+        }
+
+
+        if (v.sLevel == "11") {
+          $.each(settingCommandDual.currentCards, function(oi, zz) {
+            if (zz.card == card) {
+              option.aid = zz.name;
+            }
+          })
+        }
+
+        if (v.sLevel == "1") {
+              option.aid = card;
+           
+        }
+
+
+        
+        if (v.sLevel == "21") {
+          $.each(settingCommandDual.currentCards, function(oi, zz) {
+            if (zz.card == card) {
+              $.each(zz.ports || [], function(portI, portV) {
+                if (cardPort == portV.port) {
+                  option.aid = portV.name;
+                }
+              })
+            }
+          })
+        }
+
+
+        var oneCommand = {
+          deviceId: window.top.SsCenter.deviceInfo.current.id,
+          devParams: $.extend({}, v.others, option)
+        }
+        if (v.command == "value") {
+          v.fields.forEach(function(field) {
+            oneCommand.devParams.command = formData[field].valueCommand[formData[field].now];
+          })
+
+        } else {
+          v.fields.forEach(function(field) {
+            oneCommand.devParams[formData[field].key] = formData[field].now;
+          })
+          oneCommand.devParams.command = v.command;
+        }
+
+        if (settingCommandDual.deviceType == "SYNLOCKV3") {
+          if (settingCommandDual.business == "input") {
+            if (oneCommand.devParams.command == "SET-CHANPM-LCIM" && card == "CLOCK") {
+              oneCommand.devParams.command = "SET-CHANPM-SCLK";
+            }
+            if (oneCommand.devParams.command == "SET-CHANPM-LCIM") {
+              // oneCommand.devParams.aid = "BLCIM"+ card + "-" + cardPort
+            }
+          } else if (settingCommandDual.business == "system") {
+            if (v.fields[0] == "boardType") { // LCIM板卡类型
+              oneCommand.devParams.aid = "BLCIM" + card;
+            }
+            if (v.fields[0] == "backMode") { //TSOU输出备份方式
+              oneCommand.devParams.aid = "BTSOU" + cardPort;
+            }
+
+          }
+
+        }
+
+        if (settingCommandDual.deviceType == "TSG3800") {
+          if (settingCommandDual.business == "clock") {
+            // if(oneCommand.devParams.command=="SET-CLK"){
+              if(oneCommand.devParams.aid =="CLKA"){
+                oneCommand.devParams.aid ="CLK A"
+              }else{
+                oneCommand.devParams.aid ="CLK B"
+              }
+              if(oneCommand.devParams.command=="SET-CLK"){
+              if(oneCommand.devParams.validaid=="N"){
+                if(oneCommand.devParams.aid =="CLK A"){
+                  oneCommand.devParams.validaid="CLK B "
+                }else if(oneCommand.devParams.aid =="CLK B"){
+                  oneCommand.devParams.validaid="CLK A"
+                }
+              }else{
+                oneCommand.devParams.validaid=oneCommand.devParams.aid;
+              }
+            }else{
+              oneCommand.devParams.validaid=oneCommand.devParams.aid;
+            }
+
+          }
+
+        }
+
+
+        toSendCommand.push(top.SsServer[toPost](oneCommand))
+      })
+
+
+
+      $.when(...toSendCommand).done(function(...res) {
+        if (toSendCommand.length == 1) {
+          res = [res]
+        }
+        $.each(res, function(oi, ov) {
+          if (ov[0].errCode == 1) {
+            // $('#myModalTips').html(window.top.showTips(ov[0].message ));
+            // $('#myModalTips').modal('show');
+            // $('[id=myModalTips]').html("");
+            $('[id=myModalTips]').html(window.top.showTips(ov[0].message));
+            $('[id=myModalTips]').modal('show');
+
+
+            return false;
+          } else {
+            $('#myModalTips').html(window.top.showTips("操作成功"));
+            $('#myModalTips').modal('show');
+          }
+          broadcastMethod.refreshInput();
+        })
+
+        // $('#myModalTips').html(window.top.showTips("操作成功"));
+        // $('#myModalTips').modal('show');
+
+      }).fail(function(err) {
+        // console.log("error" + err)
+        $('#myModalTips').html(window.top.showTips(err.statusText));
+        $('#myModalTips').modal('show');
+      })
+
+
+      if (errInfo.length > 0) {
+
+      } else {
+
+
+      }
+
+
+
+    },
+    save: function(todoCommand) {
+      if (todoCommand && todoCommand.length > 0) {
+        var relativeFields = settingCommandDual.getInputs(settingCommandDual.deviceType)
+        var errInfo = [];
+        var card = $("[qfield='inputCardConfigId']").val();
+        var cardPort = $("[qfield='inputCardConfigPortId']").val();
+        var option = {}
+        if (settingCommandDual.deviceType == "TSG3800") {
+          if (settingCommandDual.business == "input") {
+            option = { "aid": "INP" + card + "[-" + cardPort + "]" };
+          } else if (settingCommandDual.business == "system") {
+
+          }
+        } else if (settingCommandDual.deviceType == "TP1100") {
+          if (settingCommandDual.business == "input") {
+            option = { "aid": card };
+          } else if (settingCommandDual.business == "system") {
+            option = { "aid": "SYS" };
+          } else if (settingCommandDual.business == "clock") {
+            option = { "aid": card };
+          }
+        } else if (settingCommandDual.deviceType == "SYNLOCKV3") {
+
+          if (settingCommandDual.business == "input") {
+
+            //  CLCIM1-1～CLCIM2-8
+            // CSCLK1～CSCLK4
+            var aid = ""
+            if (card == "CLOCK") {
+              aid = "CSCLK" + cardPort
+            } else {
+              aid = "CLCIM" + card + "-" + cardPort
+            }
+            option = { "aid": aid };
+
+          }
+
+
+
+
+
+
+        }
+
+        var toSendCommand = [];
+        todoCommand.forEach(function(v) {
+          var data = $.extend({}, option);
+          var cmd = v;
+          var unFold = [] // {"command":1,"data":{}} 
+          relativeFields.forEach(function(aInput) {
+            var input = aInput[0];
+            var currentField = settingCommandDual.currentFieldsData[input.field];
+            if (cmd == "value" && input.command == "value") {
+              cmd = input.valueCommand[currentField.now];
+              if (currentField.now != currentField.old) {
+                oneFord = { "command": cmd, "data": {} }
+                oneFord["data"][input["key"]] = currentField.now
+                unFold.push(oneFord)
+              }
+            } else if (input.command == v) {
+              data[input.key] = currentField.now;
+              if (currentField.now != currentField.old) {
+                oneFord = { "command": cmd, "data": {} };
+                oneFord["data"][input["key"]] = currentField.now;
+                unFold.push(oneFord)
+              }
+            }
+
+          })
+          // var ret = settingCommandDual.doPostOne(cmd, data)
+          var oneCommand = {
+            deviceId: window.top.SsCenter.deviceInfo.current.id,
+            devParams: data
+          }
+          oneCommand.devParams.command = cmd;
+
+
+          if (settingCommandDual.deviceType == "TSG3800") {
+            toSendCommand.push(top.SsServer.setTSG3800executeTL1(oneCommand))
+          } else if (settingCommandDual.deviceType == "TP1100") {
+            //  不合并：
+            $.each(unFold, function(oi, ov) {
+              oneCommand.command = ov.command;
+              oneCommand.devParams = $.extend({}, option, ov.data);
+              toSendCommand.push(top.SsServer.setExecuteTP1100Command(oneCommand))
+            })
+
+
+
+          } else if (settingCommandDual.deviceType == "GNSS97") {
+            toSendCommand.push(top.SsServer.setGNSS97executeTL1(oneCommand))
+          } else if (settingCommandDual.deviceType == "SYNLOCKV3") {
+            if (oneCommand.devParams.command == "SET-CHANPM-LCIM") {
+              oneCommand.devParams.CMDTYPE = "CHANTYPE";
+              oneCommand.devParams.command = "SET-CHANPM-SCLK";
+            }
+            toSendCommand.push(top.SsServer.setSYNLOCKV3executeTL1(oneCommand))
+          }
+        })
+
+        $.when(...toSendCommand).done(function(...res) {
+
+        }).fail(function(err) {
+          // console.log("error" + err)
+          $('#myModalTips').html(window.top.showTips(err.statusText));
+          $('#myModalTips').modal('show');
+        })
+
+
+        if (errInfo.length > 0) {
+
+        } else {
+          $('#myModalTips').html(window.top.showTips("操作成功"));
+          $('#myModalTips').modal('show');
+
+        }
+      }
+    },
+    currentFieldsData: null,
+    init: function(deviceType) {
+      settingCommandDual.deviceType = deviceType;
+      if (deviceType == "TP1100" || deviceType == "SYNLOCKV3") {
+        settingCommandDual.single = true;
+      }
+      var currentData = settingCommandDual.getFields(deviceType);
+      settingCommandDual.currentFieldsData = $.extend({}, currentData.fieldsData);
+      settingCommandDual.single = null;
+
+      settingCommandDual.currentPossibleCommand = currentData.possibleCommand;
+
+      if (top.SsCenter.deviceInfo.current && top.SsCenter.deviceInfo.current.deviceStatus == 1) {
+        $("#myTab li:last").html("text show 2798" )
+        settingCommandDual.doQueries(deviceType);
+      }else{
+        Loading.Hide();
+        console.error(new Date().getTime()+" hide2796")
+      }
+
+
+    },
+    makeAGoodDeal: function() {
+      var todoCommand = {}
+
+      var parDom = $(".nav-left").find("li.active").find("[to]").attr("to");
+      parDom = $("#item-box-" + parDom);
+
+      var oldO = parDom.find(settingCommandDual.formDom).data("old");
+      var newO = parDom.find(settingCommandDual.formDom).ssForm("Get");
+      if (settingCommandDual.deviceType == "SYNLOCKV3") {
+        if (newO.ssmTime) {
+          if (!(newO.ssmTime.match(/^\d+$/)) || newO.ssmTime > 1000) {
+            alert("SSM响应时延不能大于1000整数")
+            return;
+          }
+        }
+        if (newO.losTime) {
+          if (!(newO.losTime.match(/^\d+$/)) || newO.losTime > 100) {
+            alert("LOS恢复时间不能大于100整数")
+            return;
+          }
+        }
+      }
+      var inputs = settingCommandDual.getInputs(settingCommandDual.deviceType)
+      var vaildError = "normal";
+      $.each(inputs, function(oi, ov) {
+        var one = ov[0];
+        if (newO[one.field]) {
+          if (one.min && newO[one.field] < one.min) {
+            alert(one.title + "不能小于" + one.min)
+            vaildError = "error"
+            return false;
+          }
+          if (one.max && newO[one.field] > one.max) {
+            alert(one.title + "不能大于" + one.max)
+            vaildError = "error"
+            return false;
+          }
+        }
+
+      })
+      if (vaildError == "error") {
+        return;
+      }
+
+
+      $.each(newO, function(field, ov) {
+        settingCommandDual.currentFieldsData[field].now = ov
+      })
+      $.each(oldO, function(field, ov) {
+        settingCommandDual.currentFieldsData[field].old = ov
+      })
+      // dist : 命令条数 : 参数值  默认情况下统一函数值合并， 
+      // mode: single  模式下 支持group 参数 ;
+      // 也就是说 该函数完成普通参数的组装；
+      // 1 先把 group 的field 找出来 ，
+      // 2 single  or  multi  // 针对 cammand 来说的 
+
+      // 可以把所有可能找出来 ，在把有变化的命令找出来
+
+      var cmd = settingCommandDual.currentPossibleCommand;
+      var changedFields = []
+      var changedCmd = [];
+      $.each(settingCommandDual.currentFieldsData, function(field, ov) {
+        if (ov.now != (ov.old || "")) {
+          changedFields.push(field);
+        }
+      })
+      cmd.forEach(function(x) {
+        $.each(changedFields, function(oi, field) {
+          if ($.inArray(field, x.fields) >= 0) {
+            changedCmd.push(x);
+            return false;
+          }
+        })
+
+
+
+
+      })
+
+
+      var saveN = 1;
+      if (saveN == 1) {
+        if (changedCmd.length == 0) {
+          $('#myModalTips').html(window.top.showTips("请修改参数配置"));
+          $('#myModalTips').modal('show');
+        }
+        settingCommandDual.saveN(changedCmd);
+      } else {
+
+        // down do 
+        $.each(settingCommandDual.currentFieldsData, function(field, ov) {
+          if (ov.now != ov.old) {
+            todoCommand[ov.command] = 1
+          }
+        })
+        todoCommand = Object.keys(todoCommand);
+        if (todoCommand.length > 0) {
+          settingCommandDual.save(todoCommand);
+        }
+
+      }
+
+
+      // up do 
+
+    }
+
+  }
+
+
+  $('#myTab a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+    $('.box .top .left').css('margin-right', 0);
+  });
+
+  $('.box .top .left').css('margin-right', 0);
+
+
+  $('.sidebar').on('click', '.panel', function() {
+    $(this).hasClass('expand') ? $(this).removeClass('expand') : $(this).addClass('expand');
+  });
+
+
+  $('.s').on('click', function() {
+    $('.sidebar').addClass('s-close');
+    $('.sidebar').removeClass('open');
+  })
+  $('.z').on('click', function() {
+    $('.sidebar').addClass('open');
+    $('.sidebar').removeClass('s-close');
+  })
+</script>
+<!--图表代码-->
+<script>
+  $(function() {
+    //显示
+    window.parent.showNMRight();
+
+    logicBoard_getLogicDevice();
+
+
+
+    //统计 左侧导航 关闭
+    $(".close-arrow").click(function() {
+      var selfObj = $(this);
+      var navObj = $(this).parents(".nav-left");
+      navObj.find("ul").hide();
+
+      navObj.animate({
+        width: "0px"
+      }, "slow", function() {
+        selfObj.hide();
+        navObj.find(".open-arrow").show();
+        $(".public-content").css("paddingLeft", "20px");
+
+        if ($("#net-table").css("display") == "block") {
+          displayContent(1)
+        }
+
+
+
+      });
+
+
+
+
+    });
+
+    //统计 左侧导航 打开
+    $(".open-arrow").click(function() {
+      showOrHideElement()
+      var selfObj = $(this);
+      var navObj = $(this).parents(".nav-left");
+      navObj.find("ul").show();
+
+      navObj.animate({
+        width: "156px"
+      }, "slow", function() {
+        selfObj.hide();
+        navObj.find(".close-arrow").show();
+        $(".public-content:first").css("paddingLeft", "170px");
+        if ($("#net-table").css("display") == "block") {
+          displayContent(1)
+        }
+
+      });
+
+    });
+
+    //统计 左侧导航 子选项点击
+    $(".nav-left li").click(function() {
+
+      changeNavLeft($(this), 1);
+
+    })
+
+    // 更新输入文本。
+    broadcastMethod = {
+      emitInputSet: function(tp, options) {
+        // Loading.Show();
+        console.error(new Date().getTime() +"show 3003 ")
+        var isEnd = showMenuTree(null, tp);
+        if (isEnd == "end") {
+
+        } else {
+          renderConfigForm();
+        }
+      },
+      refreshInput: function(tp, options) {
+        if(!window.top.SsCenter.deviceInfo.current){
+          Loading.Hide();
+          console.error(new Date().getTime()+" hide3011")
+        }else{
+          // Loading.Show();
+          console.error(new Date().getTime() +"show 3017 ")
+          alert(2);
+        }
+        theme = window.top.SsCenter.theme;
+        if (!tp) {
+          if (window.top.SsCenter.themes[theme.key]["tp"]) {
+            tp = window.top.SsCenter.themes[theme.key]["tp"];
+          } else {
+            tp = "GNSS1";
+          }
+        } else {
+          window.top.SsCenter.themes[theme.key]["tp"] = tp;
+
+        }
+        var parDom = $(".nav-left").find("li.active").find("[to]").attr("to");
+        parDom = $("#item-box-" + parDom);
+        if (window.top.SsCenter.deviceInfo.current) {
+          parDom.find("[id=currentDeviceNm]").html("当前设备：" + window.top.SsCenter.deviceInfo.current.name);
+        } else {
+          parDom.find("[id=currentDeviceNm]").html("当前设备：未选择");
+        }
+        if (tp == "GNSS1" || tp == "GNSS2" || tp == "频率输入" || tp == "输入测试" || tp == "system" || tp == "clock") {
+          if (window.top.SsCenter.deviceInfo.current) {
+
+
+
+            // todo 
+            if ((window.top.SsCenter.deviceInfo.current.deviceType != "SM2000" &&
+                window.top.SsCenter.deviceInfo.current.deviceType != "SM2000_GN")) {
+              if (tp == "频率输入" || tp == "输入测试" || tp == "system" || tp == "clock") {
+
+
+
+                if (window.top.SsCenter.deviceInfo.current.deviceType == "SYNLOCKV3") {
+
+                  if (settingCommandDual.cardId && parDom.find("[qField='inputCardConfigId']").val() && tp != "system") {
+                    if (settingCommandDual.cardId != parDom.find("[qField='inputCardConfigId']").val()) {
+                      settingCommandDual.getQueries(null, parDom.find("[qField='inputCardConfigId']").val())
+
+                      $.each(settingCommandDual.currentCards || [], function(oi, ov) {
+                        if (ov.card == parDom.find("[qField='inputCardConfigId']").val()) {
+
+                          top.SsComm.setSelectOption($("[qField='inputCardConfigPortId']"), (ov.ports || []).map(function(x) {
+                            return { "Name": x.port, "Value": x.port }
+                          }));
+                        }
+                      })
+
+                    }
+                  }
+                }
+                if (window.top.SsCenter.deviceInfo.current.deviceType == "TSG3800" && tp == "频率输入") {
+                  if (settingCommandDual.cardId != parDom.find("[qField='inputCardConfigId']").val()) {
+                    $.each(settingCommandDual.currentCards || [], function(oi, ov) {
+                      if (ov.card == parDom.find("[qField='inputCardConfigId']").val()) {
+                        top.SsComm.setSelectOption($("[qField='inputCardConfigPortId']"), (ov.ports || []).map(function(x) {
+                          return { "Name": x.port, "Value": x.port }
+                        }));
+                      }
+                    })
+
+                  }
+                }
+
+                settingCommandDual.init(window.top.SsCenter.deviceInfo.current.deviceType); //for a short time ; temporary
+              }else if(tp == "GNSS1" || tp == "GNSS2"){
+                  Loading.Hide();
+                  console.error(new Date().getTime()+" hide3079")
+              }
+              // settingCommandDual.init();
+              if (window.top.SsCenter.deviceInfo.current.deviceType == "SYNLOCKV3") {
+
+
+
+
+
+                // if ($("[qField='inputCardConfigId']").val() == "CLOCK" &&
+                //   $("[qField='inputCardConfigPortId']").attr("binding") == "Number1To8"
+                // ) {
+                //   $("[qField='inputCardConfigPortId']").attr("binding", "Number1To4");
+                //   top.SsComm.setSelectOption($("[qField='inputCardConfigPortId']"), "Number1To4");
+                // }
+
+                // if ($("[qField='inputCardConfigId']").val() != "CLOCK" &&
+                //   $("[qField='inputCardConfigPortId']").attr("binding") == "Number1To4"
+                // ) {
+                //   $("[qField='inputCardConfigPortId']").attr("binding", "Number1To8");
+                //   top.SsComm.setSelectOption($("[qField='inputCardConfigPortId']"), "Number1To8");
+                // }
+
+
+
+                if ($("[qField='inputCardConfigId']").val() == "CLOCK" &&
+                  $("[field=signalType]").attr("binding") == "FrameTypeInputV3"
+                ) {
+                  $("[field=signalType]").attr("binding", "FrameTypeClockV3");
+                  top.SsComm.setSelectOption($("[field=signalType]"), "FrameTypeClockV3", $("[field=signalType]").val());
+                }
+
+
+
+                if ($("[qField='inputCardConfigId']").val() != "CLOCK" &&
+                  $("[field=signalType]").attr("binding") == "FrameTypeClockV3"
+                ) {
+                  $("[field=signalType]").attr("binding", "FrameTypeInputV3");
+                  top.SsComm.setSelectOption($("[field=signalType]"), "FrameTypeInputV3", $("[field=signalType]").val());
+                }
+
+
+              }
+            
+              return;
+            }else{
+              Loading.Hide();
+              console.error(new Date().getTime()+" hide3126")
+            }
+
+
+            // 设备状态为离线的无法获取设备信息。
+            if (window.top.SsCenter.deviceInfo.current.deviceStatus == 0) {
+              $(settingCommandDual.formDom).ssForm("Set", {});
+              $(settingCommandDual.formDom).data("old", {})
+              return;
+            };
+
+
+
+
+            var other = {};
+            if (tp == "频率输入") {
+              other["index"] = ".1";
+              q = $(settingCommandDual.formDom).ssForm("GetQuery");
+              if (q.inputCardConfigPortId) {
+                other["index"] = "." + q.inputCardConfigPortId;
+              }
+              // 查询时 inputCardConfigId 总是1 使用 inputCardConfigPortId 
+
+            }
+            window.top.SsServer.getDeviceParamColl(window.top.SsCenter.deviceInfo.current.id, tp, other).done(function(ret) {
+
+              if (tp == "GNSS1" || tp == "GNSS2") {
+                if (ret[tp.toLowerCase() + "PositionConfig"]) {
+                  var aPosition = ret[tp.toLowerCase() + "PositionConfig"].split(",")
+                  ret[tp.toLowerCase() + "CurrentPositionW"] = aPosition.length == 3 ? aPosition[0] : '';
+                  ret[tp.toLowerCase() + "CurrentPositionJ"] = aPosition.length == 3 ? aPosition[1] : '';
+                  ret[tp.toLowerCase() + "CurrentPositionH"] = aPosition.length == 3 ? aPosition[2] : '';
+                }
+              }
+
+              $(settingCommandDual.formDom).ssForm("Set", ret);
+              $(settingCommandDual.formDom).data("old", ret)
+
+            }).fail(function(ret) {
+              $(settingCommandDual.formDom).ssForm("Set", {});
+              $(settingCommandDual.formDom).data("old", {})
+            })
+          }
+
+        } else if (tp == "cardBoard") {
+          if (window.top.SsCenter.deviceInfo.current) {
+
+            if (window.top.SsCenter.deviceInfo.current.deviceType == "SM2000" || window.top.SsCenter.deviceInfo.current.deviceType == "SM2000_GN") {
+              //for a short time ; temporary
+
+              $("#item-box-output .card-table").css("display", "block");
+
+              // 设备状态为离线的无法获取设备信息。
+              if (window.top.SsCenter.deviceInfo.current.deviceStatus == 0) {
+                pageInit.output.setTable([], { "deviceChanging": true });
+
+              } else {
+                pageInit.output.setTable(false, options);
+              };
+
+
+            } else {
+              $("#item-box-output .card-table").css("display", "none");
+              settingCommandDual.init(window.top.SsCenter.deviceInfo.current.deviceType);
+
+            }
+
+
+          } else {
+
+            pageInit.output.setTable([], { "deviceChanging": true });
+
+          }
+        } else if (tp == "logicBoard") {
+          displayContent(0);
+          logicBoard_getLogicDevice();
+        } else if (tp == "系统") {
+
+        }
+
+      }
+    }
+
+    //第三级菜单
+
+    function showMenuTree(deviceType, configTp) {
+      // $("#collapseexample2 [item='Test']")
+      if (!deviceType) {
+        deviceType = "SM2000";
+        if (top.SsCenter.deviceInfo.current) {
+          deviceType = top.SsCenter.deviceInfo.current.deviceType;
+        }
+      }
+      if (!configTp) {
+        configTp = top.SsCenter.themes.configure.tp
+      }
+      if (!configTp) {
+        configTp = "GNSS1";
+      }
+      // 测试输入
+      if (deviceType == "SYNLOCKV3") {
+        $("#collapseexample2 [item='Test']").css("display", "block");
+        
+      } else {
+        $("#collapseexample2 [item='Test']").css("display", "none");
+      }
+
+    
+      showOrHideElement()
+
+
+      // if(deviceType =="SM2000"||deviceType =="SM2000_GN"){
+      //   $("#collapseexample2 [item='GNSS1']").css("display", "block");
+      //   $("#collapseexample2 [item='GNSS2']").css("display", "block");
+      // }else{
+      //   $("#collapseexample2 [item='GNSS1']").css("display", "none");
+      //   $("#collapseexample2 [item='GNSS2']").css("display", "none");
+      // }
+
+      if ($.inArray(configTp, ["输入测试","频率输入"]) >= 0) {
+        if (deviceType == "SYNLOCKV3" &&configTp=="输入测试") {} else {
+          $("#collapseexample2").click();
+          // return "end";
+
+        }
+      }
+    }
+
+    function renderConfigForm(that) {
+     
+      if ($(".nav-left .active").find("[to]").attr("to")) {
+        var showDom = $(".nav-left .active").find("[to]").attr("to");
+        if (showDom == "system" || showDom == "clock") {
+          settingCommandDual.formDom = "#device_config_" + showDom
+          settingCommandDual.business = showDom;
+          
+        } else if (showDom == "output") {
+          settingCommandDual.formDom = "#output-one-set"
+          settingCommandDual.business = showDom;
+          if (top.SsCenter.deviceInfo.current) {
+            if (top.SsCenter.deviceInfo.current.deviceType == "SM2000" || top.SsCenter.deviceInfo.current.deviceType == "SM2000_GN") {
+              $("#item-box-output .card-table").css("display", "block");
+            } else {
+              $("#item-box-output .card-table").css("display", "none");
+            }
+          }
+
+        } else {
+          settingCommandDual.formDom = "#device_config_input";
+          settingCommandDual.business = "input";
+        }
+      }
+
+      configTp = null;
+      configGrade = null
+      if (!that) {
+        configTp = top.SsCenter.themes.configure.tp
+        configGrade = top.SsCenter.themes.configure.grade;
+      } else {
+        configTp = that.innerText;
+        configGrade = that.getAttribute("grade");
+      }
+
+
+      var configureForm = {
+        "bindings": window.top.bindings,
+        "qBindings": {
+          InputCardConfig: [ //e1槽位
+            { "Name": "1", "Value": "1" },
+            { "Name": "2", "Value": "2" },
+          ],
+          InputCardConfigPort: [ //e1端口
+            { "Name": "1", "Value": "1" },
+            { "Name": "2", "Value": "2" },
+            { "Name": "3", "Value": "3" },
+            { "Name": "4", "Value": "4" },
+          ]
+        },
+        queries: {
+          "queryE1": {
+            "id": "currentDeviceNm",
+            "title": "当前设备：未选择",
+            "change": "broadcastMethod.refreshInput()",
+            "conditions": [
+              { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "InputCardConfig" },
+              { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "InputCardConfigPort" }
+            ]
+          }
+        },
+        forms: {
+          "default": [{
+            "buttons": [
+              // { "cmd": "reset", "name": "重置性能检测", "class": "btn-default btn-grey" },
+              { "cmd": "set", "name": "设置", "class": "btn-default  btn-grey" },
+              { "cmd": "print", "name": "打印", "class": "btn-default  btn-grey" },
+              { "cmd": "export", "name": "导出", "class": "btn-default  btn-grey" }
+            ],
+            "Style": "width:500px",
+
+          }],
+          "InputsGNSS1": [
+            [{ "title": "GNSS1使能", "field": "gnss1State", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "优先级", "field": "gnss1Priority", "showType": "text", }],
+            [{ "title": "跟踪模式", "field": "gnss1TrackMode", "showType": "select", binding: "GnssTrackMode" }],
+            [{ "title": "天线延迟", "field": "gnss1CableDelay", "showType": "text", }],
+            [{ "title": "质量优先级状态", "field": "gnss1PQLState", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "质量优先级值", "field": "gnss1PQL", "showType": "text", }],
+            [{ "title": "GNSS1模式", "field": "gnss1Mode", "showType": "select", binding: "GnssMode" }],
+            [{ "title": "重新性能检测", "field": "restartPM", "showType": "select", binding: "IsOk" }],
+            [{ "title": "经度", "field": "gnss1CurrentPositionJ", "showType": "text", disabled: true }],
+            [{ "title": "纬度", "field": "gnss1CurrentPositionW", "showType": "text", disabled: true }],
+            [{ "title": "高度", "field": "gnss1CurrentPositionH", "showType": "text", disabled: true }],
+
+          ],
+          "InputsGNSS2": [
+            [{ "title": "GNSS2使能", "field": "gnss2State", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "优先级", "field": "gnss2Priority", "showType": "text", }],
+            [{ "title": "跟踪模式", "field": "gnss2TrackMode", "showType": "select", binding: "GnssTrackMode" }],
+            [{ "title": "天线延迟", "field": "gnss2CableDelay", "showType": "text", }],
+            [{ "title": "质量优先级状态", "field": "gnss2PQLState", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "质量优先级值", "field": "gnss2PQL", "showType": "text", }],
+            [{ "title": "重新性能检测", "field": "restartPM", "showType": "select", binding: "IsOk" }],
+            [{ "title": "GNSS2模式", "field": "gnss2Mode", "showType": "select", binding: "GnssMode" }],
+            [{ "title": "经度", "field": "gnss2CurrentPositionJ", "showType": "text", disabled: true }],
+            [{ "title": "纬度", "field": "gnss2CurrentPositionW", "showType": "text", disabled: true }],
+            [{ "title": "高度", "field": "gnss2CurrentPositionH", "showType": "text", disabled: true }],
+
+          ],
+          "InputsE1": [
+            [{ "title": "端口使能", "field": "inputCardState", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "优先级", "field": "inputCardPriority", "showType": "text", }],
+            [{ "title": "帧类型", "field": "inputCardFrameType", "showType": "select", binding: "FrameType" }],
+            [{ "title": "CRC状态", "field": "inputCardCRCState", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "SSM状态", "field": "inputCardSSMState", "showType": "select", binding: "EnableDisable" }],
+            [{ "title": "SSM位", "field": "inputCardSSMBit", "showType": "select", binding: "Number4To8_" }],
+            [{ "title": "质量等级", "field": "inputCardPQL", "showType": "select", binding: "QualityGrade" }],
+            [{ "title": "重新性能检测", "field": "restartPM", "showType": "select", binding: "IsOk" }],
+          ]
+
+        }
+      }
+      var configureOne = null
+      configureOne = {
+        "bindings": configureForm.bindings,
+        "Form": configureForm.forms.default,
+        "qBindings": configureForm.qBindings,
+        "query": {
+          "id": "currentDeviceNm",
+          "title": "当前设备：未选择"
+        }
+      }
+      // ff
+
+
+      var currentDevice = top.SsCenter.deviceInfo.current;
+
+      if (configTp == "system" || configTp == "clock" || configTp == "cardBoard") {
+        if (currentDevice && (currentDevice.deviceType != "SM2000" && currentDevice.deviceType != "SM2000_GN")) {
+          // Loading.Show();
+          // console.error(new Date().getTime() +"show 3389 ")
+        }
+        configureOne.Form[0].Inputs = settingCommandDual.getInputs(currentDevice.deviceType);
+        if (settingCommandDual.getButtons(currentDevice.deviceType)) {
+          configureOne.Form[0].buttons = settingCommandDual.getButtons(currentDevice.deviceType);
+        }
+        configureOne.query = settingCommandDual.getQueries(currentDevice.deviceType);
+        configureOne["qBindings"] = settingCommandDual.qBindings || [];
+
+
+
+
+      } else if (configTp == "GNSS1") {
+        configureOne.Form[0].Inputs = configureForm.forms.InputsGNSS1;
+      } else if (configTp == "GNSS2") {
+        configureOne.Form[0].Inputs = configureForm.forms.InputsGNSS2;
+
+      } else if (configTp == "频率输入") {
+        configureOne.Form[0].Inputs = configureForm.forms.InputsE1;
+        configureOne.query = configureForm.queries.queryE1;
+
+        if (currentDevice && (currentDevice.deviceType != "SM2000" && currentDevice.deviceType != "SM2000_GN")) {
+          // Loading.Show();
+          // console.error(new Date().getTime() +" 3408 ")
+          configureOne.Form[0].Inputs = settingCommandDual.getInputs(currentDevice.deviceType);
+          if (settingCommandDual.getButtons(currentDevice.deviceType)) {
+            configureOne.Form[0].buttons = settingCommandDual.getButtons(currentDevice.deviceType);
+          }
+          configureOne.query = settingCommandDual.getQueries(currentDevice.deviceType);
+          configureOne["qBindings"] = settingCommandDual.qBindings || [];
+        }
+
+      } else if (configTp == "输入测试") { // V3
+        if (currentDevice && (currentDevice.deviceType == "SYNLOCKV3")) {
+
+          configureOne.Form[0].Inputs = settingCommandDual.getInputs(currentDevice.deviceType);
+          if (settingCommandDual.getButtons(currentDevice.deviceType)) {
+            configureOne.Form[0].buttons = settingCommandDual.getButtons(currentDevice.deviceType);
+          }
+          configureOne.query = settingCommandDual.getQueries(currentDevice.deviceType);
+          configureOne["qBindings"] = settingCommandDual.qBindings || [];
+        }
+
+      }
+      configureOne.afterRender = function(dom) {
+       
+        dom.find("button[command=reset]").on("click", function() {
+          if (settingCommandDual.deviceType == "SYNLOCKV3") {
+            var card = $("[qfield='inputCardConfigId']").val();
+            var cardPort = $("[qfield='inputCardConfigPortId']").val();
+            var aid = ""
+            if (card == "CLOCK") {
+              aid = "CSCLK" + cardPort
+            } else {
+              aid = "CLCIM" + card + "-" + cardPort
+            }
+            var oneCommand = {
+              deviceId: window.top.SsCenter.deviceInfo.current.id,
+              devParams: {
+                "aid": aid
+              }
+            }
+            oneCommand.devParams.command = "SET-CHAN-RETEST";
+
+            top.SsServer.setSYNLOCKV3executeTL1(oneCommand).done(function(ret) {
+
+              top.showTipInfo($(document), ret);
+
+            }).fail(function(err) {
+              $('#myModalTips').html(window.top.showTips("操作失败"));
+              $('#myModalTips').modal('show');
+            })
+
+
+          }
+
+
+        })
+
+
+
+        dom.find("button[command=set]").on("click", function() {
+
+          var currentDev = window.top.SsCenter.deviceInfo.current;
+          if (!(currentDev && currentDev.id)) {
+            $('#myModalTips').html(window.top.showTips("请先选择设备"));
+            $('#myModalTips').modal('show');
+            return;
+          }
+          theme = window.top.SsCenter.theme;
+
+          if (currentDev.deviceType == "TSG3800" ||
+            currentDev.deviceType == "TP1100" ||
+            currentDev.deviceType == "GNSS97" ||
+            currentDev.deviceType == "SYNLOCKV3") {
+            settingCommandDual.makeAGoodDeal();
+            return;
+          }
+
+          if (window.top.SsCenter.themes[theme.key]["tp"]) {
+            tp = window.top.SsCenter.themes[theme.key]["tp"];
+          } else {
+            tp = "GNSS1";
+          }
+          var indexObj = null;
+          if (tp == "GNSS1") {
+            var indexObj = "1";
+          } else if (tp == "GNSS2") {
+            var indexObj = "1";
+          } else if (tp == "频率输入") {
+            var indexObj = "." + ($(dom).ssForm("GetQuery").inputCardConfigPortId || "1");
+
+          }
+
+
+
+
+          var formData = $(settingCommandDual.formDom).ssForm("Get");
+          var oldData = $(settingCommandDual.formDom).data("old") || {};
+          var changed = []
+
+          if (formData.restartPM) {
+            obj = {};
+            if (tp == "GNSS1") {
+              obj.value = "5";
+            } else if (tp == "GNSS2") {
+              obj.value = "12";
+            } else if (tp == "频率输入") {
+              obj.value = indexObj;
+            }
+            obj.node = 'restartPM';
+            obj.index = '.0';
+            changed.push(obj);
+
+          }
+
+          $.each(formData, function(indexInArray, valueOfElement) {
+            if ($.inArray(indexInArray, [
+                "restartPM", "gnss1CurrentPositionJ", "gnss1CurrentPositionW", "gnss1CurrentPositionH", "gnss2CurrentPositionJ", "gnss2CurrentPositionW", "gnss2CurrentPositionH",
+              ]) >= 0) {
+              return true;
+            }
+
+            if (valueOfElement != oldData[indexInArray]) {
+              changed.push({ "value": valueOfElement, "node": indexInArray, "index": indexObj })
+            }
+          });
+          if (window.top.SsComm.isEmpty(changed)) {
+            $('#myModalTips').html(window.top.showTips("未修改任何数据"));
+            $('#myModalTips').modal('show');
+            return;
+          }
+
+
+
+
+          window.top.SsServer.setConfigsBatch(
+            currentDev.id, tp, changed).done(function(ret) {
+            var isOk = true;
+            $.each(ret, function(ai, av) {
+              if (!av.code) {
+                isOk = false;
+                return false;
+              }
+            })
+            if (isOk) {
+              $('#myModalTips').html(window.top.showTips("设置成功"));
+              $(settingCommandDual.formDom).data("old", formData)
+            } else {
+              $('#myModalTips').html(window.top.showTips("设置失败"));
+            }
+            $('#myModalTips').modal('show')
+
+            ;
+
+          })
+
+        })
+
+
+        // 
+        theme = window.top.SsCenter.theme;
+        window.top.SsCenter.themes[theme.key]["tp"] = configTp;
+        window.top.SsCenter.themes[theme.key]["configGrade"] = configGrade;
+
+
+        if ($(settingCommandDual.formDom).closest(".public-content").height() < 660) {
+          //
+          $(settingCommandDual.formDom).css("overflow-y", "auto")
+          $(settingCommandDual.formDom).css("height", $(settingCommandDual.formDom).closest(".public-content").height() - 10);
+
+        }
+
+        if (configTp == "GNSS1" || configTp == "GNSS2" || configTp == "频率输入" || configTp == "输入测试") {
+
+
+          if (window.top.SsCenter.deviceInfo.current) {
+
+            broadcastMethod.refreshInput();
+
+
+          }
+        } else if (configTp == "配置" || configTp == "logicBoard") {
+          broadcastMethod.refreshInput("logicBoard");
+        } else if (configTp == "系统" || configTp == "system") {
+          broadcastMethod.refreshInput("system");
+        } else if (configTp == "钟卡" || configTp == "clock") {
+          broadcastMethod.refreshInput("clock");
+        } else if (configTp == "输出" || configTp == "cardBoard") {
+          broadcastMethod.refreshInput("cardBoard");
+
+        }
+    
+
+      };
+
+
+      if (configureOne) {
+
+
+        $(settingCommandDual.formDom).ssForm(
+          configureOne
+        )
+      }
+
+
+
+
+
+
+    }
+
+    $(".nav-three").click(function() {
+
+
+      // 左侧导航 子选项切换
+      changeNavLeft($(this), 2);
+
+      var targetObj = $("#" + $(this).data('index') + " ");
+
+      targetObj.parents("#" + $(this).data('target')).find(".d-b").removeClass("d-b").addClass(
+        'd-n');
+      targetObj.removeClass("d-n").addClass('d-b');
+
+      $(this).parents(".my-collapse").find(".three-active").removeClass("three-active");
+      $(this).addClass("three-active");
+      renderConfigForm(this)
+    });
+
+
+
+
+
+
+
+
+    //网元组添加
+    $(".log-box>span").click(function() {
+      console.log($(this).text());
+
+      $("#diy-search").val($("#diy-search").val() + " " + $(this).text());
+
+    });
+
+
+
+    //简体 菜单 tab
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+      //为 图标统计时候 初始图标地图
+      if ($(e.target).attr("href") == '#count') {
+        //图标初始
+        setChart();
+      }
+    })
+
+  });
+
+
+  function changeNavLeft(obj, level) {
+    // level 1   2 
+
+
+
+    var tabPaneObj = obj.closest(".tab-pane");
+
+
+    tabPaneObj.find(".nav-left .active").removeClass("active");
+    obj.addClass("active");
+    if (level == 2) {
+      $("[to=" + obj.attr("grade") + "]").parent().addClass("active");
+      tabPaneObj.find(".item-box").hide();
+      tabPaneObj.find("#item-box-" + obj.attr("grade")).show();
+    }
+
+
+    if (level == 1) {
+      var to = obj.find("[to]").attr("to");
+
+      tabPaneObj.find(".item-box").hide();
+      tabPaneObj.find("#item-box-" + to).show();
+
+      // 输入
+      if (obj.find("a:first").attr("href") && obj.find("a:first").attr("href") != "#") {
+        if ($(obj.find("a:first").attr("href")).find(".nav-three").length > 0) {
+
+
+          var refIndex = 0;
+
+          if ($(obj.find("a:first").attr("href")).find(".three-active").length > 0) {
+            refIndex = $(obj.find("a:first").attr("href")).find(".three-active").index();
+            if (top.SsCenter.deviceInfo.current.deviceType == "SM2000"||top.SsCenter.deviceInfo.current.deviceType == "SM2000_SN") {
+              }else{
+                refIndex = 2;
+              }
+            $(obj.find("a:first").attr("href")).find(".nav-three")[refIndex].click();
+          }
+
+          if (top.SsCenter.deviceInfo.current) {
+
+            if (top.SsCenter.deviceInfo.current.deviceType == "SM2000"||top.SsCenter.deviceInfo.current.deviceType == "SM2000_SN") {
+              $("#collapseexample2 [item=GNSS1]").css("display", "block");
+              $("#collapseexample2 [item=GNSS2]").css("display", "block");
+            } else {
+              $("#collapseexample2 [item=GNSS1]").css("display", "none");
+              $("#collapseexample2 [item=GNSS2]").css("display", "none");
+            }
+
+
+
+
+            if (top.SsCenter.deviceInfo.current.deviceType == "SYNLOCKV3") {
+              $("#collapseexample2 [item='Test']").css("display", "block");
+            } else {
+              $("#collapseexample2 [item='Test']").css("display", "none");
+            }
+          }
+
+
+
+
+
+
+        }
+      } else if (obj.find("a:first").length > 0 && obj.find("a:first")[0].innerText == "输出") {
+        $(".card-table").css("display", "block");
+        $("#output-one-set").html("");
+
+        top.SsCenter.themes.configure.tp = "cardBoard";
+        top.SsCenter.themes.configure.grade = "cardBoard";
+        broadcastMethod.emitInputSet("cardBoard");
+
+
+      } else if (obj.find("a:first").length > 0 && obj.find("a:first")[0].innerText == "系统") {
+
+        top.SsCenter.themes.configure.tp = "system";
+        top.SsCenter.themes.configure.grade = "system";
+
+        broadcastMethod.emitInputSet("system");
+
+
+      } else if (obj.find("a:first").length > 0 && obj.find("a:first")[0].innerText == "钟卡") {
+
+        top.SsCenter.themes.configure.tp = "clock";
+        top.SsCenter.themes.configure.grade = "clock";
+
+        broadcastMethod.emitInputSet("clock");
+
+
+      } else if (obj.find("a:first").length > 0 && obj.find("a:first")[0].innerText == "配置") {
+
+
+
+        broadcastMethod.refreshInput("logicBoard");
+
+
+      }
+    }
+
+    if (level == 2) {
+
+    }
+
+  }
+
+
+  function showBoardCard(boardInfo) {
+    var temp = template.compile(jQuery.GetTemplate(function() {
+      /*
+            {{each data o i}}
+                <div class="one">
+                  <div class="title">{{o.title}}</div>
+                  <div>
+                    {{each o.cardLed led j }}
+                        <div class ='state-lamp'>
+                          <span>{{led.name}}</span> 
+                          
+                          <img style="width:15px;" src="/nms/images/board-card/{{led.img}}" alt=""></div>
+                    {{/each}}
+                    
+                  </div>
+                </div>
+            {{/each}}    
+
+
+              */
+    }));
+
+
+    var a = integrateBoardCastData(boardInfo)
+    dom = temp({ "data": a });
+    $("#main-board-card .board-card").html('<div class="top-line"></div>');
+    $("#main-board-card .board-card").append(dom);
+    var allWidth = $("#main-board-card .board-card").width();
+    if ($("#main-board-card .board-card .one") && $("#main-board-card .board-card .one").length > 5) {
+      var oneWidth = $("#main-board-card .board-card .one").width()
+      var oneCount = $("#main-board-card .board-card .one") && $("#main-board-card .board-card .one").length - 2;
+      var otherWidth = (allWidth - oneWidth * oneCount) / 2 - 20;
+
+      $("#main-board-card .board-card .one:lt(2)").width(otherWidth);
+
+    }
+
+
+
+  }
+
+  //内容切换
+  function displayContent(index) {
+
+    //显示图标
+    if (index == 0) {
+      $("#net-map").show();
+      $("#net-table").hide();
+    } else if (index == 1) { //显示列表
+      $("#net-map").hide();
+      $("#net-table").show();
+      if (top.SsCenter.deviceInfo.current && top.SsCenter.deviceInfo.current.deviceStatus == 1) {
+        top.SsServer.getDeviceCardLed(top.SsCenter.deviceInfo.current.id).done(
+          function(ret) {
+            showBoardCard(ret);
+          }
+        ).fail(function() {
+          showBoardCard([]);
+        })
+      } else {
+        showBoardCard([]);
+      }
+
+
+
+
+
+    } else if (index == 2) { //
+      $("#config-1").hide();
+      $("#outputConfigView").show();
+    }
+
+
+  }
+
+  //更改搜索框
+  //0-取消全选
+  //1-全选
+  function changeDiySearchValue(flag) {
+
+    if (flag == 1) { //全选
+
+      var logString = "";
+      $(".log-box>span").each(function() {
+        logString += " " + $(this).text();
+      })
+
+      $("#diy-search").val($("#diy-search").val() + " " + logString);
+
+    } else { //取消全选
+      $("#diy-search").val("");
+    }
+  }
+
+
+  function setChart() {
+    //图表 告警类型
+    var data1 = [{
+      name: '管理卡',
+      y: 56,
+
+    }, {
+      name: '钟卡',
+      y: 24,
+
+    }, {
+      name: '输入卡',
+      y: 10
+    }, {
+      name: '输出卡',
+      y: 4
+    }];
+
+    initChar('chart1', '板卡统计', data1);
+
+    var data2 = [{
+      name: '大唐',
+      y: 56,
+
+    }, {
+      name: '华为',
+      y: 24,
+
+    }, {
+      name: '讯腾',
+      y: 10
+    }, {
+      name: '赛思',
+      y: 4
+    }];
+
+    initChar('chart2', '厂商', data2);
+
+
+    var data3 = [{
+      name: 'SM2000',
+      y: 56,
+
+    }, {
+      name: 'TO1100',
+      y: 24,
+
+    }, {
+      name: 'SYNLOCK V3',
+      y: 10
+    }, {
+      name: 'GNSS97',
+      y: 4
+    }];
+
+    initChar('chart3', '设备型号', data3);
+
+    var data4 = [{
+      name: 'PRC',
+      y: 56,
+
+    }, {
+      name: 'LPR',
+      y: 24,
+
+    }, {
+      name: 'SSUT',
+      y: 10
+    }, {
+      name: 'SSUL',
+      y: 4
+    }];
+
+    initChar('chart4', '网元类型', data4);
+
+  }
+
+
+
+  //tagId string 节点id
+  //title string 表格标题
+  //data array 数据
+  function initChar(tagId, title, data) {
+
+    Highcharts.chart(tagId, {
+      chart: {
+        backgroundColor: '#F6F3D6',
+        type: 'column'
+      },
+      title: {
+        text: title
+      },
+      subtitle: {
+        text: ''
+      },
+      xAxis: {
+        type: 'category'
+      },
+      yAxis: {
+        title: {
+          text: ''
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        series: {
+          borderWidth: 0,
+          dataLabels: {
+            enabled: true,
+            format: '{point.y:.1f}'
+          }
+        }
+      },
+      tooltip: {
+        headerFormat: '',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+      },
+      series: [{
+        name: '',
+        colorByPoint: true,
+        data: data
+      }],
+    });
+  }
+  queryArea();
+  querySiteName("");
+  onchangeName();
+  // 区域查询
+  function queryArea() {
+    $.ajax({
+      url: '/nms/spring/device/area',
+      headers: { 'token': sessionID },
+      type: "GET",
+      async: false,
+      dataType: "json",
+      contentType: "application/json;charset=UTF-8",
+      success: function(result) {
+        if (typeof result.data == "undefined" || result.data == null || result.data == "") {
+          $(areaId).empty();
+          $(areaId).append("<option value='北京'>" + "北京" + "</option>")
+        } else {
+          var r = result.data;
+          $(areaId).empty();
+          if (result.data.length == 0) {
+            $(areaId).append("<option value='北京'>" + "北京" + "</option>")
+          }
+          $.each(r, function(i, item) {
+            if (r[i].name != "全网" && r[i].name != "省网") {
+              $(areaId).append("<option value=" + r[i].id + ">" + r[i].name + "</option>")
+            }
+          })
+        }
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        // 状态码
+        console.log(XMLHttpRequest.status);
+        // 状态
+        console.log(XMLHttpRequest.readyState);
+        // 错误信息   
+        console.log(textStatus);
+      }
+    });
+  }
+
+  // 站点查询
+  function querySiteName(areaId) {
+    $.ajax({
+      url: '/nms/spring/keepalived/getsiteById?areaId=' + areaId,
+      headers: { 'token': sessionID },
+      type: "GET",
+      async: false,
+      dataType: "json",
+      contentType: "application/json;charset=UTF-8",
+      success: function(result) {
+        if (typeof result.data == "undefined" || result.data == null || result.data == "") {
+          $("#siteName").empty();
+          $("#siteName").append("<option value='北京市调'>" + "北京市调" + "</option>")
+        } else {
+          var r = result.data.content;
+          $("#siteName").empty();
+          if (result.data.content.length == 0) {
+            $("#siteName").append("<option value='北京市调'>" + "北京市调" + "</option>")
+          }
+          $.each(r, function(i, item) {
+            $("#siteName").append("<option value=" + r[i].siteName + ">" + r[i].siteName + "</option>")
+          })
+        }
+        onchangeName();
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        // 状态码
+        console.log(XMLHttpRequest.status);
+        // 状态
+        console.log(XMLHttpRequest.readyState);
+        // 错误信息   
+        console.log(textStatus);
+      }
+    });
+  }
+  //获取设备名称
+  function onchangeAreaName() {
+    var areaId = document.getElementById("areaId").value;
+    if (areaId == "c7af520f-52c9-40d4-8ace-622e64a474bf") {
+      areaId = "";
+    }
+    querySiteName(areaId)
+  }
+  //获取设备名称
+  function onchangeName() {
+    $('#name').attr("value", document.getElementById("siteName").value + document.getElementById("deviceTypeM").value + "_" + document.getElementById("neType").value);
+  }
+  //获取厂商
+  function onchVendor() {
+    var deviceType = document.getElementById("deviceTypeM").value;
+    if (deviceType == 'SM2000') {
+      $('#vendorM').attr("value", "赛思");
+    } else if (deviceType == 'SM2000_GN') {
+      $('#vendorM').attr("value", "赛思");
+    } else if (deviceType == 'SYNLOCKV3') {
+      $('#vendorM').attr("value", "华为");
+    } else if (deviceType == 'GNSS97') {
+      $('#vendorM').attr("value", "大唐");
+    } else if (deviceType == 'TSG3800') {
+      $('#vendorM').attr("value", "讯腾");
+    } else if (deviceType == 'TP1100') {
+      $('#vendorM').attr("value", "讯腾");
+    }
+  }
+  //删除网元添加上一次的信息
+  $("#manageAddBtn").click(function() {
+    $("#ip").val('');
+    $("#aliasName").val('');
+    $("#longitude").val('');
+    $("#latitude").val('');
+    $("#location").val('');
+    $("#owner").val('');
+    $("#name").val('');
+  });
+
+  //设备添加或修改
+  function addOrUpdateDevice() {
+    var res = /^((2[0-4][0-9])|(25[0-5])|(1[0-9]{0,2})|([1-9][0-9])|([1-9]))\.(((2[0-4][0-9])|(25[0-5])|(1[0-9]{0,2})|([1-9][0-9])|([0-9]))\.){2}((2[0-4][0-9])|(25[0-5])|(1[0-9]{0,2})|([1-9][0-9])|([1-9]))$/;
+    var ip = document.getElementById("ip").value;
+    if (ip == "" || ip == null || ip == undefined) {
+      alert("请输入IP！");
+      return;
+    }
+    if (res.test(ip) == false) {
+      alert("请输入正确的IP！");
+      return;
+    }
+    var mauto = {
+      "areaId": document.getElementById("areaId").value,
+      //"description": document.getElementById("netArea").value,
+      "deviceType": document.getElementById("deviceTypeM").value,
+      "ip": document.getElementById("ip").value,
+      // "name": document.getElementById("siteName").value + document.getElementById("deviceType").value + "_" + document.getElementById("neType").value,
+      "name": document.getElementById("name").value,
+      "neType": document.getElementById("neType").value,
+      "vendor": document.getElementById("vendorM").value,
+      "phyX": document.getElementById("longitude").value,
+      "phyY": document.getElementById("latitude").value,
+      "aliasName": document.getElementById("aliasName").value,
+      "location": document.getElementById("location").value,
+      "owner": document.getElementById("owner").value,
+      "token": "",
+      "port": 0,
+      "addType": "1"
+    };
+    if (mauto.deviceType == "TP1100") {
+      mauto.port = 5000;
+    }
+    if (mauto.vendor == "赛思") {
+      mauto.vendor = "ss";
+    } else if (mauto.vendor == "华为") {
+      mauto.vendor = "hw";
+    } else if (mauto.vendor == "大唐") {
+      mauto.vendor = "dt";
+    } else if (mauto.vendor == "讯腾") {
+      mauto.vendor = "xt";
+    }
+    mauto.token = sessionID;
+    var judge = document.getElementById("judge").value
+    if (judge == 1) {
+      $.ajax({
+        url: '/nms/spring/device',
+        headers: { 'token': sessionID },
+        type: "POST",
+        async: false,
+        data: JSON.stringify(mauto),
+        dataType: "json",
+        contentType: "application/json;charset=UTF-8",
+        success: function(result) {
+          //$('#myModalTips').html(tips(result.message));
+          $('#deviceConfirm').attr("data-dismiss", "modal");
+          //	$('#myModalTips').modal('show')
+          refreshList();
+          queryDevice();
+
+          console.log(result);
+          //var  r = result.data.content;document.getElementById("devIDAdd").value,token:sessionID,
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          // 状态码
+          console.log(XMLHttpRequest.status);
+          // 状态
+          console.log(XMLHttpRequest.readyState);
+          // 错误信息   
+          console.log(textStatus);
+        }
+      });
+    } else {
+      $.ajax({
+        url: '/nms/spring/device',
+        headers: { 'token': sessionID },
+        type: "PUT",
+        async: false,
+        data: JSON.stringify(mauto),
+        dataType: "json",
+        contentType: "application/json;charset=UTF-8",
+        success: function(result) {
+          $('#myModalTips').html(tips(result.message));
+          $('#deviceConfirm').attr("data-dismiss", "modal");
+          $('#myModalTips').modal('show')
+          console.log(result);
+          refreshList();
+          queryDevice();
+
+          //var  r = result.data.content;document.getElementById("devIDAdd").value,token:sessionID,
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          // 状态码
+          console.log(XMLHttpRequest.status);
+          // 状态
+          console.log(XMLHttpRequest.readyState);
+          // 错误信息   
+          console.log(textStatus);
+        }
+      });
+    }
+  }
+  //操作成功提示信息
+  function tips(tipsValue) {
+    var html = '<div class="modal-dialog">' +
+      '<div class="modal-content" style="margin-top:30%">' +
+      '<div class="modal-header">' +
+      '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+      '<h4 class="modal-title" id="myModalLabel">提示</h4>' +
+      '</div>' +
+      '<div class="modal-body device_add-modal" style="height:100px">' +
+      '<div style = text-align:center;margin-top:3%;><h3>' + tipsValue + '</h3></div>' +
+      '</div>' +
+      '<div class="modal-footer">' +
+      '<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>' +
+      '</div>' +
+      '</div>' +
+      '</div>'
+    return html;
+  }
+
+
+
+
+
+
+
+
+
+
+  //截图
+  function screenshot() {
+    var cntElem = document.querySelector('.chart-box');
+
+    var shareContent = cntElem; //需要截图的包裹的（原生的）DOM 对象
+    var width = shareContent.offsetWidth; //获取dom 宽度
+    var height = shareContent.offsetHeight; //获取dom 高度
+    var canvas = document.createElement("canvas"); //创建一个canvas节点
+    var scale = 2; //定义任意放大倍数 支持小数
+    canvas.width = width * scale; //定义canvas 宽度 * 缩放
+    canvas.height = height * scale; //定义canvas高度 *缩放
+    canvas.getContext("2d").scale(scale, scale); //获取context,设置scale
+
+    var opts = {
+      scale: scale, // 添加的scale 参数
+      canvas: canvas, //自定义 canvas
+      // logging: true, //日志开关，便于查看html2canvas的内部执行流程
+      width: width, //dom 原始宽度
+      height: height,
+      useCORS: true // 【重要】开启跨域配置
+    };
+
+    html2canvas(shareContent, opts).then(function(canvas) {
+
+      var context = canvas.getContext('2d');
+      // 【重要】关闭抗锯齿
+      context.mozImageSmoothingEnabled = false;
+      context.webkitImageSmoothingEnabled = false;
+      context.msImageSmoothingEnabled = false;
+      context.imageSmoothingEnabled = false;
+
+      // 【重要】默认转化的格式为png,也可设置为其他格式
+      var img = Canvas2Image.convertToJPEG(canvas, canvas.width, canvas.height);
+      //清空子节点
+      document.getElementById('chart-canvas').innerHTML = "";
+
+      document.getElementById('chart-canvas').appendChild(img);
+
+      $(img).css({
+        "width": 340 + "px",
+        "height": 210 + "px",
+      }).addClass('f-full');
+
+    });
+  }
+</script>
+
+</html>

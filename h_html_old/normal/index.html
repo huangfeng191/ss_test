@@ -20,6 +20,7 @@
   <script src="../lib/lib.js"></script>
   <script src="../artTemplate/lib/template-web.js"></script>
   <script src="./ssform.js"></script>
+  <script src="../lib/Loading/Loading.js"></script>
 
 
 
@@ -72,7 +73,15 @@
   </div>
 
   <script>
+
+var Loading = jQuery.Loading({ Message: "加载中……", Timeout: 6 });
+
     $("#form1").ssForm({
+      AfterRender:function(x){
+        Loading.Show();
+      
+        return x;
+      },
       "Class": "that",
       "bindings": {
         GnssState: [

@@ -1,0 +1,122 @@
+// 激活某个部分，如NTP，启用后无法禁用
+		actFeature("actFeature","ACT-FEATURE:[<tid>]:<fid>:[<ctag>]::<key>;", new String[]{"[<tid>]","<fid>","[<ctag>]","<key>"}),
+		// 启用下载固件通道，等待时间60秒，用于升级等操作
+		actSwdl("actSwdl","ACT-SWDL:[<tid>]:<aid>:[<ctag>];", new String[]{"[<tid>]","<aid>","[<ctag>]"}),
+		// 用户登录
+		actUser("actUser","ACT-USER:[<tid>]:<uid>:[<ctag>]::<pid>;", new String[]{"[<tid>]","<uid>","[<ctag>]","<pid>"}),
+		// 用户注销
+		cancUser("cancUser","CANC-USER:[<tid>]:[<uid>]:[<ctag>];", new String[]{"[<tid>]","[<uid>]","[<ctag>]"}),
+		// 数据备份
+		cpyMem("cpyMem","CPY-MEM:[<tid>]::[<ctag>]::<fromdev>,<todev>,<istate>;", 
+				new String[]{"[<tid>]","[<ctag>]","<fromdev>","<todev>","<istate>"}),
+		// 删除一个输入通道的当前性能监控数据集
+		dltPmData("dltPmData","DLT-PM-DATA:[<tid>]:[<aid>]:[<ctag>];", new String[]{"[<tid>]","[<aid>]","[<ctag>]"}),
+		// 从用户数据库中删除所有信息。
+		dltSecu("dltSecu","DLT-SECU:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 删除用户
+		dltUserSecu("dltUserSecu","DLT-USER-SECU:[<tid>]:<uid>:[<ctag>];", new String[]{"[<tid>]","<uid>","[<ctag>]"}),
+		// 编辑连接到时间服务器的输入或输出的设备的名称
+		edCktid("edCktid","ED-CKTID:[<tid>]::[<ctag>]::\"<value>\";", new String[]{"[<tid>]","[<ctag>]","\"<value>\""}),
+		// 更改指定命令的访问级别
+		edCmdSecu("edCmdSecu","ED-CMD-SECU:[<tid>]:<cid>:[<ctag>][::<commandword>=<value>];", 
+				new String[]{"[<tid>]","<cid>","[<ctag>]","[::<commandword>=<value>]"}),
+		// 设置日期和时间
+		edDat("edDat","ED-DAT:[<tid>]:[<aid>]:[<ctag>]::<commandword>=<value>;", 
+				new String[]{"[<tid>]","[<aid>]","[<ctag>]","<commandword>","<value>"}),
+		// 提供设备参数（不包括ntp参数）
+		edEqpt("edEqpt","ED-EQPT:[<tid>]:<aid>:[<ctag>]::<commandword>[=<value>];", 
+				new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>","[=<value>]"}),
+		// 配置ntp参数，配置对等服务器，complexValue的格式必须为：“,<keyid>,<minpoll>,<maxpoll>,<preferred>”
+		edEqptServer("edEqptServer","ED-EQPT:[<tid>]:NTP:[<ctag>]::SERVER,<func>,<serverIP>[complexValue];", 
+				new String[]{"[<tid>]","[<ctag>]","<func>","<serverIP>","[complexValue]"}),
+		// 配置ntp参数，启用NTP认证
+		edEqptAuthen("edEqptAuthen","ED-EQPT:[<tid>]:NTP:[<ctag>]::AUTHEN=<value>;", 
+				new String[]{"[<tid>]","[<ctag>]","<value>"}),
+		// 配置ntp参数，配置NTP密钥生成
+		edEqptKeygen("edEqptKeygen","ED-EQPT:[<tid>]:NTP:[<ctag>]::KEYGEN,<func>,<keyid>[,<key>];", 
+				new String[]{"[<tid>]","[<ctag>]","<func>","<keyid>","[,<key>]"}),
+		// 更改用户密码
+		edPid("edPid","ED-PID:[<tid>]:[<uid>]:[<ctag>]::<oldpid>,<newpid>;", 
+				new String[]{"[<tid>]","[<uid>]","[<ctag>]","<oldpid>","<newpid>"}),
+		// 设置同步参数，如输入频率、输入帧类型、自动切换、输入质量等级等等
+		edSync("edSync","ED-SYNC:[<tid>]:<aid>:[<ctag>]::<commandword>=<value>;", 
+				new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>","<value>"}),
+		// 编辑用户的访问级别
+		edUserSecu("edUserSecu","ED-USER-SECU:[<tid>]:<uid>:[<ctag>]::<commandword>=<value>;", 
+				new String[]{"[<tid>]","<uid>","[<ctag>]","<commandword>","<value>"}),
+		// 允许安全级别用户在用户数据库中编辑任何用户的密码
+		entPid("entPid","ENT-PID:[<tid>]:<uid>:[<ctag>]::<newpid>;", new String[]{"[<tid>]","<uid>","[<ctag>]","<newpid>"}),
+		// 添加用户，最多储存20个用户
+		entUsrSecu("entUsrSecu","ENT-USER-SECU:[<tid>]:<uid>:[<ctag>]::<pid>,<uap>;", 
+				new String[]{"[<tid>]","<uid>","[<ctag>]","<pid>","<uap>"}),
+		// 清除IMC模块上的事件日志
+		initLog("initLog","INIT-LOG:[<tid>]:<aid>:[<ctag>];", new String[]{"[<tid>]","<aid>","[<ctag>]"}),
+		// 重启时间服务器
+		initSys("initSys","INIT-SYS:[<tid>]:<aid>:[<ctag>]::<commandword>;", new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>"}),
+		// 清除告警
+		oprAcoAll("oprAcoAll","OPR-ACO-ALL:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检测以太网连接
+		ping("ping","PING:[<tid>]::[<ctag>]::<ipaddr>;", new String[]{"[<tid>]","[<ctag>]","<ipaddr>"}),
+		// 移除模块
+		rmvEqpt("rmvEqpt","RMV-EQPT:[<tid>]:<aid>:[<ctag>]::<commandword>;", new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>"}),
+		// 检索当前告警
+		rtrvAlm("rtrvAlm","RTRV-ALM:[<tid>]:<aid>:[<ctag>];", new String[]{"[<tid>]","<aid>","[<ctag>]"}),
+		// 检索属性设置值，如告警设置
+		rtrvAttr("rtrvAttr","RTRV-ATTR:[<tid>]:<aid>:[<ctag>][::<commandword>];", 
+				new String[]{"[<tid>]","<aid>", "[<ctag>]","[::<commandword>]"}),
+		// 检索贝斯时间状态
+		rtrvBestimeStat("rtrvBestimeStat","RTRV-BESTIME-STAT:[tid]:<aid>:[<ctag>];", new String[]{"[tid]","<aid>","[<ctag>]"}),
+		// 检索贝斯时间
+		rtrvBist("rtrvBist","RTRV-BIST:[tid]:<aid>:[<ctag>];", new String[]{"<aid>","[<ctag>]"}),
+		// 检索指定aid的线路标识符
+		rtrvCktid("rtrvCktid","RTRV-CKTID:[<tid>]:<aid>:[<ctag>];", new String[]{"[<tid>]","<aid>","[<ctag>]"}),
+		// 检索指定命令或所有命令的访问级别集
+		rtrvCmdSecu("rtrvCmdSecu","RTRV-CMD-SECU:[<tid>]:<cid>:[<ctag>];", new String[]{"[<tid>]","<cid>","[<ctag>]"}),
+		// 检索关于时间服务器中组件的当前摘要告警的状态信息
+		rtrvCond("rtrvCond","RTRV-COND:[<tid>]:<aid>:[<ctag>];", new String[]{"[<tid>]","<aid>","[<ctag>]"}),
+		// 检索有关系统状态、时钟操作模式、输入配置和输出配置的信息
+		rtrvCraft("rtrvCraft","RTRV-CRAFT:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索系统日期、时间和本地偏移量
+		rtrvDat("rtrvDat","RTRV-DAT:[<tid>]:<aid>:[<ctag>];", new String[]{"[<tid>]","<aid>","[<ctag>]"}),
+		// 检索时间服务器的配置信息
+		rtrvEqpt("rtrvEqpt","RTRV-EQPT:[<tid>]:<aid>:[<ctag>]::<commandword>;", new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>"}),
+		// 检索GPS接收机的位置、每个GPS卫星的UTC时间和状态信息
+		rtrvGpsStat("rtrvGpsStat","RTRV-GPS-STAT:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索响应头，可以用于验证设备的连接是否正常
+		rtrvHdr("rtrvHdr","RTRV-HDR:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索系统清单
+		rtrvInv("rtrvInv","RTRV-INV:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索在IMC和IOC模块的面板上的各种LED指示器的当前状态（颜色）
+		rtrvLed("rtrvLed","RTRV-LED:[<tid>]:[<aid>]:[<ctag>];", new String[]{"[<tid>]","[<aid>]","[<ctag>]"}),
+		// 检索事件日志，complexValue的格式必须为：“::<commandword>,[index],[,count][,[startdate],[stopdate]]”
+		rtrvLog("rtrvLog","RTRV-LOG:[<tid>]:[<aid>]:[<ctag>][complexValue];", 
+				new String[]{"[<tid>]","[<aid>]","[<ctag>]","[complexValue]"}),
+		// 检索当前单元网络设备（NE）类型
+		rtrvNetype("rtrvNetype","RTRV-NETYPE:::[<ctag>];", new String[]{"[<ctag>]"}),
+		// 检索最多8个对等点的NTP对等信息。数据包括信息服务器IP地址、服务器层级别、服务器Li（十进制格式）、根分散值和根延迟值
+		rtrvNtpPeer("rtrvNtpPeer","RTRV-NTP-PEER:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索一个输入通道的当前性能监控数据集，complexValue的格式必须为：“,[<startdat>][,<starttim>],[<stopdat>],[<stoptim]”
+		rtrvPm("rtrvPm","RTRV-PM:[<tid>]:<aid>:[<ctag>]::<commandword>[complexValue];", 
+				new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>","[complexValue]"}),
+		// 检索与系统输入和输出同步接口的配置相关的设备参数
+		rtrvSync("rtrvSync","RTRV-SYNC:[<tid>]:<aid>:[<ctag>]::<commandword>;", new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>"}),
+		// 检索当前系统模式
+		rtrvSysMode("rtrvSysMode","RTRV-SYS-MODE:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索特定警报设置的警报级别
+		rtrvTh("rtrvTh","RTRV-TH:[<tid>]:<aid>:[<ctag>][::<commandword>];", new String[]{"[<tid>]","<aid>","[<ctag>]","[::<commandword>]"}),
+		// 检索用户的访问级别
+		rtrvUser("rtrvUser","RTRV-USER:[<tid>]::[<ctag>];", new String[]{"[<tid>]","[<ctag>]"}),
+		// 检索用户的安全参数，如访问级别等
+		rtrvUserSecu("rtrvUserSecu","RTRV-USER-SECU:[<tid>]:[<uid>]:[<ctag>];", new String[]{"[<tid>]","[<uid>]","[<ctag>]"}),
+		// 设置属性值，如性能监控故障的告警级别等
+		setAttr("setAttr","SET-ATTR:[<tid>]:<aid>:[<ctag>]::<commandword>[=<value>];", 
+				new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>","[=<value>]"}),
+		// 设置sid
+		setSid("setSid","SET-SID:[<tid>]::[<ctag>]::<commandword>=<value>;", new String[]{"[<tid>]","[<ctag>]","<commandword>","<value>"}),
+		// 设置系统模式
+		setSysMode("setSysMode","SET-SYS-MODE:[<tid>]::[<ctag>]::<commandword>=<value>;", 
+				new String[]{"[<tid>]","[<ctag>]","<commandword>","<value>"}),
+		// 设置阈值，如MTIE和FFOFF阈值
+		setTh("setTh","SET-TH:[<tid>]:<aid>:[<ctag>]::<commandword>[=<value>];", 
+				new String[]{"[<tid>]","<aid>","[<ctag>]","<commandword>","[=<value>]"})
+		;

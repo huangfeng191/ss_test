@@ -1,0 +1,135 @@
+{"command": "SET-PRMTR-INPT", 
+"aid": "ALL",
+ "value": "{'validaid':'INP3-3','mode':'D4','zs':'On','cr':'On','freq':'2.048','term':'75'}"
+}
+ 
+ {command=RTRV-COND-EQPT, aid=ALL, value=}
+ 
+ {"command": "SET-PRMTR-SQL", 
+"aid": "ALL",
+ "value": "{'validaid':'INP1','mod':'Auto','level':'PRS'}"
+}
+ 
+ {"command": "SET-PRMTR-FREQ", 
+"aid": "ALL",:
+ "value": "{'validaid':'INP1','lim1':'175','lim2':'200','mod1':'Alrm','mod2':'Fail','tmper':'1000'}"
+}
+
+ {"command": "SET-PRMTR-PRI", 
+"aid": "ALL",
+ "value": "{'validaid':'INP1','priority':'1'}"
+}
+
+ {"command": "SET-PRMTR-REF", 
+"aid": "ALL",
+ "value": "{'mode':'BEST'}"
+}
+
+ {"command": "SET-USER", 
+"aid": "ALL",
+ "value": "{'mode':'ADD','username':'ADMIN','password':'password','level':'4'}"
+}
+
+
+  {"command": "SET-PRMTR-MTIE", 
+"aid": "ALL",
+ "value": "{'validaid':'INP1','lim1':'175','lim2':'200','mod1':'Alrm','mod2':'Fail','tmper':'1000'}"
+}
+ 
+ 
+ {"command": "SET-CLK", 
+"aid": "ALL",
+ "value": "{'validaid':'CLK B'}"
+}
+ 
+ 
+ 
+ {"command": "SET-PRMTR-AS", 
+"aid": "ALL",
+ "value": "{'validaid':'ON'}"
+}
+ 
+ 
+  {"command": "SET-DAT", 
+"aid": "ALL",
+ "value": "{'validaid':'01-1-19,09:58:00'}"
+}
+ 
+  {"command": "SET-DIS", 
+"aid": "ALL",
+ "value": "{'validaid':'01-1-19,09:58:00'}"
+} 
+ 
+   {"command": "SET-ENA", 
+"aid": "ALL",
+ "value": "{'validaid':'INP3-1'}"
+} 
+
+
+  {"command": "SET-EVNT", 
+"aid": "ALL",
+ "value": "{'validaid':'ALL'}"
+} 
+
+  {"command": "SET-NAME", 
+"aid": "ALL",
+ "value": "{'validaid':'NE3800E'}"
+} 
+
+  {"command": "SET-REF", 
+"aid": "ALL",
+ "value": "{'validaid':'INP3-3'}"
+} 
+
+
+{"command": "SET-PHASE-ZERO", 
+"aid": "ALL",
+ "value": "{'validaid':'INP3-3','clksrc':'CLKA'}"
+} 
+
+  {"command": "SET-PRMTR-AR", 
+"aid": "ALL",
+ "value": "{'validaid':'On'}"
+} 
+
+  {"command": "SET-PRMTR-AS", 
+"aid": "ALL",
+ "value": "{'validaid':'On'}"
+} 
+
+
+ {"command": "SET-PRMTR-AIS", 
+"aid": "ALL",
+ "value": "{'validaid':'25','clcnt':'25','mode':'Alrm'}"
+}
+
+ {"command": "SET-PRMTR-BPV", 
+"aid": "ALL",
+ "value": "{'validaid':'25','clcnt':'25','mode':'Alrm'}"
+}
+
+ {"command": "SET-PRMTR-CRC", 
+"aid": "ALL",
+ "value": "{'validaid':'25','clcnt':'25','mode':'Alrm'}"
+}
+
+ {"command": "SET-PRMTR-LOS", 
+"aid": "ALL",
+ "value": "{'validaid':'25','clcnt':'25','mode':'Alrm'}"
+}
+
+ {"command": "SET-PRMTR-OOF", 
+"aid": "ALL",
+ "value": "{'validaid':'25','clcnt':'25','mode':'Alrm'}"
+}
+
+
+{"command": "SET-PRMTR-CLK", 
+"aid": "ALL",
+ "value": "{'validaid':'','mode':'Lock'}"
+}
+
+{"command": "SET-PRMTR-DELAY", 
+"aid": "ALL",
+ "value": "{'delay':'5'}"
+}
