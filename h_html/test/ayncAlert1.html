@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+
+<body>
+  <div>
+    <button onclick="showOtherPageMethod()">forClick</button>
+    <button onclick="showOtherPageMethod1()">forClick1</button>
+    <input id="inp1">
+
+  </div>
+</body>
+<script>
+  function showOtherPageMethod() {
+       var a=0;
+
+      //  alert 是同步加载 ，起到阻断作用，
+
+    [1].forEach(function(x){
+      document.getElementById("inp1").value=x;
+      setTimeout(() => {
+        alert(10);
+        document.getElementById("inp1").value=10;
+      });
+   
+    })
+  }
+
+  function showOtherPageMethod1() {
+       var a=0;
+
+      //  alert 是同步加载 ，起到阻断作用，
+      // sync 时 会锁住浏览器，也就是说 不加载
+
+    var def=$.Deferred();
+    alert(1);
+
+ 
+  }
+
+
+  $(function() {
+
+
+  });
+</script>
+
+</html

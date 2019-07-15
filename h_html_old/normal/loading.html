@@ -73,13 +73,35 @@
   </div>
 
   <script>
-
-var Loading = jQuery.Loading({ Message: "加载中……", Timeout: 6 });
+    var Loading = jQuery.Loading({ Message: "加载中……", Timeout: 30 });
 
     $("#form1").ssForm({
-      AfterRender:function(x){
+      AfterRender: function(x) {
         Loading.Show();
-      
+        $('[field="gnss1CurrentPositionH"]').val(11);
+        var dtd = $.Deferred();
+        var wait = function(dtd) {
+          var task = function() {
+            console.log("run ok" + 1);
+            $('[field="gnss1CurrentPositionH"]').val(44);
+
+            dtd.resolve();
+          }
+          setTimeout(task, 5000);
+        }
+        dtd.promise(wait);
+        wait.done(function() {
+          Loading.Hide();
+        })
+
+        wait(dtd);
+//  33  44 
+        
+        $('[field="gnss1CurrentPositionH"]').val(33);
+
+
+
+
         return x;
       },
       "Class": "that",
