@@ -1,24 +1,20 @@
-mauto.page = $("#current_pagination").data("pagination").currentPage + 1;
-mauto.pageSize = $("#current_pagination").data("pagination").itemsOnPage;
+a=[1,2,3,4]
+
+a.splice(2,1,4)
 
 
 
 
-var option = {
-    "onPageClick": function(pageNumber, event) {
-    //   search("current");
-    }
-
-  }
-  option.items = ret.totalElements
-  option.currentPage = mauto.page;
-
-  $("#current_pagination").pagination(option);
+a="12345678"
+var port=3-1;
+var newValue=0;
 
 
+// oldValue 
+
+b=a.split("")
+var c= a[port]
 
 
-
-  let index = $('#manage .deleted').index(this);
-  delDeviceId = manageList[index].id;
-  $('#delModal').modal('show');
+b=b.splice(2,port,6)
+b.join("")

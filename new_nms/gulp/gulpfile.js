@@ -4,7 +4,8 @@ var config = {
     defaultProxyUrl: "",
     testProxyUrl: "http://192.168.2.102:8080",
     // developProxyUry: "http://192.168.92.177:8080"
-    developProxyUry: "http://192.168.20.200:8080"
+    // developProxyUry: "http://192.168.20.200:8080"
+    developProxyUry: "http://192.168.20.10:16080"
 }
 // d develop  t:test 
 var flag = (process.argv.slice(2) || "develop");

@@ -115,7 +115,8 @@ Cookie:JSESSIONID={{token}}
 
 
 ### 获取设备的拓扑信息 (返回值根据ip ) 物理 逻辑 
-# 根据ip 来获取
+#设备  "topoType":   "1" 物理拓扑 , "2": 逻辑拓扑
+
 GET /nms/spring/viewData?areaId=
 &token={{token}}
 Host: {{host}}

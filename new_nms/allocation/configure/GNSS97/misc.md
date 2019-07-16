@@ -46,7 +46,7 @@
 23. w
 
 
-<!-- A|B|C|D|E|F|G|H|I|J|K|L|M|N|O， 表示盘类型 -->
+<!-- A|B|C|D|E|F|G|H|I|J|K|L|M|N|O， 表示盘类型 -->  通过卡类型 ,找钟卡 
 
 1. A PTP4
 2. B PFO4
@@ -66,7 +66,7 @@
 16. P GTP盘
 17. Q FAN盘
 18. R XO盘
-19. S REFTF盘    // valid
+19. S REFTF盘    // valid input 
 20. T RS422盘
 21. U PPX盘
 22. V TOD16盘
@@ -91,40 +91,61 @@
 
 
 REFTF、
-OUT32、 none
+OUT32、 
 Rb、
-GBTP2、  none
+GBTP2、  
 MCP板卡。
 
 
 
 system 
 
-面板输入选择   fb      ET-MCP-FB  aid==u  //  0/1  0 代表从前面板输入（默认）， 1 代表从后面板输入 
-Rb盘2Mb输入SSM位 sa 	SET-RB-SA  aid==u  c  RBSAGNS97
-Rb盘2MHz输入信号等级	SET-RB-TL   RBTL97   
+面板输入选择   fb      ET-MCP-FB  fb c FrontBackGNSS97  //  aid=u   0/1  0 代表从前面板输入（默认）， 1 代表从后面板输入 
+Rb盘2Mb输入SSM位 sa 	SET-RB-SA  sa   c  RBSAGNS97 //aid=u 
+Rb盘2MHz输入信号等级 tl SET-RB-TL tl c    RBTL97     //aid=u 
 
 
 
-RBSAGNS97
 
-sa8 A  
-sa7 B  
-sa6 C  
-sa5 D  
-sa4 E  
-无输入时 @  
+面板输入 fb	RTRV-EQPT group
+钟卡2Mb/s输入SSM位 sa 	RTRV-EQPT	group //aid:  o | p（需要选择当前主用）	
+钟卡2MHz信号等级 tl_2mhz	RTRV-EQPT	group //aid:  o | p（需要选择当前主用）	
 
 
-RBTL97
 
- 代表 G.811 时钟（02） a
- 代表 G.812 转接局时钟（04） b
- 代表 G.812 本地时钟（08） c
- 代表同步设备定时源（0B） d
- 代表不应用作同步（0F） e
- 代表质量情况未知（00） f
- 代表无输入时 g
+
+
+
+
+
+FrontBackGNSS97:[
+{"Name": "从前面板输入", "Value":"0" },
+{"Name": "从后面板输入", "Value":"1" },
+]
+
+
+
+RBSAGNS97:[//nm
+{"Name": "sa8", "Value":"A" },
+{"Name": "sa7", "Value":"B" },
+{"Name": "sa6", "Value":"C" },
+{"Name": "sa5", "Value":"D" },
+{"Name": "sa4", "Value":"E" },
+{"Name": "无输入时", "Value":"@" },
+]
+
+
+
+
+RBTL97:[//nm
+{"Name": "G.811时钟（02）", "Value":"a" },
+{"Name": "G.812转接局时钟（04）", "Value":"b" },
+{"Name": "G.812本地时钟（08）", "Value":"c" },
+{"Name": "同步设备定时源（0B）", "Value":"d" },
+{"Name": "不应用作同步（0F）", "Value":"e" },
+{"Name": "质量情况未知（00）", "Value":"f" },
+{"Name": "无输入时", "Value":"g" },
+]
 
 
 
@@ -143,39 +164,72 @@ g表示无输入时
 # clock
   aid: o | p  
 
-主备状态 msmode	SET-MAIN  c ClockMainGNSS97 // MAIN | STBY	
+主备状态 msmode	SET-MAIN  msmode c ClockMainGNSS97 // MAIN | STBY	
 
 ClockMainGNSS97
- 主用 MAIN
- 备用 STBY
+主用 MAIN
+备用 STBY
+
+
+主备状态 msmode	RTRV-EQPT	//aid:  o | p（需要选择当前主用）	
+参考源屏蔽 mask	RTRV-EQPT	//aid:  o | p（需要选择当前主用）	
+系统参考源 ref	RTRV-EQPT	//aid:  o | p（需要选择当前主用）	
+输入优先级 priority	RTRV-EQPT	//aid:  o | p（需要选择当前主用）	
+
+
+
+
+主备状态 msmode	RTRV-EQPT msmode //	aid:  o | p（需要选择当前主用）	
+
 
 
 
 
 # input  
 
-## front
+## back
 
-aid:  o | p
+card  port 
+
+端口优先级	priority1 SET-REF-PRIO  priority1  c Number0To8
+端口SSM位	sa SET-REF-SA  sa c SSMBitGNSS97
+端口2MHz信号等级 tl	SET-REF-TL tl c SSMLevelGNSS97
+端口鉴相使能 portEnable 	SET-REF-PH  en c EnableDisable 
+端口SSM使能	portSSMEnable SET-REF-IEN en  c EnableDisable 
 
 
-系统参考源	SET-SYS-REF	
-o为15槽位Rb板卡
-p为16槽位Rb板卡；
 
-goe: 0, 1, 2, 5, 6, 7, 8, F		
-输入优先级	SET-PRIO-INP	
-o为15槽位Rb板卡
-p为16槽位Rb板卡；
+端口优先级 priority1 	RTRV-EQPT  group //	aid = a ~ n 
+端口SSM位 sa 	RTRV-EQPT group  //	aid = a ~ n 
+端口2MHz信号等级 tl 	RTRV-EQPT group  //	aid = a ~ n 
+端口鉴相使能 en 	RTRV-EQPT  group //	aid = a ~ n 
+端口SSM使能 ssm_en 	RTRV-EQPT  group //	aid = a ~ n ssm-
 
-priority: xx00xxxx  (x值为0-8)  
-8个字段分别对应GBTP1卫星、GBTP2卫星、GBTP1的1PPS+TOD、GBTP2的1PPS+TOD、Rb1板卡的2MHz、Rb2的2MHz、Rb1的2Mb、Rb2的2Mb		
-使能	SET-MASK-E1	
-o为15槽位Rb板卡
-p为16槽位Rb板卡；
 
-mask: xxxxxxxx (x值为0 或者1）
-8个字段分别对应GBTP1卫星、GBTP2卫星、GBTP1的1PPS+TOD、GBTP2的1PPS+TOD、Rb1板卡的2MHz、Rb2的2MHz、Rb1的2Mb、Rb2的2Mb		
+others:{"priority2": "00000000"}
+
+SSMBitGNSS97
+
+nm:[//nm
+{"Name": "sa8", "Value":"A" },
+{"Name": "sa7", "Value":"B" },
+{"Name": "sa6", "Value":"C" },
+{"Name": "sa5", "Value":"D" },
+{"Name": "sa4", "Value":"E" },
+{"Name": "2MHz输入或无输入时的默认值或者是不设置", "Value":"@" },
+]
+
+SSMLevelGNSS97
+
+nm:[//nm
+{"Name": "G.811", "Value":"时钟" },
+{"Name": "G.812", "Value":"转接局时钟" },
+{"Name": "G.812", "Value":"本地时钟" },
+{"Name": "同步设备定时源", "Value":"d" },
+{"Name": "不应用作同步", "Value":"e" },
+{"Name": "质量情况未知", "Value":"f" },
+{"Name": "2Mb/s输入或无输入时的默认值或者是不设置", "Value":"g" },
+]
 
 
 output 
@@ -188,27 +242,109 @@ output
 
 # output
 
+ [{ "title": "${0:nm}","field": "${1:sn}","command": "${2}","key": "${3}","showType": "${4:text}", ${41} }],
+
+
+
+信号类型  signalType  SET-OUT-TYP  out-type  c  SignalTypeGNSS97
+信号等级  signalOutLevel  SET-OUT-LEV level c SignalOutLevelGNSS97
+主备模式  signalOutMod    SET-OUT-MOD out-sta c SignalOutModGNSS97
+
+
+<!-- 软倒换 mildChange  	SET-OUT-PRR	aid   //  SET-OUT-PRR -->
+
+
+
+
+
+
+
+信号类型 outtype	RTRV-EQPT OUT //	aid : a ~ n  (槽位号)		
+信号等级 level	RTRV-EQPT OUT //	aid : a ~ n  (槽位号)		
+主备模式 outsta	RTRV-EQPT OUT //	aid : a ~ n  (槽位号)	
+
+
+
+
+
+
+
+
 
 信号类型 out	SET-OUT-TYP	 //  : 0 | 1 | 2   // aid : a ~ n  (板卡类型映射表)
 
 
+
+
+SignalTypeGNSS97:[//nm
+{"Name": "2.048Mhz", "Value":"0" },
+{"Name": "2.048Mb/s", "Value":"1" },
+{"Name": "无输出", "Value":"2" },
+]
+
+
+
 信号等级	SET-OUT-LEV	aid : a ~ n  (板卡类型映射表)
-Level: 00 | 02 | 04 | 08 | 0B | 0F
-02 表示 G.811时钟 
-04 表示G.812转接局时钟
-08 表示 G.812本地时钟
-0B 表示 同步设备定时源
-0F 表示 不应用作同步
-00 表示 质量情况未知
-软倒换	SET-OUT-PRR	aid : a ~ n  (板卡类型映射表)
+
+
+
+
+
+SignalOutLevelGNSS97:[//nm
+{"Name": "G.811时钟", "Value":"02" },
+{"Name": "G.812转接局时钟", "Value":"04" },
+{"Name": "G.812本地时钟", "Value":"08" },
+{"Name": "同步设备定时源", "Value":"0B" },
+{"Name": "不应用作同步", "Value":"0F" },
+{"Name": "质量情况未知", "Value":"00" },
+]
+
 
 主备模式	SET-OUT-MOD	aid : a ~ n  (板卡类型映射表)
-mode: '0' | '1'
-'1' 表示 主备模式
-'0' 表示 普通模式
+
+
+SignalOutModGNSS97:[//nm
+{"Name": "主备模式", "Value":"1" },
+{"Name": "普通模式", "Value":"0" },
+]
 
 
 
-0  表示 2.048Mhz
-1  表示 2.048Mb/s
-2  表示 无输出
+
+
+ "a":"1",
+ "b":"2",
+ "c":"3",
+ "d":"4",
+ "e":"5",
+ "f":"6",
+ "g":"7",
+ "h":"8",
+ "i":"9",
+ "j":"10",
+ "k":"11",
+ "l":"12",
+ "m":"13",
+ "n":"14",
+ "o":"15",
+ "p":"16",
+ "q":"17",
+ "r":"18",
+ "s":"19",
+ "t":"20",
+ "u":"21",
+ "v":"22",
+ "w":"23",
+
+
+
+
+
+ port 
+
+
+
+
+ var parDom = $(".nav-left").find("li.active").find("[to]").attr("to");
+     parDom = $("#item-box-" + parDom);
+     parDom.find(settingCommandDual.formDom).data("o");
