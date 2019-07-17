@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+<style>
+    td{
+        width:50px;
+    }
+    .table th{
+        width:50px;
+    }
+
+</style>
+
+<body>
+  <div>
+      <!-- table-layout: fixed; 设置了此项，就可以对th,td  进行宽度设置了 -->
+    <button>forClick</button>
+    <table class="table test-border td-test-border" style="width:300px;table-layout: fixed;">
+        <tr><td>1</td><td style='width:100px;'>2</td><td>3</td><td>4</td></tr>
+        <tr><td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">167811</td><td>112</td><td>112123</td><td>1111112</td></tr>
+        
+    </table>
+</div>
+</body>
+<script>
+  function showOtherPageMethod() {
+    debugger
+  }
+
+  $(function() {
+    $("button").click(forClick);
+  });
+</script>
+
+</html
