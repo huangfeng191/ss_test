@@ -349,7 +349,7 @@ alt+f12 速览定义
 | -------------- | ------------------------ | ------ |
 
 | alt+delete close      | 面板             |        |
-| alt+shift+~      | openInTerminal             |**|
+| alt+ctrl+~      | openInTerminal             |**|
 | ctrl+q      | 大纲 (outline )             |        |
 
 

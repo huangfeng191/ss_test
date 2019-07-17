@@ -1,4 +1,4 @@
-
+1
 // /nms/spring/user/getMenu
 device={
     "deviceType": "SM2000",
@@ -11,7 +11,7 @@ device={
     "deviceAdditionalInfo": { "id": "9d70a46f-a3a1-4c98-84bd-6ac49a6d71ec", "isDelete": 0, "timestamp": 1556613422000, "frameName": null, "frameUseLabel": null, "location": null, "owner": "ss", "aliasName": "192.168.1.33", "frameAliasLabel": null, "deviceFlag": "SM2000" },
     "isDelete": 0,
     "ip": "192.168.1.33",
-    "description": null,
+    "description": null,1
     "Vendor": "ss",
     "nodeGroup": null,
     "deviceStatus": 1,
