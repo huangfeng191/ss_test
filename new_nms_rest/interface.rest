@@ -305,3 +305,10 @@ Cookie:JSESSIONID={{token}}
     }
 }
 
+
+
+### 获取权限  roleType: '0' 用户级别    1 设备权限
+GET /nms/spring/role/getRole?token={{token}}&userName=''&distribution=0&roleType=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
