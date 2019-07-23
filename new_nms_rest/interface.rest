@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=30AC979C4CE52316134F1F35725E6E13
+@token=F4344B0D4B76DDEFBC12D82A58130413
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 
@@ -308,7 +308,16 @@ Cookie:JSESSIONID={{token}}
 
 
 ### 获取权限  roleType: '0' 用户级别    1 设备权限
-GET /nms/spring/role/getRole?token={{token}}&userName=''&distribution=0&roleType=0
+GET /nms/spring/role/getRole?token={{token}}&userName='admin'&distribution=0&roleType=0
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+
+
+### 获取单个用户密码
+GET /nms/spring/user/page?userName=yyy
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+

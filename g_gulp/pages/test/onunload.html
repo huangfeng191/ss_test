@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../static/js/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+  <button onclick="doPost()">测试</button>
+
+  <div id="msg" >
+
+  </div>
+</body>
+<script>
+  var i = 0
+    window.onunload=function(){
+        doPost("i`m a close event !!!!") 
+    }
+  function doPost(msg) {
+    i += 1;
+    var d = {
+      "record": {
+        "time": new Date().getTime(),
+        "msg": msg|| "i`m  test  event",
+        "i": i,
+        "tp": "closeBind"
+      }
+    }
+    $.ajax({
+      type: "POST",
+      url: "/nms/misc_info/insert.json",
+      async: false,
+      data: JSON.stringify(d),
+
+    }).done(function(ret) {
+      $("#msg").html(ret.Message+"   "+Math.random(1000))
+
+    })
+  }
+</script>
+
+</html>

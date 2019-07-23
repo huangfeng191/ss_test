@@ -1,6 +1,6 @@
 var config = {
-    // baseDir: 'E:/c_project/nms_be/src/main/webapp/',
-    baseDir: 'E:/c_project/ddd/nms_be/src/main/webapp/',
+    baseDir: 'E:/c_project/nms_be/src/main/webapp/',
+    // baseDir: 'E:/c_project/ddd/nms_be/src/main/webapp/',
     defaultProxyUrl: "",
     testProxyUrl: "http://192.168.2.102:8080",
     developProxyUry: "http://192.168.92.177:8080"

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+ 
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/layout.css">
+
+  <style>
+  
+  
+  </style>
+
+</head>
+
+<body id="test">
+
+
+    <div class="lay">
+        <button type="button" class="btn btn-default btn-sm" onclick="allNodeClick()">
+          <span class="glyphicon glyphicon-ok"></span>全选
+        </button>
+        <button type="button" class="btn btn-default btn-sm" onclick="allCancel()">
+          <span class="glyphicon glyphicon-remove"></span>全部取消
+        </button>
+        <button type="button" class="btn btn-default btn-sm" style="float: right;" onclick="">
+          <span class="glyphicon glyphicon-repeat"></span>重置
+        </button>
+        <input type="text" placeholder="搜索" class="search" id="searchName" onchange="queryNodeDevice()">
+
+        <ul id="nodeId">
+          <li id="5c821482-f641-4b0a-9ee6-8c929c2d8d04">甘肃白广路SM2000_PRC</li>
+          <li id="ec0eefcc-8269-48b2-9217-3c789727e7dd">北京白广路TP1100_PRC</li>
+          <li id="a9a99c67-24b7-4ac2-b28d-f523c6ef955e">山西白广路SYNLOCKV3_PRC</li>
+          <li id="41075f91-4b3b-491c-8977-869337574182">新疆白广路TSG3800_SSUL</li>
+          <li id="5175c496-2c57-4088-a983-723b6398748b">北京白广路GNSS97_PRC</li>
+          <li id="a21d3fdb-f0aa-4444-b59d-110e547a52ab">白广路SM2000_PRC63</li>
+          <li id="0b42ca46-0ef5-45ea-af3f-3d7d3f1f0af5">白广路SM2000_PRC8</li>
+        </ul>
+      </div>
+
+
+
+</body>
+
+</html>

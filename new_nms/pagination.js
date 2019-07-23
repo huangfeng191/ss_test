@@ -10,11 +10,21 @@ $("#config_pagination").pagination({});
 
 
 
+
+mPage = $("#user_pagination").data("pagination").currentPage + 1;
+mPageSize = $("#user_pagination").data("pagination").itemsOnPage;
+a={
+  page: mPage,
+  pageSize: mPageSize
+  
+}
+
+
 var option = {
     "onPageClick": function(pageNumber, event) {
     //   refreshList();
     }
   }
   option.items = res.data.totalElements
-  option.currentPage = page;
+  option.currentPage = mPage;
   $("#config_pagination").pagination(option);
