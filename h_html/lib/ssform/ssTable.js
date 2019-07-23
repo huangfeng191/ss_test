@@ -113,8 +113,8 @@ $.fn.ssTable.defaults = {
                 {{/if}}
             {{/each}}
 
-            {{if query.showButton}}
-               <button   class="bg-btn"  {{if query.click}} onclick={{query.click}} {{/if}}>{{if query.name}}{{query.name}}{{else}}搜索{{/if}}</button>
+            {{if query.autoQuery}}
+               <button   class="bg-btn" id="autoQuery" {{if query.click}} onclick={{query.click}} {{else}}    {{/if}}>{{if query.name}}{{query.name}}{{else}}搜索{{/if}}</button>
             {{/if}}
           {{/if}}
 
@@ -167,9 +167,12 @@ $.fn.ssTable.defaults = {
     })),
     columns: null,
     BeforeRender: null,
-    doQuery:function(jDom,url,opts){
+    doQuery:function(jDom,url,params,opts){
       var qData=jDom.ssTable("GetQuery");
       var tableOpts=jDom.data("ssTable");
+      if(params){
+        $.extend(qData,params)
+      }
       if(tableOpts.footShow){
         qData.page = jDom.find("#sample_pagination").data("pagination").currentPage + 1;
         qData.pageSize = jDom.find("#sample_pagination").data("pagination").itemsOnPage;
@@ -224,7 +227,7 @@ function ssTableInitialize(options) {
       for (var i = 0; i <conditions.length; i++) {
         var condition = $.extend(true, { showType: "text" }, conditions[i]);
         if (condition.showType == "select") {
-          if (condition.binding && opts.qBindings[condition.binding]) {
+          if (condition.binding &&opts.qBindings&& opts.qBindings[condition.binding]) {
             condition["options"] = opts.qBindings[condition.binding] //[]
           }else if (condition.binding && top.bindings[condition.binding]) {
             condition["options"] = top.bindings[condition.binding] //[]
@@ -269,6 +272,12 @@ function ssTableInitialize(options) {
     if(opts.firstQuery==1){ // 默认查询  1 查询
         // opts.query.click()
     }
+
+    if(opts.query&&opts.query.autoQuery&&opts.query.url){
+      ssTable.find("#autoQuery").unbind("click").bind("click",function(){
+        opts.doQuery(ssTable,opts.query.url,opts.query.params||{},opts.query.option);
+      })
+    } 
 
 
     if(opts.afterRender){

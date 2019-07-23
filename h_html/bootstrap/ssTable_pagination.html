@@ -8,8 +8,8 @@
   <title>Document</title>
 
   <script src="../lib/jquery-1.11.1.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
-  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../less/layout.css">
   <link rel="stylesheet" type="text/css" href="../less/simplePagination.css">
   <script src="../lib/ssform/template-web.js"></script>
@@ -55,6 +55,31 @@
   }
 
   data = {
+    qBindings:{
+      Number1To4: [
+        { "Name": "1", "Value": "1" },
+        { "Name": "2", "Value": "2" },
+        { "Name": "3", "Value": "3" },
+        { "Name": "4", "Value": "4" },
+    ],
+    Number1To3: [
+        { "Name": "1", "Value": "1" },
+        { "Name": "2", "Value": "2" },
+        { "Name": "3", "Value": "3" },
+    ],
+    },
+    query:{
+      "autoQuery":true,
+      //  "url":"/nms/misc_info/one.json",
+       "url":"/nms/misc_info/one.json",
+       "params":{
+        "query":{"tp":"ssTable"}
+       } ,
+      "conditions": [
+            { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "Number1To4" },
+            { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number1To3" }
+          ]
+    },
     head:{
       id:"cardTableHead",
       title:"当前设备是",
