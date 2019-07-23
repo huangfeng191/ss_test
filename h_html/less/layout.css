@@ -1,3 +1,7 @@
+.ss_table_framework {
+  height: 100%;
+  position: relative;
+}
 .ss_table_framework .table_head {
   width: 100%;
   float: left;
@@ -25,6 +29,14 @@
   height: 34px;
   line-height: 34px;
 }
+.ss_table_framework .table_foot {
+  overflow: hidden;
+  color: #666;
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  width: 800px;
+}
 .ss_framework .form_container {
   margin: 0 auto;
 }
@@ -51,66 +63,4 @@
 }
 .ss_framework .form_container .button_container {
   text-align: center;
-}
-.table_foot .pagination {
-  display: inline-block;
-  margin: 0px 10px;
-  list-style-type: none;
-  vertical-align: middle;
-}
-.table_foot .pagination > li {
-  float: left;
-  margin-right: 15px;
-  list-style: none;
-}
-.table_foot .pagination > li a {
-  border: none;
-  padding: 3px 0px;
-}
-.table_foot .pagination > li .prev {
-  background-image: url(../images/prev.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding: 12px 12px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.table_foot .pagination > li .next {
-  background-image: url(../images/next.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding: 12px 12px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.table_foot b {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-.table_foot input {
-  background-color: #f8f8f8;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #a6a6a6;
-  border-image: initial;
-  border-radius: 4px;
-  height: 24px;
-  line-height: 24px;
-  padding-left: 4px;
-  width: 28px;
-}
-.table_foot .refresh {
-  display: inline-block;
-  vertical-align: middle;
-  background-image: url(../images/page_refresh.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 20px;
-  width: 20px;
-  margin-top: -3px;
-  margin-left: 8px;
-  border: none;
-  background-color: transparent;
 }

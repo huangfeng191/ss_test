@@ -4,7 +4,7 @@ $("#config_pagination").pagination({});
 
 
 <div class="page-box-new ">
-<div id="config_pagination" style="float:right;padding-right:10px;"></div>
+    <div id="config_pagination" style="float:right;padding-right:10px;"></div>
 </div>
 
 
