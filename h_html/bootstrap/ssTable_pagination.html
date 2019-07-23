@@ -69,6 +69,7 @@
     ],
     },
     query:{
+      "firstQuery":true,
       "autoQuery":true,
       //  "url":"/nms/misc_info/one.json",
        "url":"/nms/misc_info/one.json",
@@ -89,7 +90,12 @@
             ],
 
     },
-    columns: [{ "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
+    columns: [
+      
+    
+      { "title": "描述", "field": "description", "showType": "text", },
+      { "title": "日志时间", "field": "logTime", "showType": "text", },
+      { "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
       { "title": "IO/类型", "field": "ioSignal", "showType": "text", },
       { "title": "信号类型", "field": "ioType", "showType": "text", },
       { "title": "冗余使能", "field": "ioStatusRedundancy"  ,"showType": "text",format:function(d,i,f){

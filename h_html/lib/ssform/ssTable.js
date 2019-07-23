@@ -185,6 +185,9 @@ $.fn.ssTable.defaults = {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
       } ,opts || {})).done(function(result){
+        if(result.Response){
+          result=result.Response;
+        }
           if(result.code=="100000" && result.data.content ){
             jDom.ssTable("Set",
               result.data.content||[]
@@ -262,18 +265,27 @@ function ssTableInitialize(options) {
         "footShow": opts.footShow ? true : false
 
     }));
+
+    
+
+    
+    
+    
     if(opts.footShow){
       ssTable.find(".table_foot #sample_pagination").pagination({});
     }
+    ssTable.find(".table_middle").height(ssTable.height()-ssTable.find(".table_head").height()-ssTable.find(".table_foot").height())
 
 
     ssTable.data("ssTable", opts);
 
-    if(opts.firstQuery==1){ // 默认查询  1 查询
-        // opts.query.click()
-    }
+   
 
     if(opts.query&&opts.query.autoQuery&&opts.query.url){
+   
+      if(opts.query.firstQuery){ // 默认查询  1 查询
+            opts.doQuery(ssTable,opts.query.url,opts.query.params||{},opts.query.option);
+        }
       ssTable.find("#autoQuery").unbind("click").bind("click",function(){
         opts.doQuery(ssTable,opts.query.url,opts.query.params||{},opts.query.option);
       })

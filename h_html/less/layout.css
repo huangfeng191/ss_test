@@ -16,6 +16,10 @@
   width: 180px;
   margin-right: 30px;
 }
+.ss_table_framework .table_middle {
+  float: left;
+  overflow: auto;
+}
 .ss_table_framework .table_middle .table-striped > tbody > tr:nth-of-type(even) {
   background-color: #f2ebce;
 }
@@ -32,8 +36,6 @@
 .ss_table_framework .table_foot {
   overflow: hidden;
   color: #666;
-  position: absolute;
-  bottom: 10px;
   right: 0px;
   width: 800px;
 }
