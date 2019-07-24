@@ -21,14 +21,14 @@
 
 </head>
 
-<body id="test" style="height:500px;" >
+<body id="test" style="height:500px;">
 
   <span class="input-group-btn">
     <button type="button" class="btn btn-default">Go!</button>
-  </span> 
+  </span>
 
 
-  <div id="card-board-list" >
+  <div id="card-board-list">
   </div>
 
 </body>
@@ -55,81 +55,86 @@
   }
 
   data = {
-    qBindings:{
+    qBindings: {
       Number1To4: [
         { "Name": "1", "Value": "1" },
         { "Name": "2", "Value": "2" },
         { "Name": "3", "Value": "3" },
         { "Name": "4", "Value": "4" },
-    ],
-    Number1To3: [
+      ],
+      Number1To3: [
         { "Name": "1", "Value": "1" },
         { "Name": "2", "Value": "2" },
         { "Name": "3", "Value": "3" },
-    ],
+      ],
     },
-    query:{
-      "firstQuery":true,
-      "autoQuery":true,
+    query: {
+      "firstQuery": true,
+      "autoQuery": true,
       //  "url":"/nms/misc_info/one.json",
-       "url":"/nms/misc_info/one.json",
-       "params":{
-        "query":{"tp":"ssTable"}
-       } ,
+      "url": "/nms/misc_info/one.json",
+      "params": {
+        "query": { "tp": "ssTable" }
+      },
       "conditions": [
-            { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "Number1To4" },
-            { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number1To3" }
-          ]
+        { "title": "槽位", "field": "inputCardConfigId", "showType": "select", "value": "1", binding: "Number1To4" },
+        { "title": "端口", "field": "inputCardConfigPortId", "showType": "select", "value": "1", binding: "Number1To3" }
+      ]
     },
-    head:{
-      id:"cardTableHead",
-      title:"当前设备是",
+    head: {
+      id: "cardTableHead",
+      title: "当前设备是",
       buttons: [
-              { "cmd": "print", "name": "打印", "class": "btn-default  " },
-              { "cmd": "export", "name": "导出", "class": "btn-default  " }
-            ],
+        { "cmd": "print", "name": "打印", "class": "btn-default  " },
+        { "cmd": "export", "name": "导出", "class": "btn-default  " }
+      ],
 
     },
     columns: [
-      
-    
+
+
       { "title": "描述", "field": "description", "showType": "text", },
       { "title": "日志时间", "field": "logTime", "showType": "text", },
       { "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
       { "title": "IO/类型", "field": "ioSignal", "showType": "text", },
       { "title": "信号类型", "field": "ioType", "showType": "text", },
-      { "title": "冗余使能", "field": "ioStatusRedundancy"  ,"showType": "text",format:function(d,i,f){
-        if(d[f]&&window.top.bindings["EnableDisable"]){
-          var ret=""
-          $.each(window.top.bindings["EnableDisable"],function(oi,ov){
-            if(ov.Value==d[f]){
-              ret=d[f].Name;
-              return false;
-            } 
-          })
+      {
+        "title": "冗余使能",
+        "field": "ioStatusRedundancy",
+        "showType": "text",
+        format: function(d, i, f) {
+          if (d[f] && window.top.bindings["EnableDisable"]) {
+            var ret = ""
+            $.each(window.top.bindings["EnableDisable"], function(oi, ov) {
+              if (ov.Value == d[f]) {
+                ret = d[f].Name;
+                return false;
+              }
+            })
+          }
+          return "";
         }
-        return "";
-      }},
+      },
       { "title": "主卡", "field": "ioStatusActive", "showType": "text", },
       { "title": "版本信息", "field": "isSignal", "showType": "text", },
-      { "title": "冗余操作", "field": "ioStatusRedundancyKey","showType": "select","binding":"EnableDisable" },
+      { "title": "冗余操作", "field": "ioStatusRedundancyKey", "showType": "select", "binding": "EnableDisable" },
       { "title": "绑定", "field": "bindMethod", "showType": "text", "format": rowFormatButtons },
       { "title": "卡配置", "field": "cardConfig", "showType": "text", "format": rowFormatButtons },
     ],
     footShow: true,
     width: "800px"
   }
-  
+
 
 
   $(function() {
-    
+
     $("#card-board-list").ssTable(data);
     $(".btn-default").click(function() {
       $("#card-board-list").ssTable("Set",
         [
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪", "ioStatusRedundancy": 11 },
-          { ioStatusSlotID: "我的老妈", "myGod": "我的天哪" ,"ioStatusRedundancyKey":"1"},
+          { ioStatusSlotID: "我的老妈", "myGod": "我的天哪", "ioStatusRedundancyKey": "1" },
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
         ]

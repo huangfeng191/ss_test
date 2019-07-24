@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=ED40137FD9272E4BE96C7DA9CFB21846
+@token=26BAB2CF812E1D14C165C17E5F3800DE
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 
@@ -344,7 +344,7 @@ Cookie:JSESSIONID={{token}}
 
 ###  操作日志 operation log
 ### 设备 用户  描述  开始时间  结束时间
-GET /nms/spring/log/cmdLog?token=B60BC27EF54B9E976D404020AA4517E3
+GET /nms/spring/log/cmdLog?token={{token}}
 &cmdLogDesc=
 &cmdLogTimeBgn=
 &cmdLogTimeEnd=

@@ -4,7 +4,7 @@
 
 secuLog
 
-设备 deviceIp
+设备 deviceIp c DeviceInfos
 用户 secuLogUser 
 描述  description
 开始时间  secuLogTimeBgn
@@ -12,6 +12,8 @@ secuLog
 
 
 
+操作时间 times    //timestamp
+描述 description
 
 
 cmdLog
