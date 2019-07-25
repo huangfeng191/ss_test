@@ -77,6 +77,35 @@ $.fn.ssModal.Get = function() {
 };
 
 
+$.fn.ssModal.Verify = function() {
+    var opts = $(this).data("ssModal");
+    var data=$(this).ssModal("Get");
+    var err=[]
+    opts.Form.forEach(function(v,i){
+        $.each(v.Inputs,function(oi,ov){
+
+
+           $.each(ov,function(onei,one){
+            if(one.require){
+                if(!data[one.field]){
+                    err.push(one.title+"不能为空");
+                }
+            } 
+           })
+                
+        })
+    })
+    if(err.length>0){
+        alert(err.join("\n"))
+        return false;
+    }
+    return true;
+
+
+   
+};
+
+
 
 
 
@@ -114,6 +143,9 @@ var defaults = $.fn.ssModal.defaults = {
                                 <div class="right ">
                                     {{if Cell.showType=="text"}}
                                             <input field={{Cell.field}}  placeholder="请输入" showType={{Cell.showType}} {{if Cell.disabled}} disabled {{/if}} {{if Cell.value}} value=Cell.value {{/if}}>
+
+                                    {{ else if Cell.showType=="password"}}
+                                            <input field={{Cell.field}}  placeholder="请输入" type="password" showType={{Cell.showType}} {{if Cell.disabled}} disabled {{/if}} {{if Cell.value}} value=Cell.value {{/if}}>
 
                                     {{else if Cell.showType=="select"}}
                                             <select field={{Cell.field}}   showType={{Cell.showType}} {{if Cell.value}} value=Cell.value {{/if}}>
@@ -201,8 +233,13 @@ function initialize_ssModal(options) {
     if(opts.confirm){
         
         ssModal.find(".modal-dialog button.yes").unbind("click").bind("click",function(){
-            var modalData=ssModal.ssModal("Get");
-            opts.confirm(ssModal,modalData);
+            
+            if(ssModal.ssModal("Verify")){
+               var modalData=ssModal.ssModal("Get");
+               opts.confirm(ssModal,modalData);
+
+            }
+            
         })
     }
     if (opts.afterRender) {

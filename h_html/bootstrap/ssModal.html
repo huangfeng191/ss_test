@@ -27,7 +27,7 @@
 <script>
   function getSetting(params) {
     return {
-      "title": "用户添加",
+      "title": "用户修改",
       "width": "330",
       "bindings": {
         "Gender": [
@@ -41,7 +41,7 @@
             { title: "Sn", field: "sn" },
           ],
           [
-            { title: "Name", field: "name" },
+            { title: "Name", field: "name" ,require:true,showType:"password"},
           ],
           [
             { title: "sex", field: "sex", showType: "select", binding: "Gender" },
@@ -49,8 +49,7 @@
         ]
       }],
       "data": {
-        "sn": 111,
-        "name":"fred"
+        
       },
       "confirm":function($dom,data){
             alert("data "+data.name);
