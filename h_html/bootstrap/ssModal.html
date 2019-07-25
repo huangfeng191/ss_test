@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="../less/layout.css">
   <script src="../lib/ssform/template-web.js"></script>
   <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/"></script>
 </head>
 
 <body id="test" class='to-center'>
@@ -26,8 +27,8 @@
       var modal=  `
        
       
-      <div class="modal fade public-modal" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog w-330 m-t120">
+    <div class="modal fade ss-modal" id="addUserModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
@@ -84,12 +85,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="modal-btn no" data-dismiss="modal">取消</button>
-                <button type="button" class="modal-btn yes" onclick="addUser()">
+                <button type="button" class="modal-btn yes" >
                     确定
                 </button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+        </div>
+    </div>
 </div>
         
         `

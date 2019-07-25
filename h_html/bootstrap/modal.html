@@ -24,31 +24,73 @@
 
     function getModal(params) {
       var modal=  `
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					模态框（Modal）标题
-				</h4>
-			</div>
-			<div class="modal-body">
-				在这里添加一些文本
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
-				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
+       
+      
+      <div class="modal fade ss-modal" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width:330px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    用户添加
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="#">
+                    <div class="form-row">
+                        <div class="left w-p35"><label>用户名:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" placeholder="请输入" type="text" id="userName">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>用户级别:</label></div>
+                        <div class="right w-p65">
+                            <select class="w-140" id="level">
+                                <option>请选择</option>
+                                <option selected>维护</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>设备权限:</label></div>
+                        <div class="right w-p65">
+                            <select class="w-140" id="Role">
+                                <option>请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>单位:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" value="" placeholder="请输入" type="text" id="company">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>姓名:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" value="" placeholder="请输入" type="text" id="name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>联系方式:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" value="" placeholder="请输入" type="text" id="mobile">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn no" data-dismiss="modal">取消</button>
+                <button type="button" class="modal-btn yes" >
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
-        
         
         `
         return modal;
@@ -59,7 +101,7 @@
             
             var modal=getModal();
             $(document.body).append(modal);
-            $("#myModal").modal("show");
+            $("#addUserModal").modal("show");
 
         })
 
