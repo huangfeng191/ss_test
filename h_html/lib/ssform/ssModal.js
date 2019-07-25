@@ -110,13 +110,10 @@ var defaults = $.fn.ssModal.defaults = {
 
                         {{each Row  Cell c}}
                             <div class="form-row">
-                                <div class="left "><label field_label="{{Cell.field}} >{{Cell.title}}:</label></div>
+                                <div class="left "><label field_label="{{Cell.field}}" >{{Cell.title}}:</label></div>
                                 <div class="right ">
-
                                     {{if Cell.showType=="text"}}
-                                        <td>
                                             <input field={{Cell.field}}  placeholder="请输入" showType={{Cell.showType}} {{if Cell.disabled}} disabled {{/if}} {{if Cell.value}} value=Cell.value {{/if}}>
-                                        </td>
 
                                     {{else if Cell.showType=="select"}}
                                             <select field={{Cell.field}}   showType={{Cell.showType}} {{if Cell.value}} value=Cell.value {{/if}}>
@@ -187,18 +184,27 @@ function initialize_ssModal(options) {
     if(opts.id){
         ssModal.attr("id",opts.id);
     }
-    if(opts.width){
-        ssModal.attr("width",opts.width);
-    }
+   
     ssModal.attr({"role":"dialog", "tabindex":"-1","aria-hidden":true});
     if (opts.Class) {
         ssModal.addClass(opts.Class);
     }
     ssModal.html('<div class="modal-dialog"> </div>');
-
-    ssModal.find(".modal-dialog").html(opts.temp({query:opts.query, Form: opts.Form }));
+    if(opts.width){
+        ssModal.find(".modal-dialog").css("width",opts.width);
+    }
+    ssModal.find(".modal-dialog").html(opts.temp(opts));
     ssModal.data("ssModal", opts);
-
+    if(opts.data){
+        ssModal.ssModal("Set",opts.data);
+    }
+    if(opts.confirm){
+        
+        ssModal.find(".modal-dialog button.yes").unbind("click").bind("click",function(){
+            var modalData=ssModal.ssModal("Get");
+            opts.confirm(ssModal,modalData);
+        })
+    }
     if (opts.afterRender) {
         opts.afterRender(ssModal, opts);
     }

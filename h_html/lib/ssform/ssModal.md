@@ -1,33 +1,30 @@
-{
-    
-    "bindings": [],
-        "Form": [
-
-        ],
-}
-
-setting={
-    "title":"用户添加",
-    "width":"330";
-    "bindings": {
-        "STATE": [
-          { "Name": "", "Value": null },
-          { "Name": "开始", "Value": "start" },
-          { "Name": "结束", "Value": "end" },
+var setting={
+      "title": "用户添加",
+      "width": "330",
+      "bindings": {
+        "Gender": [
+          { "Name": "男", "Value": "male" },
+          { "Name": "女", "Value": "female" },
         ]
       },
-      "Form": [
-        {
+      "Form": [{
         "Inputs": [
           [
-            { title: "Name", field: "Sn" },
+            { title: "Sn", field: "sn" },
           ],
           [
-            { title: "LiSa001", field: "Lisa001" },
+            { title: "Name", field: "name" },
           ],
           [
-            { title: "LiSa001", field: "Lisa002", ShowType: "select", binding: "STATE" },
+            { title: "sex", field: "sex", showType: "select", binding: "Gender" },
           ]
         ]
-      }]
+      }],
+      "data": {
+        "sn": 111,
+        "name":"fred"
+      },
+      "confirm":function($dom,data){
+            alert("data "+data.name);
+      }
     }
