@@ -307,13 +307,6 @@ Cookie:JSESSIONID={{token}}
 
 
 
-### 获取权限  roleType: '0' 用户级别    1 设备权限
-GET /nms/spring/role/getRole?token={{token}}&userName='admin'&distribution=0&roleType=0
-Host: {{host}}
-Content-Type: application/json;charset=UTF-8
-Cookie:JSESSIONID={{token}}
-
-
 
 ### 获取单个用户密码
 GET /nms/spring/user/page?userName=yyy
@@ -371,3 +364,30 @@ GET /nms/spring/log/eventLog?token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+
+
+
+
+
+
+
+
+# system  userRole 
+
+### 获取权限  roleType: '0' 用户级别    1 设备权限
+GET /nms/spring/role/getRole?token={{token}}&userName='admin'&distribution=0&roleType=0
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+### 
+POST /nms/spring/roletoken={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+{"roleName":"1","roleDesc":"2","deviceList":[{"id":"39f7b370-dd68-480d-b873-ce884cd84ece"}]}
+
+

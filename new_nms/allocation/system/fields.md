@@ -35,3 +35,32 @@ eventLog
 secuLog_pagination
 cmdLog_pagination
 eventLog_pagination
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- role setting
+
+ <!-- roleType: '0' 用户级别    1 设备权限 -->
+
+角色名称 roleName
+描述 roleDesc
+设备分配 deviceList  //[{id}]
+
+
+
+"roleDesc": "6",
+"isDelete": 0,
+"roleName": "6",
+"roleType": 1,
+"timestamp": 1555474881000,
+"deviceList":[{}]

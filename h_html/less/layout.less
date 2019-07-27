@@ -1,11 +1,13 @@
 // ss_table down
 .ss_table_framework {
-    height:100%;
+    height: 100%;
     position: relative;
+
     .table_head {
         width: 100%;
         float: left;
-        margin-bottom:10px;
+        margin-bottom: 10px;
+
         .left {
             float: left;
             line-height: 34px;
@@ -13,42 +15,47 @@
 
         .right {
             float: right;
-            width:180px;
+            width: 180px;
             margin-right: 30px;
         }
     }
 
-    
 
-    .table_middle{
+
+    .table_middle {
         float: left;
         overflow: auto;
-        .table-striped{
-            >tbody{
+
+        .table-striped {
+            >tbody {
                 >tr:nth-of-type(even) {
                     background-color: #f2ebce
                 }
-                
+
             }
         }
-        table{
-            th{
+
+        table {
+            th {
                 text-align: left;
             }
-            tr{
-                
-                td{
+
+            tr {
+
+                td {
                     text-align: left;
-                    select{
+
+                    select {
                         height: 34px;
                         line-height: 34px;
                     }
                 }
             }
         }
-     
+
     }
-    .table_foot{
+
+    .table_foot {
         overflow: hidden;
         color: #666;
         // position: absolute;
@@ -86,7 +93,8 @@
             ;
 
             table {
-                margin:0 auto;
+                margin: 0 auto;
+
                 tr:nth-of-type(odd) {
                     background: #fbf7d6 !important
                 }
@@ -110,14 +118,16 @@
 
 
 // ss_modal 
-.ss-modal{
-    margin-top:120px;
-    .modal-header{
+.ss-modal {
+    margin-top: 120px;
+
+    .modal-header {
 
         .close {
             position: absolute;
             right: 20px;
         }
+
         padding: 10px 0px;
         background-color: #D7CEA9;
         border-top-left-radius: 6px;
@@ -126,60 +136,120 @@
         -webkit-border-top-right-radius: 6px;
         position: relative;
         text-align: center;
-        .modal-title{
+
+        .modal-title {
             text-align: center;
             font-size: 18px;
         }
     }
 
 
-     .modal-body {
-         .form-row{
+    .modal-body {
+        .form-row {
             overflow: hidden;
             margin-top: 17px;
 
             label {
                 font-weight: normal;
             }
-            .left{
+
+            .left {
                 display: block;
                 float: left;
                 text-align: right;
                 padding-right: 2px;
                 width: 35%;
             }
-            .right{
+
+            .right {
                 display: block;
                 float: right;
                 padding-left: 2px;
                 width: 65%;
-                input,select{
-                    width:140px;
-                    
+
+                input,
+                select {
+                    width: 140px;
+
                 }
             }
         }
-     }
-     
-     .modal-footer {
+    }
+
+    .modal-footer {
         margin: 34px auto 21px;
         text-align: center;
         padding: 0px;
         border-top: none;
 
-        button{
+        button {
             padding: 6px 16px;
             border-radius: 4px;
-            &.yes{
+
+            &.yes {
                 background-color: #D7CEA9;
                 border: 1px solid #979797;
             }
-            &.no{
+
+            &.no {
                 background-color: #fff;
                 border: 1px solid #D9D9D9;
                 color: #666666;
             }
         }
+    }
+
+}
+
+
+
+
+
+// device_input 
+.ss-device {
+    position: relative;
+
+    input {
+        height: 25px;
+        line-height: 25px;
+        margin-top: 10px;
+        width: 230px;
+        margin-bottom: 10px;
+        border: 1px solid #B0B0B0;
+    }
+
+    .lay {
+        padding: 10px;
+        position: absolute;
+        top: 34px;
+        left: 0;
+        width: 230px;
+        border: 1px solid rgb(221, 221, 221);
+
+        input.search {
+            width: 100%;
+            margin: 10px auto;
+        }
+
+        ul {
+            padding: 0;
+            float: left;
+            max-height: 300px;
+            overflow: auto;
+
+            .selected-li {
+                color: #E0E0E0;
+            }
+
+            li {
+                font-size: 12px;
+                float: left;
+                margin-right: 10px;
+                list-style: none;
+                width: 100%;
+            }
+        }
+
     }
 
 }

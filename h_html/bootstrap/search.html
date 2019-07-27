@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+ 
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/layout.css">
+  <script src="../lib/ssform/template-web.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+</head>
+
+<body id="test" class='to-center normal-background-image' >
+    
+    
+    <div class="ss-device" >
+        <input type="text" placeholder="" id="nodeDeviceName" />
+        <input type="hidden" id="nodeDeviceId">
+        <div class="lay">
+          <button type="button" class="btn btn-default btn-sm" onclick="allNodeClick()">
+            <span class="glyphicon glyphicon-ok"></span>全选
+          </button>
+          <button type="button" class="btn btn-default btn-sm" onclick="allCancel()">
+            <span class="glyphicon glyphicon-remove"></span>全部取消
+          </button>
+          <button type="button" class="btn btn-default btn-sm" style="float: right;" onclick="">
+            <span class="glyphicon glyphicon-repeat"></span>重置
+          </button>
+          <input type="text" placeholder="搜索" class="search" id="searchName" onchange="queryNodeDevice()" />
+          <ul id="nodeId">
+              <li id="5c821482-f641-4b0a-9ee6-8c929c2d8d041">甘肃白广路SM2000_PRC</li>
+              <li id="5c821482-f641-4b0a-9ee6-8c929c2d8d042">甘肃白广路SM2000_PRC</li>
+              <li id="5c821482-f641-4b0a-9ee6-8c929c2d8d043">甘肃白广路SM2000_PRC</li>
+        </ul>
+        </div>
+      </div>
+
+      
+
+
+
+</body>
+
+<script>
+
+    function getModal(params) {
+      var modal=  `
+       
+      
+      <div class="modal fade ss-modal" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width:330px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    用户添加
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="#">
+                    <div class="form-row">
+                        <div class="left w-p35"><label>用户名:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" placeholder="请输入" type="text" id="userName">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>用户级别:</label></div>
+                        <div class="right w-p65">
+                            <select class="w-140" id="level">
+                                <option>请选择</option>
+                                <option selected>维护</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>设备权限:</label></div>
+                        <div class="right w-p65">
+                            <select class="w-140" id="Role">
+                                <option>请选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>单位:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" value="" placeholder="请输入" type="text" id="company">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>姓名:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" value="" placeholder="请输入" type="text" id="name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="left w-p35"><label>联系方式:</label></div>
+                        <div class="right w-p65">
+                            <input class="w-140" value="" placeholder="请输入" type="text" id="mobile">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-btn no" data-dismiss="modal">取消</button>
+                <button type="button" class="modal-btn yes" >
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        `
+        return modal;
+    }
+
+
+
+            $("#nodeId li").click(function() {
+            var nodeDeviceName = $("#nodeDeviceName").val() + ";";
+            var nodeDeviceId = $("#nodeDeviceId").val() + ";";
+            $(this).toggleClass("selected-li");
+            var css = $(this).attr("class");
+            if (css == "selected-li") {
+            if (nodeDeviceName.length == 1) {
+                nodeDeviceName = nodeDeviceName.substring(0, nodeDeviceName.length - 1);
+                nodeDeviceId = nodeDeviceId.substring(0, nodeDeviceId.length - 1);
+            }
+            $("#nodeDeviceName").val(nodeDeviceName + this.innerText);
+            $("#nodeDeviceId").val(nodeDeviceId + this.id);
+            } else {
+            var nodeDeviceNameObj = $("#nodeDeviceName").val();
+            var nodeDeviceIdObj = $("#nodeDeviceId").val();
+            var nodeName = nodeDeviceNameObj.replace(this.innerText, '');
+            var nodeId = nodeDeviceIdObj.replace(this.id, '');
+            if (nodeName.indexOf(";;") > -1) {
+                nodeName = nodeName.replace(";;", ';');
+                nodeId = nodeId.replace(";;", ';');
+            }
+            if (nodeName.substr(0, 1) == ";") {
+                nodeName = nodeName.substr(1);
+                nodeId = nodeId.substr(1);
+            }
+            if (nodeName.substr(nodeName.length - 1, 1) == ";") {
+                nodeName = nodeName.substr(0, nodeName.length - 1);
+                nodeId = nodeId.substr(0, nodeId.length - 1);
+            }
+            $('#nodeDeviceName').val(nodeName);
+            $('#nodeDeviceId').val(nodeId);
+            }
+
+        });
+
+
+        function allNodeClick() {
+                            $("#nodeId").each(function() {
+                              $(this).find('li').each(function() {
+                                var nodeDeviceName = $("#nodeDeviceName").val() + ";";
+                                var nodeDeviceId = $("#nodeDeviceId").val() + ";";
+                                $(this).addClass("selected-li");
+                                var css = $(this).attr("class");
+                                if (css == "selected-li") {
+                                  if (nodeDeviceName.length == 1) {
+                                    nodeDeviceName = nodeDeviceName.substring(0, nodeDeviceName.length - 1);
+                                    nodeDeviceId = nodeDeviceId.substring(0, nodeDeviceId.length - 1);
+                                  }
+                                  $("#nodeDeviceName").val(nodeDeviceName + this.innerText);
+                                  $("#nodeDeviceId").val(nodeDeviceId + this.id);
+                                } else {
+                                  var nodeDeviceNameObj = $("#nodeDeviceName").val();
+                                  var nodeDeviceIdObj = $("#nodeDeviceId").val();
+                                  var nodeName = nodeDeviceNameObj.replace(this.innerText, '');
+                                  var nodeId = nodeDeviceIdObj.replace(this.id, '');
+                                  if (nodeName.indexOf(";;") > -1) {
+                                    nodeName = nodeName.replace(";;", ';');
+                                    nodeId = nodeId.replace(";;", ';');
+                                  }
+                                  if (nodeName.substr(0, 1) == ";") {
+                                    nodeName = nodeName.substr(1);
+                                    nodeId = nodeId.substr(1);
+                                  }
+                                  if (nodeName.substr(nodeName.length - 1, 1) == ";") {
+                                    nodeName = nodeName.substr(0, nodeName.length - 1);
+                                    nodeId = nodeId.substr(0, nodeId.length - 1);
+                                  }
+                                  $('#nodeDeviceName').val(nodeName);
+                                  $('#nodeDeviceId').val(nodeId);
+                                }
+                              });
+
+                            });
+                          }
+
+
+                                             //全部取消
+                                             function allCancel() {
+                            $("#nodeId").each(function() {
+
+                              $(this).find('li').each(function() {
+                                $("#nodeDeviceName").val('');
+                                $("#nodeDeviceId").val('');
+                                $(this).removeClass("selected-li")
+                              });
+
+                            });
+                          }
+       
+
+        // $("button").on("click",function(event){
+            
+        //     var modal=getModal();
+        //     $(document.body).append(modal);
+        //     $("#addUserModal").modal("show");
+
+        // })
+
+</script>
+
+</html>

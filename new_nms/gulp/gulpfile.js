@@ -59,9 +59,9 @@ var middleware = proxy(filter, {
 // 静态服务器
 gulp.task('browser-sync-static', function() {
     bs.init({
-        port: 60,
+        port: 61,
         ui: {
-            port: 61,
+            port: 60,
 
         },
         notify: false,
@@ -98,9 +98,9 @@ gulp.task('browser-sync-static', function() {
 // 静态服务器
 gulp.task('browser-sync-static-none', function() {
     bs.init({
-        port: 60,
+        port: 61,
         ui: {
-            port: 61,
+            port: 60,
 
         },
         notify: false,

@@ -130,3 +130,42 @@
   border: 1px solid #D9D9D9;
   color: #666666;
 }
+.ss-device {
+  position: relative;
+}
+.ss-device input {
+  height: 25px;
+  line-height: 25px;
+  margin-top: 10px;
+  width: 230px;
+  margin-bottom: 10px;
+  border: 1px solid #B0B0B0;
+}
+.ss-device .lay {
+  padding: 10px;
+  position: absolute;
+  top: 34px;
+  left: 0;
+  width: 230px;
+  border: 1px solid #dddddd;
+}
+.ss-device .lay input.search {
+  width: 100%;
+  margin: 10px auto;
+}
+.ss-device .lay ul {
+  padding: 0;
+  float: left;
+  max-height: 300px;
+  overflow: auto;
+}
+.ss-device .lay ul .selected-li {
+  color: #E0E0E0;
+}
+.ss-device .lay ul li {
+  font-size: 12px;
+  float: left;
+  margin-right: 10px;
+  list-style: none;
+  width: 100%;
+}
