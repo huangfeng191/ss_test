@@ -383,11 +383,10 @@ Cookie:JSESSIONID={{token}}
 
 
 ### 
-POST /nms/spring/roletoken={{token}}
+POST /nms/spring/role?token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 {"roleName":"1","roleDesc":"2","deviceList":[{"id":"39f7b370-dd68-480d-b873-ce884cd84ece"}]}
-
 
