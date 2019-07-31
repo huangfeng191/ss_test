@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=26BAB2CF812E1D14C165C17E5F3800DE
+@token=24A335A825E3DD1158CA02380B9036BF
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 
@@ -390,3 +390,13 @@ Cookie:JSESSIONID={{token}}
 
 {"roleName":"1","roleDesc":"2","deviceList":[{"id":"39f7b370-dd68-480d-b873-ce884cd84ece"}]}
 
+
+### 数据库备份
+### 数据表明下拉
+GET /nms/spring/systemManage/findBybackupObectConfig?manualType=archive&token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+### 备份归档策略筛选
+/nms/spring/databaseBackup/getConfigParamByFilter

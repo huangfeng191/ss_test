@@ -51,6 +51,10 @@ eventLog_pagination
 
 
 
+
+
+
+
 --- role setting
 
  <!-- roleType: '0' 用户级别    1 设备权限 -->
