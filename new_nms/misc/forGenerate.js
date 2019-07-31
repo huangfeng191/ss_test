@@ -28,3 +28,6 @@ SSM状态 inputCardSSMState c EnableDisable
 SSM位 inputCardSSMBit  
 质量等级 inputCardPQL   c QualityGrade
 
+
+
+

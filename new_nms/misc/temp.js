@@ -1,1 +1,4 @@
-[{"node":"inputCardState","index":".3","num":""},{"node":"inputCardPriority","index":".3","num":""},{"node":"inputCardFrameType","index":".3","num":""},{"node":"inputCardCRCState","index":".3","num":""},{"node":"inputCardSSMState","index":".3","num":""},{"node":"inputCardSSMBit","index":".3","num":""},{"node":"inputCardPQL","index":".3","num":""},{"node":"inputCardCfgUsed","index":".3","num":""}]
+// to format data 
+"format":function(r, index, field){
+    return     formatDateTime(r[field]);
+   }   

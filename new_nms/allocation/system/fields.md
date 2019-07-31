@@ -18,19 +18,22 @@ secuLog
 
 cmdLog
 
-设备  deviceIp
+设备  deviceIp c DeviceInfos
 用户 cmdLogUser 
 描述  cmdLogDesc 
-开始时间  cmdLogTimeBgn
-结束时间 cmdLogTimeEnd
+开始时间  cmdLogTimeBgn d
+结束时间 cmdLogTimeEnd d
 
 eventLog
 
-设备 deviceIp 
+设备 deviceIp c DeviceInfos
 用户 activeEventModule
 描述 activeEventDesc 
-开始时间 activeEventTimeBgn 
-结束时间  activeEventTimeEnd
+开始时间 activeEventTimeBgn d 
+结束时间  activeEventTimeEnd d
+
+
+
 
 secuLog_pagination
 cmdLog_pagination
