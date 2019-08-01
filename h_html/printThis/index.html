@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../lib/printThis.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+
+<body>
+  <div>
+    <button>forClick</button>
+
+
+    <div class="normal-border" id="cs">
+
+      <div class="fixed-width-height normal-border" style="margin: 0 auto;">
+        1
+      </div>
+    </div>
+
+    
+
+  </div>
+</body>
+<script>
+  function forClick() {
+
+    $('#cs').printThis({
+        pageTitle:"cs",
+        loadCSS:[
+          "h_html/less/test.css"
+        ],
+        printDelay:300
+      });
+
+
+
+  }
+
+
+
+  $(function() {
+    $("button").click(forClick);
+  });
+</script>
+
+</html
