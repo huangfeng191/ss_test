@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+  <script src="./lib/xlsx.core.min.js"></script>
+  <script src="./lib/FileSaver.js"></script>
+  <script src="./lib/tableexport.js"></script>
+
+</head>
+
+<body>
+  <div>
+    <button>forClick</button>
+
+
+    <table id="arabic-table">
+      <thead>
+        <tr>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td >hidden</td>
+            <td>生日</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>fengfeng</td>
+            <td>男</td>
+            <td>29</td>
+            <td>1986-11-1</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</body>
+<script>
+  function forClick() {
+    var tableId='arabic-table';
+    var ExportButtons = document.getElementById(tableId);
+    var instance = new TableExport(ExportButtons, {
+      formats: ['xlsx'],
+      exportButtons: false
+    });
+    var XLSX = instance.CONSTANTS.FORMAT.XLSX;
+    var exportDataXLSX = instance.getExportData()[tableId][XLSX];
+    instance.export2file(exportDataXLSX.data, exportDataXLSX.mimeType, exportDataXLSX.filename, exportDataXLSX.fileExtension);
+
+
+    // TableExport(ArabicTable,{
+    //     headers: true,                              // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+    //     footers: true,                              // (Boolean), display table footers (th or td elements) in the <tfoot>, (default: false)
+    //     formats: ['xlsx'],            // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+    //     filename: 'id',                             // (id, String), filename for the downloaded file, (default: 'id')
+    //     bootstrap: false,                           // (Boolean), style buttons using bootstrap, (default: false)
+    //     position: 'bottom',                         // (top, bottom), position of the caption element relative to table, (default: 'bottom')
+    //     ignoreRows: null,                           // (Number, Number[]), row indices to exclude from the exported file(s) (default: null)
+    //     ignoreCols: null,                           // (Number, Number[]), column indices to exclude from the exported file(s) (default: null)
+    //     ignoreCSS: '.tableexport-ignore',           // (selector, selector[]), selector(s) to exclude cells from the exported file(s) (default: '.tableexport-ignore')
+    //     emptyCSS: '.tableexport-empty',             // (selector, selector[]), selector(s) to replace cells with an empty string in the exported file(s) (default: '.tableexport-empty')
+    //     trimWhitespace: true,                       // (Boolean), remove all leading/trailing newlines, spaces, and tabs from cell text in the exported file(s) (default: true)
+    //     RTL: false,                                 // (Boolean), set direction of the worksheet to right-to-left (default: false)
+    //     sheetname: 'id'                             // (id, String), sheet name for the exported spreadsheet, (default: 'id')
+    // });
+
+   
+  }
+
+  $(function() {
+    $("button").click(forClick);
+  });
+</script>
+
+</html

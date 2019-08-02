@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+  <script src="./lib/xlsx.core.min.js"></script>
+  <script src="./lib/FileSaver.js"></script>
+  <script src="./lib/tableexport.js"></script>
+
+</head>
+
+<body>
+  <div>
+    <button>forClick</button>
+
+
+    <table id="arabic-table">
+      <thead>
+        <tr>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td >hidden</td>
+            <td>生日</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>fengfeng</td>
+            <td>男</td>
+            <td>29</td>
+            <td>1986-11-1</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</body>
+<script>
+  function forClick(tableId) {
+    
+    var tableExport = document.getElementById(tableId);
+    var instance=$(tableExport).tableExport({
+      formats: ['xlsx'],
+      exportButtons: false,
+      filename:"filename"
+    })
+    var XLSX = instance.CONSTANTS.FORMAT.XLSX;
+    var exportDataXLSX = instance.getExportData()[tableId][XLSX];
+    instance.export2file(exportDataXLSX.data, exportDataXLSX.mimeType, exportDataXLSX.filename, exportDataXLSX.fileExtension);   
+  }
+
+  $(function() {
+    $("button").click(forClick('arabic-table'));
+  });
+</script>
+
+</html

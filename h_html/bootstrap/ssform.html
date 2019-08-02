@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/layout.css">
+  <script src="../lib/ssform/template-web.js"></script>
+  <script src="../lib/ssform/ssform.js"></script>
+
+</head>
+
+<body id="test">
+  <div id="ssForm">
+
+  </div>
+  <div id="csTable">
+
+  </div>
+
+</body>
+<script>
+  $("#ssForm").ssForm({
+      "exportTitle":"cs",
+    AfterRender: function(x) {
+    },
+    "Class": "that",
+    "bindings": {
+      GnssState: [
+        { "Name": "请选择", "Value": "" },
+        { "Name": "disable", "Value": "0" },
+        { "Name": "enable", "Value": "1" }
+      ],
+
+    },
+    "Form": [{
+      "Buttons": [
+        { "Cmd": "insert", "Name": "设置", "Class": "btn-primary" },
+        { "Cmd": "print", "Name": "打印", "Class": "btn-primary" },
+        { "Cmd": "export", "Name": "导出", "Class": "btn-primary" }
+      ],
+      "Inputs": [
+        [{ "title": "GNSS1使能", "field": "gnss1State", "showType": "select", binding: "GnssState" }],
+        [{ "title": "优先级", "field": "gnss1Priority", "showType": "text", }],
+        [{ "title": "经度", "field": "gnss1CurrentPositionJ", "showType": "text", }],
+        [{ "title": "纬度", "field": "gnss1CurrentPositionW", "showType": "text", }],
+        [{ "title": "高度", "field": "gnss1CurrentPositionH", "showType": "text", }],
+
+      ]
+    }]
+  })
+</script>
+
+</html>

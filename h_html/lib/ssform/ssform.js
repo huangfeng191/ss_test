@@ -56,7 +56,8 @@ $.fn.ssForm.Set = function(record) {
 };
 
 
-$.fn.ssForm.Get = function() {
+$.fn.ssForm.Get = function(isShow) {
+    
     var opts = $(this).data("ssForm");
     if (opts && opts.BeforeGet) {
         opts.BeforeGet(opts);
@@ -67,7 +68,11 @@ $.fn.ssForm.Get = function() {
         var Ele = jQuery(Eles[i]);
         var Field = Ele.attr("field");
         var Type = Ele.attr("showType");
-        record[Field] = Ele.val()
+        if(Type=="select"&&isShow){
+            record[Field] = Ele.find("option:selected").html();
+        }else{
+            record[Field] = Ele.val()
+        }
 
     }
     if (opts && opts.AfterGet) {
@@ -76,7 +81,48 @@ $.fn.ssForm.Get = function() {
     return record;
 };
 
+$.fn.ssForm.Export=function(){
+    var opts = $(this).data("ssForm");
+    var record=$(this).ssForm("Get","1");
+    var tHead=[];
+    var tRow=[]
+    $.each(opts.Form||[],function(oi,ov){
+        $.each(ov.Inputs||[],function(i,row){
+                $.each(row,function(ii,input){
+                    tHead.push(input.title);
+                    tRow.push(record[input.field]);      
+                })
+        })
+    })
+    var virtualDom =document.createElement("table");
+    var dom_head="<tr>";
+    $.each(tHead,function(oi,ov){
+        dom_head+="<th>"+ov+"</th>"
+    })
+    dom_head+="<tr>"
 
+    var dom_row="<tr>";
+    $.each(tRow,function(oi,ov){
+        dom_row+="<td>"+ov||""+"</td>"
+    })
+    dom_row+="<tr>";
+    $(virtualDom).html(dom_head+dom_row);
+    // console.log("dom_ "+virtualDom.innerHTML);
+    // $("#csTable").html(virtualDom)
+    var instance=$(virtualDom).tableExport({
+      formats: ['xlsx'], 
+      exportButtons: false,
+      filename:opts.exportTitle||"filename"
+    })
+    var XLSX = instance.CONSTANTS.FORMAT.XLSX;
+    var exportDataXLSX = instance.getExportData()[Object.keys(instance.getExportData())[0]][XLSX];
+    instance.export2file(exportDataXLSX.data, exportDataXLSX.mimeType, exportDataXLSX.filename, exportDataXLSX.fileExtension);   
+
+
+
+
+
+}
 
 $.fn.ssForm.GetQuery = function() {
   var opts = $(this).data("ssForm");
@@ -101,7 +147,7 @@ $.fn.ssForm.Clear = function(Fields) {
     this.children(".form_container").find("[field]").val("");
 
 }
-var defaults = $.fn.ssForm.defaults = {
+ $.fn.ssForm.defaults = {
 
     "temp": template.compile(jQuery.GetTemplate(function() {
         /*
@@ -144,7 +190,7 @@ var defaults = $.fn.ssForm.defaults = {
               <tr>
                 {{each Row  Cell c}}
                       {{if Cell.field}}
-                        <td class="ss_label" field_label="{{Cell.field}}"  >{{Cell.title}}:</td>
+                        <td class="ss_label" field_label="{{Cell.field}}"  >{{Cell.title}}:</th>
                         {{if Cell.showType=="text"}}
                               <td>
                                 <input field={{Cell.field}} showType={{Cell.showType}} {{if Cell.disabled}} disabled {{/if}} {{if Cell.value}} value=Cell.value {{/if}}>
@@ -193,7 +239,7 @@ var defaults = $.fn.ssForm.defaults = {
 }
 
 function initialize(options) {
-    var opts = $.extend(true, {}, defaults, options);
+    var opts = $.extend(true, {}, $.fn.ssForm.defaults, options);
     var ssForm = $(this);
     if (opts.BeforeRender) {
         opts.BeforeRender(ssForm);
@@ -239,6 +285,12 @@ function initialize(options) {
 
     ssForm.find(".form_container").html(opts.temp({query:opts.query, Form: opts.Form }));
     ssForm.data("ssForm", opts);
+
+    if(ssForm.find("button[command=export]")){
+        ssForm.find("button[command=export]").unbind("click").bind("click",function(){
+            ssForm.ssForm("Export");
+        })
+    }
 
     if (opts.AfterRender) {
         opts.AfterRender(ssForm, opts);
