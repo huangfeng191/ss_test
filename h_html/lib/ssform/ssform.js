@@ -99,14 +99,14 @@ $.fn.ssForm.Export=function(){
     $.each(tHead,function(oi,ov){
         dom_head+="<th>"+ov+"</th>"
     })
-    dom_head+="<tr>"
+    dom_head+="</tr>"
 
     var dom_row="<tr>";
     $.each(tRow,function(oi,ov){
         dom_row+="<td>"+ov||""+"</td>"
     })
-    dom_row+="<tr>";
-    $(virtualDom).html(dom_head+dom_row);
+    dom_row+="</tr>";
+    $(virtualDom).html("<tbody>"+dom_head+dom_row+"</tbody>");
     // console.log("dom_ "+virtualDom.innerHTML);
     // $("#csTable").html(virtualDom)
     var instance=$(virtualDom).tableExport({

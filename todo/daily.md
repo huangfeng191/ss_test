@@ -85,5 +85,7 @@
 
  
 # 2019-08-02
- 引入导出excle插件 tableExport 并且应用在配置管理-网元配置中 
+ 1 引入导出excle插件 tableExport 
+ 2 修改ssForm 支持导出excel功能
+ 3 将在配置管理-网元配置中，日志管理中
     

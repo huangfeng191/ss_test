@@ -3,6 +3,7 @@
 |----------|-----------------------|--------|
 | ctrl+1   | translate             |        |
 | ctrl+2   | redmine               |        |
+| alt   | focus to right top option               |      *  |
 
 
 

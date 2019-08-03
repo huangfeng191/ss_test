@@ -11,15 +11,22 @@
 @normal-border: 1px red solid;
 @normal-background-color: gray;
 @normal-background-image: url('../images/bg.jpg');
+// test 
+@offset-height: 200px;
 
 .normal-fill-in {
     width: 100%;
     height: 100%;
 }
 
+.test-fill-in {
+    width: 100%;
+    height:calc(~"100% - @{offset-height}")
+}
+
 
 .normal-float {
-    float:left;
+    float: left;
 }
 
 .normal-fixed-size {
@@ -28,34 +35,39 @@
 }
 
 
-.table{
-    &.test-border{
-        border:1px red solid;
+.table {
+    &.test-border {
+        border: 1px red solid;
     }
-    &.td-test-border{
-     td{
-        border:1px blue solid;
-     }
-        
+
+    &.td-test-border {
+        td {
+            border: 1px blue solid;
+        }
+
     }
-    th{
-        width:120px;
+
+    th {
+        width: 120px;
     }
+
     ;
 }
 
 html {
-    .to-center{
-        margin:0 auto;
-        width:200px; // ?
-        margin-top:100px;
+    .to-center {
+        margin: 0 auto;
+        width: 200px; // ?
+        margin-top: 100px;
 
     }
-    margin: 0 ;
+
+    margin: 0;
     padding:0;
     width: 100%;
     height: 100%;
     font-size: 14px;
+
     .overflow-hidden {
         overflow: hidden;
     }
@@ -75,20 +87,24 @@ html {
     .normal-margin-left {
         margin-left: @normal-left;
     }
+
     .normal-background-color {
         background-color: @normal-background-color
     }
+
     .normal-background-image {
         background-image: @normal-background-image
     }
+
     body {
-     
-        
+        margin: 0;
+      padding:0;
 
         // border: @normal-border;
 
         .normal-border {
-            border: @normal-border
+            border: @normal-border;
+            box-sizing: border-box;
         }
 
         .simple-div {
@@ -97,7 +113,8 @@ html {
             top: 100px
         }
 
-        .fix-width-height,.fixed-width-height {
+        .fix-width-height,
+        .fixed-width-height {
             width: 400px;
             height: 400px;
         }
@@ -125,46 +142,52 @@ html {
 
 
         }
-        .board-card{
-            width:100%;
+
+        .board-card {
+            width: 100%;
             height: 100%;
-            border:2px #000 solid;
+            border: 2px #000 solid;
             position: relative;
-            .top-line{
+
+            .top-line {
                 position: absolute;
                 z-index: 999;
-                top:@thin-size;
-                width:100%;
+                top: @thin-size;
+                width: 100%;
                 height: @smallest-size;
                 box-sizing: border-box;
-                
+
                 border-width: 10px 0px 2px 0px;
-                border-color:#000;
-                border-style:solid;
-            }
-            .one{
-                height: 100%;
-                width:90px;
-                border-width:0 2px 0 0 ;
+                border-color: #000;
                 border-style: solid;
-                float:left;
-                .title{
-                    width:100%;
-                    height:@thin-size;
-                    line-height:@thin-size;
-                    text-align: center; 
+            }
+
+            .one {
+                height: 100%;
+                width: 90px;
+                border-width: 0 2px 0 0;
+                border-style: solid;
+                float: left;
+
+                .title {
+                    width: 100%;
+                    height: @thin-size;
+                    line-height: @thin-size;
+                    text-align: center;
                     vertical-align: middle;
-                    margin-bottom:@smallest-size+@smaller-size;
+                    margin-bottom: @smallest-size+@smaller-size;
                 }
-                .state-lamp{
-                    width:@thin-size;
+
+                .state-lamp {
+                    width: @thin-size;
                     margin: 0 auto;
-                    margin-bottom:6px;
-                    padding-left:6px;
-                    span{
+                    margin-bottom: 6px;
+                    padding-left: 6px;
+
+                    span {
                         display: inline-block;
                         width: @thinner-size;
-                        font-size:12px;
+                        font-size: 12px;
                     }
                 }
             }

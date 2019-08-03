@@ -2,6 +2,24 @@
 
 function getSetting()
 
+##构建对象
+```js
+
+var building={
+    dom:"",
+    target:null, // 目标 对象，通常
+    init:function(){ // 可以理解未 初始化，
+        // render()
+    },
+    render:function(){ // 可以多次渲染
+
+    }
+
+}
+
+```
+
+
 
 
 
