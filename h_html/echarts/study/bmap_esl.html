@@ -9,14 +9,11 @@
 <head>
   <script src="../../lib/jquery-1.11.1.min.js"></script>
   <script src="../../lib/testLib.js"></script>
-  <!-- <script src="../js/bmap/esl.js"></script>
-  <script src="../js/bmap/config.js"></script> -->
-  <script src="../js/echarts.js"></script>
-  <script src="../js/bmap/bmap1.js"></script>
+  <script src="../js/bmap/esl.js"></script>
+  <script src="../js/bmap/config.js"></script>
   <script src="http://api.map.baidu.com/api?v=2.0&ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U"></script>
 
   <link rel="stylesheet" type="text/css" href="../../less/test.css" />
-  <script src="./bmapResource.js"></script>
   <script src="./bmap.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,8 +34,10 @@
 </body>
 <script>
   
-$(function(){
-
+    require([
+                'echarts',
+                'extension/bmap1'
+            ], function (echarts) {
 
 
 // 获取百度地图实例，使用百度地图自带的控件
