@@ -5,12 +5,12 @@ var remarks={
     simpleBar:{
         "desc":"简单的barDemo",
         "option":"optionSimpleBar",
-        "default":true
+       
     },
     dataSet:{
         "desc":"简单的dataSet",
         "option":"optionDataSet",
-        
+        // "default":true 
     },
     dataSetDimensions:{
          desc:"dataSet维度",
