@@ -6,6 +6,14 @@ var bindings = {
 }
 var elf = { // 精灵 
     "comm": {
+        getKeyCode(key){
+           var dict={
+               "=":"187",
+               "enter":"13",
+               "-":""
+           }
+           return dict[key]||"999" 
+        },
         toFirstUpperCase:function(str){
             return str.replace(/\b(\w)(\w*)/g, function($0, $1, $2) {
                 return $1.toUpperCase() + $2.toLowerCase();

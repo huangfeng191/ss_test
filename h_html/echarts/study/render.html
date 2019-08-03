@@ -20,7 +20,7 @@
 </head>
 
 <body class="normal-fill-in">
-  
+
   <span>选择可以生成的图表:</span>
   <select id="option">
 
@@ -32,30 +32,41 @@
 <script>
   $(function() {
 
-  
+
 
     var building = {
       dom: document.getElementById("main"),
       target: null, // 目标 对象，通常
       init: function() { // 可以理解未 初始化，
-   
+
         var comm = top.elf.comm;
         toSelect = comm.dictToArray(remarks);
         selectOption = toSelect.map(function(v, i) { // 默认书写为
           return { "name": v.key, "value": v.value.option || "option" + comm.toFirstUpperCase(v.key), "default": v.value.default };
         })
         comm.setSelectOption($("#option"), selectOption);
-   
+
         building.target = echarts.init(building.dom);
         building.render();
 
-        $("#option").on("change",function(){
+        $("#option").on("change", function() {
           building.render();
+        })
+
+        $(document).on("keydown", function(event) {
+          console.log("event" + event.keyCode)
+          if (event.keyCode == comm.getKeyCode("=")) {
+            var elem=$("#option");
+            elem.focus();
+
+
+
+          }
         })
 
       },
       render: function() { // 可以多次渲染
-        typeDom=$("#option").val();
+        typeDom = $("#option").val();
         option = window[typeDom]
         building.target.clear();
         building.target.setOption(option);
