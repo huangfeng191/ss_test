@@ -7,15 +7,16 @@ var remarks = {
         // "default":true
     },
     "linesMap": {
-        "desc": "画线",
+        "desc": "基础",
+        // "default": true
+    },
+    "linesMap2": {
+        "desc": "含线特效的配置",
         "default": true
     }
 }
 
 
-var geoCoordMap = {
-    "海门": [121.15, 31.89]
-};
 
 var convertData = function(data) {
     var res = [];
@@ -33,9 +34,23 @@ var convertData = function(data) {
 
 var optionSampleMap = {
 
+    tooltip: {
+        trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+        formatter: function(params) {
+            return params.name + ' : ' + params.value[2];
+        }
+    },
+
     geo: {
+        "scaleLimit": { // 缩放
+            "min": 1,
+            "max": 3
+        },
+        "roam": true, // 是否开启鼠标缩放及平移
+        "zoom": 1,
         map: 'china',
         label: {
+            // show:true,  // 是否显示区域
             emphasis: {
                 show: false
             }
@@ -123,7 +138,7 @@ var optionSampleMapBorder = {
         data: convertData([
             { name: "海门", value: 9 },
 
-        ]),
+        ]), // name: "海门" ,value: [121.15, 31.89, 9]
         symbolSize: 12,
         label: {
             normal: {
@@ -144,35 +159,161 @@ var optionSampleMapBorder = {
 
 
 
+var linesMapSelf_others = {
+
+    planePath: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z',
+    convertData: function(data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord) {
+                res.push({
+                    fromName: dataItem[0].name, // 辅助字段
+                    toName: dataItem[1].name,
+                    coords: [fromCoord, toCoord] // lines 需要指定经纬度坐标 
+                });
+            }
+        }
+        return res;
+    },
+    BJData: [
+        [{ name: '北京' }, { name: '上海', value: 95 }],
+        [{ name: '北京' }, { name: '广州', value: 90 }],
+        [{ name: '北京' }, { name: '大连', value: 80 }],
+        [{ name: '北京' }, { name: '南宁', value: 70 }],
+        [{ name: '北京' }, { name: '南昌', value: 60 }],
+        [{ name: '北京' }, { name: '拉萨', value: 50 }],
+        [{ name: '北京' }, { name: '长春', value: 40 }],
+        [{ name: '北京' }, { name: '包头', value: 30 }],
+        [{ name: '北京' }, { name: '重庆', value: 20 }],
+        [{ name: '北京' }, { name: '常州', value: 10 }]
+    ]
+};
+
 
 var linesMapSelf = {
 
     series: [{
-        name: 'pm2.5',
-        type: 'scatter',
-        coordinateSystem: 'geo',
-        data: convertData([
-            { name: "海门", value: 9 },
-
-        ]),
-        symbolSize: 12,
-        label: {
-            normal: {
-                show: false
+            name: "北京" + ' Top10',
+            type: 'lines',
+            zlevel: 2,
+            // symbol: ['none', 'arrow'],
+            symbol: ['none', 'none'], // 起止点图标
+            symbolSize: 10,
+            // effect: {  动画效果
+            //     show: true,
+            //     period: 6,
+            //     trailLength: 0,
+            //     symbol: linesMapSelf_others.planePath,
+            //     symbolSize: 15
+            // },
+            lineStyle: {
+                normal: {
+                    color: '#a6c84c',
+                    width: 1,
+                    opacity: 0.6,
+                    curveness: 0.2
+                }
             },
-            emphasis: {
-                show: false
-            }
+            data: linesMapSelf_others.convertData(linesMapSelf_others.BJData)
         },
-        itemStyle: {
-            emphasis: {
-                borderColor: 'yellow',
-                borderWidth: 5
+        {
+            name: 'pm2.5',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            data: linesMapSelf_others.BJData.map(function(dataItem) {
+                return {
+                    name: dataItem[1].name, //  name: "海门" ,value: [121.15, 31.89, 9]
+                    value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                };
+            }),
+            symbolSize: 12,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                emphasis: {
+                    borderColor: 'yellow',
+                    borderWidth: 5
+                }
             }
         }
-    }]
+    ]
+
+
+
+
+}
+
+
+
+var linesMap2Self = {
+
+    series: [{
+            name: "北京" + ' Top10',
+            type: 'lines',
+            zlevel: 2,
+            // symbol: ['none', 'arrow'],
+            symbol: ['none', 'none'], // 起止点图标
+            symbolSize: 10,
+            effect: { //  线特效的配置
+                show: true,
+                period: 6,
+                trailLength: 0,
+                symbol: linesMapSelf_others.planePath,
+                symbolSize: 15
+            },
+            lineStyle: {
+                normal: {
+                    color: '#a6c84c',
+                    width: 1,
+                    opacity: 0.6,
+                    curveness: 0.2
+                }
+            },
+            data: linesMapSelf_others.convertData(linesMapSelf_others.BJData)
+        },
+        {
+            name: 'pm2.5',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            zlevel: 4,
+            data: linesMapSelf_others.BJData.map(function(dataItem) {
+                return {
+                    name: dataItem[1].name, //  name: "海门" ,value: [121.15, 31.89, 9]
+                    value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                };
+            }),
+            symbolSize: 12,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                emphasis: {
+                    borderColor: 'yellow',
+                    borderWidth: 5
+                }
+            }
+        }
+    ]
+
+
+
 
 }
 
 
 var optionLinesMap = $.extend({}, optionSampleMap, linesMapSelf)
+var optionLinesMap2 = $.extend({}, optionSampleMap, linesMap2Self)
