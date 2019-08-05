@@ -1,4 +1,4 @@
-# week
+# 2019-08-05
     album: fragile  专辑 ： 脆的 
 
     Parallel Worlds
@@ -73,3 +73,19 @@ So please don't make me see you
 I've never really liked you
 我永远不可能爱你
 So please don't make me see you in the real world
+
+
+addicted to  使沉迷;使上瘾
+
+brag to  炫耀
+assume 假设
+
+make assumptions 做出假设
+
+sensational 非常好的，使人感动的，轰动的
+
+Parallel ['pærəlɛl] 
+
+
+
+BC British Columbia  英国的 哥伦比亚  canada 
