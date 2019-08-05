@@ -71,7 +71,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | --------------- | -------------------------------- | ------ |
 | ctrl+alt+ up    | 光标向上                         |        |
 | ctrl+alt+ down  | 光标向下                         |        |
-| ctrl+u          | 撤销上一次光标操作               |        |
+| ctrl+u          | 撤销上一次光标操作               | *       |
 | Shift + Alt + I | 插入光标到选中范围内所有行结束符 |    **    |
 | ctrl+k o        | 在新的编辑器中打开当前编辑的文件 |        |
  

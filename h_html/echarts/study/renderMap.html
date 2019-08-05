@@ -9,22 +9,17 @@
 <head>
   <script src="../../lib/jquery-1.11.1.min.js"></script>
   <script src="../../lib/testLib.js"></script>
-  <!-- <script src="../js/bmap/esl.js"></script>
-  <script src="../js/bmap/config.js"></script> -->
-  <script src="../js/echarts.js"></script>
-  <script src="../js/bmap/bmap1.js"></script>
-  <script src="http://api.map.baidu.com/api?v=2.0&ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U"></script>
 
+  <script src="../js/echarts.js"></script>
   <link rel="stylesheet" type="text/css" href="../../less/test.css" />
-  <script src="./bmapResource.js"></script>
-  <script src="./bmap.js"></script>
+  <script src="./renderMap.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 
-<body class="normal-fill-in">
+<body class="normal-fill-in normal-background-image">
 
   <span>选择可以生成的图表:</span>
   <select id="option">
@@ -36,18 +31,31 @@
   </div>
 </body>
 <script>
-  
-$(function(){
+  $(function() {
 
 
-
-// 获取百度地图实例，使用百度地图自带的控件
-// var bmap = chart.getModel().getComponent('bmap').getBMap();
-// bmap.addControl(new BMap.MapTypeControl());
 
     var building = {
       dom: document.getElementById("main"),
       target: null, // 目标 对象，通常
+      bindMap: function(mapName) {
+        var jsonUrl = '';
+        if (!mapName) {
+          mapName = "china";
+        }
+
+        if (mapName == 'china') {
+          jsonUrl = '../map/json/china.json';
+        } else {
+          jsonUrl = '../map/json/province/' + mapName + '.json';
+        }
+        $.get(jsonUrl, function(geoJson) {
+          echarts.registerMap(mapName, geoJson);
+          building.target = echarts.init(building.dom);
+          building.render();
+        })
+
+      },
       init: function() { // 可以理解未 初始化，
 
         var comm = top.elf.comm;
@@ -57,8 +65,9 @@ $(function(){
         })
         comm.setSelectOption($("#option"), selectOption);
 
-        building.target = echarts.init(building.dom);
-        building.render();
+        building.bindMap();
+
+
 
         $("#option").on("change", function() {
           building.render();
@@ -67,7 +76,7 @@ $(function(){
         $(document).on("keydown", function(event) {
           console.log("event" + event.keyCode)
           if (event.keyCode == comm.getKeyCode("=")) {
-            var elem=$("#option");
+            var elem = $("#option");
             elem.focus();
           }
         })
@@ -75,10 +84,8 @@ $(function(){
       },
       render: function() { // 可以多次渲染
         typeDom = $("#option").val();
-        
         var desc=remarks[$("#option :selected").html()].desc;
         $("#desc").val(desc);
-        
         option = window[typeDom]
         building.target.clear();
         building.target.setOption(option);
@@ -86,9 +93,6 @@ $(function(){
       }
     }
     building.init();
-
-
-
   })
 </script>
 
