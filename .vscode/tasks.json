@@ -42,6 +42,20 @@
             "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
+
+        {
+            "label": "start-new-nginx-linux",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx1\\;./nginx.exe",
+            "problemMatcher": []
+        },
+  
+        {
+            "label": "stop-nginx-new-linux",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx1\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
         {
             "label": "reload-nginx-new",
             "type": "shell",
