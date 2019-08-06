@@ -544,6 +544,14 @@ var PointShowHideSelf = {
             }
         }
     },
+
+    tooltip: {
+        trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+        formatter: function(params) {
+            return params.name + ' : ' + params.value[2].state+" "+params.value[2].type;
+        }
+    },
+
     series: [{
         name: 'pm2.5',
         type: 'scatter',
