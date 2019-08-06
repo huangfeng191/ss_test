@@ -12,8 +12,16 @@ var remarks = {
     },
     "linesMap2": {
         "desc": "含线特效的配置",
+        // "default": true
+    },
+    "pointShow": {
+        "desc": "线的显示",
+        // "default": true
+    },
+    "pointShowHide": {
+        "desc": "分组显示",
         "default": true
-    }
+    },
 }
 
 
@@ -31,7 +39,7 @@ var convertData = function(data) {
     }
     return res;
 };
-
+//↓↓↓↓↓↓↓***************  开始处理
 var optionSampleMap = {
 
     tooltip: {
@@ -93,7 +101,7 @@ var optionSampleMap = {
     }]
 }
 
-
+//↓↓↓↓↓↓↓***************  开始处理
 var optionSampleMapBorder = {
 
     geo: {
@@ -157,7 +165,7 @@ var optionSampleMapBorder = {
     }]
 }
 
-
+//↓↓↓↓↓↓↓***************  开始处理
 
 var linesMapSelf_others = {
 
@@ -252,7 +260,9 @@ var linesMapSelf = {
 
 }
 
+var optionLinesMap = $.extend({}, optionSampleMap, linesMapSelf)
 
+//↓↓↓↓↓↓↓***************  开始处理
 
 var linesMap2Self = {
 
@@ -315,5 +325,251 @@ var linesMap2Self = {
 }
 
 
-var optionLinesMap = $.extend({}, optionSampleMap, linesMapSelf)
+
 var optionLinesMap2 = $.extend({}, optionSampleMap, linesMap2Self)
+
+
+//↓↓↓↓↓↓↓***************  开始处理
+
+
+var PointShowSelf_others = {
+
+    convertData: function(data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord) {
+                res.push({
+                    fromName: dataItem[0].name, // 辅助字段
+                    toName: dataItem[1].name,
+                    coords: [fromCoord, toCoord] // lines 需要指定经纬度坐标 
+                });
+            }
+        }
+        return res;
+    },
+    BJData: [
+        { name: '上海', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "1", "deviceIds": ["1"] } },
+        { name: '广州', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "2", "deviceIds": ["2"] } },
+        { name: '大连', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "3", "deviceIds": ["3"] } },
+        { name: '南宁', value: { type: "RPC", "areaId": "2", "state": "import", "id": "4", "deviceIds": ["4"] } },
+        { name: '南昌', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "5", "deviceIds": ["5"] } },
+        { name: '拉萨', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "6", "deviceIds": ["6"] } },
+        { name: '长春', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "7", "deviceIds": ["7"] } },
+        { name: '包头', value: { type: "RPC", "areaId": "2", "state": "alarm", "id": "8", "deviceIds": ["8"] } },
+        { name: '重庆', value: { type: "NEG", "areaId": "1", "state": "open", "id": "9", "deviceIds": ["1", "2", "3"] } },
+    ]
+};
+
+
+
+var PointShowSelf = {
+    _click: function(params) {
+        debugger
+    },
+    series: [{
+        name: 'pm2.5',
+        type: 'scatter',
+        coordinateSystem: 'geo',
+        zlevel: 4,
+        data: PointShowSelf_others.BJData.map(function(dataItem) {
+            return {
+                name: dataItem.name,
+                value: geoCoordMap[dataItem.name].concat([dataItem.value]),
+
+                "itemStyle": { // series 的 style
+                    "color": state[dataItem.value.state || "normal"]
+                }
+            };
+        }),
+        symbolSize: 12,
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: false
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                borderColor: 'yellow',
+                borderWidth: 5
+            }
+        }
+    }]
+
+}
+
+var optionPointShow = $.extend({}, optionSampleMap, PointShowSelf)
+
+
+
+
+//↓↓↓↓↓↓↓***************  开始处理
+
+var PointShowHideSelf_others = {
+    getData(deviceIds) {
+        var pending = []
+        if (deviceIds) {
+            pending = PointShowHideSelf_others.BJData.filter(function(v) {
+                if ($.inArray(v.value.id, deviceIds) >= 0) {
+                    return true;
+                }
+            })
+        } else {
+            pending = PointShowHideSelf_others.BJData
+        }
+
+        pending = pending.map(function(dataItem) {
+            return {
+                name: dataItem.name,
+                value: geoCoordMap[dataItem.name].concat([dataItem.value]),
+
+                "itemStyle": { // series 的 style
+                    "color": state[dataItem.value.state || "normal"]
+                }
+            };
+        })
+
+        return pending;
+    },
+
+    planePath: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z',
+    convertData: function(data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord) {
+                res.push({
+                    fromName: dataItem[0].name, // 辅助字段
+                    toName: dataItem[1].name,
+                    coords: [fromCoord, toCoord] // lines 需要指定经纬度坐标 
+                });
+            }
+        }
+        return res;
+    },
+    BJData: [
+        { name: '上海', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "1", "deviceIds": ["1"] } },
+        { name: '广州', value: { type: "RPC", "areaId": "1", "state": "lucky", "id": "2", "deviceIds": ["2"] } },
+        { name: '大连', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "3", "deviceIds": ["3"] } },
+        { name: '南宁', value: { type: "RPC", "areaId": "2", "state": "import", "id": "4", "deviceIds": ["4"] } },
+        { name: '南昌', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "5", "deviceIds": ["5"] } },
+        { name: '拉萨', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "6", "deviceIds": ["6"] } },
+        { name: '长春', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "7", "deviceIds": ["7"] } },
+        { name: '包头', value: { type: "RPC", "areaId": "2", "state": "alarm", "id": "8", "deviceIds": ["8"] } },
+        { name: '重庆', value: { type: "NEG", "areaId": "1", "state": "opened", "id": "9", "deviceIds": ["1", "2", "3"] } },
+    ],
+    getPoints: function(params) {
+        var data = this.BJData;
+        var points = []
+        // todo
+
+
+    }
+};
+
+
+
+var PointShowHideSelf = {
+    _click: function(params,building) { //
+        var self = this;
+       debugger
+       
+
+        if (params.seriesType === "scatter") {
+            if (params.value[2].type == "NEG") {
+                //  hide or show 
+                var points = self.series.filter(function(v) {
+                    return v.type == "scatter"
+                })[0].data;
+
+                var currentPoint = points.filter(function(v) {
+                    return v.value[2].id == params.value[2].id;
+                })
+
+                currentPoint = currentPoint[0].value[2];
+                var relativeDeviceId = currentPoint.deviceIds;
+                if (currentPoint && relativeDeviceId) {
+
+                    points = points.filter(function(v) {
+                        if ($.inArray(v.value[2].id, relativeDeviceId) >= 0) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    })
+
+                    if (currentPoint.state == "closed") { // to open 
+                        currentPoint.state = "opened";
+
+                        relativeDevice = PointShowHideSelf_others.getData(relativeDeviceId);
+                        points = points.concat(relativeDevice);
+
+                    } else {
+                        currentPoint.state = "closed";
+                    }
+                }
+
+                building.target.setOption({
+                    "series": {
+                        name: 'pm2.5',
+                        type: 'scatter',
+                        coordinateSystem: 'geo',
+                        zlevel: 4,
+                        data: points,
+                        symbolSize: 12,
+                        label: {
+                            normal: {
+                                show: false
+                            },
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            emphasis: {
+                                borderColor: 'yellow',
+                                borderWidth: 5
+                            }
+                        }
+                    }
+                })
+
+            }
+        }
+    },
+    series: [{
+        name: 'pm2.5',
+        type: 'scatter',
+        coordinateSystem: 'geo',
+        zlevel: 4,
+        data: PointShowHideSelf_others.getData(),
+        symbolSize: 12,
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: false
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                borderColor: 'yellow',
+                borderWidth: 5
+            }
+        }
+    }]
+
+}
+
+var optionPointShowHide = $.extend({}, optionSampleMap, PointShowHideSelf)
+
+
+//↓↓↓↓↓↓↓***************  开始处理

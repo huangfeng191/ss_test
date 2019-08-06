@@ -26,7 +26,7 @@ var building={
 # 命名规则：
 
 字符串 文本 str
-
+函数中未确定的变量，可以命名未 pending ;
 
 
 

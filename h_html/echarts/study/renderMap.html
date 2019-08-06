@@ -39,6 +39,7 @@
     var building = {
       dom: document.getElementById("main"),
       target: null, // 目标 对象，通常
+
       bindMap: function(mapName) {
         var jsonUrl = '';
         if (!mapName) {
@@ -53,6 +54,9 @@
         $.get(jsonUrl, function(geoJson) {
           echarts.registerMap(mapName, geoJson);
           building.target = echarts.init(building.dom);
+          if(beforeRender && typeof beforeRender==="function"){
+            beforeRender(building);
+          }
           building.render();
         })
 
@@ -60,10 +64,7 @@
       init: function() { // 可以理解未 初始化，
 
         var comm = top.elf.comm;
-        toSelect = comm.dictToArray(remarks);
-        selectOption = toSelect.map(function(v, i) { // 默认书写为
-          return { "name": v.key, "value": v.value.option || "option" + comm.toFirstUpperCase(v.key), "default": v.value.default };
-        })
+        var selectOption=getSelectOption();
         comm.setSelectOption($("#option"), selectOption);
 
         building.bindMap();
@@ -88,9 +89,9 @@
         var desc=remarks[$("#option :selected").html()].desc;
         $("#desc").val(desc);
         option = window[typeDom]
+
         building.target.clear();
         building.target.setOption(option);
-
       }
     }
     building.init();

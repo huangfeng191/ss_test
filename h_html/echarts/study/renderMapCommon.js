@@ -1,4 +1,4 @@
-var geoCoordMap={
+var geoCoordMap = {
     '上海': [121.4648, 31.2891],
     '东莞': [113.8953, 22.901],
     '东营': [118.7073, 37.5513],
@@ -113,9 +113,74 @@ var geoCoordMap={
     '阳泉': [113.4778, 38.0951],
     '青岛': [120.4651, 36.3373],
     '韶关': [113.7964, 24.7028],
-    
+
     "海门": [121.15, 31.89],
     "舟山": [122.207216, 29.985295],
     "嘉兴": [120.76, 30.77],
     "北京": [116.46, 39.92],
 }
+
+var state = {
+    "normal": "black",
+    "alarm": "red",
+    "import": "dodgerBlue",
+    "opened": "green",
+    "closed": "grey",
+    "lucky":"orange"
+}
+
+
+getSelectOption=function(){
+    var comm = top.elf.comm;
+    toSelect = comm.dictToArray(remarks);
+    selectOption = toSelect.map(function(v, i) { // 默认书写为
+      
+      return { "name": v.key, "value": v.value.option || "option" + comm.toFirstUpperCase(v.key), "default": v.value.default };
+    })
+    return selectOption;
+  };
+
+
+
+
+function beforeRender(building) {
+    /* 
+        componentType: string,
+        // 系列类型。值可能为：'line'、'bar'、'pie' 等。当 componentType 为 'series' 时有意义。
+        seriesType: string,
+        // 系列在传入的 option.series 中的 index。当 componentType 为 'series' 时有意义。
+        seriesIndex: number,
+        // 系列名称。当 componentType 为 'series' 时有意义。
+        seriesName: string,
+        // 数据名，类目名
+        name: string,
+        // 数据在传入的 data 数组中的 index
+        dataIndex: number,
+        // 传入的原始数据项
+        data: Object,
+        // sankey、graph 等图表同时含有 nodeData 和 edgeData 两种 data，
+        // dataType 的值会是 'node' 或者 'edge'，表示当前点击在 node 还是 edge 上。
+        // 其他大部分图表中只有一种 data，dataType 无意义。
+        dataType: string,
+        // 传入的数据值
+        value: number|Array
+        // 数据图形的颜色。当 componentType 为 'series' 时有意义。
+        color: string
+     */
+
+        // 绑定各自的事件
+
+       
+        var typeDom = $("#option").val();
+        selfOption = window[typeDom]
+            
+
+// 绑定各自的事件
+        if (selfOption&&selfOption._click) {
+            building.target.on("click",function(params){
+                selfOption._click(params,building);
+
+            })
+        }
+    
+    }

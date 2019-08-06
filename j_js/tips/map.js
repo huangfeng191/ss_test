@@ -18,4 +18,4 @@ a.map(function(o){
     // console.log(state)
     console.log("o "+state[o.state])
     return {}
-})
+}) 
