@@ -553,7 +553,7 @@ var PointShowHideSelf = {
     },
 
     series: [{
-        name: 'pm2.5',
+        name: 'pm',
         type: 'scatter',
         coordinateSystem: 'geo',
         zlevel: 4,
