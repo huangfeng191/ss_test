@@ -1,3 +1,10 @@
+告警等级：
+  major 主要告警
+  minor 次要告警
+  CRITI 严重告警   //critical 危险的
+  event 事件告警
+
+
 CC: clockCard 钟卡
 MC: manageCard 管理卡
 4-E1: e1 输入卡 由一个 GNSS 卡及 4个  E1 输入口组成
@@ -5,12 +12,15 @@ E1-T1: e1 t1 输出卡
 
 
 # 项目使用设备
+
 SM2000   
 SM2000_GN 接收模块 
+
 SYNLOCKV3 华为
 GNSS97  大唐
 TSG3800 迅腾   
 TP1100 迅腾   
+
 
 输入配置管理：
     帧类型：
@@ -74,7 +84,9 @@ NORMAL greent
 EVENT  blue 
 MINOR  yellow
 MAJOR  pink
-CRITI  red  
+CRITI  red   //critical 危险的
+
+
 
 
 

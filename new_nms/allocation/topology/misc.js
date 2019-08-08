@@ -11,9 +11,19 @@
 
 "/nms/spring/viewData/getAllVOPath" //  linkData 链路
 
+"/nms/spring/viewData/addPath" // 1 逻辑拓扑  2 物理拓扑   pathLinkIdList
+
+
+// 添加链路时会添加链路点
+
+
+
 
 // myChart.setPointData(myData);
 // myChart.setLineData(linkData);
+
+
+
 
 
 point 

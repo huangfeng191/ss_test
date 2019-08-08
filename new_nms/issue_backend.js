@@ -21,3 +21,11 @@
 
 
 websocket 
+
+
+告警确认
+/nms/spring/alarm/updateAlarmState?state=2&activeAlarmId=
+
+
+
+站点名
