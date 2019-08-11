@@ -22,6 +22,28 @@ var remarks={
   optionBusiness={
     // 加载最简单的地图
       // 加载 bmap 组件
+      tooltip : {
+        formatter: function(params) {
+            var stock_basic=params.value[2];
+
+          
+
+            return  "股票全称:"+stock_basic.fullname+
+                " <br/> 股票代码:"+stock_basic.ts_code+
+                " <br/> 所属行业:"+stock_basic.industry+
+                " <br/> 上市状态 :"+stock_basic.list_status+
+                " <br/> 上市日期 :"+stock_basic.list_date+
+                " <br/> 沪深港:"+stock_basic.is_hs+
+                " <br/> 所在地域:"+stock_basic.area+
+                " <br/> 公司介绍:<div class='divC' style='height:100px;'>"+stock_basic.introduction+"</div>"+
+                " <br/> 主要业务:<div class='divC' style='height:100px;'>"+stock_basic.main_business+"</div>"+
+                // " <br/> 员工人数:<div >"+stock_basic.employees+"</div>"+
+                " <br/> 所在地域:<div class='divC' style='height:80px;'>"+stock_basic.business_scope+"</div>";
+                // " <br/> 主要业务:"+stock_basic.main_business+
+                // " <br/> 员工人数,:"+stock_basic.employees+
+                // " <br/> 所在地域:"+stock_basic.business_scope;
+        }
+    },
       bmap: {
           // 百度地图中心经纬度
           center: [120.13066322374, 30.240018034923],
@@ -30,7 +52,7 @@ var remarks={
           // 是否开启拖拽缩放，可以只设置 'scale' 或者 'move'
           roam: true,
           // 百度地图的自定义样式，见 http://developer.baidu.com/map/jsdevelop-11.htm
-          mapStyle: mapStyle
+        //   mapStyle: mapStyle
       },
       series: [{
           type: 'scatter',
@@ -61,6 +83,7 @@ var remarks={
           data: [ [120, 30, 1] ]
       }]
   }
+
 
 
 
@@ -118,11 +141,6 @@ optionScatter = {
       }]
 };
 
-stockService.getPoint.done(function(ret){
-    var d=ret;
-    optionScatter.series[0].data=d;
-    building.render();
-})
 
 
 

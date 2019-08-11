@@ -30,6 +30,6 @@ function co(func) {
 var stockService={
     "getPoint":function(){
        var  url="/prostock/interfacedata/query.json?table_nm=stock_company";
-      return ($.po(url)) 
+      return co($.po(url)) 
     }
 }
