@@ -1,0 +1,10 @@
+@host = http://api.map.baidu.com
+@ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U
+
+
+### 获取菜单信息
+GET {{host}}/place/v2/search?output=json&ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U&region=302
+&query=贵州省贵阳市中华北路77号
+
+Host: {{host}}
+
