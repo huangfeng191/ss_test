@@ -42,3 +42,12 @@ link
 
 网元组  
 
+
+
+
+
+
+NELevel
+<option value="0">网元</option>
+<option value="1">接收机1</option>
+<option value="2">接收机2</option>
