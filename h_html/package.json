@@ -20,7 +20,6 @@
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "gulp": "^3.9.1",
-    
     "gulp-babel": "^7.0.1",
     "http-proxy-middleware": "^0.19.1"
   }

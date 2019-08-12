@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+   此模块主要是为了  调试 echarts 用的 ， 
+   testLib 是将一些可以复用的库单独出来方便多次使用
+
+ -->
+
+<head>
+  <script src="../../lib/jquery-1.11.1.min.js"></script>
+  <script src="../../lib/testLib.js"></script>
+  <script src="../../lib/service.js"></script>
+  <!-- <script src="../js/bmap/esl.js"></script>
+  <script src="../js/bmap/config.js"></script> -->
+  <script src="../js/echarts.js"></script>
+  <script src="../js/bmap/bmap1.js"></script>
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U"></script>
+
+  <link rel="stylesheet" type="text/css" href="../../less/test.css" />
+  <script src="./bmapResource.js"></script>
+  <script src="./bmap_stock.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+  .divC {
+    width:800px;height:60px;white-space:normal;
+  }
+  
+  </style>
+
+</head>
+
+<body class="normal-fill-in">
+
+  <span>选择可以生成的图表:</span>
+  <select id="option">
+
+  </select>
+  <input type="text" name="" id="desc" style="width:400px;">
+  <div id="main" class="test-fill-in normal-border normal-margin-top">
+
+  </div>
+</body>
+<script>
+  $(function () {
+
+
+
+    // 获取百度地图实例，使用百度地图自带的控件
+    // var bmap = chart.getModel().getComponent('bmap').getBMap();
+    // bmap.addControl(new BMap.MapTypeControl());
+
+    var building = {
+      dom: document.getElementById("main"),
+      target: null, // 目标 对象，通常
+      init: function () { // 可以理解未 初始化，
+
+        var comm = top.elf.comm;
+        toSelect = comm.dictToArray(remarks);
+        selectOption = toSelect.map(function (v, i) { // 默认书写为
+          return {
+            "name": v.key,
+            "value": v.value.option || "option" + comm.toFirstUpperCase(v.key),
+            "default": v.value.default
+          };
+        })
+        comm.setSelectOption($("#option"), selectOption);
+
+        building.target = echarts.init(building.dom);
+        building.render();
+
+        $("#option").on("change", function () {
+          building.render();
+        })
+
+        $(document).on("keydown", function (event) {
+          console.log("event" + event.keyCode)
+          if (event.keyCode == comm.getKeyCode("=")) {
+            var elem = $("#option");
+            elem.focus();
+          }
+        })
+
+      },
+      render: function () { // 可以多次渲染
+        typeDom = $("#option").val();
+
+        var desc = remarks[$("#option :selected").html()].desc;
+        $("#desc").val(desc);
+
+        option = window[typeDom]
+        building.target.clear();
+        building.target.setOption(option);
+
+      }
+    }
+    building.init();
+
+    function getStockData() {
+
+      stockService.getPoint().done(function (ret) {
+        var d = [];
+        var m={}
+        var stock_basic={}
+        $.each(ret.rows, function (oi, ov) {
+          var position = ov.position
+          if (position && position.lng) {
+             stock_basic=ov.stock_basic2o;
+             m=stock_basic||{};
+             m['introduction']=ov.introduction||"";
+            // console.log(""+ov.employees)
+             m['employees']=ov.employees||"";
+             m['business_scope']=ov.business_scope||"";
+             m['main_business']=ov.main_business||"";
+            d.push([position.lng, position.lat, m])
+          }
+
+        })
+        optionBusiness.series[0].data = d;
+        building.render();
+      })
+
+    }
+    getStockData();
+
+
+
+  })
+</script>
+
+</html>
