@@ -124,6 +124,7 @@ var logic_start = function(x, y) {
 
 
 logicTopology = {
+    
     "view": {
         "menuId": "logic_topology_menu",
         "initMenu": function() {
@@ -329,6 +330,9 @@ logicTopology = {
         "position": { "left": 120, "top": 130 }
     }],
     methods: {
+        doScale:function(){
+
+        },
         bindRightMenu: function(handler) {
             if (handler.button == 2) {
 

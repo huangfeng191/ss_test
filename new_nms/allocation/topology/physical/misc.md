@@ -223,3 +223,17 @@ reflashLine remove  lines.length =0
 
 
 同步所有报警接口 /nms/spring/device/1d295901-3745-44d5-88a6-c9e51bba5d95/syncAlarms
+
+
+
+
+
+<!-- getPointData -->
+
+  areaId 区域id 
+
+
+  先获取区域, 
+
+  类型
+  厂商

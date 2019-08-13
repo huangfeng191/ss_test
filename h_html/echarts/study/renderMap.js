@@ -16,11 +16,11 @@ var remarks = {
     },
     "linesMapMulti": {
         "desc": "含多个线段",
-        "default": true
+        // "default": true
     },
     "pointShow": {
-        "desc": "线的显示",
-        // "default": true
+        "desc": "点的显示",
+        "default": true
     },
     "pointShowHide": {
         "desc": "分组显示",
