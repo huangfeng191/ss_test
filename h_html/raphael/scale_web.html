@@ -31,7 +31,7 @@
 
         //创建一个画布
         var paper = new Raphael("paper", paperWidth, paperHeight);
-
+        
         //创建一个跟paper一样尺寸的rect模拟背景图
         paper.rect(0, 0, paperWidth, paperHeight)
             .attr({
@@ -50,6 +50,8 @@
                     mouseOnBackGround = false;
                 }
             );
+
+        paper.text(100,100,"我的老家")
 
         //创建一个圆
         paper.circle(150, 150, 40)
@@ -171,6 +173,7 @@
                 return;
             }
 
+            // x y 偏移量
             var dx = e.clientX - lastMouseLocation.x;
             var dy = e.clientY - lastMouseLocation.y;
 

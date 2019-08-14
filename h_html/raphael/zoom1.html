@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="../less/test.css">
 </head>
 
-<body>
+<body style="margin:0 auto;    text-align: center;">
 
-  <div id="paper" class="normal-border">
+  <div id="paper" class="normal-border" style="width:1000px;height:520px;">
   </div>
 
 
@@ -58,8 +58,12 @@
 // y coordinate cy number of the centre of scale
 
     // el.scale(1.0,1.1)
-    times=0.8
-    paper.setViewBox(0, 0,w*times, h*times, false)
+    times=1.5
+    // w new width of the canvas ;
+    // 画布变大说明显示的字变小
+    // viewBox 说明要显示的区域,跟dom 渲染无关,只是显示 x=100 说明从画布的100像素开始显示
+    // paper.setViewBox(100, 0,w, h, false)
+    paper.setViewBox(100, 0,w*times, h*times, false)
 
 
     console.log(el.transform());

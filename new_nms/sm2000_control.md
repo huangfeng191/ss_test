@@ -57,3 +57,9 @@ show status
 show ref
 
 
+
+
+
+
+// set snmp add manage 192.168.1.11
+

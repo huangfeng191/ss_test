@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../lib/raphael.js"></script>
+  <script src="../../lib/jquery-1.11.1.min.js"></script>
+
+
+
+</head>
+
+<body>
+  <div id="paper"></div>
+</body>
+
+<script>
+  $(function() {
+    var mouseOnBackGround;
+    const maxSize = 3; //允许放大的最大倍数
+    const minSize = 0.5; //允许缩小的最大倍数
+
+    function renderBack(paper, paperWidth, paperHeight) {
+
+      var back1 = paper.rect(0, 0, paperWidth, paperHeight)
+        .attr({
+          "stroke": "blue",
+          "stroke-width": 4,
+          "fill": "#e1e1e1"
+        })
+      var circleX = WH / 2 + 4 + 60
+      var circleY = WH / 2 + 4
+      var circleR = WH / 2 - 2
+
+
+
+
+      // 最外的园
+      var circle4 = paper.circle(circleX, circleY, circleR);
+      circle4.attr("fill", "#f6f1cf");
+      circle4.attr("stroke", "#ddd");
+
+      // 第二层园
+      var circle3 = paper.circle(circleX, circleY, circleR - 50);
+      circle3.attr("fill", "#e9e4c4");
+      circle3.attr("stroke-width", "0");
+
+      // 第三层园
+      var circle2 = paper.circle(circleX, circleY, circleR - 100);
+      circle2.attr("fill", "#ebf1de");
+      circle2.attr("stroke-width", "0");
+
+      // 最内层园
+      var circle1 = paper.circle(circleX, circleY, circleR - 150);
+      circle1.attr("fill", "#d1dbae");
+      circle1.attr("stroke-width", "0");
+      var back = paper.set();
+      back.push(back1, circle1, circle2, circle3, circle4)
+      back.hover(
+        function() {
+          //鼠标进入背景
+          mouseOnBackGround = true;
+        },
+        function() {
+          //鼠标移出背景
+          mouseOnBackGround = false;
+        }
+      );
+      return back;
+    }
+
+    var building = {
+      "paper": null,
+      "back": null
+    }
+
+    var paperWidth = 660;
+    var paperHeight = 500;
+    var WH = paperHeight - 8;
+
+    // 缩放  平移  横拉条
+    var scale = {
+      "x": 0,
+      "y": 0,
+      "w": paperWidth,
+      "h": paperHeight,
+      "coef":0.1,
+      "zoom": 1
+    }
+
+    var endScale = {
+      x: null,
+      y: null
+    }
+
+
+    var paper = new Raphael("paper", paperWidth, paperHeight);
+    building.paper = paper;
+    var back = building.back = renderBack(paper, paperWidth, paperHeight);
+
+
+
+
+
+    //更新Scale
+    function updateScale(x, y, w, h) {
+
+      scale.x = x;
+      scale.y = y;
+      if (w) {
+        scale.w = w;
+        scale.h = h;
+      }
+    }
+
+    //获取操作前的viewbox中心点
+    function getLastCenterPoint() {
+      var centerPoint = {};
+      centerPoint.x = scale.x + scale.w / 2;
+      centerPoint.y = scale.y + scale.h / 2;
+
+      return centerPoint;
+    }
+
+
+
+    var onMove = function(dx, dy, x, y) {
+      console.log("dx:" + dx, "dy" + dy + "x:" + x, "y" + y);
+      // debugger
+      var w = paperWidth / scale.zoom;
+      var h = paperHeight / scale.zoom;
+
+
+      var nX = scale.x + dx;
+      var nY = scale.y + dy;
+      endScale["x"] = nX
+      endScale["y"] = nY
+
+      paper.setViewBox(-nX, -nY, w, h, false)
+    }
+
+    // dx 下时加   上是减 ， 一次拖动内都是针对拖动的起点来计算的
+    var onStart = function(x, y, event) {
+
+      lastPoint["x"] = x;
+      lastPoint["y"] = y;
+
+
+      console.log("start x:" + x, "y:" + y);
+    }
+
+    var onEnd = function(event) {
+      updateScale(endScale.x, endScale.y);
+    }
+
+
+
+    back.drag(onMove, onStart, onEnd)
+
+
+
+    function onMouseWheeling(e) {
+      var dtl;
+      if (!mouseOnBackGround) {
+        return;
+      }
+
+      if (e.wheelDelta) { //chrome
+        dtl = e.wheelDelta;
+      } else if (e.detail) { //firefox or others
+        dtl = -e.detail;
+      }
+
+      if (dtl < 0) {
+        //缩小,
+        if (scale.zoom < minSize) {
+          return;
+        }
+        scale.zoom -= scale.coef;
+      } else {
+        //放大
+        if (scale.zoom > maxSize) {
+          return;
+        }
+        scale.zoom += scale.coef;
+      }
+
+
+      var w = paperWidth / scale.zoom;
+      var h = paperHeight / scale.zoom;
+
+
+      var nX = scale.x;
+      var nY = scale.y ;
+      paper.setViewBox(-nX, -nY, w, h, false)
+
+
+
+
+    };
+
+
+    if (document.addEventListener) {
+      document.addEventListener('DOMMouseScroll', onMouseWheeling, false);
+      window.onmousewheel = document.onmousewheel = onMouseWheeling; //IE/Opera/Chrome/Safari
+    } else {
+      alert("鼠标滚轮监听事件绑定失败");
+    }
+
+
+
+
+
+
+
+
+  })
+</script>
+
+</html>
