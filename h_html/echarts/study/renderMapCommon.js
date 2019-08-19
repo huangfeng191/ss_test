@@ -176,11 +176,27 @@ function beforeRender(building) {
             
 
 // 绑定各自的事件
-        if (selfOption&&selfOption._click) {
-            building.target.on("click",function(params){
-                selfOption._click(params,building);
+        // if (selfOption&&selfOption._click) {
+        //     building.target.on("click",function(params){
+        //         selfOption._click(params,building);
 
-            })
-        }
+        //     })
+        // }
+// 'click'、'dblclick'、'mousedown'、'mousemove'、'mouseup'、'mouseover'、'mouseout'、'globalout'、'contextmenu'
+        Object.keys(selfOption).filter(function(k){
+          return  k.match(/^_+/);
+        }).forEach(function(v,k){
+          if( typeof selfOption[v]=="function" ){
+            
+            building.target.on(v.replace(/^_{1}/,""),function(params){
+              selfOption[v](params,selfOption[v]);
+          })
+
+          }
+
+
+        })
+
+
     
     }

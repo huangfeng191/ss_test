@@ -1,3 +1,4 @@
+var logicBlow=1;
 Raphael.fn.connection = function(obj1, obj2, line, bg) {
     if (obj1.line && obj1.from && obj1.to) {
         line = obj1;
@@ -124,7 +125,7 @@ var logic_start = function(x, y) {
 
 
 logicTopology = {
-    
+
     "view": {
         "menuId": "logic_topology_menu",
         "initMenu": function() {
@@ -248,7 +249,7 @@ logicTopology = {
             menuDiv.appendChild(delBtn);
 
 
-            $($("#logic-topology #paper"))[0].append(menuDiv);
+            $($("#logic-topology #paper2"))[0].append(menuDiv);
         },
         "bindMenu": function(handler, o) {
 
@@ -330,7 +331,7 @@ logicTopology = {
         "position": { "left": 120, "top": 130 }
     }],
     methods: {
-        doScale:function(){
+        doScale: function() {
 
         },
         bindRightMenu: function(handler) {
@@ -357,7 +358,7 @@ logicTopology = {
         creatingShape: function(x, option) {
 
             var position = x.position;
-            var p = paper.image(imageConfig[x.vendor || "ss"], position.left, position.top, 20, 20);
+            var p = paper.image(imageConfig[x.vendor || "ss"], position.left*logicBlow, position.top*logicBlow, 20, 20);
             p.attr({ "fill": "green", 'opacity': 0.8 }).data("o", x);
             p.drag(logic_move, logic_start, logic_up);
 
@@ -414,9 +415,10 @@ logicTopology = {
         }
     },
     init: function() {
+
         logicTopology.draggableShapes.init();
         logicTopology.view.initMenu();
-        var paperDocument = document.getElementById("paper")
+        var paperDocument = document.getElementById("paper2")
 
         $(document).on('contextmenu', function(e) {
             e.preventDefault();
@@ -459,41 +461,160 @@ logicTopology = {
         }
         var setW = 600;
         var setH = 540
-        paper = Raphael("paper", setW, setH);
-        var height = setH - 8;
-        var width = setW - 8;
+        paper = Raphael("paper2", setW*logicBlow, setH*logicBlow);
+        var height = setH*logicBlow - 8;
+        var width = setW*logicBlow - 8;
         // 
         // paper = Raphael("paper", paperDocument.clientWidth - 6, paperDocument.clientHeight - 6);
         // 
         // var height = paperDocument.clientHeight - 8;
         // var width = paperDocument.clientWidth - 8;
 
-        // 取宽高 最小的为 园半径
-        var WH = height > width ? width : height;
-        var circleX = WH / 2 + 4 + 30
-        var circleY = WH / 2 + 4
-        var circleR = WH / 2 - 2
 
-        // 最外的园
-        var circle4 = paper.circle(circleX, circleY, circleR);
-        circle4.attr("fill", "#f6f1cf");
-        circle4.attr("stroke", "#ddd");
+        var back1 = paper.image("./csbg.png",0, 0, setW*logicBlow, setH*logicBlow)
+            .attr({
+                "stroke": "blue",
+                "stroke-width": 0,
+                "fill": "#e1e1e1"
+            })
 
-        // 第二层园
-        var circle3 = paper.circle(circleX, circleY, circleR - 50);
-        circle3.attr("fill", "#e9e4c4");
-        circle3.attr("stroke-width", "0");
 
-        // 第三层园
-        var circle2 = paper.circle(circleX, circleY, circleR - 100);
-        circle2.attr("fill", "#ebf1de");
-        circle2.attr("stroke-width", "0");
 
-        // 最内层园
-        var circle1 = paper.circle(circleX, circleY, circleR - 150);
-        circle1.attr("fill", "#d1dbae");
-        circle1.attr("stroke-width", "0");
 
+
+
+        var back = paper.set();
+        back.push(back1)
+        back.hover(
+            function() {
+                //鼠标进入背景
+                logicTopology.mouseOnBackGround = true;
+            },
+            function() {
+                //鼠标移出背景
+                logicTopology.mouseOnBackGround = false;
+            }
+        );
+
+        logicTopology.back = back;
+
+        logicTopology.scale = {
+            "x": 0,
+            "y": 0,
+            "w": setW*logicBlow,
+            "h": setH*logicBlow,
+            "coef": 0.1,
+            "zoom": 1
+        }
+        logicTopology.endScale = {
+            x: null,
+            y: null
+        }
+        
+        logicTopology.minSize=0.5;
+        logicTopology.maxSize=3;
+
+        logicTopology.updateScale = function(x, y, w, h) {
+
+            logicTopology.scale.x = x;
+            logicTopology.scale.y = y;
+            if (w) {
+                logicTopology.scale.w = w;
+                logicTopology.scale.h = h;
+            }
+        }
+
+
+
+        var onBackMove = function(dx, dy, x, y) {
+            console.log("dx:" + dx, "dy" + dy + "x:" + x, "y" + y);
+            // debugger
+            var w = setW*logicBlow / logicTopology.scale.zoom;
+            var h = setH*logicBlow / logicTopology.scale.zoom;
+
+
+            var nX = logicTopology.scale.x + dx;
+            var nY = logicTopology.scale.y + dy;
+            logicTopology.endScale["x"] = nX
+            logicTopology.endScale["y"] = nY
+
+            paper.setViewBox(-nX, -nY, w, h, false)
+        }
+
+
+        var onBackStart = function(x, y, event) {}
+
+        var onBackEnd = function(event) {
+            logicTopology.updateScale(logicTopology.endScale.x, logicTopology.endScale.y);
+        }
+
+
+
+        back.drag(onBackMove, onBackStart, onBackEnd)
+
+
+
+
+
+        function onMouseWheeling(e) {
+            var dtl;
+            if (!logicTopology.mouseOnBackGround) {
+                return;
+            }
+
+            if (e.wheelDelta) { //chrome
+                dtl = e.wheelDelta;
+            } else if (e.detail) { //firefox or others
+                dtl = -e.detail;
+            }
+
+            if (dtl < 0) {
+                //缩小,
+                if (logicTopology.scale.zoom < logicTopology.minSize) {
+                    return;
+                }
+                logicTopology.scale.zoom -= logicTopology.scale.coef;
+            } else {
+                //放大
+                if (logicTopology.scale.zoom > logicTopology.maxSize) {
+                    return;
+                }
+                logicTopology.scale.zoom += logicTopology.scale.coef;
+            }
+
+
+            var w = setW*logicBlow / logicTopology.scale.zoom;
+            var h = setH*logicBlow / logicTopology.scale.zoom;
+
+
+            var nX = logicTopology.scale.x;
+            var nY = logicTopology.scale.y;
+            paper.setViewBox(-nX, -nY, w, h, false)
+
+
+
+
+        };
+
+
+        if (document.addEventListener) {
+            document.addEventListener('DOMMouseScroll', onMouseWheeling, false);
+            window.onmousewheel = document.onmousewheel = onMouseWheeling; //IE/Opera/Chrome/Safari
+        } else {
+            alert("鼠标滚轮监听事件绑定失败");
+        }
+
+
+
+
+
+        logicTopology.getLastCenterPoint = function() {
+            var centerPoint = {};
+            logicTopology.centerPoint.x = logicTopology.scale.x + logicTopology.scale.w / 2;
+            logicTopology.centerPoint.y = logicTopology.scale.y + logicTopology.scale.h / 2;
+
+            return centerPoint;
+        }
 
 
 

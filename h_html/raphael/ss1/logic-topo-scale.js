@@ -124,7 +124,7 @@ var logic_start = function(x, y) {
 
 
 logicTopology = {
-    
+
     "view": {
         "menuId": "logic_topology_menu",
         "initMenu": function() {
@@ -330,7 +330,7 @@ logicTopology = {
         "position": { "left": 120, "top": 130 }
     }],
     methods: {
-        doScale:function(){
+        doScale: function() {
 
         },
         bindRightMenu: function(handler) {
@@ -468,6 +468,17 @@ logicTopology = {
         // var height = paperDocument.clientHeight - 8;
         // var width = paperDocument.clientWidth - 8;
 
+
+        var back1 = paper.rect(0, 0, setW, setH)
+            .attr({
+                "stroke": "blue",
+                "stroke-width": 0,
+                "fill": "#e1e1e1"
+            })
+
+
+
+
         // 取宽高 最小的为 园半径
         var WH = height > width ? width : height;
         var circleX = WH / 2 + 4 + 30
@@ -497,13 +508,148 @@ logicTopology = {
 
 
 
+        var back = paper.set();
+        back.push(back1, circle1, circle2, circle3, circle4)
+        back.hover(
+            function() {
+                //鼠标进入背景
+                logicTopology.mouseOnBackGround = true;
+            },
+            function() {
+                //鼠标移出背景
+                logicTopology.mouseOnBackGround = false;
+            }
+        );
+
+        logicTopology.back = back;
+
+        logicTopology.scale = {
+            "x": 0,
+            "y": 0,
+            "w": setW,
+            "h": setH,
+            "coef": 0.1,
+            "zoom": 1
+        }
+        logicTopology.endScale = {
+            x: null,
+            y: null
+        }
+        
+        logicTopology.minSize=0.5;
+        logicTopology.maxSize=3;
+
+        logicTopology.updateScale = function(x, y, w, h) {
+
+            logicTopology.scale.x = x;
+            logicTopology.scale.y = y;
+            if (w) {
+                logicTopology.scale.w = w;
+                logicTopology.scale.h = h;
+            }
+        }
+
+
+
+        var onBackMove = function(dx, dy, x, y) {
+            console.log("dx:" + dx, "dy" + dy + "x:" + x, "y" + y);
+            // debugger
+            var w = setW / logicTopology.scale.zoom;
+            var h = setH / logicTopology.scale.zoom;
+
+
+            var nX = logicTopology.scale.x + dx;
+            var nY = logicTopology.scale.y + dy;
+            logicTopology.endScale["x"] = nX
+            logicTopology.endScale["y"] = nY
+
+            paper.setViewBox(-nX, -nY, w, h, false)
+        }
+
+
+        var onBackStart = function(x, y, event) {}
+
+        var onBackEnd = function(event) {
+            logicTopology.updateScale(logicTopology.endScale.x, logicTopology.endScale.y);
+        }
+
+
+
+        back.drag(onBackMove, onBackStart, onBackEnd)
+
+
+
+
+
+        function onMouseWheeling(e) {
+            var dtl;
+            if (!logicTopology.mouseOnBackGround) {
+                return;
+            }
+
+            if (e.wheelDelta) { //chrome
+                dtl = e.wheelDelta;
+            } else if (e.detail) { //firefox or others
+                dtl = -e.detail;
+            }
+
+            if (dtl < 0) {
+                //缩小,
+                if (logicTopology.scale.zoom < logicTopology.minSize) {
+                    return;
+                }
+                logicTopology.scale.zoom -= logicTopology.scale.coef;
+            } else {
+                //放大
+                if (logicTopology.scale.zoom > logicTopology.maxSize) {
+                    return;
+                }
+                logicTopology.scale.zoom += logicTopology.scale.coef;
+            }
+
+
+            var w = setW / logicTopology.scale.zoom;
+            var h = setH / logicTopology.scale.zoom;
+
+
+            var nX = logicTopology.scale.x;
+            var nY = logicTopology.scale.y;
+            paper.setViewBox(-nX, -nY, w, h, false)
+
+
+
+
+        };
+
+
+        if (document.addEventListener) {
+            document.addEventListener('DOMMouseScroll', onMouseWheeling, false);
+            window.onmousewheel = document.onmousewheel = onMouseWheeling; //IE/Opera/Chrome/Safari
+        } else {
+            alert("鼠标滚轮监听事件绑定失败");
+        }
+
+
+
+
+
+        logicTopology.getLastCenterPoint = function() {
+            var centerPoint = {};
+            logicTopology.centerPoint.x = logicTopology.scale.x + logicTopology.scale.w / 2;
+            logicTopology.centerPoint.y = logicTopology.scale.y + logicTopology.scale.h / 2;
+
+            return centerPoint;
+        }
+
+
+
         connections = []
         logicTopology.shapes = {
 
         };
-        logicTopology.devices.forEach(function(x) {
-            logicTopology.methods.creatingShape(x);
-        })
+        // logicTopology.devices.forEach(function(x) {
+        //     logicTopology.methods.creatingShape(x);
+        // })
 
 
 

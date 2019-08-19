@@ -303,6 +303,7 @@
                 } else {
 
                     stage = new JTopo.Stage(canvas);
+                    stage.wheelZoom=0.85;
                     scene = new JTopo.Scene(stage);
 
                 }
@@ -339,7 +340,9 @@
 
 
 
-
+                if(!ret.data){
+                    ret.data=ret.netTopuList;
+                }
 
                 if (ret && ret.data) {
                     var for_nodes = {}

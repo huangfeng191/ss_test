@@ -1,6 +1,9 @@
+var strolling=0;
+
 var remarks = {
     "sampleMap": {
         "desc": "简单的地图",
+        // "default": true
     },
     "sampleMapBorder": {
         "desc": "边框",
@@ -20,12 +23,26 @@ var remarks = {
     },
     "pointShow": {
         "desc": "点的显示",
-        "default": true
+        // "default": true
     },
     "pointShowHide": {
         "desc": "分组显示",
         // "default": true
     },
+
+    "graphicDrow": {
+        "desc": "点拖动",
+        // "default": true
+    },
+
+
+    "graphicDrowCustomPoint": {
+        "desc": "点拖动点用custom 标识",
+        "default": true
+    },
+
+
+
 }
 
 
@@ -60,6 +77,7 @@ var optionSampleMap = {
         },
         "roam": true, // 是否开启鼠标缩放及平移
         "zoom": 1,
+        "zlevel":1,
         map: 'china',
         label: {
             // show:true,  // 是否显示区域
@@ -75,7 +93,11 @@ var optionSampleMap = {
                 "borderType": "solid"
             },
             emphasis: {
-                areaColor: 'yellow' // 高亮区域
+                areaColor: 'yellow', // 高亮区域
+                itemStyle: {
+                    opacity: 1
+                }
+
             }
         }
     },
@@ -87,6 +109,7 @@ var optionSampleMap = {
             { name: "海门", value: 9 },
 
         ]),
+        zlevel:3,
         symbolSize: 12,
         label: {
             normal: {
@@ -349,12 +372,12 @@ var LinesMapMultiSelf_others = {
             var dataItem = data[i];
             var fromCoord = geoCoordMap[dataItem[0].name];
             var toCoord = geoCoordMap[dataItem[1].name];
-            var threeCoord=[toCoord[0]+3,toCoord[1]+3]
+            var threeCoord = [toCoord[0] + 3, toCoord[1] + 3]
             if (fromCoord && toCoord) {
                 res.push({
                     fromName: dataItem[0].name, // 辅助字段
                     toName: dataItem[1].name,
-                    coords: [fromCoord,threeCoord, toCoord], // lines 需要指定经纬度坐标 
+                    coords: [fromCoord, threeCoord, toCoord], // lines 需要指定经纬度坐标 
                     lineStyle: {
                         normal: {
                             color: 'blue',
@@ -387,11 +410,11 @@ var LinesMapMultiSelf_others = {
 var LinesMapMultiSelf = {
     "tooltip": {
         "trigger": "item",
-             formatter: function(params) {
-                 
-                return params.data.fromName + ' : ' + params.data.toName;
-            }
-      },
+        formatter: function(params) {
+
+            return params.data.fromName + ' : ' + params.data.toName;
+        }
+    },
     series: [{
             name: "北京" + ' Top10',
             type: 'lines',
@@ -416,59 +439,58 @@ var LinesMapMultiSelf = {
                 // }
             },
             // data: LinesMapMultiSelf_others.convertData(LinesMapMultiSelf_others.BJData)
-            data: [
-                {
-                  "fromName": "北京",
-                  "toName": "上海",
-                  "coords": [
-                    [
-                      116.46,
-                      39.92
+            data: [{
+                    "fromName": "北京",
+                    "toName": "上海",
+                    "coords": [
+                        [
+                            116.46,
+                            39.92
+                        ],
+                        [
+                            124.4648,
+                            34.289100000000005
+                        ],
+                        [
+                            121.4648,
+                            31.2891
+                        ]
                     ],
-                    [
-                      124.4648,
-                      34.289100000000005
-                    ],
-                    [
-                      121.4648,
-                      31.2891
-                    ]
-                  ],
-                  "lineStyle": {
-                    "normal": {
-                      "color": "blue",
-                      "width": 1,
-                      "opacity": 0.6
+                    "lineStyle": {
+                        "normal": {
+                            "color": "blue",
+                            "width": 1,
+                            "opacity": 0.6
+                        }
                     }
-                  }
                 },
-               
+
                 {
-                  "fromName": "北京",
-                  "toName": "南昌",
-                  "coords": [
-                    [
-                      116.46,
-                      39.92
+                    "fromName": "北京",
+                    "toName": "南昌",
+                    "coords": [
+                        [
+                            116.46,
+                            39.92
+                        ],
+                        [
+                            119.0046,
+                            31.6633
+                        ],
+                        [
+                            116.0046,
+                            28.6633
+                        ]
                     ],
-                    [
-                      119.0046,
-                      31.6633
-                    ],
-                    [
-                      116.0046,
-                      28.6633
-                    ]
-                  ],
-                  "lineStyle": {
-                    "normal": {
-                      "color": "yellow",
-                      "width": 3,
-                      "opacity": 0.6
+                    "lineStyle": {
+                        "normal": {
+                            "color": "yellow",
+                            "width": 3,
+                            "opacity": 0.6
+                        }
                     }
-                  }
                 }
-              ]
+            ]
         },
         // {
         //     name: 'pm2.5',
@@ -549,7 +571,7 @@ var PointShowSelf_others = {
 
 var PointShowSelf = {
     _click: function(params) {
-        debugger
+        
     },
     series: [{
         name: 'pm2.5',
@@ -659,10 +681,10 @@ var PointShowHideSelf_others = {
 
 
 var PointShowHideSelf = {
-    _click: function(params,building) { //
+    _click: function(params, building) { //
         var self = this;
-       debugger
-       
+        
+
 
         if (params.seriesType === "scatter") {
             if (params.value[2].type == "NEG") {
@@ -730,7 +752,7 @@ var PointShowHideSelf = {
     tooltip: {
         trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
         formatter: function(params) {
-            return params.name + ' : ' + params.value[2].state+" "+params.value[2].type;
+            return params.name + ' : ' + params.value[2].state + " " + params.value[2].type;
         }
     },
 
@@ -763,3 +785,277 @@ var optionPointShowHide = $.extend({}, optionSampleMap, PointShowHideSelf)
 
 
 //↓↓↓↓↓↓↓***************  开始处理
+
+
+
+
+var graphicDrow_others = {
+
+    convertData: function(data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord) {
+                res.push({
+                    fromName: dataItem[0].name, // 辅助字段
+                    toName: dataItem[1].name,
+                    coords: [fromCoord, toCoord] // lines 需要指定经纬度坐标 
+                });
+            }
+        }
+        return res;
+    },
+    BJData: [
+        { name: '上海', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "1", "deviceIds": ["1"] } },
+        { name: '广州', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "2", "deviceIds": ["2"] } },
+        { name: '大连', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "3", "deviceIds": ["3"] } },
+        { name: '南宁', value: { type: "RPC", "areaId": "2", "state": "import", "id": "4", "deviceIds": ["4"] } },
+        { name: '南昌', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "5", "deviceIds": ["5"] } },
+        { name: '拉萨', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "6", "deviceIds": ["6"] } },
+        { name: '长春', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "7", "deviceIds": ["7"] } },
+        { name: '包头', value: { type: "RPC", "areaId": "2", "state": "alarm", "id": "8", "deviceIds": ["8"] } },
+        { name: '重庆', value: { type: "NEG", "areaId": "1", "state": "open", "id": "9", "deviceIds": ["1", "2", "3"] } },
+    ]
+};
+
+
+
+var graphicDrow = {
+    _click: function(params) {
+        
+    },
+    // _mouseover:function(params){
+    //     // 
+    //     console.log("params"+params.name);
+    // },
+    _mousemove: function(params) {
+        // 
+        console.log("params" + params.name);
+    },
+    tooltip: {
+        trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+        formatter: function(params) {
+            return params.name + ' : ' + params.value[2].state + " " + params.value[2].type;
+        }
+    },
+    graphic: [{
+        draggable: true, //
+        type: 'circle',
+        zlevel: 0,
+        // invisible:true,
+        position: [500, 100],
+        shape: {
+            cx: 10,
+            cy: 10,
+            r: 10
+        },
+        style: {
+            stroke: '#BEBEBE',
+            strokeWidth: 2,
+            fill: "#FFFFFF"
+        }
+    },
+    {
+        draggable: true, //
+        type: 'circle',
+        zlevel: 2,
+        // invisible:true,
+        position: [600, 200],
+        shape: {
+            cx: 10,
+            cy: 10,
+            r: 10
+        },
+        style: {
+            stroke: '#BEBEBE',
+            strokeWidth: 2,
+            fill: "#FFFFFF"
+        }
+    }
+
+
+],
+    series: [{
+        name: 'pm2.5',
+        type: 'scatter',
+        coordinateSystem: 'geo',
+        zlevel: 4,
+        data: graphicDrow_others.BJData.map(function(dataItem) {
+            return {
+                name: dataItem.name,
+                value: geoCoordMap[dataItem.name].concat([dataItem.value]),
+
+                "itemStyle": { // series 的 style
+                    "color": state[dataItem.value.state || "normal"]
+                }
+            };
+        }),
+        symbolSize: 12,
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: false
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                borderColor: 'yellow',
+                borderWidth: 5
+            }
+        }
+    }]
+
+}
+
+var optionGraphicDrow = $.extend({}, optionSampleMap, graphicDrow)
+
+//↑↑↑↑↑↑↑***************  处理完成
+
+//↓↓↓↓↓↓↓***************  开始处理
+
+
+
+
+
+var graphicDrowCustomPoint_others = {
+
+    convertData: function(data) {
+        var res = [];
+        for (var i = 0; i < data.length; i++) {
+            var dataItem = data[i];
+            var fromCoord = geoCoordMap[dataItem[0].name];
+            var toCoord = geoCoordMap[dataItem[1].name];
+            if (fromCoord && toCoord) {
+                res.push({
+                    fromName: dataItem[0].name, // 辅助字段
+                    toName: dataItem[1].name,
+                    coords: [fromCoord, toCoord] // lines 需要指定经纬度坐标 
+                });
+            }
+        }
+        return res;
+    },
+    BJData: [
+        { name: '上海', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "1", "deviceIds": ["1"] } },
+        { name: '广州', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "2", "deviceIds": ["2"] } },
+        { name: '大连', value: { type: "RPC", "areaId": "1", "state": "normal", "id": "3", "deviceIds": ["3"] } },
+        { name: '南宁', value: { type: "RPC", "areaId": "2", "state": "import", "id": "4", "deviceIds": ["4"] } },
+        { name: '南昌', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "5", "deviceIds": ["5"] } },
+        { name: '拉萨', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "6", "deviceIds": ["6"] } },
+        { name: '长春', value: { type: "RPC", "areaId": "2", "state": "normal", "id": "7", "deviceIds": ["7"] } },
+        { name: '包头', value: { type: "RPC", "areaId": "2", "state": "alarm", "id": "8", "deviceIds": ["8"] } },
+        { name: '重庆', value: { type: "NEG", "areaId": "1", "state": "open", "id": "9", "deviceIds": ["1", "2", "3"] } },
+    ]
+};
+
+
+
+var graphicDrowCustomPoint = {
+    // _mousemove: function(params) {
+        
+    // },
+    
+    _mousemove: function(params) {
+        strolling+=1;
+        console.log("strolling"+strolling);
+     
+    },
+    tooltip: {
+        trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+        formatter: function(params) {
+            return params.name + ' : ' + params.value[2];
+        }
+    },
+    graphic: [{
+        draggable: true, //
+        type: 'circle',
+        zlevel: 0,
+        // invisible:true,
+        position: [500, 100],
+        shape: {
+            cx: 10,
+            cy: 10,
+            r: 10
+        },
+        style: {
+            stroke: '#BEBEBE',
+            strokeWidth: 2,
+            fill: "#FFFFFF"
+        }
+    },
+    {
+        draggable: true, //
+        type: 'circle',
+        zlevel: 2,
+        // invisible:true,
+        position: [400, 200],
+        shape: {
+            cx: 10,
+            cy: 10,
+            r: 10
+        },
+        style: {
+            stroke: '#BEBEBE',
+            strokeWidth: 2,
+            fill: "#FFFFFF"
+        }
+    }
+
+
+],
+    series: [
+    
+
+        {
+            id: 'points',
+            name: 'points',
+            type: 'custom',
+            coordinateSystem: 'geo',
+            itemStyle: {
+                borderColor: '#BEBEBE',
+                borderWidth: 1,
+            },
+            renderItem:function (params, api) {
+                
+
+                var position=api.coord([api.value(0),api.value(1)]);
+                var size=10;
+                var style = api.style();
+// custom 坐标轴的 position 很重要;
+                return {
+                    roam:api.value(2),
+                    type: 'path',
+                    position:position,
+                    shape: {
+                        d: 'M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52',
+                        x: -5,
+                        y: -5,
+                        width: size,
+                        height: size,
+                        layout: 'cover'
+                    },
+                    style: {
+                        stroke: style.stroke,
+                        strokeWidth: style.lineWidth,
+                        fill: style.fill
+                    }
+                }
+            },
+            zlevel: 99,
+            data: convertData([
+                { name: "海门", value: 9 },
+    
+            ])
+        }
+    
+    ]
+
+}
+
+var optionGraphicDrowCustomPoint = $.extend({}, optionSampleMap, graphicDrowCustomPoint)
+// optionGraphicDrowCustomPoint.series.splice(0,0,...optionSampleMap.series);
+//↑↑↑↑↑↑↑***************  处理完成

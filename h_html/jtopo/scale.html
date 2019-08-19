@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="./jtopo-0.4.8-min.js"></script>
+
+<body>
+<body>
+    <button onclick="toScale()">toScale</button>
+    <div style="border:1px red solid;">
+        <canvas id="canvas" width="1000px" height="700px" ></canvas>
+    </div>
+    
+</body>
+<script>
+      $(document).ready(function(){
+            var canvas = document.getElementById('canvas');            
+            var stage = new JTopo.Stage(canvas);
+            stage.wheelZoom = 0.85;
+            stage.removeAllEventListener();
+            
+            //显示工具栏
+            // showJTopoToobar(stage);
+            var scene = new JTopo.Scene(stage);
+           
+            
+            var node = new JTopo.Node("Hello");                            
+            node.setLocation(109, 269);
+            scene.add(node);
+       
+                        
+            function toScale(){
+
+            }
+
+
+        });
+</script>
+</html>
