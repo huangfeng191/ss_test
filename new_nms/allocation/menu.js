@@ -12,6 +12,15 @@
 
 
 
+// 拓扑管理
+[
+    { "name":"网元配置", "w":"1", "sn":"netElementConfig", "role":null ,"parentSn":"configure"},
+    { "name":"网元管理", "w":"2", "sn":"netElementManage", "role":null ,"parentSn":"configure"},
+    { "name":"EMS配置", "w":"3", "sn":"EMSConfig", "role":null ,"parentSn":"configure"},
+    { "name":"配置信息统计", "w":"4", "sn":"configInfoStat", "role":null ,"parentSn":"configure"},
+    ]
+    
+
 
 // 配置管理：
 [

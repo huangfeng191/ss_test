@@ -400,3 +400,12 @@ Cookie:JSESSIONID={{token}}
 
 ### 备份归档策略筛选
 /nms/spring/databaseBackup/getConfigParamByFilter
+
+
+### 
+GET /nms/spring/performances/pMP/page??token={{token}}
+&page=1&pageSize=10&deviceId=&performanceType=&port= 
+
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
