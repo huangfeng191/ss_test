@@ -4,15 +4,15 @@ telnet :192.168.1.33:23
 ccom_user     
 zjsaisi   
 
-su enter
+su // enter
 zss@10s!#
 
 factorycfg -l
 
 alarmTest
 > 第一位：1 触发报警，2取消报警   
-> 第二位：报警类型 （mc：管理卡 cc(冗余)钟卡 ）
-> 第三未: 1 管理卡 2钟卡1 ？canDo
+> 第二位：报警类型 
+> 第三未: 1 管理卡 2钟卡1 ？canDo  （mc：管理卡 cc(冗余)钟卡 ）
 1 0 1
 2 0 1
 
