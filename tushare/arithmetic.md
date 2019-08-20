@@ -23,7 +23,7 @@ normal
       步骤 :step  步骤的完成情况
          环节 :link  属性： 是否必须等
             元素 :cell  最小单位可以是字段， 是否必须    分组
-                     表名  field 值类型 (值类型) ,目标字段 target  ,group   "nm"={"left","right","operate"}     是否必须  
+                     表名  field 值类型 (值类型) ,目标字段 target  ,group   "nm"={"left","right","operate"}     
                      
                       值类型: record , param , fixed  
                       目标字段: 默认情况下=field
@@ -77,7 +77,7 @@ target：{      // 对数据进行合并
 
 可以设置一个全局变量 
 
-{
+target:{
     "default":"field",
     "simple":"", // 可以设置
     "multi":["",""], // 可以设置
@@ -90,3 +90,14 @@ target：{      // 对数据进行合并
          纵向比较
 
         可以用pandas的比较算法
+
+
+
+
+
+
+        step_data   可以记录link 的 完成情况
+        link_data  可以按每个stock 进行记录完成结果
+
+
+        
