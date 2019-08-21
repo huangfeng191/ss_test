@@ -409,3 +409,14 @@ GET /nms/spring/performances/pMP/page??token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+###
+GET /socket HTTP/1.1
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+
+###
+
+GET /nms/js/map/json/china.json HTTP/1.1
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8

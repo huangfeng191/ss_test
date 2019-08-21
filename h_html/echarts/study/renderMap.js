@@ -961,9 +961,14 @@ var graphicDrowCustomPoint = {
     
     _mousemove: function(params) {
         strolling+=1;
-        console.log("strolling"+strolling);
+        // console.log("strolling"+strolling);
+        console.log("params" + params.name);
+
+        
+
      
     },
+ 
     tooltip: {
         trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
         formatter: function(params) {
@@ -971,9 +976,10 @@ var graphicDrowCustomPoint = {
         }
     },
     graphic: [{
+        id:"cs",
         draggable: true, //
         type: 'circle',
-        zlevel: 0,
+        zlevel: 99,
         // invisible:true,
         position: [500, 100],
         shape: {
@@ -985,12 +991,68 @@ var graphicDrowCustomPoint = {
             stroke: '#BEBEBE',
             strokeWidth: 2,
             fill: "#FFFFFF"
+        },
+        onmousedown:function(params){
+            // debugger
+            if(params.target&&params.target.zlevel==99){
+
+                building.target.setOption({graphic:{
+                    draggable: true, //
+                    id:"cs",
+                    type: 'circle',
+                    zlevel: 0,
+                    // invisible:true,
+                    position: [500, 100],
+                    shape: {
+                        cx: 10,
+                        cy: 10,
+                        r: 10
+                    },
+                    style: {
+                        stroke: '#BEBEBE',
+                        strokeWidth: 2,
+                        fill: "#FFFFFF"
+                    }
+                   
+                }})
+            }
+
+       
+
+
+
+        },
+
+
+        ondragstart:function(params){
+            
+            // debugger
         }
+       
     },
+
+
+    {
+        // id:"img",
+        draggable: true, //
+        type: 'image',
+        zlevel: 999,
+        // invisible:true,
+        position: [300, 100],
+        style: {
+           image:"../../images/physical/neg.png",
+           width: 20,
+           height: 20,
+        },
+   
+       
+    },
+
+
     {
         draggable: true, //
         type: 'circle',
-        zlevel: 2,
+        zlevel: 99,
         // invisible:true,
         position: [400, 200],
         shape: {
@@ -1002,7 +1064,8 @@ var graphicDrowCustomPoint = {
             stroke: '#BEBEBE',
             strokeWidth: 2,
             fill: "#FFFFFF"
-        }
+        },
+       
     }
 
 
@@ -1045,7 +1108,7 @@ var graphicDrowCustomPoint = {
                     }
                 }
             },
-            zlevel: 99,
+             zlevel: 99,
             data: convertData([
                 { name: "海门", value: 9 },
     
