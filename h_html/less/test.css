@@ -31,7 +31,6 @@ html {
 }
 html .to-center {
   margin: 0 auto;
-  width: 200px;
   margin-top: 100px;
 }
 html .overflow-hidden {
@@ -131,4 +130,61 @@ html body .board-card .one .state-lamp span {
   display: inline-block;
   width: 42px;
   font-size: 12px;
+}
+html body .detail-info {
+  width: 400px;
+  padding: 0 15px;
+  background: #7c7c79;
+  opacity: 0.88;
+  color: #fff;
+  pointer-events: all;
+  font-size: 12px;
+  border-radius: 2px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+html body .detail-info .detail-top {
+  position: relative;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  border-bottom: 1px #c1c1bc solid;
+}
+html body .detail-info .detail-top div:first-child {
+  line-height: 40px;
+}
+html body .detail-info .detail-top .detail-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  line-height: 40px;
+}
+html body .detail-info .detail-top .detail-right span {
+  padding-right: 10px;
+}
+html body .detail-info .detail-top .detail-right span img {
+  width: 16px;
+}
+html body .detail-info .detail-main {
+  font-size: 14px;
+  padding: 10px 20px;
+}
+html body .detail-info .detail-main tr {
+  line-height: 28px;
+}
+html body .detail-info .detail-main tr td:first-child {
+  text-align: left;
+  width: 60px;
+}
+html body .detail-info .detail-main tr:nth-of-type(even) {
+  background: none!important;
+}
+html body .detail-info .detail-main tr:nth-of-type(odd) {
+  background: none!important;
+}
+html body .detail-info .detail-main tr:last-child {
+  vertical-align: initial;
+  line-height: 20px;
 }

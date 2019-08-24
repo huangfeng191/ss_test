@@ -955,19 +955,19 @@ var graphicDrowCustomPoint_others = {
 
 
 var graphicDrowCustomPoint = {
-    // _mousemove: function(params) {
+    _click: function(params) {
         
-    // },
+    },
     
-    _mousemove: function(params) {
-        strolling+=1;
-        // console.log("strolling"+strolling);
-        console.log("params" + params.name);
+    // _mousemove: function(params) {
+    //     strolling+=1;
+    //     // console.log("strolling"+strolling);
+    //     console.log("params" + params.name);
 
         
 
      
-    },
+    // },
  
     tooltip: {
         trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
@@ -980,6 +980,9 @@ var graphicDrowCustomPoint = {
         draggable: true, //
         type: 'circle',
         zlevel: 99,
+        info:{
+           "ok":"is my load"
+        },
         // invisible:true,
         position: [500, 100],
         shape: {
