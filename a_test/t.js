@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 姓名	部门（下拉选项）	月份（下拉选项）	日期（下拉选项）	项目编号（下拉选项）	项目描述(自动匹配，无需填写)	归属（下拉选项）	开发工时
 （8时/天）	加班工时
 （周末按小时算）	项目讨论会	售前技术方案撰写	售后技术支持	其他	合计
@@ -9,3 +10,120 @@
 18867655461
 浙江省嘉兴市南湖区大桥镇亚太工业园区（Ａ９）３１６室
 网址:www.zjsaisi.com
+=======
+var canDrag = true;
+                    var type = dataItem.value[2].type;
+                    if (type == 'NEG') {
+                    	
+                    	//颜色灯不能拖拽控制
+                    	if (dataItem.value[2].status == 'StaticNormal' || dataItem.value[2].status == 'StaticSWarning' || dataItem.value[2].status == 'StaticMWarning' || dataItem.value[2].status == 'StaticLIWarning' || dataItem.value[2].status == 'StaticEvent') canDrag = false;
+                        render = {
+							type: 'group',
+							children: [{
+								type: 'image',
+								draggable: canDrag,
+								position: [0,0],
+								style: {
+									image:"/nms/images/topo/physical/NEG.png",
+									width: 20/scale,
+									height: 20/scale,
+								}
+							},{
+								type: 'text',
+								style: {
+									x: 24 / scale,
+									y: 4 / scale,
+									text: dataItem.name
+								}
+							}]
+                        };
+                    } else if (type == 'PRC') {
+                        render = {
+                            type: 'group',
+                            children: [{
+								type: 'image',
+								draggable: canDrag,
+								position: [0,0],
+								style: {
+									image:"/nms/images/topo/physical/PRC.png",
+									width: 20/scale,
+									height: 20/scale,
+								}
+							}, {
+								type: 'text',
+								style: {
+									x: 24 / scale,
+									y: 4 / scale,
+									text: dataItem.name
+								}
+							}]
+                        };
+                    } else if (type == 'LPR') {
+                        render = {
+							type: 'group',
+							children: [{
+								type: 'image',
+								draggable: canDrag,
+								position: [0,0],
+								style: {
+									image:"/nms/images/topo/physical/LPR.png",
+									width: 20/scale,
+									height: 20/scale,
+								}
+							},{
+								type: 'text',
+								style: {
+									x: 24 / scale,
+									y: 4 / scale,
+									text: dataItem.name
+								}
+							}]
+                        };
+                    } else if (type == 'SSUT') {
+                        render = {
+							type: 'group',
+							children: [{
+								type: 'image',
+								draggable: canDrag,
+								position: [0,0],
+								style: {
+									image:"/nms/images/topo/physical/SSUT.png",
+									width: 20/scale,
+									height: 20/scale,
+								}
+							},{
+								type: 'text',
+								style: {
+									x: 24 / scale,
+									y: 4 / scale,
+									text: dataItem.name
+								}
+							}]
+                        };
+                    } else if (type == 'SSUL') {
+                        render = {
+							type: 'group',
+							children: [{
+								type: 'image',
+								draggable: canDrag,
+								position: [0,0],
+								style: {
+									image:"/nms/images/topo/physical/SSUL.png",
+									width: 20/scale,
+									height: 20/scale,
+								}
+							},{
+								type: 'text',
+								style: {
+									x: 24 / scale,
+									y: 4 / scale,
+									text: dataItem.name
+								}
+							}]
+                        };
+					}
+					
+
+
+		
+>>>>>>> c5fae8168d631bfbd0a148e9bd17031671aedb39

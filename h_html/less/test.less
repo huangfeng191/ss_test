@@ -57,7 +57,7 @@
 html {
     .to-center {
         margin: 0 auto;
-        width: 200px; // ?
+        // width: 200px; // ?
         margin-top: 100px;
 
     }
@@ -189,6 +189,71 @@ html {
                         width: @thinner-size;
                         font-size: 12px;
                     }
+                }
+            }
+        }
+       @detail-info-width:400px;
+       @detail-info-top:40px;
+       @detail-info-padding:15px;
+       @detail-info-table-left:60px;
+       @detail-info-table-line:28px;
+
+        .detail-info{
+            width:@detail-info-width;
+            padding:0 @detail-info-padding;
+            background: #7c7c79;
+            opacity: 0.88;
+            color: #fff;
+            pointer-events: all;
+            font-size: 12px;
+            border-radius: 2px;
+            margin: 0 auto;
+            margin-top:100px;
+
+            .detail-top{
+                position: relative;
+                height:@detail-info-top;
+                width:100%;
+                text-align: center;
+                margin:0 auto;
+                font-size:16px;
+                div:first-child{
+                    line-height:@detail-info-top;
+                }
+                .detail-right{
+                    position: absolute;
+                    top:0px;
+                    right:0px;
+                    line-height:@detail-info-top;
+                    span{
+                        padding-right:10px;
+                        img {
+                            width:16px 
+                        }
+                    }
+                }
+                border-bottom: 1px #c1c1bc solid;
+            }
+            .detail-main{
+                font-size: 14px;
+                padding:10px 20px;
+                tr{
+                     
+                    line-height: @detail-info-table-line;
+                    td:first-child{
+                        text-align: left;
+                        width:@detail-info-table-left;
+                    }
+                }
+                tr:nth-of-type(even){
+                    background: none!important;
+                }
+                tr:nth-of-type(odd){
+                    background: none!important;
+                }
+                tr:last-child{
+                   vertical-align: initial; 
+                   line-height: 20px;
                 }
             }
         }
