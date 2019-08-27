@@ -70,3 +70,14 @@ show snmp manager
 
 
 show log alarm
+
+
+
+
+show mtie  
+
+
+show mtie  slot1
+
+
+show mtie  slot1 gnss 

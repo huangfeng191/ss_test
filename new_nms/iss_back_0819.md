@@ -22,3 +22,15 @@ websocket :
 
 
 
+
+
+
+
+ 性能设置 查询
+    按权限查询
+ /nms/spring/performances/pMP/page?token=AE95B6BE4D78AE2682835377C4447738&page=1&pageSize=10&deviceId=&performanceType=&port=
+
+
+
+性能 freq 查询: 未返回数据
+ /nms/spring/performances/getForChart?token=BF419C585939A1E9CB77DE0994DEF639&stratTime=2019-08-26&endTime=2019-08-26&type=freq&port=GNSS-1&limit=11&deviceId=5b1bb34c-7a10-46b3-a73d-85e0de505217
