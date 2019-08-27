@@ -100,4 +100,12 @@ target:{
         link_data  可以按每个stock 进行记录完成结果
 
 
-        
+<!-- crud  -->
+
+table_nm 
+table_field 
+out_field 
+type 
+target 
+relative_cell 
+rule 
