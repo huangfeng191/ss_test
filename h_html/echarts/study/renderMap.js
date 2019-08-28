@@ -76,7 +76,7 @@ var optionSampleMap = {
             "max": 3
         },
         "roam": true, // 是否开启鼠标缩放及平移
-        "zoom": 1,
+        // "zoom": 1,
         "zlevel":1,
         map: 'china',
         label: {
