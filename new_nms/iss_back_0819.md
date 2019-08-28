@@ -18,8 +18,6 @@ websocket :
 
 
 
-网元组接口改造
-
 
 
 
@@ -53,3 +51,10 @@ nms/spring/device/page?token=CFC8B5DCC47A807C9056CDB8F686BD26&page=&pageSize=20&
 
 
 
+物理拓扑：
+网元组修改接口
+链路修改接口
+
+
+中文搜索接口
+链路状态
