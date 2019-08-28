@@ -38,7 +38,7 @@ var remarks = {
 
     "graphicDrowCustomPoint": {
         "desc": "点拖动点用custom 标识",
-        "default": true
+        // "default": true
     },
 
 

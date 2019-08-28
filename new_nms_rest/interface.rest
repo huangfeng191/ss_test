@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=58579CE69ED7F980088F24CE3BAD8C47
+@token=76FF06FB617E7198E70E93C05ADC7671
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 
@@ -420,3 +420,10 @@ Content-Type: application/json;charset=UTF-8
 GET /nms/js/map/json/china.json HTTP/1.1
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
+
+
+### 
+GET /nms/spring/keepalived/sitepage?page=1?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}

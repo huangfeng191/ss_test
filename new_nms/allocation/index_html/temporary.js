@@ -1,4 +1,5 @@
 //     device/page  ->  
+
 //    /nms/spring/viewData?areaId=(获取设备的拓扑信息，on the basis of deviceIp  )   
 
 //  eMap get 
@@ -443,3 +444,8 @@ myData = [
         ]
     }
 ]
+
+
+
+
+
