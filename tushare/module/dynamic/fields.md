@@ -15,6 +15,7 @@ cell分组 group   //为空时独立
 cell类型 type String  c CellType   // cell 的分类,目前只支持record 值类型: record (default )  , param , fixed  
 规则编码 sn
 排序 w
+上市地点 
 
 
 
