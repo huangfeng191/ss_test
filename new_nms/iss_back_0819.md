@@ -70,3 +70,32 @@ nms/spring/device/page?token=CFC8B5DCC47A807C9056CDB8F686BD26&page=&pageSize=20&
 
 
 数据同步接口 ： 未提供
+
+
+配置信息统计：
+    板卡信息统计
+
+用户管理：
+修改登录账号信息 , 自动退出， 且无法再次登录,换账号也不行
+
+
+管理级账号 无法看到其他人员权限
+/nms/spring/role/page?user=sgnms&page=1&pageSize=20
+
+
+
+
+
+只有监视级 能看到设备， 
+所有设备权限无法看到设备信息
+/nms/spring/device/parents?type=all&token=E86745F53B1B5E73B91AAF4BCB2BBC67
+
+<!-- 修改角色 -->
+
+put 
+
+curl 'http://localhost:60/nms/spring/role?token=3D63062A6E3C7E2E2F87D6BC52EC6620' -X PUT -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' -H 'Origin: http://localhost:60' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36' -H 'Content-Type: application/json; charset=UTF-8' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Referer: http://localhost:60/nms/src/page/main.html' -H 'X-Requested-With: XMLHttpRequest' -H 'Cookie: JSESSIONID=3D63062A6E3C7E2E2F87D6BC52EC6620' -H 'Connection: keep-alive' --data-binary '{"roleName":"fengfeng","roleDesc":"fengfeng8","deviceList":[{"id":"7dcf041c-abc8-4ccf-baa2-252a650de57c"},{"id":"00390902-3881-4618-8b2a-5c4422a5273d"},{"id":"5b1bb34c-7a10-46b3-a73d-85e0de505217"},{"id":"a4c86d01-3ed5-4315-a5ed-5b2a07b52bbf"},{"id":"9ca263a8-a4af-49fd-98e1-a91812204148"}],"id":"368c7fb3-a1dc-45a1-965d-4978a4ec2e46","roleType":1}' --compressed
+
+
+
+角色名已经存在，不能重复

@@ -12,3 +12,10 @@ var tableInfoDetails={
         
     }
 }
+
+
+
+
+oldPassword
+passwords
+newPassword
