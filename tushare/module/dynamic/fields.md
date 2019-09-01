@@ -1,10 +1,15 @@
+# link 
+
 规则名称 nm 
 规则编码 sn
 是否必填 require
 排序 w
+分组 group //  规则 有 交易所 ， 将 两个交易所数据合并
+分组规则 rule
+输出规则 outType
 
 
-
+# cell
 
 数据表名 table_nm 
 数据字段 table_field
@@ -15,10 +20,18 @@ cell分组 group   //为空时独立
 cell类型 type String  c CellType   // cell 的分类,目前只支持record 值类型: record (default )  , param , fixed  
 规则编码 sn
 排序 w
-上市地点 
+描述 desc 
+交易所 exchange String  c exchange
 
 
-
+<!-- last 规则 -->
+{"type":"last","option":{
+    "day":7,
+    "field":"cal_date"
+    "queries":{
+        "^field":"today"
+    }
+}}
 
 
 ```js
@@ -38,3 +51,25 @@ targetBind={
 
 
 ```
+
+
+# for test 
+
+方法名  method
+版本 version
+有效 isValid String  c is_not
+参数 params   String a 
+描述  description  String a 
+
+
+
+"jDom.find('.right_container').prepend('<button command='test'>test</button>').",
+"    on('click',function(event){",
+"    $.JWS('/dynamic/comm/test/test.json', { query: {} }).success(function(json)",
+"    {",
+"            if(json.Response.rows&&json.Response.rows.length>0){",
+"    ",
+"            }",
+"    });",
+"    ",
+"    })",

@@ -19,8 +19,8 @@ normal
 数据： sea
 
 计划:plan
-   措施 :measure 可以勾选多个措施，并且可以横向比较措施的完成情况
-      步骤 :step  步骤的完成情况
+   措施 :measure 可以勾选多个步骤，并且可以横向比较措施的完成情况
+      步骤 :step  环节的完成情况
          环节 :link  属性： 是否必须等
             元素 :cell  最小单位可以是字段， 是否必须    分组
                      表名  field 值类型 (值类型) ,目标字段 target  ,group   "nm"={"left","right","operate"}     
