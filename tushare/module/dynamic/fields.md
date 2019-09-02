@@ -34,6 +34,8 @@ cell类型 type String  c CellType   // cell 的分类,目前只支持record 值
 }}
 
 
+
+
 ```js
 
 target={      // 对数据进行合并
@@ -58,18 +60,9 @@ targetBind={
 方法名  method
 版本 version
 有效 isValid String  c is_not
-参数 params   String a 
+方法参数 args   String a 
+复用参数 params   String a 
 描述  description  String a 
 
 
 
-"jDom.find('.right_container').prepend('<button command='test'>test</button>').",
-"    on('click',function(event){",
-"    $.JWS('/dynamic/comm/test/test.json', { query: {} }).success(function(json)",
-"    {",
-"            if(json.Response.rows&&json.Response.rows.length>0){",
-"    ",
-"            }",
-"    });",
-"    ",
-"    })",

@@ -78,7 +78,7 @@ GBindings.push({
 
 [{
     "ts_code":{"type":"loop","from":"stock_basic","from_k":"ts_code"},
-    "start_date":{"type":"date","from":"day","operate":"gte"}
+    "start_date":{"type":"date","from":"day","operate":"="}
 }
 
 ]
