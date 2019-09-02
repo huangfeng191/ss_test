@@ -237,3 +237,19 @@ reflashLine remove  lines.length =0
 
   类型
   厂商
+
+
+
+
+
+
+  
+  
+  
+
+
+  var rules={
+    owner:{"length":32,"err":"资产归属长度<=32"},
+    aliasName:{"length":32,"err":"网元地址长度<=32"},
+    location:{"length":32,"err":"机架位置长度<=32"},
+}
