@@ -1,10 +1,3 @@
-trade_date,str,交易日期
-open,float,开盘价
-high,float,最高价
-low,float,最低价
-close,float,收盘价
-pre_close,float,昨收价
-change,float,涨跌额
-pct_chg,float,涨跌幅
-vol,float,成交量
-amount,float,成交额
+position: absolute;
+right: 5px;
+top: 5px;

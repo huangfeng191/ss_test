@@ -71,3 +71,22 @@ eventLog_pagination
 "roleType": 1,
 "timestamp": 1555474881000,
 "deviceList":[{}]
+
+
+
+
+
+baseConfig
+
+类型  type
+配置名称  configName
+说明1  comment1
+说明2  comment2
+说明3  comment3
+状态  isDelete c NotYes
+
+
+设备  deviceIp c DeviceInfos
+用户 cmdLogUser 
+描述  cmdLogDesc 
+开始时间  cmdLogTimeBgn c NotYes
