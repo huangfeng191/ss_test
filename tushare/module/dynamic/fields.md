@@ -57,12 +57,18 @@ targetBind={
 
 # for test 
 
+
+
+标题   title  
 方法名  method
-版本 version
+编码 sn
+版本 version  
 有效 isValid String  c is_not
 方法参数 args   String a 
 复用参数 params   String a 
 描述  description  String a 
+
+
 
 
 

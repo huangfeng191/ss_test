@@ -48,3 +48,9 @@ a= {"type":"last",
     }
 
 ```
+
+"type": "array",
+"fields": ["cal_date"],
+"field": "cal_date",
+"key": "cal_date"
+ 
