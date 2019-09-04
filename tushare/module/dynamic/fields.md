@@ -67,7 +67,10 @@ targetBind={
 方法参数 args   String a 
 复用参数 params   String a 
 描述  description  String a 
+频率 frequency String c frequency
 
+
+频率时间 outFrequency
 
 
 

@@ -1,4 +1,4 @@
-
+Prefix;
 $.po = function (url, data, opts) {
     let _opts = {
         type: 'POST',
@@ -18,7 +18,7 @@ function co(func) {
             if (rep.Code == 0) {
                 return def.resolve(rep.Response);
             } else {
-                return def.reject(rep.Message);
+                alert(rep.Message);
                 // return def.reject(rep.Response);
             }
         }).fail(function (rep) {
@@ -28,8 +28,38 @@ function co(func) {
 }
 
 var stockService={
-    "getPoint":function(){
-       var  url="/prostock/interfacedata/query.json?table_nm=stock_company";
-      return co($.po(url)) 
+
+    // /dynamic/comm/test/log
+    "dynamic":{
+        "comm":{
+            "testCRUD":CRUD("dynamic/comm/test"),
+            "testLogCRUD":CRUD("dynamic/comm/test/log")
+        }
+    }
+
+  
+}
+
+
+function CRUD(model,_prefix){
+    var pre=_prefix||Prefix;
+    var url=`/${pre}/${model}`
+    var key="_id";
+    return {
+        query:(params)=>{return co($.po(`${url}/query.json`,params||{}))},
+        insert:(record)=>{return co($.po(`${url}/insert.json`,{record:record}))},
+        update:(record)=>{return co($.po(`${url}/update.json`,{record:record}))},
+        save:(record)=>{
+            if(record[key]){
+                return co($.po(`${url}/update.json`,{record:record}));
+            }else{
+                return co($.po(`${url}/insert.json`,{record:record}));
+            }
+        },
+        delete:(record)=>{return co($.po(`${url}/delete.json`,{record:record}))},
+        get:(id)=>{return co($.po(`${url}/get.json`,id))},
+       
+        post:(m,record)=>{return co($.po(`${url}/${m}.json`,record))},
+        key:key
     }
 }
