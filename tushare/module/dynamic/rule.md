@@ -18,3 +18,33 @@ sh-sz 区分开 ，也可一起配置
 
 sh:""
 sz:""
+
+
+查询条件归纳：
+
+1 比值型 default  "key":{"type":"normal","value":"","operator":"" }
+
+<!-- dateType:["day","month","year"] -->
+<!-- 只有取界面时间的才配置时间 -->
+2  "key":{"type":"date", "value":"day" , "operator":"" }
+
+3  上一个输出
+
+```js
+
+
+a= {"type":"last",
+    "option":{
+        "source":{"table":"cal_date"},
+        "limit":{"rows":7 },
+        "queries":{
+            "cal_date":{"type":"date","value":"day","operate":"gte"}
+        },  
+        "out":{
+            "type":"array" // object  has key 
+            "fields":[],
+            "key":""
+        }
+    }
+
+```
