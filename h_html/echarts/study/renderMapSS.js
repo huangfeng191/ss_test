@@ -9,6 +9,11 @@ remarks.normalMap={
     "default": true
 
 }
+remarks.selectedProvinceMap={
+    "desc": "简单的地图1",
+    "default": true
+
+}
 
 
 
@@ -262,7 +267,84 @@ var optionNormalMap = {
                 }
 
             }
+        },
+
+    },
+    series: [{
+        name: 'pm2.5',
+        type: 'scatter',
+        coordinateSystem: 'geo',
+        data: convertData([
+            { name: "海门", value: 9 },
+
+        ]),
+        zlevel:3,
+        symbolSize: 12,
+        label: {
+            normal: {
+                show: false
+            },
+            emphasis: {
+                show: false
+            }
+        },
+        itemStyle: {
+            emphasis: {
+                borderColor: '#fff',
+                borderWidth: 1
+            }
         }
+    }]
+}
+
+
+
+var optionSelectedProvinceMap = {
+
+    tooltip: {
+        trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+        formatter: function(params) {
+            return params.name + ' : ' + params.value[2];
+        }
+    },
+
+    geo: {
+        "scaleLimit": { // 缩放
+            "min": 1,
+            "max": 3
+        },
+        "roam": true, // 是否开启鼠标缩放及平移
+        // "zoom": 1,
+        "zlevel":1,
+        map: 'china',
+        label: {
+            show:true,  // 是否显示区域
+            fontSize:16,
+            emphasis: {
+                show: false
+            },
+        },
+        itemStyle: {
+            normal: {
+                "areaColor": '#323c48',
+                "borderColor": 'yellow',
+                "borderWidth": 1,
+                "borderType": "solid"
+            },
+            emphasis: {
+                areaColor: 'yellow', // 高亮区域
+                itemStyle: {
+                    opacity: 1
+                }
+
+            }
+        },
+        regions:[  // 配置区域选中
+            {
+                "name":"浙江",
+                "selected":true 
+            }
+        ]
     },
     series: [{
         name: 'pm2.5',

@@ -35,11 +35,23 @@
             "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe",
             "problemMatcher": []
         },
+        {
+            "label": "start-new-nginx_5.101",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_5.101\\;./nginx.exe",
+            "problemMatcher": []
+        },
   
         {
             "label": "stop-nginx-new",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
+            "label": "stop-nginx-5.101",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_5.101\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
 

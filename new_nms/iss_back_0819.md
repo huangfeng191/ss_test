@@ -99,3 +99,8 @@ curl 'http://localhost:60/nms/spring/role?token=3D63062A6E3C7E2E2F87D6BC52EC6620
 
 
 角色名已经存在，不能重复
+
+
+
+菜单管理：
+    接口： 可以支持菜单

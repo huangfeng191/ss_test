@@ -81,3 +81,15 @@ show mtie  slot1
 
 
 show mtie  slot1 gnss 
+
+
+
+
+
+squelch 消除
+
+
+预热 运行状态
+自由 运行状态
+守时 运行状态
+快捕 运行状态

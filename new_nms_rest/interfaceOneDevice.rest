@@ -1,6 +1,6 @@
 @host = 127.0.0.1:60
-@token=54873F6B07D9366590D78364AA745DB1
-@deviceId=1d295901-3745-44d5-88a6-c9e51bba5d95
+@token=B6B6AB41F46DFB71CAAEEF25E5634A65
+@deviceId=5b1bb34c-7a10-46b3-a73d-85e0de505217
 
 
 GET /nms/spring/deviceConfig/{{deviceId}}/getIoStatus?token={{token}}
@@ -14,3 +14,13 @@ GET /nms/spring/deviceConfig/{{deviceId}}/configs/outputRedundancyTable?token={{
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+
+### 获取设备配置信息
+POST /nms/spring/deviceConfig/{{deviceId}}/getDeviceParamColl?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+[{"node":"inputCardState","index":".1","num":""},{"node":"inputCardPriority","index":".1","num":""},{"node":"inputCardFrameType","index":".1","num":""},{"node":"inputCardCRCState","index":".1","num":""},{"node":"inputCardSSMState","index":".1","num":""},{"node":"inputCardSSMBit","index":".1","num":""},{"node":"inputCardPQL","index":".1","num":""},{"node":"inputCardCfgUsed","index":".1","num":""}]
+
