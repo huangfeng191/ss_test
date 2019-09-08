@@ -4,6 +4,7 @@ self:
 > hint:
     更多的提示可以CTRL + j 
 
+Alt + J 选中相同单词
 
 charm F5 选择目录  按 tab 切换目录
 

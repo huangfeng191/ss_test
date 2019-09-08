@@ -34,6 +34,30 @@ cell类型 type String  c CellType   // cell 的分类,目前只支持record 值
 }}
 
 
+<!-- new -->
+
+
+
+
+
+规则名称  name
+规则编码 sn
+规则类型 ruleType String c ruleType
+生成规则 rule String a 
+复用参数 reuseParams 
+生成策略 outGenerate String  c outGenerate
+
+
+输出类型 outType String c outType // 拆分两个字段的目的是 一次性配置多个规则，而只使用一个规则
+输出规则 out String a
+
+cell分组 group   //为空时独立
+cell类型 type String  c CellType   // cell 的分类,目前只支持record 值类型: record (default )  , param , fixed  
+排序 w
+描述 desc 
+交易所 exchange String  c exchange
+频率 frequency String c frequency
+
 
 
 ```js
@@ -68,9 +92,18 @@ targetBind={
 复用参数 params   String a 
 描述  description  String a 
 频率 frequency String c frequency
-
-
 频率时间 outFrequency
+生成策略 outGenerate String  c outGenerate
+
+
+first
+refresh
+
+
+#test log
+
+linkType String c linkType
+
 
 
 
