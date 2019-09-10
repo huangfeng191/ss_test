@@ -56,3 +56,85 @@ a= {"type":"last",
 
  
 {"type":"last","option":{     "day":7,     "field":"cal_date"     "queries":{         "^field":"today"     } }}
+
+
+
+#  在范围中 找到符合情况的数据
+{
+    "source": {
+        "table": "daily"
+    },
+    "limits": {
+       
+    },
+    "sorts": {
+        "order": [{"Field": "trade_date", "Type": true}]
+    },
+   
+    "queries": { 
+        "trade_date": {
+            "type": "log",
+            "sn" :"last7"
+            "operate": "in",
+            "field":"cal_date"
+        },
+        "ts_code":"000001.SZ"
+    }
+
+}
+proportion
+
+占比
+makeProportion
+
+符合 占比
+
+getProportionList
+
+
+
+
+last 3 
+
+
+getEligibilityList  
+
+
+
+
+符合条件
+
+eligibility
+
+
+
+
+输出可以是表格型， 
+
+同一规则可用 group 进行按顺序处理，此种情况，中间过程可以不输出
+
+[{
+    "ts_code":{"type":"loop","from":"stock_basic","from_k":"ts_code"},
+    "start_date":{"type":"date","from":"day","operate":"="}
+}
+
+]
+
+
+// 业务编号，可以取日志里面找  
+编号规则 ：  业务号 +  7 位
+业务号： 方法 编码 +7 
+
+"out": {
+    "type": "table",
+    "table": {
+        "nm": "eligibility",
+        "business": "sn",
+        "bn":"业务编号", 
+        "key":{"ts_code":1,"trade_date"}
+
+    },
+    "array": {
+        "fields": ["cal_date"]
+    }
+}
