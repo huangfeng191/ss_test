@@ -7,3 +7,21 @@
 首页告警数与告警列表联动、首页中心地图，与左下脚地图导航等
 与开发公司人员需求整理及沟通完全情况
 sm2000设置bug 修改
+
+
+
+
+          __eMapGlobalVar.container_eMapMenu.curChart.refreshAllData();
+
+            var a=__eMapGlobalVar.container_eMapMenu.curChart.geteMap().getOption().series.filter(function(x){return x.name=="points"})
+            if(a&&a.length>0){
+                if(a[0].data&&a[0].data.length>0){
+                    a[0].data.map(function(v){
+                        if(v.name==top.SsCenter.deviceInfo.current.name){
+                            getDeviceDetail($("#map #detail-info") ,v.value[2],top.SsCenter.deviceInfo.current.name);
+                        }
+                    })
+                }
+                
+                
+            }
