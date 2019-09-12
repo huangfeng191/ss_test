@@ -9,6 +9,8 @@
 sm2000设置bug 修改
 
 
+local 1 
+
 
 
           __eMapGlobalVar.container_eMapMenu.curChart.refreshAllData();
