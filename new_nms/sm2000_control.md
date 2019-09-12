@@ -98,3 +98,46 @@ squelch 消除
 查看扩展框 状态
 
 show io-status 
+
+shelf main  9 
+exp1- exp4  14 个槽位
+
+Redundancy
+
+当不是冗余状态时,  冗余卡槽位 都是主卡 ， 当冗余状态开启的时候，一个时主卡 一个是冗余卡
+
+
+
+sm2000 状态
+
+
+
+
+snmp  
+
+5.101
+ server 192.168.1.139:8080;
+
+
+uap  
+ 192.168.1.160
+
+
+
+
+
+
+show  alarm-config 
+
+
+ais 告警，此状态下不能用
+
+Input alarm indication signal
+
+
+squelch = 不可用  on  ais 
+只有运行(on)状态能用
+
+
+
+wing

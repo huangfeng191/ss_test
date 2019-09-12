@@ -1,5 +1,5 @@
 @host = 127.0.0.1:60
-@token=76FF06FB617E7198E70E93C05ADC7671
+@token=1D5A8F977C6A3E619E2E8CA53C7B07A4
 @deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 
@@ -16,7 +16,7 @@ Cookie:JSESSIONID={{token}}
 
 ### 获取所有的设备信息 
 GET /nms/spring/device/page
-?page=&pageSize=200&token={{token}}&name=&ip=&deviceStatus=&deviceType=&areaId=&user=admin
+?page=&pageSize=200&token={{token}}&name=&ip=&deviceStatus=&deviceType=&areaId=&user=drow
 &NEType=&Vendor=
 Host: {{host}}
 Cookie:JSESSIONID={{token}}

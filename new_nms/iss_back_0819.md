@@ -124,6 +124,24 @@ curl 'http://localhost:60/nms/spring/role?token=3D63062A6E3C7E2E2F87D6BC52EC6620
 
 
 
+访问设备信息 接口会报 401 错误
+
+/nms/spring/performances/pMP/page  
+
+
+系统显示在线，实际无法访问接口
+/nms/spring/deviceConfig/487bedd4-e986-4fe0-8bb0-913f0b3aa67b/getDeviceParamColl?
+
+
+系统退出时 显示用户名不存在 
+
+/nms/spring/user/logoutsystem
+
+返回401 系统未退出
+
+
+
+
 首页： 网元组 、 链路 修改接口， 
       接收机功能 
       拓扑信息:逻辑及统计确定
@@ -132,7 +150,6 @@ curl 'http://localhost:60/nms/spring/role?token=3D63062A6E3C7E2E2F87D6BC52EC6620
 
 配置管理：
     接收机 配置
-
     EMS 配置
     配置管理：板卡统计
 
