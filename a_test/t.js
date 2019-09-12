@@ -9,7 +9,7 @@
 sm2000设置bug 修改
 
 
-local 1 
+local 3
 
 
 
