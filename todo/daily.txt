@@ -59,3 +59,12 @@ startup failed due to previous errors
 
 
 
+
+
+
+1 修复输出卡设置 异常问题
+
+
+
+1 系统问题测试
+2 逻辑地图高亮选中设备,小地图选中时联动大地图线上设备异常

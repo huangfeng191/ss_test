@@ -12,3 +12,29 @@ question :  告警库是不是必须要选择一个实际的告警记录
 
 
 2 
+
+
+root 查看状态
+
+jps
+
+
+unzip nms.war 
+
+
+touch nms.war.deployed
+
+
+mv nms.war deployments/nms.war/
+
+
+rm -rf deployments/*
+
+
+
+nohup sg-aps-start.sh > aps.log 2>&1 &
+
+
+
+
+kill -9 `ps -ef| grep catalina | grep -v grep | cut -c 9-15
