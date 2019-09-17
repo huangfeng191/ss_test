@@ -138,3 +138,21 @@ eligibility
         "fields": ["cal_date"]
     }
 }
+
+
+将结果写入 
+
+
+<!-- 分析 -->
+规则类型为 count 时 ：
+
+params:{
+
+}
+
+out :{
+
+}
+
+
+
