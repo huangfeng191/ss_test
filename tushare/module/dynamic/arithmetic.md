@@ -112,3 +112,15 @@ rule
 
 
 
+    "out": {
+        "type": "table",
+        "table": {
+            "nm": "daily_business",
+            "key": {
+             "sn":1,
+             "outFrequency":1   
+            }
+        }
+    }
+
+
