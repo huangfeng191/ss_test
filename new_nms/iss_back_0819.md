@@ -158,3 +158,14 @@ curl 'http://localhost:60/nms/spring/role?token=3D63062A6E3C7E2E2F87D6BC52EC6620
 
 日志 ： 
     网管、安全、系统日志： 导入打印导出
+
+
+
+3个链路图的联动    
+
+
+
+板卡统计
+
+
+
