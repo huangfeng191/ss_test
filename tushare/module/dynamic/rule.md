@@ -140,7 +140,6 @@ eligibility
 }
 
 
-<<<<<<< Updated upstream
 将结果写入 
 
 
@@ -157,7 +156,6 @@ out :{
 
 
 
-=======
 
 
 normal situation:
@@ -177,4 +175,3 @@ loop
 2  符合条件数据
 3  >        
  
->>>>>>> Stashed changes
