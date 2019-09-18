@@ -175,3 +175,81 @@ loop
 2  符合条件数据
 3  >        
  
+TODO:
+0 对于编码，需要有一套规则  ， 规则类型 - up/down limit - self   是否需要添加 public or private 
+1 对于规则，考虑添加一类日志规则，对产生的数据做一些必要的逻辑验证  
+2 可以考虑将步骤码存下来，为了后续的可以追述数据, 就是钻取数据的规则， 可以用规则的 source , queries ,+ showColumn do 
+
+
+// 对于 统计接口，考虑
+
+ query={}
+  l = storageskc.db.aggregate(
+                     [
+                     {'$match':query},
+                     {'$group':{"_id":'$tpid' , "a":{"$addToSet":'$stid'} }
+                         },
+                         { '$limit' : 10 }
+                     ]
+                     )
+   for r in list(l):
+       print 1
+       
+<!-- aggregate -->
+
+{
+    "source": {
+        "table": "trade_cal"
+    },
+
+    "logQueries":{[^1]  // TODO: 暂未实现
+          "sn":1,
+          "outFrequency":1   
+    }  
+    "queries": {
+        "cal_date": {
+            "type": "date",
+            "value": "day",
+            "operate": "lte"
+        },
+        "is_open":1
+    },
+
+    aggregate:[
+
+    "$group":{ 
+            "_id":{ "ts_code":1 },
+            "count":{"$sum":1}
+    },
+    "$match":{
+        "count":{"gt":3}
+     }     
+    ],
+
+    
+
+
+  "out": {
+        "type": "table",
+        "table": {
+            "nm": "dynamic_basic_business",
+            "key": {
+             "sn":1,
+             "outFrequency":1   
+            },
+            "dataKey":{
+                "ts_code":1
+            }
+        }
+    }
+
+} 
+
+
+
+1 last 7
+2 up 
+3 up gte 3
+4 show detail 
+
+上一级就是为了复用用的
