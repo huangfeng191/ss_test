@@ -140,6 +140,7 @@ eligibility
 }
 
 
+<<<<<<< Updated upstream
 将结果写入 
 
 
@@ -156,3 +157,24 @@ out :{
 
 
 
+=======
+
+
+normal situation:
+
+
+loop
+
+    oneQueries 
+
+    out
+
+同一个规则    
+        
+
+
+1  日期
+2  符合条件数据
+3  >        
+ 
+>>>>>>> Stashed changes
