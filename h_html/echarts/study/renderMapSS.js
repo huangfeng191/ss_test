@@ -2,16 +2,17 @@
 
 remarks.linesAndPointMap2 = {
     "desc": "简单的地图1",
-    "default": true
+    // "default": true
 }
 remarks.normalMap={
     "desc": "简单的地图1",
-    "default": true
+    // "default": true
 
 }
 remarks.selectedProvinceMap={
-    "desc": "简单的地图1",
-    "default": true
+    "desc": "选择省地图1",
+    // "default": true,
+    "province":"zhejiang"
 
 }
 
@@ -105,7 +106,7 @@ var linesAndPointMap2Self_others = {
 
 
 var linesAndPointMap2Self = {
-    // _click: function(params) {
+  
     _georoam: function(params) {
         // return ;
         // debugger
@@ -300,7 +301,10 @@ var optionNormalMap = {
 
 
 var optionSelectedProvinceMap = {
+    _click: function(params) {
+        debugger
 
+    },
     tooltip: {
         trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
         formatter: function(params) {

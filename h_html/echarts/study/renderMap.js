@@ -19,7 +19,7 @@ var remarks = {
     },
     "linesMapMulti": {
         "desc": "含多个线段",
-        // "default": true
+        "default": true
     },
     "pointShow": {
         "desc": "点的显示",
@@ -30,13 +30,13 @@ var remarks = {
         // "default": true
     },
 
-    "graphicDrow": {
+    "graphicDraw": {
         "desc": "点拖动",
-        // "default": true
+        "default": true
     },
 
 
-    "graphicDrowCustomPoint": {
+    "graphicDrawCustomPoint": {
         "desc": "点拖动点用custom 标识",
         // "default": true
     },
@@ -419,17 +419,18 @@ var LinesMapMultiSelf = {
             name: "北京" + ' Top10',
             type: 'lines',
             zlevel: 2,
+            // polyline:true,
             // symbol: ['none', 'arrow'],
             // polyline:true,
             symbol: 'arrow', // 起止点图标
             symbolSize: 10,
-            effect: { //  线特效的配置
-                // show: true,
-                // period: 6,
-                // trailLength: 0,
-                // symbol: LinesMapMultiSelf_others.planePath,
-                // symbolSize: 15
-            },
+            // effect: { //  线特效的配置
+            //     show: true,
+            //     // period: 6,
+            //     trailLength: 0,
+            //     symbol:"arrow",
+            //     symbolSize: 15
+            // },
             lineStyle: {
                 // normal: {
                 //     color: '#a6c84c',
@@ -789,7 +790,7 @@ var optionPointShowHide = $.extend({}, optionSampleMap, PointShowHideSelf)
 
 
 
-var graphicDrow_others = {
+var graphicDraw_others = {
 
     convertData: function(data) {
         var res = [];
@@ -822,7 +823,7 @@ var graphicDrow_others = {
 
 
 
-var graphicDrow = {
+var graphicDraw = {
     _click: function(params) {
         
     },
@@ -882,7 +883,7 @@ var graphicDrow = {
         type: 'scatter',
         coordinateSystem: 'geo',
         zlevel: 4,
-        data: graphicDrow_others.BJData.map(function(dataItem) {
+        data: graphicDraw_others.BJData.map(function(dataItem) {
             return {
                 name: dataItem.name,
                 value: geoCoordMap[dataItem.name].concat([dataItem.value]),
@@ -911,7 +912,7 @@ var graphicDrow = {
 
 }
 
-var optionGraphicDrow = $.extend({}, optionSampleMap, graphicDrow)
+var optionGraphicDraw = $.extend({}, optionSampleMap, graphicDraw)
 
 //↑↑↑↑↑↑↑***************  处理完成
 
@@ -921,7 +922,7 @@ var optionGraphicDrow = $.extend({}, optionSampleMap, graphicDrow)
 
 
 
-var graphicDrowCustomPoint_others = {
+var graphicDrawCustomPoint_others = {
 
     convertData: function(data) {
         var res = [];
@@ -954,7 +955,7 @@ var graphicDrowCustomPoint_others = {
 
 
 
-var graphicDrowCustomPoint = {
+var graphicDrawCustomPoint = {
     _click: function(params) {
         
     },
@@ -1122,6 +1123,6 @@ var graphicDrowCustomPoint = {
 
 }
 
-var optionGraphicDrowCustomPoint = $.extend({}, optionSampleMap, graphicDrowCustomPoint)
-// optionGraphicDrowCustomPoint.series.splice(0,0,...optionSampleMap.series);
+var optionGraphicDrawCustomPoint = $.extend({}, optionSampleMap, graphicDrawCustomPoint)
+// optionGraphicDrawCustomPoint.series.splice(0,0,...optionSampleMap.series);
 //↑↑↑↑↑↑↑***************  处理完成
