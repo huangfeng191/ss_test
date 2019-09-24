@@ -1,37 +1,23 @@
 {
     "source": {
-        "table": "dynamic_daily_business"
+        "table": "daily"
     },
-    "queries": {
-        "outFrequency": {
-            "type": "date",
-            "value": "day",
-            "operate": "eq"
-        },
-        "sn": "eligibilityUpLoop"
+    "limits": {
+       
     },
-
-    "aggregate": [{
-            "$group": {
-                "_id": { "ts_code": 1 },
-                "count": { "$sum": 1 }
-            }
+    "sorts": {
+        "order": [{"Field": "trade_date", "Type": true}]
+    },
+   
+    "queries": { 
+        "trade_date": {
+            "type": "log",
+            "sn" :"last7",
+            "operate": "in",
+            "field":"cal_date"
         },
-        {
-            "$match": {
-                "count": { "gt": 3 }
-            }
-        }
-    ],
-    "out": {
-        "type": "table",
-        "table": {
-            "nm": "dynamic_basic_business",
-            "key": {
-                "sn": 1,
-                "outFrequency": 1
-            }
-        }
+        "ts_code":{"type":"loop","from":"stock_basic","from_k":"ts_code"},
+        "change":{"$gte":0}
     }
 
 }
