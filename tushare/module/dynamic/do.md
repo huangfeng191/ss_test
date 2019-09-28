@@ -18,3 +18,10 @@ tips:
 3 link 添加一个字段 取数规则， last  or first 
 3 对于link 来说，可以将 cell 按复用性归类 doing 
 4  step  环节的完成情况  横向比较结果， 一条记录一个结果 doing 
+
+
+2019-9-29
+1 copy to other link   ToCopy
+2 实现一种类型 from link ,就是说 将 link 的 out 当作源进行处理
+3 编码的 规则
+
