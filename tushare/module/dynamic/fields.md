@@ -108,3 +108,14 @@ linkType String c linkType
 
 
 
+step:
+    步骤名称 nm 
+    编码  sn 
+    规则集 links 
+    是否必须 require String c require
+    描述 desc
+    排序 w
+    规则连接方式 connect
+    频率 frequency
+    生成策略 outGenerate
+
