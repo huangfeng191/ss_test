@@ -131,8 +131,7 @@ continue
 
 one Method to :getOutData
 
-getStepResult;
-
+getStepResult; 如果没数据，需要生成
 
 link 已经是符合某种条件的数据，
 
@@ -149,14 +148,74 @@ relativeType:LinkSn
 if noData generate
 
 
+lastStep : 只是将数据转换成数据来源字段 source ，后续还是要按规则配置
+
 
 
 cell Link 分开 ，一般来说 只要用到 lastStep 跟 LinkSn 就可以， 
 
+cell 能获取 link 信息 
 
+source:{
+    "type":"link",
+    "type":"table"
+}
 
 step  Link 单个简单规则
 
 
 step 1 获取7天内数据（名字， 核心是对 link 的处理 ）    link 获取有效数据规则可扩展
 step 2 大于三天 
+
+
+
+
+link   1
+        from sm 
+
+
+PXX_
+
+MXX_
+
+SXX_
+
+LXX_
+   NameCode-Level-
+CXX_  
+
+code rule:
+
+c:
+    Level:
+        N:Normal
+        C:Common
+        I:Important
+
+    Get:
+        Lst:last
+        Agg:aggregate
+
+    OutType:
+        Tab:Table
+        Log:Log
+        DAT:Data
+
+    Frequency:
+        D:day
+        M:month
+        W:week
+        E:every 
+
+
+    NameCode-Level-OutType-Frequency
+
+
+    N_XX-L_XX-O_XX-F_DXX
+
+    
+
+
+
+
+

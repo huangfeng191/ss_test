@@ -29,3 +29,8 @@ tips:
 2019-09-30
 
 1 from link
+2  with regard to : Frequency can extend 
+3 dataGrid edit:    
+    relativeType , 
+    generateW
+
