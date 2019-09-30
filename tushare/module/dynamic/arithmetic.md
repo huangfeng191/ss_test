@@ -124,3 +124,39 @@ rule
     }
 
 
+
+getLast
+
+continue
+
+one Method to :getOutData
+
+getStepResult;
+
+
+link 已经是符合某种条件的数据，
+
+对link 数据提供一个同级调用的功能, 
+
+
+
+
+
+relativeType:lastStep  default
+relativeType:LinkSn
+
+
+if noData generate
+
+
+
+
+cell Link 分开 ，一般来说 只要用到 lastStep 跟 LinkSn 就可以， 
+
+
+
+step  Link 单个简单规则
+
+
+step 1 获取7天内数据（名字， 核心是对 link 的处理 ）    link 获取有效数据规则可扩展
+step 2 大于三天 
