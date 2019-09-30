@@ -1,6 +1,6 @@
 remarks.test = {
     "desc": "简单的地图",
-    "default": true
+    // "default": true
 }
 
 var optionTest = {

@@ -1,28 +1,13 @@
-var a={
-    "source": {
-        "table": "dynamic_daily_business"
-    },
-    "queries": {
-        "outFrequency": {
-            "type": "date",
-            "value": "day",
-            "operate": "eq"
-        },
-        "sn": "eligibilityUpLoop"
-    },
-
-    "aggregate": [{
-            "group": {
-                "_id": {"ts_code":"$ts_code"},
-                "count": { "$sum": 1 }
-            }
-        },
-        {
-            "match": {
-                "count": { "$gte": 3 }
-            }
-        }
-    ],
-
-
-}
+{
+    "type": "table",
+    "table": {
+      "nm": "dynamic_daily_business",
+      "logKey": {
+        "sn": 1,
+        "outFrequency": 1
+      },
+      "dataKey": {
+        "ts_code": 1
+      }
+    }
+  }

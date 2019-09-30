@@ -1,8 +1,9 @@
 @host = 127.0.0.1:60
-@token=1D5A8F977C6A3E619E2E8CA53C7B07A4
-@deviceId=5c821482-f641-4b0a-9ee6-8c929c2d8d04
+@token=C2DD2D195757AB12D2D446D432D4EC05
+@deviceId=cb94b527-ad6b-48f2-bb33-3ad137a909f5
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
-
+# @deviceIp=192.168.1.33
+@deviceIp=1.1.1.21
 
 ### 获取菜单信息
 
@@ -424,6 +425,19 @@ Content-Type: application/json;charset=UTF-8
 
 ### 
 GET /nms/spring/keepalived/sitepage?page=1?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+### 
+GET /nms/spring/device/getPathByDeviceId?deviceId={{deviceId}}&token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+### 
+GET /nms/spring/viewData/getViewDataByIp?ip={{deviceIp}}&token={{token}}
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}

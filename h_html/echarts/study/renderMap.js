@@ -38,7 +38,7 @@ var remarks = {
 
     "graphicDrawCustomPoint": {
         "desc": "点拖动点用custom 标识",
-        // "default": true
+        "default": true
     },
 
 
@@ -1094,22 +1094,37 @@ var graphicDrawCustomPoint = {
                 var style = api.style();
 // custom 坐标轴的 position 很重要;
                 return {
-                    roam:api.value(2),
-                    type: 'path',
-                    position:position,
-                    shape: {
-                        d: 'M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52',
-                        x: -5,
-                        y: -5,
-                        width: size,
-                        height: size,
-                        layout: 'cover'
-                    },
-                    style: {
-                        stroke: style.stroke,
-                        strokeWidth: style.lineWidth,
-                        fill: style.fill
-                    }
+                    "type":"group",
+                    "children":[
+                        {
+                            roam:api.value(2),
+                            type: 'path',
+                            position:position,
+                            shape: {
+                                d: 'M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52',
+                                x: -5,
+                                y: -5,
+                                width: size,
+                                height: size,
+                                layout: 'cover'
+                            },
+                            style: {
+                                stroke: style.stroke,
+                                strokeWidth: style.lineWidth,
+                                fill: "orange"
+                            }
+                        },
+                        {
+                            "type":"text",
+                            "name":"1212",
+                            position:position,
+                            "style":{
+                                x: -10,
+                                y: 10,
+                                "text":"1212"
+                            }
+                        }
+                    ]
                 }
             },
              zlevel: 99,

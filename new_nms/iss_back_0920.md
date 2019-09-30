@@ -38,12 +38,13 @@ nms/spring/viewData/getAllVOPath
 
 
 
-链路状态变化的推送
+
 
 
 
 地图是显示站点名 还是 设备名
 
+链路状态变化的推送
 
 
 frontend :
