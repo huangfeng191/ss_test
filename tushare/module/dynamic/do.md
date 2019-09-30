@@ -34,3 +34,4 @@ tips:
     relativeType , 
     generateW
 
+4 step  dbClick -> selectedlink  generate 
