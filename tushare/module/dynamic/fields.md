@@ -11,17 +11,6 @@
 
 # cell
 
-数据表名 table_nm 
-数据字段 table_field
-生成输出 out_generate String a //获取输出字段的值  {"keyType":"field","value":""}   key 是字段  value 是 输出的值
-输出字段 out_field // 空情况下=table_field 
-规则 rule  // 用于与其他cell 关联 {"left":"","right":"","operate":""}
-cell分组 group   //为空时独立
-cell类型 type String  c CellType   // cell 的分类,目前只支持record 值类型: record (default )  , param , fixed  
-规则编码 sn
-排序 w
-描述 desc 
-交易所 exchange String  c exchange
 
 
 <!-- last 规则 -->
@@ -43,6 +32,7 @@ cell类型 type String  c CellType   // cell 的分类,目前只支持record 值
 规则名称  name
 规则编码 sn
 规则类型 ruleType String c ruleType
+输入类型  inType  String c inType 
 生成规则 rule String a 
 复用参数 reuseParams 
 生成策略 outGenerate String  c outGenerate
@@ -118,4 +108,5 @@ step:
     规则连接方式 connect
     频率 frequency
     生成策略 outGenerate
+    生成顺序  generateW
 
