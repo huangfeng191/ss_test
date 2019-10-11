@@ -137,10 +137,11 @@ print [1,2,3][1:2]
 # 数组简写
 print [0]*16
 
-# sort
+# sort 
 
 a=[{"w":None},{"w":1},{"w":3},{"w":2},{"w":None},{"w":None}]
 a.sort(key=lambda x:x.get("w") if x.get("w") else 999)
+print u"positive sequence" # 正序
 print a
 
 #  sorted
@@ -191,3 +192,6 @@ print c[1:-1].replace("\"","'")
 a=[1,2,3]
 b=[3,4,5]
 print a+b
+
+
+

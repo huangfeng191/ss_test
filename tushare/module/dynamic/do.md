@@ -22,7 +22,7 @@ tips:
 
 2019-9-29
 1 copy to other link   ToCopy
-2 实现一种类型 from link ,就是说 将 link 的 out 当作源进行处理
+2 实现一种类型 from link ,就是说 将 link 的 out 当作源进行处理   (** need to do )
 3 编码的 规则
 
 
@@ -34,3 +34,24 @@ tips:
     relativeType , 
     generateW
 
+4 step  dbClick -> selectedlink  generate 
+
+2019-10-1
+5 对于不同频率的数据 如何混合调用，
+    也就是说 link 在生成数据的时候也需要报错，当前link的日志状态，每个cell 需要有单独的日志
+    需要在cell 日志里记录 linkSn linkOutFrequency
+
+
+2019-10-02
+
+1 update mongoDb version try to solute the problem about   arrey query : $elemMatch  return only one row 
+
+
+2019-10-03
+0 对于记录日志时间的wrap 需要记录类型字段 OK
+1 对于 outFrequency 的 extend  need to consider
+2 对于日志中的 out 需要重新组织，方便查找数据：
+    基本字段  phasedOut {"type":"table",
+                         "table":""
+                        "logKey":{},
+                        "dataKey":{}}
