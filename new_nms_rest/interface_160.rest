@@ -1,6 +1,6 @@
-@host = 127.0.0.1:60
-@token=10D75325381DD75E0352F090F6BDE8EA
-@deviceId=cb94b527-ad6b-48f2-bb33-3ad137a909f5
+@host = 127.0.0.1:62
+@token=Vg0moEfVgiCfTzC28GQlGtzP
+@deviceId=f9179ccb-7828-4020-9ba9-0c47bb4ed8c8
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 # @deviceIp=192.168.1.33
 @deviceIp=1.1.1.21
@@ -443,12 +443,10 @@ Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 
-
 ### 
-POST /nms/spring/performances/search?token={{token}}&deviceId={{deviceIp}}&type=MTIE&port=IRIG-1&endTime=1570761890
+POST /nms/spring/performances/search?token={{token}}&deviceId={{deviceIp}}&type=MTIE&port=IRIG-1&endTime=1570761890111
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
 
 {}
-

@@ -16,7 +16,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | Ctrl+\    | split the active editor to two              |**        |
 | Ctrl+k +o    | show active file in new window             |**        |
 | Ctrl+e==ctrl+p    | action.quickOpen             |**        |
-| Ctrl+shift+\    | 括号跳转             |**        |
+| Ctrl+shift+\    | 括号跳转             |***        |
 | Ctrl+k +p    |copy path of active file            |**        |
 | Ctrl+u    |undo last cursor operator            |*        |
 | Ctrl+Shift+PgUp    |PgDn Move editor left/right            |*        |
