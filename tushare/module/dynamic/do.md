@@ -51,7 +51,7 @@ tips:
 0 对于记录日志时间的wrap 需要记录类型字段 OK
 1 对于 outFrequency 的 extend  need to consider
 2 对于日志中的 out 需要重新组织，方便查找数据：
-    基本字段  phasedOut {"type":"table",
+    基本字段  phasedOut {"type":"table",  (*defer )
                          "table":""
                         "logKey":{},
                         "dataKey":{}}
