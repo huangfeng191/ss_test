@@ -1,10 +1,10 @@
-
-#!/usr/bin/python
-#-coding: UTF-8-
+# -*- coding: UTF-8 -*-
 import sys
-import os 
-
+import os, site
+site.addsitedir(os.path.join(os.getcwd(), 'p_py', 'lib'))
+import PlatLib  # 添加平台环境变量
+import pandas as pd
 if __name__ == "__main__":
-   print "执行的文件名,也算在参数中"
-#    
-   print sys.argv
+   print "执行的文件名,也算在参数中" 
+   df = pd.DataFrame([1, 2, 3, 4, 5], columns=['cols'], index=['a','b','c','d','e'])
+   print df
