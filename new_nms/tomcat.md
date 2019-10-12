@@ -37,4 +37,4 @@ nohup sg-aps-start.sh > aps.log 2>&1 &
 
 
 
-kill -9 `ps -ef| grep catalina | grep -v grep | cut -c 9-15
+kill -9 `ps -ef| grep catalina | grep -v grep | cut -c 9-15`

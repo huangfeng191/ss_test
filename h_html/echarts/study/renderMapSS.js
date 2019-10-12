@@ -17,6 +17,10 @@ remarks.selectedProvinceMap={
 }
 
 
+remarks.customPointHover = {
+    "desc": "custom hover",
+    "default": true
+}
 
 
 //↑↑↑↑↑↑↑***************  处理完成
@@ -376,3 +380,113 @@ var optionSelectedProvinceMap = {
         }
     }]
 }
+
+
+var optionCustomPointHover = {
+    _click: function(params) {
+        alert("i`m click")  ;
+      },
+    _mouseover:function(params){
+        if(params.componentType!="geo"){
+            // debugger
+            // 此处可以对数据进行处理
+      }
+    },
+
+    tooltip:null,
+
+    geo: {
+        "scaleLimit": { // 缩放
+            "min": 1,
+            "max": 3
+        },
+        "roam": true, // 是否开启鼠标缩放及平移
+        // "zoom": 1,
+        "zlevel":1,
+        map: 'china',
+        label: {
+            show:true,  // 是否显示区域
+            fontSize:16,
+            emphasis: {
+                show: false
+            },
+        },
+        itemStyle: {
+            normal: {
+                "areaColor": '#323c48',
+                "borderColor": 'yellow',
+                "borderWidth": 1,
+                "borderType": "solid"
+            },
+            emphasis: {
+                areaColor: 'yellow', // 高亮区域
+                itemStyle: {
+                    opacity: 1
+                }
+
+            }
+        },
+
+    },
+    series: [   {
+        id: 'points',
+        name: 'points',
+        type: 'custom',
+        coordinateSystem: 'geo',
+        itemStyle: {
+            borderColor: '#BEBEBE',
+            borderWidth: 1,
+        },
+        renderItem:function (params, api) {
+            var position=api.coord([api.value(0),api.value(1)]);
+            var size=10;
+            var style = api.style();
+// custom 坐标轴的 position 很重要;
+            return {
+                "type":"group",
+                "children":[
+                    {
+                        roam:api.value(2),
+                        type: 'path',
+                        position:position,
+                        shape: {
+                            d: 'M27 52 A 25 25 0 1 1 27 2 A 25 25 0 1 1 27 52',
+                            x: -5,
+                            y: -5,
+                            width: size,
+                            height: size,
+                            layout: 'cover'
+                        },
+                        style: {
+                            stroke: style.stroke,
+                            strokeWidth: style.lineWidth,
+                            fill: "orange"
+                        }
+                    },
+                    {
+                        "type":"text",
+                        "name":"1212",
+                        position:position,
+                        "style":{
+                            x: -10,
+                            y: 10,
+                            "text":"1212"
+                        }
+                    }
+                ]
+            }
+        },
+         zlevel: 99,
+        data:[
+            {
+              "name": "海门",
+              "value": [
+                121.15,
+                31.89,
+                9
+              ]
+            }
+          ]
+    }]
+}
+
