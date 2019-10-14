@@ -38,3 +38,21 @@ ps:
 
     对于数据规则：还没生成过数据的话需要提前生成,
     按cell 一步步生成
+
+
+
+
+
+
+
+
+对于cell 来说:  
+    inType 输入类型
+    rule 生成规则
+    outType 输出类型
+    frequency 频率
+    outGenerate 生成策略
+    out 输出规则
+
+方法： 解析输入
+      输出
