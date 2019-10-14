@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+function webSocketFun() {
+    // websocket = new WebSocket('ws://' + "192.168.1.160" + ':8081/socket');
+    websocket = new WebSocket('ws://' + "127.0.0.1" + ':60/socket');
+    // websocket = new WebSocket('ws://' + "192.168.92.177" + ':8081/socket');
+
+    
+
+    websocket.onopen = function(evt) {
+      console.log("is open");
+    };
+
+    websocket.onclose = function(evt) {
+        console.log("is close");
+    };
+    websocket.onmessage = function(evt, num) {
+        console.log("is message");
+      //     $scope.$apply();
+    };
+    websocket.onerror = function(evt) {
+        console.log("is error");
+    };
+  }
+  webSocketFun();
+</script>
+
+</html>
