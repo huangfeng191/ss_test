@@ -33,6 +33,7 @@
 规则编码 sn
 规则类型 ruleType String c ruleType
 输入类型  inType  String c inType 
+输入编码  inTypeSn  String 
 生成规则 rule String a 
 复用参数 reuseParams 
 生成策略 outGenerate String  c outGenerate

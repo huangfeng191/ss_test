@@ -12,6 +12,8 @@ ps:
                     cell:
                         1 最近7个交易日  unique :key:outSequency sn 
                         2 daily明细    (from_sn unique ) key:outSequency sn + soleSn : "cell/link --future: /step/measure" 
+                        1 最近7天 
+                        2 明细
                 link:up>3
                     cell:
                         1 type:link
@@ -58,6 +60,7 @@ ps:
       输出
 
 
+<<<<<<< Updated upstream
 编码规则：
     C_
         C/L/S/M_
@@ -70,3 +73,13 @@ ps:
 数据类型+ unique/ L / S /M 
 
 返璞归真： 不管是何种类型，要查询数据都是到 cell 层级, 编码也代表其数据的来源
+=======
+
+C_
+L_
+S_
+M_
+
+对于link 来说已经有一定意义了 所以暂时需要在编码上区分出详细信息，不添加outTypeSn ,返回的数据也暂时不需要
+
+>>>>>>> Stashed changes
