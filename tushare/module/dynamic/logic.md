@@ -10,12 +10,12 @@ ps:
             step1 up>3 
                 link:最近七天明细
                     cell:
-                        1 最近7天
-                        2 明细
+                        1 最近7个交易日  unique :key:outSequency sn 
+                        2 daily明细    (from_sn unique ) key:outSequency sn + soleSn : "cell/link --future: /step/measure" 
                 link:up>3
                     cell:
                         1 type:link
-                        2 up>3
+                        2 up>3 
             step2 up>10pct
                 link:最近七天明细
                     cell:
@@ -24,7 +24,7 @@ ps:
                 link:up>10pct
                     cell:
                         1 type:link
-                        2 up>3
+                        2 up>10%
             step3 industry
 
         
@@ -56,3 +56,17 @@ ps:
 
 方法： 解析输入
       输出
+
+
+编码规则：
+    C_
+        C/L/S/M_
+    L_
+
+    S_
+
+    M_
+
+数据类型+ unique/ L / S /M 
+
+返璞归真： 不管是何种类型，要查询数据都是到 cell 层级, 编码也代表其数据的来源
