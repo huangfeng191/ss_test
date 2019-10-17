@@ -89,7 +89,7 @@ target:{
 比较方式  横向比较：resolved
          纵向比较
 
-        可以用pandas的比较算法
+        
 
 
 
