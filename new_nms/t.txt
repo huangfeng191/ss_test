@@ -2,3 +2,6 @@
 /nms/spring/device/statisticConfigInfo
 未去掉SN2000GN 设备
 板卡统计接口
+
+
+177这台电脑上  /nms/spring/device/page 接口返回信息 缺少 area 对象,导致左侧设备树无法正常显示
