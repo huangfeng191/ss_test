@@ -1,6 +1,7 @@
 
 # rule  ruleType 
-    ruleType determining rule 
+    ruleType determining rule method
+
 
 # inType
     对于输入类型：two ways
@@ -14,4 +15,3 @@
 
 
 
- 

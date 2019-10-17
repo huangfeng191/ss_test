@@ -12,7 +12,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | shortcut       | view                     | rating |type|
 | -------------- | ------------------------ | ------ |----|
  
-
+| shift+delete    | markdown 中删除字符              |**        |
 | Ctrl+\    | split the active editor to two              |**        |
 | Ctrl+k +o    | show active file in new window             |**        |
 | Ctrl+e==ctrl+p    | action.quickOpen             |**        |
