@@ -1,1 +1,28 @@
-p
+{
+    "path": {
+        "aNe": "192.168.5.133",
+        "zNe": "192.168.1.33",
+        "pathName": "",
+        "pathType": "2",
+        "remark": "五七二二",
+        "isBackup": "false",
+        "id": "554976c3-dc04-4164-ac34-0bfa9008e30e"
+    },
+    "pathLinkIdList": [{
+        "aNode": "192.168.5.133",
+        "zNode": "192.168.1.33",
+        "aSlot": "qwe",
+        "zSlot": "Slot1-1",
+        
+        "remark": "五七二二",
+        "linkName": 0,
+        
+
+        "aPort": "89.09,30.71",
+        "zPort": "105.98,31.32",
+        
+        "linkStatus": 0,
+        "linkType": 2,
+        "id": "0ed452de-3917-41f2-a574-3ba0f7260698"
+    }]
+}

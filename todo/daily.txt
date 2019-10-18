@@ -73,3 +73,7 @@ startup failed due to previous errors
 
 
 1系统参数：添加字段2定期修改密码及提醒功能3休眠账户提醒及解除休眠4配置信息模块统计bug修改
+
+
+
+1、配置信息模块统计bug修改2、接收机功能完善3、post SM3加密 

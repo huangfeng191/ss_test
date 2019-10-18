@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="out1">
+        <div id="in1">
+            sd
+        </div>
+
+    </div>
+
+
+    <div id="out2">
+        <div id="in2">
+            sd
+        </div>
+
+    </div>
+  
+
+
+    <style>
+        #out1{
+            width:1000px;
+            background-color: yellow;
+        }
+        #in1{
+            width:calc(100% - 10px);
+            background-color: blue ;
+        }
+
+        #out2{
+            /* 如果外部指定宽度，那么内部的calc 最大宽度不会超过这个宽度 */
+            width:1000px;
+            background-color: yellow;
+        }
+        #in2{
+            /* width 如果 指定内部，外部元素会被撑开 */
+            width:calc(100% - 100px);
+            background-color: blue ;
+        }
+    
+    </style>
+</body>
+</html>
