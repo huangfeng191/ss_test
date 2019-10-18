@@ -1,3 +1,10 @@
+# 设计原理
+    1. in
+    2. rule
+    3. out
+
+
+
 # object meaning 
     1. cell 数据的来源： from  out sn
     2. link 有效的cell数据: 
@@ -25,13 +32,14 @@
     4. [ ] loop
     5. [ ] detail
     6. [x] aggregate :getAggregateResult
+    7. [ ] pandas: 
 3. 复用参数:reuseParams 
    > realize:reuse.bindReuse
    1. date  
    >  {"date":{}} 默认今天  
    > 可以取配置的时间 
    >usage: rule :query.field:{"type":"date","value": "day", "operate": "lte" }  
-   2. other type
+   1. other type
 4. 生成规则 rule 
    1. queries :{field:{type,value,operate}}
        1. type
@@ -45,16 +53,20 @@
           - [ ] logOut: field:{type, sn ,field, `inType`,`query`  } 
           > 获取输出
         
-    2. source :{}
+    1. source :{}
           - [ ] table 
           - [ ] lastStep
           > 上一步的输出，变为结果的源
-    3. limits
+    2. limits
         1. { "size": 7 }
-    4. sorts:
-        1. "order": [{"Field": "trade_date", "Type": true}]      
-
-
+    3. sorts:
+        1. "order": [{"Field": "trade_date", "Type": true}]    
+    4. aggregate: 主要解决单表问题
+        1. [] 正常的聚合语法       
+    5. [ ] pandas :
+        1. 解析pandas 代码段 可以变成数组考虑变成数组命令
+        > 第一步需要将数据获取回来 
+        
 # sn coding rule
 
 
