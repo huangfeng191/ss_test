@@ -46,3 +46,8 @@ TODO:
 
         logOut: field:{type, sn ,field, `inType`,`query`  }
         
+rule type="log"       
+1. 解析 inTypeSn  
+2. 日志查询中应用inType 字段
+
+对于   inType 需要      

@@ -12,3 +12,5 @@ kawaii:
     宇佐木あいか new
 
     Usaki Aika
+
+    Fuyue Kotone

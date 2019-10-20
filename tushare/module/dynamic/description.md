@@ -23,6 +23,7 @@
    >tips:
      根据输入类型,生成输入编码
      >> 当cell 编码一样时，规则实际有差异的时候，值取自对于类型的编码
+
 2. 规则类型: ruleType 
     > relative fields:[rule,reuseParams]  
     >  determining rule method
@@ -35,15 +36,15 @@
     7. [ ] pandas: 
 3. 复用参数:reuseParams 
    > realize:reuse.bindReuse
-   1. date  
+   1. [x] date  
    >  {"date":{}} 默认今天  
    > 可以取配置的时间 
    >usage: rule :query.field:{"type":"date","value": "day", "operate": "lte" }  
-   1. other type
+   2. [ ]  other type
 4. 生成规则 rule 
    1. queries :{field:{type,value,operate}}
        1. type
-          - [ ] date : field:{type,`value`,operate}  // 考虑将value 改为field
+          - [x] date : field:{type,`value`,operate}  // 考虑将value 改为field
           > date resource: reuseParams
           - [ ] log  : field:{type, operate, field,sn , `inType` } // 扩展cell 取数据的能力
           > 取的时 log 中的data.field 数据 
@@ -66,7 +67,12 @@
     5. [ ] pandas :
         1. 解析pandas 代码段 可以变成数组考虑变成数组命令
         > 第一步需要将数据获取回来 
-        
+5. [ ] sn 编码规则
+    C_频率_输出表_意义  cell
+    L_  link
+    S_  step
+    M_  measure
+
 # sn coding rule
 
 
