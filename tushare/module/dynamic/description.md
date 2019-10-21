@@ -44,11 +44,11 @@
 4. 生成规则 rule 
    1. queries :{field:{type,value,operate}}
        1. type
-          - [x] date : field:{type,`value`,operate}  // 考虑将value 改为field
+          - [x] date : field:{type,field,operate} 
           > date resource: reuseParams
-          - [ ] log  : field:{type, operate, field,sn , `inType` } // 扩展cell 取数据的能力
+          - [x] log  : field:{type, operate, field,sn , `inTypeSn` } // 扩展cell 取数据的能力
           > 取的时 log 中的data.field 数据 
-          - [ ] loop : field:{type, from, from_k,from_q}   // 考虑将from 改为 object {"table","field","query":"" }
+          - [ ] loop : field:{type,field, from, from_k,from_q}   // 考虑将from 改为 object {"table","field","query":"" }
           > loop 用于 循环取数据，现在只支持 表取数  from 从那个表  from 表里的那个字段  
           > 一个规则最多一个loop 循环调用 规则
           - [ ] logOut: field:{type, sn ,field, `inType`,`query`  } 

@@ -111,3 +111,6 @@ TODO:
 
 # 2019-10-21
  1. 对于日志，可以钻取日志，或者明细信息 
+
+# 2019-10-22
+ 1. with regard to cellType isn`t cell , need to generate in loop
