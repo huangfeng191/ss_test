@@ -26,7 +26,7 @@
 
 2. 规则类型: ruleType 
     > relative fields:[rule,reuseParams]  
-    >  determining rule method
+    >  ==determining rule method==
     1. [x] last : getLastResult
     2. [ ] count
     3. [ ] total
@@ -42,13 +42,14 @@
    >usage: rule :query.field:{"type":"date","value": "day", "operate": "lte" }  
    2. [ ]  other type
 4. 生成规则 rule 
-   1. queries :{field:{type,value,operate}}
+    1. queries :{field:{type,value,operate}}
        1. type
           - [x] date : field:{type,field,operate} 
           > date resource: reuseParams
           - [x] log  : field:{type, operate, field,sn , `inTypeSn` } // 扩展cell 取数据的能力
           > 取的时 log 中的data.field 数据 
-          - [ ] loop : field:{type,field, from, from_k,from_q}   // 考虑将from 改为 object {"table","field","query":"" }
+          - [x] loop : field:{type,field, from:{ "table","field","query",sorts }}  // from.type 目前来说不需要
+          > field is used to solve  deferent field in two tables
           > loop 用于 循环取数据，现在只支持 表取数  from 从那个表  from 表里的那个字段  
           > 一个规则最多一个loop 循环调用 规则
           - [ ] logOut: field:{type, sn ,field, `inType`,`query`  } 
@@ -67,7 +68,33 @@
     5. [ ] pandas :
         1. 解析pandas 代码段 可以变成数组考虑变成数组命令
         > 第一步需要将数据获取回来 
-5. [ ] sn 编码规则
+        > 可以有多个数据来源并且处理
+6. 输出类型 outType
+   1. [ ] table
+        1. table // ps. "table": "dynamic_daily_business",
+        2. logKey  // ps. { "sn":1, "outFrequency":1 }
+        3. dataKey // ps. { "ts_code":1 }
+        > logKey+dataKey 找到已生成的数据的key历史数据，可以删除 或者 获取
+   2. [ ]  log
+        1. "field": "cal_date" // outData.cal_date
+         {table,recordKey,field,fieldKey,fields}
+         > table 取的就是 logSource 
+         可以转变成多输出字段:
+         {"field":{
+             "type":"field" ,// field object  fields
+             "field": "cal_date",
+             "fields":[field1,field2] 
+             "object":{   
+                 "key":{field:""}
+             }// 当 key 与 from_key 一致的时候 ，可以 简写为 [field1,field2...]
+         }}
+        >object 可以理解为 获取最大、最小？
+   
+7. 输出规则 out 
+   1. type 
+   2. 
+   
+8. [ ] sn 编码规则
     C_频率_输出表_意义  cell
     L_  link
     S_  step

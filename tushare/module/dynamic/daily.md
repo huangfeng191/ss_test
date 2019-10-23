@@ -114,3 +114,28 @@ TODO:
 
 # 2019-10-22
  1. with regard to cellType isn`t cell , need to generate in loop
+
+
+# 2019-10-23
+ with regard to generate need to create a module to loop generate data 
+
+
+# 2019-10-24
+1. 将计算的 频率 编码 输出编码 防止到同一的对象里面 ，好处就是 查询 代码编写 简单 也就是说 要对数据的字段进行归纳
+2. out:
+ type:log 中
+ "fields":[field1,field2] // 后续可以扩展到不同的源 获取数据 可以考虑用 pandas 的能力
+ table 也缺少 多表输出的能力 pandas 数据清洗的能力
+  > 第一步需要将数据获取回来 
+        > 可以有多个数据来源并且处理
+3.  last.rule.queries 里面要实现 type="logOut" ？
+
+    我觉得数据来源也可以时 logOut 
+    
+    last 类型 的源 可以时 logOut
+    aggregate 的源 也可以是 logOut
+    last.rule 的数据 也可以取自 logOut : field 类型
+
+    但一般来说 作为步骤 还是倾向于 作为下一步骤的源赖处理,
+
+4 pandas important ： because  daily & index 日报 跟 指数 需要结合

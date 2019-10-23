@@ -51,3 +51,47 @@ rule type="log"
 2. 日志查询中应用inType 字段
 
 对于   inType 需要      
+
+
+
+
+outType :
+
+  
+
+ 1. [ ] table
+        1. table // ps. "table": "dynamic_daily_business",
+        2. logKey  // ps. { "sn":1, "outFrequency":1 }
+        3. dataKey // ps. { "ts_code":1 }
+        > logKey+dataKey 找到已生成的数据的key历史数据，可以删除 或者 获取
+        对于table 的 logKey 我觉得不用配置，因为 输入的时候已经有了，所以直接获取就好
+2. log
+       {"field":{
+        "type":"field" ,// field object  fields
+        "field": "cal_date",
+        "fields":[field1,field2] 
+        "object":{   
+            "key":{field:""}
+        }// 当 key 与 from_key 一致的时候 ，可以 简写为 [field1,field2...]
+
+
+table: 取表数据
+    1 all  2 particular
+
+    table.table  ,logKey   particular: add dataKey
+
+    先实现 all 的方式，因为目前来说， 数据的删选可以放置到查询中
+
+
+log:
+
+将计算的 频率 编码 输出编码 防止到同一的对象里面 ，好处就是 查询 代码编写 简单
+
+也就是说 要对数据的字段进行归纳
+
+
+
+ruleType:
+    last-> table
+    aggregate
+    pandas
