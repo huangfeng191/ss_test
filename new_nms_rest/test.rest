@@ -1,47 +1,32 @@
-@h8000 = 127.0.0.1:60
-@token="CE4952A2FB89B2FB9A0A6847CEA17621"
+@host = 127.0.0.1:60
+@token=CCAAAC9F409411753CE0BD76AEA4B6DA
 
-### 获取区域信息 
-GET /nms/spring/device/area HTTP/1.1
-Host: {{h8000}}
+@host_177 = 192.168.92.177:8080
+@token_177=EC70CAB82449DCB66DB4A1B7C3B690C9
+
+
+
+
+### 
+GET /nms/spring/device/syncAlarms/all?token={{token}}
+Host: {{host}}
 Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
 
-{}
 
-### 获取区域信息 
-GET /nms/spring/device/page
-?page=&pageSize=200
-&token={{token}}
-&name=
-&ip=
-&deviceStatus=
-&deviceType=
-&areaId=
-&user=admin
-&NEType=
-&Vendor= HTTP/1.1
-Host: {{h8000}}
+
+### 
+GET /nms/spring/device/syncAlarms/all?token={{token_177}}
+Host: {{host_177}}
 Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token_177}}
 
 
 
 
-### 拓扑信息统计列表 
-
-GET /nms/spring/viewData/statisticsPathCount  HTTP/1.1
-Host: {{h8000}}
+### 
+GET /nms/spring/deviceConfig/configs?token={{token}}&area=
+&vendor=&deviceType=SM2000&activeAlarmLevel=&page=1&pageSize=20
+Host: {{host}}
 Content-Type: application/json;charset=UTF-8
-
-
-###  
-
-GET /nms/spring/alarm/activeAlarm/fliter HTTP/1.1
-Host: {{h8000}}
-Content-Type: application/json;charset=UTF-8
-
-{
-  token:{{token}}
-}
-
-
-
+Cookie:JSESSIONID={{token}}

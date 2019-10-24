@@ -20,7 +20,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | Ctrl+k +p    |copy path of active file            |**        |
 | Ctrl+u    |undo last cursor operator            |*        |
 | Ctrl+Shift+PgUp    |PgDn Move editor left/right            |*        |
-| alt+'  |选择括号内的所有内容            |***        | self|
+| alt+'  |选择括号内的所有内容            |****        | self|
 | alt+shift+right arrow    |expand (扩展)选区            |****        |
 | alt+shift+left arrow    | shrink (缩小)选区            |**        |
 | alt+鼠标左键    | 选择不同单词              |*        |
