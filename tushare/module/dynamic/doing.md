@@ -85,13 +85,72 @@ table: 取表数据
 
 log:
 
-将计算的 频率 编码 输出编码 防止到同一的对象里面 ，好处就是 查询 代码编写 简单
-
-也就是说 要对数据的字段进行归纳
+将计算的 频率 编码 输出编码 防止到同一的对象里面 ，好处就是 查询 代码编写 简单 也就是说 要对数据的字段进行归纳
 
 
 
 ruleType:
     last-> table
     aggregate
-    pandas
+    pandas 
+
+
+
+
+    last.rule.queries 里面要实现 type="logOut" ？
+
+    我觉得数据来源也可以时 lougOut
+
+
+
+
+dynamic.__init__.DynamicLink_cell.test    
+
+cell:
+codeRule:
+inType   inTypeSn  sn  frequency
+输入类型 输入编码  编码  频率        共同组成cell唯一性
+
+code:
+log:
+    inTypeSn  sn  frequency
+
+
+生成策略 
+
+
+
+cell:
+
+base:
+    name 名称
+    sn 规则编码
+    w 排序
+    desc 描述
+codeRule:
+    frequency 频率
+    inType 输入类型
+    inTypeSn 输入编码
+
+rule:
+    reuseParams 复用参数  
+    ruleType 规则类型  // 决定调用的方法 -> type 
+    rule 生成规则  -> detail
+
+out:
+    outType 输出类型 ->type 
+    outGenerate 生成策略  -> way 
+    out 输出规则   -> detail
+
+
+other:
+    type cell类型 
+    group cell分组
+    exchange 交易所
+
+
+
+
+
+
+
