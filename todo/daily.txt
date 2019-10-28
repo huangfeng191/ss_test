@@ -79,3 +79,7 @@ startup failed due to previous errors
 1、配置信息模块统计bug修改2、接收机功能完善3、post SM3加密 
 
 1接收机功能完善2逻辑拓扑链路功能修改3帮助修改
+
+
+
+1 性能管理bug修改 2 运维管理bug修改 3 帮助管理bug修改 4 运维管理用户、告警统计日志统计bug修改 5 系统测试，bug修改
