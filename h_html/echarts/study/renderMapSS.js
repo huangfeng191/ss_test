@@ -15,11 +15,17 @@ remarks.selectedProvinceMap={
     "province":"zhejiang"
 
 }
+remarks.sampleLinesTest={
+    "desc": "设置lines",
+    "default": true,
+    "province":"zhejiang"
+
+}
 
 
 remarks.customPointHover = {
     "desc": "custom hover",
-    "default": true
+    // "default": true
 }
 
 
@@ -111,52 +117,52 @@ var linesAndPointMap2Self_others = {
 
 var linesAndPointMap2Self = {
   
-    _georoam: function(params) {
-        // return ;
-        // debugger
-        // console.log("zoom"+params.zoom)
-        console.log("zoom"+building.target.getOption().geo[0].zoom)
-        var zoom= building.target.getOption().geo[0].zoom;
-        if ((zoom||1)<= 1) {
+    // _georoam: function(params) {
+    //     // return ;
+    //     // debugger
+    //     // console.log("zoom"+params.zoom)
+    //     console.log("zoom"+building.target.getOption().geo[0].zoom)
+    //     var zoom= building.target.getOption().geo[0].zoom;
+    //     if ((zoom||1)<= 1) {
 
-            building.target.setOption({
-                "series": [
-                    {
-                        id: "linePoint",
-                        type: 'scatter',
-                        data:[]
-                    }
-                ]
-            })
-        } else {
-            // return;
-            building.target.setOption({
-                "series": {
-                    name: 'linePoint',
-                    id: 'linePoint',
-                    type: 'scatter',
-                    coordinateSystem: 'geo',
-                    data: linesAndPointMap2Self_others.convertPointData(linesAndPointMap2Self_others.lineData),
-                    symbol: "",
-                    zlevel:999,
-                    symbolSize: 12,
-                    itemStyle: {},
-                    tooltip: {
-                        trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
-                        formatter: function(params) {
-                            var data = params.data;
-                            if (data && data.info) {
-                                return data.info.name;
-                            } else {
-                                return "";
-                            }
-                        }
-                    },
+    //         building.target.setOption({
+    //             "series": [
+    //                 {
+    //                     id: "linePoint",
+    //                     type: 'scatter',
+    //                     data:[]
+    //                 }
+    //             ]
+    //         })
+    //     } else {
+    //         // return;
+    //         building.target.setOption({
+    //             "series": {
+    //                 name: 'linePoint',
+    //                 id: 'linePoint',
+    //                 type: 'scatter',
+    //                 coordinateSystem: 'geo',
+    //                 data: linesAndPointMap2Self_others.convertPointData(linesAndPointMap2Self_others.lineData),
+    //                 symbol: "",
+    //                 zlevel:999,
+    //                 symbolSize: 12,
+    //                 itemStyle: {},
+    //                 tooltip: {
+    //                     trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+    //                     formatter: function(params) {
+    //                         var data = params.data;
+    //                         if (data && data.info) {
+    //                             return data.info.name;
+    //                         } else {
+    //                             return "";
+    //                         }
+    //                     }
+    //                 },
 
-                }
-            })
-        }
-    },
+    //             }
+    //         })
+    //     }
+    // },
     series: [{
             name: "北京" + ' Top10',
             id:"lines",
@@ -174,6 +180,9 @@ var linesAndPointMap2Self = {
                     // opacity: 0.6,
 
                 }
+            },
+            markPoint:{
+                symbol:"circle"
             },
             tooltip: {
                         trigger: 'item', // 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
@@ -490,3 +499,86 @@ var optionCustomPointHover = {
     }]
 }
 
+
+optionSampleLinesTest={
+    "tooltip": {
+      "trigger": "item"
+    },
+    "geo": {
+      "scaleLimit": {
+        "min": 1,
+        "max": 3
+      },
+      "roam": true,
+      "zlevel": 1,
+      "map": "china",
+      "label": {
+        "emphasis": {
+          "show": false
+        }
+      },
+
+    },
+    "series": [
+      {
+        "name": "北京 Top10",
+        "type": "lines",
+        "zlevel": 2,
+        // "polyline":true,
+        // "symbol": [
+        //   "none",
+        //   "none"
+        // ],
+        "symbolSize": 10,
+        "lineStyle": {
+          "normal": {
+            "color": "blue",
+            "width": 2,
+            "opacity": 1,
+            // "curveness": 0.2
+          }
+        },
+        markPoint:{
+            // "symbol":"radar",
+        
+            "data":[
+                {
+                    name: '某个屏幕坐标',
+                    x: 100,
+                    y: 100
+                }
+            ]
+        },
+        // "markPoint":{
+        //     "symbol":"radar",
+           
+        //      data: [
+                //  {
+        //           type: 'min'
+        //      }
+        //          ]
+        // },
+        "data": [
+          {
+            "fromName": "北京",
+            "toName": "上海",
+            "coords": [
+              [
+                116.46,
+                39.92
+              ],
+              [
+                121.4648,
+                31.2891
+              ],
+              [
+                124.4648,
+                31.2891
+              ]
+            ]
+          }
+        ]
+      },
+   
+    ]
+  }
