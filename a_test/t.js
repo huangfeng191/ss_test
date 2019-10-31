@@ -61,3 +61,16 @@ max_monthp
 
 
 
+var rules = {
+    userName: { "length": 50, "err": "用户名长度<=50" },
+    description: { "length": 50, "err": "描述长度<=50" },
+  }
+
+  var verified = top.SsComm.getVerify(data, rules);
+  delete data.userLevel;
+  delete data.roleLevel;
+  if (verified) {
+    $('#myModalTips').html(window.top.showTips(verified));
+    $('#myModalTips').modal('show');
+    return;
+  }
