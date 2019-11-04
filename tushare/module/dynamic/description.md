@@ -52,12 +52,12 @@
           > field is used to solve  deferent field in two tables
           > loop 用于 循环取数据，现在只支持 表取数  from 从那个表  from 表里的那个字段  
           > 一个规则最多一个loop 循环调用 规则
-          - [ ] logOut: field:{type, sn ,field, `inType`,`query`  } 
+          1- [ ] logOut: field:{type, sn ,field, `inType`,`query`  } 
           > 获取输出
         
     1. source :{}
-          - [ ] table 
-          - [ ] lastStep
+          1- [ ] table 
+          1- [ ] lastStep
           > 上一步的输出，变为结果的源
     2. limits
         1. { "size": 7 }

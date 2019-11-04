@@ -55,4 +55,17 @@ cell分组 group   //为空时独立
 
 
 
+# link 
+#  base ?ColSpan? // 注释 
+规则名称 nm
+规则编码 sn
+排序 w
+描述 desc String a ?3
+
+#  codeRule:
+频率 frequency String c frequency
+#  out:
+生成策略 generate String  c outGenerate
+# other 
+是否必填 require
 

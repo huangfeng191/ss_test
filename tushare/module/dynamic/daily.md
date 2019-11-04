@@ -142,3 +142,38 @@ TODO:
     但一般来说 作为步骤 还是倾向于 作为下一步骤的源赖处理,
 
 4 pandas important ： because  daily & index 日报 跟 指数 需要结合
+
+
+# 2019 -11 -02  
+  stock  project
+?colSpan 的字段名 用markdown 的方式 
+    crud Form 支持  ColSpan 类型   用 ?colSpan 来进行  ，可以用在
+
+
+    配置中添加 ? param :1 ? 模式 增加灵活性      
+
+
+# 2019 -11-03
+
+   对于 cell 最后的输出 要在日志中形成统一的字段：
+<!-- 驼峰自定义的字段，下划线方式：接口获取的字段 -->
+    1 fetch:{
+        "type":"table", // log:
+        "table":{
+            "table":""
+            "filter":{ // 查找生成的数据 -- logKey 
+            "sn":"",
+            "inTypeSn":"",
+            "t":"时间"
+            },
+            "finest":{                   -- dataKey 
+                "ts_code":"股票代码",
+                "trade_date":"交易时间"
+            }
+         },
+
+         "log":{
+
+         }
+    
+    }
