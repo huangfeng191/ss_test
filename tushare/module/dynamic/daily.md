@@ -155,25 +155,40 @@ TODO:
 
 # 2019 -11-03
 
-   对于 cell 最后的输出 要在日志中形成统一的字段：
+    再日志中添加一个字段 
+
+    需要再日志中加此字段 
+
+   对于 cell 最后的输出 要在日志中形成统一的字段：unique
 <!-- 驼峰自定义的字段，下划线方式：接口获取的字段 -->
     1 fetch:{
-        "type":"table", // log:
-        "table":{
-            "table":""
-            "filter":{ // 查找生成的数据 -- logKey 
+        "key":{ // 查找生成的数据 -- logKey 
             "sn":"",
             "inTypeSn":"",
             "t":"时间"
-            },
-            "finest":{                   -- dataKey 
+        },
+        "type":"table", // log:
+        "table":{
+            "table":""
+            "finest:{                   -- dataKey 
                 "ts_code":"股票代码",
                 "trade_date":"交易时间"
             }
-         },
-
-         "log":{
-
-         }
-    
+        },
+        
+        "log":{
+             "table" :"" // with regard to name , base on inTypeSn 
+             "field" :"" ,
+             "fields":?
+        }
     }
+
+    大部分数据中 inTypeSn = " link" or  higher-up   when = ceil  means 公用的 
+
+
+    相同的编码 代表着 数据是一样的 ,抽象层级越高，代表着数据越唯一？ 
+    对于编码 一定要有统一的规则
+
+    需不需要 加一个批次的 概念：
+    就是说同一个plan 里的 数据 , 可以是对象的方式 ;
+    log 里面 加一个 
