@@ -50,3 +50,11 @@ console.log("a="+a)
 a=[]
 if(a){console.log(1)}else{console.log(2)}
 // console output 1 
+
+
+// 重新指向了，所以互相不影响
+a=[1,2,3]
+b=a 
+b=[1,2]
+console.log("a"+a) // [1,2,3]
+console.log("b"+b) // [1,2]
