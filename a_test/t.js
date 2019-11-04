@@ -74,3 +74,6 @@ var rules = {
     $('#myModalTips').modal('show');
     return;
   }
+
+  #  asdf2 1
+  sdf sdf sdf
