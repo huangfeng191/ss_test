@@ -176,7 +176,7 @@ TODO:
             }
         },
         
-        "log":{
+        "log":{ // 优先级是 id 相同
              "table" :"" // with regard to name , base on inTypeSn 
              "field" :"" ,
              "fields":?
@@ -198,3 +198,46 @@ TODO:
     将 数据的流程 记录到这个表中，
 
     id  目的是可追溯 
+
+C_  cell  //频率_输出表_意义
+L_  link
+S_  step
+M_  measure
+
+
+C_SN_1911040001
+
+
+
+1 对于 outFrequency 的 extend  need to consider
+2 对于日志中的 out 需要重新组织，方便查找数据：
+    基本字段  phasedOut {"type":"table",  (*defer )
+                         "table":""
+                        "logKey":{},
+                        "dataKey":{}}
+
+
+
+
+                        
+# 19-11-05
+
+找出 连续涨 5 天 股票明细
+
+找出 连续跌 5 天 的 股票明细
+
+找出 满足条件 的 行业 个数 排行 
+
+找出 满足条件 的 省市个数排行
+     
+    
+
+
+# 19-11-06
+
+1 完成 cell 输入类型： logOut 
+2 应用简单算法，取出有意义数据   (11月10号前 完成)
+3 表格的方式展现
+4 考虑曲线数据的获取
+
+
