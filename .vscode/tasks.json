@@ -36,9 +36,15 @@
             "problemMatcher": []
         },
         {
-            "label": "start-new-nginx_5.101",
+            "label": "start-new-nginx_160",
             "type": "shell",
-            "command": " cd .\\new_nms\\new_nginx_5.101\\;./nginx.exe",
+            "command": " cd .\\new_nms\\new_nginx_160\\;./nginx.exe",
+            "problemMatcher": []
+        },
+        {
+            "label": "start-new-nginx_227",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_227\\;./nginx.exe",
             "problemMatcher": []
         },
   
@@ -49,21 +55,27 @@
             "problemMatcher": []
         },
         {
-            "label": "stop-nginx-5.101",
+            "label": "stop-nginx-160",
             "type": "shell",
-            "command": " cd .\\new_nms\\new_nginx_5.101\\;./nginx.exe -s stop",
+            "command": " cd .\\new_nms\\new_nginx_160\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
+            "label": "stop-nginx_227",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_227\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
 
         {
-            "label": "start-new-nginx-linux",
+            "label": "start-new-nginx1",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx1\\;./nginx.exe",
             "problemMatcher": []
         },
   
         {
-            "label": "stop-nginx-new-linux",
+            "label": "stop-nginx-new1",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx1\\;./nginx.exe -s stop",
             "problemMatcher": []
