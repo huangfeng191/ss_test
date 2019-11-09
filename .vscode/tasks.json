@@ -55,23 +55,18 @@
             "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-
-        
         {
             "label": "start-nginx-html_test",
             "type": "shell",
             "command": " cd .\\p_py\\py_nginx\\;./nginx.exe",
             "problemMatcher": []
         },
-
         {
             "label": "stop-nginx-html_test",
-            "type":"shell",
+            "type": "shell",
             "command": " cd .\\p_py\\py_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-
-
         {
             "label": "stop-nginx-160",
             "type": "shell",
@@ -127,7 +122,7 @@
             "problemMatcher": []
         },
         {
-            "label": "python-w",
+            "label": "start-python-html",
             "type": "shell",
             "command": " cd .\\p_py\\src\\;python w.py",
             "problemMatcher": []

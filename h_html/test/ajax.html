@@ -10,12 +10,30 @@
   <script src="../lib/jquery-1.11.1.min.js"></script>
   <script src="../js/test.js"></script>
 </head>
+<style>
+  #message,#message1{
+    margin-top: 100px ;
+    border:1px red solid;
+    height: 300px;
+    width: 100%;
+  }
+
+</style>
 
 <body>
   <div>
     <button onclick="doAjax()">doAjax</button>
 
     <input id="inp1">
+
+    <div id="message">
+
+
+    </div>
+    <div id="message1">
+
+
+      </div>
 
   </div>
 </body>
@@ -30,15 +48,20 @@
       data: JSON.stringify({
         "query": {
 
-          "tp": "net_topo_all"
+          // "tp": "net_topo_all"
 
         }
       }),
       beforeSend:function(x){
-            debugger
+            // debugger
       } 
     }).done(function(ret){
-        alert(JSON.stringify(ret));
+        // alert();
+        if(ret.Response){
+          ret=ret.Response;
+        }
+        $("#message").html(JSON.stringify(ret));
+        $("#message1").html(ret.need);
     })
 
 
