@@ -8,6 +8,23 @@
 	<title>Title</title>
 </head>
 <body>
-	我是首页
+	<span>"ajax 测试地址 : " </span>
+	<a href="/h_html/test/ajax.html">我是测试ajax 地址</a>
+
+	<div class="comm-markdown">
+	  
+		
+	</div>
+	<script src="/static/js/jquery-1.11.1.min.js"></script>
+	<script src="/static/js/marked.min.js"></script>
+	<script>
+		$(function(){
+			$.get("/h_html/test/readme.md").done(function (response) {
+			// debugger
+				$(".comm-markdown").html(marked(response));
+			})
+		})
+	
+	</script>
 </body>
 </html>

@@ -7,15 +7,13 @@
             "label": "git status",
             "type": "shell",
             "command": "git status",
-            "problemMatcher": [],
-            
+            "problemMatcher": []
         },
         {
             "label": "git push",
             "type": "shell",
             "command": "git push",
-            "problemMatcher": [],
-            
+            "problemMatcher": []
         },
         {
             "label": "git commit-a",
@@ -39,7 +37,11 @@
             "label": "start-new-nginx_160",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_160\\;./nginx.exe",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "start-new-nginx_227",
@@ -47,13 +49,29 @@
             "command": " cd .\\new_nms\\new_nginx_227\\;./nginx.exe",
             "problemMatcher": []
         },
-  
         {
             "label": "stop-nginx-new",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
+
+        
+        {
+            "label": "start-nginx-html_test",
+            "type": "shell",
+            "command": " cd .\\p_py\\py_nginx\\;./nginx.exe",
+            "problemMatcher": []
+        },
+
+        {
+            "label": "stop-nginx-html_test",
+            "type":"shell",
+            "command": " cd .\\p_py\\py_nginx\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+
+
         {
             "label": "stop-nginx-160",
             "type": "shell",
@@ -66,14 +84,12 @@
             "command": " cd .\\new_nms\\new_nginx_227\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-
         {
             "label": "start-new-nginx1",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx1\\;./nginx.exe",
             "problemMatcher": []
         },
-  
         {
             "label": "stop-nginx-new1",
             "type": "shell",
