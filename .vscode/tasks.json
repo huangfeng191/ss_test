@@ -7,7 +7,8 @@
             "label": "git status",
             "type": "shell",
             "command": "git status",
-            "problemMatcher": []
+            "problemMatcher": [],
+            
         },
         {
             "label": "git push",
