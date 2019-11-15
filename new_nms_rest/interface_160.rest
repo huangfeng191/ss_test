@@ -1,5 +1,5 @@
 @host = 127.0.0.1:62
-@token=v3T4jDbmcngSV3-DBUWBLwBm
+@token=NXQzV9uwmmHDM9snT8SJAPMn
 @deviceId=f9179ccb-7828-4020-9ba9-0c47bb4ed8c8
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 # @deviceIp=192.168.1.33
@@ -455,5 +455,6 @@ Cookie:JSESSIONID={{token}}
 
 ### 获取年度信息
 GET /nms/spring/report/statsyear?token={{token}}
+&year=2019&deviceId=249f7de2-4b1f-4542-ad82-88656a99a21c
 Host: {{host}}
 Cookie:JSESSIONID={{token}}

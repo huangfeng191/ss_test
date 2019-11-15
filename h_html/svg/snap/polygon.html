@@ -33,15 +33,23 @@
     // [point,point,point ]
 
 
-    var g = p1.gradient("l(0, 0,0, 1)blue-grey");
+    // var g = p1.gradient("l(0, 0,0, 1)blue-grey");
 
 
-    var shape2 = p1.polyline([10, 10, 200, 10]).attr(
-        {
-            "stroke":"green"
+    // var shape2 = p2.polyline([10, 10, 200, 10]).attr(
+    //     {
+    //         "stroke":"green"
            
-        }
-    );
+    //     }
+    // );
+
+    var  rect1=p1.rect(40, 40, 50, 50, 25);
+         rect1.mousemove(function(...a){
+           console.log("a"+a)
+         })
+
+
+
     //   var shape1 =p1.line(50, 50, 100, 55).attr(
     //     {
     //         "stroke":g,
@@ -50,11 +58,11 @@
     //     }
     // );
 
-    var shape2 = p2.polygon(10, 100, 100, 100,100,150).attr({
-        "stroke":"#000",
-        "stroke-width":10,
-        "fill":"blue"
-    });
+    // var shape2 = p2.polygon(10, 100, 100, 100,100,150).attr({
+    //     "stroke":"#000",
+    //     "stroke-width":10,
+    //     "fill":"blue"
+    // });
   }
 </script>
 
