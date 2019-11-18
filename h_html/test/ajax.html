@@ -38,13 +38,20 @@
   </div>
 </body>
 <script>
-  function doAjax(params) {
+
+
+$(document).ajaxError(function(jE,xhr,setting,other){
+  console.log("3"+3);
+  // debugger
+})
+
+function doAjax(params) {
 
 
     $.ajax({
       url: "/nms/misc_info/one.json",
-      async: false,
-      timeout: 100,
+      // async: false,
+      timeout: 1*1000,
       data: JSON.stringify({
         "query": {
 
@@ -54,6 +61,10 @@
       }),
       beforeSend:function(x){
             // debugger
+      },
+      error:function(err){
+        console.log("err 1");
+        
       } 
     }).done(function(ret){
         // alert();
@@ -62,6 +73,8 @@
         }
         $("#message").html(JSON.stringify(ret));
         $("#message1").html(ret.need);
+    }).fail(function(ret){
+      console.log("err 2");
     })
 
 
