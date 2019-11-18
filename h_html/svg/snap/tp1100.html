@@ -28,7 +28,155 @@
 <script>
 
 window.onload=function(){
-  setLogicDevice();
+  // setLogicDevice();
+  var DrawUtil=function(paper){
+    this.paper=paper;
+    this.line_default={
+      "caliber":10,
+      "strokeWidth":0
+    }
+    this.cycle_default={
+      "radius":9
+    }
+    this.arrow_default={
+      y_offset:8,
+      x_offset:30,
+      caliber:this.line_default.caliber
+    }
+    this.resource={
+        stroke: "#565656",
+        lineThick: 10,
+        strokeWidth: 2
+    },
+    this.state= {
+        "green": { "fill": "#00dfdf" },
+        "blink-green": { "fill": "#00dfdf" },
+        "normal": { "fill": "#cbcccc" },
+        "grey": { "fill": "#cbcccc" },
+        "red": { "fill": "red"},
+        "yellow": { "fill": "yellow"}
+    },
+    
+    this.getRect=function({position,state,set={} } ){
+      let fill=this.state[state]?this.state[state].fill: this.state.normal.fill;  
+      let strokeWidth=this.resource.strokeWidth;  
+      
+        if(set.fill){
+        fill=set.fill
+      }
+      if(set.strokeWidth){
+        strokeWidth=set.strokeWidth;
+      }
+
+      this.paper.rect(position.x, position.y, set.width, set.height).attr({
+                    "stroke": this.resource.stroke,
+                    "fill":  fill ,
+                    "stroke-width": set.strokeWidth
+                });
+    }
+
+    this.getLine=function({position,state,length,vertical}){
+        let set =this.line_default;
+        let fill=this.state[state]?this.state[state].fill: this.state.normal.fill;
+
+        if(vertical){
+          set["width"]=set.caliber;
+          set["height"]=length;
+          set["fill"]=this.paper.gradient("l(0, 0,1, 0)" + fill + "-#fff-" + fill)
+        }else{
+          set["height"]=set.caliber
+          set["width"]=length
+          set["fill"]=this.paper.gradient("l(0, 0,0, 1)" + fill + "-#fff-" + fill)
+
+          
+        }
+      
+      this.getRect({position,state,set })
+
+
+    }
+
+    this.getCycle=function({position,state } ){
+      let set=this.cycle_default;
+      let fill=this.state[state]?this.state[state].fill: this.state.normal.fill;
+      fill=this.paper.gradient("r(0.4,0.4,0.5, 0.5)" + fill + "-#fff-" + fill);
+      let lineCenter=Math.round(this.resource.lineThick/2);
+      this.paper.circle(position.x, position.y +lineCenter, set.radius).attr({
+                    "fill": fill,
+      })
+    }
+
+    this.getArrow=function({position,state } ){
+      let set=this.arrow_default;
+      let fill=this.state[state]?this.state[state].fill: this.state.normal.fill;
+    
+      this.paper.polygon(
+        position.x, position.y-set.y_offset,
+        position.x+set.x_offset, position.y+Math.round(set.caliber/2),
+        position.x, position.y+set.y_offset+set.caliber
+      ).attr({
+                    "fill": fill,
+                    "stroke": this.resource.stroke,
+                    "stroke-width": this.resource.strokeWidth,
+                    "stroke-dasharray": "1,1"
+
+                })
+
+    }
+
+  }
+
+  var tp1100_board={
+    paper:null,
+    getOutput:function({state,position}){
+      let LineW=40;
+      let square=40;
+      let half_lineThick=Math.round(this.paperO.resource.lineThick/2);
+      this.paperO.getLine({"state":state,"position":position,length:LineW});
+      this.paperO.getRect({"state":state,"position":{"x":position.x+LineW,"y":position.y-square/2+half_lineThick},"set":{"width":square,"height":square}});
+      this.paperO.getLine({"state":state,"position":{"x":position.x+LineW+square,"y":position.y},length:LineW})
+      this.paperO.getArrow({"state":state,"position":{"x":position.x+LineW*2+square,"y":position.y} })
+    },
+    getClock:function({state,position}){
+      let rect_w=80;
+      let rect_h=200;
+      this.paperO.getRect({"state":state,"position":{"x":position.x,"y":position.y},"set":{"width":rect_w,"height":rect_h}});
+
+    },
+    getInput:function({state,position}){
+      let LineW=190;
+      let half_lineThick=Math.round(this.paperO.resource.lineThick/2);
+      this.paperO.getLine({"state":state,"position":position,length:LineW});
+      this.paperO.getCycle({"state":state,"position":{"x":position.x,"y":position.y}})
+
+    },
+    draw:function(type){
+      if(type=="rect"){
+        return drowUtil
+      }
+    },
+    init:function(){
+      this.paper=Snap("#logicDeviceSvg")
+      var paperO=new DrawUtil(this.paper);
+      this.paperO=paperO;
+
+      paperO.getRect({"position":{"x":0,"y":300},"set":{"width":80,"height":200}});
+      paperO.getLine({"state":"green","position":{"x":200,"y":300},length:200,"vertical":0})
+      paperO.getArrow({"state":"green","position":{"x":200+200,"y":300}})
+
+      paperO.getCycle({"state":"green","position":{"x":400,"y":400}})
+
+
+      this.getInput({"state":"green","position":{"x":300,"y":100}})
+      this.getInput({"state":"green","position":{"x":300,"y":200}})
+
+      this.getOutput({"state":"green","position":{"x":400,"y":500}})
+      this.getClock({"state":"grey","position":{"x":200,"y":400}})
+
+    }
+  }
+  tp1100_board.init();
+
 }
 
 </script>

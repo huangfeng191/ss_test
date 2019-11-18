@@ -18,6 +18,26 @@ a={
         "clkmode": "FREERUN"
       },
 
+      
+      "GPS": {
+        "mode": "",
+        "instate": "ENABLE",
+        "UTC": "",
+        "POS": "",
+        "qlevel": "5",
+        "elevmask": "\r",
+        "gpsstatus": "ALM",
+        "priority": "3"
+      },
+
+      "PRS": {
+        "frmtype": "2M\r",   // 
+        "instate": "ENABLE",
+        "prsstatus": "ALM",
+        "qlevel": "3",
+        "priority": "1"
+      },
+      
       "INP1": {
         "crcena": "DISABLE",
         "frmtype": "2M",         // 信号类型: 2M
@@ -40,6 +60,7 @@ a={
         "rqlevel": "2",
         "ssmena": "DISABLE"
       },
+
 
       "SYS": {
         "pwra": "ALM",
