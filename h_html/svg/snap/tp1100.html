@@ -54,9 +54,15 @@ window.onload=function(){
         "normal": { "fill": "#cbcccc" },
         "grey": { "fill": "#cbcccc" },
         "red": { "fill": "red"},
-        "yellow": { "fill": "yellow"}
+        "yellow": { "fill": "yellow"},
+        "middle":{"fill":"blue"},
+        "white":{"fill":"white"}
     },
-    
+    this.getText=function({position,text}){
+      this.paper.text(position.x, position.y, text).attr({
+            "font-size": 14
+        })
+    },
     this.getRect=function({position,state,set={} } ){
       let fill=this.state[state]?this.state[state].fill: this.state.normal.fill;  
       let strokeWidth=this.resource.strokeWidth;  
@@ -128,27 +134,56 @@ window.onload=function(){
 
   var tp1100_board={
     paper:null,
-    getOutput:function({state,position}){
+  
+    getOutput:function({state,position,data={}}){
+      let frameType=data.frameType||"2M";
+      let canOut=data.canOut||"grey";
+      let text =data.text ||"OUTA";
       let LineW=40;
       let square=40;
       let half_lineThick=Math.round(this.paperO.resource.lineThick/2);
-      this.paperO.getLine({"state":state,"position":position,length:LineW});
+      this.paperO.getLine({"state":canOut,"position":position,length:LineW});
+
+      this.paperO.getText({"position":{"x":position.x+LineW ,"y":position.y-square/2},"text":text});
       this.paperO.getRect({"state":state,"position":{"x":position.x+LineW,"y":position.y-square/2+half_lineThick},"set":{"width":square,"height":square}});
+
+      this.paperO.getText({"position":{"x":position.x+LineW+square+10 ,"y":position.y-10},"text":frameType});
+
       this.paperO.getLine({"state":state,"position":{"x":position.x+LineW+square,"y":position.y},length:LineW})
       this.paperO.getArrow({"state":state,"position":{"x":position.x+LineW*2+square,"y":position.y} })
     },
-    getClock:function({state,position}){
+    getClock:function({state,position,data={}}){
+      let text=data.text||"IOC1"
       let rect_w=80;
       let rect_h=200;
       this.paperO.getRect({"state":state,"position":{"x":position.x,"y":position.y},"set":{"width":rect_w,"height":rect_h}});
-
+      this.paperO.getText({"position":{"x":position.x,"y":position.y-10},"text":text});
     },
-    getInput:function({state,position}){
+    getInput:function({state,position,data={}}){
+      let type=data.type||"";
+      let qLevel=data.qLevel||"";
+      let frameType=data.frameType||"";
       let LineW=190;
       let half_lineThick=Math.round(this.paperO.resource.lineThick/2);
       this.paperO.getLine({"state":state,"position":position,length:LineW});
       this.paperO.getCycle({"state":state,"position":{"x":position.x,"y":position.y}})
+      if(type){
+        this.paperO.getText({"position":{"x":position.x-50,"y":position.y+half_lineThick},"text":type});
+      }
+      this.paperO.getText({"position":{"x":position.x+LineW-120 ,"y":position.y-10},"text":frameType});
 
+      this.paperO.getText({"position":{"x":position.x+LineW-60 ,"y":position.y-10},"text":"qLevel "+qLevel});
+
+    },
+    getSystem:function({state,position,data={}}){
+      let systemMode=data.systemMode||"SUB";
+      let inputSelectionMode=data.inputSelectionMode||"AUTO";
+      let rect_w=220;
+      let rect_h=200;
+      this.paperO.getRect({"state":state,"position":{"x":position.x-10,"y":position.y},"set":{"width":rect_w,"height":rect_h}});
+
+      this.paperO.getText({"position":{"x":position.x ,"y":position.y+50},"text":"System Mode: "+systemMode});
+      this.paperO.getText({"position":{"x":position.x ,"y":position.y+80},"text":"Input Selection Mode: "+inputSelectionMode});
     },
     draw:function(type){
       if(type=="rect"){
@@ -160,18 +195,185 @@ window.onload=function(){
       var paperO=new DrawUtil(this.paper);
       this.paperO=paperO;
 
-      paperO.getRect({"position":{"x":0,"y":300},"set":{"width":80,"height":200}});
-      paperO.getLine({"state":"green","position":{"x":200,"y":300},length:200,"vertical":0})
-      paperO.getArrow({"state":"green","position":{"x":200+200,"y":300}})
+      // paperO.getRect({"position":{"x":0,"y":300},"set":{"width":80,"height":200}});
+      // paperO.getLine({"state":"green","position":{"x":200,"y":300},length:200,"vertical":0})
+      // paperO.getArrow({"state":"green","position":{"x":200+200,"y":300}})
 
-      paperO.getCycle({"state":"green","position":{"x":400,"y":400}})
+      // paperO.getCycle({"state":"green","position":{"x":400,"y":400}})
 
 
-      this.getInput({"state":"green","position":{"x":300,"y":100}})
-      this.getInput({"state":"green","position":{"x":300,"y":200}})
+      var outPosition={
+        x:550,
+        y:100,
+        step:100,
+       
+      }
+      outPosition.length=outPosition.step*3
+      var clockPosition={
+        x:400,
+        y:30,
+        step:270,
+        clockW:80
+      }
+      
+      var systemPosition={
+        x:100,
+        y:clockPosition.y+clockPosition.step,
 
-      this.getOutput({"state":"green","position":{"x":400,"y":500}})
-      this.getClock({"state":"grey","position":{"x":200,"y":400}})
+      }
+ 
+     var ret={
+        "input":[
+         {"field":"GPS","data":{"qLevel":"1","type":"GPS"},"state":"green" },
+         {"field":"PRS","data":{"qLevel":"","type":"PRS"},"state":"green" },
+         {"field":"INP1","data":{"qLevel":"3","type":"INP1"},"state":"green" },
+         {"field":"INP2","data":{"qLevel":"","type":"INP2"},"state":"green" },
+       ],
+
+       "output":[
+         {"field":"OUTA","data":{"frameType":"1","text":"OUTA"},"state":"green" },
+         {"field":"OUTB","data":{"frameType":"","text":"OUTB"},"state":"green" },
+         {"field":"OUTC","data":{"frameType":"3","text":"OUTC"},"state":"grey" },
+         {"field":"OUTD","data":{"frameType":"","text":"OUTD"},"state":"green" },
+       ],
+
+
+       "clock":[
+         {"field":"IOC1","data":{"text":"IOC1"},"state":"green"},
+         {"field":"IOC2","data":{"text":"IOC2"},"state":"grey"},
+       ],
+       "system":{
+         "data":{
+          "field":"SYS",
+          "systemMode":"SUB1",
+         "inputSelectionMode":"AUTO呀"
+         }
+       },
+       "lines":{
+         "IOC1":"grey",
+         "IOC2":"grey",
+         "canOut":"grey" // 
+       }
+     }
+
+
+     Object.keys(a.data||[]).forEach(function(k,i){
+           var v=a.data[k];
+           
+           if(["INP1","INP2","GPS","PRS"].includes(k)){
+            
+               var one=ret.input.filter(function(iv,ii){
+                 return iv.field==k;
+               })[0]
+               
+               if (v.instate=="DISABLE"){
+                  one["state"]="grey"
+               }else if(v.instate=="ENABLE"){
+                if (v.inpstatus=="OK"){
+                  one["state"]="green"
+                }else{
+                  one["state"]="middle"
+                }
+               }          
+               one["data"]["frameType"]=v.frmtype;
+               
+               one["data"]["qLevel"]=v.qlevel
+           }
+
+
+           if(["OUTA","OUTB","OUTC","OUTD"].includes(k)){
+            
+            var one=ret.output.filter(function(iv,ii){
+              return iv.field==k;
+            })[0]
+            
+         
+             if (v.outstate=="ENABLE"){
+               one["state"]="green"
+             }else{
+               one["state"]="grey"
+             }
+                    
+            one["data"]["frameType"]=v.frmtype;
+            
+           
+        }
+
+
+           if(["IOC1","IOC2"].includes(k)){
+              
+            var one=ret.clock.filter(function(iv,ii){
+              return iv.field==k;
+            })[0]
+            
+         
+             if (v.iocstatus=="OK"){
+               one["state"]="green"
+               ret["lines"][k]="green"
+
+             }else{
+               one["state"]="grey"
+             }
+                    
+            one["data"]["frameType"]=v.frmtype;
+            
+            one["data"]["qLevel"]=v.qlevel
+        }
+
+
+
+
+
+           if(["SYS"].includes(k)){
+            var one=ret.system;
+            one["data"]["systemMode"]=v.syncmode;
+            one["data"]["inputSelectionMode"]=v.refmode;
+           }
+      }) 
+      
+      
+      if(ret.lines.IOC1=="green" ||  ret.lines.IOC2=="green"  ){
+        ret.lines.canOut="green";
+      }
+
+      //  state, data:{ qLevel , type }
+      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":50}},ret.input[0]));
+      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":100}},ret.input[1]));
+      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":150}},ret.input[2]));
+      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":200}},ret.input[3]));
+
+
+      
+      this.paperO.getLine(Object.assign({"state":"green","position":{"x":clockPosition.x+clockPosition.clockW,"y":outPosition.y},
+                                                       length:outPosition.x-clockPosition.x-clockPosition.clockW },
+                                                       {"state":ret.lines.IOC1} ));
+
+      this.paperO.getLine(Object.assign({"state":"green","position":{"x":clockPosition.x+clockPosition.clockW,"y":outPosition.y+outPosition.step*3},
+      length:outPosition.x-clockPosition.x-clockPosition.clockW },{"state":ret.lines.IOC2}));
+
+      //  state, data:{ text  }
+
+      this.getClock(Object.assign({"state":"grey","position":{"x":clockPosition.x,"y":clockPosition.y}},ret.clock[0]))
+      this.getClock(Object.assign({"state":"grey","position":{"x":clockPosition.x,"y":clockPosition.y+clockPosition.step}},ret.clock[1]))
+
+     
+ //  state, data:{ frameType  }
+
+      ret.output.forEach(function(r){
+        r["data"]["canOut"]=ret.lines.canOut;
+      })
+
+      this.getOutput(Object.assign({"state":"green","position":{"x":outPosition.x,"y":outPosition.y+outPosition.step*0}},ret.output[0]));
+      this.getOutput(Object.assign({"state":"green","position":{"x":outPosition.x,"y":outPosition.y+outPosition.step*1}},ret.output[1]));
+      this.getOutput(Object.assign({"state":"green","position":{"x":outPosition.x,"y":outPosition.y+outPosition.step*2}},ret.output[2]));
+      this.getOutput(Object.assign({"state":"green","position":{"x":outPosition.x,"y":outPosition.y+outPosition.step*3}},ret.output[3]));
+
+      this.paperO.getLine(Object.assign({"state":"green","position":{"x":outPosition.x,"y":outPosition.y},length:outPosition.length+10,vertical:1}
+      ,{"state":ret.lines.canOut}));
+      
+
+      // data:{ systemMode, inputSelectionMode }
+      this.getSystem(Object.assign({"state":"white","position":{"x":systemPosition.x,"y":systemPosition.y}},ret.system));
 
     }
   }
