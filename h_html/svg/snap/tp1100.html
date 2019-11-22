@@ -155,7 +155,7 @@ window.onload=function(){
     getClock:function({state,position,data={}}){
       let text=data.text||"IOC1"
       let rect_w=80;
-      let rect_h=200;
+      let rect_h=160;
       this.paperO.getRect({"state":state,"position":{"x":position.x,"y":position.y},"set":{"width":rect_w,"height":rect_h}});
       this.paperO.getText({"position":{"x":position.x,"y":position.y-10},"text":text});
     },
@@ -179,7 +179,7 @@ window.onload=function(){
       let systemMode=data.systemMode||"SUB";
       let inputSelectionMode=data.inputSelectionMode||"AUTO";
       let rect_w=220;
-      let rect_h=200;
+      let rect_h=160;
       this.paperO.getRect({"state":state,"position":{"x":position.x-10,"y":position.y},"set":{"width":rect_w,"height":rect_h}});
 
       this.paperO.getText({"position":{"x":position.x ,"y":position.y+50},"text":"System Mode: "+systemMode});
@@ -201,23 +201,27 @@ window.onload=function(){
 
       // paperO.getCycle({"state":"green","position":{"x":400,"y":400}})
 
-
+      var inPosition={
+        x:90,
+        y:50,
+        step:50
+      }
       var outPosition={
-        x:550,
-        y:100,
-        step:100,
+        x:540,
+        y:80,
+        step:90,
        
       }
       outPosition.length=outPosition.step*3
       var clockPosition={
-        x:400,
+        x:390,
         y:30,
-        step:270,
+        step:230,
         clockW:80
       }
       
       var systemPosition={
-        x:100,
+        x:90,
         y:clockPosition.y+clockPosition.step,
 
       }
@@ -337,10 +341,10 @@ window.onload=function(){
       }
 
       //  state, data:{ qLevel , type }
-      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":50}},ret.input[0]));
-      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":100}},ret.input[1]));
-      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":150}},ret.input[2]));
-      this.getInput(Object.assign({"state":"green","position":{"x":100,"y":200}},ret.input[3]));
+      this.getInput(Object.assign({"state":"green","position":{"x":inPosition.x,"y":inPosition.y}},ret.input[0]));
+      this.getInput(Object.assign({"state":"green","position":{"x":inPosition.x,"y":inPosition.y+inPosition.step*1}},ret.input[1]));
+      this.getInput(Object.assign({"state":"green","position":{"x":inPosition.x,"y":inPosition.y+inPosition.step*2}},ret.input[2]));
+      this.getInput(Object.assign({"state":"green","position":{"x":inPosition.x,"y":inPosition.y+inPosition.step*3}},ret.input[3]));
 
 
       
