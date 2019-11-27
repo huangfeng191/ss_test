@@ -1,0 +1,6 @@
+[
+    [{ "name": "maxtau", "field": "clk-maxtau", "showType": "text", "aid": "S1A01", "tp": "clk", "value": "9000", "options": [], "disable": false, "oldValue": "9000", "unit": "300–10000(ST2E),150–1200(ST3E)" }, { "name": "clock_mode", "field": "status-clock_mode", "showType": "select", "aid": "S1A01", "tp": "status", "value": "HOLD", "options": [{ "name": "ACQ", "value": "ACQ" }, { "name": "LOCK", "value": "LOCK" },
+    { "name": "HOLD", "value": "HOLD" }], "disable": false, "oldValue": "HOLD", "unit": "" }],
+    [{ "name": "tau", "field": "status-tau", "showType": "text", "aid": "S1A01", "tp": "status", "value": "60", "options": [], "disable": true, "oldValue": "60", "unit": "" }, { "name": "pql", "field": "status-pql", "showType": "text", "aid": "S1A01", "tp": "status", "value": "5", "options": [], "disable": true, "oldValue": "5", "unit": "" }],
+    [{ "name": "offset", "field": "status-offset", "showType": "text", "aid": "S1A01", "tp": "status", "value": "(0)", "options": [], "disable": true, "oldValue": "(0)", "unit": "" }, { "name": "sigma", "field": "status-sigma", "showType": "text", "aid": "S1A01", "tp": "status", "value": "(5E-07)", "options": [], "disable": true, "oldValue": "(5E-07)", "unit": "" }]
+]

@@ -104,6 +104,8 @@ startup failed due to previous errors
   
 
 # 2019-11-25  Monday 
-    1 接口管理 启停
-    2 知识库管理bug修改
-    3 sm2000 设置添加加载中 
+    1老网管post\put 请求添加校验 2 国网接口管理 启停2 知识库管理bug修改 3 sm2000 设置bug修改
+
+
+# 2019-11-26  Tuesday 
+1 SSU2000钟卡、管理卡配置开发2 网络拓扑bug修改
