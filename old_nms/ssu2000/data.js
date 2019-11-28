@@ -1,3 +1,4 @@
+// OK
 var clock = {
     "code": 100000,
     "data": {
@@ -30,7 +31,7 @@ var clock = {
         "status": {}
     }
 }
-
+// OK
 var system = {
     "code": 100000,
     "data": {
@@ -55,18 +56,10 @@ var system = {
                 "swtmode": "AR#AR|AS|OFF#false",
                 "selmode": "PRI#PRI|PQL#false"
             }],
-            "tl1Format": [
-                { "mode": "GR831#GR831|GR833#false" }
-            ],
-            "name": [{
-                "aid": "S1A02##true",
-                "name": "SSU_2000##false"
-            }],
-            "time": ["SSU_2000", "2019-11-27 16:16:00"],
-            "pbo": [{
-                "aid": "ALL##true",
-                "mode": "REP#DIS|EVT|REP|NONE#false"
-            }]
+            "tl1Format": [{ "mode": "GR831#GR831|GR833#false" }],
+            "name": [{ "aid": "S1A02##true", "name": "SSU_2000##false" }],
+            "time": [{ "name": "SSU_2000", "time": "2019-11-28 09:00:19", "zone": null }],
+            "pbo": [{ "aid": "ALL##true", "mode": "REP#DIS|EVT|REP|NONE#false" }]
         },
         "others": {},
         "status": {}
@@ -94,9 +87,30 @@ var manage = {
                     "mode": "TL1#ASCII|TL1#false",
                     "tout": "300#5-43200|NEVER#false"
                 },
-                { "aid": "COMB#COML,COMA,COMB,TELNET,TL1#true", "baud": "9600#19200|9600|4800|2400|1200#false", "echo": "ON#ON|OFF#false", "eol": "CRLF#CR|LF|CRLF#false", "mode": "ASCII#ASCII|TL1#false", "tout": "300#5-43200|NEVER#false" },
-                { "aid": "TELNET#COML,COMA,COMB,TELNET,TL1#true", "baud": "#19200|9600|4800|2400|1200#false", "echo": "#ON|OFF#false", "eol": "#CR|LF|CRLF#false", "mode": "#ASCII|TL1#false", "tout": "300#5-43200|NEVER#false" },
-                { "aid": "TL1#COML,COMA,COMB,TELNET,TL1#true", "baud": "#19200|9600|4800|2400|1200#false", "echo": "#ON|OFF#false", "eol": "#CR|LF|CRLF#false", "mode": "#ASCII|TL1#false", "tout": "NEVER#5-43200|NEVER#false" }
+                {
+                    "aid": "COMB#COML,COMA,COMB,TELNET,TL1#true",
+                    "baud": "9600#19200|9600|4800|2400|1200#false",
+                    "echo": "ON#ON|OFF#false",
+                    "eol": "CRLF#CR|LF|CRLF#false",
+                    "mode": "ASCII#ASCII|TL1#false",
+                    "tout": "300#5-43200|NEVER#false"
+                },
+                {
+                    "aid": "TELNET#COML,COMA,COMB,TELNET,TL1#true",
+                    "baud": "#19200|9600|4800|2400|1200#false",
+                    "echo": "#ON|OFF#false",
+                    "eol": "#CR|LF|CRLF#false",
+                    "mode": "#ASCII|TL1#false",
+                    "tout": "300#5-43200|NEVER#false"
+                },
+                {
+                    "aid": "TL1#COML,COMA,COMB,TELNET,TL1#true",
+                    "baud": "#19200|9600|4800|2400|1200#false",
+                    "echo": "#ON|OFF#false",
+                    "eol": "#CR|LF|CRLF#false",
+                    "mode": "#ASCII|TL1#false",
+                    "tout": "NEVER#5-43200|NEVER#false"
+                }
             ],
             "keepAlive": [{
                 "tl1time": "0#0-60#false",
@@ -163,7 +177,7 @@ var input = {
     }
 }
 
-
+// card state 
 var output = {
     "code": 100000,
     "data": {
