@@ -1,80 +1,224 @@
-js = {lang:{}};
-js.lang.String = function(){
-    this.REGX_HTML_ENCODE = /"|&|'|<|>|[\x00-\x20]|[\x7F-\xFF]|[\u0100-\u2700]/g;
-
-    this.REGX_HTML_DECODE = /&\w+;|&#(\d+);/g;
-
-    this.REGX_TRIM = /(^\s*)|(\s*$)/g;
-
-    this.HTML_DECODE = {
-        "&lt;" : "<", 
-        "&gt;" : ">", 
-        "&amp;" : "&", 
-        "&nbsp;": " ", 
-        "&quot;": "\"", 
-        "&copy;": ""
-
-        // Add more
-    };
-
-    this.encodeHtml = function(s){
-        s = (s != undefined) ? s : this.toString();
-        return (typeof s != "string") ? s :
-            s.replace(this.REGX_HTML_ENCODE, 
-                      function($0){
-                          var c = $0.charCodeAt(0), r = ["&#"];
-                          c = (c == 0x20) ? 0xA0 : c;
-                          r.push(c); r.push(";");
-                          return r.join("");
-                      });
-    };
-
-    this.decodeHtml = function(s){
-        var HTML_DECODE = this.HTML_DECODE;
-
-        s = (s != undefined) ? s : this.toString();
-        return (typeof s != "string") ? s :
-            s.replace(this.REGX_HTML_DECODE,
-                      function($0, $1){
-                          var c = HTML_DECODE[$0];
-                          if(c == undefined){
-                              // Maybe is Entity Number
-                              if(!isNaN($1)){
-                                  c = String.fromCharCode(($1 == 160) ? 32:$1);
-                              }else{
-                                  c = $0;
-                              }
-                          }
-                          return c;
-                      });
-    };
-
-    this.trim = function(s){
-        s = (s != undefined) ? s : this.toString();
-        return (typeof s != "string") ? s :
-            s.replace(this.REGX_TRIM, "");
-    };
-
-    this.hashCode = function(){
-        var hash = this.__hash__, _char;
-        if(hash == undefined || hash == 0){
-            hash = 0;
-            for (var i = 0, len=this.length; i < len; i++) {
-                _char = this.charCodeAt(i);
-                hash = 31*hash + _char;
-                hash = hash & hash; // Convert to 32bit integer
-            }
-            hash = hash & 0x7fffffff;
-        }
-        this.__hash__ = hash;
-
-        return this.__hash__; 
-    };
-
-};
-
-js.lang.String.call(js.lang.String);
-
-js.lang.String.call(String.prototype);
-
-console.log("sdfs+sdf&lt;".String())
+a={
+    "code": 100000,
+    "data": {
+      "IOC1,EQPT": {},
+      "RTMA-2": {
+        "rtmlbo": "0",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "RTMB-1": {
+        "rtmlbo": "0",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "GPS": {
+        "mode": "",
+        "instate": "ENABLE",
+        "UTC": "",
+        "POS": "",
+        "qlevel": "5",
+        "elevmask": "\r",
+        "gpsstatus": "ALM",
+        "priority": "3"
+      },
+      "RTMA-1": {
+        "rtmlbo": "1",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "NTP": {},
+      "RTMC-2": {
+        "rtmlbo": "0",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "RTMD-1": {
+        "rtmlbo": "0",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "RTMB-2": {
+        "rtmlbo": "0",
+        "freeflt": "CUTTHRU",
+        "rtmstate": "DISABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "RTMC-1": {
+        "rtmlbo": "0",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "COMR": {
+        "baud": "9600",
+        "echo": "DISABLE\r",
+        "flow": "NONE"
+      },
+      "RTMD-2": {
+        "rtmlbo": "0",
+        "freeflt": "RETIME",
+        "rtmstate": "ENABLE",
+        "rtmslip": "0\r",
+        "rtmstatus": "UNEQUIPPED",
+        "holdflt": "RETIME"
+      },
+      "PRS": {
+        "frmtype": "2M\r",
+        "instate": "ENABLE",
+        "prsstatus": "ALM",
+        "qlevel": "3",
+        "priority": "1"
+      },
+      "COML": {
+        "baud": "9600",
+        "echo": "DISABLE\r",
+        "flow": "NONE"
+      },
+      "IOC1": {
+        "clktype": "TYPEII\r",
+        "ioccomm": "IOC1TO2COMM-OK",
+        "iocstatus": "ALM",
+        "imccomm": "IMC1COMM-OK",
+        "iocstate": "INSRV",
+        "iocmode": "STANDBY",
+        "clkmode": ""
+      },
+      "COMI": {
+        "ipsubnet": "255.255.255.0",
+        "ipgate": "255.255.255.0",
+        "echo": "DISABLE\r",
+        "ipaddr": "192.168.1.110"
+      },
+      "IOC2": {
+        "clktype": "TYPEI\r",
+        "ioccomm": "IOC2TO1COMM-OK",
+        "iocstatus": "OK",
+        "imccomm": "IMC2COMM-OK",
+        "iocstate": "INSRV",
+        "iocmode": "ACTIVE",
+        "clkmode": "FREERUN"
+      },
+      "IMC": {
+        "ioc1comm": "OK",
+        "ioc2comm": "OK\r"
+      },
+      "INP1": {
+        "crcena": "DISABLE",
+        "frmtype": "2M",
+        "instate": "MONITOR",
+        "ssmbit": "8\r",
+        "qlevel": "6",
+        "inpstatus": "OK",
+        "priority": "1",
+        "rqlevel": "6",
+        "ssmena": "DISABLE"
+      },
+      "INP2": {
+        "crcena": "DISABLE",
+        "frmtype": "2M",
+        "instate": "ENABLE",
+        "ssmbit": "8\r",
+        "qlevel": "2",
+        "inpstatus": "ALM",
+        "priority": "2",
+        "rqlevel": "2",
+        "ssmena": "DISABLE"
+      },
+      "SYS": {
+        "pwra": "ALM",
+        "inacttime": "5",
+        "pwrb": "OK",
+        "ioc1eqpt": "EQPT",
+        "refmode": "AUTO",
+        "inpref": "NONE",
+        "ioc2eqpt": "EQPT",
+        "syncmode": "SSU",
+        "logecho": "ENABLE\r",
+        "sysqlevel": "4",
+        "fltdelay": "5",
+        "lastdat": "03-01-01",
+        "lasttim": "12-25-09",
+        "clrdelay": "0",
+        "expeqpt": "UNEQPT",
+        "extalm2": "OK",
+        "extalm1": "OK"
+      },
+      "OUTC": {
+        "freeflt": "SQUELCH",
+        "frmtype": "2M",
+        "outstatus": "OK",
+        "outstate": "DISABLE",
+        "holdflt": "ON\r"
+      },
+      "E422C": {
+        "freeflt": "SQUELCH",
+        "frmtype": "1.544M",
+        "outstatus": "UNEQUIPPED",
+        "outstate": "DISABLE",
+        "holdflt": "ON\r"
+      },
+      "OUTB": {
+        "freeflt": "SQUELCH",
+        "frmtype": "CAS",
+        "outstatus": "OK",
+        "outstate": "ENABLE",
+        "holdflt": "ON\r"
+      },
+      "E422D": {
+        "freeflt": "SQUELCH",
+        "frmtype": "1.544M",
+        "outstatus": "UNEQUIPPED",
+        "outstate": "DISABLE",
+        "holdflt": "ON\r"
+      },
+      "OUTD": {
+        "freeflt": "SQUELCH",
+        "frmtype": "2M",
+        "outstatus": "OK",
+        "outstate": "DISABLE",
+        "holdflt": "ON\r"
+      },
+      "TIMEPROVIDER03-01-0112": {},
+      "OUTA": {
+        "freeflt": "ON",
+        "frmtype": "CAS",
+        "outstatus": "OK",
+        "outstate": "ENABLE",
+        "holdflt": "ON\r"
+      },
+      "E422A": {
+        "freeflt": "SQUELCH",
+        "frmtype": "1.544M",
+        "outstatus": "UNEQUIPPED",
+        "outstate": "DISABLE",
+        "holdflt": "ON\r"
+      },
+      "E422B": {
+        "freeflt": "SQUELCH",
+        "frmtype": "1.544M",
+        "outstatus": "UNEQUIPPED",
+        "outstate": "DISABLE",
+        "holdflt": "ON\r"
+      }
+    }
+  }

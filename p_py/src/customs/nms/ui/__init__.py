@@ -34,6 +34,7 @@ class NmsMiscCRUD(CRUD):
 
     def one(self,order=None, record=None, *args, **kwArgs):
         print 1
+        time.sleep(2)
         if not order:
             print 2
             # 最后一条

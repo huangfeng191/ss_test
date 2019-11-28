@@ -1,6 +1,7 @@
 @host = 127.0.0.1:40
-@token=DDDB2796B88225A2F0408467FDED55F2
-@deviceId=dcd44ff7-9129-4802-b456-f3f73113cdf9
+# @host = 192.168.1.99:8080
+@token=99A86CD946ABB692E7E19E73AD456751
+@deviceId=0d762a94-78f7-43c3-ac73-94d74df13097
 
 ### 获取菜单 
 GET /nms/spring/user/getMenu
@@ -34,5 +35,13 @@ GET /nms/spring/deviceConfig/{{deviceId}}/configs/alarmConfigTable?token={{token
 Host: {{host}}
 Content-Type: application/json;charset=UTF-8
 Cookie:JSESSIONID={{token}}
+
+### 
+POST /nms/spring/show/logical?token={{token}}&deviceId={{deviceId}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
 
 

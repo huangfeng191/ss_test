@@ -1,0 +1,30 @@
+@host =192.168.1.171:40
+# @host =192.168.1.242:8080
+# @host = 127.0.0.1:40
+@token=C21F5EB148E8860F4E53DEEBD75BBAD0
+@deviceId=0d762a94-78f7-43c3-ac73-94d74df13097
+@devId=a47523d2-fbf8-4e49-93fa-737074305a95
+
+### 获取钟卡 
+GET /nms/spring/deviceConfig/ssu2000/{{devId}}/configs/clock?token={{token}}
+Host: {{host}}
+Cookie:JSESSIONID={{token}}
+
+
+### 管理卡
+GET /nms/spring/deviceConfig/ssu2000/{{devId}}/configs/comm?token={{token}}
+Host: {{host}}
+Cookie:JSESSIONID={{token}}
+
+### 系统
+
+
+GET /nms/spring/deviceConfig/ssu2000/{{devId}}/configs/system?token={{token}}
+Host: {{host}}
+Cookie:JSESSIONID={{token}}
+
+### input
+
+GET /nms/spring/deviceConfig/ssu2000/{{devId}}/configs/system?token={{token}}
+Host: {{host}}
+Cookie:JSESSIONID={{token}}
