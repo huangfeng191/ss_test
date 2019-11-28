@@ -13,7 +13,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | -------------- | ------------------------ | ------ |----|
  
 | shift+delete    | markdown 中删除字符              |**        |
-| Ctrl+\    | split the active editor to two              |**        |
+| Ctrl+\    | split the active editor to two              |***        |
 | Ctrl+k +o    | show active file in new window             |**        |
 | Ctrl+e==ctrl+p    | action.quickOpen             |**        |
 | Ctrl+shift+\    | 括号跳转             |***        |

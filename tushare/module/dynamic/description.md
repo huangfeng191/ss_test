@@ -56,9 +56,11 @@
           > 获取输出
         
     1. source :{}
-          1- [ ] table 
-          1- [ ] lastStep
+          1 - [ ] table 
+          2 - [ ] lastStep
+          3 - [ ] logOut
           > 上一步的输出，变为结果的源
+          
     2. limits
         1. { "size": 7 }
     3. sorts:
