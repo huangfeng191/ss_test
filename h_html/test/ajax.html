@@ -54,9 +54,18 @@
       }),
       beforeSend:function(x){
             // debugger
-      } 
+      },
+      success:function(evt, request, settings){
+        debugger
+        if(evt.Response){
+          evt.Response={"c":"i`m changed the data ;"};
+        }
+      // $(this).append("<li>请求成功!</li>");
+    },
+
     }).done(function(ret){
-        // alert();
+      debugger
+      // alert();
         if(ret.Response){
           ret=ret.Response;
         }
