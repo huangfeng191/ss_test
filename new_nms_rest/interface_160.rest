@@ -1,5 +1,5 @@
 @host = 127.0.0.1:62
-@token=NXQzV9uwmmHDM9snT8SJAPMn
+@token=eBXpie8byapzdhvPt5Kh5qnM
 @deviceId=f9179ccb-7828-4020-9ba9-0c47bb4ed8c8
 @deviceId2=41075f91-4b3b-491c-8977-869337574182
 # @deviceIp=192.168.1.33

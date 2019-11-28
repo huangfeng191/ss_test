@@ -22,3 +22,33 @@ offset  offset  //: (0)##true,
 sigma  sigma  //: (5E-07)##true,
 syn  syn  //: NO##true
 
+
+
+# system
+
+
+
+#  manage
+
+
+
+#  output 需要传入槽位
+#  e1
+mode mode s //: CAS#CAS|CSS#false,
+bypass bypass  s  //: OFF#ON|OFF#false,
+zs zs s  //: ON#ON|OFF#false,
+crc crc s  //: ON#ON|OFF#false,
+ssm ssm s  //: ON#ON|OFF#false,
+bit bit   //: 8#4-8#false
+#  output
+port port  //: null,
+mstat mstat  //: OK,
+red red  //: NA,
+clksrc clksrc  //: CLK-A,
+pql pql  //: 5,
+
+
+signal signal : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1#E1|2048#false,
+pstate pstate : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1#ON|OFF#false,
+squelch squelch : 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0#0-16#false,
+pstate pstate : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1

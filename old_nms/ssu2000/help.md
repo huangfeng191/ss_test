@@ -15,4 +15,3 @@ INSERT INTO `nms2.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4
 
 ```
 
-

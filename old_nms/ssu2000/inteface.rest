@@ -1,6 +1,6 @@
 @host =192.168.1.171:40
 # @host = 192.168.1.99:8080
-@token=2F34BC10B0A746A82F23AD0FE1E75D34
+@token=3770AA2E212D482229374F16D6F7C05C
 @deviceId=0d762a94-78f7-43c3-ac73-94d74df13097
 @devId=a47523d2-fbf8-4e49-93fa-737074305a95
 
@@ -22,3 +22,4 @@ GET /nms/spring/deviceConfig/ssu2000/{{devId}}/configs/system?token={{token}}
 Host: {{host}}
 Cookie:JSESSIONID={{token}}
 
+###
