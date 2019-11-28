@@ -137,42 +137,70 @@ var input = {
     "data": {
         "alarms": {},
         "params": {
-            "input": [
-                { "aid": "S1A04#S1Ay[-z]#true", "port": "01##true", "pstate": "ON#ON|OFF#false", "pri": "1#1-10|MON#false", "pql": "7#1-16#false", "mode": "CCS#CCS|CAS|1|1.544|5|10#false", "ssm": "ON#ON|OFF#false", "zs": "ON#ON|OFF#false", "crc": "ON#ON|OFF#false", "gain": "OFF#ON|OFF#false", "csflt": "OFF#HI|LO|OFF#false", "bit": "4#4-8#false" },
-                { "aid": "S1A04#S1Ay[-z]#true", "port": "02##true", "pstate": "OFF#ON|OFF#false", "pri": "3#1-10|MON#false", "pql": "3#1-16#false", "mode": "2.048#CCS|CAS|1|1.544|5|10#false", "ssm": "ON#ON|OFF#false", "zs": "ON#ON|OFF#false", "crc": "ON#ON|OFF#false", "gain": "OFF#ON|OFF#false", "csflt": "NA#HI|LO|OFF#false", "bit": "4#4-8#false" },
-                { "aid": "S1A04#S1Ay[-z]#true", "port": "03##true", "pstate": "OFF#ON|OFF#false", "pri": "1#1-10|MON#false", "pql": "3#1-16#false", "mode": "10#CCS|CAS|1|1.544|5|10#false", "ssm": "ON#ON|OFF#false", "zs": "ON#ON|OFF#false", "crc": "ON#ON|OFF#false", "gain": "OFF#ON|OFF#false", "csflt": "NA#HI|LO|OFF#false", "bit": "8#4-8#false" }
+            "input": [{
+                    "aid": "S1A04##true",
+                    "port": "01##true",
+                    "pstate": "ON#ON|OFF#false",
+                    "pri": "1#1-10|MON#false",
+                    "pql": "7#1-16#false",
+                    "mode": "CCS#CCS|CAS|1|1.544|5|10#false",
+                    "ssm": "ON#ON|OFF#false",
+                    "zs": "ON#ON|OFF#false",
+                    "crc": "ON#ON|OFF#false",
+                    "gain": "OFF#ON|OFF#false",
+                    "csflt": "OFF#HI|LO|OFF#false",
+                    "bit": "4#4-8#false",
+                    "name": "OT21",
+                    "mstat": "OK",
+                    "state": "FLT",
+                    "pha": "NA",
+                    "phb": "NA",
+                    "freqA": 0.0,
+                    "freqB": 0.0
+                },
+                {
+                    "aid": "S1A04##true",
+                    "port": "02##true",
+                    "pstate": "OFF#ON|OFF#false",
+                    "pri": "3#1-10|MON#false",
+                    "pql": "3#1-16#false",
+                    "mode": "2.048#CCS|CAS|1|1.544|5|10#false",
+                    "ssm": "ON#ON|OFF#false",
+                    "zs": "ON#ON|OFF#false",
+                    "crc": "ON#ON|OFF#false",
+                    "gain": "OFF#ON|OFF#false",
+                    "csflt": "NA#HI|LO|OFF#false",
+                    "bit": "4#4-8#false",
+                    "name": "HAISONG ",
+                    "mstat": "OK",
+                    "state": "DIS",
+                    "pha": "NA",
+                    "phb": "NA",
+                    "freqA": 0.0,
+                    "freqB": 0.0
+                },
+                { "aid": "S1A04##true", "port": "03##true", "pstate": "OFF#ON|OFF#false", "pri": "1#1-10|MON#false", "pql": "3#1-16#false", "mode": "10#CCS|CAS|1|1.544|5|10#false", "ssm": "ON#ON|OFF#false", "zs": "ON#ON|OFF#false", "crc": "ON#ON|OFF#false", "gain": "OFF#ON|OFF#false", "csflt": "NA#HI|LO|OFF#false", "bit": "8#4-8#false", "name": "CS4310", "mstat": "OK", "state": "DIS", "pha": "NA", "phb": "NA", "freqA": 0.0, "freqB": 0.0 }
             ],
-            "name": [
-                { "aid": "S1A04##true", "port": "01##true", "name": "OT21##false" },
+            "name": [{
+                    "aid": "S1A04##true",
+                    "port": "01##true",
+                    "name": "OT21##false"
+                },
                 { "aid": "S1A04##true", "port": "02##true", "name": "HAISONG ##false" },
                 { "aid": "S1A04##true", "port": "03##true", "name": "CS4310##false" }
             ]
         },
         "others": {},
         "status": {
-            "input": [
-                { "aid": "S1A04", "port": "01", "mstat": "OK", "pstate": "FLT", "pha": "NA", "phb": "NA", "pql": "7" },
-                { "aid": "S1A04", "port": "02", "mstat": "OK", "pstate": "DIS", "pha": "NA", "phb": "NA", "pql": "3" },
-                { "aid": "S1A04", "port": "03", "mstat": "OK", "pstate": "DIS", "pha": "NA", "phb": "NA", "pql": "3" }
-            ],
             "data": [
-                { "aid": "S1A04", "port": "01", "type": "LOS", "_err": "477", "_clr": "0" },
-                { "aid": "S1A04", "port": "01", "type": "AIS", "_err": "0", "_clr": "148777" },
-                { "aid": "S1A04", "port": "01", "type": "OOF", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "01", "type": "BPV", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "01", "type": "CRC", "_err": "0", "_clr": "111756" },
-                { "aid": "S1A04", "port": "02", "type": "LOS", "_err": "21", "_clr": "0" },
-                { "aid": "S1A04", "port": "02", "type": "AIS", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "02", "type": "OOF", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "02", "type": "BPV", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "02", "type": "CRC", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "03", "type": "LOS", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "03", "type": "AIS", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "03", "type": "OOF", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "03", "type": "BPV", "_err": "0", "_clr": "0" },
-                { "aid": "S1A04", "port": "03", "type": "CRC", "_err": "0", "_clr": "0" }
-            ],
-            "freq": []
+                { "aid": "S1A04", "port": "01", "type": "LOS", "_err": "8", "_clr": "0" },
+                { "aid": "S1A04", "port": "01", "type": "AIS", "_err": "0", "_clr": "152456" },
+                { "aid": "S1A04", "port": "01", "type": "OOF", "_err": "9", "_clr": "0" },
+                { "aid": "S1A04", "port": "01", "type": "BPV", "_err": "9", "_clr": "0" },
+                { "aid": "S1A04", "port": "01", "type": "CRC", "_err": "0", "_clr": "114409" }, { "aid": "S1A04", "port": "02", "type": "LOS", "_err": "21", "_clr": "0" }, { "aid": "S1A04", "port": "02", "type": "AIS", "_err": "0", "_clr": "0" },
+                { "aid": "S1A04", "port": "02", "type": "OOF", "_err": "0", "_clr": "0" }, { "aid": "S1A04", "port": "02", "type": "BPV", "_err": "0", "_clr": "0" }, { "aid": "S1A04", "port": "02", "type": "CRC", "_err": "0", "_clr": "0" }, { "aid": "S1A04", "port": "03", "type": "LOS", "_err": "0", "_clr": "0" }, { "aid": "S1A04", "port": "03", "type": "AIS", "_err": "0", "_clr": "0" },
+                { "aid": "S1A04", "port": "03", "type": "OOF", "_err": "0", "_clr": "0" }, { "aid": "S1A04", "port": "03", "type": "BPV", "_err": "0", "_clr": "0" }, { "aid": "S1A04", "port": "03", "type": "CRC", "_err": "0", "_clr": "0" }
+            ]
         }
     }
 }

@@ -124,5 +124,30 @@ pstate pstate : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
 
 
+#  output // portSet
+
+port Name status signal squelch 
+
+
 
 # input 
+#  name
+name //: OT21##false       
+#  input 
+pstate s//: ON#ON|OFF#false,
+pri //: 1#1-10|MON#false,
+pql //: 7#1-16#false,
+mode s//: CCS#CCS|CAS|1|1.544|5|10#false,
+ssm s//: ON#ON|OFF#false,
+zs s//: ON#ON|OFF#false,
+crc s//: ON#ON|OFF#false,
+gain s//: OFF#ON|OFF#false,
+csflt s//: OFF#HI|LO|OFF#false,
+bit //: 4#4-8#false,
+name //: OT21,
+mstat //: OK,
+state //: FLT,
+pha //: NA,
+phb //: NA,
+freqA //: 0.0,
+freqB //: 0.0
