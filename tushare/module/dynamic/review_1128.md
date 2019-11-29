@@ -134,7 +134,8 @@ step1 up>3
                     sn,freq, level=="cell"
                 2 daily明细 最近7个工作日的明细
                     level=="cell"
-                    sn,freq,     // query=log      
+                    sn,freq,     // query=log   
+                    table    
                 
                 1 最近7天 
                 2 明细
