@@ -21,7 +21,8 @@ pql  pql  //: 5##true,
 offset  offset  //: (0)##true,
 sigma  sigma  //: (5E-07)##true,
 syn  syn  //: NO##true
-
+#  eltime
+elevtime //: 86400#0|60-500000#false
 
 
 # system
@@ -49,7 +50,8 @@ name //: SSU_2000##false
 time //: 2019-11-28 09:00:19
 #  pbo
 mode mode s //: REP#DIS|EVT|REP|NONE#false
-
+#  eltime
+elevtime //: 86400#0|60-500000#false
 
 
 
@@ -83,22 +85,26 @@ echo s//: ON#ON|OFF#false,
 eol s//: CRLF#CR|LF|CRLF#false,
 mode s//: ASCII#ASCII|TL1#false,
 tout //: 300#5-43200|NEVER#false
-#  commTELNET // aid: TELNET#COML,COMA,COMB,TELNET,TL1#true,
-baud s //: #19200|9600|4800|2400|1200#false,
-echo s //: #ON|OFF#false,
-eol s //: #CR|LF|CRLF#false,
-mode s //: #ASCII|TL1#false,
-tout //: 300#5-43200|NEVER#false
 #  commTL1 //: TL1#COML,COMA,COMB,TELNET,TL1#true,
 baud s //: #19200|9600|4800|2400|1200#false,
 echo s //: #ON|OFF#false,
 eol s //: #CR|LF|CRLF#false,
 mode s //: #ASCII|TL1#false,
 tout //: NEVER#5-43200|NEVER#false
+#  eltime
+elevtime //: 86400#0|60-500000#false
+
+## deleted
+#  commTELNET // aid: TELNET#COML,COMA,COMB,TELNET,TL1#true,
+baud s //: #19200|9600|4800|2400|1200#false,
+echo s //: #ON|OFF#false,
+eol s //: #CR|LF|CRLF#false,
+mode s //: #ASCII|TL1#false,
+tout //: 300#5-43200|NEVER#false
 
           
 
-
+# ----------------------------
 #  output 需要传入槽位
 #  e1
 mode mode s //: CAS#CAS|CSS#false,
@@ -113,7 +119,8 @@ mstat mstat  //: OK,
 red red  //: NA,
 clksrc clksrc  //: CLK-A,
 pql pql  //: 5,
-
+#  eltime
+elevtime //: 86400#0|60-500000#false
 
 signal signal : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1#E1|2048#false,
 pstate pstate : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1#ON|OFF#false,
@@ -129,7 +136,7 @@ pstate pstate : 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 port Name status signal squelch 
 
 
-
+# ----------------------------
 # input 
 #  name
 name //: OT21##false       
