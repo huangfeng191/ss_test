@@ -239,3 +239,105 @@ var output = {
         }
     }
 }
+
+
+
+
+var limit = {
+    "code": 100000,
+    "data": {
+        "alarms": {},
+        "params": {
+            "mtie": [
+                {
+                    "aid": "S1A04#S1Ay[-z]#true",
+                    "port": "01##true",
+                    "mtie": "MTIE##true",
+                    "threshold": "EL1#EL1|EL2|CL1|CL2#true",
+                    "t10": "260#0-60000#false",
+                    "t100": "440#0-60000#false",
+                    "t1k": "810#0-60000#false",
+                    "t10k": "880#0-60000#false",
+                    "t100k": "1600#0-60000#false"
+                },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "01##true", "mtie": "MTIE##true", "threshold": "EL2#EL1|EL2|CL1|CL2#true", "t10": "325#0-60000#false", "t100": "550#0-60000#false", "t1k": "1010#0-60000#false", "t10k": "1100#0-60000#false", "t100k": "2000#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "01##true", "mtie": "MTIE##true", "threshold": "CL1#EL1|EL2|CL1|CL2#true", "t10": "230#0-60000#false", "t100": "400#0-60000#false", "t1k": "730#0-60000#false", "t10k": "790#0-60000#false", "t100k": "1440#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "01##true", "mtie": "MTIE##true", "threshold": "CL2#EL1|EL2|CL1|CL2#true", "t10": "290#0-60000#false", "t100": "490#0-60000#false", "t1k": "910#0-60000#false", "t10k": "990#0-60000#false", "t100k": "1800#0-60000#false" },
+
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "02##true", "mtie": "MTIE##true", "threshold": "EL1#EL1|EL2|CL1|CL2#true", "t10": "23#0-60000#false", "t100": "43#0-60000#false", "t1k": "240#0-60000#false", "t10k": "310#0-60000#false", "t100k": "0#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "02##true", "mtie": "MTIE##true", "threshold": "EL2#EL1|EL2|CL1|CL2#true", "t10": "28#0-60000#false", "t100": "53#0-60000#false", "t1k": "300#0-60000#false", "t10k": "390#0-60000#false", "t100k": "0#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "02##true", "mtie": "MTIE##true", "threshold": "CL1#EL1|EL2|CL1|CL2#true", "t10": "20#0-60000#false", "t100": "40#0-60000#false", "t1k": "215#0-60000#false", "t10k": "280#0-60000#false", "t100k": "0#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "02##true", "mtie": "MTIE##true", "threshold": "CL2#EL1|EL2|CL1|CL2#true", "t10": "25#0-60000#false", "t100": "48#0-60000#false", "t1k": "270#0-60000#false", "t10k": "350#0-60000#false", "t100k": "0#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "03##true", "mtie": "MTIE##true", "threshold": "EL1#EL1|EL2|CL1|CL2#true", "t10": "23#0-60000#false", "t100": "43#0-60000#false", "t1k": "240#0-60000#false", "t10k": "310#0-60000#false", "t100k": "1030#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "03##true", "mtie": "MTIE##true", "threshold": "EL2#EL1|EL2|CL1|CL2#true", "t10": "28#0-60000#false", "t100": "53#0-60000#false", "t1k": "300#0-60000#false", "t10k": "390#0-60000#false", "t100k": "1290#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "03##true", "mtie": "MTIE##true", "threshold": "CL1#EL1|EL2|CL1|CL2#true", "t10": "20#0-60000#false", "t100": "40#0-60000#false", "t1k": "215#0-60000#false", "t10k": "280#0-60000#false", "t100k": "930#0-60000#false" },
+                { "aid": "S1A04#S1Ay[-z]#true", "port": "03##true", "mtie": "MTIE##true", "threshold": "CL2#EL1|EL2|CL1|CL2#true", "t10": "25#0-60000#false", "t100": "48#0-60000#false", "t1k": "270#0-60000#false", "t10k": "350#0-60000#false", "t100k": "1160#0-60000#false" }
+            ],
+            "freq": [{
+                    "aid": "S1A04#SxAy[-z]#true",
+                    "port": "01##true",
+                    "freq": "FREQ##true",
+                    "fae": "16000#0-10000000#false",
+                    "fac": "12000#0-10000000#false",
+                    "fbe": "16000#0-10000000#false",
+                    "fbc": "12000#0-10000000#false",
+                    "fatau": "400#10-1000#false",
+                    "fbtau": "400#10-1000#false"
+                },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "02##true", "freq": "FREQ##true", "fae": "16000#0-10000000#false", "fac": "12000#0-10000000#false", "fbe": "16000#0-10000000#false", "fbc": "12000#0-10000000#false", "fatau": "400#10-1000#false", "fbtau": "400#10-1000#false" },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "03##true", "freq": "FREQ##true", "fae": "16000#0-10000000#false", "fac": "12000#0-10000000#false", "fbe": "16000#0-10000000#false", "fbc": "12000#0-10000000#false", "fatau": "400#10-1000#false", "fbtau": "400#10-1000#false" }
+            ],
+            "fault": [
+                {
+                    "aid": "S1A04#SxAy[-z]#true",
+                    "port": "01##true",
+                    "prmtr": "LOS##true",
+                    "errcnt": "10#1-100#false",
+                    "clrcnt": "5#1-100#false"
+                },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "01##true", "prmtr": "AIS##true", "errcnt": "12#1-100#false", "clrcnt": "5#1-100#false" },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "01##true", "prmtr": "OOF##true", "errcnt": "14#1-10000#false", "clrcnt": "5#1-10000#false" },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "01##true", "prmtr": "BPV##true", "errcnt": "16#1-10000#false", "clrcnt": "5#1-10000#false" },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "01##true", "prmtr": "CRC##true", "errcnt": "16#1-10000#false", "clrcnt": "5#1-10000#false" },
+                
+                {
+                    "aid": "S1A04#SxAy[-z]#true",
+                    "port": "02##true",
+                    "prmtr": "LOS##true",
+                    "errcnt": "10#1-100#false",
+                    "clrcnt": "5#1-100#false"
+                }, 
+                { "aid": "S1A04#SxAy[-z]#true", "port": "03##true", "prmtr": "LOS##true", "errcnt": "10#1-100#false", "clrcnt": "5#1-100#false" },
+                { "aid": "S1A04#SxAy[-z]#true", "port": "02##true", "prmtr": "AIS##true", "errcnt": "12#1-100#false", "clrcnt": "5#1-100#false" },
+                 { "aid": "S1A04#SxAy[-z]#true", "port": "03##true", "prmtr": "AIS##true", "errcnt": "12#1-100#false", "clrcnt": "5#1-100#false" },
+                 
+                { "aid": "S1A04#SxAy[-z]#true", "port": "02##true", "prmtr": "OOF##true", "errcnt": "14#1-10000#false", "clrcnt": "5#1-10000#false" },
+                 { "aid": "S1A04#SxAy[-z]#true", "port": "03##true", "prmtr": "OOF##true", "errcnt": "14#1-10000#false", "clrcnt": "5#1-10000#false" },
+                
+                { "aid": "S1A04#SxAy[-z]#true", "port": "02##true", "prmtr": "BPV##true", "errcnt": "16#1-10000#false", "clrcnt": "5#1-10000#false" },
+                 { "aid": "S1A04#SxAy[-z]#true", "port": "03##true", "prmtr": "BPV##true", "errcnt": "16#1-10000#false", "clrcnt": "5#1-10000#false" },
+                 
+                { "aid": "S1A04#SxAy[-z]#true", "port": "02##true", "prmtr": "CRC##true", "errcnt": "16#1-10000#false", "clrcnt": "5#1-10000#false" },
+                 { "aid": "S1A04#SxAy[-z]#true", "port": "03##true", "prmtr": "CRC##true", "errcnt": "16#1-10000#false", "clrcnt": "5#1-10000#false" }
+            ],
+            "mtieMask": [{
+                    "aid": "S1A04#S1Ay[-z]#true",
+                    "port": "03##true",
+                    "name": "G811#PRS|DS1|G811|G823#false"
+                },
+                {
+                    "aid": "S1A04#S1Ay[-z]#true",
+                    "port": "01##true",
+                    "name": "DS1#PRS|DS1|G811|G823#false"
+                },
+                {
+                    "aid": "S1A04#S1Ay[-z]#true",
+                    "port": "02##true",
+                    "name": "User Defined#PRS|DS1|G811|G823#false"
+                }
+            ]
+        },
+        "others": {},
+        "status": {}
+    }
+}
