@@ -22,7 +22,7 @@ cell:
             type: table log,
             table:{
                 "nm":"",
-                "logKey": // 等同于 fetch 里的值
+                "fetchKey": // 等同于 fetch 里的key 
                 "dataKey":
             }
         }

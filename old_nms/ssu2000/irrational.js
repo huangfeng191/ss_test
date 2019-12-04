@@ -47,7 +47,7 @@ Object.keys(data.params).forEach(function(tp,tpI){
     if(data.params[tp]){
         data.params[tp].forEach(function(one){
             var oneAid=one.aid.split("#")[0]
-            if(oneAid==aid){
+             if(oneAid==aid){
                 Object.keys(one).forEach(function(oK,oI){
                   
                    var oneParamA= one[oK].split("#");
