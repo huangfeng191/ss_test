@@ -67,41 +67,39 @@ Mac mac ?Mac	//: 00A06E009978##true
 #  aco  
 告警切断 aco s ?Alarm Cutoff	//: INACTIVE#ACTIVE|INACTIVE#false
 #  commCOML // aid: COML#COML,COMA,COMB,TELNET,TL1#true,
-波特率COML baud  s ?Baud Rate	//: 9600#19200|9600|4800|2400|1200#false,
-回显COML echo  s ?Echo	//: ON#ON|OFF#false,
-行尾符COML(EOL) eol  s ?EOL	//: CRLF#CR|LF|CRLF#false,
-传输模式COML mode  s ?Communication Mode	//: ASCII#ASCII|TL1#false,
-超时时间COML tout ?Timeout	//: 300#5-43200|NEVER#false
+COML波特率 baud  s ?Baud Rate	//: 9600#19200|9600|4800|2400|1200#false,
+COML回显 echo  s ?Echo	//: ON#ON|OFF#false,
+COML行尾符(EOL) eol  s ?EOL	//: CRLF#CR|LF|CRLF#false,
+COML传输模式 mode  s ?Communication Mode	//: ASCII#ASCII|TL1#false,
+COML超时时间 tout ?Timeout	//: 300#5-43200|NEVER#false
 #  commCOMA // aid: COMA#COML,COMA,COMB,TELNET,TL1#true
-波特率COMA baud s ?Baud Rate//: 9600#19200|9600|4800|2400|1200#false,
-回显COMA echo s ?Echo //: ON#ON|OFF#false,
-行尾符COMA（EOL） eol s ?EOL//: CRLF#CR|LF|CRLF#false,
-传输模式COMA mode s ?Communication Mode//: TL1#ASCII|TL1#false,
-超时时间COMA tout  ?Timeout//: 300#5-43200|NEVER#false
+COMA波特率 baud s ?Baud Rate//: 9600#19200|9600|4800|2400|1200#false,
+COMA回显 echo s ?Echo //: ON#ON|OFF#false,
+COMA行尾符（EOL） eol s ?EOL//: CRLF#CR|LF|CRLF#false,
+COMA传输模式 mode s ?Communication Mode//: TL1#ASCII|TL1#false,
+COMA超时时间 tout  ?Timeout//: 300#5-43200|NEVER#false
 #  commCOMB //  aid: COMB#COML,COMA,COMB,TELNET,TL1#true,
-波特率COMB baud s ?Baud Rate //: 9600#19200|9600|4800|2400|1200#false,
-回显COMB echo s ?Echo //: ON#ON|OFF#false,
-行尾符COMB（EOL） eol s ?EOL //: CRLF#CR|LF|CRLF#false,
-传输模式COMB mode s ?Communication Mode //: ASCII#ASCII|TL1#false,
-超时时间COMB tout  ?Timeout //: 300#5-43200|NEVER#false
+COMB波特率 baud s ?Baud Rate //: 9600#19200|9600|4800|2400|1200#false,
+COMB回显 echo s ?Echo //: ON#ON|OFF#false,
+COMB行尾符（EOL） eol s ?EOL //: CRLF#CR|LF|CRLF#false,
+COMB传输模式 mode s ?Communication Mode //: ASCII#ASCII|TL1#false,
+COMB超时时间 tout  ?Timeout //: 300#5-43200|NEVER#false
+
+#  commTELNET // aid: TELNET#COML,COMA,COMB,TELNET,TL1#true,
+TELNET超时时间 tout  ?Timeout //: 300#5-43200|NEVER#false
+
 #  commTL1 //: TL1#COML,COMA,COMB,TELNET,TL1#true,
-波特率TL1 baud s ?Baud Rate //: #19200|9600|4800|2400|1200#false,
-回显TL1 echo s ?Echo //: #ON|OFF#false,
-行尾符TL1（EOL） eol s ?EOL //: #CR|LF|CRLF#false,
-传输模式TL1 mode s ?Communication Mode //: #ASCII|TL1#false,
-超时时间TL1 tout ?Timeout //: NEVER#5-43200|NEVER#false
+TL1超时时间 tout ?Timeout //: NEVER#5-43200|NEVER#false
 #  eltime
 告警级别提升时间 elevtime ?Alarm Elevation Time //: 86400#0|60-500000#false
 
 
-## deleted
-#  commTELNET // aid: TELNET#COML,COMA,COMB,TELNET,TL1#true,
-baud s //: #19200|9600|4800|2400|1200#false,
-echo s //: #ON|OFF#false,
-eol s //: #CR|LF|CRLF#false,
-mode s //: #ASCII|TL1#false,
-tout //: 300#5-43200|NEVER#false
+## deleted 
 
+TELNET波特率 baud s ?Baud Rate //: 9600#19200|9600|4800|2400|1200#false,
+TELNET回显 echo s ?Echo //: ON#ON|OFF#false,
+TELNET行尾符（EOL） eol s ?EOL //: CRLF#CR|LF|CRLF#false,
+TELNET传输模式 mode s ?Communication Mode //: ASCII#ASCII|TL1#false,
           
 
 # -output---------------------------

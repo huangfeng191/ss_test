@@ -37,8 +37,6 @@
 生成规则 rule String a 
 复用参数 reuseParams 
 生成策略 outGenerate String  c outGenerate
-
-
 输出类型 outType String c outType // 拆分两个字段的目的是 一次性配置多个规则，而只使用一个规则
 输出规则 out String a
 
