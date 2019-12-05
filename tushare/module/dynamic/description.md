@@ -20,6 +20,7 @@
    2. link
    3. step
    4. measure
+   5. arithmetic
    >tips:
      根据输入类型,生成输入编码
      >> 当cell 编码一样时，规则实际有差异的时候，值取自对于类型的编码
@@ -40,7 +41,7 @@
    >  {"date":{}} 默认今天  
    > 可以取配置的时间 
    >usage: rule :query.field:{"type":"date","value": "day", "operate": "lte" }  
-   2. [ ]  other type
+   1. [ ]  other type
 4. 生成规则 rule 
     1. queries :{field:{type,value,operate}}
        1. type
@@ -55,23 +56,23 @@
           1- [ ] logOut: field:{type, sn ,field, `inType`,`query`  } 
           > 获取输出
         
-    1. source :{}
+    2. source :{}
           1 - [ ] table 
           2 - [ ] lastStep
           3 - [ ] logOut
           > 上一步的输出，变为结果的源
           
-    2. limits
+    3. limits
         1. { "size": 7 }
-    3. sorts:
+    4. sorts:
         1. "order": [{"Field": "trade_date", "Type": true}]    
-    4. aggregate: 主要解决单表问题
+    5. aggregate: 主要解决单表问题
         1. [] 正常的聚合语法       
-    5. [ ] pandas :
+    6. [ ] pandas :
         1. 解析pandas 代码段 可以变成数组考虑变成数组命令
         > 第一步需要将数据获取回来 
         > 可以有多个数据来源并且处理
-6. 输出类型 outType
+5. 输出类型 outType
    1. [ ] table
         1. table // ps. "table": "dynamic_daily_business",
         2. logKey  // ps. { "sn":1, "outFrequency":1 }
@@ -92,11 +93,11 @@
          }}
         >object 可以理解为 获取最大、最小？
    
-7. 输出规则 out 
+6. 输出规则 out 
    1. type 
    2. 
    
-8. [ ] sn 编码规则
+7. [ ] sn 编码规则
     C_频率_输出表_意义  cell
     L_  link
     S_  step

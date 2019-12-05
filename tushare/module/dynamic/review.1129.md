@@ -34,6 +34,8 @@ cell:
     - cell.type==slot realize  
     - cell.ruleType==extend realize 
     - loop 生成数据 
-        - 规则:  if cell.type==arithmetic : 将 fetch.level  autoRaise to the most level  
+        - 规则:  if cell.type==arithmetic : 将 fetch.level  autoRaise to the highest level  
           fetch 及生成跟 记录的 sn  是两条线
         - 如果无生成 如果有跳过，到达下一步
+
+
