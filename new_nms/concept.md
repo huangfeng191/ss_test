@@ -158,3 +158,10 @@ IOC 钟卡
 板卡跟槽位的概念：
 
 将板卡插入槽位
+
+
+# 2019-12-06  Friday 
+
+使能  Enable Disable 可以开启关闭
+
+状态: ALARM  OK  UNEQUIPPED (未安装)

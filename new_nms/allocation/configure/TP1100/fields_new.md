@@ -1,7 +1,7 @@
 1、系统相关功能：
        系统运行模式：SET-SYS-MODE 
-         源选择方式：ED-SYNC,  (REFMODE=)
-             当前源：ED-SYNC,  (INPREF=)
+         源选择方式：edSync,  (REFMODE=)
+             当前源：edSync,  (INPREF=)
       
 2、钟卡相关功能：
           时钟卡：IOC1/IOC2
@@ -11,12 +11,12 @@
 
 3、输入相关功能：(PRS/INP1/INP2/GPS)
             状态：ED-EQPT,  (INSTATE=ENABLE/MONITOR/DISABLE)
-        信号类型：ED-SYNC,  (FRMTYPE=2M/CAS/CCS/)
-        质量等级：ED-SYNC,  (QLEVEL=)
-		    优先级：ED-SYNC，(PRIORITY=)
-        SSM使能：ED-SYNC,  (SSMENA=)
-          SSM位：ED-SYNC,  (SSMBIT=)
-       CRC4使能：ED-SYNC,  (CRCENA=)
+        信号类型：edSync,  (FRMTYPE=2M/CAS/CCS/)
+        质量等级：edSync,  (QLEVEL=)
+		    优先级：edSync，(PRIORITY=)
+        SSM使能：edSync,  (SSMENA=)
+          SSM位：edSync,  (SSMBIT=)
+       CRC4使能：edSync,  (CRCENA=)
   
 
 4、输出相关功能：
@@ -170,11 +170,18 @@ input=[
 //output 
 \
 "outstate": "ENABLE",   //使能   //ED-EQPT
-"frmtype": "2M", //信号类型    //ED-SYNC
+"frmtype": "2M", //信号类型    //edSync
 
 "outstatus": "OK",  //状态 
 "freeflt": "ON", //自由振荡输出 
 "holdflt": "ON" //守时输出
+
+<!-- query -->
+
+qLevel:
+ // 1 card 11 card businessId  2 port 21 port businessId
+ // 1 card   11 板卡业务名  2 cardPort  21 端口业务名
+
 
 使能 outstate rtrvCraft craft name#outstate#1
 信号类型 frmtype rtrvCraft craft name#frmtype#1
@@ -182,12 +189,20 @@ input=[
 自由振荡输出 freeflt rtrvCraft craft name#freeflt#1
 守时输出 holdflt rtrvCraft craft name#holdflt#1
 
+<!-- set -->
+nm  field   command  key  showType Binding 
+
 
 使能 outstate ED-EQPT OUTSTATE c EnableDisable
-信号类型 frmtype ED-SYNC  FRMTYPE c FrameTypeOutTP1100
+信号类型 frmtype edSync  FRMTYPE c FrameTypeOutTP1100
 状态 outstatus 
-自由振荡输出 freeflt 
-守时输出 holdflt 
+自由振荡输出 freeflt edSync FREEFLT c FreefltOutTP1100  //ON SQUELCH AIS
+守时输出 holdflt edSync HOLDFLT c  HoldfltOutTP1100  // ON SQUELCH AIS
+
+
+
+
+
 
 
 
@@ -197,7 +212,7 @@ out =[
     "name": "OUTA",
     "outstatus": "OK",  //状态 
     "outstate": "ENABLE",   //使能   //ED-EQPT
-    "frmtype": "2M", //信号类型    //ED-SYNC
+    "frmtype": "2M", //信号类型    //edSync
     "freeflt": "ON", //自由振荡输出 
     "holdflt": "ON" //守时输出
 },
