@@ -27,7 +27,7 @@
 
 
 
-# cell setting  ?br?
+# cell setting  ?ColSpan?br?
 ## basic 
 规则名称  name
 规则编码 sn
