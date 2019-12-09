@@ -32,21 +32,21 @@
 规则名称  name
 规则编码 sn
 ## 目的是生成唯一的记录 
-频率 frequency String c frequency
-cell类型 type String  c CellType   // record slot arithmetic
-### level  // cell:  只要生成一次就好,其他情况可复用    
+频率 frequency  c frequency
+cell类型 type   c CellType   // record slot arithmetic
+### level   只要生成一次就好,其他情况可复用    
 ###  // link:  不同的link 需要单独生成 
 ###  // tips:  级别越高、代表差异性越大(可复用性越差) 当 cell 为 arithmetic 时,记录中自动填写 最高级别
-唯一等级  level  String c CellLevel  // discard: inType
+唯一等级  level   c CellLevel ??  // cell,link,step,measure 
 ### 记录生成
-生成类型 ruleType String c ruleType
-生成策略 refresh String  c CellRefresh  //  discard: outFrequency
-复用参数 reuseParams String a 
-生成规则 rule String a 
+生成类型 ruleType  c ruleType
+生成策略 refresh   c CellRefresh  // refresh keep // discard: outFrequency
+复用参数 reuseParams  ?3
+生成规则 rule  a ?3
 
 ### 输出
-输出类型 outType String c outType // 拆分两个字段的目的是 一次性配置多个规则，而只使用一个规则
-输出规则 out String a
+输出类型 outType  c outType // 拆分两个字段的目的是 一次性配置多个规则，而只使用一个规则
+输出规则 out  a
 
 ### other 
 排序 w
@@ -58,8 +58,6 @@ cell类型 type String  c CellType   // record slot arithmetic
 <!-- discard  输入编码  inTypeSn  String  -->
 
 cell分组 group   //为空时独立
-型: record (default )  , param , fixed  
- 
 交易所 exchange String  c exchange
 
 
