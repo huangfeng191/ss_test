@@ -13,19 +13,6 @@
 
 
 
-<!-- last 规则 -->
-{"type":"last","option":{
-    "day":7,
-    "field":"cal_date"
-    "queries":{
-        "^field":"today"
-    }
-}}
-
-
-<!-- new -->
-
-
 
 # cell setting  ?ColSpan?br?
 ## basic 

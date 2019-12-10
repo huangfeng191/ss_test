@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 
+        利用 有双击时取消 单击事件来
+
+
+     -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../less/test.css" />
+    <script src="../lib/jquery-1.11.1.min.js"></script>
+    <script src="../js/test.js"></script>
+</head>
+<body>
+    <button onclick="doClick()" ondblclick="doDBClick()">cs1</button>
+    <button onclick="doClick()" ondblclick="doDBClick()">cs2</button>
+</body>
+<script>
+var clickFlag=null;
+
+function doClick(event) {
+        if(clickFlag){
+            clearTimeout(clickFlag);
+        }
+       clickFlag=setTimeout(() => {
+           console.log("doClick event"+1 +" "+clickFlag)
+       }, 1000);   
+    
+}
+
+function doDBClick(event) {
+        if(clickFlag){
+            clearTimeout(clickFlag);
+        }
+        console.log("doDBClick event"+2+" "+clickFlag);
+}
+
+$(function(){
+
+})
+
+</script>
+</html>
