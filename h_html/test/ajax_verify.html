@@ -64,19 +64,24 @@
 
     var pam=document.getElementById("params").value;
     if(pam){
-      if (pam && pam.match(skipRe)) {
-        alert("含有特殊字符,清先删除。");
-        return;
-      }  
+      if(parm.split("?").length>1){
+        s=parm.substring(a.indexOf("?")+1)
+        if (s && s.match(skipRe)) {
+          alert("含有特殊字符,清先删除。");
+          return;
+        } 
+      }
+       
     }
     if (data.params &&
       data.params.split("?").length > 1) {
-      s = data.params.split("?")[1];
+      s=data.params.substring(a.indexOf("?")+1)
       if (s && s.match(skipRe)) {
         alert("含有特殊字符,清先删除。");
         return;
       }
     }
+
     if(data.data){
 
 
