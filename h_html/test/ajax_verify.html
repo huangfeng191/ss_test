@@ -25,7 +25,7 @@
     <button onclick="doAjax()">doAjax</button>
 
     <input id="inp1">
-    <title>输入的字符串</title><input id="params" value="?a=a&b=b?&c=!a">
+    <title>输入的字符串</title><input id="params" value="">
 
     <div id="message">
 
@@ -44,15 +44,18 @@
     $("#message1").html("i`m error ");
   })
 
+  // document.getElementById("params").value="?a=a&b=b?&c=!a";
+
   var doGetData = () => {
     var d = {
-      "params": "?a=a&b=b?&c=!a",
+      // "params": "?a=a&b=b?&c=!a",
+      "params": "",
       "url": "http://127.0.0.1:91",
       "data": {
         "a": "1",
         "b": "44!",
         "d": {
-          "cc":"?sf"
+          "cc": "?sf"
         }
       }
     };
@@ -62,41 +65,65 @@
     var s = "";
     var skipRe = /\?|\</;
 
-    var pam=document.getElementById("params").value;
-    if(pam){
-      if(parm.split("?").length>1){
-        s=parm.substring(a.indexOf("?")+1)
+    var pam = document.getElementById("params").value;
+    if (pam) {
+      if (parm.split("?").length > 1) {
+        s = parm.substring(a.indexOf("?") + 1)
         if (s && s.match(skipRe)) {
           alert("含有特殊字符,清先删除。");
           return;
-        } 
+        }
       }
-       
+
     }
     if (data.params &&
       data.params.split("?").length > 1) {
-      s=data.params.substring(a.indexOf("?")+1)
+      s = data.params.substring(a.indexOf("?") + 1)
       if (s && s.match(skipRe)) {
         alert("含有特殊字符,清先删除。");
         return;
       }
     }
 
-    if(data.data){
+    function getCheckMsg(a) {
+      var msg = ""
 
+      function getSubInfo(a) {
 
-      
+        Object.values(a).forEach(function(v) {
+          if (typeof v == "object") {
+            getSubInfo(v)
+          } else if (v && typeof v == "string") {
+            if (v.match(skipRe)) {
+              msg = "输入文本中含有特殊字符，清先删除";
+              return false;
+            }
+          }
+        });
+      }
+      getSubInfo(a)
+      return msg;
+    }
+
+// 处理参数
+    if (data.data) {
+
+      msg = getCheckMsg(data.data)
+      if (msg) {
+        alert("含有特殊字符,清先删除。");
+        return false;
+      }
 
     }
-    
+
     return data;
   }
   var doGetCombined = () => {
     var d = doGetData();
-
-    d=doCheck(d);
-    if(!d){
-      return ;
+    
+    d = doCheck(d);
+    if (!d) {
+      return;
     }
 
     if (d.params) {
@@ -107,10 +134,12 @@
 
   function doAjax() {
     var d = doGetCombined()
+    if (!d) {
+      return;
+    }
     var { url, data } = d
     $.ajax({
       url: url,
-
       data: JSON.stringify(data),
       beforeSend: function(x) {},
       error: function(err) {
