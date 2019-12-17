@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+<style>
+  #message,
+  #message1 {
+    margin-top: 100px;
+    border: 1px red solid;
+    height: 300px;
+    width: 100%;
+  }
+</style>
+
+<body>
+  <div>
+    <button onclick="doAjax()">doAjax</button>
+
+    <input id="inp1">
+    <title>输入的字符串</title><input id="params" value="?a=a&b=b?&c=!a">
+
+    <div id="message">
+
+
+    </div>
+    <div id="message1">
+
+
+    </div>
+
+  </div>
+</body>
+<script>
+  $(document).ajaxError(function(jE, xhr, setting, other) {
+    console.log("3" + 3);
+    $("#message1").html("i`m error ");
+  })
+
+  var doGetData = () => {
+    var d = {
+      "params": "?a=a&b=b?&c=!a",
+      "url": "http://127.0.0.1:91",
+      "data": {
+        "a": "1",
+        "b": "44!",
+        "d": {
+          "cc":"?sf"
+        }
+      }
+    };
+    return d;
+  }
+  var doCheck = (data) => {
+    var s = "";
+    var skipRe = /\?|\</;
+
+    var pam=document.getElementById("params").value;
+    if(pam){
+      if (pam && pam.match(skipRe)) {
+        alert("含有特殊字符,清先删除。");
+        return;
+      }  
+    }
+    if (data.params &&
+      data.params.split("?").length > 1) {
+      s = data.params.split("?")[1];
+      if (s && s.match(skipRe)) {
+        alert("含有特殊字符,清先删除。");
+        return;
+      }
+    }
+    if(data.data){
+
+
+      
+
+    }
+    
+    return data;
+  }
+  var doGetCombined = () => {
+    var d = doGetData();
+
+    d=doCheck(d);
+    if(!d){
+      return ;
+    }
+
+    if (d.params) {
+      d.url = d.url + d.params;
+    }
+    return d;
+  }
+
+  function doAjax() {
+    var d = doGetCombined()
+    var { url, data } = d
+    $.ajax({
+      url: url,
+
+      data: JSON.stringify(data),
+      beforeSend: function(x) {},
+      error: function(err) {
+
+      }
+    }).done(function(ret) {
+
+      if (ret.Response) {
+        ret = ret.Response;
+      }
+      $("#message").html(JSON.stringify(ret));
+      $("#message1").html(ret.need);
+    }).fail(function(ret) {
+      console.log("err 2");
+    })
+
+
+  }
+
+
+  $(function() {
+
+
+
+
+
+  });
+</script>
+
+</html
