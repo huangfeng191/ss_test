@@ -128,6 +128,13 @@
             "command": " cd .\\p_py\\src\\;python w.py",
             "problemMatcher": []
         },
+
+        {
+            "label": "node-back-test",
+            "type": "shell",
+            "command": " cd .\\n_node\\;npm run start",
+            "problemMatcher": []
+        },
         {
             "type": "npm",
             "script": "install",

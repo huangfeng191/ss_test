@@ -45,25 +45,30 @@ $(document).ajaxError(function(jE,xhr,setting,other){
   // debugger
 })
 
+
+$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+console.log("preFilter"+"1");
+jqXHR.abort();
+
+})
 function doAjax(params) {
 
 
+
+
+  
     $.ajax({
-      url: "/nms/misc_info/one.json",
+      url: "http://127.0.0.1:91",
       // async: false,
       timeout: 1*1000,
       data: JSON.stringify({
         "query": {
-
-          // "tp": "net_topo_all"
-
         }
       }),
       beforeSend:function(x){
-            // debugger
       },
       error:function(err){
-        console.log("err 1");
+
         
       } 
     }).done(function(ret){
