@@ -2,8 +2,9 @@
 #Persistent
 lastDone := 0
 doTime := 160000
+; doTime := 130100
 ; doTime := 12
-SetTimer, doF5, 120
+SetTimer, doF5, 100
 return
 
 doF5:
