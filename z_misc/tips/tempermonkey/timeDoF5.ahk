@@ -3,17 +3,22 @@
 lastDone := 0
 FormatTime, doDay,,yyyyMMdd
 ; :=20191220
-doTime := 100000
-doTime := 202400
+doTime := 000000
+; doTime := 100000
+; doTime := 202400
+
+doOffset :=0 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
+; doOffset := -1000 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
+
+
 if(doTime =="000000")
 {
-    doDay="20191221"
+    tomorrow:=""
+    tomorrow += 1, Days
+    FormatTime, doDay,%tomorrow%,yyyyMMdd
 }
 
-doOffset := -1000 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
-
 doDate=%doDay%%doTime%
-
 SetTimer, doF5, 2
 return
 
@@ -46,8 +51,8 @@ doF5:
             }
             lastDone =1
             sleep 1000+doOffset
-            MsgBox,%new_int%
-            ; Send, {F5} 
+            ; MsgBox,%new_int%
+            Send, {F5} 
             
         }
     }

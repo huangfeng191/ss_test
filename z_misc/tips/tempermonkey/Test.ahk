@@ -22,12 +22,20 @@
 ; var1 += 1, Seconds
 ; MsgBox, %var1%  ; The answer will be the date 31 days from now.
 
-var1:="20191220"
-var2:="102020"
-var3:="20191220102020"
-var4=%var1%%var2%
- MsgBox %var4%
-if(var3==var4)
-{
-    MsgBox %var1%%var2%
-}
+; var1:="20191220"
+; var2:="102020"
+; var3:="20191220102020"
+; var4=%var1%%var2%
+;  MsgBox %var4%
+; if(var3==var4)
+; {
+;     MsgBox %var1%%var2%
+; }
+
+
+
+var1 := ""  ; Make it blank so that the below will use the current time instead.
+var1 += 1, Days
+MsgBox, %var1%  ; The answer will be the date 31 days from now.
+ FormatTime, var3,%var1%,yyyyMMdd
+ MsgBox, %var3% 
