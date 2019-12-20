@@ -1,13 +1,18 @@
 ; 示例 #1: 当不想要的窗口出现时关闭它们:
 #Persistent
 lastDone := 0
-
-doDay:=20191220
+FormatTime, doDay,,yyyyMMdd
+; :=20191220
 doTime := 100000
-doDate=%doDay%%doTime%
+doTime := 202400
+if(doTime =="000000")
+{
+    doDay="20191221"
+}
+
 doOffset := -1000 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
 
-
+doDate=%doDay%%doTime%
 
 SetTimer, doF5, 2
 return
