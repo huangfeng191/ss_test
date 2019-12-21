@@ -1,3 +1,9 @@
+server: old 
+192.168.1.99
+acc: saisinms  pwd:saisi
+root  123456
+
+
 sys 用户   admin  admin
 
 192.168.1.65 centOS  社区企业操作系统（Community Enterprise Operating System）
