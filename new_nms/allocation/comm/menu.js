@@ -108,6 +108,7 @@
     { "name":"权限管理", "w":"2", "sn":"securityManageRole", "role":null ,"parentSn":"securityManage" },
     { "name":"用户统计", "w":"3", "sn":"securityManageUserStat", "role":null ,"parentSn":"securityManage" },
     { "name":"系统参数", "w":"4", "sn":"securityManageParams", "role":null ,"parentSn":"securityManage" },
+    { "name":"目录管理", "w":"5", "sn":"menuManagement", "role":null ,"parentSn":"securityManage" },
  ]
 
  // 系统管理 - 日志管理
