@@ -1,3 +1,8 @@
+# conditions
+
+1. cloudMusic conflict vscode  on ctrl+alt+up/down  [***] 
+
+
 # regex replace   
 \[(.*?)\]
 $1

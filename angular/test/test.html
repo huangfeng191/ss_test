@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="../jslib/jquery-1.11.1.min.js"></script>
+    <input id="cs" type="text">
 </head>
 <body>
-        我是谁
+    <script>
+$(function(){
+$("input[type='text']").on("input propertychange",function(event){
+    console.log("1"+1);
+    // (event.target.value)
+})
+})
+
+        </script>  
 
 
 </body>
