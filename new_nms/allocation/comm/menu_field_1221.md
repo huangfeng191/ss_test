@@ -1,5 +1,6 @@
 ## desc 
 id :sn 
+name:
 parentId parentSn 
 parentName 
 orderNum w 
@@ -8,14 +9,17 @@ orderNum w
 # mode:  nm sn  parentSn
 
 #  首页 index  ?button?
+首页 index
 物理拓扑 physics
 查看 physics ?view 
 操作 physics ?operation  
 告警列表 warningList
-告警列表 warningList ?operation
 查看 warningList ?view 
+操作 warningList ?operation
 #  拓扑管理 topology 
+拓扑管理 topology
 物理拓扑 physics
+
 查看 physics ?view  //topology-physics_view
 操作 physics ?operation  
 逻辑拓扑 logic
@@ -25,21 +29,24 @@ orderNum w
 查看 net ?view  
 操作 net ?operation  
 告警列表 warningList
-告警列表 warningList ?operation
+查看 warningList ?view 
+操作 warningList ?operation
 拓扑信息统计 statistics
 #  配置管理 configure
+配置管理 configure
 网元配置 config
 查看 config ?view  
 操作 config ?operation  
 网元管理 manage
-查看 config ?view  
-操作 config ?operation  
+查看 manage ?view  
+操作 manage ?operation  
 EMS配置 EMS 
 配置信息统计 statistics
 #  告警管理 warning
+告警管理 warning
 当前告警 current
-查看 config ?view  
-操作 config ?operation
+查看 current ?view  
+操作 current ?operation
 历史告警 history
 告警处理 handle
 查看 handle ?view  
@@ -49,6 +56,7 @@ EMS配置 EMS
 操作 mask ?operation
 告警统计 statistics
 #  性能管理 performance
+性能管理 performance
 当前性能 current
 查看 current ?view  
 操作 current ?operation
@@ -58,6 +66,7 @@ EMS配置 EMS
 操作 setting ?operation
 性能统计 statistics
 #  运维管理 operation
+运维管理 operation
 数据统计 datas  
 拓扑信息统计 datas-topology
 配置信息统计 datas-configure
@@ -80,6 +89,7 @@ EMS配置 EMS
 查看 environment ?view
 操作 environment ?operation  
 #  系统管理 system
+系统管理 system
 安全管理 security
 用户管理 security-user 
 查看 security-user ?view
@@ -113,6 +123,7 @@ EMS配置 EMS
 查看 monitor-remote ?view
 操作 monitor-remote ?operation  
 #  帮助 help
+帮助 help
 知识库 knowledge
 查看 knowledge ?view
 操作 knowledge ?operation  
