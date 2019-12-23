@@ -1,60 +1,48 @@
+# PS:
+    权限与日志的key 可以混用
+# generate:
+template :'{"name":"${0}","id":"${1}","operate":"${2:view}",options: null,},'
+options:?title:field,title:field
+op=
+query parent import export upload
+# 查询 打印 导入 导出 上传
+operate:"",remarks:""
+点击了查询
 
 #  首页 index  ?button?
-首页 index
-物理拓扑 physics
-查看 physics ?view 
-操作 physics ?operation  
-告警列表 warningList
-查看 warningList ?view 
-操作 warningList ?operation
+首页 index 
+
 #  拓扑管理 topology 
 拓扑管理 topology
 物理拓扑 physics
-
-查看 physics ?view  //topology-physics_view
-操作 physics ?operation  
 逻辑拓扑 logic
-查看 logic ?view  
-操作 logic ?operation  
 网管拓扑 net
-查看 net ?view  
-操作 net ?operation  
-告警列表 warningList
-查看 warningList ?view 
-操作 warningList ?operation
 拓扑信息统计 statistics
-#  配置管理 configure
+//告警列表 warningList
+
+#  配置管理 configure ?Options?
 配置管理 configure
-网元配置 config
-查看 config ?view  
-操作 config ?operation  
+网元配置 config query ?网元名称:name,厂商:NEType,设备类型:deviceType  
 网元管理 manage
-查看 manage ?view  
-操作 manage ?operation  
 //EMS配置 EMS 
 配置信息统计 statistics
 #  告警管理 warning
 告警管理 warning
 当前告警 current
-查看 current ?view  
-操作 current ?operation
+
 历史告警 history
 告警处理 handle
-查看 handle ?view  
-操作 handle ?operation
+
 告警屏蔽 mask
-查看 mask ?view  
-操作 mask ?operation
+
 告警统计 statistics
 #  性能管理 performance
 性能管理 performance
 当前性能 current
-查看 current ?view  
-操作 current ?operation
+
 历史性能 history
 性能设置 setting
-查看 setting ?view  
-操作 setting ?operation
+
 性能统计 statistics
 #  运维管理 operation
 运维管理 operation
@@ -73,72 +61,48 @@
 设备故障型号分析 allocation-type
 设备故障厂商分析 allocation-vendor
 设备性能报表 allocation-performance
+温度影响故障分析 allocation-temperature
 调整记录 adjust 
-查看 adjust ?view 
-操作 adjust ?operation   
+
 环境管理 environment 
-查看 environment ?view
-操作 environment ?operation  
+
 #  系统管理 system
 系统管理 system
 安全管理 security
 用户管理 security-user 
-查看 security-user ?view
-操作 security-user ?operation  
+
 权限管理 security-role
-查看 security-role ?view
-操作 security-role ?operation  
+
 用户统计 security-statistics
 系统参数 security-parameter
-查看 security-parameter ?view
-操作 security-parameter ?operation  
+
 目录管理 security-menu
-查看 security-menu ?view
-操作 security-menu ?operation  
+
 日志管理 log
 安全日志 log-security
-操作日志 log-operation
 系统日志 log-system
 日志统计 log-allocation
 接口管理 interface
-查看 interface ?view
-操作 interface ?operation  
+
 网管检测 monitor
 系统信息 monitor-infos
-查看 monitor-infos ?view
-操作 monitor-infos ?operation  
+
 数据库管理 monitor-database
-查看 monitor-database ?view
-操作 monitor-database ?operation  
+
 远程维护 monitor-remote
-查看 monitor-remote ?view
-操作 monitor-remote ?operation  
+
 #  帮助 help
 帮助 help
 知识库 knowledge
-查看 knowledge ?view
-操作 knowledge ?operation  
+
 站点详情 station
-查看 station ?view
-操作 station ?operation  
+
 区域详情 area
-查看 area ?view
-操作 area ?operation  
+
 设备详情 device
-查看 device ?view
-操作 device ?operation  
-操作手册 operation
 在线手册 online
 
-页面-执行了-操作,查询条件为
-
-
-
-接口管理：
-
-
-
+页面-执行了-
 查询,打印,导入,导出, 上传,上载,只要是个按钮,都包含了
-
 按钮日志
 告警模块添加字段 告警id 

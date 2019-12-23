@@ -1,3 +1,4 @@
+# 查询与操作是没有dom 对象的,只是统一操作下面的行为
 ## desc 
 id :sn 
 name:
@@ -5,6 +6,7 @@ parentId parentSn
 parentName 
 orderNum w 
 如果有按钮控制,则必须父子级关系
+
 
 # mode:  nm sn  parentSn
 
@@ -82,6 +84,7 @@ orderNum w
 设备故障型号分析 allocation-type
 设备故障厂商分析 allocation-vendor
 设备性能报表 allocation-performance
+温度影响故障分析 allocation-temperature
 调整记录 adjust 
 查看 adjust ?view 
 操作 adjust ?operation   
