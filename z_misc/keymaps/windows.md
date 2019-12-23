@@ -72,7 +72,7 @@ win + shift + t 切换到任务栏的下一个任务
 | Win+Shift+s   | take a screenshot of part of your screen           | ****     |
 | Win+,   | Temporarily peek at the desktop.           | ****     |
 
-
+ 
 
 | shortcut                    | 多屏显示   | rating |
 | --------------------------- | ---------- | ------ |

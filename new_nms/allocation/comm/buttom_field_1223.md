@@ -1,12 +1,3 @@
-## desc 
-id :sn 
-name:
-parentId parentSn 
-parentName 
-orderNum w 
-如果有按钮控制,则必须父子级关系
-
-# mode:  nm sn  parentSn
 
 #  首页 index  ?button?
 首页 index
@@ -138,3 +129,16 @@ orderNum w
 操作 device ?operation  
 操作手册 operation
 在线手册 online
+
+页面-执行了-操作,查询条件为
+
+
+
+接口管理：
+
+
+
+查询,打印,导入,导出, 上传,上载,只要是个按钮,都包含了
+
+按钮日志
+告警模块添加字段 告警id 
