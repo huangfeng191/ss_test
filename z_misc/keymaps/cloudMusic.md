@@ -5,6 +5,6 @@
 | ctrl+right | next sing        | *       |
 | ctrl+up    | volume up        |        |
 | ctrl+down  | volume down      |        |
-| ctrl+l     | like sign        |        |
+| ctrl+l     | like sign        |*        |
 | ctrl+m     | mini/full  mode  |        |
 | ctrl+d     | open/close lyric |**        |
