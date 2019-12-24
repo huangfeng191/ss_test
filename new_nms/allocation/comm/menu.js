@@ -1,153 +1,121 @@
-[
-    { "name":"首页", "w":"1", "sn":"index", "role":null },
-    { "name":"拓扑管理", "w":"2", "sn":"topology", "role":null },
-    { "name":"配置管理", "w":"3", "sn":"configure", "role":null },
-    { "name":"告警管理", "w":"4", "sn":"warning", "role":null },
-    { "name":"性能管理", "w":"5", "sn":"performance", "role":null },
-    { "name":"运维管理", "w":"6", "sn":"operation", "role":null },
-    { "name":"系统管理", "w":"7", "sn":"system", "role":null },
-    { "name":"帮助", "w":"8", "sn":"help", "role":null },
-
-];
-
-
-
-// 拓扑管理
-[
-    { "name":"网元配置", "w":"1", "sn":"netElementConfig", "role":null ,"parentSn":"configure"},
-    { "name":"网元管理", "w":"2", "sn":"netElementManage", "role":null ,"parentSn":"configure"},
-    { "name":"EMS配置", "w":"3", "sn":"EMSConfig", "role":null ,"parentSn":"configure"},
-    { "name":"配置信息统计", "w":"4", "sn":"configInfoStat", "role":null ,"parentSn":"configure"},
-]
-    
-
-[
-    { "name":"物理拓扑", "w":"1", "sn":"physicsTopology", "role":null ,"parentSn":"topology"},
-    { "name":"逻辑拓扑", "w":"2", "sn":"logicTopology", "role":null ,"parentSn":"topology"},
-    { "name":"网管拓扑", "w":"3", "sn":"netTopology", "role":null ,"parentSn":"topology"},
-    { "name":"拓扑信息统计", "w":"4", "sn":"qualityStat", "role":null ,"parentSn":"topology"},
-
-]
-
-// 配置管理：
-[
-{ "name":"网元配置", "w":"1", "sn":"netElementConfig", "role":null ,"parentSn":"configure"},
-{ "name":"网元管理", "w":"2", "sn":"netElementManage", "role":null ,"parentSn":"configure"},
-{ "name":"EMS配置", "w":"3", "sn":"EMSConfig", "role":null ,"parentSn":"configure"},
-{ "name":"配置信息统计", "w":"4", "sn":"configInfoStat", "role":null ,"parentSn":"configure"},
-]
-
-
-
-// 告警管理
-[
-    { "name":"当前告警", "w":"1", "sn":"currentAlarm", "role":null  ,"parentSn":"warning"},
-    { "name":"历史告警", "w":"2", "sn":"historyAlarm", "role":null  ,"parentSn":"warning"},
-    { "name":"告警处理", "w":"3", "sn":"alarmHanding", "role":null  ,"parentSn":"warning"},
-    { "name":"告警屏蔽", "w":"4", "sn":"alarmMask", "role":null  ,"parentSn":"warning"},
-    { "name":"告警统计", "w":"5", "sn":"alarmStat", "role":null  ,"parentSn":"warning"},
-]
-
-    
-// 性能管理
-[
-    { "name":"当前性能", "w":"1", "sn":"currentQuality", "role":null ,"parentSn":"performance"},
-    { "name":"历史性能", "w":"2", "sn":"historyQuality", "role":null ,"parentSn":"performance"},
-    { "name":"性能设置", "w":"3", "sn":"qualitySetting", "role":null ,"parentSn":"performance"},
-    { "name":"性能统计", "w":"4", "sn":"qualityStat", "role":null ,"parentSn":"performance"},
-]
-
-
-    // 运维管理
-
-[
-    { "name":"数据统计", "w":"1", "sn":"dataStatistics", "role":null ,"parentSn":"operation"},
-    { "name":"综合分析", "w":"2", "sn":"aggregateAnalysis", "role":null ,"parentSn":"operation"},
-    { "name":"年度报表", "w":"3", "sn":"yearReport", "role":null ,"parentSn":"operation"},
-    { "name":"调整记录", "w":"4", "sn":"adjustRecords", "role":null ,"parentSn":"operation"},
-    { "name":"环境管理", "w":"5", "sn":"environmentManage", "role":null ,"parentSn":"operation"},
-]
-        // 运维管理- 数据统计
-[
-    { "name":"拓扑信息统计", "w":"1", "sn":"dataStatisticsTopology", "role":null ,"parentSn":"dataStatistics"},
-    { "name":"配置信息统计", "w":"2", "sn":"dataStatisticsConfig", "role":null ,"parentSn":"dataStatistics"},
-    { "name":"告警统计", "w":"3", "sn":"dataStatisticsWarning", "role":null ,"parentSn":"dataStatistics"},
-    { "name":"性能统计", "w":"4", "sn":"dataStatisticsPerformance", "role":null ,"parentSn":"dataStatistics"},
-    { "name":"用户统计", "w":"5", "sn":"dataStatisticsUser", "role":null ,"parentSn":"dataStatistics"},
-    { "name":"日志统计", "w":"6", "sn":"dataStatisticsLog", "role":null ,"parentSn":"dataStatistics"},
-]
-// 运维管理-年度报表
-[
-    { "name":"运维调整报表", "w":"1", "sn":"yearReportMaintain", "role":null ,"parentSn":"yearReport"},
-    { "name":"用户活跃度统计", "w":"2", "sn":"yearReportActivity", "role":null ,"parentSn":"yearReport"},
-    { "name":"设备告警统计", "w":"3", "sn":"yearReportDeviceWarming", "role":null ,"parentSn":"yearReport"},
-
-]
-
-// 运维管理-综合分析
-[
-    { "name":"设备故障型号分析", "w":"1", "sn":"aggregateAnalysisType", "role":null ,"parentSn":"aggregateAnalysis"},
-    { "name":"设备故障厂商分析", "w":"2", "sn":"aggregateAnalysisVendor", "role":null ,"parentSn":"aggregateAnalysis"},
-    { "name":"设备性能报表", "w":"3", "sn":"aggregateAnalysisPerformance", "role":null ,"parentSn":"aggregateAnalysis"},
-
-]
- 
-
-// 系统管理
-
-    
-[
-    { "name":"安全管理", "w":"1", "sn":"securityManage", "role":null ,"parentSn":"system" },
-    { "name":"日志管理", "w":"2", "sn":"logManage", "role":null ,"parentSn":"system" },
-    { "name":"接口管理", "w":"3", "sn":"interfaceManage", "role":null ,"parentSn":"system" },
-    { "name":"网管检测", "w":"4", "sn":"systemMonitor", "role":null ,"parentSn":"system" },
-]
-// 系统管理 - 安全管理
-[
-    { "name":"用户管理", "w":"1", "sn":"securityManageUser", "role":null ,"parentSn":"securityManage" },
-    { "name":"权限管理", "w":"2", "sn":"securityManageRole", "role":null ,"parentSn":"securityManage" },
-    { "name":"用户统计", "w":"3", "sn":"securityManageUserStat", "role":null ,"parentSn":"securityManage" },
-    { "name":"系统参数", "w":"4", "sn":"securityManageParams", "role":null ,"parentSn":"securityManage" },
-    { "name":"目录管理", "w":"5", "sn":"menuManagement", "role":null ,"parentSn":"securityManage" },
- ]
-
- // 系统管理 - 日志管理
- [
-    { "name":"安全日志", "w":"1", "sn":"logManageSecure", "role":null ,"parentSn":"logManage" },
-    { "name":"操作日志", "w":"2", "sn":"logManageOperate", "role":null ,"parentSn":"logManage" },
-    { "name":"系统日志", "w":"3", "sn":"logManageSystem", "role":null ,"parentSn":"logManage" },
-    { "name":"日志统计", "w":"4", "sn":"logManageStats", "role":null ,"parentSn":"logManage" },
- ]
-
- // 系统管理 -管网检测
- [
-    { "name":"系统信息", "w":"1", "sn":"systemMonitorInfos", "role":null ,"parentSn":"systemMonitor" },
-    { "name":"数据库管理", "w":"2", "sn":"systemMonitorDatabase", "role":null ,"parentSn":"systemMonitor" },
-    { "name":"远程维护", "w":"3", "sn":"systemMonitorRemote", "role":null ,"parentSn":"systemMonitor" },
- ]
-
-
-    // 帮助管理
-    
-
-[
-    { "name":"知识库", "w":"1", "sn":"knowledgeLibrary", "role":null ,"parentSn":"help"},
-    { "name":"站点详情", "w":"2", "sn":"stationDetail", "role":null ,"parentSn":"help"},
-    { "name":"区域详情", "w":"3", "sn":"areaDetail", "role":null ,"parentSn":"help"},
-    { "name":"设备详情", "w":"4", "sn":"deviceDetail", "role":null ,"parentSn":"help"},
-    { "name":"操作手册", "w":"5", "sn":"operationManual", "role":null ,"parentSn":"help"},
-    { "name":"在线手册", "w":"6", "sn":"onlineHelp", "role":null ,"parentSn":"help"},
-]
-    
-    
-
-    
-
-
-
-
-function getMenu(role) {
-    if(role=="manage"){
-
-    }
-}
+{"name":"首页","id":"index","parentId": "",},
+{"name":"物理拓扑","id":"index-physics","parentId": "index",},
+{"name":"查看","id":"index-physics_view","parentId": "index-physics",},
+{"name":"操作","id":"index-physics_operation","parentId": "index-physics",},
+{"name":"告警列表","id":"index-warningList","parentId": "index",},
+{"name":"查看","id":"index-warningList_view","parentId": "index-warningList",},
+{"name":"操作","id":"index-warningList_operation","parentId": "index-warningList",},
+{"name":"拓扑管理","id":"topology","parentId": "",},
+{"name":"物理拓扑","id":"topology-physics","parentId": "topology",},
+{"name":"查看","id":"topology-physics_view","parentId": "topology-physics",},
+{"name":"操作","id":"topology-physics_operation","parentId": "topology-physics",},
+{"name":"逻辑拓扑","id":"topology-logic","parentId": "topology",},
+{"name":"查看","id":"topology-logic_view","parentId": "topology-logic",},
+{"name":"操作","id":"topology-logic_operation","parentId": "topology-logic",},
+{"name":"网管拓扑","id":"topology-net","parentId": "topology",},
+{"name":"查看","id":"topology-net_view","parentId": "topology-net",},
+{"name":"操作","id":"topology-net_operation","parentId": "topology-net",},
+{"name":"告警列表","id":"topology-warningList","parentId": "topology",},
+{"name":"查看","id":"topology-warningList_view","parentId": "topology-warningList",},
+{"name":"操作","id":"topology-warningList_operation","parentId": "topology-warningList",},
+{"name":"拓扑信息统计","id":"topology-statistics","parentId": "topology",},
+{"name":"配置管理","id":"configure","parentId": "",},
+{"name":"网元配置","id":"configure-config","parentId": "configure",},
+{"name":"查看","id":"configure-config_view","parentId": "configure-config",},
+{"name":"操作","id":"configure-config_operation","parentId": "configure-config",},
+{"name":"网元管理","id":"configure-manage","parentId": "configure",},
+{"name":"查看","id":"configure-manage_view","parentId": "configure-manage",},
+{"name":"操作","id":"configure-manage_operation","parentId": "configure-manage",},
+{"name":"配置信息统计","id":"configure-statistics","parentId": "configure",},
+{"name":"告警管理","id":"warning","parentId": "",},
+{"name":"当前告警","id":"warning-current","parentId": "warning",},
+{"name":"查看","id":"warning-current_view","parentId": "warning-current",},
+{"name":"操作","id":"warning-current_operation","parentId": "warning-current",},
+{"name":"历史告警","id":"warning-history","parentId": "warning",},
+{"name":"告警处理","id":"warning-handle","parentId": "warning",},
+{"name":"查看","id":"warning-handle_view","parentId": "warning-handle",},
+{"name":"操作","id":"warning-handle_operation","parentId": "warning-handle",},
+{"name":"告警屏蔽","id":"warning-mask","parentId": "warning",},
+{"name":"查看","id":"warning-mask_view","parentId": "warning-mask",},
+{"name":"操作","id":"warning-mask_operation","parentId": "warning-mask",},
+{"name":"告警统计","id":"warning-statistics","parentId": "warning",},
+{"name":"性能管理","id":"performance","parentId": "",},
+{"name":"当前性能","id":"performance-current","parentId": "performance",},
+{"name":"查看","id":"performance-current_view","parentId": "performance-current",},
+{"name":"操作","id":"performance-current_operation","parentId": "performance-current",},
+{"name":"历史性能","id":"performance-history","parentId": "performance",},
+{"name":"性能设置","id":"performance-setting","parentId": "performance",},
+{"name":"查看","id":"performance-setting_view","parentId": "performance-setting",},
+{"name":"操作","id":"performance-setting_operation","parentId": "performance-setting",},
+{"name":"性能统计","id":"performance-statistics","parentId": "performance",},
+{"name":"运维管理","id":"operation","parentId": "",},
+{"name":"数据统计","id":"operation-datas","parentId": "operation",},
+{"name":"拓扑信息统计","id":"operation-datas-topology","parentId": "operation",},
+{"name":"配置信息统计","id":"operation-datas-configure","parentId": "operation",},
+{"name":"告警统计","id":"operation-datas-warning","parentId": "operation",},
+{"name":"性能统计","id":"operation-datas-performance","parentId": "operation",},
+{"name":"用户统计","id":"operation-datas-user","parentId": "operation",},
+{"name":"日志统计","id":"operation-datas-log","parentId": "operation",},
+{"name":"年度报表","id":"operation-year","parentId": "operation",},
+{"name":"运维调整报表","id":"operation-year-adjust","parentId": "operation",},
+{"name":"用户活跃度统计","id":"operation-year-activity","parentId": "operation",},
+{"name":"设备告警统计","id":"operation-year-warning","parentId": "operation",},
+{"name":"综合分析","id":"operation-allocation","parentId": "operation",},
+{"name":"设备故障型号分析","id":"operation-allocation-type","parentId": "operation",},
+{"name":"设备故障厂商分析","id":"operation-allocation-vendor","parentId": "operation",},
+{"name":"设备性能报表","id":"operation-allocation-performance","parentId": "operation",},
+{"name":"温度影响故障分析","id":"operation-allocation-temperature","parentId": "operation",},
+{"name":"调整记录","id":"operation-adjust","parentId": "operation",},
+{"name":"查看","id":"operation-adjust_view","parentId": "operation-adjust",},
+{"name":"操作","id":"operation-adjust_operation","parentId": "operation-adjust",},
+{"name":"环境管理","id":"operation-environment","parentId": "operation",},
+{"name":"查看","id":"operation-environment_view","parentId": "operation-environment",},
+{"name":"操作","id":"operation-environment_operation","parentId": "operation-environment",},
+{"name":"系统管理","id":"system","parentId": "",},
+{"name":"安全管理","id":"system-security","parentId": "system",},
+{"name":"用户管理","id":"system-security-user","parentId": "system",},
+{"name":"查看","id":"system-security-user_view","parentId": "system-security-user",},
+{"name":"操作","id":"system-security-user_operation","parentId": "system-security-user",},
+{"name":"权限管理","id":"system-security-role","parentId": "system",},
+{"name":"查看","id":"system-security-role_view","parentId": "system-security-role",},
+{"name":"操作","id":"system-security-role_operation","parentId": "system-security-role",},
+{"name":"用户统计","id":"system-security-statistics","parentId": "system",},
+{"name":"系统参数","id":"system-security-parameter","parentId": "system",},
+{"name":"查看","id":"system-security-parameter_view","parentId": "system-security-parameter",},
+{"name":"操作","id":"system-security-parameter_operation","parentId": "system-security-parameter",},
+{"name":"目录管理","id":"system-security-menu","parentId": "system",},
+{"name":"查看","id":"system-security-menu_view","parentId": "system-security-menu",},
+{"name":"操作","id":"system-security-menu_operation","parentId": "system-security-menu",},
+{"name":"日志管理","id":"system-log","parentId": "system",},
+{"name":"安全日志","id":"system-log-security","parentId": "system",},
+{"name":"操作日志","id":"system-log-operation","parentId": "system",},
+{"name":"系统日志","id":"system-log-system","parentId": "system",},
+{"name":"日志统计","id":"system-log-allocation","parentId": "system",},
+{"name":"接口管理","id":"system-interface","parentId": "system",},
+{"name":"查看","id":"system-interface_view","parentId": "system-interface",},
+{"name":"操作","id":"system-interface_operation","parentId": "system-interface",},
+{"name":"网管检测","id":"system-monitor","parentId": "system",},
+{"name":"系统信息","id":"system-monitor-infos","parentId": "system",},
+{"name":"查看","id":"system-monitor-infos_view","parentId": "system-monitor-infos",},
+{"name":"操作","id":"system-monitor-infos_operation","parentId": "system-monitor-infos",},
+{"name":"数据库管理","id":"system-monitor-database","parentId": "system",},
+{"name":"查看","id":"system-monitor-database_view","parentId": "system-monitor-database",},
+{"name":"操作","id":"system-monitor-database_operation","parentId": "system-monitor-database",},
+{"name":"远程维护","id":"system-monitor-remote","parentId": "system",},
+{"name":"查看","id":"system-monitor-remote_view","parentId": "system-monitor-remote",},
+{"name":"操作","id":"system-monitor-remote_operation","parentId": "system-monitor-remote",},
+{"name":"帮助","id":"help","parentId": "",},
+{"name":"知识库","id":"help-knowledge","parentId": "help",},
+{"name":"查看","id":"help-knowledge_view","parentId": "help-knowledge",},
+{"name":"操作","id":"help-knowledge_operation","parentId": "help-knowledge",},
+{"name":"站点详情","id":"help-station","parentId": "help",},
+{"name":"查看","id":"help-station_view","parentId": "help-station",},
+{"name":"操作","id":"help-station_operation","parentId": "help-station",},
+{"name":"区域详情","id":"help-area","parentId": "help",},
+{"name":"查看","id":"help-area_view","parentId": "help-area",},
+{"name":"操作","id":"help-area_operation","parentId": "help-area",},
+{"name":"设备详情","id":"help-device","parentId": "help",},
+{"name":"查看","id":"help-device_view","parentId": "help-device",},
+{"name":"操作","id":"help-device_operation","parentId": "help-device",},
+{"name":"操作手册","id":"help-operation","parentId": "help",},
+{"name":"在线手册","id":"help-online","parentId": "help",},

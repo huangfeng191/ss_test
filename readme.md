@@ -9,4 +9,5 @@ p_py: 端口 8822  nginx 8882
 2.  2:http://127.0.0.1:62/nms   user:seldom
 3.  3:http://127.0.0.1:3333   simple
 4.  4:http://127.0.0.1:40/index.html#/login old_nms
-5.  5:http://127.0.0.1:51/           stock   
+5.  5:http://127.0.0.1:51/           stock 
+  

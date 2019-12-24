@@ -60,8 +60,6 @@ orderNum w
 #  性能管理 performance
 性能管理 performance
 当前性能 current
-查看 current ?view  
-操作 current ?operation
 历史性能 history
 性能设置 setting
 查看 setting ?view  
