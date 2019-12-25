@@ -51,9 +51,11 @@ function doCoding() {
   });
   
 var firstEncrpt=test.encrpt();
-document.getElementsByTagName("textarea")[0].value=firstEncrpt
+    
+document.getElementsByTagName("textarea")[0].value=test.decode64(firstEncrpt)
+debugger    
+firstEncrpt=test.encode64(document.getElementsByTagName("textarea")[0].value)
 
-// debugger
 var test1 = new SM4Encrpt({   //实例化解密类
     keyStr:"0123456789abcdeffedcba9876543210",//指定的数组加密/解密密钥数组/密钥字符串，此参数若是加密可以省略，加密密钥由本类自动生成；若是解密必须指定该密钥
     bytes:firstEncrpt //需要加密/解密的二进制/字符串
