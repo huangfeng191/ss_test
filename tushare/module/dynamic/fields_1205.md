@@ -14,31 +14,31 @@
 
 
 
-# cell setting  ?ColSpan?br?
+# cell setting  ?ColSpan?Required?br?
 ## basic 
-规则名称  name
-规则编码 sn
+规则名称  name ??true
+规则编码 sn ??true
 ## 目的是生成唯一的记录 
-频率 frequency  c frequency
-cell类型 type   c CellType   // record slot arithmetic
+周期 cycle  c cellCycle ??true // day week month year // discard  frequency  c frequency
+cell类型 type   c cellType  ??true  // record slot arithmetic
 ### level   只要生成一次就好,其他情况可复用    
 ###  // link:  不同的link 需要单独生成 
 ###  // tips:  级别越高、代表差异性越大(可复用性越差) 当 cell 为 arithmetic 时,记录中自动填写 最高级别
-唯一等级  level   c CellLevel ??  // cell,link,step,measure 
+cell等级  level   c cellLevel ??true  // cell,link,step,measure 
 ### 记录生成
-生成类型 ruleType  c ruleType
-生成策略 refresh   c CellRefresh  // refresh keep // discard: outFrequency
-复用参数 reuseParams  ?3
-生成规则 rule  a ?3
+复用参数 reuseParams  ?2
+生成类型 ruleType  c ruleType ??true   // 对数据的处理规则 
+生成规则 rule  a ?3 // 具体的规则
+刷新策略 refresh   c cellRefresh ??true // refresh keep // discard: outFrequency
+
 
 ### 输出
-输出类型 outType  c outType // 拆分两个字段的目的是 一次性配置多个规则，而只使用一个规则
-输出规则 out  a
-
+输出类型 outType  c outType ??true// 拆分两个字段的目的是 一次性配置多个规则，而只使用一个规则
+输出规则 out  a  ?3
 ### other 
 排序 w
-描述 desc
 业务分类 group 
+描述 desc a  ?3
 
 
 

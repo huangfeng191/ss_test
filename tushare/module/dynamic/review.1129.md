@@ -15,7 +15,8 @@ cell:
             level:"cell",
             "key":{
                 sn:  
-                freq:
+                cycle:
+                t:
             }
         },
         take:{ // 目的是找到,产生数据的结果

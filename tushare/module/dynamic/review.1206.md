@@ -11,22 +11,37 @@ cell:
     refresh: default:0 
     type: record slot arithmetic
     stage:{
-        fetch:{ // 目的是找到,产生数据的日志,同时判断是否需要生成数据
+        fetch:{ // 目的是找到,产生数据的日志,同时判断是否需要生成数据 有数据代表已经生成
+                // 还担负的作用: 取相关的配置
             level:"cell",
-            "key":{
+            t:"yyyyMMdd",
+            "key":{  
                 sn:  
-                freq:
-            }
+                cycle: // 默认day
+            },
         },
-        take:{ // 目的是找到,产生数据的结果
+        take:{ // 根据日志找到具体的结果
             type: table log,
             table:{
                 "nm":"",
+                "t":"" // 时间
                 "fetchKey": // 等同于 fetch 里的key 
-                "dataKey":
+                "dataKey": 
             }
         }
     }
+
+<!-- doing -->
+
+递归生成的逻辑 ：
+
+tier=["measure","step","link","cell"]
+
+dynamic_log_measure
+
+从 cell 的 level 里获取日志，在获取记录，无的时候生成
+
+
 
 - plan:
     - 添加对象 stage refresh 字段   
