@@ -72,7 +72,12 @@ var SM4Encrpt = function () {
         }
 
         if (me.enstr != '') {
-            me.bytes = stringToByte(me.enstr);
+            if(options.base64){
+                me.bytes =me.base64ToByte(me.enstr)
+            }else{
+                me.bytes = stringToByte(me.enstr);
+
+            }
         }
 
         if (me.keyStr == '') {

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- <script src="../js/SM4.js"></script> -->
-    <script src="../js/SM4Encrpt.js"></script>
+    <script src="../js/SM4Encrpt1.js"></script>
 
 </head>
 <style>
@@ -47,22 +47,16 @@ function doCoding() {
 
     var str= document.getElementsByTagName("input")[0].value;
     
-  var test = new SM4Encrpt({   //实例化解密类
-    enstr:str //需要加密/解密的二进制/字符串
-  });
-  
-var firstEncrpt=test.getEncodeString();
+   //  加密
+var firstEncrpt=new SM4Encrpt({ enstr:str }).getEncodeString();
 document.getElementsByTagName("textarea")[0].value=firstEncrpt
 
+firstEncrpt="l8zljgFTxYsgfOuU8WY7Ol7RPBdpHarAtV5v33bjuj4="
+// 解密
+var pwd = new SM4Encrpt({ enstr:firstEncrpt, base64:true }).getDecodeString();  
 
-firstEncrpt=test.base64ToByte(document.getElementsByTagName("textarea")[0].value)
-
-var test1 = new SM4Encrpt({   //实例化解密类
-    bytes:firstEncrpt //需要加密/解密的二进制/字符串
-  });  
-
-  var result=test1.getDecodeString()
-  document.getElementsByTagName("textarea")[1].value=result;
+  
+  document.getElementsByTagName("textarea")[1].value=pwd;
 //   alert(test1.decrpt())
  
 }
