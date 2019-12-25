@@ -206,13 +206,14 @@ var SM4Encrpt = function () {
     me.getResultStr = function () {
         return byteToString(me.bytes);
     }
-    me.getResultStr1 = function () {
+    me.getDecodeString = function () {
+        me.decrpt()
         var filtered=me.bytes.filter(function(v){return v!=0})
         return byteToString(filtered);
     }
 
 
-    me.encode64 = function(base64Str){
+    me.base64ToByte = function(base64Str){
 
             var bString = atob(base64Str);
         
@@ -232,11 +233,11 @@ var SM4Encrpt = function () {
         
     me.getEncodeString=function(){
         me.encrpt();
-        return me.decode64(me.bytes)
+        return me.byteToBase64(me.bytes)
     }  
    
         // 
-    me.decode64 = function(bytes){
+    me.byteToBase64 = function(bytes){
     
           var bString = "";
     
