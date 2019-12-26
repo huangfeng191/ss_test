@@ -45,6 +45,7 @@ rule:
                 
                 def doCell_part:
                     def getCell_part
+                        doPlan() // 有数据了才下一步
                         query ,(limit sort)
                         return 结构化的数据来源
                     def handleCell_part    
@@ -63,7 +64,30 @@ rule:
                     记录日志    
 
 
+getSource 时需要调用生成的方法 
 
+此处需要判断是否已经生成
+
+def doPlan(level,{sn,cycle})
+
+dynamic_log_[level]: none: 生成 , 有的时候返回 
+
+先拼成有成绩关系的, 
+r.children, 或者 加已字段 type:"cell"  无子项说明是cell ,
+遇到有数据的直接数组的下一个
+
+数组的下一个
+
+for [measure,step,link,cell]:
+
+for step in  measure.step :
+    for link in step.link:
+        for cell in link.clll:
+            doCell()
+            
+
+
+可以考虑在一开始的时候就形成这个 树,这样的话,要获取上一级输出就相对容易了
 
 
 
