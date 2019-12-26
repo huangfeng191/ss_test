@@ -20,7 +20,7 @@
 规则编码 sn ??true
 ## 目的是生成唯一的记录 
 周期 cycle  c cellCycle ??true // day week month year // discard  frequency  c frequency
-cell类型 type   c cellType  ??true  // record slot arithmetic
+cell类型 type   c cellType  ??true  // record slot arithmetic  -> extend   把字段变为 source
 ### level   只要生成一次就好,其他情况可复用    
 ###  // link:  不同的link 需要单独生成 
 ###  // tips:  级别越高、代表差异性越大(可复用性越差) 当 cell 为 arithmetic 时,记录中自动填写 最高级别

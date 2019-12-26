@@ -29,7 +29,4 @@ Ctrl + Alt +B  查找接口的实现类
 Ctrl + h    查看类或接口的继承关系
 Ctrl+Alt+U  查看选中类或者接口的父类
 Ctrl+Shift+F 全局搜索（Find in path：也可以子在 Edit-> find->find in path 中找到）【PS：该快捷键与搜狗输入法简繁切换冲突，如果不起作用请注意此项】
-————————————————
-版权声明：本文为CSDN博主「FKNIGHT0X」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/gulang03/article/details/82565803
 
