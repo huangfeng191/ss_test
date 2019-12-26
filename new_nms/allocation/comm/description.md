@@ -41,3 +41,42 @@ so  the first step is role
  对于三级菜单：
  1 隐藏无权限菜单
  2 模拟点击 
+
+# configure 
+ if (level2Menu["configure-config"]&&level2Menu["configure-config"].operate==false){
+ if (level2Menu["configure-manage"]&&level2Menu["configure-manage"].operate==false){
+
+
+1 step1  不划分审核 
+
+缺少配置的权限 ,及审核的权限 
+
+添加 manage 权限 manage 
+
+
+今天 与明天 要搞定 ，
+记录日志 ，区域的功能
+
+
+
+
+if (level2Menu["system-security-user"]&&level2Menu["system-security-user"].operate==false){
+    
+}
+
+if (level2Menu["system-monitor-database"]&&level2Menu["system-monitor-database"].operate==false){
+    
+}
+
+
+
+系统管理员
+审核管理员
+审计管理员
+业务配置员
+业务审计员
+业务操作员
+
+
+
+审计管理员

@@ -15,21 +15,24 @@ orderNum w
 物理拓扑 physics
 查看 physics ?view 
 操作 physics ?operation  
+管理 physics ?manage  
 告警列表 warningList
 查看 warningList ?view 
 操作 warningList ?operation
 #  拓扑管理 topology 
 拓扑管理 topology
 物理拓扑 physics
-
 查看 physics ?view  //topology-physics_view
-操作 physics ?operation  
+操作 physics ?operation 
+管理 physics ?manage 
 逻辑拓扑 logic
 查看 logic ?view  
 操作 logic ?operation  
+管理 logic ?manage
 网管拓扑 net
 查看 net ?view  
 操作 net ?operation  
+管理 net ?manage
 告警列表 warningList
 查看 warningList ?view 
 操作 warningList ?operation
@@ -95,9 +98,11 @@ orderNum w
 用户管理 security-user 
 查看 security-user ?view
 操作 security-user ?operation  
+管理 security-user ?manage  
 权限管理 security-role
 查看 security-role ?view
 操作 security-role ?operation  
+管理 security-role ?manage  
 用户统计 security-statistics
 系统参数 security-parameter
 查看 security-parameter ?view
