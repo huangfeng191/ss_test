@@ -3,10 +3,12 @@
 lastDone := 0
 FormatTime, doDay,,yyyyMMdd
 ; :=20191220
-doTime := 000000
+; doTime := 000000
 ; doTime := 100000
-; doTime := 202400
+; doTime := 160000
+doTime := 200000
 
+; doOffset :=0 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
 doOffset :=0 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
 ; doOffset := -1000 ;  延迟毫秒数： 系统快 + ,系统慢 -  范围 (-1000,+无穷大)
 
