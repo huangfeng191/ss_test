@@ -110,3 +110,34 @@ level 主要用于对结果的获取
 cell等级: 主要是取数据、判别唯一性 
 
 生成类型:调用的方法
+
+
+
+
+# 2019-12-27  Friday 
+
+m_XXX
+s_XXX
+l_XXX
+c_XXX
+
+思考下需要重新结构化下参数吗
+
+ruleType: basic aggregate pandas 
+
+为什么 最近 7个交易日明细是link 呢 ，因为如果上一级是 10天的画 那么 可以生成10天的link,考虑到复用性的原因 
+
+对于 cycle 怎么处理
+
+1. links
+   最近7天的交易明细 {"sn":"l_last-7days-daily-details","level":"link","cycle":"day", stage:{"fetch":{},"take":{}}  }
+   1. cells:
+       1. 最近7个交易日  {"sn":"c_last-7days","level":"cell","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"log" }
+       2. 时间内的交易日明细 {"sn":"c_daily-details","level":"link","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"table" }
+
+
+
+
+    1. up>3的明细
+
+
