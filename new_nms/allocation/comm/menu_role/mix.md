@@ -56,6 +56,12 @@ system-monitor-remote_operation
 
 <!-- 系统管理 -->
 
+
+
+INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"index-physics_manage");
+
+
+
 INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"system-security-user_view");
 INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"system-security-user_operation");
 INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"system-security-role_view");
@@ -74,3 +80,6 @@ INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4
 INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"system-monitor-database_operation");
 INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"system-monitor-remote_view");
 INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('231562fc-8b99-4046-9e25-fa4972c58349',"system-monitor-remote_operation");
+
+
+

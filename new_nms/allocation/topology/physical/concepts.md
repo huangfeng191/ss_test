@@ -39,3 +39,13 @@ myData:  nodeOrDevice 2 NEG    netElenetGroup
          nodeOrDevice 1 point 
 
 
+
+
+initMenu:
+
+syncBtn
+_editBtn
+
+_delBtn
+
+http://192.168.1.160/nms/index.html

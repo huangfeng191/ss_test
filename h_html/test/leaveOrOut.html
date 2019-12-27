@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 当鼠标指针从元素上移开时，发生 mouseout 事件。
+
+    该事件大多数时候会与 mouseover 事件一起使用。
+    
+    注释：与 mouseleave 事件不同，不论鼠标指针离开被选元素还是任何子元素，都会触发 mouseout 事件。
+    只有在鼠标指针离开被选元素时，
+    才会触发 mouseleave 事件。 -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" type="text/css" href="../less/test.css" />
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../js/test.js"></script>
+<style>
+#cs{
+    width: 200px;
+    height: 300px;
+    background-color: yellow;
+}
+#cs_1{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
+#cs_2{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+}
+</style>
+</head>
+
+<body>
+<div>
+<button>forClickf</button>
+<div id="cs">
+    <div id="cs_1">
+
+    </div>
+    <div id="cs_2">
+
+    </div>
+</div>
+</div>
+</body>
+<script>
+function showOtherPageMethod() {
+
+}
+
+$(function() {
+$("button").click(forClick);
+$("#cs").mouseout(function(v){console.log("i`m"+"out")})
+})
+$("#cs").mouseleave(function(v){console.log("i`m "+"leaving")
+
+}
+
+)
+
+</script>
+
+</html
