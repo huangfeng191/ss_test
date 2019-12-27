@@ -31,9 +31,12 @@
             "label": "start-new-nginx_62(seldom)",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_62\\;./nginx.exe",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
-        
         {
             "label": "reload-nginx-new-62(seldom)",
             "type": "shell",
@@ -46,16 +49,12 @@
             "command": " cd .\\new_nms\\new_nginx_62\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-        
         {
             "label": "start-new-nginx_61(drow)",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_61\\;./nginx.exe",
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         },
         {
             "label": "stop-nginx-61(drow)",
@@ -64,12 +63,24 @@
             "problemMatcher": []
         },
         {
+            "label": "start-new-nginx_61_transfer(drow)",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_61_transfer\\;./nginx.exe",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "stop-nginx-61_transfer(drow)",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_61_transfer\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
             "label": "start-new-nginx_227",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_227\\;./nginx.exe",
             "problemMatcher": []
         },
-        
         {
             "label": "start-nginx-html_test",
             "type": "shell",
@@ -82,14 +93,12 @@
             "command": " cd .\\p_py\\py_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-        
         {
             "label": "stop-nginx_227",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_227\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-        
         {
             "label": "start-nginx-old",
             "type": "shell",
