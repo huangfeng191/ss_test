@@ -127,7 +127,12 @@ ruleType: basic aggregate pandas
 
 为什么 最近 7个交易日明细是link 呢 ，因为如果上一级是 10天的画 那么 可以生成10天的link,考虑到复用性的原因 
 
-对于 cycle 怎么处理
+对于 cycle 怎么处理: 其实不需要 每个都设置，可以从上一级 继承下来,
+
+
+对于 cell 的配置问题 : 建议不要挂到 links 里面, 减少字段的复杂度，可以考虑有一个 cell 总表，将 cell 分类 于此, 具体的业务只要勾选 cell 就好，
+也就是说cell 里面 需要一个字段 分类，主要用于筛选用，考虑将此字段设置成复选框的方式。
+
 
 1. links
    最近7天的交易明细 {"sn":"l_last-7days-daily-details","level":"link","cycle":"day", stage:{"fetch":{},"take":{}}  }
@@ -138,6 +143,13 @@ ruleType: basic aggregate pandas
 
 
 
+
+
     1. up>3的明细
 
 
+
+
+对于表的处理 : 包括一级子对象, 但是需要提供一个接口将完整的层级关系显示出来，可以考虑写到表里
+
+在生成的时候生成子对象, 这个不就是放入日志吗

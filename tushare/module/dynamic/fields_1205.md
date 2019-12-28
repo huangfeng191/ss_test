@@ -18,9 +18,11 @@
 ## basic 
 规则名称  name ??true
 规则编码 sn ??true
+cell类型 type   c cellType  ??true 
+业务分类 belong c belong // 参数 , 明细, 公共参数 
 ## 目的是生成唯一的记录 
-周期 cycle  c cellCycle ??true // day week month year // discard  frequency  c frequency
-cell类型 type   c cellType  ??true  // record slot arithmetic  -> extend   把字段变为 source
+周期 cycle  c cellCycle  // day week month year // discard  frequency  c frequency
+source类型 source   c sourceType  ??true  // record slot arithmetic  -> extend   把字段变为 source
 ### level   只要生成一次就好,其他情况可复用    
 ###  // link:  不同的link 需要单独生成 
 ###  // tips:  级别越高、代表差异性越大(可复用性越差) 当 cell 为 arithmetic 时,记录中自动填写 最高级别
@@ -37,7 +39,7 @@ cell等级  level   c cellLevel ??true  // cell,link,step,measure
 输出规则 out  a  ?3
 ### other 
 排序 w
-业务分类 group 
+
 描述 desc a  ?3
 
 
