@@ -136,18 +136,21 @@ ruleType: basic aggregate pandas
 fetch 目的是快速的获取日志,
 具体取数 用 take 
 
+对于 loop 可以返回数组数据  [{},{}]
+{
+    "sourceType":"table", // {"nm":"","query":{},"limit":,"sort" }
+    "rule"
+}
+{"field1":{},"field2":{}}
+
+
 1. links
    最近7天的交易明细 {"sn":"l_last-7days-daily-details","level":"link","cycle":"day"  }   // log 中 , stage:{"fetch":{},"take":{}} 
    1. cells:
        1. 最近7个交易日  {"sn":"c_last-7days","level":"cell","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"log" }
-       2. 时间内的交易日明细 {"sn":"c_daily-details","level":"link","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"table" }
+       2. 时间内的交易日明细 {"sn":"c_daily-details","level":"link","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"table","loop":{""} }
 
-
-
-
-
-
-    1. up>3的明细
+   2. up>3的明细
 
 
 
@@ -155,3 +158,84 @@ fetch 目的是快速的获取日志,
 对于表的处理 : 包括一级子对象, 但是需要提供一个接口将完整的层级关系显示出来，可以考虑写到表里
 
 在生成的时候生成子对象, 这个不就是放入日志吗
+
+
+
+
+sn 
+level 
+
+log:
+    level:
+    sn :
+
+在 cell_log 中 说明 level 肯定是 cell :
+    但是 对 cell 的数据 来源 : level : 可能是 link 
+
+
+
+抽象一下：
+
+# sourceType:    
+   1. table  // 抽象为 items 
+        nm
+        query
+        limit
+        sort 
+    2. slot
+        1. 获取上一步骤的结果, 得到上一步骤的 level 以及 sn 
+        2. 规则 table 
+    3. jump 
+        1. 依据 jump 获取 上一步骤的 level 以及 sn
+        2. 规则 table 
+   
+
+   step 
+        link 
+            1. 最近7个交易日的所有明细
+                cell : 
+                    1. 最近7个交易日    basic.sn: c_last-7days     fetch.level :"cell"  ://level 是正对取数的  只要 cell_log 中存在 sn="c_last-7days" 的记录 就直接获取
+                    2. 所有的明细       sn:c_all_daily  level:"dynamic" ,
+            2. 上涨大于3天的明细  
+                // 在所有明细+ loop sn 来实现 , 把结果写入
+
+
+basic:
+    sn
+    nm
+    desc  
+    type  // common , detail , params  // 按条件的 股票明细
+
+fetch:
+    level 
+    cycle 
+    t 
+loop:
+    {source,rule,out ,[{field:"field1"},"field2":"field2"] }     // 此处可以循环规则，也可以生成规则
+source:   // 获取数据
+    table
+    jump
+    slot
+rule:
+    type:"" //basic(table) aggregate pandas  
+    "basic":{
+
+    },
+    "aggregate":
+    "pandas":
+out:    
+    type:"table" //log 
+    "table":{
+    }
+refresh:
+group:
+    belong c belong //  .. 此处可扩展
+
+        
+
+
+
+log:
+    take:{
+
+    }
