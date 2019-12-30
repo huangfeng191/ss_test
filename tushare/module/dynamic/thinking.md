@@ -133,9 +133,11 @@ ruleType: basic aggregate pandas
 对于 cell 的配置问题 : 建议不要挂到 links 里面, 减少字段的复杂度，可以考虑有一个 cell 总表，将 cell 分类 于此, 具体的业务只要勾选 cell 就好，
 也就是说cell 里面 需要一个字段 分类，主要用于筛选用，考虑将此字段设置成复选框的方式。
 
+fetch 目的是快速的获取日志,
+具体取数 用 take 
 
 1. links
-   最近7天的交易明细 {"sn":"l_last-7days-daily-details","level":"link","cycle":"day", stage:{"fetch":{},"take":{}}  }
+   最近7天的交易明细 {"sn":"l_last-7days-daily-details","level":"link","cycle":"day"  }   // log 中 , stage:{"fetch":{},"take":{}} 
    1. cells:
        1. 最近7个交易日  {"sn":"c_last-7days","level":"cell","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"log" }
        2. 时间内的交易日明细 {"sn":"c_daily-details","level":"link","cycle":"day","sourceType":"table","ruleType":"basic" ,"outType":"table" }
