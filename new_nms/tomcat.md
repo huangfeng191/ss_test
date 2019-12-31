@@ -50,4 +50,7 @@ kill -9 `ps -ef| grep catalina | grep -v grep | cut -c 9-15`
 cp -r ./XXX /opt/nmsdevs/sgaps-3.0.0/standalone/deployments/nms.war/src/page
 
 
+cp -r ./page/* /opt/nmsdevs/sgaps-3.0.0/standalone/deployments/nms.war/src/page
+
+
 nohup sg-aps-start.sh > aps.log 2>&1 &

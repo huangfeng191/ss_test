@@ -501,6 +501,16 @@ var optionCustomPointHover = {
 
 
 optionSampleLinesTest={
+    _mouseover:function(map,event){
+       debugger
+        // building.target.dispatchAction({
+        //     type: 'geoUnSelect'
+        // });
+        
+    },
+    _click:function(){
+// debugger
+    },
     "tooltip": {
       "trigger": "item"
     },

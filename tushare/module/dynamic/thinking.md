@@ -208,22 +208,29 @@ basic:
 
 fetch:
     level 
-    cycle 
+    cycle  
     t 
 loop:
-    {source,rule,out ,[{field:"field1"},"field2":"field2"] }     // 此处可以循环规则，也可以生成规则
+   1. getData  // 将数据整合成需要的循环输出  
+   2. gather  
+   { "data":{source,rule,out},
+      "gather":[{field:"field1"},"field2":"field2"]
+       }     // 此处可以循环规则，也可以生成规则
 source:   // 获取数据
     table
-    jump
+    jump   // getTable 
     slot
-rule:
+
+    table 
+
+rule:  // 将数据 应用算法
     type:"" //basic(table) aggregate pandas  
     "basic":{
 
     },
     "aggregate":
     "pandas":
-out:    
+out:    // 输出 
     type:"table" //log 
     "table":{
     }
@@ -239,3 +246,37 @@ log:
     take:{
 
     }
+
+        source:
+            type: table slot  jump // 链式调用   
+                slot    
+                    1. getFetch
+                    2. getJump 
+                jump
+                    getTable():
+                        level
+                        sn  
+                        cycle
+                        t        
+                table
+                    nm 
+                    query 
+                    
+        rule
+            type table aggregate pandas               
+                table
+                    {
+                        query
+                        limit 
+                        sort 
+                    }
+                aggregate
+
+                pandas 
+        getData:
+            getSource:
+    
+            getRule 
+
+
+            getOut  
