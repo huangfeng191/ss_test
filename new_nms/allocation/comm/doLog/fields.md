@@ -69,4 +69,19 @@ data.push({"name":"告警结束时间","value":$('#endtime').val()||""});
 是否启用 shield_enable ?s
 
 
+# performance
+
+# getQueryFields({"dom":"current","fields": ["设备","类型","端口",模板","开始时间","结束时间"]})
+# 当前   ?select?
+
+# getQueryFields({"dom":"current","fields": ["设备","类型","端口",模板","开始时间","结束时间"]})
+# 历史   ?select?
+
+# getQueryFields({"dom":"set","fields": ["设备","类型","端口"]})
+# 设置   ?select?
+
+
+
+
+"设备","类型","端口",模板","开始时间","结束时间"
 
