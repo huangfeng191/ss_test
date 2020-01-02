@@ -200,16 +200,25 @@ log:
                 // 在所有明细+ loop sn 来实现 , 把结果写入
 
 
+cell_log:
+    basic:
+    fetch:
+    take:
+    refresh:
+    
+
+
 basic:
     sn
     nm
     desc  
     type  // common , detail , params  // 按条件的 股票明细
 
-fetch:
+fetch: // log 对象
     level 
     cycle  
     t 
+take :    
 loop:
    1. getData  // 将数据整合成需要的循环输出  
    2. gather  
@@ -259,9 +268,18 @@ log:
                         cycle
                         t        
                 table
-                    nm 
-                    query 
-                    
+                    fetch:
+                    take:{ // 根据日志找到具体的结果
+                        type: table log,
+                        table:{
+                            "nm":"",
+                            "t":"" // 时间
+                            "fetchKey": // 等同于 fetch 里的key 
+                            "dataKey": 
+                        }
+                    }
+                        
+
         rule
             type table aggregate pandas               
                 table

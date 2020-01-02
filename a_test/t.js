@@ -76,3 +76,70 @@
 系统管理-日志管理-操作日志
 帮助-操作手册
 帮助-在线手册
+
+
+
+序号 
+用户名 userName
+IP地址 ip
+操作对象 object 
+操作类型 opType
+操作内容 description
+操作时间 timestamp
+事件类型 logType 
+异常类型 level
+操作结果 status
+
+
+
+
+网管系统日志
+
+
+
+"format": function (r, index, field) {
+    return formatDateTime(r[field]);
+  }
+
+
+
+
+用户名 userName 120px
+IP地址 ip 120px
+操作对象 object  140px
+操作类型 opType 140px
+操作内容 description 140px
+操作时间 timestamp 120px
+事件类型 logType 
+异常类型 level 120px
+操作结果 status 100px
+
+
+<td style="width:120px">用户名</td>
+<td style="width:120px">IP地址</td>
+<td style="width:140px">操作对象</td>
+<td style="width:140px">操作类型</td>
+<td style="width:140px">操作内容</td>
+<td style="width:120px">操作时间</td>
+<td style="">事件类型</td>
+<td style="width:120px">异常类型</td>
+<td style="width:100px">操作结果</td>
+
+
+
+
+
+
+
+
+
+
+<td>${v.userName}</td>
+<td>${v.ip}</td>
+<td>${v.object}</td>
+<td>${v.opType}</td>
+<td>${v.description}</td>
+<td>${v.timestamp}</td>
+<td>${v.logType}</td>
+<td>${v.level}</td>
+<td>${v.status}</td>
