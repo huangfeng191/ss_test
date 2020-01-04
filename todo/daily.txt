@@ -189,3 +189,6 @@ startup failed due to previous errors
 
 
 3. 性能管理 运维管理 系统管理 帮助管理 添加查询日志
+
+
+1. 测试反馈问题修改 2. 帮助、性能管理 查询添加查询日志

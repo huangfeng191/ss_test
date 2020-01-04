@@ -33,7 +33,7 @@ function doButton(id, theme, data, second) {
     theme = "warning";
     second = ""
     data = []
-    query_flag=0
+    query_flag = 0
     if (id == "warning-current") {
 
 
@@ -48,7 +48,7 @@ function doButton(id, theme, data, second) {
         data.push({ "name": "告警开始时间", "value": $('#bgtime').val() || "" });
         data.push({ "name": "告警结束时间", "value": $('#endtime').val() || "" });
 
-        search('current',1)
+        search('current', 1)
     } else if (id == "warning-history") {
         data.push({ "name": "厂商", "value": $('#changshangH').find("option:selected").text() || "" });
         data.push({ "name": "网元名称", "value": $('#deviceH').find("option:selected").text() || "" });
@@ -66,22 +66,22 @@ function doButton(id, theme, data, second) {
         data.push({ "name": "告警确认开始时间", "value": $('#bgOtimeH').val() || "" });
         data.push({ "name": "告警确认结束时间", "value": $('#endOtimeH').val() || "" });
 
-        search('history',1)
+        search('history', 1)
     } else if (id == "warning-handle") {
-        data.push({"name":"厂商","value":$('#vendor').find("option:selected").text()||""});
-        data.push({"name":"设备类型","value":$('#deviceDeal').find("option:selected").text()||""});
-        data.push({"name":"区域","value":$('#areaHandle').find("option:selected").text()||""});
-        data.push({"name":"告警等级","value":$('#activeAlarmLevel').find("option:selected").text()||""});
-        search('handle',1)
+        data.push({ "name": "厂商", "value": $('#vendor').find("option:selected").text() || "" });
+        data.push({ "name": "设备类型", "value": $('#deviceDeal').find("option:selected").text() || "" });
+        data.push({ "name": "区域", "value": $('#areaHandle').find("option:selected").text() || "" });
+        data.push({ "name": "告警等级", "value": $('#activeAlarmLevel').find("option:selected").text() || "" });
+        search('handle', 1)
     } else if (id == "warning-mask") {
-        data.push({"name":"设备类型","value":$('#shieldQdeviceType').find("option:selected").text()||""});
-        data.push({"name":"告警等级","value":$('#shield_level').find("option:selected").text()||""});
-        data.push({"name":"是否启用","value":$('#shield_enable').find("option:selected").text()||""});
-        search('shield',1)
+        data.push({ "name": "设备类型", "value": $('#shieldQdeviceType').find("option:selected").text() || "" });
+        data.push({ "name": "告警等级", "value": $('#shield_level').find("option:selected").text() || "" });
+        data.push({ "name": "是否启用", "value": $('#shield_enable').find("option:selected").text() || "" });
+        search('shield', 1)
     } else if (id == "warning-statistics") {
         Count()
     }
-    if(query_flag==1){
+    if (query_flag == 1) {
         top.SsCenter.doLog(id, theme, data, second);
     }
 
@@ -138,10 +138,157 @@ function getQueryFields({ dom, fields = [] }) {
 
 
     })
-    if (keys.length>0){
+    if (keys.length > 0) {
         console.log(keys.join("\n"));
     }
 
 }
 
-getQueryFields({dom:"handle","fields":["厂商", "设备类型", "区域", "告警等级"]})
+getQueryFields({ dom: "handle", "fields": ["厂商", "设备类型", "区域", "告警等级"] })
+
+
+
+
+
+
+
+// performance-current 当前性能
+// performance-history 历史性能
+// performance-setting 性能配置
+// performance-statistics 性能统计
+
+
+
+function doSecondTab(evt) {
+    var level2 = evt.target.parentElement.getAttribute("level2");
+    if (level2) {
+        top.SsCenter.doLog(level2, "warning");
+
+        if (level2 == "performance-current") {
+            queryInfo(evt, 'current', 'currentChartButton')
+        } else if (level2 == "performance-history") {
+            queryInfo(evt, 'history', 'historyChartButton')
+        } else if (level2 == "performance-setting") {
+            queryInfo(evt, 'set', 'settingQueryButton')
+        } else if (level2 = "performance-statistics") {
+            getPerformanceStatistics()
+        }
+    }
+
+}
+
+doButton('performance-current', '', '', '', event)
+doButton('performance-history', '', '', '', event)
+doButton('performance-setting', '', '', '', event)
+doButton('performance-statistics', '', '', '', event)
+
+
+function doButton(id, theme, data, second, event) {
+    theme = "performance";
+    second = ""
+    data = []
+    query_flag = 0
+    if (id == "performance-current") {
+
+        data.push({ "name": "设备", "value": $('[qfield=deviceId]').find("option:selected").text() || "" });
+        data.push({ "name": "类型", "value": $('#do_performanceFrameM').find("option:selected").text() || "" });
+        data.push({ "name": "端口", "value": $('[qfield=port]').find("option:selected").text() || "" });
+        data.push({ "name": "模板", "value": $('[qfield=modelType]').find("option:selected").text() || "" });
+
+        queryInfo(event);
+    } else if (id == "performance-history") {
+        data.push({ "name": "设备", "value": $('[qfield=deviceId]').find("option:selected").text() || "" });
+        data.push({ "name": "类型", "value": $('#do_performanceFrameM').find("option:selected").text() || "" });
+        data.push({ "name": "端口", "value": $('[qfield=port]').find("option:selected").text() || "" });
+        data.push({ "name": "模板", "value": $('[qfield=modelType]').find("option:selected").text() || "" });
+        data.push({ "name": "开始时间", "value": $('#startTime').val() || "" });
+        data.push({ "name": "结束时间", "value": $('#endTime').val() || "" });
+        queryInfo(event)
+    } else if (id == "performance-setting") {
+        data.push({ "name": "设备", "value": $('[qfield=deviceId]').find("option:selected").text() || "" });
+        data.push({ "name": "类型", "value": $('#just_performanceFrameM').find("option:selected").text() || "" });
+        data.push({ "name": "端口", "value": $('[qfield=port]').find("option:selected").text() || "" });
+        queryInfo(event, 'set', '', 1)
+    } else if (id == "performance-statistics") {
+        getPerformanceStatistics()
+        data.push({ "name": "设备", "value": $('#dirver_name').val() || "" });
+    }
+    if (query_flag == 1) {
+        top.SsCenter.doLog(id, theme, data, second);
+    }
+
+}
+
+
+
+
+<li level2="help-knowledge"   class="active"><a href="#knowledge" data-toggle="tab" onclick="doSecondTab(event)">知识库</a></li  >
+<li level2="help-station"  ><a href="#details" data-toggle="tab" onclick="doSecondTab(event)">站点详情</a></li>  
+<li level2="help-area"  ><a href="#area" data-toggle="tab" onclick="doSecondTab(event)">区域详情</a></li>  
+<li level2="help-device"  ><a href="#device" data-toggle="tab" onclick="doSecondTab(event)">设备详情</a></li>  
+<li level2="help-operation"  ><a href="#manual" data-toggle="tab" onclick="doSecondTab(event)">操作手册</a></li>  
+<li level2="help-online"  ><a href="#manual2" data-toggle="tab" onclick="doSecondTab(event)">在线帮助</a></li>  
+
+
+
+
+doButton('help-knowledge')
+doButton('help-station')
+doButton('help-area')
+doButton('help-device')
+doButton('help-operation')
+doButton('help-online')
+
+function doButton(id, theme, data, second) {
+    theme = "help";
+    second = ""
+    data = []
+    query_flag = 0
+    if (id == "help-knowledge") {
+        getUserInfo(null,1)
+    } else if (id == "help-station") {
+        getSiteListByPage(1)
+    } else if (id == "help-area") {
+        
+    } else if (id == "help-device") {
+        getDeviceListByPage(1)
+    } else if (id == "help-operation") {
+        
+    } else if (id == "help-online") {
+        
+    }
+    if (query_flag == 1) {
+        top.SsCenter.doLog(id, theme, data, second);
+    }
+}
+
+
+doSecondTab(event)
+
+function doSecondTab(evt) {
+    var level2 = evt.target.parentElement.getAttribute("level2");
+    if (level2) {
+        top.SsCenter.doLog(level2, "warning");
+
+        if (level2 == "help-knowledge") {
+            searchTab('knowledge')
+
+        } else if (level2 == "help-station") {
+            searchTab('details')
+
+        }else if (level2 == "help-area") {
+            searchTab('area')
+
+        }else if (level2 == "help-device") {
+            searchTab('device')
+
+        }else if (level2 == "help-operation") {
+            
+
+        }else if (level2 == "help-online") {
+            
+
+        }
+    }
+
+}

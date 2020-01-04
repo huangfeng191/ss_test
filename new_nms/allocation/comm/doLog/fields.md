@@ -71,17 +71,48 @@ data.push({"name":"告警结束时间","value":$('#endtime').val()||""});
 
 # performance
 
-# getQueryFields({"dom":"current","fields": ["设备","类型","端口",模板","开始时间","结束时间"]})
-# 当前   ?select?
+# getQueryFields({"dom":"current","fields": ["设备","类型","端口","模板","开始时间","结束时间"]})
+# 当前   ?select?tp 
+设备 deviceId ?s?q
+类型 do_performanceFrameM ?s
+端口 port ?s?q
+模板 modelType ?s?q
 
-# getQueryFields({"dom":"current","fields": ["设备","类型","端口",模板","开始时间","结束时间"]})
-# 历史   ?select?
+# getQueryFields({"dom":"current","fields": ["设备","类型","端口","模板","开始时间","结束时间"]})
+# 历史   ?select?tp
+设备 deviceId ?s?q
+类型 do_performanceFrameM ?s
+端口 port ?s?q
+模板 modelType ?s?q
+开始时间 startTime
+结束时间 endTime
 
 # getQueryFields({"dom":"set","fields": ["设备","类型","端口"]})
-# 设置   ?select?
+# 设置   ?select?tp
+设备 deviceId ?s?q
+类型 just_performanceFrameM ?s
+端口 port ?s?q
 
+# getQueryFields({"dom":"count","fields": ["设备"]})
+# 性能统计   ?select?tp
+设备 dirver_name
 
 
 
 "设备","类型","端口",模板","开始时间","结束时间"
 
+
+
+# getQueryFields({"dom":"knowledge","fields": ["设备类型","处理方法","原因"]})
+# help   ?select?tp
+设备类型 seach_deviceType ?s
+处理方法 seach_method
+原因 seach_reason
+
+# getQueryFields({"dom":"details","fields": ["站点名称"]})
+# help   ?select?tp
+站点名称 site_name
+
+# getQueryFields({"dom":"device","fields": ["网元名称"]})
+# help   ?select?tp
+网元名称 device_name ?s
