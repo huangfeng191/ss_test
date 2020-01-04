@@ -1,9 +1,10 @@
 
-| shortuct | user default tab rule | rating |
-|----------|-----------------------|--------|
-| ctrl+1   | translate             |        |
-| ctrl+2   | redmine               |        |
-| alt   | focus to right top option               |      *  |
+| shortuct   | user default tab rule     | rating |
+| ---------- | ------------------------- | ------ |
+| ctrl+1     | translate                 |        |
+| ctrl+2     | redmine                   |        |
+| ctrl+enter | 执行 snippets             | **     |
+| alt        | focus to right top option | *      |
 
 
 
@@ -23,24 +24,24 @@ Elements 面板	Windows	Mac
 
 
 
-| shortuct     | normal                   | rating |
-|--------------|--------------------------|--------|
-| ctrl+9       | 切换到最后一个标签                |        |
+| shortuct     | normal                                        | rating |
+| ------------ | --------------------------------------------- | ------ |
+| ctrl+9       | 切换到最后一个标签                            |        |
 | ctrl+d       | 在打开的页面上切换元素（s6 登录页面比较好用） |        |
-| shift +w     | 在新的浏览器中打开当前页面            | ***    |
-| shift +6 (^) | 访问上一个tab                 |        |
-| F10          | 右上角菜单激活                  |        |
-| ctrl+w       | 关闭标签页                    |        |
-| ctrl+shift+t | 重新打开标签页                  |        |
-| Ctrl+shift+d | 保存书签                     |        |
-| Ctrl+d       | 保存书签(地址栏)- 下一个焦点(其他)     | *      |
-| shift+tab    | 上一个焦点                    | *      |
+| shift +w     | 在新的浏览器中打开当前页面                    | ***    |
+| shift +6 (^) | 访问上一个tab                                 |        |
+| F10          | 右上角菜单激活                                |        |
+| ctrl+w       | 关闭标签页                                    |        |
+| ctrl+shift+t | 重新打开标签页                                |        |
+| Ctrl+shift+d | 保存书签                                      |        |
+| Ctrl+d       | 保存书签(地址栏)- 下一个焦点(其他)            | *      |
+| shift+tab    | 上一个焦点                                    | *      |
 
-| ctrl+0       | 恢复文本默认大小     |  |
-|--------------|--------------|--|
-| ctrl+ j      | 查看下载         |  |
-| alt+j        | 查看下载(sample) |  |
-| shift+w      | 当前页面重新打开浏览器  |  |
+| ctrl+0  | 恢复文本默认大小       |     |
+| ------- | ---------------------- | --- |
+| ctrl+ j | 查看下载               |     |
+| alt+j   | 查看下载(sample)       |     |
+| shift+w | 当前页面重新打开浏览器 |     |
 
 | ctrl+shift+a | selected into watch   |  |
 
@@ -48,10 +49,10 @@ Elements 面板	Windows	Mac
   
 
 
-| shortuct     | console     | rating |
-|--------------|-------------|--------|
+| shortuct     | console                | rating |
+| ------------ | ---------------------- | ------ |
 | Ctrl shift d | 开发者工具停靠方式切换 |        |
-| ctrl+shift+j | 聚焦到console  |        |
+| ctrl+shift+j | 聚焦到console          |        |
 
 
 
@@ -147,19 +148,19 @@ select row  and  press ctrl+ b can change zhe way to debugger;
 
 
 | shortuct     | the tool for develop chrome     | rating |
-|--------------|---------------------------------|--------|
+| ------------ | ------------------------------- | ------ |
 | ctrl+b       | to change zhe way for  debugger |        |
-| ctrl+shift+f | 在所有源中查询文件                       |        |
+| ctrl+shift+f | 在所有源中查询文件              |        |
 
 
 | shortuct | elements     | rating |
-|----------|--------------|--------|
+| -------- | ------------ | ------ |
 | h        | hide element |        |
 | f2       | edit as html |        |
 
 
-| shortuct | source | rating |
-|----------|--------|--------|
-| ctrl+m   | 括号间跳转        |        |
-|          |        |        |
+| shortuct | source     | rating |
+| -------- | ---------- | ------ |
+| ctrl+m   | 括号间跳转 |        |
+|          |            |        |
 

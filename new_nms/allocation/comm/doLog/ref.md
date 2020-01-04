@@ -25,21 +25,35 @@
 // 获取页面对象
 // getQueryFields({"dom":"current","fields": ["设备","类型","端口","模板","开始时间","结束时间"]})
 function getQueryFields({ dom, fields = [] }) {
+
+
     var keys = []
-    var ifm = document.getElementById("content").contentWindow;
+    var ifm=window;
+    if(document.getElementById("content")){
+         ifm = document.getElementById("content").contentWindow;    
+     }
     var domE = ifm.document.getElementById(dom);
     $.each($(domE || []).find("label"), function(oi, v) {
 
         var text = v.innerText.replace(":", "")
         if (fields.includes(text)) {
             var next_ele = $(v).next()[0];
-            if (next_ele.getAttribute("id") ) {
+            if (next_ele.getAttribute("id")) {
                 var one = text + " " + next_ele.getAttribute("id")
                 if (next_ele.nodeName == "SELECT") {
                     one += " ?s"
                 }
                 keys.push(one)
+            }else   if (next_ele.getAttribute("qfield")) {
+                var one = text + " " + next_ele.getAttribute("qfield")
+                if (next_ele.nodeName == "SELECT") {
+                    one += " ?s?q"
+                }else{
+                    one += " ??q"
+                }
+                keys.push(one)
             }
+
         }
 
 
