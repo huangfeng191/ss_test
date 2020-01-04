@@ -23,8 +23,8 @@
 # 菜单按钮
 ```js
 // 获取页面对象
-// getQueryFields({"dom":"current","fields": ["设备","类型","端口","模板","开始时间","结束时间"]})
-function getQueryFields({ dom, fields = [] }) {
+// getQueryArrays({"dom":"current","fields": ["设备","类型","端口","模板","开始时间","结束时间"]})
+function getQueryArrays({ dom, fields = [] }) {
 
 
     var keys = []
@@ -73,6 +73,13 @@ function getQueryFields({ dom, fields = [] }) {
 ```js
 
 
+doButton('warning-current');
+doButton('warning-current');
+doButton('warning-current');
+doButton('warning-current');
+
+
+
 function doButton(id, theme, data, second) {
     theme = "warning";
     second = ""
@@ -97,6 +104,7 @@ function doButton(id, theme, data, second) {
 
 doSecondTab(event)
 
+
 function doSecondTab(evt) {
     var level2 = evt.target.parentElement.getAttribute("level2");
     if (level2) {
@@ -105,21 +113,22 @@ function doSecondTab(evt) {
         if (level2 == "warning-current") {
             searchTab('current')
 
-        } else if (level2 == "warning-history") {
-            searchTab('history')
+        } else if (level2 == "warning-current") {
+            searchTab('current')
 
-        } else if (level2 == "warning-handle") {
-            searchTab('handle')
+        } else if (level2 == "warning-current") {
+            searchTab('current')
 
-        } else if (level2 = "warning-mask") {
-            searchTab('shield')
+        } else if(level2 == "warning-current") {
+            searchTab('current')
 
-        } else if (level2 = "warning-statistics") {
-            Count()
+        } else if (level2 == "warning-current") {
+            searchTab('current')
+
         }
     }
-
 }
+
 
 
 

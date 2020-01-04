@@ -116,7 +116,7 @@ $($("#handle").find("label")[0]).next()[0].getAttribute("id")
 
 
 
-function getQueryFields({ dom, fields = [] }) {
+function getQueryArrays({ dom, fields = [] }) {
 
 
     var keys = []
@@ -144,7 +144,7 @@ function getQueryFields({ dom, fields = [] }) {
 
 }
 
-getQueryFields({ dom: "handle", "fields": ["厂商", "设备类型", "区域", "告警等级"] })
+getQueryArrays({ dom: "handle", "fields": ["厂商", "设备类型", "区域", "告警等级"] })
 
 
 
@@ -292,3 +292,156 @@ function doSecondTab(evt) {
     }
 
 }
+
+
+
+
+// operation 
+
+安全管理 system-security doThirdMenu('system-security')
+日志管理 system-log doThirdMenu('system-log')
+接口管理 system-interface doThirdMenu('system-interface')
+网管监测 system-monitor doThirdMenu('system-monitor')
+
+
+
+doButton('system-security');
+doButton('system-log');
+doButton('system-interface');
+doButton('system-monitor');
+
+function doButton(id, theme, data, second) {
+    theme = "system";
+    second = ""
+    data = []
+    query_flag=0
+    if (id == "system-security") {
+        searchTab('current')
+    }else if (id == "system-log") {
+        searchTab('current')
+    }else if (id == "system-interface") {
+        searchTab('current')
+    }else if (id == "system-monitor") {
+        searchTab('current')
+    }
+    if(query_flag==1){
+        top.SsCenter.doLog(id, theme, data, second);
+    }
+}
+
+
+doSecondTab(event)
+doSecondTab(event)
+doSecondTab(event)
+doSecondTab(event)
+
+function doSecondTab(evt) {
+    var level2 = evt.target.parentElement.getAttribute("level2");
+    if (level2) {
+        top.SsCenter.doLog(level2, "system");
+
+        if (level2 == "system-security") {
+            doThirdMenu('system-security')
+
+        } else if (level2 == "system-log") {
+            doThirdMenu('system-log')
+
+        } else if (level2 == "system-interface") {
+            doThirdMenu('system-interface')
+
+        } else if(level2 == "system-monitor") {
+            doThirdMenu('system-monitor')
+
+        }
+    }
+
+}
+
+
+// 原有的代码是需要修改的
+
+//  将第三级的目录记录到路径中
+
+// 不要急,只能一个个来
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  operation 
+
+
+
+数据统计 operation-datas doThirdMenu('operation-datas')
+年度报表 operation-year doThirdMenu('operation-year')
+综合分析 operation-allocation doThirdMenu('operation-allocation')
+调整记录 operation-adjust searchTab('record')
+环境管理 operation-environment searchTab('manage')
+
+
+
+doButton('operation-datas');
+doButton('operation-year');
+doButton('operation-allocation');
+doButton('operation-adjust');
+doButton('operation-environment');
+
+
+
+function doButton(id, theme, data, second) {
+    theme = "operation";
+    second = ""
+    data = []
+    query_flag=0
+    if (id == "operation-datas") {
+        searchTab('current')
+    }else if (id == "operation-year") {
+        searchTab('current')
+    }else if (id == "operation-allocation") {
+        searchTab('current')
+    }else if (id == "operation-adjust") {
+        searchTab('current')
+    }else if (id == "operation-environment") {
+        searchTab('current')
+    }
+    if(query_flag==1){
+        top.SsCenter.doLog(id, theme, data, second);
+    }
+}
+
+
+doSecondTab(event)
+
+
+function doSecondTab(evt) {
+    var level2 = evt.target.parentElement.getAttribute("level2");
+    if (level2) {
+        top.SsCenter.doLog(level2, "operation");
+
+        if (level2 == "operation-datas") {
+            doThirdMenu('operation-datas')
+
+        } else if (level2 == "operation-year") {
+            doThirdMenu('operation-year')
+
+        } else if (level2 == "operation-allocation") {
+            doThirdMenu('operation-allocation')
+
+        } else if(level2 == "operation-adjust") {
+            searchTab('record')
+
+        } else if (level2 == "operation-environment") {
+            searchTab('manage')
+
+        }
+    }
+}
+
