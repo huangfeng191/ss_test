@@ -358,6 +358,36 @@ function doSecondTab(evt) {
 }
 
 
+
+用户管理 system-security-user getUserInfo()
+权限管理 system-security-role getRoleInfo()
+用户统计 system-security-statistics userCount()
+系统参数 system-security-parameter getBaseParams()
+目录管理 system-security-menu getMenuInfo()
+
+doThirdTab(event)
+
+function doThirdTab(evt) {
+  
+    var level2 = evt.target.getAttribute("level2");
+    if (level2) {
+        top.SsCenter.doLog(level2, "system",null,"安全管理");
+        if (level2 == "system-security-user") {
+            getUserInfo()
+        }else if (level2 == "system-security-role") {
+            getRoleInfo()
+        }else if (level2 == "system-security-statistics") {
+            userCount()
+        }else if (level2 == "system-security-parameter") {
+            getBaseParams()
+        }else if (level2 == "system-security-menu") {
+            getMenuInfo()
+        } 
+    }
+}
+
+
+
 // 原有的代码是需要修改的
 
 //  将第三级的目录记录到路径中
