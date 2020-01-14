@@ -6,19 +6,24 @@
 {"name":"告警列表","id":"index-warningList","parentId": "index",},
 {"name":"查看","id":"index-warningList_view","parentId": "index-warningList",},
 {"name":"操作","id":"index-warningList_operation","parentId": "index-warningList",},
+
 {"name":"拓扑管理","id":"topology","parentId": "",},
 {"name":"物理拓扑","id":"topology-physics","parentId": "topology",},
 {"name":"查看","id":"topology-physics_view","parentId": "topology-physics",},
 {"name":"操作","id":"topology-physics_operation","parentId": "topology-physics",},
 {"name":"管理","id":"topology-physics_manage","parentId": "topology-physics",},
 {"name":"逻辑拓扑","id":"topology-logic","parentId": "topology",},
+
 {"name":"查看","id":"topology-logic_view","parentId": "topology-logic",},
 {"name":"操作","id":"topology-logic_operation","parentId": "topology-logic",},
 {"name":"管理","id":"topology-logic_manage","parentId": "topology-logic",},
+
 {"name":"网管拓扑","id":"topology-net","parentId": "topology",},
 {"name":"查看","id":"topology-net_view","parentId": "topology-net",},
 {"name":"操作","id":"topology-net_operation","parentId": "topology-net",},
 {"name":"管理","id":"topology-net_manage","parentId": "topology-net",},
+
+
 {"name":"告警列表","id":"topology-warningList","parentId": "topology",},
 {"name":"查看","id":"topology-warningList_view","parentId": "topology-warningList",},
 {"name":"操作","id":"topology-warningList_operation","parentId": "topology-warningList",},
@@ -75,10 +80,12 @@
 {"name":"操作","id":"operation-environment_operation","parentId": "operation-environment",},
 {"name":"系统管理","id":"system","parentId": "",},
 {"name":"安全管理","id":"system-security","parentId": "system",},
+
 {"name":"用户管理","id":"system-security-user","parentId": "system-security",},
 {"name":"查看","id":"system-security-user_view","parentId": "system-security-user",},
 {"name":"操作","id":"system-security-user_operation","parentId": "system-security-user",},
 {"name":"管理","id":"system-security-user_manage","parentId": "system-security-user",},
+
 {"name":"权限管理","id":"system-security-role","parentId": "system-security",},
 {"name":"查看","id":"system-security-role_view","parentId": "system-security-role",},
 {"name":"操作","id":"system-security-role_operation","parentId": "system-security-role",},
