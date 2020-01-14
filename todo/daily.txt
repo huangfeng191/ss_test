@@ -237,3 +237,7 @@ startup failed due to previous errors
 
 
 1. 现场前端代码合并 2. 菜单目录调整、新增用户、权限审核 3. 单独分配目录时bug修复
+
+
+
+1. 菜单、操作互斥性功能调整 2. 去除socket 3. 本机java环境配置

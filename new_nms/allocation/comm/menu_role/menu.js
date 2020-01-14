@@ -3,11 +3,14 @@
 {"name":"查看","id":"index-physics_view","parentId": "index-physics",},
 {"name":"操作","id":"index-physics_operation","parentId": "index-physics",},
 {"name":"管理","id":"index-physics_manage","parentId": "index-physics",},
+
+
 {"name":"告警列表","id":"index-warningList","parentId": "index",},
 {"name":"查看","id":"index-warningList_view","parentId": "index-warningList",},
 {"name":"操作","id":"index-warningList_operation","parentId": "index-warningList",},
 
 {"name":"拓扑管理","id":"topology","parentId": "",},
+
 {"name":"物理拓扑","id":"topology-physics","parentId": "topology",},
 {"name":"查看","id":"topology-physics_view","parentId": "topology-physics",},
 {"name":"操作","id":"topology-physics_operation","parentId": "topology-physics",},
@@ -36,6 +39,8 @@
 {"name":"查看","id":"configure-manage_view","parentId": "configure-manage",},
 {"name":"操作","id":"configure-manage_operation","parentId": "configure-manage",},
 {"name":"配置信息统计","id":"configure-statistics","parentId": "configure",},
+
+
 {"name":"告警管理","id":"warning","parentId": "",},
 {"name":"当前告警","id":"warning-current","parentId": "warning",},
 {"name":"查看","id":"warning-current_view","parentId": "warning-current",},
@@ -44,6 +49,8 @@
 {"name":"告警处理","id":"warning-handle","parentId": "warning",},
 {"name":"查看","id":"warning-handle_view","parentId": "warning-handle",},
 {"name":"操作","id":"warning-handle_operation","parentId": "warning-handle",},
+
+
 {"name":"告警屏蔽","id":"warning-mask","parentId": "warning",},
 {"name":"查看","id":"warning-mask_view","parentId": "warning-mask",},
 {"name":"操作","id":"warning-mask_operation","parentId": "warning-mask",},
@@ -137,3 +144,5 @@
 $.each(a,function(oi,ov){
  
 })
+
+

@@ -496,3 +496,7 @@ tomorrow
 
 
 # 2020-01-14  Tuesday 
+
+1. 菜单、操作互斥性功能调整
+2. 去除socket
+3. 本机java环境配置
