@@ -72,6 +72,7 @@ function getQueryArrays({ dom, fields = [] }) {
 
 ```js
 
+getQueryArrays({domStr:"#security .item:eq(0)"})
 
 doButton('warning-current');
 doButton('warning-current');
@@ -105,6 +106,8 @@ function doButton(id, theme, data, second) {
 doSecondTab(event)
 
 
+getTabInfo_s({domId:"myTab"})
+
 function doSecondTab(evt) {
     var level2 = evt.target.parentElement.getAttribute("level2");
     if (level2) {
@@ -126,6 +129,28 @@ function doSecondTab(evt) {
             searchTab('current')
 
         }
+    }
+}
+
+getTabInfo_s({domId:'security',"secondTag":""})
+
+
+function doThirdTab(evt) {
+  
+    var level2 = evt.target.getAttribute("level2");
+    if (level2) {
+        top.SsCenter.doLog(level2, "system",null,"安全管理");
+        if (level2 == "warning-current") {
+            searchTab('current')
+        }else if (level2 == "warning-current") {
+            searchTab('current')
+        }else if (level2 == "warning-current") {
+            searchTab('current')
+        }else if (level2 == "warning-current") {
+            searchTab('current')
+        }else if (level2 == "warning-current") {
+            searchTab('current')
+        } 
     }
 }
 

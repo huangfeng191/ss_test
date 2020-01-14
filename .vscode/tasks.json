@@ -63,6 +63,19 @@
             "problemMatcher": []
         },
         {
+            "label": "start-nginx_63(only_pwd)",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_63\\;./nginx.exe",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "stop-nginx-63(only_pwd)",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_63\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
             "label": "start-new-nginx_61_transfer(drow)",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_61_transfer\\;./nginx.exe",
@@ -111,6 +124,9 @@
             "command": " cd .\\old_nms\\old_nginx\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
+
+
+        
         {
             "label": "reload-nginx-old",
             "type": "shell",

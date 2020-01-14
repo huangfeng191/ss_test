@@ -1,145 +1,29 @@
-登录页
-系统管理-安全管理-用户管理
-系统管理-安全管理-权限管理
-系统管理-安全管理-用户统计
-系统管理-安全管理-系统参数
-系统管理-日志管理-安全日志
-系统管理-日志管理-系统日志
-系统管理-日志管理-日志统计
-系统管理-接口管理
-系统管理-网管检测-系统信息
-系统管理-网管检测-数据库管理
-系统管理-网管检测-远程维护
-帮助-操作手册
-帮助-在线手册
-登录页
-系统管理-安全管理-用户管理
-系统管理-安全管理-权限管理
-帮助-操作手册
-帮助-在线手册
-登录页
-系统管理-日志管理-操作日志
-帮助-操作手册
-帮助-在线手册
-登录页
-首页
-拓扑管理-物理拓扑
-拓扑管理-逻辑拓扑
-拓扑管理-网管拓扑
-配置管理-网元配置
-配置管理-网元管理
-告警管理-告警处理
-帮助-站点详情
-帮助-区域详情
-帮助-设备详情
-帮助-操作手册
-帮助-在线手册
-登录页
-首页
-拓扑管理-物理拓扑
-拓扑管理-逻辑拓扑
-拓扑管理-网管拓扑
-拓扑管理-拓扑信息统计
-配置管理-网元配置
-配置管理-网元管理
-配置管理-配置信息统计
-告警管理-当前告警
-告警管理-历史告警
-告警管理-告警处理
-告警管理-告警屏蔽
-告警管理-告警统计
-性能管理-当前性能
-性能管理-历史性能
-性能管理-性能设置
-性能管理-性能统计
-运维管理-数据统计-拓扑信息统计
-运维管理-数据统计-配置信息统计
-运维管理-数据统计-告警统计
-运维管理-数据统计-性能统计
-运维管理-数据统计-用户统计
-运维管理-数据统计-日志统计
-运维管理-年度报表-运维调整报表
-运维管理-年度报表-用户活跃度统计
-运维管理-年度报表-设备告警统计
-运维管理-综合分析-设备故障型号分析
-运维管理-综合分析-设备故障厂商分析
-运维管理-综合分析-设备性能报表
-运维管理-调整记录
-运维管理-环境管理
-帮助-知识库
-帮助-站点详情
-帮助-区域详情
-帮助-设备详情
-帮助-操作手册
-帮助-在线手册
-登录页
-系统管理-日志管理-操作日志
-帮助-操作手册
-帮助-在线手册
-
-
-
-序号 
-用户名 userName
-IP地址 ip
-操作对象 object 
-操作类型 opType
-操作内容 description
-操作时间 timestamp
-事件类型 logType 
-异常类型 level
-操作结果 status
-
-
-
-
-网管系统日志
-
-
-
-"format": function (r, index, field) {
-    return formatDateTime(r[field]);
+menus.filter(function(v){
+  if(v.id=="system-security-userAudit_operation"){
+     menus=menus.filter(function(v1){
+         if(v1.id=="system-security"){
+          v1["name"]="审核"
+         }
+         return v1.parentId!="system-security-user" && v1.id!="system-security-user"
+     })   
+     menus.push({"name":"用户管理","id":"system-security-user","parentId": "system-security",},)     
+     menus.push( {"name":"查看","id":"system-security-user_view","parentId": "system-security-user",},)     
+     menus.push( {"name":"管理","id":"system-security-user_manage","parentId": "system-security-user",},)     
+     return false;
   }
+})
+menus.filter(function(v){
+  if(v.id=="system-security-roleAudit_operation"){
+     menus=menus.filter(function(v1){
+      if(v1.id=="system-security"){
+          v1["name"]="审核"
+      }
+      return  v1.parentId!="system-security-role"&& v1.id!="system-security-role"
+     }) 
 
-
-
-
-用户名 userName 120px
-IP地址 ip 120px
-操作对象 object  140px
-操作类型 opType 140px
-操作内容 description 140px
-操作时间 timestamp 120px
-事件类型 logType 
-异常类型 level 120px
-操作结果 status 100px
-
-
-<td style="width:120px">用户名</td>
-<td style="width:120px">IP地址</td>
-<td style="width:140px">操作对象</td>
-<td style="width:140px">操作类型</td>
-<td style="width:140px">操作内容</td>
-<td style="width:120px">操作时间</td>
-<td style="">事件类型</td>
-<td style="width:120px">异常类型</td>
-<td style="width:100px">操作结果</td>
-
-
-
-
-
-
-
-
-
-
-<td>${v.userName}</td>
-<td>${v.ip}</td>
-<td>${v.object}</td>
-<td>${v.opType}</td>
-<td>${v.description}</td>
-<td>${v.timestamp}</td>
-<td>${v.logType}</td>
-<td>${v.level}</td>
-<td>${v.status}</td>
+     menus.push( {"name":"权限管理","id":"system-security-role","parentId": "system-security",},)     
+     menus.push( {"name":"查看","id":"system-security-role_view","parentId": "system-security-role",},)     
+     menus.push( {"name":"管理","id":"system-security-role_manage","parentId": "system-security-role",},)   
+     return false;  
+  }
+})

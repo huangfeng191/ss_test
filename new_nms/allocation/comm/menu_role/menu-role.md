@@ -79,4 +79,53 @@ if (level2Menu["system-monitor-database"]&&level2Menu["system-monitor-database"]
 
 
 
-审计管理员
+
+
+# 2020-01-14  Tuesday 
+
+
+1 去除 websocket 
+2 审计 审核 人员权限 
+3 操作级
+
+修改 审计
+
+
+
+审计  审计管理员  ywsj
+    日志管理
+
+审核 审核管理员 shenhe001
+    安全管理
+           用户审核
+           权限审核
+
+
+
+拓扑配置 业务配置员  peizhi
+    
+
+{"name":"拓扑管理","id":"topology","parentId": "",},
+{"name":"物理拓扑","id":"topology-physics","parentId": "topology",},
+{"name":"逻辑拓扑","id":"topology-logic","parentId": "topology",},
+{"name":"网管拓扑","id":"topology-net","parentId": "topology",},
+
+      if ($.inArray($(ov).attr("level2"), [
+                    "topology-physics", "topology-logic", "topology-net"
+                ]) >= 0) {
+                    $(ov).find("a").html(level2Menu[$(ov).attr("level2")].name) ;
+            }
+
+
+告警配置
+    告警配置 
+
+
+{"name":"告警管理","id":"warning","parentId": "",},
+{"name":"告警处理","id":"warning-handle","parentId": "warning",},
+
+
+
+业务操作员 ceshi002
+
+
