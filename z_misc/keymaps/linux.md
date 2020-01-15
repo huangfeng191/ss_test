@@ -37,3 +37,15 @@ sudo ~/.acme.sh/acme.sh --installcert -d feng.agency --fullchainpath /etc/v2ray/
 godaddy 绑定 dns ->  被绑定的dns 里面要有 域名，然后找到ip  
 
 iptables -A OUTPUT -p tcp --dport 80 -j DROP
+
+
+
+
+vim 10-ens3.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens3:
+      dhcp4: yes
