@@ -18,6 +18,7 @@
 | 1    | nvm use node                                                                         |      |
 
 
+
 # step3 : 启动stock
 
 | step | doing                         | desc      |
