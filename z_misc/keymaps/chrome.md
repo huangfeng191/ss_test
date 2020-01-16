@@ -5,6 +5,7 @@
 | ctrl+2     | redmine                   |        |
 | ctrl+enter | 执行 snippets             | **     |
 | alt        | focus to right top option | *      |
+| ctrl+/-    | zoom                      | *      |
 
 
 
