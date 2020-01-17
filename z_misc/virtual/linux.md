@@ -1,3 +1,18 @@
+# comm 
+
+## create file:
+
+# touch fileA  
+  1. 如果fileA存在，使用touch命令可更改这个文件或目录的日期时间，包括存取时间和更改时间；
+  2. 如果fileA不存在，touch命令会在当前目录下新建一个空白文件fileA。
+
+PS. 使用touch指令可更改文件或目录的日期和时间，包括存取时间和更改时间。
+    文件的时间属性包括文件的最后访问时间，最后修改时间以及最后在磁盘上修改的时间，
+    命令stat显示结果显示了三个时间属性。
+
+
+
+
 # https:
 
 | step                                                                                                                          | purpose            | rating        |
@@ -16,12 +31,12 @@
 
 
 
-| shortcut                                | view            | rating |
-| --------------------------------------- | --------------- | ------ |
-| netstat -tnlp                           | 查看 端口是否打 |        |
-| Kill -9 Pid                             | 杀任务          |        |
-| find / -name mongodb                    | 寻找命令目      |        |
-| unzip -o  20190303.zi                   | 解压            |        |
+| shortcut                                 | view            | rating |
+| ---------------------------------------- | --------------- | ------ |
+| netstat -tnlp                            | 查看 端口是否打 |        |
+| Kill -9 Pid                              | 杀任务          |        |
+| find / -name mongodb                     | 寻找命令目      |        |
+| unzip -o  20190303.zi                    | 解压            |        |
 | forever start /etc/stock/service/bin/www | 后台启动        |        |
 
 
@@ -37,3 +52,4 @@ sudo ~/.acme.sh/acme.sh --installcert -d feng.agency --fullchainpath /etc/v2ray/
 godaddy 绑定 dns ->  被绑定的dns 里面要有 域名，然后找到ip  
 
 iptables -A OUTPUT -p tcp --dport 80 -j DROP
+

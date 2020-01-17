@@ -16,3 +16,10 @@ git update-index --assume-unchanged src/main/webapp/META-INF/war-tracker
 
 
 git update-index --no-assume-unchanged 
+
+# 删除本地分支 
+# 查看分支
+git branch -a
+
+# 删除分支
+git branch -d delete

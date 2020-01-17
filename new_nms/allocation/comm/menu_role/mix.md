@@ -115,6 +115,12 @@ INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('6b030da4-be4e-4
 
 # 业务操作员	
 
+INSERT INTO `nms3.0`.`role_menu_ref`(`roleId`, `menuId`) VALUES('eafa2d04-900d-422d-8477-956218ffd763',"configure-config_operation");
+
+
+
+
+
 
 # 业务审计员
 
