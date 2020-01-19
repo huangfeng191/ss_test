@@ -18,9 +18,13 @@ git update-index --assume-unchanged  ../webapp/META-INF/war-tracker
 git update-index --no-assume-unchanged ../resources/Config-dev.properties
 git update-index --no-assume-unchanged  ../webapp/META-INF/war-tracker
 
-# 删除本地分支 
+
 # 查看分支
 git branch -a
 
-# 删除分支
+# 删除本地分支 
 git branch -d delete
+
+# 删除远程分支 
+删除远程分支 Chapater6
+git push origin --delete Chapater6
