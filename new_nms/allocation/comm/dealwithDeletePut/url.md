@@ -25,4 +25,4 @@
 告警屏蔽更新 /nms/spring/alarm/activeAlarmFilterConfig
 权限更新 /nms/spring/role
 虚拟内存更新 /nms/spring/systemManage/updateVM
-链路状态更新 /nms/spring/viewData/updatePathStatus/+linkId
+链路状态更新 /nms/spring/viewData/updatePathStatus/+linkId$$

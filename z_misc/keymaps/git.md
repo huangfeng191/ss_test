@@ -9,13 +9,14 @@
 
 
 # ss_back 文件不更新
+# 此处使用 relative path
+## ignore 
+git update-index --assume-unchanged ../resources/Config-dev.properties
+git update-index --assume-unchanged  ../webapp/META-INF/war-tracker
 
-git update-index --assume-unchanged src/main/resources/Config-dev.properties
-
-git update-index --assume-unchanged src/main/webapp/META-INF/war-tracker
-
-
-git update-index --no-assume-unchanged 
+## recover
+git update-index --no-assume-unchanged ../resources/Config-dev.properties
+git update-index --no-assume-unchanged  ../webapp/META-INF/war-tracker
 
 # 删除本地分支 
 # 查看分支
