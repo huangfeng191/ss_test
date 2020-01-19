@@ -63,6 +63,19 @@
             "problemMatcher": []
         },
         {
+            "label": "start-new-nginx_65_laptop(drow)",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_65_laptop\\;./nginx.exe",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "stop-nginx-65_laptop(drow)",
+            "type": "shell",
+            "command": " cd .\\new_nms\\new_nginx_65_laptop\\;./nginx.exe -s stop",
+            "problemMatcher": []
+        },
+        {
             "label": "start-nginx_63(only_pwd)",
             "type": "shell",
             "command": " cd .\\new_nms\\new_nginx_63\\;./nginx.exe",
@@ -75,19 +88,7 @@
             "command": " cd .\\new_nms\\new_nginx_63\\;./nginx.exe -s stop",
             "problemMatcher": []
         },
-        {
-            "label": "start-new-nginx_61_transfer(drow)",
-            "type": "shell",
-            "command": " cd .\\new_nms\\new_nginx_61_transfer\\;./nginx.exe",
-            "problemMatcher": [],
-            "group": "build"
-        },
-        {
-            "label": "stop-nginx-61_transfer(drow)",
-            "type": "shell",
-            "command": " cd .\\new_nms\\new_nginx_61_transfer\\;./nginx.exe -s stop",
-            "problemMatcher": []
-        },
+      
         {
             "label": "start-new-nginx_227",
             "type": "shell",
