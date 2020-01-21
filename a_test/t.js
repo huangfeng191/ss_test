@@ -30,9 +30,10 @@ menus.filter(function(v){
 
 
 
-<<<<<<< HEAD
-=======
+{ "title": "用户名","field": "userName",  "showType": "text",  "width":"100px"  },
+{ "title": "IP地址","field": "ip",  "showType": "text", "width":"90px"   },
+{ "title": "操作对象","field": "object",  "showType": "text",   "width":"140px" },
 
-
-
->>>>>>> de5c4190e84077567268387882caac31ae14f6db
+{ "title": "事件类型","field": "logType",  "showType": "text",   "width":"90px" },
+{ "title": "操作类型","field": "opType",  "showType": "text",   "width":"90px" },
+{ "title": "操作结果","field": "status",  "showType": "text",  "width":"90px"  },
