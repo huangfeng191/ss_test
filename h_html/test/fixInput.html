@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="id" value="adfa">
+
+  <script>
+    var textField = document.getElementById("id"), //获取表单域
+      startText = textField.value; //获取开头字符串
+    textField.onkeyup = function() {
+      //如果不是以startText开头的，就把文本框内的值设为startText
+      (textField.value.indexOf(startText) === 0) || (textField.value = startText);
+    };
+  </script>
+
+</body>
+
+</html>

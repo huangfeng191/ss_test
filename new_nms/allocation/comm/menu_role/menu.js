@@ -141,8 +141,3 @@
 
 
 
-$.each(a,function(oi,ov){
- 
-})
-
-
