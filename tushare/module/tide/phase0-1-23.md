@@ -15,10 +15,18 @@ cell:
     desc 
 link:
     sn 
-    nm 
-    level 
+    nm  
     cycle 
-    w 
     refresh // extend
+    w 
+    classify // extend  at present type text 
+    desc
+
+step:
+    sn 
+    nm  
+    cycle 
+    refresh // extend
+    w 
     classify // extend 
     desc

@@ -1,7 +1,7 @@
 # 2020-01-14  Tuesday 
 
-1. English -- 长时间的 (one hour at least )
-2. tuShare -- 必须要根上, 所以优先处理此部分
+1. tuShare -- 必须要根上, 所以优先处理此部分 *** 
+2. English -- 长时间的 (one hour at least )
 
 # 2020-01-15  Wednesday 
 
@@ -20,3 +20,6 @@ tips:
 
 # 2020-01-22  Wednesday 
 1. 对于复杂的问题 可以分解成简单的问题 用 ps. 来单个击破
+
+
+# 2020-01-23  Thursday 
