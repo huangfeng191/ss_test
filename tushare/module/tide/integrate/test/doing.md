@@ -32,6 +32,8 @@ field  name   showType  Required  ?param1?colspan?dataType  //
 field  name   showType  required 
 
 #  模块名 ?param1?colspan?dataType? 
+field  name   showType  Required  ?param1?colspan?dataType 
+field  name   d   true   ?param1?1?
 
 
 showType  c: "combo", d: "datetime", a: "textarea", u: "upload", t: "text",f:"text"
@@ -62,12 +64,4 @@ d
 
 
 
-# 网元管理  ?param1?
-网元名称 device 
-
-
-# old  
-
- "Field": "${1}", "Name": "${0}",
- DataType: "${2:String}",
-  ShowType: "${3:text}", Ext: "${31}"
+ 
