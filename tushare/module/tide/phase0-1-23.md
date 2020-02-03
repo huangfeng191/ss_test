@@ -10,23 +10,40 @@ cell:
     outType
     out 
     w 
-    refresh
-    classify
+    refresh // extend
+    classify  // extend  at present type text 
     desc 
+    pid
 link:
     sn 
     nm  
     cycle 
-    refresh // extend
     w 
-    classify // extend  at present type text 
+    refresh 
+    classify
     desc
+    pid
 
 step:
     sn 
     nm  
     cycle 
-    refresh // extend
     w 
-    classify // extend 
+    refresh 
+    classify 
     desc
+    pid
+
+# sn rule:
+m_XXX
+s_XXX
+l_XXX
+c_XXX
+
+# cell.loop 
+    {
+        "type",
+        "sn",
+        "others"
+    }
+
