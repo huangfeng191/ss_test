@@ -95,6 +95,14 @@ proto
             levelSn
             cycle
             t 
+        out 
+            type log table 
+            table {}
+            log {} 
+
+
+           
+
 
     link 
         fetch  
@@ -214,8 +222,8 @@ link.take
 step.take 
 measure.take 
 plan.take 
-
-
+TODO:
+形成这个链路 
 
 cycle - > t 
 
@@ -262,3 +270,5 @@ c_XXX
 
 link  里是否需要一个 level , 标识下数据 
 levelSn 
+
+

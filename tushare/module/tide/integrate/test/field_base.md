@@ -19,6 +19,7 @@ pid pid
 #  link  ?param1?colspan?dataType? 
 编码 sn // 同一类型的sn 相同, 规范 sn 的编码 ，与cycle 形成唯一 
 名称 nm  
+规则等级 level c ?cell_level?//:link step measure plan 
 周期 cycle c ?cycle?//day month year week 
 刷新 refresh c ?refresh?// extend
 排序 w 
@@ -29,6 +30,7 @@ pid pid
 #  step ?param1?colspan?dataType? 
 编码 sn 
 名称 nm  
+规则等级 level c ?cell_level?//:step measure plan 
 周期 cycle 
 排序 w 
 刷新 refresh c // extend
