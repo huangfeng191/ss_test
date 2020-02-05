@@ -13,3 +13,6 @@
 # doing.md 2
 # scene.md 3
 # phase 3
+
+
+# F3  刷新  F4 CRUD 第一个按钮触发 

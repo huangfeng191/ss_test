@@ -36,9 +36,11 @@ step:
 
 # sn rule:
 m_XXX
-s_XXX
 l_XXX
+s_XXX
 c_XXX
+
+
 
 # cell.loop 
     {
