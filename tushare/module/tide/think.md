@@ -458,13 +458,13 @@ loop
 method.query.outType=="log" just only for query 
 
 
-# loop:
+# rule :
      key 
 
      cell:
         type 
             slot
-
+                
             jump
                 {
                     hook,
@@ -486,6 +486,26 @@ method.query.outType=="log" just only for query
                         parseQuery 
 
 
-                        
 
-        
+LoopDoing 
+        for 
+
+
+
+        RuleDoing(loop.key ,rule,ruleType,fetch ,type ,source   )
+            
+            parseSource:
+
+            go
+                BindQuery                
+
+
+# import last step 
+
+1  ruleDoing 
+        type:fixed 
+        "fixed":{
+            type:"table",
+            "table":"",
+            "query":{}
+        }
