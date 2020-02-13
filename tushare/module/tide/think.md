@@ -203,3 +203,223 @@ plan
                   pid    
 
  
+
+
+ virus:
+chains list 
+    step link  cell 
+1    1    1     1
+2    1    1     2
+3    1    1     3
+4    1    2     1
+5    1    2     2
+6    2    2     2
+7    2    2     3  
+
+PS The condition of the disease :
+    next step 1!=step 
+PS: 
+    get(1)  get(2)
+    1.step == 2.step 
+    1.link==2.link 
+    1.cell!=2.cell  (1.cell ill ) 处理完 生成日志 **
+
+    get(2)  get(3)
+    1.step == 2.step 
+    1.link==2.link 
+    1.cell!=2.cell  (2.cell ill )
+
+    get(3)  get(4)
+    1.step == 2.step 
+    1.link!=2.link  (3.link ill )
+    1.cell!=2.cell  (3.cell ill )
+
+    get(4)  get(5)
+    1.step == 2.step 
+    1.link==2.link  
+    1.cell!=2.cell  (4.cell ill )
+
+    get(5)  get(6)
+    1.step != 2.step (5.cell ill )
+    1.link==2.link   (5.cell ill )
+    1.cell==2.cell   (5.cell ill )
+
+    get(6)  get(7)
+    1.step == 2.step 
+    1.link==2.link 
+    1.cell!=2.cell  (5.cell ill )
+
+    get(7)
+    step  (cell.ill)
+    link  (cell.ill)
+    cell  (cell.ill)
+
+if  last :
+    spreed :  all  
+
+conclusion:
+    compare  all  step `s  key  sorted by level_down if  unequal : spreed down : // 一级染病扩散到下一级 
+
+    1 gain cell`s take ,  
+    2 get ill  hook  , 
+    3 spreed  down ;
+
+
+    reversed  chains list 
+
+chains list 
+    step link  cell virus
+7    2    2     3  
+6    2    2     2   (link)
+5    1    2     2  (none)
+4    1    2     1  (link)
+3    1    1     3  (step)
+2    1    1     2  (link)
+1    1    1     1  (link)
+
+
+1  最后一个 是 初始样本，后面的扩散 none 时是完成模板,供下属扩散
+
+
+
+
+ 
+
+
+对于 refresh 先不递归生成， 考虑到 现在 实现 还不完全 
+
+
+# 2020-02-11  Tuesday 
+
+hook 
+chain 
+layer :
+    fetch:
+        key 
+        option 
+    config: // 配置 
+        source 
+        loop 
+            type
+                fixed
+                    table 
+                    agg  
+                jump 
+                    hook  sn  cycle t   level levelSn 
+                        source
+                        table 
+                        agg ...
+
+            key 
+
+        ruleType 
+        rule 
+        outType
+        out 
+
+
+CellDeal:
+  __init__
+
+  check(layer.fetch,loop.key )
+  calc,
+   
+  saveTake 
+  getTake 
+
+
+
+<!-- loop 属性不需要再deal 中体现 -->
+Deal:  
+    config:
+        type : table  agg  
+        source 
+        agg:{
+
+                                                                                                                                            },
+    fetch:
+        key 
+
+    loop:{
+        key :
+    }
+    __init__(self,rule,)
+    doing(loop,fetch,config):
+    save 
+
+
+
+<!-- 计算的时候 其实是不需要关心其他的，只要有必要字段就可以  -->
+    rule:
+        type : table  agg  
+        source 
+        agg:{
+            + loop.key 
+        },
+
+class  CalcRule:
+    __init__(self,ruleType,rule)
+        self.ruleType=ruleType
+        self.rule=rule
+
+    doing():
+        if(self.ruleType=="table"):
+            pass 
+        if self.ruleType=="agg":
+            pass 
+
+
+query 的解析：
+    {
+        field:{
+             type: 
+                date 
+                    cycle  day  month  week year 
+                jump 
+                    take : table log 
+                    {
+                        "field":""
+                        "assist":""
+                    }
+                =value
+
+
+        }
+    }
+    
+            
+
+
+
+
+    {
+        "field":{
+            
+            "value":{
+                type:"obj" 
+
+            },
+            "list":{
+                "assist":""
+            }
+            "obj":{
+               "field":{
+
+               }     
+            }
+        }
+    }
+
+
+# source.query 需要合并 到 query 里面去吗， 不需要 
+为了使方法 的展现 更加直观 
+
+
+# 2020-02-12  Wednesday 
+
+BindQuery 可以考虑抽象， 
+
+对于 query 希望已业务进行串联， 而不是 表格， 对于 cell 可以获取配置 
+
+
+

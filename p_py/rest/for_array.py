@@ -1,5 +1,17 @@
 # -*- coding: utf-8 -*-
 
+
+'''
+跳出循环 
+'''
+a=[1,2,3]
+for n in a :
+    if n==2:
+        break 
+    print n ;
+
+
+
 ''' 
  删除数组中的多个元素技巧：
 step1 : complete copy one ,

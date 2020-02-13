@@ -216,7 +216,8 @@ plan.fetch
 measure.fetch 
 step.fetch 
 link.fetch 
-cell.fetch 
+cell.fetch   OK
+
 cell.take 
 link.take 
 step.take 
@@ -272,3 +273,23 @@ link  里是否需要一个 level , 标识下数据
 levelSn 
 
 
+# 2020-02-06  Thursday 
+ 数据重算  
+ refresh = refresh 
+ 从 chain 中 获取 layer 信息 
+   new Chains 
+   Chain 
+     
+
+    基于面向对象的思想老考虑 问题 
+
+
+    Chains 处理所有的规则 
+
+    Chain 处理单条规则
+
+    思索出处理的通路 
+
+# 2020-02-07  Friday 
+
+    

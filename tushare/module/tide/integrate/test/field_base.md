@@ -6,9 +6,9 @@
 周期 cycle c ?cycle?//day month year week 
 循环配置 loop a ??3
 计算规则 ruleType c ?ruleType?//table agg pandas 
-计算配置 rule a ??3
+计算配置 ruleConfig a ??3
 输出规则 outType c ?outType?
-输出配置 out a ??3
+输出配置 outConfig a ??3
 排序 w 
 刷新 refresh c ?refresh// extend
 分类 classify  // extend  at present type text 

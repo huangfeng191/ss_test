@@ -1,44 +1,17 @@
 # -*- coding: utf-8 -*-
 
+#  fetch["t"]=tide_utils.getCycleToT(fetch.get("cycle"),t)
+default_fill=[("cycle","day"),("refresh","refresh")]
 
-
-a="""{
-    "source": {
-        "table": "dynamic_daily_business"
-    },
-    "queries": {
-        "outFrequency": {
-            "type": "date",
-            "value": "day",
-            "operate": "eq"
-        },
-        "sn": "eligibilityUpLoop"
-    },
-    "aggregate": [{
-            "$group": {
-                "_id": {"ts_code":"$ts_code"},
-                "count": { "$sum": 1 }
-            }
-        },
-        {
-            "$match": {
-                "count": { "$gte": 3 }
-            }
-        }
-    ]
-
-}"""
-
-print a 
-import json
-print json.loads(a)
-
-
-
+for k,v in default_fill:
+    print v
 
 a=[1,2,3]
 
+for n in a :
+    if n==2:
+        break 
+    print n ;
 
-del a[2]
-print a
 
+default_fill

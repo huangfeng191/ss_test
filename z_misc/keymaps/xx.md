@@ -14,3 +14,9 @@ kawaii:
     Usaki Aika
 
     Fuyue Kotone
+
+
+    Kamishiro Nina
+
+    生田みなみ
+    栗栖みなみ

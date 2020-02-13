@@ -14,7 +14,7 @@ menus.filter(function(v){
 })
 menus.filter(function(v){
   if(v.id=="system-security-roleAudit_operation"){
-     menus=menus.filter(function(v1){
+     menus=menus.filterw(function(v1){
       if(v1.id=="system-security"){
           v1["name"]="审核"
       }
