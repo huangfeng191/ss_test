@@ -6,3 +6,8 @@
 |shift+enter        | start new line              |        |
 |ctrl+alt+enter        | start new line before current            |        |
 |arrow         | move the cursor            |        |
+
+
+ALT + 左键    多行编辑
+ ALT + shift + 左键  特定焦点多行编辑
+ALT + shift + insert 进入多行编辑模式

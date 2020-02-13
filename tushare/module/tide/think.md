@@ -423,3 +423,69 @@ BindQuery 可以考虑抽象，
 
 
 
+loop 
+    type
+        jump
+            fetch.key:{
+                sn 
+                cycleLikely:"" // extend  day month week year 
+                level
+                levelSn
+            } 
+            key:{
+                "field1":{},
+                "field2":{"quote":"field3"}
+            }
+            getTake:
+                outType:"table",
+                "table"
+                    nm 
+                    +fetch.key 
+
+                                key 
+                                    {
+                                        "field1":{},
+                                        "field2":{"quote"}
+                                    }                                      
+        fixed   
+        fixed:{
+            table:"",
+            query:{}  need parse 
+        }
+                                                    
+                                                        
+
+method.query.outType=="log" just only for query 
+
+
+# loop:
+     key 
+
+     cell:
+        type 
+            slot
+
+            jump
+                {
+                    hook,
+                    fetch   
+                        key:{
+                            sn   
+                            cycleLikely:"" // extend  day month week year 
+                            level
+                            levelSn     
+                        }
+                }
+            fixed 
+                                    source
+                                        type: "table" // supply for  table 
+                                        "table":
+                                            nm 
+                                            query 
+                                        "type":"reserved"    
+                        parseQuery 
+
+
+                        
+
+        
