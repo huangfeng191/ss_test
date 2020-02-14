@@ -25,6 +25,10 @@ var setting={
         "name":"fred"
       },
       "confirm":function($dom,data){
-            alert("data "+data.name);
+            
+        $("#ssModalDialog").modal("hide");
       }
     }
+
+    $("#ssModalDialog").ssModal(modal);
+    $("#ssModalDialog").modal("show");

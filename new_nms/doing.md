@@ -1,36 +1,64 @@
-# 2019-12-20  Friday 
-## 表头不浮动
-setTimeout(() => {
-    top.document.getElementById()
-        // $($("#myTab li ")[3]).find("a").click();
-    }, 100);
-
-    $("#device_table").fixedHeaderTable({})
+# 2020-02-14  Friday 
 
 
+# warning 
 
+#current 
 
+告警时间  bgtime 
 
+#history 
 
+告警时间 bgtimeH
 
 
 
-1. 首页》时钟类型，国网展示的是异常、概设要求是故障	:  异常改成故障？    
+#warning_sj
+开始时间 #titme1
+
+# performance
+
+#current 
+
+开始时间 #sTime
 
 
-2. 1202:  首页》下侧告警列表，去掉告警id字段，列表格式需固定 不要点一下动一下，表头字段间隔有的离太远、有的离太近 每个字段中间至少留点空隙进行分割
+# operation 
 
-3. 1204 首页》下侧告警列表，右击选择查看，告警明细框的告警等级应中文显示,且弹出框距离鼠标太远
+告警统计 ：
+
+#alarm_statement 
+开始时间 #titme1
+
+审计日志
+
+#statisticsLog_table
+
+开始时间 qfield="bgnDate"
+
+备份／归档记录
+开始时间:id="backupLogTimeStart"
 
 
 
-4 告警确认时,如果成功需要给出提示。
+function setTime (){
+  var s=new Date().Format("yyyy-MM-01 hh:mm")
+  var s1=new Date().Format("yyyy-MM-01")
+  var e=new Date().Format("yyyy-MM-01 hh:mm")
+
+  $("#current #bgtime").val(s);
+  $("#current #endtime").val(e);
+  $("#history #bgtimeH").val(s)
+  $("#history #endtimeH").val(e)
+
+  $("#warning_sj #titme1").val(s)
+;
+}
+setTime()
 
 
 
 
 
 
-1. 菜单、操作互斥性功能调整
-2. 去除socket
-3. 本机java环境配置
+
