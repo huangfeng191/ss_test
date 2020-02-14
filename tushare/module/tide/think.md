@@ -506,6 +506,29 @@ LoopDoing
         type:fixed 
         "fixed":{
             type:"table",
-            "table":"",
-            "query":{}
+            "table":{
+                "nm":"",
+                "query":""
+            }
         }
+
+        ruleType:"table",
+        
+        "table":{
+            "query",
+            "sort"
+            "limit"
+        }
+
+        "out",
+        "outConfig":{
+            "type":"table",
+            "table":{
+
+            },
+            "log":{
+                
+            }
+        }
+
+
