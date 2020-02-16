@@ -14,4 +14,9 @@ for n in a :
     print n ;
 
 
-default_fill
+a={
+    "b":{}
+}
+
+print a.get("b")
+print type(a.get("b"))==dict

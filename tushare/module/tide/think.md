@@ -547,9 +547,6 @@ fetch.key+
 
 loop:
     source: cell.loop 
-        key:
-            "field1":{},
-            "field2":{"quote":""}
         type 
             slot // outType ='table'  at present   ?
 
@@ -563,11 +560,14 @@ loop:
                         level
                         levelSn                             
                         PS:not: raise Error
-
             fixed 
                 table 
                     nm 
                     query == need parse     
+    key:
+            "field1":{},
+            "field2":{"quote":""}
+
     parsed     
         key  array  可以支持 array  
 
@@ -607,3 +607,212 @@ chain
     layer.take 
 
 
+# 2020-02-16  Sunday 
+
+chain.topHook   // 规则的最高级别 
+
+chain.getLayer("cell")
+
+layer 
+
+    fetch
+        key 
+        option 
+    config
+
+> dispose 处理
+    loop:
+        sourceType: slot jump  fixed 
+        sourceConfig: 
+> 返回数组结果         
+            slot // outType ='table'  at present   ?
+
+            jump  // outType ='table'  at present  
+                hook 
+                fetch
+                    key 
+                        sn      
+                        cycleLikely:"" // extend  day month week year 
+                            PS: fetch.key.cycle  fetch.key.t  需要计算 t  
+                        level
+                        levelSn                             
+                        PS:not: raise Error
+
+            fixed 
+                table 
+                    nm 
+                    query == need parse     
+> step
+> 1. parseSource  得到source 对象 
+> 2. doSource  根据不同的类型得到数组 供循环 
+> 3.  loop row 对象 
+
+        key:
+                    "field1":{},
+                    "field2":{"quote":""}
+    loop 是一个对象, 只要定义这个对象的含义, 不用管中间有多少个步骤, 提供统一输出就好， 面向对象 
+
+    loop.row 是一个对象
+                
+       
+CellLoopConfig
+
+    getCellLoop 
+        CellLoop 
+CellRule 
+CellOut
+
+CellDoing (loop, rule,out,layer,chain )
+
+
+loopConfig
+    sourceType
+    sourceConfig 
+    dateConfig
+
+
+loopConfig 
+    source 
+
+
+    json.loads(loopConfig)
+
+    source=loopConfig.get("source")
+
+    if source.get("type")=="fixed":
+        option=source.get("fixed)
+        fixed.type:"table",
+            "table":{
+                "nm":"",
+                "query":""
+            }
+
+       
+
+    loopConfig.get("key")
+
+
+
+    SourceConfig
+
+
+
+sourceType 
+    jump
+    slot
+    fixed
+sourceConfig 
+    fixed
+        type 
+            table // 取数据库表里的数据
+        table 
+            nm      
+            query // need parse 
+    jump 
+        hook 
+        fetch
+            key 
+                sn      
+                cycleLikely:"" // extend  day month week year 
+                    PS: fetch.key.cycle  fetch.key.t  需要计算 t  
+                level
+                levelSn                             
+                PS:not: raise Error         
+        // 根据 take 得到  source         此处后续还可扩展 
+    
+
+SourceConfig 
+    __init__(self,sourceType,sourceConfig):
+        self.type=sourceType
+        self.config=sourceConfig.get(sourceType)
+
+    getSource():
+        configType=self.config.get("type")
+        configDetail=self.config[configType]
+        if self.type=="fixed":
+            if configType=="table":
+                configDetail //  nm  query  // need parse 
+        else self.type=="jump":
+            getTake()
+                "outType":"table"
+                => 
+        关键是 source.type : table ?
+        return {  // 返回可配置对象的原因是 方便以后的扩展
+            "type":"table",
+            "table":{
+                query:{},
+                nm:""
+            }
+        }
+
+
+    source 
+       {  // 返回可配置对象的原因是 方便以后的扩展
+            "type":"table",
+            "table":{
+                query:{},
+                nm:""
+            }
+        }
+
+
+
+    getSource 
+    getRule 
+
+    doRule(source,rule )    
+
+// 得到source 之后 处理的方式不同 
+loop 是直接应用 结果进行循环 得到可循环对象 
+    sourceType 
+    source 
+        type "table" "array "
+    
+    dateConfig
+        row:{
+            "field1":{},
+            "field2":{"quote":""}
+        }
+        key:[
+             "field1","field2"
+        ]
+    func getData:
+        {
+            "row":{}，
+            "key":{}
+        }    
+
+    func getLoop():
+        if self.type=="table"
+            items for    key
+            
+
+
+rule  对source 进行算法 
+
+class LoopDataConfig
+    __init__(self,source,loopDateConfig):
+        self.config=dateConfig
+    getData:
+            {
+                "row":{}，
+                "key":{}
+            }    
+        
+
+for r in loop :
+    r.key  + layer.fetch (唯一性)
+    source.query 
+    rule.query 
+
+RuleDoing 
+    def go 
+        fetch 
+            判断是否要生成及删除老数据 refresh 删除 , keep 返回 
+        getSource 
+        getRule 
+
+
+
+1 cell 设置正确 正确调用方法 
+2 各个类调用 , 最好能实现方法的调用 

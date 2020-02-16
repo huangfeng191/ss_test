@@ -13,3 +13,9 @@
         have a rest 
 20:00   work away 
 22:00   custom
+
+
+# work time 
+
+19:00  self work 
+20:00  free to arrange 

@@ -292,4 +292,39 @@ levelSn
 
 # 2020-02-07  Friday 
 
-    
+
+# 2020-02-16  Sunday 
+
+
+{
+    "fixed":{
+        "type":"table",
+        "table":{
+            "nm":"trade_cal",
+            "query":{
+                "cal_date": {
+                    "type": "date",
+                    "restrain": "cycle", // cycle day week month year 
+                    "operate": "lte"
+                }
+              
+            }
+        }
+    }
+}
+
+
+{
+  "table":{
+        query:{
+        "is_open":1
+        },
+
+        "limits": {
+            "size": 7
+        },
+        "sorts": {
+            "order": [{"Field": "cal_date", "Type": true}]
+        }
+  }
+}

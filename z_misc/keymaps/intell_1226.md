@@ -6,6 +6,7 @@
 |shift+enter        | start new line              |        |
 |ctrl+alt+enter        | start new line before current            |        |
 |arrow         | move the cursor            |        |
+|alt+j         | 选中相同单词            |        |
 
 
 ALT + 左键    多行编辑

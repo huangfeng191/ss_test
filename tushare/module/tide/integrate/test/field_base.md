@@ -1,10 +1,12 @@
 #  cell  ?param1?colspan?dataType? 
 规则编码 sn 
 规则名称  nm
-规则类型 type c ?cell_type?//:slot fixed jump 
 规则等级 level c ?cell_level?//:cell link step measure plan 
 周期 cycle c ?cycle?//day month year week 
-循环配置 loop a ??3
+循环类型 loopType c ?loopType? // skip config 
+循环配置 loopConfig a ??3
+源类型 sourceType c ?sourceType?//:slot fixed jump 
+源配置 sourceConfig a ??3
 计算规则 ruleType c ?ruleType?//table agg pandas 
 计算配置 ruleConfig a ??3
 输出规则 outType c ?outType?
