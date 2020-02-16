@@ -11,8 +11,8 @@ https://blog.csdn.net/crper/article/details/54099319
 
 | shortcut       | view                     | rating |type|
 | -------------- | ------------------------ | ------ |----|
- 
 | ctrl+shift+add(+)    | 放大字体              |**        |
+| ctrl+[ or  ]    | 字符缩进              |**        |
 | shift+delete    | markdown 中删除字符              |**        |
 | Ctrl+\    | split the active editor to two              |***        |
 | Ctrl+k +o    | show active file in new window             |**        |

@@ -424,18 +424,20 @@ BindQuery 可以考虑抽象，
 
 
 loop 
+    key:{  // 组成组成供循环的 key 
+                "field1":{},
+                "field2":{"quote":"field3"}
+            }
     type
         jump
+            hook 
             fetch.key:{
                 sn 
                 cycleLikely:"" // extend  day month week year 
                 level
                 levelSn
             } 
-            key:{
-                "field1":{},
-                "field2":{"quote":"field3"}
-            }
+            
             getTake:
                 outType:"table",
                 "table"
@@ -486,6 +488,11 @@ method.query.outType=="log" just only for query
                         parseQuery 
 
 
+loop.key +
+fetch.key+
+    
+
+    query.key 
 
 LoopDoing 
         for 
@@ -510,7 +517,7 @@ LoopDoing
                 "nm":"",
                 "query":""
             }
-        }
+        }  // source
 
         ruleType:"table",
         
@@ -518,7 +525,7 @@ LoopDoing
             "query",
             "sort"
             "limit"
-        }
+        }  // rule 
 
         "out",
         "outConfig":{
@@ -526,9 +533,77 @@ LoopDoing
             "table":{
 
             },
-            "log":{
-                
-            }
+        
+        
         }
+
+
+
+# 2020-02-14  Friday 
+
+deal with loop  just like cell 
+
+fetch.key+
+
+loop:
+    source: cell.loop 
+        key:
+            "field1":{},
+            "field2":{"quote":""}
+        type 
+            slot // outType ='table'  at present   ?
+
+            jump  // outType ='table'  at present  
+                hook 
+                fetch
+                    key 
+                        sn      
+                        cycleLikely:"" // extend  day month week year 
+                            PS: fetch.key.cycle  fetch.key.t  需要计算 t  
+                        level
+                        levelSn                             
+                        PS:not: raise Error
+
+            fixed 
+                table 
+                    nm 
+                    query == need parse     
+    parsed     
+        key  array  可以支持 array  
+
+
+
+cell 
+    extend - loop.key 
+    sourceType
+    sourceConfig 
+            slot 
+
+            jump 
+
+            fixed
+            
+    ruleType
+    ruleConfig 
+
+    outType 
+    outConfig 
+
+
+ 每个环节 按对象来传输, 增加可扩展性 
+
+
+
+chain 
+    layer .fetch  
+        loop 
+            key 
+
+            source 
+
+            rule 
+
+            out  
+    layer.take 
 
 
