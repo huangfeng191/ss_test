@@ -71,6 +71,8 @@ function getQueryArrays({ dom, fields = [] }) {
 # for   Iterate
 
 ```js
+//  可以查询对象 
+getJqSelected().find(".search-row")[3]
 
 getQueryArrays({domStr:"#security .item:eq(0)"})
 

@@ -176,3 +176,31 @@ data.push({"name":"告警结束时间","value":$('#endtime').val()||""});
 
 
 
+
+
+
+# operation 
+
+
+
+# 数据统计   ?select?
+性能统计  getQueryArrays({domStr:".search-row:eq(3)"})
+设备 dirver_name
+
+# 年度报表   ?select?
+getQueryArrays({domStr:".search-row:eq(10)"})
+网元名称 report_device ?s
+年度 report_year
+
+# 综合分析   ?select?
+设备性能报表  getQueryArrays({domStr:"#device-performance-fix"})
+设备 devicePerformanceId ?s
+开始时间 performancebgtime ?d
+
+
+
+
+# help
+
+# 设备详情   ?select?
+网元名称 device_name ?s
