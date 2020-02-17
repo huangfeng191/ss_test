@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
+import json
+def compressObject(obj):
+    def plusKey(base,key,val,compressed):
+        if type(val)== dict:
+            base1=base+"."
+            for k, v in val.items():
+                plusKey(base1,k,v,compressed)
+        else:
+             compressed[base+key]=val
 
-#  fetch["t"]=tide_utils.getCycleToT(fetch.get("cycle"),t)
-default_fill=[("cycle","day"),("refresh","refresh")]
+    o={}
+    base = ""
+    compressed={}
+    for k,v in obj.items():
+        plusKey(base,k,v,compressed)
 
-for k,v in default_fill:
-    print v
+    return compressed
 
-a=[1,2,3]
-
-for n in a :
-    if n==2:
-        break 
-    print n ;
-
-
-a={
-    "b":{}
-}
-
-print a.get("b")
-print type(a.get("b"))==dict
+o={
+    "a":"sdf"
+}    
+b=compressObject(o)
+print json.dump(b)
