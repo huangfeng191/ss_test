@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
+# 将object 压缩成一级对象
 import json
 def compressObject(obj):
     def plusKey(base,key,val,compressed):
         base1=base+key
-        if type(val)== dict:
-            if len(val.keys())>0:
-                base1=base1+"."
-                for k, v in val.items():
-                    plusKey(base1,k,v,compressed)
-            else:
-                compressed[base1]=val         
+        if type(val)== dict and len(val.keys())>0:
+            base1=base1+"."
+            for k, v in val.items():
+                plusKey(base1,k,v,compressed)
+            
         else:
              compressed[base1]=val
 
@@ -23,11 +22,11 @@ def compressObject(obj):
 
 o={
     "a":"sdf",
-    "b":{
+    "b.d":{
         "c":"3",
         "s":4,
         "e":{
-            "e":3
+            "e.ee":3
         },
         "k":{}
     }
