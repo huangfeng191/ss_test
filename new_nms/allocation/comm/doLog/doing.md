@@ -44,3 +44,5 @@ getQueryArrays({domStr:"#security .item:eq(1)"})
 目录管理 system-security-menu getMenuInfo()
 getQueryArrays({domStr:"#security .item:eq(4)"})
 用户级别  qRoleNameReal
+
+

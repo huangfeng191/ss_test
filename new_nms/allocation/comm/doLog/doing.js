@@ -475,3 +475,42 @@ function doSecondTab(evt) {
     }
 }
 
+
+
+
+
+// operation 
+
+doButton('operation-datas-performance');
+doButton('operation-year-warning');
+doButton('operation-allocation-performance');
+
+
+
+
+function doButton(id, theme, data, second) {
+    theme = "operation";
+    second = ""
+    data = []
+    query_flag=0
+    if (id == "operation-datas-performance") {
+        data.push({"name":"设备","value":$('#dirver_name').val()||""});
+
+        second="数据统计"
+        getPerformanceStatistics()
+    }else if (id == "operation-year-warning") {
+        second="年度报表"
+        data.push({"name":"网元名称","value":$('#report_device').val()||""});
+        data.push({"name":"年度","value":$('#report_year').val()||""});
+
+        queryReport(1)
+    }else if (id == "operation-allocation-performance") {
+        second="综合分析"
+        data.push({"name":"设备","value":$('#devicePerformanceId').val()||""});
+        data.push({"name":"开始时间","value":$('#performancebgtime').val()||""});
+        getDevicePerformanceForm()
+    }
+    if(query_flag==1){
+        top.SsCenter.doLog(id, theme, data, second);
+    }
+}

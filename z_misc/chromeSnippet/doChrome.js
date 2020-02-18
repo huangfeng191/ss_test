@@ -61,51 +61,61 @@ function getTabInfo_s({domId="myTab",childTag="li",secondTag="a" }) {
 }
 
 
+//  获取 查询条件  label  以及相邻dom 的 id 
 
 function getQueryArrays({ domId,domStr, tag="label", fields = [] }) {
-  var winDom=getCurrentDocument();
-      var jDom=null;
-      if(domId){
-          jDom=$(winDom.getElementById(domId));
-      }else{
-          jDom= $(winDom).find(domStr)
-      }    
-      var aDom=jDom.find(tag)
-
-    var keys = []
-
-    
-    $.each(aDom, function(oi, v) {
-
-        var text = v.innerText.replace(":", "")
-        if (fields.includes(text) ||fields.length==0) {
-            if(!$(v).next()){
-                return true ;
-            }
-            var next_ele = $(v).next()[0];
-            if (next_ele.getAttribute("id")) {
-                var one = text + " " + next_ele.getAttribute("id")
-                if (next_ele.nodeName == "SELECT") {
-                    one += " ?s"
-                }
-                keys.push(one)
-            }else   if (next_ele.getAttribute("qfield")) {
-                var one = text + " " + next_ele.getAttribute("qfield")
-                if (next_ele.nodeName == "SELECT") {
-                    one += " ?s?q"
-                }else{
-                    one += " ??q"
-                }
-                keys.push(one)
-            }
-
-        }
-
-
-    })
-    if (keys.length>0){
-        console.log(keys.join("\n"));
-        copy(keys.join("\n"))
-    }
-
-}
+    var winDom=getCurrentDocument();
+        var jDom=null;
+        if(domId){
+            jDom=$(winDom.getElementById(domId));
+        }else{
+            jDom= $(winDom).find(domStr)
+        }    
+        var aDom=jDom.find(tag)
+  
+      var keys = []
+  
+      
+      $.each(aDom, function(oi, v) {
+  
+          var text = v.innerText.replace(":", "")
+          if (fields.includes(text) ||fields.length==0) {
+              if(!$(v).next()){
+                  return true ;
+              }
+              var next_ele = $(v).next()[0];
+              if (next_ele.getAttribute("id")) {
+                  var one = text + " " + next_ele.getAttribute("id")
+                  if (next_ele.nodeName == "SELECT") {
+                      one += " ?s"
+                  }
+                  keys.push(one)
+              }else   if (next_ele.getAttribute("qfield")) {
+                  var one = text + " " + next_ele.getAttribute("qfield")
+                  if (next_ele.nodeName == "SELECT") {
+                      one += " ?s?q"
+                  }else{
+                      one += " ??q"
+                  }
+                  keys.push(one)
+              }else if ($(next_ele).find("input")){
+                  one=$(next_ele).find("input")[0].getAttribute("id");
+                  if(one){
+                      var one = text + " " + one
+                          one += " ?d"
+                  keys.push(one)
+  
+                  }
+                  
+              }
+  
+          }
+  
+  
+      })
+      if (keys.length>0){
+          console.log(keys.join("\n"));
+          copy(keys.join("\n"))
+      }
+  
+  }
