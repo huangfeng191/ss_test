@@ -61,3 +61,16 @@ plan
 4 loop 
 5 chain
 
+<<<<<<< Updated upstream
+=======
+
+# 2020-02-19  Wednesday 
+
+
+# 2020-02-20
+
+1. out outType
+2. save data 
+3. get 
+4. jump *** 
+>>>>>>> Stashed changes
