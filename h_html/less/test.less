@@ -98,7 +98,7 @@ html {
 
     body {
         margin: 0;
-      padding:0;
+        padding: 0;
 
         // border: @normal-border;
 
@@ -192,15 +192,16 @@ html {
                 }
             }
         }
-       @detail-info-width:400px;
-       @detail-info-top:40px;
-       @detail-info-padding:15px;
-       @detail-info-table-left:60px;
-       @detail-info-table-line:28px;
 
-        .detail-info{
-            width:@detail-info-width;
-            padding:0 @detail-info-padding;
+        @detail-info-width: 400px;
+        @detail-info-top: 40px;
+        @detail-info-padding: 15px;
+        @detail-info-table-left: 60px;
+        @detail-info-table-line: 28px;
+
+        .detail-info {
+            width: @detail-info-width;
+            padding: 0 @detail-info-padding;
             background: #7c7c79;
             opacity: 0.88;
             color: #fff;
@@ -208,52 +209,63 @@ html {
             font-size: 12px;
             border-radius: 2px;
             margin: 0 auto;
-            margin-top:100px;
+            margin-top: 100px;
 
-            .detail-top{
+            .detail-top {
                 position: relative;
-                height:@detail-info-top;
-                width:100%;
+                height: @detail-info-top;
+                width: 100%;
                 text-align: center;
-                margin:0 auto;
-                font-size:16px;
-                div:first-child{
-                    line-height:@detail-info-top;
+                margin: 0 auto;
+                font-size: 16px;
+
+                div:first-child {
+                    line-height: @detail-info-top;
                 }
-                .detail-right{
+
+                .detail-right {
                     position: absolute;
-                    top:0px;
-                    right:0px;
-                    line-height:@detail-info-top;
-                    span{
-                        padding-right:10px;
+                    top: 0px;
+                    right: 0px;
+                    line-height: @detail-info-top;
+
+                    span {
+                        padding-right: 10px;
+
                         img {
-                            width:16px 
+                            width: 16px
                         }
                     }
                 }
+
                 border-bottom: 1px #c1c1bc solid;
             }
-            .detail-main{
+
+            .detail-main {
                 font-size: 14px;
-                padding:10px 20px;
-                tr{
-                     
+                padding: 10px 20px;
+
+                tr {
+
                     line-height: @detail-info-table-line;
-                    td:first-child{
+
+                    td:first-child {
                         text-align: left;
-                        width:@detail-info-table-left;
+                        width: @detail-info-table-left;
                     }
                 }
-                tr:nth-of-type(even){
-                    background: none!important;
+
+                tr:nth-of-type(even) {
+                    background: none !important;
                 }
-                tr:nth-of-type(odd){
-                    background: none!important;
+
+                tr:nth-of-type(odd) {
+                    background: none !important;
                 }
-                tr:last-child{
-                   vertical-align: initial; 
-                   line-height: 20px;
+
+                tr:last-child {
+                    vertical-align: initial;
+                    line-height: 20px;
                 }
             }
         }
@@ -261,20 +273,66 @@ html {
 }
 
 
-.wd-break{
-  table{
-    box-sizing: border-box;
+.wd-break {
+    table {
+        box-sizing: border-box;
 
-      border:1px red solid;
-      width:400px;
-   
-      //   td{
-    //     border:1px red solid;
-    //   }
-      td:not(.exp) {
-       
-          word-break: break-all;
-          width:100px;
-      }
-  }  
+        border: 1px red solid;
+        width: 400px;
+
+        //   td{
+        //     border:1px red solid;
+        //   }
+        td:not(.exp) {
+
+            word-break: break-all;
+            width: 100px;
+        }
+    }
+}
+
+
+.table-overflow_compare {
+    height: 200px;
+    overflow-y: auto;
+
+    table {
+        border: 1px red solid;
+
+        // height: 200px;
+        tr {
+
+            height: 30px;
+            line-height: 30px;
+
+            td {
+                border: 1px green solid;
+            }
+        }
+    }
+}
+
+
+.table-overflow {
+
+    table {
+        border: 1px red solid;
+
+        // height: 200px;
+        tbody {
+            height: 200px;
+            overflow-y: auto;
+            display:block;
+            tr {
+
+                height: 30px;
+                line-height: 30px;
+                // display:table;
+                td {
+                    border: 1px green solid;
+                }
+            }
+        }
+
+    }
 }

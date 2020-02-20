@@ -5,10 +5,11 @@ cell:
     level :cell link step measure plan 
     cycle day month year week 
     loop
-    ruleType table agg pandas 
+    loopConfig
     rule
-    outType
+    ruleConfig table agg pandas 
     out 
+    outConfig
     w 
     refresh // extend
     classify  // extend  at present type text 
@@ -49,3 +50,17 @@ c_XXX
         "others"
     }
 
+
+
+
+# sourceType  and ruleType  mapping 
+
+
+| sourceType | ruleType  |
+| ---------- | --------- |
+| table      | table     |
+| table      | agg       |
+| object     | uncertain |
+| array      | uncertain |
+     
+     

@@ -21,3 +21,10 @@ fetch  关联的是相应的类型的配置
 # tide.service.bean.base 与 tide.service.bean.out   配置数据与产生数据分开的目的是 **
 
 便以以后分离与拆分 
+
+
+#  why take.option.refres is not need 
+
+fetch.option.refresh 0 
+take.option.refresh 1
+已fetch 为准 ,

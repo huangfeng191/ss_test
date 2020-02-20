@@ -179,10 +179,10 @@ html body .detail-info .detail-main tr td:first-child {
   width: 60px;
 }
 html body .detail-info .detail-main tr:nth-of-type(even) {
-  background: none!important;
+  background: none !important;
 }
 html body .detail-info .detail-main tr:nth-of-type(odd) {
-  background: none!important;
+  background: none !important;
 }
 html body .detail-info .detail-main tr:last-child {
   vertical-align: initial;
@@ -196,4 +196,33 @@ html body .detail-info .detail-main tr:last-child {
 .wd-break table td:not(.exp) {
   word-break: break-all;
   width: 100px;
+}
+.table-overflow_compare {
+  height: 200px;
+  overflow-y: auto;
+}
+.table-overflow_compare table {
+  border: 1px red solid;
+}
+.table-overflow_compare table tr {
+  height: 30px;
+  line-height: 30px;
+}
+.table-overflow_compare table tr td {
+  border: 1px green solid;
+}
+.table-overflow table {
+  border: 1px red solid;
+}
+.table-overflow table tbody {
+  height: 200px;
+  overflow-y: auto;
+  display: block;
+}
+.table-overflow table tbody tr {
+  height: 30px;
+  line-height: 30px;
+}
+.table-overflow table tbody tr td {
+  border: 1px green solid;
 }

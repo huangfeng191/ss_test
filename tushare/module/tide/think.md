@@ -705,9 +705,12 @@ sourceConfig
     fixed
         type 
             table // 取数据库表里的数据
-        table 
-            nm      
-            query // need parse 
+            table 
+                nm      
+                query // need parse 
+            array // []    
+            object // 
+
     jump 
         hook 
         fetch
@@ -822,5 +825,59 @@ RuleDoing
 
 
 
+
+
+
+# 2020-02-20  Thursday 
+
+outType 
+    table 
+    log 
+
+outConfig
+    table   
+        nm 
+            fieldConfig // preference 
+    log 
+        fieldConfig
+            field1:{}
+            field2:{type:"quote","quote":{}
+            field3:{type:"otherMethod","otherMethod":{}}
+
+ClassFieldConfig:
+    func __init__(self,type,config):
+        self.type=""
+        self.config=""
+
+    func getData(self,data):
+        pass 
+
+
+
+take:
+    type
+        table 
+            query 
+            nm 
+        log 
+            field 
+    fetch:{
+        "key":{
+
+        }
+    }
+
+
+doLog 
+    满足条件记录, 
+    对各个表记录日志，对task 也需要记录总的日志，
+        处理时间 
+            各步骤的处理时间，处理状态 , 
+            类似一个全局概念 
+完成 fixed 类型 1 
+tomorrow:
+    jump 功能 
+    完成 fixed 类型2 
+    
 
 
