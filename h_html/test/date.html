@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/dateUtil.js"></script>
+</head>
+<body>
+    <input>
+
+</body>
+<script>
+    function setDefaultDate() {
+        var d=new Date().Format("yyyy-MM-dd");
+        var m=new Date().Format("yyyy-MM-dd hh:mm");
+        var pd=new Date().AddMonths(-1).Format("yyyy-MM-01");
+        var pm=new Date().AddMonths(-1).Format("yyyy-MM-01 00:00");
+
+        document.getElementsByTagName("input")[0].value=pm
+    }
+
+    setDefaultDate()
+
+
+</script>
+
+</html>

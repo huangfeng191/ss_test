@@ -26,7 +26,7 @@
   </span>
 
 
-  <div id="card-board-list">
+  <div id="card-board-list" style="height:400px">
   </div>
 
 </body>
@@ -47,7 +47,7 @@
   }
 
   function rowFormatDialog(index) {
-    debugger
+    
     alert(JSON.stringify($("#card-board-list").data("ssTableData")[index]))
 
   }
@@ -62,10 +62,11 @@
             ],
 
     },
-    columns: [{ "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
-      { "title": "IO/类型", "field": "ioSignal", "showType": "text", },
-      { "title": "信号类型", "field": "ioType", "showType": "text", },
-      { "title": "冗余使能", "field": "ioStatusRedundancy"  ,"showType": "text",format:function(d,i,f){
+    columns: [
+      {"width":"100px", "title": "槽位号", "field": "ioStatusSlotID", "showType": "text", },
+      {"width":"120px", "title": "IO/类型", "field": "ioSignal", "showType": "text", },
+      {"width":"120px", "title": "信号类型", "field": "ioType", "showType": "text","sort":true },
+      {"width":"120px", "title": "冗余使能", "field": "ioStatusRedundancy"  ,"showType": "text",format:function(d,i,f){
         if(d[f]&&window.top.bindings["EnableDisable"]){
           var ret=""
           $.each(window.top.bindings["EnableDisable"],function(oi,ov){
@@ -77,27 +78,36 @@
         }
         return "";
       }},
-      { "title": "主卡", "field": "ioStatusActive", "showType": "text", },
-      { "title": "版本信息", "field": "isSignal", "showType": "text", },
-      { "title": "冗余操作", "field": "ioStatusRedundancyKey","showType": "select","binding":"EnableDisable" },
-      { "title": "绑定", "field": "bindMethod", "showType": "text", "format": rowFormatButtons },
-      { "title": "卡配置", "field": "cardConfig", "showType": "text", "format": rowFormatButtons },
+      {"width":"100px", "title": "主卡", "field": "ioStatusActive", "showType": "text", },
+      {"width":"120px", "title": "版本信息", "field": "isSignal", "showType": "text", },
+      {"width":"120px", "title": "冗余操作", "field": "ioStatusRedundancyKey","showType": "select","binding":"EnableDisable" },
+      {"width":"100px", "title": "绑定", "field": "bindMethod", "showType": "text", "format": rowFormatButtons },
+      {"width":"100px", "title": "卡配置", "field": "cardConfig", "showType": "text", "format": rowFormatButtons },
     ],
     footShow: false,
-    width: "800px"
+    width: "900px"
   }
   
 
 
 
   $(function() {
-    debugger
+    // debugger
     $("#card-board-list").ssTable(data);
     $(".btn-default").click(function() {
       $("#card-board-list").ssTable("Set",
         [
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪", "ioStatusRedundancy": 11 },
           { ioStatusSlotID: "我的老妈", "myGod": "我的天哪" ,"ioStatusRedundancyKey":"1"},
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
+          { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
           { ioStatusSlotID: "我的老家", "myGod": "我的天哪" },
         ]

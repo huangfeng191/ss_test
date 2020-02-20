@@ -188,3 +188,12 @@ html body .detail-info .detail-main tr:last-child {
   vertical-align: initial;
   line-height: 20px;
 }
+.wd-break table {
+  box-sizing: border-box;
+  border: 1px red solid;
+  width: 400px;
+}
+.wd-break table td:not(.exp) {
+  word-break: break-all;
+  width: 100px;
+}
