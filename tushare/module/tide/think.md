@@ -881,3 +881,29 @@ tomorrow:
     
 
 
+
+
+outType
+    log  table 
+outConfig 
+<!-- 处理前的转换 -->
+    fieldProcess  // don`t change dateType  
+        field1:{}
+        field2:
+            type 
+                quote
+                ...
+    log 
+        field:""   // 空时为规则的 field 
+        transform
+            way 
+                arrayToField
+            field     
+    table 
+        nm 
+
+                     
+
+
+
+

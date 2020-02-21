@@ -331,3 +331,24 @@ levelSn
 
 # 2020-02-17  Monday 
 1. 实现 第一个 cell 计算 
+
+
+
+# 2020-02-20  Thursday 
+
+
+outType 
+    table 
+    log 
+
+outType
+
+outConfig
+{
+    "log":{
+        fieldConfig:{
+            cal_date:{}
+        }
+            
+    }
+}

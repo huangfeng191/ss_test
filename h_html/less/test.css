@@ -226,3 +226,13 @@ html body .detail-info .detail-main tr:last-child {
 .table-overflow table tbody tr td {
   border: 1px green solid;
 }
+.shade div {
+  width: 100%;
+  height: 40px;
+  background-color: red;
+}
+.shade div div {
+  width: 97%;
+  height: 40px;
+  background-color: green;
+}

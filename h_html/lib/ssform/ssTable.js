@@ -32,7 +32,7 @@ $.fn.ssTable.Set = function(records) {
               {{each data d i}}
                 <tr>  
                 {{each definition def di}}
-                  <td >
+                  <td width={{def.width}} >
                    {{if def.format}}
                         <%- def.format(d,i,def.field) %>
                    {{else if def.showType=="select"}}
@@ -164,21 +164,7 @@ $.fn.ssTable.defaults = {
 
     <div class="table_middle">
       <table class=" table table-striped" width="100%">
-        <thead style="opacity: 0;">
-          <tr>
-            {{each columns  column i}}
-              {{if column.hidden!=true}}
-                <th width={{column.width}} title_field={{column.field}}>{{column.title}}{{if column.sort}}
- <span class="caret-wrapper">
-                    <i class="sort-caret ascending"></i>
-                    <i class="sort-caret descending"></i>
-                 </span></th>
-                {{/if}}
-               
-              {{/if}}  
-            {{/each}}
-          </tr>
-        </thead>
+ 
         <tbody class="table_content">
           <tr>
           </tr>
@@ -211,15 +197,15 @@ $.fn.ssTable.defaults = {
         qData.pageSize = jDom.find("#sample_pagination").data("pagination").itemsOnPage;
         
       }
-      var toSort=JDom.find(".table_title .caret-wrapper i.active");
-      if(toSort){
-        qData.sort=toSort.closest("th").attr("title_field")
+      var toSort=jDom.find(".table_title .caret-wrapper i.active");
+      if(toSort&&toSort.length){
+        qData.order=toSort.closest("th").attr("title_field")
         if(toSort.hasClass("ascending")){
-          qData.ase=true;
+          qData.ase="ase";
         }else{
-          qData.ase=false;
+          qData.ase="desc";
         }
-      }
+      }  
       $.ajax($.extend({}, {
         type: 'POST',
         data: JSON.stringify(qData),
@@ -316,7 +302,8 @@ function ssTableInitialize(options) {
     if(opts.footShow){
       ssTable.find(".table_foot #sample_pagination").pagination({});
     }
-    ssTable.find(".table_middle").height(ssTable.height()-ssTable.find(".table_head").height()-ssTable.find(".table_foot").height())
+    ssTable.find(".table_middle").height(ssTable.height()-ssTable.find(".table_head").height()-ssTable.find(".table_foot").height()-ssTable.find(".table_title").height())
+    ssTable.find(".table_middle").css("margin-top",ssTable.find(".table_title").height())
     ssTable.find(".table_title").css("top",ssTable.find(".table_head").height()+10);
 
     ssTable.data("ssTable", opts);
