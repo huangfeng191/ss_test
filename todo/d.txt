@@ -337,13 +337,17 @@ startup failed due to previous errors
 
 # 2020-02-19  Wednesday 
 
-adventure may hurt you ,but monotony  will kill you 
-
-when can see no future , all one can do is the next right thing.
-
-
 
 1.性能管理隐藏设备树
 2.日志模块表头新增排序及固定表头功能
 
+# 2020-02-19  Tuesday
 
+1. 日志模块表头新增排序及固定表头功能
+2. 审计管理员越权信息提示 
+
+
+# 2020-02-21  Friday 
+
+1. 逻辑拓扑参照物理拓扑实现:点击树设备,逻辑拓扑图中的图标变大,且显示设备详细信息, 点击拓扑图中的 设备图标 查询 下方的告警信息
+2. 接口访问、页面功能等bug修改

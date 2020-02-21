@@ -27,8 +27,13 @@
     
     var paper = Raphael(document.getElementById("main1"), 400, 400);
     
-      paper.image("../images/net_topo/netNode1.png",0,100,20,20)
-
+    var img1=paper.image("../images/net_topo/netNode1.png",0,100,20,20)
+     var st =paper.set() // arrayLike 
+     st.push(img1)
+     img1.click(function(xx){
+       this.attr("width",this.attr("width")*1.5)
+       this.attr("height",this.attr("height")*1.5)
+     })
 
   }
 </script>
