@@ -13,6 +13,16 @@
   width: 500px;
   height: 500px;
 }
+html {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+html body {
+  width: 100%;
+  height: 100%;
+}
 .table.test-border {
   border: 1px red solid;
 }
@@ -235,4 +245,12 @@ html body .detail-info .detail-main tr:last-child {
   width: 97%;
   height: 40px;
   background-color: green;
+}
+div.parentFrame {
+  width: 100%;
+  height: 100%;
+}
+div.parentFrame iframe {
+  width: 100%;
+  height: 600px;
 }

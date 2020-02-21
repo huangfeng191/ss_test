@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/raphael.js"></script>
+  
+  <link rel="stylesheet" href="../less/test.css">
+</head>
+
+<body>
+
+  <div id="main1" class="main main1 show-border" style="width:250px;height:300px;">
+  </div>
+  <div id="main2" class="main main2 show-border" style="width:250px;height:300px;">
+  </div>
+
+
+
+</body>
+<script>
+  window.onload = function() {
+    // var paper = Raphael(element, width, height); // 元素节点本身或ID 宽度 高度   that is svg size
+    
+    var paper = Raphael(document.getElementById("main1"), 400, 400);
+    
+      paper.image("../images/net_topo/netNode1.png",0,100,20,20)
+
+
+  }
+</script>
+
+</html>

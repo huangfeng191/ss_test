@@ -45,3 +45,17 @@
         备份记录 
         id="backupLogTimeStart"
         id="backupLogTimeEnd"
+
+# 2020-02-21  Friday 
+
+
+showCenterMessage
+
+    getDeviceDetail($("#map #detail-info"), {"message": message}, siteName, "station");
+
+
+
+showPhysicalMapProvince
+     provinceName == "省网"
+     provinceName == "骨干网"
+     top.SsCenter.province[provinceName]

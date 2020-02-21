@@ -34,6 +34,17 @@
     height: @normal-width;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+
+    body {
+        width: 100%;
+        height: 100%
+    }
+}
 
 .table {
     &.test-border {
@@ -322,11 +333,13 @@ html {
         tbody {
             height: 200px;
             overflow-y: auto;
-            display:block;
+            display: block;
+
             tr {
 
                 height: 30px;
                 line-height: 30px;
+
                 // display:table;
                 td {
                     border: 1px green solid;
@@ -337,15 +350,29 @@ html {
     }
 }
 
-.shade{
+.shade {
     div {
         width: 100%;
         height: 40px;
         background-color: red;
-        div{
+
+        div {
             width: 97%;
             height: 40px;
             background-color: green;
+        }
+    }
+}
+
+
+div {
+    &.parentFrame {
+        width: 100%;
+        height: 100%;
+
+        iframe {
+            width: 100%;
+            height: 600px;
         }
     }
 }
