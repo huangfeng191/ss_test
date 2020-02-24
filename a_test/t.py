@@ -1,55 +1,18 @@
 # -*- coding: utf-8 -*-
 import json
-def compressObject(obj):
-    def plusKey(base,key,val,compressed):
-<<<<<<< HEAD
-        base1=base+key
-        if type(val)== dict:
-            if len(val.keys())>0:
-                base1=base1+"."
-                for k, v in val.items():
-                    plusKey(base1,k,v,compressed)
-            else:
-                compressed[base1]=val         
-        else:
-             compressed[base1]=val
-=======
-        if type(val)== dict:
-            base1=base+"."
-            for k, v in val.items():
-                plusKey(base1,k,v,compressed)
-        else:
-             compressed[base+key]=val
->>>>>>> f5d88e4dae4e23b2fe5ea327b0b1511396fb1605
 
-    o={}
-    base = ""
-    compressed={}
-    for k,v in obj.items():
-        plusKey(base,k,v,compressed)
 
-    return compressed
+a=[{"c":1},{"c":2}]
+b={"c":1}
+print  type(b)
+for k,r in b.items():
+    print k 
 
-o={
-<<<<<<< HEAD
-    "a":"sdf",
-    "b":{
-        "c":"3",
-        "s":4,
-        "e":{
-            "e":3
-        },
-        "k":{}
-    }
-}    
-b=compressObject(o)
-print b 
-print json.dumps(b)
+del b["c"]
 
-print
-=======
-    "a":"sdf"
-}    
-b=compressObject(o)
-print json.dump(b)
->>>>>>> f5d88e4dae4e23b2fe5ea327b0b1511396fb1605
+# 当整个对象替换时 , 对象的其他关联会被删除掉 
+for  r in a :
+    if r.get("c")==2:
+        r["c"]=3
+print json.dumps(a )
+

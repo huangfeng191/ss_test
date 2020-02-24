@@ -1,16 +1,8 @@
 
 
-ctrl+w  选中单词扩展
 
 F3 or  Ctrl+L find next/move to next 
 
-alt+j  add selection for next occurrence 
-
-
-
-alt+shift+insert 切换列模式
-
-shift+up / down
 
 
 
@@ -24,7 +16,6 @@ Ctrl + X  删除行
 Ctrl + D  复制行
 F2 /  Shift + F2 高亮错误 或 警告快速定位
 Ctrl + Shift + F7 高亮显示所有该文本
-Alt + J 选中相同单词
 Ctrl + Alt +B  查找接口的实现类
 Ctrl + h    查看类或接口的继承关系
 Ctrl+Alt+U  查看选中类或者接口的父类
