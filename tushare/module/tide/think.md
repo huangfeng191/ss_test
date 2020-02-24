@@ -905,5 +905,13 @@ outConfig
                      
 
 
-
+# take
+    key =fetch.key 
+    type
+        log
+            level:"cell",
+            "field":"", 
+            fields:["",""]
+        table 
+            nm 
 

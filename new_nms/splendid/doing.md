@@ -59,3 +59,9 @@ showPhysicalMapProvince
      provinceName == "省网"
      provinceName == "骨干网"
      top.SsCenter.province[provinceName]
+
+
+# 2020-02-24  Monday 
+
+$dom.find("button.yes").html("通过");
+$dom.find("button.yes").parent().append('<button type="button" class="modal-btn audit_no">不通过</button>')     
