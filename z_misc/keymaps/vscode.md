@@ -9,45 +9,47 @@ https://blog.csdn.net/crper/article/details/54099319
 
 # close command 关闭
 
-| shortcut       | view                     | rating |type|
-| -------------- | ------------------------ | ------ |----|
-| ctrl+shift+add(+)    | 放大字体              |**        |
-| ctrl+[ or  ]    | 字符缩进              |**        |
-| shift+delete    | markdown 中删除字符              |**        |
-| Ctrl+\    | split the active editor to two              |***        |
-| Ctrl+k +o    | show active file in new window             |**        |
-| Ctrl+e==ctrl+p    | action.quickOpen             |**        |
-| Ctrl+shift+\    | 括号跳转             |****        |
-| Ctrl+k +p    |copy path of active file            |**        |
-| Ctrl+u    |undo last cursor operator            |*        |
-| Ctrl+Shift+PgUp    |PgDn Move editor left/right            |*        |
-| alt+'  |选择括号内的所有内容            |****        | self|
-| alt+shift+right arrow    |expand (扩展)选区            |****        |
-| alt+shift+left arrow    | shrink (缩小)选区            |**        |
-| alt+鼠标左键    | 选择不同单词              |*        |
-
-| alt+left       | 向后（预览，不修改文件） |        |
-| alt+right      | 向前（预览）             |        |
-| ctrl+shift+tab | 切换到最近使用的 tab     |        |
-| ctrl+shift+m   | 查看错误信息             |        |
-| ctrl+shift+v   | 预览markdown             |        |
-| ctrl+shift+t   | 重新打开关闭页面         |        |
-| ctrl+shift+[   | 代码折叠                 |        |
-
-| ctrl+shift+]   | 代码展开                 |        |
-| ctrl+k+ctrl+0  | 全部折叠                 |        |
-| ctrl+k+ctrl+j  | 全部展开                 |        |
-| ctrl+alt+left arrow  | 切屏左右切换(分屏模式)       |***        |
-| ctrl+k j  | 关闭其他打开的编辑器       |**        |
-
-
-
-| ctrl+d  | 选中相似单词                 |        |
-| alt+shift+downArrow  | 向下复制 selected rows                   |        |
-| ctrl+l  | 选择整行                  |***        |
-  
+| shortcut              | view                           | rating | description       |
+| --------------------- | ------------------------------ | ------ | ----------------- |
+| F12                   | go to definition               | ****   |
+| shift+F12             | go to reference                | **     |
+| alt+F12               | peek definition                | **     | can`t move cursor |
+| ctrl+shift+add(+)     | 放大字体                       | **     |
+| ctrl+[ or  ]          | 字符缩进                       | **     |
+| shift+delete          | markdown 中删除字符            | **     |
+| Ctrl+\                | split the active editor to two | ***    |
+| Ctrl+k +o             | show active file in new window | **     |
+| Ctrl+e==ctrl+p        | action.quickOpen               | **     |
+| Ctrl+shift+\          | 括号跳转                       | ****   |
+| Ctrl+k +p             | copy path of active file       | **     |
+| Ctrl+u                | undo last cursor operator      | *      |
+| Ctrl+Shift+PgUp       | PgDn Move editor left/right    | *      |
+| alt+'                 | 选择括号内的所有内容           | ****   | self              |
+| alt+shift+right arrow | expand (扩展)选区              | ****   |
+| alt+shift+left arrow  | shrink (缩小)选区              | **     |
+| alt+鼠标左键          | 选择不同单词                   | *      |
+| alt+left              | 向后（预览，不修改文件）       |        |
+| alt+right             | 向前（预览）                   |        |
+| ctrl+shift+tab        | 切换到最近使用的 tab           |        |
+| ctrl+shift+m          | 查看错误信息                   |        |
+| ctrl+shift+v          | 预览markdown                   |        |
+| ctrl+shift+t          | 重新打开关闭页面               |        |
+| ctrl+shift+[          | 代码折叠                       |        |
+| ctrl+shift+]          | 代码展开                       |        |
+| ctrl+k+ctrl+0         | 全部折叠                       |        |
+| ctrl+k+ctrl+j         | 全部展开                       |        |
+| ctrl+alt+left arrow   | 切屏左右切换(分屏模式)         | ***    |
+| ctrl+k j              | 关闭其他打开的编辑器           | **     |
+| ctrl+d                | 选中相似单词                   |        |
+| alt+shift+downArrow   | 向下复制 selected rows         |        |
+| ctrl+l                | 选择整行                       | ***    |
 
 
+# comb 
+1. shift+F12 
+2. up/down arrow
+3. enter // goto 
+4. 0 peek 
 
 
 
@@ -55,7 +57,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | -------------------------- | ----------------- | ------ |
 | enter                      | find模式下 下一个 |        |
 | shift+enter                | find模式下 上一个 |        |
-| alt                        | 可切换到菜单栏    | *       |
+| alt                        | 可切换到菜单栏    | *      |
 | ctrl+right                 | 单词最后          |        |
 | ctrl+shift+(right or left) | 选中单词          |        |
 | ctrl+left                  | 单词词首          |        |
@@ -72,8 +74,8 @@ https://blog.csdn.net/crper/article/details/54099319
 | --------------- | -------------------------------- | ------ |
 | ctrl+alt+ up    | 光标向上                         |        |
 | ctrl+alt+ down  | 光标向下                         |        |
-| ctrl+u          | 撤销上一次光标操作               | *       |
-| Shift + Alt + I | 插入光标到选中范围内所有行结束符 |    **    |
+| ctrl+u          | 撤销上一次光标操作               | *      |
+| Shift + Alt + I | 插入光标到选中范围内所有行结束符 | **     |
 | ctrl+k o        | 在新的编辑器中打开当前编辑的文件 |        |
  
 
@@ -158,18 +160,13 @@ f12  转到定义
 alt+f12 速览定义
  
 
-## self keyboard
-   alt+delete close 面板
- | alt+n          | 聚焦下一个终端(self)       |*        | 
-
-
 
 
 
 # bookmark relative keybinds 
 
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
+| shortuct | view | rating |
+| -------- | ---- | ------ |
 
 | ctrl+alt+k      | 书签选择            |        |
 | ctrl+alt+j      | 上一个书签            |        |
@@ -206,7 +203,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | -------------------------- | ----------------- | ------ |
 | enter                      | find模式下 下一个 |        |
 | shift+enter                | find模式下 上一个 |        |
-| alt                        | 可切换到菜单栏    | *       |
+| alt                        | 可切换到菜单栏    | *      |
 | ctrl+right                 | 单词最后          |        |
 | ctrl+shift+(right or left) | 选中单词          |        |
 | ctrl+left                  | 单词词首          |        |
@@ -224,7 +221,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | ctrl+alt+ up    | 光标向上                         |        |
 | ctrl+alt+ down  | 光标向下                         |        |
 | ctrl+u          | 撤销上一次光标操作               |        |
-| Shift + Alt + I | 插入光标到选中范围内所有行结束符 |    *    |
+| Shift + Alt + I | 插入光标到选中范围内所有行结束符 | *      |
 | ctrl+k o        | 在新的编辑器中打开当前编辑的文件 |        |
  
 
@@ -317,42 +314,38 @@ alt+f12 速览定义
 
 # bookmark relative keybinds 
 
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
-
-| ctrl+alt+k      | 书签选择            |        |
-| ctrl+alt+j      | 上一个书签            |        |
+| shortuct   | view       | rating |
+| ---------- | ---------- | ------ |
+| ctrl+alt+k | 书签选择   |        |
+| ctrl+alt+j | 上一个书签 |        |
 
 
 
 
 # integrate terminal 
 
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
-
-| shift+pageUp/ pageDown      | scroll up /down            |        |
-| ctrl+home /end     | scroll to top/bottom             |        |
+| shortuct               | view                 | rating |
+| ---------------------- | -------------------- | ------ |
+| shift+pageUp/ pageDown | scroll up /down      |        |
+| ctrl+home /end         | scroll to top/bottom |        |
 
 
 
 
 # plugins relative keybinds 
 
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
-
-| ctrl+alt+r      | REST to run             |        |
+| shortuct   | view        | rating |
+| ---------- | ----------- | ------ |
+| ctrl+alt+r | REST to run |        |
 
 
 #  self keyboard
 
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
-
-| alt+delete close      | 面板             |        |
-| alt+ctrl+~      | openInTerminal             |**|
-| ctrl+q      | 大纲 (outline )             |        |
+| shortuct         | view            | rating |
+| ---------------- | --------------- | ------ |
+| alt+delete close | 面板            |        |
+| alt+ctrl+~       | openInTerminal  | **     |
+| ctrl+q           | 大纲 (outline ) |        |
 
 
 
