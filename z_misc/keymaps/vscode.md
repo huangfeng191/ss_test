@@ -11,8 +11,9 @@ https://blog.csdn.net/crper/article/details/54099319
 
 | shortcut              | view                           | rating | description       |
 | --------------------- | ------------------------------ | ------ | ----------------- |
-| ctrl+F3               | find next selection            | ******   |
-| ctrl+shift+F3         | find previous selection        | ******   |
+| ctrl+F3               | find next selection            | ****** | comb search words |
+| ctrl+shift+F3         | find previous selection        | ****** | comb search words |
+| shift+F3              | find previous                  | ****** | 上一次查询的word  |
 | F12                   | go to definition               | ****   |
 | shift+F12             | go to reference                | **     |
 | alt+F12               | peek definition                | **     | can`t move cursor |
@@ -22,7 +23,7 @@ https://blog.csdn.net/crper/article/details/54099319
 | Ctrl+\                | split the active editor to two | ***    |
 | Ctrl+k +o             | show active file in new window | **     |
 | Ctrl+e==ctrl+p        | action.quickOpen               | **     |
-| Ctrl+shift+\          | 括号跳转                       | ****   |
+| Ctrl+shift+\          | 括号跳转(bracket jump)         | ****   |
 | Ctrl+k +p             | copy path of active file       | **     |
 | Ctrl+u                | undo last cursor operator      | *      |
 | Ctrl+Shift+PgUp       | PgDn Move editor left/right    | *      |
@@ -87,9 +88,6 @@ ctrl+k r 关闭右侧
 ctrl+k ctrl+w 关闭所有打开标签页
 
 
-
-ctrl+w 关闭打开的编辑页面
-escape :Esc  关闭bscode 弹出提示
 
 
 
@@ -360,4 +358,8 @@ ctrl+m   切换Tab $移动焦点
 
 ## plugins
 
- files utils can create files   
+# expand region  
+ | shortcut     | view               | rating | description                    |
+ | ------------ | ------------------ | ------ | ------------------------------ |
+ | ctrl+w       | expand_region      | ****** |                                |
+ | ctrl+shift+w | undo_expand_region | ****** | 谨慎使用,会把打开的vscode 关闭 |

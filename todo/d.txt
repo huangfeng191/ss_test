@@ -353,3 +353,9 @@ startup failed due to previous errors
 2. 接口访问、页面功能等bug修改
 
 1. 国网菜单与权限功能重新绑定及系统bug修改
+
+
+# 2020-02-25  Tuesday 
+
+1. 国网菜单与权限功能重新绑定
+2. 新增菜单审核功能
