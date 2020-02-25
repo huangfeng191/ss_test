@@ -11,6 +11,8 @@ https://blog.csdn.net/crper/article/details/54099319
 
 | shortcut              | view                           | rating | description       |
 | --------------------- | ------------------------------ | ------ | ----------------- |
+| ctrl+F3               | find next selection            | ******   |
+| ctrl+shift+F3         | find previous selection        | ******   |
 | F12                   | go to definition               | ****   |
 | shift+F12             | go to reference                | **     |
 | alt+F12               | peek definition                | **     | can`t move cursor |
