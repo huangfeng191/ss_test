@@ -345,7 +345,7 @@ outType
 
 outConfig
 {
-    "log":{
+    "log":{   
         fieldConfig:{
             cal_date:{}
         }

@@ -10,3 +10,8 @@ Once you replace negative thoughts  with positive ones, you`ll start having posi
 # 2020-02-24  Monday 
 
 Fear dose not prevent death,it prevent life.
+
+
+# 2020-02-26  Wednesday 
+
+each new day is ... It`s a chance to be somebody better 
