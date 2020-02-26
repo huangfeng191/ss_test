@@ -915,3 +915,13 @@ outConfig
         table 
             nm 
 
+
+
+# abstract into Object 
+OutConfig 
+
+
+CellLog 
+    getData
+    getTake 
+    transform
