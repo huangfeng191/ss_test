@@ -730,3 +730,21 @@ need add
 # 2020-02-27  Thursday 
 
 make out  word  : even 
+
+
+# 2020-02-28  Friday 
+
+call stack :  location step 
+
+
+jquery :
+
+    dispatch: function(e) { // 调用设置的方法
+
+
+isolation
+
+
+viewData 点
+getAllVOPath 线 
+

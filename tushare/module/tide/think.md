@@ -919,9 +919,52 @@ outConfig
 
 # abstract into Object 
 OutConfig 
+    go
+# optional 
+        transform 
+        accrueTake 
+
 
 
 CellLog 
+# fetch or fetchKey 
+# if fetchKey 
+    func __init__(params,isNew=False):
+        pass 
+    generate(data):
+# 生成take 
+# 保存数据
+# 保存日志
+        fetch 
+        take 
+            key:{
+
+            },
+            "type":"log" //  table 
+            "table":{
+                "nm":""
+            },
+            ""
+        info {  //最终的存储 
+            "type":"table",
+            "table":{
+                "nm":"",
+                "query":{}
+                "fields":[]  
+            }
+        }
+
+
+    delete()
+
+    getTake()
+        type:"table",
+        "table":{
+            "nm":"",
+            "query":{
+
+            }
+        }    
     getData
-    getTake 
-    transform
+
+    
