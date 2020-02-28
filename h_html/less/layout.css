@@ -208,3 +208,35 @@
   list-style: none;
   width: 100%;
 }
+.bottom .caret-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  height: 34px;
+  width: 24px;
+  vertical-align: middle;
+  cursor: pointer;
+  overflow: initial;
+  position: relative;
+}
+.bottom .caret-wrapper .sort-caret {
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  position: absolute;
+  left: 7px;
+}
+.bottom .caret-wrapper .ascending {
+  border-bottom-color: #c0c4cc;
+  top: 5px;
+}
+.bottom .caret-wrapper .ascending.active {
+  border-bottom-color: #409eff;
+}
+.bottom .caret-wrapper .descending {
+  border-top-color: #c0c4cc;
+  bottom: 7px;
+}
+.bottom .caret-wrapper .descending.active {
+  border-top-color: #409eff;
+}

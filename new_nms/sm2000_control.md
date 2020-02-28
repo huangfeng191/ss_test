@@ -64,9 +64,9 @@ show ref
 show snmp manager
 
 
-// set snmp add manager 192.168.1.11
+// set snmp add manager 192.168.1.171
 
-   set snmp delete manager 192.168.1.11
+   set snmp delete manager 192.168.1.79
 
 <!-- Engine ID -->
 

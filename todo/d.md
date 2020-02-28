@@ -725,3 +725,8 @@ need add
 20:00   practice words 
 20:30   work away 
 22:00   custom
+
+
+# 2020-02-27  Thursday 
+
+make out  word  : even 

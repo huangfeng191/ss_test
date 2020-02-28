@@ -11,13 +11,13 @@ remarks.normalMap={
 }
 remarks.selectedProvinceMap={
     "desc": "选择省地图1",
-    // "default": true,
+    "default": true,
     "province":"zhejiang"
 
 }
 remarks.sampleLinesTest={
     "desc": "设置lines",
-    "default": true,
+    // "default": true,
     "province":"zhejiang"
 
 }
@@ -336,31 +336,116 @@ var optionSelectedProvinceMap = {
         map: 'china',
         label: {
             show:true,  // 是否显示区域
-            fontSize:16,
-            emphasis: {
-                show: false
-            },
+            fontSize:12,
+            // emphasis: {
+            //     show: false
+            // },
         },
         itemStyle: {
             normal: {
-                "areaColor": '#323c48',
+                // "areaColor": '#323c48',
+                "areaColor": 'pink',
                 "borderColor": 'yellow',
                 "borderWidth": 1,
                 "borderType": "solid"
             },
-            emphasis: {
-                areaColor: 'yellow', // 高亮区域
-                itemStyle: {
-                    opacity: 1
-                }
+            // emphasis: {
+            //     areaColor: 'yellow', // 高亮区域
+            //     itemStyle: {
+            //         opacity: 1
+            //     }
 
-            }
+            // }
         },
+        // "selected":true ,
         regions:[  // 配置区域选中
             {
                 "name":"浙江",
-                "selected":true 
-            }
+              
+                "label":{ padding:[20,0,0,0] }
+
+            },
+            {
+                "name":"香港",
+                "label":{ padding:[25,0,0,10] }
+            },
+            {
+                "name":"澳门",
+                "label":{ padding:[0,0,5,0] }
+            },
+            {
+                "name":"台湾",
+                "label":{ padding:[20,0,0,0] }
+            },
+            // do
+            {
+                "name":"重庆",
+                "label":{ padding:[0,0,0,0] }
+            },
+            {
+                "name":"湖南",
+                "label":{ padding:[18,0,0,0] }
+            },
+            {
+                "name":"湖北",
+                "label":{ padding:[0,20,0,0] }
+            },
+            {
+                "name":"安徽",
+                "label":{ padding:[12,0,0,0] }
+            },
+            {
+                "name":"四川",
+                "label":{ padding:[0,15,0,0] }
+            },
+            {
+                "name":"江苏",
+                "label":{ padding:[0,0,10,0] }
+            },
+            {
+                "name":"青海",
+                "label":{ padding:[0,34,0,0] }
+            },
+            
+            
+            {
+                "name":"山西",
+                "label":{ padding:[23,10,0,0] }
+            },
+            
+            {
+                "name":"黑龙江",
+                "label":{ padding:[0,0,10,10] }
+            },
+            {
+                "name":"河北",
+                "label":{ padding:[0,0,0,0] }
+            },
+            {
+                "name":"天津",
+                "label":{ padding:[10,0,0,14] }
+            },
+            {
+                "name":"河南",
+                "label":{ padding:[16,0,0,0] }
+            },
+            {
+                "name":"山东",
+                "label":{ padding:[15,0,0,10] }
+            },
+            {
+                "name":"甘肃",
+                "label":{ padding:[10,0,0,4] }
+            },
+            {
+                "name":"宁夏",
+                "label":{ padding:[6,0,0,0] }
+            },
+            {
+                "name":"内蒙古",
+                "label":{ padding:[0,30,0,0] }
+            },
+
         ]
     },
     series: [{
