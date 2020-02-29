@@ -917,13 +917,22 @@ outConfig
 
 
 
-# abstract into Object 
-OutConfig 
+# abstract into Object  
+# aim at 
+1. generate data to save 
+2. generate take and necessary fields 
+OutConfig  
     go
+      accrueTake 
+      transform data 
+      cellLog=new CellLog 
+      cellLog.save 
+      cellLog.get()  
+
+     
 # optional 
         transform 
-        accrueTake 
-
+       
 
 
 CellLog 
@@ -967,4 +976,6 @@ CellLog
         }    
     getData
 
-    
+# 2020-02-29  Saturday 
+   CellDoing 
+> 串联  source rule  out        

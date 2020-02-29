@@ -64,3 +64,30 @@ c_XXX
 | array      | uncertain |
      
      
+
+
+# CellOutConfig
+    type
+        table
+        log
+    log
+        field
+        fields
+    table
+        nm
+        query // reserved 预留
+    regulate []
+        type:
+            quote 
+                {"field1":"field2" ,"field3":"field4" }
+            restrain
+                ["field1","field2"...]
+            extract 
+                way 
+                    rowsToObject
+                        fields //[]
+                    rowToObject 
+                        index:0  
+
+
+
