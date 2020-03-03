@@ -118,6 +118,7 @@ orderNum w
 接口管理 interface
 查看 interface ?view
 操作 interface ?operation  
+
 网管检测 monitor
 系统信息 monitor-infos
 查看 monitor-infos ?view

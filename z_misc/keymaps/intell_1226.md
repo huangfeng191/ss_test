@@ -1,13 +1,15 @@
 
 | shortuct                        | view                                                      | rating |
 | ------------------------------- | --------------------------------------------------------- | ------ |
-| shift F10                       | debug                                                     | rating |
+| alt +up/down                    | method jump                                               | **     |
+| shift F10                       | debug                                                     |        |
 | ctrl+shift+j                    | join lines                                                |        |
 | ctrl+shift+ up arrow/down arrow | 方法间跳转                                                |        |
+| ctrl+shift+space                | last change space                                         | *      |
 | ctrl+ -                         | 折叠代码                                                  |        |
 | ctrl+ =                         | 展开代码                                                  |        |
-| ctrl+[                          | move caret to Code Block Start (光标跳转)                 |        |
-| ctrl+shift+[                    | move caret to Code Block Start with Selection(选择代码块) |        |
+| ctrl+[                          | move caret to Code Block Start (光标跳转)                 | ***    |
+| ctrl+shift+[                    | move caret to Code Block Start with Selection(选择代码块) | ***    |
 | shift+enter                     | start new line                                            |        |
 | ctrl+alt+enter                  | start new line before current                             |        |
 | arrow                           | move the cursor                                           |        |

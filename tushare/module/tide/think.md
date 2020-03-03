@@ -979,3 +979,24 @@ CellLog
 # 2020-02-29  Saturday 
    CellDoing 
 > 串联  source rule  out        
+
+```python
+
+class EmphasisTake:
+    def __init__(self,type,config):
+        self.type=type
+        self.config=config
+
+    def get(self):
+        config=self.config
+        if self.type=="table":
+            data=rule_doing_table(config,None)
+            if info.get("fields"):
+                info=info.get("fields")
+        self.type=="log": 
+            bean=eval("tide_%s_log"%config.get("hook))
+            bean.get(self.config.get("key"))
+
+
+
+```
