@@ -104,6 +104,7 @@
 {"name":"目录管理","id":"system-security-menu","parentId": "system-security",},
 {"name":"查看","id":"system-security-menu_view","parentId": "system-security-menu",},
 {"name":"操作","id":"system-security-menu_operation","parentId": "system-security-menu",},
+
 {"name":"日志管理","id":"system-log","parentId": "system",},
 {"name":"安全日志","id":"system-log-security","parentId": "system-log",},
 {"name":"操作日志","id":"system-log-operation","parentId": "system-log",},
@@ -112,6 +113,8 @@
 {"name":"接口管理","id":"system-interface","parentId": "system",},
 {"name":"查看","id":"system-interface_view","parentId": "system-interface",},
 {"name":"操作","id":"system-interface_operation","parentId": "system-interface",},
+
+
 {"name":"网管检测","id":"system-monitor","parentId": "system",},
 {"name":"系统信息","id":"system-monitor-infos","parentId": "system-monitor",},
 {"name":"查看","id":"system-monitor-infos_view","parentId": "system-monitor-infos",},
@@ -122,6 +125,10 @@
 {"name":"远程维护","id":"system-monitor-remote","parentId": "system-monitor",},
 {"name":"查看","id":"system-monitor-remote_view","parentId": "system-monitor-remote",},
 {"name":"操作","id":"system-monitor-remote_operation","parentId": "system-monitor-remote",},
+
+
+
+
 {"name":"帮助","id":"help","parentId": "",},
 {"name":"知识库","id":"help-knowledge","parentId": "help",},
 {"name":"查看","id":"help-knowledge_view","parentId": "help-knowledge",},
