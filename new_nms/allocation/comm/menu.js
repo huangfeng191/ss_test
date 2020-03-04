@@ -1,10 +1,22 @@
 {"name":"首页","id":"index","parentId": "",},
+
+
 {"name":"物理拓扑","id":"index-physics","parentId": "index",},
 {"name":"查看","id":"index-physics_view","parentId": "index-physics",},
-{"name":"操作","id":"index-physics_operation","parentId": "index-physics",},
-{"name":"管理","id":"index-physics_manage","parentId": "index-physics",},
 {"name":"告警列表","id":"index-warningList","parentId": "index",},
 {"name":"查看","id":"index-warningList_view","parentId": "index-warningList",},
+
+
+{"name":"操作","id":"index-physics_operation","parentId": "index-physics",},
+
+
+{"name":"管理","id":"index-physics_manage","parentId": "index-physics",},
+
+
+{"name":"告警列表","id":"index-warningList","parentId": "index",},
+{"name":"查看","id":"index-warningList_view","parentId": "index-warningList",},
+
+
 {"name":"操作","id":"index-warningList_operation","parentId": "index-warningList",},
 {"name":"拓扑管理","id":"topology","parentId": "",},
 {"name":"物理拓扑","id":"topology-physics","parentId": "topology",},

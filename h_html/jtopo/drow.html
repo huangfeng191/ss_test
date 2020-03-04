@@ -47,6 +47,10 @@
         factors: {
 
         },
+        prepare(){
+          let self = this;
+
+        },
         init: function() {
           let self = this;
 
@@ -73,10 +77,10 @@
             //   ]
 
             [
-              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/services.png", "elementType": "node", "_id": "1368096796775", "x": 297, "y": 88, "name": "", "alarmType": "normal", "deviceId": "" },
-              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/services.png", "elementType": "node", "_id": "1154323406429", "x": 471, "y": 78, "name": "", "alarmType": "normal", "deviceId": "" },
-              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/routerNode.png", "elementType": "node", "_id": "1325576667248", "x": 306, "y": 173, "name": "", "alarmType": "normal", "deviceId": "" },
-              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/routerNode.png", "elementType": "node", "_id": "59810748559", "x": 479, "y": 175, "name": "", "alarmType": "normal", "deviceId": "" },
+              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/services.png", "elementType": "node", "_id": "1368096796775", "x": 297, "y": 88, "name": "1", "alarmType": "normal", "deviceId": "" },
+              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/services.png", "elementType": "node", "_id": "1154323406429", "x": 471, "y": 78, "name": "2", "alarmType": "normal", "deviceId": "" },
+              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/routerNode.png", "elementType": "node", "_id": "1325576667248", "x": 306, "y": 173, "name": "3", "alarmType": "normal", "deviceId": "" },
+              { "imageUrl": "/h_html/jtopo/image/topo/net_topo/routerNode.png", "elementType": "node", "_id": "59810748559", "x": 479, "y": 175, "name": "4", "alarmType": "normal", "deviceId": "" },
               { "imageUrl": "/h_html/jtopo/image/topo/net_topo/connect.png", "elementType": "node", "_id": "31128122453", "x": 155, "y": 232, "name": "left1", "alarmType": "normal", "deviceId": "" },
               { "imageUrl": "/h_html/jtopo/image/topo/net_topo/connect.png", "elementType": "node", "_id": "232862712281", "x": 976, "y": 231, "name": "right1", "alarmType": "normal", "deviceId": "" },
               { "imageUrl": "/h_html/jtopo/image/topo/net_topo/connect.png", "elementType": "node", "_id": "1062824972313", "x": 986, "y": 658, "name": "right2", "alarmType": "normal", "deviceId": "" },
@@ -109,8 +113,11 @@
               var oneNode = tool.drawNode(one);
               self.scene.add(oneNode);
               self.factors[v._id] = oneNode;
+            
             }
           })
+
+        
 
           a.forEach(function(v) {
             one = Object.assign({}, factor, v);
@@ -133,14 +140,29 @@
         "baseUrl": "./image/topo/net_topo/",
         "drawNode": function(factor) {
           var node = new JTopo.Node(factor.name || "");
-          node.setImage(factor.imageUrl, true);
+          node.setImage(factor.imageUrl, false);
+          
+          // n=new Image()
+          // n.width=24;
+          // n.height=24;
+          // n["imagesrc"]=factor.imageUrl,
+          // n["src"]=factor.imageUrl,
+          // node.setImage(n, true);
+          // node.setImage(
+          //   {
+          //     "imagesrc":factor.imageUrl,
+          //     "src":factor.imageUrl,
+          //     width:200,
+          //     height:200
+
+          //   }, true);
           node.setLocation(factor.x || 0, factor.y || 0);
           if (factor.imageUrl.match("connect")) {
             node.setSize(8, 8);
           } else if (factor.imageUrl.match("service")) {
             node.setSize(30, 30);
           } else {
-            node.setSize(24, 24);
+            node.setSize(34, 24);
           }
           return node;
         },
@@ -200,6 +222,9 @@
 
 
       netTopo.init();
+    // setTimeout(() => {
+    //   netTopo.scene.childs.forEach(function(v){if(v.elementType=="node"){v.setSize(40,40)}}) 
+    // });
 
 
 
