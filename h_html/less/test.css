@@ -254,3 +254,13 @@ div.parentFrame iframe {
   width: 100%;
   height: 600px;
 }
+.rapheal_test {
+  width: 100%;
+  height: 480px;
+  border: 1px red solid;
+  box-sizing: border-box;
+}
+.rapheal_test .container {
+  width: 100%;
+  height: 100%;
+}

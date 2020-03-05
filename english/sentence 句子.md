@@ -27,3 +27,8 @@ there`s power in looking silly and not caring what you do .
 # 2020-03-04  Wednesday 
 
 Hardships often prepare ordinary people for an extraordinary destiny.
+
+
+# 2020-03-05  Thursday 
+
+your live longer once you realize that any time spent being   unhappy  is wasted .
