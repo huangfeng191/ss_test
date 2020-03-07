@@ -71,3 +71,16 @@ plan
 4. doLog 
 
 
+# 2020-03-06  Friday 
+
+Out,daily,日线明细,ts_code,all
+
+
+1 先完成功能
+
+
+# 2020-03-07  Saturday 
+
+1. textarea ctrl+a                          
+2. step module
+3. show Data 

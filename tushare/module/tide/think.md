@@ -563,6 +563,19 @@ loop:
             fixed 
                 table 
                     nm 
+                    query == need parse       jump  // outType ='table'  at present  
+                hook 
+                fetch
+                    key 
+                        sn      
+                        cycleLikely:"" // extend  day month week year 
+                            PS: fetch.key.cycle  fetch.key.t  需要计算 t  
+                        level
+                        levelSn                             
+                        PS:not: raise Error
+            fixed 
+                table 
+                    nm 
                     query == need parse     
     key:
             "field1":{},
@@ -893,9 +906,10 @@ outConfig
             type 
                 quote
                 ...
+    transform
     log 
         field:""   // 空时为规则的 field 
-        transform
+        
             way 
                 arrayToField
             field     
@@ -1000,3 +1014,24 @@ class EmphasisTake:
 
 
 ```
+
+
+# 2020-03-01  Sunday 
+
+
+loop 配置 与 cell 规则一样  区别是  多了 指定  循环规则 
+
+jump  and  slot  可以转变成  fixed 类型 
+
+SourceConfig
+
+SourceParse  jump  slot fixed 
+    fixed.table
+    QueryParse 
+
+SourceType  
+
+
+LoopConfig 
+LoopType == fixed  or jump or slots  
+
