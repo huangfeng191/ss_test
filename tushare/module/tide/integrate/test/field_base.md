@@ -39,3 +39,20 @@ pid pid
 分类 classify  // extend  at present type text 
 描述 desc a ??3
 pid pid 
+
+
+# chains 
+
+#   ?param1?colspan?dataType? 
+#  
+_id  _id 
+topHook topHook
+topHookId topHookId
+#  fetch.key
+编码 sn 
+名称 nm  
+规则等级 level c ?cell_level?//:step measure plan 
+周期 cycle ?cycle
+t   t
+#  fetch.option
+刷新 refresh c ?refresh

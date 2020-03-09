@@ -160,7 +160,7 @@
           if (factor.imageUrl.match("connect")) {
             node.setSize(8, 8);
           } else if (factor.imageUrl.match("service")) {
-            node.setSize(30, 30);
+            node.setSize(80, 80);
           } else {
             node.setSize(34, 24);
           }
@@ -222,9 +222,15 @@
 
 
       netTopo.init();
+<<<<<<< Updated upstream
     // setTimeout(() => {
     //   netTopo.scene.childs.forEach(function(v){if(v.elementType=="node"){v.setSize(40,40)}}) 
     // });
+=======
+    setTimeout(() => {
+      netTopo.scene.childs.forEach(function(v){if(v.elementType=="node"){v.setSize(40,40)}}) 
+    });
+>>>>>>> Stashed changes
 
 
 
