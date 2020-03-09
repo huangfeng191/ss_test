@@ -17,7 +17,7 @@
 | alt+left                        | 左边tab(vscode 通用)                                      |        |
 | alt+right                       | 右边tab(vscode 通用)                                      |        |
 | ctrl+e                          | recently files                                            |
-| ctrl+shift+e                    | recently changed files                                    | *      |
+| ctrl+shift+e                    | recently changed files                                    | **      |
 | ctrl+w                          | 扩展选择                                                  | *      |
 | CTRL + Alt + L                  | 格式化代码                                                | *      |
 | ctrl+F8                         | 新增断点                                                  | *****  |

@@ -357,3 +357,19 @@ outConfig
 
 Virus(chain,o_layer ,task.get("out"))
  
+
+ # 2020-03-07  Saturday 
+ 
+ 1 最近 >5 in 7
+ 2 按行业 统计个数 最好使用 pandas **** 
+
+
+上一步的结果, 进入规则计算 
+
+industry,str,所属行业
+market,str,市场类型
+exchange,str,交易所代码
+统计个数
+
+
+如果是 jump  类型 输出为 table 时 ，获取的take  在解析查询的时候要把 level 加上 

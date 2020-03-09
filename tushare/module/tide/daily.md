@@ -71,3 +71,17 @@ plan
 4. doLog 
 
 
+
+
+# 2020-03-07  Saturday 
+
+1. [x] 添加分表   
+2. [ ] 添加 ruleType == slot 
+3. [ ] 表数据显示
+
+
+4. slot 
+5. 建立模块: 按行业等 总共有多少个,满足条件的有多少个 
+6. 表头加合计
+7. cell 生成有bug 
+8. textarea can`t ctrl+a

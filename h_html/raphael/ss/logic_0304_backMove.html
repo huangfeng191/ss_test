@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../../less/test.css" />
+  <script src="../../lib/raphael.js"></script>
+  <script src="./lib.js"></script>
+  <script src="../../lib/jquery-1.11.1.min.js"></script>
+  <script src="../../js/test.js"></script>
+</head>
+
+<body>
+  <div>
+    <!-- <button>forClick</button> -->
+    <div class='rapheal_test'>
+      <div class="container" id="to">
+
+      </div>
+
+    </div>
+  </div>
+</body>
+<script>
+  logicTopology = {
+    scale: {
+      "x": 0,
+      "y": 0,
+      "coef": 0.2,
+      "zoom": 1
+    },
+    endScale: {
+      x: 0,
+      y: 0
+    }
+  }
+  logicTopology.updateScale = function(x, y, w, h) {
+
+    logicTopology.scale.x = x;
+    logicTopology.scale.y = y;
+    if (w) {
+      logicTopology.scale.w = w;
+      logicTopology.scale.h = h;
+    }
+  }
+
+  function forClick() {
+
+  }
+
+  $(function() {
+    $("button").click(forClick);
+    paperW = $(".container").width();
+    paperH = $(".container").height();
+    // Raphael.color("red")
+    console.log("w" + paperW);
+    console.log("h" + paperH);
+    logicPaper = Raphael("to", paperW, paperH)
+
+
+    setW = 600;
+    setH = 500;
+
+    if (setH > paperH) {
+      logicBlow = Math.floor(paperH * 10 / setH) / 10
+    }
+
+    leftOffset = (paperW - setW * logicBlow) / 2
+
+    logicPaper.image("../../images/bg.jpg", 0, 0, paperW, paperH)
+    back = logicPaper.image("../../images/logic/logicBG.jpg", leftOffset, 0, setW * logicBlow, setH * logicBlow);
+
+    backSet = logicPaper.set();
+    backSet.push(back)
+    backSet.hover(
+      function() {
+        //鼠标进入背景
+        console.log("enter")
+
+      },
+      function() {
+        //鼠标移出背景
+        console.log("out")
+
+      }
+    );
+
+
+    var onBackMove = function(dx, dy, x, y, ent) {
+      console.log("dx:" + dx, "dy" + dy + "x:" + x, "y" + y);
+      bound = ent.target.getBoundingClientRect()
+
+
+      nX = logicTopology.scale.x + dx;
+      nY = logicTopology.scale.y + dy
+      logicTopology.endScale["x"] = nX
+      logicTopology.endScale["y"] = nY
+
+      // debugger
+
+
+
+      logicPaper.setViewBox(-nX, -nY, paperW, paperH, false)
+    }
+
+
+    var onBackStart = function(x, y, event) {}
+
+    var onBackEnd = function(event) {
+      logicTopology.updateScale(logicTopology.endScale.x, logicTopology.endScale.y);
+
+    }
+
+
+
+    backSet.drag(onBackMove, onBackStart, onBackEnd)
+
+
+
+
+  });
+</script>
+
+</html

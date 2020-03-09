@@ -31,13 +31,14 @@ PS. 使用touch指令可更改文件或目录的日期和时间，包括存取�
 
 
 
-| shortcut                                 | view            | rating |
-| ---------------------------------------- | --------------- | ------ |
-| netstat -tnlp                            | 查看 端口是否打 |        |
-| Kill -9 Pid                              | 杀任务          |        |
-| find / -name mongodb                     | 寻找命令目      |        |
-| unzip -o  20190303.zi                    | 解压            |        |
-| forever start /etc/stock/service/bin/www | 后台启动        |        |
+| shortcut                                 | view            | rating          |
+| ---------------------------------------- | --------------- | --------------- |
+| history \grep XXX                        |                 | 查看 端口是否打 |  |
+| netstat -tnlp                            | 查看 端口是否打 |                 |
+| Kill -9 Pid                              | 杀任务          |                 |
+| find / -name mongodb                     | 寻找命令目      |                 |
+| unzip -o  20190303.zi                    | 解压            |                 |
+| forever start /etc/stock/service/bin/www | 后台启动        |                 |
 
 
 sudo ~/.acme.sh/acme.sh --issue -d feng.agency --standalone -k ec-256 
