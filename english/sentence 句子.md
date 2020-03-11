@@ -39,3 +39,12 @@ believe in yourself .under-confidence leads to a self-fulfilling prophecy that y
 
 # 2020-03-07  Saturday 
 If you want to fly you have to give up everything that weighs you down .
+
+# 2020-03-10  Tuesday 
+If you can, help others , If you cannot do that , at least do not harm them .
+
+# 2020-03-11  Wednesday 
+
+It`s easier to keep up then to catch up .
+
+It`s you decision ,Is`s your life .

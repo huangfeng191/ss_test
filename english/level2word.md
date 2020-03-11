@@ -13,3 +13,7 @@ n. 半径，半径范围；[解剖] 桡骨；辐射光线；有效航程
 n. (Radius)人名；(意、印尼)拉迪乌斯；(英)雷迪厄斯；(法)拉迪于斯
 复数 radii或radiuses
 TOEFL | SAT | GMAT | IELTS | CET6 | 考研
+
+
+
+associate 
