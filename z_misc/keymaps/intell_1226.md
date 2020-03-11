@@ -5,7 +5,7 @@
 | shift F10                       | debug                                                     |        |
 | ctrl+shift+j                    | join lines                                                |        |
 | ctrl+shift+ up arrow/down arrow | 方法间跳转                                                |        |
-| ctrl+shift+space                | last change space                                         | *      |
+| ctrl+shift+backspace            | last change space                                         | *      |
 | ctrl+ -                         | 折叠代码                                                  |        |
 | ctrl+ =                         | 展开代码                                                  |        |
 | ctrl+[                          | move caret to Code Block Start (光标跳转)                 | ***    |
@@ -17,7 +17,7 @@
 | alt+left                        | 左边tab(vscode 通用)                                      |        |
 | alt+right                       | 右边tab(vscode 通用)                                      |        |
 | ctrl+e                          | recently files                                            |
-| ctrl+shift+e                    | recently changed files                                    | *      |
+| ctrl+shift+e                    | recently changed files                                    | **     |
 | ctrl+w                          | 扩展选择                                                  | *      |
 | CTRL + Alt + L                  | 格式化代码                                                | *      |
 | ctrl+F8                         | 新增断点                                                  | *****  |

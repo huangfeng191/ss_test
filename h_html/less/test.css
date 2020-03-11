@@ -255,12 +255,20 @@ div.parentFrame iframe {
   height: 600px;
 }
 .rapheal_test {
+  position: relative;
   width: 100%;
-  height: 480px;
+  height: 380px;
   border: 1px red solid;
   box-sizing: border-box;
+  padding-left: 200px;
 }
 .rapheal_test .container {
+  background-image: url('../images/bg.jpg');
   width: 100%;
   height: 100%;
+}
+.rapheal_test .right {
+  position: absolute;
+  bottom: 50px;
+  right: 500px;
 }

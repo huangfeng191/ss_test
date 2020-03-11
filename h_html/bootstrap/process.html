@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+ 
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/layout.css">
+
+</head>
+
+<body id="test">
+<button onclick="upload()"></button>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+      60%
+    </div>
+  </div>
+
+  <script>
+    
+    function upload() {
+      
+
+      var formData = new FormData(); 
+        formData.append("file", document.getElementById('file').files[0]); 
+        formData.append("token", token_value); // 其他参数按这样子加入
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/uploadurl');
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+        　　console.log('上传成功');
+          } else {
+          　console.log('上传出错');
+          }
+        };
+        // 获取上传进度
+        xhr.upload.onprogress = function (event) {
+          if (event.lengthComputable) {
+            var percent = Math.floor(event.loaded / event.total * 100) ;
+            // 设置进度显示
+            $("#J_upload_progress").progress('set progress', percent);
+          }
+        };
+        xhr.send(formData);
+
+
+    }
+
+
+$(function (){
+
+})
+
+  </script>
+
+</body>
+
+</html>

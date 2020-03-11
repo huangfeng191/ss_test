@@ -54,3 +54,9 @@ cp -r ./page/* /opt/nmsdevs/sgaps-3.0.0/standalone/deployments/nms.war/src/page
 
 
 nohup sg-aps-start.sh > aps.log 2>&1 &
+
+
+
+PS:
+
+cp -r ./performance.html /opt/nmsdevs/sgaps-3.0.0/standalone/deployments/nms.war/src/page

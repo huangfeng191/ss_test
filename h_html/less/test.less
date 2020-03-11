@@ -381,12 +381,22 @@ div {
 
 
 .rapheal_test {
+    position: relative;
     width:100%;
-    height: 480px;
+    height: 380px;
     border:@normal-border;
     box-sizing: border-box;
+    padding-left: 200px;
     .container{
+        background-image: @normal-background-image;
         width: 100%;
         height: 100%;
     }
+    .right{
+        position: absolute;
+        bottom: 50px;
+        right:500px
+    }
   }
+//   tips:
+//  左边padding 会影响右边dom的%100 属性
