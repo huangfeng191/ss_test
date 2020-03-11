@@ -1,0 +1,9 @@
+@host = http://127.0.0.1:51
+
+
+
+### 获取菜单信息
+GET {{host}}/tide/log/chain/query.json
+
+Host: {{host}}
+

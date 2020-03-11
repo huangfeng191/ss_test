@@ -28,3 +28,8 @@ fetch  关联的是相应的类型的配置
 fetch.option.refresh 0 
 take.option.refresh 1
 已fetch 为准 ,
+
+
+# 规则等级 level  不能小于 hook 
+如果小于的话,那么上下及的chain 就会存在不一致的情况  virus.spreed 就是出现多余的数据 
+可以大于  , 因为这种情形下及指向的都是正确的
