@@ -48,3 +48,9 @@ If you can, help others , If you cannot do that , at least do not harm them .
 It`s easier to keep up then to catch up .
 
 It`s you decision ,Is`s your life .
+
+# 2020-03-12  Thursday 
+
+We work in the darkness to serve the light .
+
+When we get too caught up in the busyness of the world. We loss connection with one another - and ourselves.

@@ -1,1 +1,9 @@
-bin/main/webapp/lib/Highcharts-6.2.0
+{
+    "code": 100000,
+    "data": {
+      "active": 0,
+      "list": null
+    }
+  }
+
+  

@@ -1,18 +1,43 @@
 @normal-width: 500px;
+@normal-width-wider: 800px;
+@normal-height: 500px;
 
 @smallest-size: 16px;
 @smaller-size: 40px;
 @small-size: 85px;
 @thinner-size: 42px;
 @thin-size: 80px;
-@normal-height: 500px;
 @normal-left: 100px;
 @normal-top: 100px;
 @normal-border: 1px red solid;
 @normal-background-color: gray;
 @normal-background-image: url('../images/bg.jpg');
+@background-div: violet;
 // test 
 @offset-height: 200px;
+
+.bg-normal{
+    background-color: @background-div;
+}
+
+.bg-violet{
+    background-color: violet;
+}
+
+.bg-grey{
+    background-color: grey ;
+}
+
+.size-normal{
+    width:@normal-width;
+    height: @normal-height;
+}
+
+.size-normal-wider {
+    width:@normal-width-wider;
+    height: @normal-height;
+}
+
 
 .normal-fill-in {
     width: 100%;
@@ -66,7 +91,7 @@ html {
 }
 
 html {
-    .to-center {
+    .to-center-horizontal {
         margin: 0 auto;
         // width: 200px; // ?
         margin-top: 100px;
@@ -400,3 +425,20 @@ div {
   }
 //   tips:
 //  左边padding 会影响右边dom的%100 属性
+
+
+
+
+
+// 水平 垂直居中对象
+
+.to-center{
+    position: relative;
+    .container{
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        left: 50%;
+    
+    }
+}

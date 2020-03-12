@@ -1,0 +1,34 @@
+@host = 127.0.0.1:40
+@token=1AFB791C2D6D487537C0977A6CCF5615
+@deviceId=0d762a94-78f7-43c3-ac73-94d74df13097
+
+
+### 新增一个页面 办卡输出配置
+
+# 根据note_index 排序，从a到d 1到8
+# state为0 灰色  1绿色 没查询到的默认灰色 
+# 鼠标指到圆点上去的时候悬浮显示note 内容，点击可以编辑note 和state
+GET /nms/spring/device/getDeviceNote?deviceId={{deviceId}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+# 编辑新增接口都是
+# state=0
+# index=A_1
+# note=asdasd
+GET /nms/spring/device/updateDeviceNote?deviceId={{deviceId}}&state=0&index=A_1&note=asdasd
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+
+# 再加一个模糊查询的功能，把查询到的高亮把 接口是
+# keyword=
+GET /nms/spring/device/getDeviceNoteInfo?deviceId={{deviceId}}&keyword=word
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+

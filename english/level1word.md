@@ -207,3 +207,21 @@ vt. 赶入马房
 n. (Stable)人名；(英)斯特布尔
 过去式 stabled过去分词 stabled现在分词 stabling
 TOEFL | 高中 | IELTS | CET6 | CET4 | 商务英语 | 考研
+
+
+substance 
+英 /ˈsʌbstəns/  美 /ˈsʌbstəns/  全球(英国)  
+简明 牛津 新牛津  韦氏  柯林斯 例句  百科
+n. 物质；实质；资产；主旨
+复数 substances
+TOEFL | GMAT | IELTS | CET6 | GRE | CET4 | 考研
+
+
+
+contradict 
+英 /ˌkɒntrəˈdɪkt/  美 /ˌkɑːntrəˈdɪkt/  全球(英国)  
+简明 牛津 新牛津  韦氏  柯林斯 例句  百科
+vt. 反驳；否定；与…矛盾；与…抵触
+vi. 反驳；否认；发生矛盾
+过去式 contradicted过去分词 contradicted现在分词 contradicting第三人称单数 contradicts
+TOEFL | 高中 | SAT | GMAT | IELTS | CET6 | GRE | 考研

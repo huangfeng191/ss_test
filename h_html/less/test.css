@@ -1,3 +1,20 @@
+.bg-normal {
+  background-color: violet;
+}
+.bg-violet {
+  background-color: violet;
+}
+.bg-grey {
+  background-color: grey ;
+}
+.size-normal {
+  width: 500px;
+  height: 500px;
+}
+.size-normal-wider {
+  width: 800px;
+  height: 500px;
+}
 .normal-fill-in {
   width: 100%;
   height: 100%;
@@ -39,7 +56,7 @@ html {
   height: 100%;
   font-size: 14px;
 }
-html .to-center {
+html .to-center-horizontal {
   margin: 0 auto;
   margin-top: 100px;
 }
@@ -271,4 +288,13 @@ div.parentFrame iframe {
   position: absolute;
   bottom: 50px;
   right: 500px;
+}
+.to-center {
+  position: relative;
+}
+.to-center .container {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
 }
