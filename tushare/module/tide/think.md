@@ -1035,3 +1035,47 @@ SourceType
 LoopConfig 
 LoopType == fixed  or jump or slots  
 
+
+
+
+# 2020-03-09  Monday 
+
+
+1 取1条结果来生成默认
+
+如果有配置类的话取配置的.没有配置的就直接取结果显示 ,
+可以建立一个对应关系 
+
+
+将stock的配置 组成 对象
+
+column_library ={
+  ts_code:{
+      "nm":"",
+      "scope":{
+          "stock_basic":1,
+          "stock_company":1,
+      }
+  }
+}
+
+$.each(a,function(k,v){
+
+})
+
+优先级 
+以及自定义 
+
+可以再定义中的才显示 
+
+
+隐藏跟显示 考虑用接口保存 
+下次可以获取 根据  hook sn 来进行保存 , 可以考虑 field 也用这种方式显示 
+或者加几个功能 建  比如 form 隐藏 , 页面显示条件 
+
+
+tomorrow
+
+1. 数据展示模块开发
+2. 点击关联到数据 
+3. 考虑plan 模块 直接5 级 

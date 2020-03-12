@@ -29,16 +29,7 @@ pid pid
 描述 desc a ??3
 pid pid 
 
-#  step ?param1?colspan?dataType? 
-编码 sn 
-名称 nm  
-规则等级 level c ?cell_level?//:step measure plan 
-周期 cycle 
-排序 w 
-刷新 refresh c // extend
-分类 classify  // extend  at present type text 
-描述 desc a ??3
-pid pid 
+
 
 
 # chains 
