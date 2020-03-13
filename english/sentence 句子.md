@@ -54,3 +54,9 @@ It`s you decision ,Is`s your life .
 We work in the darkness to serve the light .
 
 When we get too caught up in the busyness of the world. We loss connection with one another - and ourselves.
+
+# 2020-03-13  Friday 
+
+talent is luck, the important thing is courage .
+
+go ahead yourself. rather than beyond others.

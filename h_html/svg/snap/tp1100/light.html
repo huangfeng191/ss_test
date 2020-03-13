@@ -10,27 +10,153 @@
 <body>
 
     <div  class="normal-fill-in to-center">
-        <div class="container bg-grey size-normal-wider" >
-
-
+        <div class="container bg-grey size-normal-wider" style="height:500px;width:700px" >
+            <?xml version="1.0" standalone="no"?>
+            <svg style=" width:100%;height:100%;"  id="tp1100_note" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            </svg>
         </div>
-
     </div>
     <script>
 
 window.onload=function(){
-    function rectangle(){
-        this.width=300;
-        this.height=300;
+    function Rectangle(paper,idx){
+        this.idx=idx ;
+        this.paper=paper
+        this.width=260;
+        this.height=200;
+        this.bgColor="violet"
+        this.point=function(x,y,color,pointId){
+            var p=this.paper.circle(x, y, 10).attr({
+                fill: color,
+            }).data("pointId",pointId).click(function(e){
+              
+                
+            }).hover(function(){
+               
+            },function(){
+                console.log("1"+1)
+            },)
+            return p ;
+        },
+        this.text=function(x,y,text,pointId){
+            // debugger
+            return this.paper.text(x, y, text).data("pointId",pointId)
+        },
+        this.drew=function(){
+            var r1=this.paper.rect(0, 0, this.width, this.height).attr({
+                fill: this.bgColor,
+            });
+            var x=40;
+            var step=40;
+            var rx=100;
+            var rxR=100;
+            var p1=this.point(rx,x,"grey",this.idx+"_1");
+            var p2=this.point(rx,x+step,"grey",this.idx+"_2");
+            var p3=this.point(rx,x+2*step,"grey",this.idx+"_3");
+            var p4=this.point(rx,x+3*step,"grey",this.idx+"_4");
+            var p5=this.point(rx+rxR,x,"grey",this.idx+"_5");
+            var p6=this.point(rx+rxR,x+step,"grey",this.idx+"_6");
+            var p7=this.point(rx+rxR,x+2*step,"grey",this.idx+"_7");
+            var p8=this.point(rx+rxR,x+3*step,"grey",this.idx+"_8");
+            rx=rx-60;
+            x=x+6;
+            debugger
+            var t1=this.text(rx,x,"port1:",this.idx+"_1");
+            var t2=this.text(rx,x+step,"port2:",this.idx+"_2");
+            var t3=this.text(rx,x+2*step,"port3:",this.idx+"_3");
+            var t4=this.text(rx,x+3*step,"port4:",this.idx+"_4");
+            var t5=this.text(rx+rxR,x,"port5:",this.idx+"_5");
+            var t6=this.text(rx+rxR,x+step,"port6:",this.idx+"_6");
+            var t7=this.text(rx+rxR,x+2*step,"port7:",this.idx+"_7");
+            var t8=this.text(rx+rxR,x+3*step,"port8:",this.idx+"_8");
+
+            g=this.paper.g();
+            g.add(r1,p1, p2, p3, p4, p5, p6, p7, p8)
+            g.add(t1, t2, t3, t4, t5, t6, t7, t8);
+            this.g=g ;
+            return g 
+        };
+        this.setColor=function(status){
+            var idx=this.idx ;
+            var g=this.g;
+            (status||[]).forEach(function(state,i){
+                var point_id=idx+"_"+(i+1)
+                Object.values(g).forEach(function(v){
+                    if(v.type=="circle"){
+                        if(v.data("pointId")==point_id){
+                            if(state==1){
+                             
+                                v.attr({
+                                    "fill":"green"
+                                })
+                            }else{
+                                v.attr({
+                                    "fill":"grey"
+                                })
+                            }
+                        }
+                    }
+
+                })
+                
+            })
+        }
+        this.setTextColor=function(status){
+            var idx=this.idx ;
+            var g=this.g;
+            (status||[]).forEach(function(state,i){
+                var point_id=idx+"_"+(i+1)
+                Object.values(g).forEach(function(v){
+                    debugger
+                    if(v.type=="text"){
+                        if(v.data("pointId")==point_id){
+                            if(state==1){
+                             
+                                v.attr({
+                                    "fill":"blue"
+                                })
+                            }else{
+                                v.attr({
+                                    "fill":"grey"
+                                })
+                            }
+                        }
+                    }
+
+                })
+                
+            })    
+
+            }
+
 
     }
 
-    var o={
-        paper:Snap("#logicDeviceSvg"),
+     o={
+        paper:Snap("#tp1100_note"),
+        
         init:function(){
+            paper=this.paper;
+            paper.clear()
+            
+            var chunk0 =new Rectangle(paper,"a" )
+            var chunk1 =new Rectangle(paper,"b" )
+            var chunk2 =new Rectangle(paper,"c" )
+            var chunk3 =new Rectangle(paper,"d" )
+              g0=chunk0.drew()     
+              g0.transform("translate(50,30)")
+              chunk0.setColor([1,1,1,1,1,0,0,0])
+              chunk0.setTextColor([1,1,1,1,1,0,0,0])
+              g1=chunk1.drew()
+              g1.transform("translate(370,30)")
+              g2=chunk2.drew()
+              g2.transform("translate(50,260)")
+              g3=chunk3.drew()
+              g3.transform("translate(370,260)")
             
         }
     }
+    o.init()
 
 
 }
