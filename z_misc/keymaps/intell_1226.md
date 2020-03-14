@@ -2,10 +2,13 @@
 | shortuct                        | view                                                      | rating |
 | ------------------------------- | --------------------------------------------------------- | ------ |
 | alt +up/down                    | method jump                                               | **     |
+| ctrl+F11                        | toggle bookmark with mnemonic                             | **     |
+| ctrl+1...                       | go to bookmark 1...                                       | **     |
 | shift F10                       | debug                                                     |        |
 | ctrl+shift+j                    | join lines                                                |        |
 | ctrl+shift+ up arrow/down arrow | 方法间跳转                                                |        |
-| ctrl+shift+backspace            | last change space                                         | *      |
+| ctrl+shift+backspace            | last change space                                         | ***    |
+| ctrl+shift+i                    | quick definition                                          | ***    |
 | ctrl+ -                         | 折叠代码                                                  |        |
 | ctrl+ =                         | 展开代码                                                  |        |
 | ctrl+[                          | move caret to Code Block Start (光标跳转)                 | ***    |
@@ -22,6 +25,7 @@
 | CTRL + Alt + L                  | 格式化代码                                                | *      |
 | ctrl+F8                         | 新增断点                                                  | *****  |
 | alt+1                           | toggle project(切换到project 菜单)                        | *****  |
+
 
 
 

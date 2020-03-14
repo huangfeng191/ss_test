@@ -4,7 +4,8 @@
 | purpose                | steps                         | desc                                     | rate |
 | ---------------------- | ----------------------------- | ---------------------------------------- | ---- |
 | checkout single file   | git checkout <commit> <file > | version is not change,merely file change | **   |
-| celete unchecked files | git clean -i                  |
+| 查看两个版本间的差异   | git diff --stat master        |                                          | **   |
+| celete unchecked files | git clean -i                  |                                          |
 
 
 
