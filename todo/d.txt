@@ -394,8 +394,7 @@ startup failed due to previous errors
 
 
 
-1. 老网管 TP1100板卡输出配置模块开发 
-2. 国网前端代码安全bug修改及多余代码删除
+1. 老网管 TP1100板卡输出配置模块开发 2. 国网前端代码安全bug修改及多余代码删除
 
 
 

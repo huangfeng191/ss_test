@@ -1,11 +1,15 @@
-def check_value(dt):
-    d_flag = 0
-    for i in range(1,6):
-        d1 = 1 if ( abs(dt['d'+str(i)] - dt['d'+str(i+1)]) == 1 ) else 0
-        d_flag = d_flag + d1
-    return d_flag
-data_cols = ['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7']
-data_txt = pd.read_csv(r'd:\demo\test1.txt', names = data_cols)
-data_txt['LEVEL'] = data_txt.apply(lambda  x: check_value(x),axis=1)
-df1 = data_txt[data_txt['LEVEL']<4]
-print df1[data_cols]
+# -*- coding: UTF-8 -*-
+import sys
+import os, site
+site.addsitedir(os.path.join(os.getcwd(), 'p_py', 'lib'))
+site.addsitedir(os.path.join(os.getcwd(),"..","..", 'lib'))
+import PlatLib  # 添加平台环境变量
+import pandas as pd
+if __name__ == "__main__":
+   print "执行的文件名,也算在参数中" 
+data = {'a':[1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2],'b':[1,2,3,4,5,8,9,10,1,2,3,6,7,8,9,12,13]}
+df = pd.DataFrame(data)
+for name,group in df.groupby('a'):
+    group['c'] = ((group['b'].shift(1).fillna(0) + 1).astype(int) != group['b']).cumsum()
+#    print(group)
+    print(group['c'].value_counts())
