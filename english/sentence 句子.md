@@ -60,3 +60,23 @@ When we get too caught up in the busyness of the world. We loss connection with 
 talent is luck, the important thing is courage .
 
 go ahead yourself. rather than beyond others.
+
+# 2020-03-16  Monday 
+
+In any given moment we have two options .to step forward into  growth or  back to safely.
+
+# 2020-03-17  Tuesday 
+
+Yesterday , you said tomorrow .
+
+Some people hear their own inner voices with great clearness.
+
+
+# 2020-03-18  Wednesday 
+
+Sometimes that your are searching  for your whole life . It`s right there by your side all along.
+
+Don`t bury your failures , let them inspire you . 
+
+# 2020-03-19  Thursday 
+If you don`t prioritize your life. someone else will.
