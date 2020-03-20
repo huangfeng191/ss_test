@@ -748,3 +748,23 @@ isolation
 viewData 点
 getAllVOPath 线 
 
+
+
+# 2020-03-20  Friday 
+
+1. 打印记入日志
+2. 详情记入日志
+   
+
+   help is OK 
+   topology is NotOK 
+
+
+          
+
+                    if($(p$dom).find("#chartPart").css("display")=="block"){
+                        top.SsCenter.doLogCustom("拓扑管理-拓扑信息统计-统计报表","打印","打印操作");
+                    }else{
+                        top.SsCenter.doLogCustom("拓扑管理-拓扑信息统计-统计数据","打印","打印操作");
+                    }
+
