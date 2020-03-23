@@ -768,3 +768,80 @@ getAllVOPath 线
                         top.SsCenter.doLogCustom("拓扑管理-拓扑信息统计-统计数据","打印","打印操作");
                     }
 
+
+
+
+   var  dp=[]
+        dp.push({"name":"设备类型","value":$('#shieldQdeviceType').find("option:selected").text()||""});
+        dp.push({"name":"告警等级","value":$('#shield_level').find("option:selected").text()||""});
+        dp.push({"name":"是否启用","value":$('#shield_enable').find("option:selected").text()||""});
+        top.SsCenter.doLog("warning-mask", "warning", dp, "","打印操作");
+
+
+             if(tp=="output"){
+            pageObject="配置管理-网元配置-槽位与板卡"
+        }
+        if(tp=="GNSS1"||tp=="GNSS2"||tp=="频率输入"){
+            pageObject="配置管理-网元配置-输入-"+tp
+        }
+
+添加打印日志：
+
+业务操作员：
+拓扑管理 
+    拓扑信息统计    
+        统计报表
+        统计数据
+配置管理
+    网元配置- 所有打印-导出按钮
+    网元管理
+告警管理
+    当前告警
+    历史告警
+    告警屏蔽
+    告警统计
+        所有告警
+        当前告警
+运维管理
+    数据统计
+        拓扑信息统计
+            统计报表
+            统计数据
+        配置信息统计
+        告警统计
+            所有告警
+            当前告警
+        性能统计
+        用户统计
+            详情
+            统计
+帮助
+    知识库
+    站点详情
+    设备详情
+
+
+业务配置员：
+    告警配置
+        告警配置
+审计
+    日志管理
+        审计日志
+            统计详情
+            统计分析    
+
+按钮切换
+    首页
+        告警筛选
+    拓扑管理
+        拓扑信息统计    switch
+    配置管理
+        网元配置-版面视图
+    系统管理
+        用户统计
+
+审计
+    日志管理
+        审计日志
+运维管理
+    ...        
