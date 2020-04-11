@@ -50,33 +50,34 @@
         this.lastY = y;
       },
       move = function(dx, dy, x, y) {
-        var deltaX = x - this.lastX;
-        var deltaY = y - this.lastY;
+console.log("11"+12)
+        // var deltaX = x - this.lastX;
+        // var deltaY = y - this.lastY;
         
-        var minTop=this.paper.canvas.parentElement.offsetTop;
-        var paperHeight=this.paper.height ;
-        var shapeHeight=this.attrs.height/2;
-        if(y<minTop+shapeHeight ||
-           y+shapeHeight>minTop+paperHeight        
-        ){
-          deltaY=0;
-        }
+        // var minTop=this.paper.canvas.parentElement.offsetTop;
+        // var paperHeight=this.paper.height ;
+        // var shapeHeight=this.attrs.height/2;
+        // if(y<minTop+shapeHeight ||
+        //    y+shapeHeight>minTop+paperHeight        
+        // ){
+        //   deltaY=0;
+        // }
 
-        var minLeft=this.paper.canvas.parentElement.offsetLeft;
-        var paperWidth=this.paper.width;
-        var shapeWidth=this.attrs.width/2;
-        if(x<minLeft+shapeWidth||
-          x+shapeWidth>minLeft+paperWidth
-        ){
-          deltaX=0;
-        }
+        // var minLeft=this.paper.canvas.parentElement.offsetLeft;
+        // var paperWidth=this.paper.width;
+        // var shapeWidth=this.attrs.width/2;
+        // if(x<minLeft+shapeWidth||
+        //   x+shapeWidth>minLeft+paperWidth
+        // ){
+        //   deltaX=0;
+        // }
 
 
         
         
-        this.translate(deltaX, deltaY);
-        this.lastX = x;
-        this.lastY = y;
+        // this.translate(deltaX, deltaY);
+        // this.lastX = x;
+        // this.lastY = y;
         
       },
       up = function() {
@@ -84,6 +85,8 @@
       };
 
     el.drag(move, start, up);
+
+    rect.drag(move, start, up);
 
     console.log(el.transform());
 

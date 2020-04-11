@@ -1,159 +1,66 @@
-
-| shortuct                   | skill             | rating |
-| -------------------------- | ----------------- | ------ |
-| enter                      | find模式下 下一个 |        |
-| shift+enter                | find模式下 上一个 |        |
-| alt                        | 可切换到菜单栏    | *       |
-| ctrl+right                 | 单词最后          |        |
-| ctrl+shift+(right or left) | 选中单词          |        |
-| ctrl+left                  | 单词词首          |        |
-| f11                        | 全屏              |        |
-
-
-| shortuct       | user                     | rating |
-| alt+B          | 切换终端           |   |
-| ctrl+m          | 按Tab切换移动焦点模式           |   |
-
-
-
-| shortuct        | edit                             | rating |
-| --------------- | -------------------------------- | ------ |
-| ctrl+alt+ up    | 光标向上                         |        |
-| ctrl+alt+ down  | 光标向下                         |        |
-| ctrl+u          | 撤销上一次光标操作               | *       |
-| Shift + Alt + I | 插入光标到选中范围内所有行结束符 |    **    |
-| ctrl+k o        | 在新的编辑器中打开当前编辑的文件 |        |
- 
-
-ctrl+k j 关闭其他
-
-ctrl+k r 关闭右侧
-ctrl+k ctrl+w 关闭所有打开标签页
-
-
-
-ctrl+w 关闭打开的编辑页面
-escape :Esc  关闭bscode 弹出提示
-
-
-
-
-# activate command 激活
-
-ctrl+1  激活第一组编辑
-ctrl+2  激活第二组编辑
-
-
-# open command 打开
-
-ctrl+9 最后一个tab
-ctrl+0 第一个tab
-ctrl+e  最近打开
-ctrl+k v 显示预览
-ctrl+shift+t 重新代开已关闭的编辑
-
-
-# find command 查找
-
-shift+enter   上一个找到字符
-
-# switch 切换
-
-
-alt+1 切换到打开的第一个文件 *****
-alt+2 切换到打开的第二个文件 *****  
-ctrl+shift+f  切换到搜索窗口 default
-alt+w  切换到编辑窗口 ，在编辑窗口，再按一下 alt+w 可切换到具体编辑页面（*）
-ctrl+pageUp 上一个打开的文件
-ctrl+pageDown 下一个打开的文件
-ctrl+tab   切换文件
-ctrl+1  切换到第一个编辑器组（*）
-
-
-# edit command 编辑 
-
-
-
-ctrl+shift+→  选中单词
-
-f4 聚焦当下一搜索结果
-shift+f4 聚焦当上一搜索结果
-
-del 键  可删除光标后一个字符
-ctrl+del 删除光标后所有字符
-shift+del 删除整行(并复制删除元素，相当于ctrl+x)
-
-ctrl+j  合并行
-
-# other command 其他
-
-alt+shift+c 复制路径() 暂时用左边键盘
-
-
-
-
-# git command 
-
-
-ctrl+shift+g  切换到git提交页面
-alt+7 全部提交
-alt+8  push 
-
-
-# view code 
-
-f12  转到定义
-alt+f12 速览定义
- 
-
-
-
-
-
-
-# bookmark relative keybinds 
-
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
-
-| ctrl+alt+k      | 书签选择            |        |
-| ctrl+alt+j      | 上一个书签            |        |
-
-# page
-https://blog.csdn.net/crper/article/details/54099319
-
-# close command 关闭
-
-| shortuct       | view                     | rating |
-| -------------- | ------------------------ | ------ |
-| alt+left       | 向后（预览，不修改文件） |        |
-| alt+right      | 向前（预览）             |        |
-| ctrl+shift+tab | 切换到最近使用的 tab     |        |
-| ctrl+shift+m   | 查看错误信息             |        |
-| ctrl+shift+v   | 预览markdown             |        |
-| ctrl+shift+t   | 重新打开关闭页面         |        |
-| ctrl+shift+[   | 代码折叠                 |        |
-| ctrl+shift+]   | 代码展开                 |        |
-| ctrl+k+ctrl+0  | 全部折叠                 |        |
-| ctrl+k+ctrl+j  | 全部展开                 |        |
-
-
-
-| ctrl+d  | 选中相似单词                 |        |
-| alt+shift+downArrow  | 向下复制行                  |        |
-  
-
-
-
-
-
-| shortuct                   | skill             | rating |
-| -------------------------- | ----------------- | ------ |
-| enter                      | find模式下 下一个 |        |
-| shift+enter                | find模式下 上一个 |        |
-| alt                        | 可切换到菜单栏    | *       |
-| ctrl+right                 | 单词最后          |        |
-| ctrl+shift+(right or left) | 选中单词          |        |
-| ctrl+left                  | 单词词首          |        |
-| f11                        | 全屏              |        |
-
+autoprefixer                                      6.7.7   7.1.2     9.7.5  nms-vue 
+axios                                            0.17.1  0.17.1    0.19.2  nms-vue 
+babel-core                                       6.26.3  6.22.1    6.26.3  nms-vue 
+babel-eslint                                      7.1.1   7.1.1    10.1.0  nms-vue 
+babel-jest                                       21.2.0  21.0.2    25.1.0  nms-vue 
+babel-loader                                      7.1.1   7.1.1     8.1.0  nms-vue 
+babel-plugin-component                           0.10.1  0.10.1     1.1.1  nms-vue 
+babel-plugin-dynamic-import-node                  1.2.0   1.2.0     2.3.0  nms-vue 
+babel-plugin-transform-es2015-modules-commonjs   6.26.0  6.26.0    6.26.2  nms-vue 
+babel-plugin-transform-runtime                   6.23.0  6.22.0    6.23.0  nms-vue 
+babel-preset-env                                  1.3.2   1.3.2     1.7.0  nms-vue 
+babel-preset-stage-2                             6.22.0  6.22.0    6.24.1  nms-vue                                                      .
+babel-register                                   6.26.0  6.22.0    6.26.0  nms-vue 
+chalk                                             1.1.3   2.3.0     3.0.0  nms-vue 
+chromedriver                                     2.27.2  2.27.2    80.0.1  nms-vue 
+copy-webpack-plugin                               4.0.1   4.0.1     5.1.1  nms-vue
+cross-spawn                                       5.0.1   5.0.1     7.0.1  nms-vue
+crypto-js                                         3.3.0   3.3.0     4.0.0  nms-vue
+css-loader                                       0.28.0  0.28.0     3.4.2  nms-vue
+element-ui                                        2.8.2   2.8.2    2.13.0  nms-vue  OK
+eslint                                           3.19.0  3.19.0     6.8.0  nms-vue
+eslint-config-standard                           10.2.1  10.2.1    14.1.1  nms-vue
+eslint-friendly-formatter                         3.0.0   3.0.0     4.0.1  nms-vue
+eslint-loader                                     1.7.1   1.7.1     3.0.3  nms-vue
+eslint-plugin-html                                3.0.0   3.0.0     6.0.0  nms-vue
+eslint-plugin-import                              2.7.0   2.7.0    2.20.1  nms-vue
+eslint-plugin-node                                5.2.0   5.2.0    11.0.0  nms-vue
+eslint-plugin-promise                             3.5.0   3.5.0     4.2.1  nms-vue
+eslint-plugin-standard                            3.0.1   3.0.1     4.0.1  nms-vue
+extract-text-webpack-plugin                       3.0.0   3.0.0     3.0.2  nms-vue
+file-loader                                       1.1.4   1.1.4     6.0.0  nms-vue
+friendly-errors-webpack-plugin                    1.6.1   1.6.1     1.7.0  nms-vue
+gulp                                              3.9.1   3.9.1     4.0.2  nms-vue
+gulp-load-plugins                                 1.5.0   1.5.0     2.0.2  nms-vue
+gulp-replace                                      0.6.1   0.6.1     1.0.0  nms-vue
+gulp-shell                                        0.6.5   0.6.5     0.8.0  nms-vue
+html-webpack-plugin                              2.30.1  2.30.1     4.0.1  nms-vue
+jest                                             21.2.0  21.2.0    25.1.0  nms-vue
+jest-serializer-vue                               0.3.0   0.3.0     2.0.2  nms-vue
+lodash                                            1.0.2  4.17.5   4.17.15  nms-vue
+nightwatch                                       0.9.12  0.9.12     1.3.4  nms-vue
+node-notifier                                     5.4.3   5.1.2     6.0.0  nms-vue
+optimize-css-assets-webpack-plugin                3.2.0   3.2.0     5.0.3  nms-vue
+ora                                               1.2.0   1.2.0     4.0.3  nms-vue
+portfinder                                       1.0.13  1.0.13    1.0.25  nms-vue
+postcss-import                                   11.0.0  11.0.0    12.0.1  nms-vue
+postcss-loader                                    2.0.8   2.0.8     3.0.0  nms-vue
+rimraf                                            2.7.1   2.6.0     3.0.2  nms-vue
+sass-loader                                       6.0.6   6.0.6     8.0.2  nms-vue
+selenium-server                                   3.0.1   3.0.1  3.141.59  nms-vue
+semver                                            4.3.6   5.3.0     7.1.3  nms-vue
+shelljs                                           0.7.6   0.7.6     0.8.3  nms-vue
+svg-sprite-loader                                 3.7.3   3.7.3     4.2.1  nms-vue
+uglifyjs-webpack-plugin                           0.4.6   1.1.1     2.2.0  nms-vue
+url-loader                                        0.5.8   0.5.8     4.0.0  nms-vue
+vue                                              2.5.16  2.5.16    2.6.11  nms-vue
+vue-jest                                          1.0.2   1.0.2     3.0.5  nms-vue OK
+vue-loader                                       13.3.0  13.3.0    15.9.1  nms-vue
+vue-router                                        3.0.1   3.0.1     3.1.6  nms-vue
+vue-style-loader                                  3.0.1   3.0.1     4.1.2  nms-vue
+vue-template-compiler                            2.5.16  2.5.16    2.6.11  nms-vue OK
+vuex                                              3.0.1   3.0.1     3.1.3  nms-vue OK
+webpack                                           3.6.0   3.6.0    4.42.1  nms-vue
+webpack-bundle-analyzer                           2.9.0   2.9.0     3.6.1  nms-vue
+webpack-dev-server                                2.9.1   2.9.1    3.10.3  nms-vue
+webpack-merge                                     4.1.0   4.1.0     4.2.2  nms-vue
