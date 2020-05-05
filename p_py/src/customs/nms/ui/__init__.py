@@ -34,6 +34,7 @@ class NmsMiscCRUD(CRUD):
           else:
               return CRUD.action(self, act, *args, **kwArgs)
 
+
     def one(self,order=None, record=None, *args, **kwArgs):
         print 1
         time.sleep(2)
@@ -49,6 +50,7 @@ class NmsMiscCRUD(CRUD):
 
 
 
+
 @wildcard("/nms/house/")
 class NmsHouseCRUD(CRUD):
     def __init__(self):
@@ -61,12 +63,48 @@ class NmsHouseCRUD(CRUD):
           else:
               return CRUD.action(self, act, *args, **kwArgs)
 
+    def query(self, count=True, *args, **kwArgs):
+        conditions = kwArgs.get('conditions', [
+            {"Field": "building_area", "Value": "80", "Group": 1, "Operate": ">=", "Relation": "and"},
+            {"Field": "building_area", "Value": "120", "Group": 1, "Operate": "<=", "Relation": "and"}
+        ])
+        record = {"conditions": conditions}
+        details = self.list(record)
+        o={}
+        for r in details.get("rows"):
+            if(r.get("community") not in o):
+                o[r.get("community")]={"count":1,"avg":0,"avg_sum":r.get("avg_price")}
+            else:
+                o[r.get("community")]["count"]+=1
+                o[r.get("community")]["avg_sum"] += r.get("avg_price")
+
+
+        ret = CRUD.query(self, count=count, *args, **kwArgs)
+        r1=[]
+        for r in ret.get("rows"):
+
+            r["count"]=0
+            r["avg"]=0
+            r["avg_sum"] = 0
+            if r.get("address") in o:
+                r["count"]= o[r.get("address")]["count"]
+                r["c"]= o[r.get("address")]["count"]
+                r["avg_sum"] = o[r.get("address")]["avg_sum"]
+                r["avg"]=r["avg_sum"]/r["count"]
+                r1.append(r)
+
+        return {'total': len(r1), 'rows':r1}
+
+
+
     def list(self, record={}, *args, **kwArgs):
         community=record.get("community")
         source={"driver":"mysql"}
         d=getDB(source,"anjuke_secondhand_house")
         conditions=[
         ]
+        if record.get("conditions"):
+            conditions=record.get("conditions")
         if community:
             conditions.append( {"Field":"community","Value":community,"Group":1,"Operate":"=","Relation":"and"})
 
@@ -76,7 +114,10 @@ class NmsHouseCRUD(CRUD):
             "building_area": 1, "building_area_unit": 1, "floor": 1, "building_time": 1, "community": 1, "city": 1,
             "area": 1,
             "address": 1, "advantage": 1, "salesman": 1, "url": 1, "url_md5": 1, "create_time": 1
-        },order=[{"Type":1,"Field":"create_time"}],
+        },order=[
+            # {"Type":1,"Field":"create_time"},
+                 {"Type":1,"Field":"building_area"},
+                 {"Type":1,"Field":"floor"}],
         conditions=conditions)
         return re
     def fixPosition(self, record=None, *args, **kwArgs):
