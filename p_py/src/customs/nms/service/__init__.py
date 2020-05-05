@@ -32,7 +32,7 @@ from copy import deepcopy
 
 def getBaiduCoordinates():
     default={"output":"json","ak":AK,"city":"嘉兴市","address":""}
-    l=misc_house.items(query={}).batch_size(100)
+    l=misc_house.items(query={"location":{'$exists':0}}).batch_size(100)
     for r in l:
         address=r.get("address")
 
