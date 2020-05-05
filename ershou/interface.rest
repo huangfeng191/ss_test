@@ -1,0 +1,9 @@
+@host = http://127.0.0.1:82
+
+
+
+### 获取菜单信息
+GET {{host}}/nms/house/fixPosition.json
+
+Host: {{host}}
+

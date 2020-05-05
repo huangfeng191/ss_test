@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/jquery-1.11.1.min.js"></script>
+    <script src="../js/echarts.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U"></script>
+    <script src="./bMap.js"></script>
+    <script src="bmap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../less/test.css" />
+</head>
+
+<body>
+    <div id="main" class="test-fill-in  normal-border">
+</body>
+<script>
+    var option = option_bMap
+    myChart = echarts.init(document.getElementById("main"));
+    myChart.setOption(option);
+</script>
+
+</html>

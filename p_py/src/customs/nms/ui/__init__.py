@@ -11,6 +11,7 @@ from misc import utils
 from ui import path, wildcard
 from ui.route import CRUD
 from customs.nms.service import *
+from customs.nms.service.baidu_api import *
 from webservice import POST
 
 
@@ -46,3 +47,17 @@ class NmsMiscCRUD(CRUD):
         return o
 
 
+
+@wildcard("/nms/house/")
+class NmsHouseCRUD(CRUD):
+    def __init__(self):
+        self.module = misc_house
+    def action(self, act, *args, **kwArgs):   
+          if act == 'fixPosition':
+              return self.fixPosition(*args, **kwArgs)     
+          else:
+              return CRUD.action(self, act, *args, **kwArgs)  
+              
+    def fixPosition(self, record=None, *args, **kwArgs):
+        getBaiduCoordinates()
+        return "OK"
