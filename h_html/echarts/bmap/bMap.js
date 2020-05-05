@@ -971,7 +971,14 @@ var convertData = function (data) {
 option_bMap = {
    
     tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: function(params){
+            let one=params.data[3]
+            a=""+one.address+"<br/>"
+            a=a+"avg:"+one.avg+"<br/>"
+            a=a+"count:"+one.c+"<br/>"
+            return a
+        }
     },
     bmap: {
         center: [120.79200448509146, 30.74407593469307],
@@ -982,39 +989,16 @@ option_bMap = {
             
         }
     },
-    series: [{
-            name: 'pm2.5',
-            type: 'scatter',
-            coordinateSystem: 'bmap',
-            data: convertData(data),
-            symbolSize: function (val) {
-                return val[2] / 10;
-            },
-            label: {
-                normal: {
-                    formatter: '{b}',
-                    position: 'right',
-                    show: false
-                },
-                emphasis: {
-                    show: true
-                }
-            },
-            itemStyle: {
-                normal: {
-                    color: '#ddb926'
-                }
-            }
-        },
+    series: [
         {
-            name: 'Top 5',
+            name: '均价',
             type: 'effectScatter',
             coordinateSystem: 'bmap',
-            data: convertData(data.sort(function (a, b) {
-                return b.value - a.value;
-            }).slice(0, 6)),
+            data: [
+             
+              ],
             symbolSize: function (val) {
-                return val[2] / 10;
+                return val[2] / 1000;
             },
             showEffectOn: 'emphasis',
             rippleEffect: {
@@ -1035,7 +1019,8 @@ option_bMap = {
                     shadowColor: '#333'
                 }
             },
-            zlevel: 1
+            zlevel: 10,
+            z:10
         }
     ]
 };

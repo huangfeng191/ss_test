@@ -7,3 +7,7 @@ GET {{host}}/nms/house/fixPosition.json
 
 Host: {{host}}
 
+### 获取菜单信息
+GET {{host}}/nms/house/list.json
+
+Host: {{host}}

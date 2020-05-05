@@ -10,6 +10,7 @@
     <script src="http://api.map.baidu.com/api?v=2.0&ak=UFlVB3ZbqW14mWnengtXM0QbYVGHgM7U"></script>
     <script src="./bMap.js"></script>
     <script src="bmap.min.js"></script>
+    <script src="service.js"></script>
     <link rel="stylesheet" type="text/css" href="../../less/test.css" />
 </head>
 
@@ -19,7 +20,18 @@
 <script>
     var option = option_bMap
     myChart = echarts.init(document.getElementById("main"));
-    myChart.setOption(option);
+    bMapService.house.info.query({size:999}).done(function(v){
+        
+        let data= v.rows.map(function(one){
+            let a=[one.location.lng,one.location.lat]
+            a.push(one.avg)
+            a.push(one)
+            return a 
+        })
+        option["series"][0].data=data
+        myChart.setOption(option);
+    })
+    
 </script>
 
 </html>

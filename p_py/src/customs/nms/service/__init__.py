@@ -46,4 +46,3 @@ def getBaiduCoordinates():
                 misc_house.upsert(**r)
             time.sleep(1)
     return "OK"
-
