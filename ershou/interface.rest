@@ -2,12 +2,17 @@
 
 
 
-### 获取菜单信息
+### 获取小区的点
 GET {{host}}/nms/house/fixPosition.json
 
 Host: {{host}}
 
-### 获取菜单信息
+### 获取小区的卖房信息
 GET {{host}}/nms/house/list.json
+
+Host: {{host}}
+
+### 获取每个小区的概要信息 
+GET {{host}}/nms/house/query.json
 
 Host: {{host}}

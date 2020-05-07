@@ -69,6 +69,8 @@ class NmsHouseCRUD(CRUD):
             {"Field": "building_area", "Value": "120", "Group": 1, "Operate": "<=", "Relation": "and"}
         ])
         record = {"conditions": conditions}
+        if "conditions" in kwArgs:
+            del kwArgs["conditions"]
         details = self.list(record)
         o={}
         for r in details.get("rows"):
@@ -105,8 +107,18 @@ class NmsHouseCRUD(CRUD):
         ]
         if record.get("conditions"):
             conditions=record.get("conditions")
+        # parse marked
+        marked=None
+        for r in conditions:
+            if(r.get("Field")=="marked"):
+                marked=r.get("Value")
+                conditions.remove(r)
+
         if community:
             conditions.append( {"Field":"community","Value":community,"Group":1,"Operate":"=","Relation":"and"})
+        marks=list(misc_house_mark.items())
+
+
 
         re=d.items(fields={
             "id": 1, "total_price": 1, "total_price_unit": 1, "avg_price": 1, "avg_price_unit": 1, "title": 1,
@@ -119,8 +131,46 @@ class NmsHouseCRUD(CRUD):
                  {"Type":1,"Field":"building_area"},
                  {"Type":1,"Field":"floor"}],
         conditions=conditions)
+        for r in re.get("rows"):
+            r["marked"] = ""
+            for m in marks:
+                if(m.get("floor")==r.get("floor") and
+                   m.get("community") == r.get("community") and
+                   m.get("building_area") == r.get("building_area") and
+                   m.get("title") == r.get("title")
+
+                ):
+                    r["marked"] = m["marked"]
+                    break
+        if marked:
+            re1={"rows":[],"total":0}
+            for r in re.get("rows"):
+                if r.get("marked","") in marked:
+                    re1["rows"].append(r)
+            re1["total"]=len(re1["rows"])
+            re=re1
+
         return re
     def fixPosition(self, record=None, *args, **kwArgs):
         getBaiduCoordinates()
         return "OK"
 
+
+@wildcard("/nms/house_mark/")
+class NmsHouse_markCRUD(CRUD):
+    def __init__(self):
+        self.module = misc_house_mark
+    def update(self, record=None, *args, **kwArgs):
+        if record:
+            if  record.get('_id'):
+                del  record["_id"]
+            o=self.module.get({
+                "floor":record.get("floor"),
+                "community":record.get("community"),
+                "building_area":record.get("building_area"),
+                "title":record.get("title"),
+            })
+            if o:
+                record["_id"]=o["_id"]
+            return self.module.upsert(** record)
+        raise Exception('无效更新!')

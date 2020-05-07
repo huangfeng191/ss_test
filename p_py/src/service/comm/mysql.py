@@ -229,7 +229,7 @@ class MySqlCRUD:
                         else:
                             condtionLS.append(conditions[v]['Value'])
                             if isinstance(conditions[v]['Value'], int):
-                                conditions[v]['Value'] = '%d'
+                                conditions[v]['Value'] = '%s'
                             else:
                                 conditions[v]['Value'] = '%s'
                              

@@ -20,6 +20,7 @@ from bson import ObjectId
 
 misc_info = comm.CRUD(ctx.nmsdb, "misc_info", [("cid", 1)])
 misc_house = comm.CRUD(ctx.nmsdb, "misc_house", [("cid", 1)])
+misc_house_mark = comm.CRUD(ctx.nmsdb, "misc_house_mark", [("cid", 1)])
 
 
 
