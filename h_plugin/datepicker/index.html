@@ -18,8 +18,9 @@ $(function(){
     jQuery.datetimepicker.setLocale('ch');
     $("#cs").datetimepicker({
       lang: "ch", //语言选择中文 注：旧版本 新版方法：$.datetimepicker.setLocale('ch');
-      format: "yyyy", //格式化日期yyyy-mm-dd hh:ii
-  
+      // format: "yyyy", //格式化日期yyyy-mm-dd hh:ii
+      minDateTime:"2020-04-14 10:10" ,
+      step:1
       
     });
 })

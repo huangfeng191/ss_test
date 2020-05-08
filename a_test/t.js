@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 万好家居 4
 万家花园 6
 万盛家园(别墅) 6
@@ -353,3 +354,407 @@
 龙之梦悦庭 3
 龙润壹城 8
 龙鼎国际公馆 1
+=======
+function(queries, selectedCard) {
+    Loading.Show();
+    var doPost = ""
+    var params = {}
+    var deviceType = top.SsCenter.deviceInfo.current.deviceType;
+    var business = settingCommandDual.business;
+    if (deviceType == "SYNLOCKV3") {
+      doPost = "setSYNLOCKV3executeTL1_Sync";
+      params = settingCommandDual.getDefaultOneCommand("RTRV-COND-EQPT")
+
+    }
+    var bindCard = settingCommandDual.currentCards = []
+    if (deviceType == "TSG3800") {
+      if (settingCommandDual.business == "input") {
+        doPost = "setTSG3800executeTL1_Sync";
+        params = { "aid": "INP", "command": "RTRV-COND-INP" }
+
+        var oCard = {}
+        top.SsServer[doPost + "_n"](params).done(function(ret) {
+          (ret.data || []).forEach(function(r) {
+
+            if (r.aid && r.aid.match(/(\d+)-(\d+)$/)) {
+              var matched = r.aid.match(/(\S+)(\d+)-(\d+)$/)
+              // type card port 
+              if (!(matched[2] in oCard)) {
+                oCard[matched[2]] = { "card": matched[2], "ports": [], "name": matched[1] + matched[2] }
+              }
+              oCard[matched[2]]["ports"].push({ "port": matched[3], "name": r.aid })
+            }
+
+          })
+          bindCard = Object.values(oCard) || [];
+          bindCard.sort(function(x, y) {
+            return x.card - y.card;
+          })
+          settingCommandDual.currentCards = bindCard;
+
+        })
+      } else {
+
+      }
+
+    }
+
+    if (deviceType == "GNSS97" &&
+      (settingCommandDual.business == "output" ||
+        settingCommandDual.business == "input" ||
+        settingCommandDual.business == "clock" ||
+        settingCommandDual.business == "system")) {
+
+      doPost = "setGNSS97executeTL1_Sync";
+      params = { "aid": "", "command": "RTRV-EQPT" }
+
+      var oCard = {}
+      top.SsServer[doPost + "_n"](params).done(function(ret) {
+        (ret.data || []).forEach(function(r) {
+          var re = "";
+          if (settingCommandDual.business == "input") {
+            re = "S";
+          } else if (settingCommandDual.business == "output") {
+            re = "a"
+          } else if (settingCommandDual.business == "clock") {
+            re = "K"
+          } else if (settingCommandDual.business == "system") {
+            re = "K"
+          }
+
+          if (settingCommandDual.business == "system") {
+            if (r.type && r.type == re) {
+              top.SsServer[doPost + "_n"]({ "aid": r.aid, "command": "RTRV-EQPT" }).done(function(rr) {
+                if (rr.data.msmode == "MAIN") {
+                  settingCommandDual.mainAidGNSS97 = rr.data.aid;
+                }
+
+              })
+            }
+
+
+          } else {
+
+
+            if (r.type && r.type == re) {
+              var codeToBard = settingCommandDual.codeToBardGNSS97;
+
+              var doPorts = []
+              if (settingCommandDual.business == "input") {
+                doPorts = [
+                  { "port": 1, "name": 1 },
+                  { "port": 2, "name": 2 },
+                  { "port": 3, "name": 3 },
+                  { "port": 4, "name": 4 },
+                  { "port": 5, "name": 5 },
+                  { "port": 6, "name": 6 },
+                  { "port": 7, "name": 7 },
+                  { "port": 8, "name": 8 },
+                ]
+              }
+
+              // type card 
+              oCard[codeToBard[r.aid]] = { "card": codeToBard[r.aid], "ports": doPorts, "name": r.aid }
+            }
+
+          }
+
+
+
+        })
+
+      })
+
+      if (settingCommandDual.deviceType == "GNSS97" && settingCommandDual.business == "system") {
+        // 主用 aid;
+        return;
+      }
+
+      bindCard = Object.values(oCard) || [];
+      bindCard.sort(function(x, y) {
+        return x.card - y.card;
+      })
+      settingCommandDual.currentCards = bindCard;
+
+    }
+
+
+    if (deviceType == "TP1100" && settingCommandDual.business != "system") {
+      // input output system clock
+      doPost = "setExecuteTP1100Command_Sync";
+      params = { "aid": "", "command": "rtrvCraft" }
+
+      var oCard = {}
+      top.SsServer[doPost + "_n"](params).done(function(ret) {
+        (ret.data || []).forEach(function(r) {
+          var re = "";
+          if (settingCommandDual.business == "input") {
+            re = /INP|PRS/
+          } else if (settingCommandDual.business == "output") {
+            re = /OUT/
+          } else if (settingCommandDual.business == "clock") {
+            re = /IOC/
+          }
+          // else   if (settingCommandDual.business == "system") { 
+          //   re=/SYS/
+          // }
+
+          if (r.name && r.name.match(re)) {
+            var matched = r.name.match(re)
+            // type card 
+            oCard[r.name] = { "card": r.name, "ports": [], "name": r.name }
+          }
+        })
+
+      })
+
+      bindCard = Object.values(oCard) || [];
+      bindCard.sort(function(x, y) {
+        return x.card - y.card;
+      })
+      settingCommandDual.currentCards = bindCard;
+
+    }
+
+
+
+
+    if (!doPost) { return }
+    // 板卡  业务名  ，端口名  [{"板卡":{"name":1,ports:["1":{}]}]
+    var ret = []
+
+    if (deviceType == "SYNLOCKV3") {
+      top.SsServer[doPost](params).done(function(result) {
+        ret = result.data || [];
+
+        $.each(ret, function(oi, ov) {
+          if (deviceType == "SYNLOCKV3") {
+            var oneCard = ov.card;
+
+
+            var re = "";
+            if (settingCommandDual.business == "input") {
+              if (oneCard.condtype != "MASTNOR") {
+                return true;
+              }
+              re = /LCIM(\d+)/
+              if (oneCard.name.match(re)) {
+                var uncentainty = oneCard.name.match(re)[1] == 1 || oneCard.name.match(re)[1] == 2;
+                isMeasure = true;
+                if (uncentainty) {
+
+                  top.SsServer[doPost + "_n"]({ "command": "RTRV-STATE-LCIM", "cmdtype": "TYPE", "aid": oneCard.name }).done(function(
+                    r) {
+                    if (r.data.boardtype == "INPUT") {
+                      isMeasure = false;
+                    }
+                    if (r.data.boardtype == "UNCFG") {
+                      return true;
+                    }
+                  });
+                }
+                if ($(".nav-left a.three-active").html() == "输入测试") {
+                  if (isMeasure) {
+                    bindCard.push({
+                      "ports": [],
+                      "cardType": "LCIM",
+                      "card": oneCard.name.match(re)[1],
+                      "name": oneCard
+                        .name,
+                      "condtype": oneCard.condtype
+                    })
+                  }
+                  return true;
+                } else {
+                  if (!isMeasure) {
+                    bindCard.push({
+                      "ports": [],
+                      "cardType": "LCIM",
+                      "card": oneCard.name.match(re)[1],
+                      "name": oneCard
+                        .name,
+                      "condtype": oneCard.condtype
+                    })
+                  } else {
+                    return true;
+                  }
+                }
+
+              }
+              if ($(".nav-left a.three-active").html() != "输入测试") {
+                re = /SOCU(\d+)|SRCU(\d+)/
+                if (oneCard.name.match(re)) {
+                  bindCard.push({
+                    "ports": [],
+                    "cardType": "SCLK",
+                    "card": "CLOCK",
+                    "name": oneCard.name,
+                    "condtype": oneCard
+                      .condtype
+                  })
+                }
+                return true;
+              }
+
+
+            }
+            if (settingCommandDual.business == "output") {
+              if (oneCard.condtype != "MASTNOR") {
+                return true;
+              }
+              re = /TSOU(\d+)/
+              if (oneCard.name.match(re)) {
+                bindCard.push({
+                  "ports": [],
+                  "cardType": "TSOU",
+                  "card": oneCard.name.match(re)[1],
+                  "name": oneCard
+                    .name,
+                  "condtype": oneCard.condtype
+                })
+              }
+              return true;
+            }
+            if (settingCommandDual.business == "clock") {
+              if (oneCard.condtype != "MASTNOR" && oneCard.condtype != "BACKNOR") {
+                return true;
+              }
+              re = /SOCU(\d+)|SRCU(\d+)/
+              if (oneCard.name.match(re)) {
+                bindCard.push({
+                  "ports": [],
+                  "card": oneCard.name.match(re)[1] || oneCard.name.match(re)[2],
+                  "name": oneCard
+                    .name,
+                  "condtype": oneCard.condtype
+                })
+              }
+              return true;
+
+            }
+            if (settingCommandDual.business == "system") {
+              // if (oneCard.condtype != "MASTNOR"&&oneCard.condtype != "BACKNOR") {
+              //    return true;
+              // }
+              bindCard.push({ "ports": [], "card": oneCard.name, "name": oneCard.name, "condtype": oneCard.condtype })
+              return true;
+
+            }
+
+
+
+
+
+          }
+        })
+        if (bindCard.length > 0 && ($.inArray(settingCommandDual.business, ["input", "output"]) >= 0)) {
+          var toGetPort = null;
+          if (selectedCard) {
+            var tempCard = bindCard.filter(function(x) { return x.card == selectedCard })
+            if (tempCard.length > 0) {
+              toGetPort = tempCard[0]
+            }
+          } else {
+            toGetPort = bindCard[0];
+          }
+          if (toGetPort && toGetPort.name) {
+            var todoPost = []
+            todoPost.push(top.SsServer[doPost + "_n"]({
+              "aid": toGetPort.name,
+              "command": "RTRV-STATE-" + toGetPort
+                .cardType,
+              "cmdtype": "CHANTYPE"
+            }))
+            if (settingCommandDual.business == "input") {
+              todoPost.push(top.SsServer[doPost + "_n"]({ "aid": "", "command": "RTRV-COND-INP" }))
+            }
+
+            $.when(...todoPost).done(function(...ret) {
+              if (todoPost.length == 1) {
+                ret = [ret]
+                var ports = ret[0][0].data.channelList;
+                ports = ports.map(function(x) {
+
+                  var simpPort = x.channelID.match(/(\d+)$/)
+                  if (simpPort) {
+                    simpPort = simpPort[1]
+                  }
+                  return { "port": simpPort, "name": x.channelID, "channeltype": x.channeltype }
+                })
+                ports = ports.filter(function(x) { return x })
+                toGetPort["ports"] = ports;
+
+              } else {
+
+                if (ret[0][1] == "success" || ret[1][1] == "success") {
+                  var ports = ret[0][0].data.channelList;
+                  var buss = ret[1][0].data;
+                  var buss = buss.map(function(x) { return x.aid });
+                  ports = ports.map(function(x) {
+                    if ($.inArray(x.channelID, buss) >= 0 && x.channeltype != "NONE") {
+                      var simpPort = x.channelID.match(/(\d+)$/)
+                      if (simpPort) {
+                        simpPort = simpPort[1]
+                      }
+                      return { "port": simpPort, "name": x.channelID, "channeltype": x.channeltype }
+                    }
+                  })
+                  ports = ports.filter(function(x) { return x })
+                  toGetPort["ports"] = ports;
+
+                }
+
+              }
+
+            })
+
+
+          }
+        }
+
+
+      }).fail(function(err) {
+
+      })
+    }
+
+
+    if (queries.conditions) {
+      settingCommandDual.qBindings = {};
+
+
+
+      queries.conditions.forEach(function(c) {
+        if (c.field == "inputCardConfigId") {
+          var cardBind = settingCommandDual.qBindings[c["binding"]] = []
+          bindCard.forEach(function(one) {
+            cardBind.push({ "Name": one.card, "Value": one.card });
+          })
+        }
+      })
+      queries.conditions.forEach(function(c) {
+        if (c.field == "inputCardConfigPortId") {
+
+          if (bindCard.length > 0) {
+            var toGetPort = bindCard[0];
+            if (selectedCard) {
+              var tempCard = bindCard.filter(function(x) { return x.Name == selectedCard })
+              if (tempCard.length > 0) {
+                toGetPort = tempCard[0]
+              }
+            }
+
+
+            settingCommandDual.qBindings[c["binding"]] = []
+
+            $.each((toGetPort.ports || []), function(oi, one) {
+              settingCommandDual.qBindings[c["binding"]].push({ "Name": one.port, "Value": one.port });
+            })
+          }
+        }
+
+      })
+
+    }
+  }
+>>>>>>> Stashed changes
