@@ -28,20 +28,30 @@
     <option value="2" >2</option>
   </select>
 
-<input type="text" name="" id="">
-<button></button>
+<input type="text" name="" id="a">
+<input type="text" name="" id="b">
+<button>1212</button>
 </body>
 <script>
     $(function(){
-    $("input").datepicker({
+    $("input#a").datepicker({
       minViewMode: 1,
     language: "zh-CN",
     format: "yyyy-mm",
     autoclose: true,
     })
-    $("button").click(function(e){
-      debugger
+    $("input#b").datepicker({
+      minViewMode: 1,
+    language: "zh-CN",
+    format: "yyyy-mm",
+    autoclose: true,
     })
+    $("button ").click(function(e){
+      // 这个是有效的
+     
+      $("input").datepicker("setDate","2019-11")
+    })
+    
 })
 </script>
 
