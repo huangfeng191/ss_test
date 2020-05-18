@@ -1,66 +1,20 @@
-autoprefixer                                      6.7.7   7.1.2     9.7.5  nms-vue 
-axios                                            0.17.1  0.17.1    0.19.2  nms-vue 
-babel-core                                       6.26.3  6.22.1    6.26.3  nms-vue 
-babel-eslint                                      7.1.1   7.1.1    10.1.0  nms-vue 
-babel-jest                                       21.2.0  21.0.2    25.1.0  nms-vue 
-babel-loader                                      7.1.1   7.1.1     8.1.0  nms-vue 
-babel-plugin-component                           0.10.1  0.10.1     1.1.1  nms-vue 
-babel-plugin-dynamic-import-node                  1.2.0   1.2.0     2.3.0  nms-vue 
-babel-plugin-transform-es2015-modules-commonjs   6.26.0  6.26.0    6.26.2  nms-vue 
-babel-plugin-transform-runtime                   6.23.0  6.22.0    6.23.0  nms-vue 
-babel-preset-env                                  1.3.2   1.3.2     1.7.0  nms-vue 
-babel-preset-stage-2                             6.22.0  6.22.0    6.24.1  nms-vue                                                      .
-babel-register                                   6.26.0  6.22.0    6.26.0  nms-vue 
-chalk                                             1.1.3   2.3.0     3.0.0  nms-vue 
-chromedriver                                     2.27.2  2.27.2    80.0.1  nms-vue 
-copy-webpack-plugin                               4.0.1   4.0.1     5.1.1  nms-vue
-cross-spawn                                       5.0.1   5.0.1     7.0.1  nms-vue
-crypto-js                                         3.3.0   3.3.0     4.0.0  nms-vue
-css-loader                                       0.28.0  0.28.0     3.4.2  nms-vue
-element-ui                                        2.8.2   2.8.2    2.13.0  nms-vue  OK
-eslint                                           3.19.0  3.19.0     6.8.0  nms-vue
-eslint-config-standard                           10.2.1  10.2.1    14.1.1  nms-vue
-eslint-friendly-formatter                         3.0.0   3.0.0     4.0.1  nms-vue
-eslint-loader                                     1.7.1   1.7.1     3.0.3  nms-vue
-eslint-plugin-html                                3.0.0   3.0.0     6.0.0  nms-vue
-eslint-plugin-import                              2.7.0   2.7.0    2.20.1  nms-vue
-eslint-plugin-node                                5.2.0   5.2.0    11.0.0  nms-vue
-eslint-plugin-promise                             3.5.0   3.5.0     4.2.1  nms-vue
-eslint-plugin-standard                            3.0.1   3.0.1     4.0.1  nms-vue
-extract-text-webpack-plugin                       3.0.0   3.0.0     3.0.2  nms-vue
-file-loader                                       1.1.4   1.1.4     6.0.0  nms-vue
-friendly-errors-webpack-plugin                    1.6.1   1.6.1     1.7.0  nms-vue
-gulp                                              3.9.1   3.9.1     4.0.2  nms-vue
-gulp-load-plugins                                 1.5.0   1.5.0     2.0.2  nms-vue
-gulp-replace                                      0.6.1   0.6.1     1.0.0  nms-vue
-gulp-shell                                        0.6.5   0.6.5     0.8.0  nms-vue
-html-webpack-plugin                              2.30.1  2.30.1     4.0.1  nms-vue
-jest                                             21.2.0  21.2.0    25.1.0  nms-vue
-jest-serializer-vue                               0.3.0   0.3.0     2.0.2  nms-vue
-lodash                                            1.0.2  4.17.5   4.17.15  nms-vue
-nightwatch                                       0.9.12  0.9.12     1.3.4  nms-vue
-node-notifier                                     5.4.3   5.1.2     6.0.0  nms-vue
-optimize-css-assets-webpack-plugin                3.2.0   3.2.0     5.0.3  nms-vue
-ora                                               1.2.0   1.2.0     4.0.3  nms-vue
-portfinder                                       1.0.13  1.0.13    1.0.25  nms-vue
-postcss-import                                   11.0.0  11.0.0    12.0.1  nms-vue
-postcss-loader                                    2.0.8   2.0.8     3.0.0  nms-vue
-rimraf                                            2.7.1   2.6.0     3.0.2  nms-vue
-sass-loader                                       6.0.6   6.0.6     8.0.2  nms-vue
-selenium-server                                   3.0.1   3.0.1  3.141.59  nms-vue
-semver                                            4.3.6   5.3.0     7.1.3  nms-vue
-shelljs                                           0.7.6   0.7.6     0.8.3  nms-vue
-svg-sprite-loader                                 3.7.3   3.7.3     4.2.1  nms-vue
-uglifyjs-webpack-plugin                           0.4.6   1.1.1     2.2.0  nms-vue
-url-loader                                        0.5.8   0.5.8     4.0.0  nms-vue
-vue                                              2.5.16  2.5.16    2.6.11  nms-vue
-vue-jest                                          1.0.2   1.0.2     3.0.5  nms-vue OK
-vue-loader                                       13.3.0  13.3.0    15.9.1  nms-vue
-vue-router                                        3.0.1   3.0.1     3.1.6  nms-vue
-vue-style-loader                                  3.0.1   3.0.1     4.1.2  nms-vue
-vue-template-compiler                            2.5.16  2.5.16    2.6.11  nms-vue OK
-vuex                                              3.0.1   3.0.1     3.1.3  nms-vue OK
-webpack                                           3.6.0   3.6.0    4.42.1  nms-vue
-webpack-bundle-analyzer                           2.9.0   2.9.0     3.6.1  nms-vue
-webpack-dev-server                                2.9.1   2.9.1    3.10.3  nms-vue
-webpack-merge                                     4.1.0   4.1.0     4.2.2  nms-vue
+```sql
+select a.id ,a.name ,a.parentId "p_id", b.name "p_name" ,b.parentId "pp_id"  from 
+(select * from sys_menu t  where  isolation=3 and type=1)a,
+(select * from sys_menu t  where  isolation=3 and type!=2)b where a.parentId =b.id 
+
+
+
+select c.*,d.name "pp_name" from (select a.id modal_id,a.name modal_name,a.parentId "p_id", b.name "p_name" ,b.parentId "pp_id"  from 
+(select * from sys_menu t  where  isolation=3 and type=1)a,
+(select * from sys_menu t  where  isolation=3 and type!=2)b where a.parentId =b.id )c,
+(select * from sys_menu t  where  isolation=3 and type!=2) d  where c.pp_id=d.id
+
+
+
+select c.*,d.name "pp_name" from (select a.id modal_id,a.name modal_name,a.parentId "p_id", b.name "p_name" ,b.parentId "pp_id"  from 
+(select * from sys_menu t  where  isolation=3 and type=1)a,
+(select * from sys_menu t  where  isolation=3 and type!=2)b where a.parentId =b.id )c left join 
+(select * from sys_menu t  where  isolation=3 and type!=2) d  on c.pp_id =d.id
+
+```
