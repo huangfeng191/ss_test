@@ -1,0 +1,31 @@
+<html> 
+<head> 
+<title>判断页面是关闭还是刷新</title> 
+</head> 
+ 
+<body > 
+<script language="javascript"> 
+var s = "test"; 
+function fclose() 
+{ 
+if(s=="no") 
+alert("unload me!="+s+"这是刷新页面！"); 
+else 
+alert("这是关闭页面"); 
+} 
+ 
+function fload() 
+{ 
+alert("load me!="+s); 
+} 
+ 
+function bfunload() 
+{ 
+s = "no"; 
+} 
+window.οnunlοad=fclose(); 
+window.οnlοad=fload(); 
+window.οnbefοreunlοad=bfunload();
+</script> 
+</body> 
+</html>
