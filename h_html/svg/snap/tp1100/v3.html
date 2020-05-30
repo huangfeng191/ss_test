@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../../../less/test.css" />
+  <script src="../lib/snap.svg.js"></script>
+</head>
+
+<body>
+
+  <div class="normal-fill-in to-center">
+    <div class="container  size-normal-wider" style="height:500px;width:700px">
+      <?xml version="1.0" standalone="no"?>
+      <svg style=" width:100%;height:100%;" id="v3_logic" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      </svg>
+    </div>
+  </div>
+  <script>
+    window.onload = function() {
+      function V3LogicUtil (paper) {
+        this.paper = paper
+        var resource = this.resource = {
+          stroke: "#565656",
+          strokeWidth: 2
+        }
+        var statusColor = this.statusColor = {
+          normal: "#cbcccc"
+        }
+        this.clock = function(clock) {
+            var w = 100
+            var h = 320
+            var c = this.paper.rect(1, 1, w, h, 0)
+            c.attr({
+              fill: statusColor.normal,
+              stroke: resource.stroke,
+              strokeWidth: resource.strokeWidth,
+
+            })
+            return c
+
+          },
+          this.output = function(output) {
+            var w = 90
+            var h = 220
+            var o = this.paper.rect(1, 1, w, h, 0)
+            o.attr({
+              fill: statusColor.normal,
+              stroke: resource.stroke,
+              strokeWidth: resource.strokeWidth,
+            })
+            return o
+          }
+        this.slot = function(slot) {
+          var w = 40
+          var h = 76
+          var s = this.paper.rect(1, 1, w, h, 0)
+          s.attr({
+            fill: statusColor.normal,
+            stroke: resource.stroke,
+            strokeWidth: resource.strokeWidth,
+          })
+          return s
+        }
+        this.arrow = function(arrow, option) {
+          var x = 1
+          var y = 10
+          var w = 100
+          var thick = 14
+          var arrowThick = 10
+          var arrowLength = 16
+          if (option) {
+            if (option.x) { x = option.x }
+            if (option.y) { y = option.y }
+            if (option.w) { w = option.w }
+            if (option.thick) { thick = option.thick }
+            if (option.arrowThick) { arrowThick = option.arrowThick }
+            if (option.arrowLength) { arrowLength = option.arrowLength }
+          }
+          var a = this.paper.path("M" + x + "," + y +
+            "H" + (w + x) +
+            "V" + (y - arrowThick) + "L" + (x + w + arrowLength) + "," + (y + 0.5 * thick) +
+            "L" + (x + w) + "," + (y + thick + arrowThick) +
+            "L" + (x + w) + "," + (y + thick) +
+            "L" + (x) + "," + (y + thick)
+
+
+          )
+
+
+          a.attr({
+            "stroke": "#565656",
+            "fill": "#cbcccc"
+          })
+          return a
+
+        }
+
+
+      }
+
+
+
+
+      o = {
+        paper: Snap("#v3_logic"),
+        portGroup: function(factory, slotId) {
+          var basicStep = 0
+          if (!slotId) {
+            slotId = 1
+          }
+
+          if (slotId == 2) {
+            basicStep = 96
+          }
+          var portStep = 10
+
+          if (slotId == 3) {
+            basicStep = 206
+            portStep=16
+          }
+          var portX = 180
+          var slot1Port0 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          var slot1Port1 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          var slot1Port2 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          var slot1Port3 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          slot1Port0.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 0) + ")")
+          slot1Port1.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 1) + ")")
+          slot1Port2.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 2) + ")")
+          slot1Port3.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 3) + ")")
+          if(slotId!=3){
+            var slot1Port4 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          var slot1Port5 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          var slot1Port6 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          var slot1Port7 = factory.arrow(null, { w: (40), arrowLength: 10, thick: 2, arrowThick: 2 })
+          slot1Port4.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 4) + ")")
+          slot1Port5.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 5) + ")")
+          slot1Port6.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 6) + ")")
+          slot1Port7.transform("translate(" + (portX) + "," + (basicStep + 16 + portStep * 7) + ")")
+          }
+          
+
+        },
+        init: function() {
+          var paper = this.paper;
+          paper.clear()
+          var factory = new V3LogicUtil(paper)
+          var slotX = 240
+          var slotStep = 100
+          var clockX = 350
+          var outX = 500
+          var arrow1 = factory.arrow(null, { w: (clockX - slotX - 10 - 40-2), arrowLength: 10, thick: 8, arrowThick: 6 })
+          var arrow2 = factory.arrow(null, { w: (clockX - slotX - 10 - 40-2), arrowLength: 10, thick: 8, arrowThick: 6 })
+          var arrow3 = factory.arrow(null, { w: (clockX - slotX - 10 - 40-2), arrowLength: 10, thick: 8, arrowThick: 6 })
+          arrow1.transform("translate(" + (slotX + 40) + ",70)")
+          arrow2.transform("translate(" + (slotX + 40) + "," + (50 + slotStep) + ")")
+          arrow3.transform("translate(" + (slotX + 40) + "," + (50 + slotStep * 2) + ")")
+
+          var slot1 = factory.slot().transform("translate(" + slotX + ",20)")
+          var slot2 = factory.slot().transform("translate(" + slotX + "," + (20 + slotStep) + ")")
+          var slot3 = factory.slot().transform("translate(" + slotX + "," + (20 + slotStep * 2) + ")")
+
+          var arrowOut = factory.arrow(null, { w: (outX - clockX - 10 - 100-2), arrowLength: 10, thick: 8, arrowThick: 6 })
+          arrowOut.transform("translate(" + (clockX + 100) + ",140)")
+
+          var clock = factory.clock()
+          clock = clock.transform("translate(" + clockX + ",60)")
+          var output = factory.output()
+          output.transform("translate(" + outX + ",80)")
+
+
+
+          o.portGroup(factory, 1)
+          o.portGroup(factory, 2)
+          o.portGroup(factory, 3)
+
+          var gnss1 = factory.arrow(null, { w: (150), arrowLength: 10, thick: 8, arrowThick: 6 })
+          gnss1.transform("translate(" + (180) + "," + (320) + ")")
+
+          var gnss2 = factory.arrow(null, { w: (150), arrowLength: 10, thick: 8, arrowThick: 6 })
+          gnss2.transform("translate(" + (180) + "," + (350) + ")")
+
+
+          var myMatrix = new Snap.Matrix();
+            myMatrix.scale(4,2);                 // 横纵缩放
+
+        }
+      }
+      o.init()
+
+
+    }
+  </script>
+
+</body>
+
+</html>
