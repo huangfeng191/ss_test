@@ -1,102 +1,15 @@
-$("#eInput").get(0).innerHTML = editLine.info.port;
-$("#eOutput").get(0).innerHTML = editLine.info.outPort;
-$("#nodeDetail").get(0).innerHTML = editLine.info.remarks;
-$("#isBackup").val(editLine.info.isBackup||"false");
-$("#systemName").get(0).innerHTML = editLine.info.systemName;
-$("#map #detail-info").css("display", "none");
+0设置用户允许登录时间的时候，设了开始时间，也要设置结束时间，另外要可以清空	
+1设置用户允许登录时间的时候，设了开始时间，也要设置结束时间，另外要可以清空	
+2添加设备的时候，网元名称不管输入什么都提示不能输入特殊字符	
+3逻辑拓扑配置和系统拓扑配置的机架位置栏位输入数据之后，点击取消，实际则执行了成功操作	
+4保存和修改表单，需要验证是否重复提交	
+5配置管理》网元配置，天线延迟、质量优先级等值输入框要校验一下 
+6网元管理，分页组件显示异常	
+7添加链路的时候，没做字符和长度限制	
+8经纬度的保存方式不一致，有的小数点后面只允许输入两位，有的可以输入10位	
+9资产归属栏位没做长度限制，点击确定没反应	
+10链路删除后，对应的链路告警要清除掉	
 
 
 
-
-setTimeout(function(){
-    $('#eInput').get(0).innerHTML = "";
-    $('#eOutput').get(0).innerHTML = "";
-    $('#systemName').get(0).innerHTML = "";
-    $('#nodeDetail').get(0).innerHTML = "";
-    adjustHeight();
-},300)
-
-
-
-function adjustHeight(){
-    $(`.bodyItem`).css('height', 'inherit');
-   $('#isBackup').css('height', 'inherit');
-   var height = document.getElementById('bodyContainer').scrollHeight;
-   $(`.bodyItem`).css('height', height);
-   $('#isBackup').css('height', height);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$('#nodeDetail').on('input', function(e){
-    var value = e.target.innerText;
-    if(value.length > 18){
-        $(this).blur()
-        $('#myModalTips').html(window.top.showTips("物理节点信息不能超过18个字符"));
-        $('#myModalTips').modal('show');
-        e.target.innerText = e.target.innerText.slice(0,18)
-        return;
-    }
-})
-$('#systemName').on('input', function(e){
-    var value = e.target.innerText;
-    if(value.length > 30){
-        $(this).blur()
-        $('#myModalTips').html(window.top.showTips("系统名称不能超过30个字符"));
-        $('#myModalTips').modal('show');
-        e.target.innerText = e.target.innerText.slice(0,30)
-        return;
-    }
-})
-
-$('#eInput').on('input', function(e){
-    var value = e.target.innerText;
-    if(value.length > 32){
-        $(this).blur()
-        $('#myModalTips').html(window.top.showTips("设备输入端口不能超过32个字符"));
-        $('#myModalTips').modal('show');
-        e.target.innerText = e.target.innerText.slice(0,32)
-        return;
-    }
-})
-$('#eOutput').on('input', function(e){
-    var value = e.target.innerText;
-    if(value.length > 32){
-        $(this).blur()
-        $('#myModalTips').html(window.top.showTips("设备输出端口不能超过32个字符"));
-        $('#myModalTips').modal('show');
-        e.target.innerText = e.target.innerText.slice(0,32)
-        return;
-    }
-})
-
-
-
-
-
-
-
-
-
-
-
-
-var rules={
-    nodeDetail:{"length":32,"err":"物理节点信息不能超过18个字符"},
-    sysName:{"length":32,"err":"系统名称不能超过30个字符"},
-    aSlot:{"length":32,"err":"设备输出端口不能超过32个字符"},
-    zSlot:{"length":32,"err":"设备输入端口不能超过32个字符"}
-}
+1.国网：南瑞现场反馈问题修改、测试配合2.老网管：V3bug修改,逻辑图、板卡图功能
