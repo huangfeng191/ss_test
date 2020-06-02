@@ -142,4 +142,48 @@ squelch = 不可用  on  ais
 
 
 
-wing
+
+# led-alarm 
+
+cc :  (disable(0), green(1), red(2), yellow(3), blink-green(4), blink-red(5), blink-yellow(6))
+4-E1 input card: (disable(0),red(1),green(2), blink-green(3), yellow(4), blink-red(5), blink-yellow(6)), 
+input-PTP  card disable(0),red(1),green(2), blink-green(3), yellow(4), blink-red(5), blink-yellow(6))
+PPSS-TOD:  (disable(0),red(1),green(2), blink-green(3), yellow(4), blink-red(5), blink-yellow(6))
+
+
+
+
+# cc 
+disable 0
+green 1
+red 2
+yellow 3
+blink-green 4
+blink-red 5
+blink-yellow 6
+
+"0":"disable", "1":"green", "2":"red", "3":"yellow", "4":"blink-green", "5":"blink-red", "6":"blink-yellow"
+
+
+
+# 4-E1 input card:
+
+"0":"disable", "1":"red", "2":"green", "3":"blink-green", "4":"yellow", "5":"blink-red", "6":"blink-yellow"
+
+
+
+
+
+# output card 
+
+
+ disable(0),red(1),green(2), blink-green(3), yellow(4), blink-red(5), blink-yellow(6))
+
+
+nput-PTP card disable(0),red(1),green(2), blink-green(3), yellow(4), blink-red(5), blink-yellow(6))
+PPSS-TOD; (disable(0),red(1),green(2), blink-green(3), yellow(4), blink-red(5), blink-yellow(6))
+
+
+
+
+

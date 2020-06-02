@@ -165,3 +165,14 @@ IOC 钟卡
 使能  Enable Disable 可以开启关闭
 
 状态: ALARM  OK  UNEQUIPPED (未安装)
+
+
+# 2020-05-04  Monday 
+
+color:
+
+offline #808080 
+critical #FF0000
+major #FE7E1C
+minor #FFD000
+event #108EE9

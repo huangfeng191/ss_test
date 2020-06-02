@@ -1,0 +1,143 @@
+a = {
+    "code": 100000,
+    "data": {
+        "all": [{
+            "aid": "u",
+            "type": "N",
+            "verMCU": "V01.01",
+            "verFPGA": "V01.02",
+            "verCPLD": "V01.03",
+            "verPCB": "V01.04",
+            "net": {
+                "aid": "u",
+                "ip": "3.3.3.3",
+                "gateway": "3.3.3.1",
+                "netmask": "255.255.255.0",
+                "dns1": "1.1.1.1",
+                "dns2": "1.1.1.2"
+            },
+            "mac": "AA:AA:AA:BB:BB:BB",
+            "source": "0",
+            "leapnum": "04",
+            "tl": "0B",
+            "ssm_en": "1",
+            "ssm_thd": "b"
+        }],
+        "alarms": {},
+        "params": {},
+        "status": {}
+    }
+}
+
+{
+    "code": 100000,
+    "data": {
+        "all": [{
+            "aid": "o",
+            "type": "K",
+            "source": "1",
+            "priority": "12345666",
+            "mask": "00001111",
+            "we": "0",
+            "out": "0x48",
+            "msmode": "MAIN",
+            "trmode": "TRCK",
+            "fb": "0"
+        }],
+        "alarms": {},
+        "params": {},
+        "status": {}
+    }
+}
+
+
+
+{
+    "code": 100000,
+    "data": {
+        "all": [],
+        "alarms": {},
+        "params": {
+            "inputRef": {
+                "aid": "o",
+                "type": "K",
+                "source": "1#1-8|F#false",
+                "priority": "12345666#dddddddd#false",
+                "mask": "00001111",
+                "we": "0",
+                "out": "H",
+                "msmode": "MAIN",
+                "trmode": "TRCK",
+                "fb": "0"
+            },
+            "name": "LT00000000000012",
+            "time": "2020-04-15 09:58:06"
+        },
+        "status": {}
+    }
+}
+
+
+{
+    "code": 100000,
+    "data": {
+        "all": [{
+            "aid": "o",
+            "type": "K",
+            "source": "1#1-8|F#false",
+            "priority": "12345666#dddddddd#false",
+            "mask": "00001111",
+            "we": "0",
+            "out": "H",
+            "msmode": "MAIN",
+            "trmode": "TRCK",
+            "fb": "0"
+        }],
+        "alarms": {},
+        "params": {},
+        "status": {}
+    }
+}
+
+
+// input 
+{
+    "code": 100000,
+    "data": {
+        "all": [{
+            "aid": "o",
+            "type": "K",
+            "source": "1#1-8|F#false",
+            "priority": "12345666#dddddddd#false",
+            "mask": "00001111",
+            "we": "0",
+            "out": "H",
+            "msmode": "MAIN",
+            "trmode": "TRCK",
+            "fb": "0"
+        }],
+        "alarms": {},
+        "params": {},
+        "status": {}
+    }
+}
+
+
+{
+    "code": 100000,
+    "data": {
+        "all": [{
+                "aid": "g",
+                "type": "a",
+                "level": "0B#00|02|04|08|0B|0F#false",
+                "out_type": "0000111100002222#dddddddddddddddd#false",
+                "mode": "0#0|1#false",
+                "out_sta": "0"
+            },
+{ "aid": "h", "type": "a", "level": "02#00|02|04|08|0B|0F#false", "out_type": "0000111100002222#dddddddddddddddd#false", "mode": "0#0|1#false", "out_sta": "0" }
+        ],
+        "alarms": {},
+        "params": {},
+        "status": {}
+    }
+}

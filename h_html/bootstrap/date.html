@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+ 
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../g_gulp/static/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="../../g_gulp/static/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../less/layout.css">
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap-3.3.7/date/bootstrap-datepicker.css">
+  <script src="../lib/bootstrap-3.3.7/date/bootstrap-datepicker.js"></script>
+  <script src="../lib/bootstrap-3.3.7/date/bootstrap-datepicker.zh-CN.min.js"></script>
+
+</head>
+
+<body id="test">
+  
+  <select  style="width:40px;height: 26px;"  >
+    <option value="1" >1</option>
+    <option value="2" >2</option>
+  </select>
+  <select  style="width:40px;height: 26px;"  >
+    <option value="1" >1</option>
+    <option value="2" >2</option>
+  </select>
+
+<input type="text" name="" id="a">
+<input type="text" name="" id="b">
+<button>1212</button>
+</body>
+<script>
+    $(function(){
+    $("input#a").datepicker({
+      minViewMode: 1,
+    language: "zh-CN",
+    format: "yyyy-mm",
+    autoclose: true,
+    })
+    $("input#b").datepicker({
+      minViewMode: 1,
+    language: "zh-CN",
+    format: "yyyy-mm",
+    autoclose: true,
+    })
+    $("button ").click(function(e){
+      // 这个是有效的
+     
+      $("input#b").datepicker("setDate","2019-11")
+    })
+    
+})
+</script>
+
+</html>
