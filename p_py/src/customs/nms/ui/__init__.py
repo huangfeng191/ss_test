@@ -113,6 +113,11 @@ class NmsHouseCRUD(CRUD):
             if(r.get("Field")=="marked"):
                 marked=r.get("Value")
                 conditions.remove(r)
+        title=""
+        for r in conditions:
+            if (r.get("Field") == "title"):
+                title = r.get("Value")
+                conditions.remove(r)
 
         if community:
             conditions.append( {"Field":"community","Value":community,"Group":1,"Operate":"=","Relation":"and"})
@@ -149,9 +154,36 @@ class NmsHouseCRUD(CRUD):
                     re1["rows"].append(r)
             re1["total"]=len(re1["rows"])
             re=re1
-
+        if title:
+            re1 = {"rows": [], "total": 0}
+            for r in re.get("rows"):
+                if title in  r.get("title", "") :
+                    re1["rows"].append(r)
+            re1["total"] = len(re1["rows"])
+            re = re1
         return re
+    def saveCommunityFromMysql(self):
+        source = {"driver": "mysql"}
+        d = getDB(source, "anjuke_secondhand_house")
+        re = d.items(fields={
+            "id": 1, "total_price": 1, "total_price_unit": 1, "avg_price": 1, "avg_price_unit": 1, "title": 1,
+            "house_type": 1,
+            "building_area": 1, "building_area_unit": 1, "floor": 1, "building_time": 1, "community": 1, "city": 1,
+            "area": 1,
+            "address": 1, "advantage": 1, "salesman": 1, "url": 1, "url_md5": 1, "create_time": 1
+        },order=[
+            # {"Type":1,"Field":"create_time"},
+                 {"Type":1,"Field":"building_area"},
+                 {"Type":1,"Field":"floor"}],
+        conditions=[]
+        )
+        for r in re.get("rows"):
+            old=self.module.get({"address":r.get("community")})
+            if(not old):
+                self.module.upsert(**{"address":r.get("community"),"add_time":utils.YMD(time.time())})
+
     def fixPosition(self, record=None, *args, **kwArgs):
+        self.saveCommunityFromMysql()
         getBaiduCoordinates()
         return "OK"
 
