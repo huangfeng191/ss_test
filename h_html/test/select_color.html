@@ -1,0 +1,32 @@
+<style>
+    /* select { color: blue; } */
+    select:invalid { color: red; }
+   
+    option{
+        color: #000;
+    } 
+ </style>
+  
+ // 注意required必须设置，要不然颜色不生效
+ <select required>
+     <option value="" >Select your option</option>
+     <option value="M">Male</option>
+     <option value="F">Female</option>
+ </select>
+ <input required>
+ <button onclick="do1()">点击</button>
+  
+ <script>
+     function do1(){
+         alert(1)
+     }
+ // 判断select是否有值
+ $("button").on('click',function(){
+     var value=$("select").val()
+     if(value==null){
+         console.log(1)
+     }else{
+         console.log(2)
+     }
+ })     
+</script>

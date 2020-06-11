@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+
+  <script>
+    //播放音乐
+    function playSound () {
+      var browser = window.navigator.userAgent.toLowerCase();
+      if (browser.indexOf("ie") >= 0) {
+        //IE内核浏览器
+        var strEmbed = '<embed name="embedPlay" src="#URL()/include/fastrepair/ding.mp3" autostart="true" hidden="true" loop="true"></embed>';
+        if ($("body").find("embed").length <= 0) {
+          $("body").append(strEmbed);
+        } else {
+          var embed = document.embedPlay;
+          //浏览器不支持 audio，则使用 embed 播放
+          embed.play();
+        }
+      } else {
+        //非IE内核浏览器
+        var strAudio = "<audio id='audioPlay' src='#URL()/include/fastrepair/ding.mp3' loop='loop' hidden='true'>";
+        if ($("body").find("audio").length <= 0)
+          $("body").append(strAudio);
+        var audio = document.getElementById("audioPlay");
+
+        //浏览器支持 audio
+        audio.play();
+      }
+      
+    }
+
+    //关闭音乐
+    function closeSound () {
+      var browser = window.navigator.userAgent.toLowerCase();
+      if (browser.indexOf("ie") >= 0) {
+        //IE内核浏览器
+        var embed = document.embedPlay;
+
+        //浏览器不支持 audio，则使用 embed 播放
+        embed.stop();
+      } else {
+        //非IE内核浏览器
+        var audio = document.getElementById("audioPlay");
+
+        //浏览器支持 audio
+        audio.pause();
+      }
+    }
+  </script>
+
+</body>
+
+</html>
