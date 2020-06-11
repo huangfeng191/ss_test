@@ -943,3 +943,25 @@ getAllVOPath 线
 
 
 
+
+
+# 2020-06-03  Wednesday 
+
+echarts 6639
+
+
+
+
+http://127.0.0.1:65/nms/spring/log/nmsLog?logType=%E6%93%8D%E4%BD%9C%E6%97%A5%E5%BF%97,%E5%AE%89%E5%85%A8%E6%97%A5%E5%BF%97,%E7%BD%91%E7%AE%A1%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97&type=%E7%B3%BB%E7%BB%9F%E7%BA%A7&token=ER36jbI4ld7gBwzMwY3Ki9G&userName=&ip=&object=&bgnDate=2020-06-01&endDate=2020-06-03&opType=å¤ä»½&status=&analysisType=userName&page=1&pageSize=20
+
+
+
+
+http://127.0.0.1:62/nms/spring/log/nmsLog?logType=%E6%93%8D%E4%BD%9C%E6%97%A5%E5%BF%97,%E5%AE%89%E5%85%A8%E6%97%A5%E5%BF%97,%E7%BD%91%E7%AE%A1%E7%B3%BB%E7%BB%9F%E6%97%A5%E5%BF%97&type=%E7%B3%BB%E7%BB%9F%E7%BA%A7&token=E5E39D14D1043E0F4259617BF9AAA265&userName=&ip=&object=&bgnDate=2020-06-01&endDate=2020-06-03&opType=%E4%BF%AE%E6%94%B9&status=&analysisType=userName&page=1&pageSize=20
+
+
+
+# 2020-06-04  Thursday 
+
+header.js  告警信息60s 刷新一次
+登录时间限制 
