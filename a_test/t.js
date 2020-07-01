@@ -1,57 +1,16 @@
-{
-    "code": 100000,
-    "data": [
-        { "id": "117c4c9f-4e09-462b-9c6e-fbb5d8be5506", "isDelete": 0, "timestamp": 1573434015000, "name": "北京", "code": "0", "subArea": [], "areaDesc": "", "proNetName": "北京首都" },
-        { "id": "12ab91a8-e3c3-45fe-be31-bc07a638f6a5", "isDelete": 0, "timestamp": 1573434015000, "name": "天津", "code": "0", "subArea": [], "areaDesc": "天津", "proNetName": "天津" },
-        { "id": "13be89cf-6576-4679-a7c9-6efcee82d315", "isDelete": 0, "timestamp": 1573434015000, "name": "河北", "code": "0", "subArea": [], "areaDesc": "河北电力", "proNetName": "河北省电力公司" },
-        { "id": "14b15ea0-959a-4c57-a045-38c27e96d3a2", "isDelete": 0, "timestamp": 1573434015000, "name": "山西", "code": "0", "subArea": [], "areaDesc": "天津", "proNetName": "天津电力公司" },
-        { "id": "155d358e-0c9e-4048-946e-f507a108076c", "isDelete": 0, "timestamp": 1573434015000, "name": "山东", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "16f0d82f-c69e-4b62-ac11-0f5b8edb5aa3", "isDelete": 0, "timestamp": 1573434015000, "name": "内蒙古", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "2161175f-4d4d-4256-89bf-231882c01314", "isDelete": 0, "timestamp": 1573434015000, "name": "上海", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "223e1284-57de-43b7-9d91-cba1901095b7", "isDelete": 0, "timestamp": 1573434015000, "name": "江苏", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "23965d07-4b27-44dc-8a02-ce7aebc62619", "isDelete": 0, "timestamp": 1573434015000, "name": "浙江", "code": "0", "subArea": [], "areaDesc": "浙江省", "proNetName": "浙江省网" },
-        { "id": "24334ac6-5489-4064-b5d5-a0a0149c0ff6", "isDelete": 0, "timestamp": 1573434015000, "name": "福建", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "25135897-989f-4d62-99a1-a1e6eba8da5d", "isDelete": 0, "timestamp": 1573434015000, "name": "安徽", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "3116c3d9-5931-4a41-8f8a-c31c67b022a0", "isDelete": 0, "timestamp": 1573434015000, "name": "湖北", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "3284c61b-900a-4a61-a9da-f80a3960c4d0", "isDelete": 0, "timestamp": 1573434015000, "name": "湖南", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "330a5894-a6ed-4182-a0f9-f27de23a42ec", "isDelete": 0, "timestamp": 1573434015000, "name": "河南", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "3413f779-9238-4fd8-a66e-a4f2adb95611", "isDelete": 0, "timestamp": 1573434015000, "name": "江西", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "41ac4270-9112-4d7b-a717-fb52b59843f6", "isDelete": 0, "timestamp": 1573434015000, "name": "四川", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "429bfb73-4d57-49ff-9082-b17257ebf5c6", "isDelete": 0, "timestamp": 1573434015000, "name": "重庆", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "43bffee1-7bee-45a5-aef0-8746b3c1418e", "isDelete": 0, "timestamp": 1573434015000, "name": "西藏", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "515be419-d0b2-4ce3-99ab-593ef66a1eef", "isDelete": 0, "timestamp": 1573434015000, "name": "陕西", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "52a39a9f-8014-486d-ad7c-fc73571fe714", "isDelete": 0, "timestamp": 1573434015000, "name": "甘肃", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "534caaa4-7e3c-4d1a-b9f4-307e02fa1217", "isDelete": 0, "timestamp": 1573434015000, "name": "宁夏", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "54db88c8-af82-47d3-9176-30d41c430f91", "isDelete": 0, "timestamp": 1573434015000, "name": "青海", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "55fd9f09-6802-418f-ae99-9b69bcca1002", "isDelete": 0, "timestamp": 1573434015000, "name": "新疆", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "611bb9f7-ff50-43a9-965a-ed9c43bd5b9b", "isDelete": 0, "timestamp": 1573434015000, "name": "黑龙江", "code": "0", "subArea": [], "areaDesc": "2323", "proNetName": "232323" },
-        { "id": "62f9aa23-d01d-4d1c-b7c5-f9d6c21a4656", "isDelete": 0, "timestamp": 1573434015000, "name": "辽宁", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "63c3fbe6-6228-46d1-b585-4c80dc07ac13", "isDelete": 0, "timestamp": 1573434015000, "name": "吉林", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "c7af520f-52c9-40d4-8ace-622e64a474bf", "isDelete": 0, "timestamp": 1573434015000, "name": "骨干网", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        {
-            "id": "c89f5031-8737-48a7-a103-398fdafe4a28",
-            "isDelete": 0,
-            "timestamp": 1573434015000,
-            "name": "省网",
-            "code": "0",
-            "subArea": [],
-            "areaDesc": null,
-            "proNetName": null
-        },
-        {
-            "id": "e47c4c9f-4e09-462b-9c6e-fbb5d8be1111",
-            "isDelete": 0,
-            "timestamp": 1573434015000,
-            "name": "全网",
-            "code": "0",
-            "subArea": [],
-            "areaDesc": null,
-            "proNetName": null
-        },
-        { "id": "e47c4c9f-4e09-462b-9c6e-fbb5d8be1115", "isDelete": 0, "timestamp": 1573434015000, "name": "广东", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "e47c4c9f-4e09-462b-9c6e-fbb5d8be1116", "isDelete": 0, "timestamp": 1573434015000, "name": "海南", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "e47c4c9f-4e09-462b-9c6e-fbb5d8be1117", "isDelete": 0, "timestamp": 1573434015000, "name": "贵州", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "e47c4c9f-4e09-462b-9c6e-fbb5d8be1118", "isDelete": 0, "timestamp": 1573434015000, "name": "云南", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null },
-        { "id": "e47c4c9f-4e09-462b-9c6e-fbb5d8be1121", "isDelete": 0, "timestamp": 1573434015000, "name": "广西", "code": "0", "subArea": [], "areaDesc": null, "proNetName": null }
-    ]
-}
+width: 140px;
+padding: 1px 0;
+border-width: 2px;
+border-style: inset;
+border-color: initial;
+
+
+
+background-color: #f8f8f8;
+border-width: 1px;
+border-style: solid;
+border-color: #a6a6a6;
+border-image: initial;
+height: 24px;
+line-height: 24px;
+padding-left: 4px;
