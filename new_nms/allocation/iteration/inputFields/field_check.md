@@ -136,30 +136,23 @@ checkInputLegal("remark",100,"告警备注",false,{"special":"extension"} )
 #### add  addUserModal
 
 用户名 userName 30 chen
-单位 company 50 chen
-姓名 name 10 ch
-
-联系方式 mobile 11
+单位 company 30 chen
+姓名 name 10 chen
 
 #### edit  updateUserModal
 
-<!-- 用户名 username  不可修改  -->
-单位 companys 50 chen
-姓名 names 10 ch
-联系方式 mobiles 11
+//用户名 username  不可修改
+单位 companys 30 chen
+姓名 names 10 chen
 
 
-### 用户信息修改
-
-单位 companys 50 chen
-姓名 names 10 ch 
 
 
 ### 权限管理
 角色名称：  qRoleName 50 chen
 
-
-描述  field="roleDesc" 255
+角色名称  field=roleName 50 chen
+描述  field=roleDesc 255
 ### 用户统计
 
 用户名： namess1 30 chen
@@ -167,7 +160,7 @@ checkInputLegal("remark",100,"告警备注",false,{"special":"extension"} )
 
 ### 系统参数
 
-配置值 configValue
+配置值 configValue 100
 说明1 comment1 100
 说明2 comment2 100
 说明3 comment3 100
@@ -175,12 +168,20 @@ checkInputLegal("remark",100,"告警备注",false,{"special":"extension"} )
 
 ### 角色管理
 
-用户级别  qRoleNameReal 50 ch 
+用户级别  qRoleNameReal 50 chen 
 
 
 
 
 system 
 
-用户名 qfield="userName"  30 chen 
-操作对象 qfield="object" 50 chen
+用户名 qfield=userName  30 chen 
+操作对象 qfield=object 50 chen
+
+
+
+
+### 用户信息修改
+
+单位 companys 30 chen
+姓名 names 10 chen  
