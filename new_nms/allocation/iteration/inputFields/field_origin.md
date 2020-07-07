@@ -139,6 +139,8 @@
 内容 search_message
 原因 search_reason
 
+
+### add edit  addAdjustmentModal
 原因 adjust_reason
 内容 adjust_message
 处理步骤 adjust_step
@@ -180,6 +182,7 @@
 
 
 ## 网元详情
+## edit  addDeviceModal
 补充说明 wy_desc
 
 
@@ -275,3 +278,9 @@ email email
 
 
 
+
+system 
+
+用户名 qfield="userName"
+ip地址 qfield="ip"
+操作对象 qfield="object"
