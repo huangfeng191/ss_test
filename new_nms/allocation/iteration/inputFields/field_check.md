@@ -68,7 +68,6 @@ checkInputLegal("remark",100,"告警备注",false,{"special":"extension"} )
 ### 设置
 厂商网管系统标识符	identifier 20
 厂商网管用户标签	userLabel 20
-厂商网管系统软件版本 softwareVersion 20	en_dot
 网管产品名称 productName 20	 
 厂商名称 manufacturer 20	 
 附加信息 additionalInfo	20
