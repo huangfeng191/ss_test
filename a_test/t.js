@@ -1,4 +1,5 @@
-a = {
+d = {
+    UTF8Encoding: true,
     "type": "FeatureCollection",
     "features": [{
         "id": "100000",
@@ -27,3 +28,4 @@ a = {
         "properties": { "cp": [116.3683244, 39.915085], "name": "中华人民共和国", "childNum": 3 }
     }]
 }
+var coords = echarts.getAreaCoordinate(d)
