@@ -1,0 +1,16 @@
+@host = 127.0.0.1:61
+@token=DbFqYlbIcO6d6DSLnnUBld-
+@deviceId=D202007011026420961677
+
+
+
+### 获取设备配置信息
+POST /nms/spring/deviceConfig/{{deviceId}}/getDeviceParamColl?token={{token}}
+Host: {{host}}
+Content-Type: application/json;charset=UTF-8
+Cookie:JSESSIONID={{token}}
+
+[  {"node": "clock", "index": "", "num": ""} ]
+
+# [{"node":"inputCardState","index":".1","num":""},{"node":"inputCardPriority","index":".1","num":""},{"node":"inputCardFrameType","index":".1","num":""},{"node":"inputCardCRCState","index":".1","num":""},{"node":"inputCardSSMState","index":".1","num":""},{"node":"inputCardSSMBit","index":".1","num":""},{"node":"inputCardPQL","index":".1","num":""},{"node":"inputCardCfgUsed","index":".1","num":""}]
+

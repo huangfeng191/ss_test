@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="../lib/raphael.js"></script>
+   <link rel="stylesheet" href="../less/test.css">
+ </head>
+
+ <body style="min-width: 1200px;">
+
+   <div id="paper" class="normal-border" >
+   </div>
+
+
+
+ </body>
+ <script>
+   window.onload = function() {
+     var setW = 600;
+     var setH = 516;
+     var pageLeftOffset=300
+     var paperDocument = document.getElementById("paper")
+     var paper = Raphael("paper", paperDocument.clientWidth, setH);
+     var bg=paper.image("../images/logicBG.jpg",pageLeftOffset, 0, setW, setH)
+    
+     container = paper.canvas.parentNode
+     function onMouseWheeling(e){
+      console.log("e"+e.wheelDelta)
+     }
+    //  document.addEventListener('DOMMouseScroll', onMouseWheeling, false);
+    //  container.onmousewheel = document.onmousewheel = onMouseWheeling;
+    bg.node.onmousewheel =  onMouseWheeling;
+
+    }
+
+
+    // e.target.getBoundingClientRect() x ,y 
+
+ </script>
+
+ </html>
