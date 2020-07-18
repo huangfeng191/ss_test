@@ -10,11 +10,14 @@
    <link rel="stylesheet" href="../less/test.css">
  </head>
 
- <body style="min-width: 1200px;">
+ <body >
 
-   <div id="paper" class="normal-border" >
+   <div style="width:600px;overflow: auto;" >
+
+   
+   <div id="paper" class="normal-border" style="width:1200px; overflow:auto" >
    </div>
-
+  </div> 
 
 
  </body>
@@ -26,9 +29,46 @@
      var paperDocument = document.getElementById("paper")
      var paper = Raphael("paper", paperDocument.clientWidth, setH);
      var bg=paper.image("../images/logicBG.jpg",pageLeftOffset, 0, setW, setH)
+     var imageOffsetX=20
+     var imageOffsetY=20
+     var image1=paper.image("../images/net_topo/netNode1.png",pageLeftOffset+imageOffsetX, imageOffsetY, 20, 20)
+     
     
      container = paper.canvas.parentNode
+     function findPos(obj) {
+        var posX = obj.offsetLeft, posY = obj.offsetTop, posArray;
+        while (obj.offsetParent) {
+            if (obj === document.getElementsByTagName('body')[0]) {
+                break;
+            } else {
+                posX = posX + obj.offsetParent.offsetLeft;
+                posY = posY + obj.offsetParent.offsetTop;
+                obj = obj.offsetParent;
+            }
+        }
+        posArray = [posX, posY];
+        return posArray;
+    }
+    function getRelativePosition(e, obj) {
+        var x, y, pos;
+        if (e.pageX || e.pageY) {
+            x = e.pageX;
+            y = e.pageY;
+        } else {
+            x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+        pos = findPos(obj);
+        x -= pos[0];
+        y -= pos[1];
+
+        return { x: x, y: y };
+    }
+
      function onMouseWheeling(e){
+          var evt = window.event || e,
+            zoomCenter = getRelativePosition(evt, container);
+            debugger
       console.log("e"+e.wheelDelta)
      }
     //  document.addEventListener('DOMMouseScroll', onMouseWheeling, false);
