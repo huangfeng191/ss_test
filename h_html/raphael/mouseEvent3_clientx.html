@@ -1,0 +1,48 @@
+<style>
+  .box {
+    width: 400px;
+    height: 250px;
+    border: 2px solid darkblue;
+    background-color: blue;
+    color: white;
+    margin-left:200px;
+    font: 16px "Zilla", "Open Sans", "Helvetica", "Arial", sans-serif;
+  }
+</style>
+
+  <div class="box">
+    <p>
+      Move the mouse around in this box to watch its coordinates change.
+    </p>
+   
+  </div>
+
+<p>
+  <code>pageX</code>: <span id="x">n/a</span>
+</p>
+<p>
+  <code>pageY</code>: <span id="y">n/a</span>
+</p>
+<p>
+  <code>clientX</code>: <span id="clientX">n/a</span>
+</p>
+<p>
+  <code>screenX</code>: <span id="screenX">n/a</span>
+</p>
+<script>
+  var box = document.querySelector(".box");
+  var pageX = document.getElementById("x");
+  var pageY = document.getElementById("y");
+  var clientX = document.getElementById("clientX");
+  var screenX = document.getElementById("screenX");
+  function updateDisplay (event) {
+    pageX.innerText = event.pageX;
+    pageY.innerText = event.pageY;
+    clientX.innerText = event.clientX;
+    screenX.innerText = event.screenX;
+  }
+
+  box.addEventListener("mousemove", updateDisplay, false);
+  box.addEventListener("mouseenter", updateDisplay, false);
+  box.addEventListener("mouseleave", updateDisplay, false);
+</script>
