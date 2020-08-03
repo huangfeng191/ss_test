@@ -1,3 +1,114 @@
-<span>sfasd</span>
-<script src="../h_html/lib/jquery-1.11.1.min.js"></script>
-<iframe src="t.html" style="width:90%;height:90%" id="content"></iframe>
+
+  <form class="excel form-horizontal formBiao ng-pristine ng-valid">
+    <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5 fa15x  b-radius padding-l padding-r padding-b15 t-right">
+      <div class="form-group">
+        <label for="inputEmail3" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+          Gnss1
+          <span translate="GNSS1_ENABLE" class="ng-scope">使能</span>
+        </label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <select ng-model="deviceContent.gnss1State" class="excel_value form-control input-sm ng-pristine ng-untouched ng-valid ng-not-empty">
+            <option translate="PLEASE_SELECT" value="" class="ng-scope">请选择</option>
+            <option ng-selected="deviceContent.gnss1State == 0" value="0">disable</option>
+            <option ng-selected="deviceContent.gnss1State == 1" value="1" selected="selected">enable</option>
+          </select>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="form-group">
+        <label for="inputEmail3" translate="PRIORITY" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">优先级</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <input type="text" class="excel_value form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="deviceContent.gnss1Priority" value="1"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" translate="TRACKING_MODE" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">跟踪模式</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 "> 
+          <select ng-disabled="gnss1TrackModeD" ng-model="deviceContent.gnss1TrackMode" class="excel_value form-control input-sm ng-pristine ng-untouched ng-valid ng-not-empty">
+            <option translate="PLEASE_SELECT" value="" class="ng-scope">请选择</option>
+            <option ng-selected="deviceContent.gnss1TrackMode == 0" value="0">beidou</option>
+            <option ng-selected="deviceContent.gnss1TrackMode == 1" value="1">gps</option>
+            <option ng-selected="deviceContent.gnss1TrackMode == 2" value="2">priority-beidou</option>
+            <option ng-selected="deviceContent.gnss1TrackMode == 3" value="3" selected="selected">priority-gps</option>
+          </select>
+        </div>
+      </div>
+
+<!--       <div class="form-group" >
+  <label for="inputEmail3" translate="" class="col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">Mask</label>
+  <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+    <input type="text" class="excel_value form-control" ng-model="deviceContent.gnss1Mask" ></div>
+</div> -->
+
+      <div class="form-group">
+        <label for="inputEmail3" translate="ANTENNA_DELAY" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">天线延迟</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <input type="text" class="excel_value form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="deviceContent.gnss1CableDelay" value="0"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" translate="PQL_STATE" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">质量优先级状态</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <select ng-model="deviceContent.gnss1PQLState" class="excel_value form-control input-sm ng-pristine ng-untouched ng-valid ng-not-empty">
+            <option translate="PLEASE_SELECT" value="" class="ng-scope">请选择</option>
+            ';
+            <option ng-selected="deviceContent.gnss1PQLState == 0" value="0" selected="selected">disable</option>
+            <option ng-selected="deviceContent.gnss1PQLState == 1" value="1">enable</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" translate="PQL_VALUE" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">质量优先级值</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <input type="text" class="excel_value form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="deviceContent.gnss1PQL" value="1"></div>
+      </div>
+    </div>
+
+    <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5 fa15x  b-radius ">
+
+      <div class="form-group">
+        <label for="inputEmail3" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+          Gnss1
+          <span translate="GNSS1_PATTERN" class="ng-scope">模式</span>
+        </label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <select ng-model="deviceContent.gnss1Mode" ng-change="change(deviceContent.gnss1Mode)" class="excel_value form-control input-sm ng-pristine ng-untouched ng-valid ng-not-empty">
+            <option translate="PLEASE_SELECT" value="" class="ng-scope">请选择</option>
+            ';
+            <option ng-selected="deviceContent.gnss1Mode == 0" value="0">Auto</option>
+            <option ng-selected="deviceContent.gnss1Mode == 1" value="1" selected="selected">Manual</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputEmail3" translate="LONGITUDE" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">经度</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <input type="text" ng-disabled="gnss1D" class="excel_value form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="deviceContent.gnss1CurrentPositionJ" disabled="disabled" value="N37:22:43.425"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" translate="LATITUDE" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">纬度</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <input type="text" ng-disabled="gnss1D" class="excel_value form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="deviceContent.gnss1CurrentPositionW" disabled="disabled" value="W121:55:34.816"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail3" translate="HEIGHT" class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label ng-scope">高度</label>
+        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+          <input type="text" ng-disabled="gnss1D" class="excel_value form-control ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="deviceContent.gnss1CurrentPositionH" disabled="disabled" value="13.7"></div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 fa15x  b-radius ">
+      <div class="form-group" style="border-top:0;text-align: center;">
+          <button ng-disabled="restSubD" translate="RESTARTXN" ng-click="restartPM('5')" type="button" class="btn btn-primary ng-scope">重置性能监测</button>
+          <button ng-disabled="configSubD" ng-click="configSub(deviceContent,'1', '', 'GNSS1')" translate="SET" type="button" class="btn btn-primary ng-scope">设置</button>
+          <button ng-disabled="configSubD" class="btn btn-primary btn-md ng-scope" translate="PRINT" ng-click="PRINTANG('pre')" style="">打印</button>
+          <button ng-disabled="configSubD" class="btn btn-primary btn-md ng-scope" translate="EXPORT" ng-click="excel_tableFun('gnss1')" style="">导出</button>
+      </div>
+    </div>
+  </form>

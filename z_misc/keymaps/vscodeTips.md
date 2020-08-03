@@ -14,3 +14,25 @@ $1
  选择括号内： alt+'  
  扩展选区 : shift+alt+right arrow;
  括号间跳转：  ctrl+shift+\
+
+
+
+
+
+
+
+
+
+
+document.getelementById\(["|']{1}([a-z0-9]+)["|']{1}\).value=
+
+
+
+
+document.getelementById\(["|']{1}[a-z0-9]+["|']{1}\).value
+
+
+$("$1").val()
+
+
+
