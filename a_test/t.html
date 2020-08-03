@@ -6,6 +6,7 @@
         </style>
     </head>
     <body>
+      <script src="../h_html/lib/jquery-1.11.1.min.js"></script>
         <script>
             window.onload= function(){
                 var oBox=document.getElementById("box");
@@ -13,9 +14,11 @@
                 var oText=document.getElementById("text1");
                 var oBtn=document.getElementById("Btn");
                 oBtn.onclick = function(){
-                    oBox.innerHTML = oBox.innerHTML + oSpan.innerHTML + oText.value + "<br/>";
-                    // oBox.innerHTML += oSpan.innerHTML + oText.value +  "<br/>";//这是简便的写法，在js中 a=a+b ,那么也等同于 a+=b
-                    oText.value=""
+                  debugger
+                  var c=$("#text1").val()
+                  var d = oBox.innerHTML + oSpan.innerHTML ;
+                   
+                  oBox.innerHTML=d.concat(oText.value )
                 };
             }
         </script>
