@@ -1,4 +1,14 @@
-var e=top.SsCenter.deviceInfo.details;$("#knowled_facility_type").empty(),$("#knowled_facility_type").append("<option value=''
-  translate='PLEASE_SELECT'>请选择</option>"),$("#device_name").empty(),$("#device_name").append("<option value='' translate='PLEASE_SELECT'>请选择</option>
-"),$.each(e,function(e,a){$("#knowled_facility_type").append("<option value='"+a.id+"'>"+a.name+"</option>"),$("#device_name").append("<option
-  data-id='".concat(a.id,"' value='").concat(a.name,"'>").concat(a.name,"</option>"))})
+<div class="modal-dialog">
+  <div class="modal-content" style="margin-top:30%">
+    <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-backdrop="static">&times;</button>
+      <h4 class="modal-title" id="myModalConfirm">提示</h4>
+    </div>
+    <div class="modal-body device_add-modal" style="height:100px">
+      <div style=text-align:center;margin-top:3%;>
+        <h4>确定要删除吗？</h4>
+      </div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-primary" onclick="doDelEms('undefined')">确定</button><button type="button"
+        class="btn btn-primary" data-dismiss="modal">取消</button></div>
+  </div>
+</div>

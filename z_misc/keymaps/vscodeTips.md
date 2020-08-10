@@ -36,3 +36,16 @@ $("$1").val()
 
 
 
+
+
+
+document.getElementById\(["|']{1}([a-z0-9_]+)["|']{1}\).value
+$("$1").val()
+
+
+
+
+document.getElementById\(["|']{1}([a-z0-9_]+)["|']{1}\).addEventListener
+$("#$1")[0].addEventListener
+
+
