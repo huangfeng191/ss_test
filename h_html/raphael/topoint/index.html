@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div style="width:500px;height:500px;background-color:red ">
+
+    </div>
+    <div>
+        <img src="../../images/net_topo/netNode1.png"  draggable="true" id="justCs" data-type="node">
+    </div>
+    <script>
+        $(function(){
+            $("#justCs").on("drop",function(e){
+                console.log("e.offsetX"+e.offsetX)
+            })
+        })
+    </script>
+</body>
+</html>
