@@ -49,3 +49,5 @@ document.getElementById\(["|']{1}([a-z0-9_]+)["|']{1}\).addEventListener
 $("#$1")[0].addEventListener
 
 
+new SM4Encrpt\(\{enstr:([a-z0-9_.]+)\}\)\.getEncodeString\(\)
+

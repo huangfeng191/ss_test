@@ -80,3 +80,17 @@ Don`t bury your failures , let them inspire you .
 
 # 2020-03-19  Thursday 
 If you don`t prioritize your life. someone else will.
+
+# 2020-08-14  Friday 
+<!-- 专用名词 如人名、地名等，用来表示其一特定的名称。无冠词，第一个字母须大写。 -->
+Down to Gehenna , or up to the Throne , he travels the fastest who travels alone .
+It is does not  matter how slowly you go as long as you do not stop 
+
+
+
+
+# 2020-08-18  Tuesday 
+
+
+A floor of a building is all the rooms that are on a particular level.
+

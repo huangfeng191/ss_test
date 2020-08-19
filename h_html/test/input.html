@@ -13,7 +13,7 @@
 
 <body>
   <div>
-    <input type="password">
+    <input type="text">
     <button>forClick</button>
   </div>
 </body>
@@ -22,11 +22,22 @@
     debugger
   }
 
-  $(function() {draggable
-    $("input").on("input propertychange",function(e){
-      // debugger
-      console.log(e.target.value)
+  $(function() {
+    // $("input").on("input",function(e){
+    //   debugger
+    //   console.log(e.target.value)
+    // })
+    // $("input").bind("input",function(e){
+    //   debugger
+    //   console.log(e.target.value)
+    // })
+    $("input").on("keyup",function(e){
+      debugger
     })
+
+    // $("input")[0].addEventListener("input",function(e){
+    //   debugger 
+    // })
     $("button").click(forClick);
   });
 </script>

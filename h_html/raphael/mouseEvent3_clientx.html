@@ -9,26 +9,31 @@
     font: 16px "Zilla", "Open Sans", "Helvetica", "Arial", sans-serif;
   }
 </style>
-
-  <div class="box">
+<body style="min-width:1000px">
+  
+  <div class="box" >
     <p>
       Move the mouse around in this box to watch its coordinates change.
     </p>
    
   </div>
 
-<p>
-  <code>pageX</code>: <span id="x">n/a</span>
-</p>
-<p>
-  <code>pageY</code>: <span id="y">n/a</span>
-</p>
-<p>
-  <code>clientX</code>: <span id="clientX">n/a</span>
-</p>
-<p>
-  <code>screenX</code>: <span id="screenX">n/a</span>
-</p>
+<div style="position: absolute;right:0;bottom:0;">
+  <p>
+    <code>pageX</code>: <span id="x">n/a</span>
+  </p>
+  <p>
+    <code>pageY</code>: <span id="y">n/a</span>
+  </p>
+  <p>
+    <code>clientX</code>: <span id="clientX">n/a</span>
+  </p>
+  <p>
+    <code>screenX</code>: <span id="screenX">n/a</span>
+  </p>
+</div>
+
+</body>
 <script>
   var box = document.querySelector(".box");
   var pageX = document.getElementById("x");
