@@ -1,21 +1,16 @@
-1 国网前端漏洞修复
-2 联通5G：告警使能字段需要更改为上报使能
-3 业务审计员登录，导出功能提示服务器出现问题
-4 审计员登录，统计分析》打印操作修
-
-
-1 国网前端代码漏洞修改
-2 联系方式输入验证修改
-3 老网管SM2000_5G 版面视图修改
-4 老网管 5G 查看GNSS状态显示不全修改
-
-
-
-
-1 前端代码漏洞修复
-2 前端加密相关修改
-3 联通5Gbug修复
-
-
+// public static String str2HexStr(String str) {
+//     char[] chars = "0123456789ABCDEF".toCharArray();
+//     StringBuilder sb = new StringBuilder("");
+//     byte[] bs = str.getBytes();
+//     int bit;
+//     for (int i = 0; i < bs.length; i++) {
+//         bit = (bs[i] & 0x0f0) >> 4;
+//         sb.append(chars[bit]);
+//         bit = bs[i] & 0x0f;
+//         sb.append(chars[bit]);
+//         // sb.append(' ');
+//     }
+//     return sb.toString().trim();
+// }
 
 1 个设备 2个网管管理
