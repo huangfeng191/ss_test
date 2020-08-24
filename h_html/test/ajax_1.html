@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+<style>
+  #message,#message1{
+    margin-top: 100px ;
+    border:1px red solid;
+    height: 300px;
+    width: 100%;
+  }
+
+</style>
+
+<body>
+  <div>
+    <button onclick="doAjax()">doAjax</button>
+
+    <input id="inp1">
+
+    <div id="message">
+
+
+    </div>
+    <div id="message1">
+
+
+      </div>
+
+  </div>
+</body>
+<script>
+
+
+// $(document).ajaxError(function(jE,xhr,setting,other){
+//   // console.log("3"+3);
+//   debugger
+// })
+
+  $.ajaxSetup({
+    ajaxComplete:function( event, jqXHR, ajaxOptions){
+      // debugger
+      console.log("i`m"+"complete")
+    },
+    ajaxError:function(event, jqXHR, ajaxSettings, thrownError){
+      console.log("i`m"+"error")
+
+    }
+  })
+
+  // $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+  //   console.log("preFilter"+"1");
+  //   jqXHR.abort();
+  // })
+  // 如果此处拦截会报错： statusText: canceled 
+function doAjax(params) {  
+    $.ajax({
+      url: "a1.json",
+      // async: false,
+      timeout: 1*1000,
+      data: JSON.stringify({
+          "query": {
+              // "tp": "net_topo_all"
+              "tp": "net_topo_all"
+              // "tp": "net_topo"
+          }
+      }),
+      beforeSend:function(x){
+        debugger
+        return false 
+      },
+      dataFilter:function(x){
+        debugger
+        return x 
+      },
+      error:function(err){
+        debugger
+        
+      },
+      success:function(ret){
+        debugger
+      } 
+    }).done(function(ret){
+      debugger
+      // alert();
+        if(ret.Response){
+          ret=ret.Response;
+        }
+        $("#message").html(JSON.stringify(ret));
+        $("#message1").html(ret.need);
+    }).fail(function(ret){
+      console.log("err 2");
+    })
+
+
+  }
+
+
+  // err 回调的顺序是：
+
+// 回调 error , promise fail , ajaxSetup
+
+
+// ajax 成功的调用顺序： beforeSend  success done 
+
+
+
+//  再beforeSend 里写的取消，会调用
+
+// beforeSend:function(x){
+//         debugger
+//         return false 
+//       },
+
+
+  $(function() {
+
+  
+
+
+
+  });
+</script>
+
+</html

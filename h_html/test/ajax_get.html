@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../less/test.css" />
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+  <script src="../js/test.js"></script>
+</head>
+<style>
+  #message,#message1{
+    margin-top: 100px ;
+    border:1px red solid;
+    height: 300px;
+    width: 100%;
+  }
+
+</style>
+
+<body>
+  <div>
+    <button onclick="doAjax()">doAjax</button>
+
+    <input id="inp1">
+
+    <div id="message">
+
+
+    </div>
+    <div id="message1">
+
+
+      </div>
+
+  </div>
+</body>
+<script>
+
+
+$(document).ajaxError(function(jE,xhr,setting,other){
+  // console.log("3"+3);
+  debugger
+})
+
+
+  // $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+  //   console.log("preFilter"+"1");
+
+  //   debugger
+  //   jqXHR.abort();
+  // })
+
+function doAjax(params) {
+  params={"a":1,"b":3,"c":4}  
+  $.get("a1.json", params,
+    function (data, textStatus, jqXHR) {
+  debugger      
+    },
+    "json"
+  );
+
+
+  }
+
+
+
+
+  $(function() {
+
+  
+
+
+
+  });
+</script>
+
+</html
