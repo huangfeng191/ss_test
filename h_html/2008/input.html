@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <input type="text" name="a" id="a">
+    
+    <select name="s" id="inputs" class="form-control">
+        <option value="one">-- Select One --</option>
+        <option value="two">-- Select two --</option>
+    </select>
+    
+<script>
+    $(function(){
+        $("input").on("input",function(v){
+            console.log("value:"+v.target.value)
+        })
+        $("select").on("input",function(v){
+            console.log("value:"+v.target.value)
+        })
+    })
+</script>
+</body>
+
+</html>
