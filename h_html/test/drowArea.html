@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" style="width:100px;height:100px">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../lib/jquery-1.11.1.min.js"></script>
+</head>
+<button onclick="doClick(this)">i drew picture</button>
+
+<body style="
+    height: 94%;
+    width: 100%;
+    position: relative;">
+  <div style="width:100%;height:100%" id="content">
+    <img id="a" src="../images/board-card/green.PNG" style="left:300px ;top:300px; position:absolute" width="20px" height="20px">
+    <img id="b" src="../images/board-card/green.PNG" style="left:100px; top:200px; position:absolute" width="20px" height="20px">
+
+  </div>
+
+  <script>
+    function doClick (e) {
+        doDraw($("#a")[0],$("#b")[0])
+    }
+
+    function doDraw (domA, domB) {
+      if($("#"+domA.id+"-"+domB.id)){
+        $("#"+domA.id+"-"+domB.id).remove()
+      }
+      var width = Math.abs(domA.style.left.replace("px","") - domB.style.left.replace("px","")) + 46
+      var height = Math.abs(domA.style.top.replace("px","") - domB.style.top.replace("px","")) + 46
+      
+      var virtual = document.createElement("div")
+      
+      virtual.style.width = width+"px"
+      virtual.style.height = height+"px"
+      virtual.style.position="absolute"
+      virtual.style.left=(Math.min(domA.style.left.replace("px",""),domB.style.left.replace("px",""))-20)+"px"
+      virtual.style.top=(Math.min(domA.style.top.replace("px",""),domB.style.top.replace("px",""))-20)+"px"
+      $(virtual).attr("id",domA.id+"-"+domB.id)
+      $(virtual).css("pointerEvents","none");
+      $(virtual).css("border","1px red solid")
+      $("#content").append(virtual)
+    }
+  </script>
+
+</body>
+
+
+</html>
