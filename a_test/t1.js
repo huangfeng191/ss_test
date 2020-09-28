@@ -56,3 +56,31 @@ ptpRefPrio 选源优先级
 ptpPQLState  质量优先级状态 disable(0) or enable(1)
 ptpQLCfgValue PQL使能
 ptpPeerMode 对等模式 disable(0) or enable(1)
+
+
+
+
+EnableDisable  enable(1), disable(0)
+
+
+
+ntpServerListEnable   s INTEGER32 {nothing(0), whitelist(1), blacklist(2)}
+ntpServerAutoKeyEnable s  INTEGER32 {enable(1), disable(0) }
+ntpServerAutoKeyVlue  
+ntpServerMd5Enable s INTEGER32 {enable(1), disable(0) }
+ntpServerMd5Value  
+ntpServerBroadcastEnable s  INTEGER32 {enable(1), disable(0) }
+ntpServerBroadcastAddr  ip
+ntpServerBroadcastInterval   INTEGER32 (3..17)
+ntpServerManycastEnable  s INTEGER32 {enable(1), disable(0) }
+ntpServerManycastAddr     ip
+ntpServerManycastInterval  INTEGER32 (3..17)
+ntpServerPortIPaddress   
+ntpServerConfigPortState s  INTEGER32 {disable(0), enable(1), restart(2) }
+ntpServerPortMACaddress   
+ntpServerPortIPv6address   
+ntpServerPortIPv6gateway         The format is :fe80::6aca::1.
+ntpServerPortIPv6configaddress   The format is :fe80::6aca::1/64.
+
+
+
