@@ -44,3 +44,92 @@ Date.prototype.AddMonths = function (value) {
     this.setDate(Math.min(n, this.getDaysInMonth()));
     return this;
 }
+
+
+
+function ConvertToDate(Value, Format)
+{
+    if (Format == undefined)
+    {
+    
+        Format = "yyyy-MM-dd hh:mm:ss";
+        
+    }
+    var Chars = new Date().Format("yyyy/MM/dd hh:mm:ss").split(/[^0-9]/g);
+    Value = Value.split(/[^0-9]/g);
+    Format = Format.split(/[^yMdhms0-9]/g);
+    for (var i = 0, len = Chars.length; i < len; i++)
+    {
+        if (Format[i])
+        {
+            switch (Format[i])
+            {
+                case "yyyy":
+                    {
+                        Chars[0] = Value[i] || Chars[0];
+                    }
+                    break;
+                case "MM":
+                case "M":
+                    {
+                        Chars[1] = Value[i] || Chars[1];
+                    }
+                    break;
+                case "dd":
+                case "d":
+                    {
+                        Chars[2] = Value[i] || Chars[2];
+                    }
+                    break;
+                case "hh":
+                case "h":
+                    {
+                        Chars[3] = Value[i] || Chars[3];
+                    }
+                    break;
+                case "mm":
+                case "m":
+                    {
+                        Chars[4] = Value[i] || Chars[4];
+                    }
+                    break;
+                case "ss":
+                case "s":
+                    {
+                        Chars[5] = Value[i] || Chars[5];
+                    }
+                    break;
+                default:
+                    {
+                        Chars[i] = Format[i];
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            switch (i)
+            {
+                case 1:
+                case 2:
+                    {
+                        Chars[i] = "01";
+                    }
+                    break;
+                default:
+                    {
+                        Chars[i] = "00";
+                    }
+                    break;
+            }
+        }
+    }
+
+    Chars.splice(5, 0, ":");
+    Chars.splice(4, 0, ":");
+    Chars.splice(3, 0, " ");
+    Chars.splice(2, 0, "/");
+    Chars.splice(1, 0, "/");
+
+    return new Date(Chars.join(""));
+}

@@ -8,7 +8,7 @@
 </head>
 <body>
     <input>
-
+    <input >
 </body>
 <script>
     function setDefaultDate() {
@@ -18,6 +18,8 @@
         var pm=new Date().AddMonths(-1).Format("yyyy-MM-01 00:00");
 
         document.getElementsByTagName("input")[0].value=pm
+    
+        document.getElementsByTagName("input")[1].value=ConvertToDate("2020-1-03 12:14",'yyyy-MM-dd hh:mm')
     }
 
     setDefaultDate()
