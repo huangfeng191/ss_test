@@ -1,0 +1,39 @@
+<style>
+   #outer {
+    position: relative;
+    left: 150px;
+    top: 20px;
+    width: 100px;
+    z-index: 2;
+}
+/* 
+    在覆盖层上，添加 隐藏的 iframe 可解决问题 
+ */
+    #inner {
+        background: red;
+    }
+
+    .cover {
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+    }
+
+#pdf {
+    position: relative;
+    z-index: 1;
+    
+}
+</style>
+
+
+<div id="outer">
+   <div id="inner">my text that should be on top</div>
+   <iframe  style=" border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1;" src="about:blank"></iframe>
+</div>
+
+<iframe id="pdf" frameborder="0" src="./apdf.pdf" width="200" height="200"></iframe>
