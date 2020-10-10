@@ -6,20 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-
+<style>
+     .cover {
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        /* z-index: -1; */
+    }
+</style>
 <body>
    
-   <div style="position: absolute;left:200px;top:580px;">
+   <div style="position: absolute;left:200px;top:580px;z-index:999">
       <ul class="pager" >
          <li class="previous"><a href="#">&larr; Older</a></li>
          <li class="next"><a href="#">Newer &rarr;</a></li>
        </ul>
+
+       <iframe class="cover" src="about:blank"></iframe>
    </div>
   
 
 
   <div width="800px" id="pdfheight" height="600px">
-    <iframe src="./cs1.html" style="    width: 100%; height: 600px; ">
+    <iframe src="./cs1.html" frameborder="0"  style="    width: 100%; height: 600px; ">
 
     </iframe>
 
