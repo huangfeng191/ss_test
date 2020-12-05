@@ -1,0 +1,238 @@
+<div class="content-s">
+  <h3 translate="">PTP Input1</h3>
+  <div class="boxH"></div>
+  <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 querySeach">
+    <div>
+      <label translate="CURRENT_DEVICE" class="control-label">当前设备</label>
+      : {{devIP}}
+      <select ng-model="devID" style="width:90px;height: 26px;" class="form-inline input-sm"
+        ng-options="m.name group by m.area.name for m in deviceInfo" ng-change="macChange(devID)">
+        <option value="" translate="PLEASE_SELECT">请选择</option>
+      </select>
+      <button class="btn btn-primary btn-md" translate="SEARCH" ng-click="seach()" style="">搜索</button>
+
+      <label translate="portName" class="control-label"></label>
+      : {{portNamedata}}
+    </div>
+    <br>
+  </div>
+  <div class="row tableTs" id="pre">
+    <form class="excel form-horizontal formBiao">
+      <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5 fa15x  b-radius padding-l padding-r padding-b15 t-right">
+
+        <div class="form-group">
+          <label translate="ENABLE" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            使能
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpState" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpState == 0" value="0">disable</option>
+              <option ng-selected="deviceContent.ptpState == 1" value="1">enable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Profile" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            配置模式
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpProfile" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpProfile == 0" value="0">default</option>
+              <option ng-selected="deviceContent.ptpProfile == 1" value="1">telecom2008</option>
+              <option ng-selected="deviceContent.ptpProfile == 2" value="2">ethernet-default</option>
+              <option ng-selected="deviceContent.ptpProfile == 3" value="3">itu-g8275-1</option>
+              <option ng-selected="deviceContent.ptpProfile == 4" value="4">cm-5g-spec</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label translate="PTP_Server1_State" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            PTPserver1的使能状态
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpGM1State" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpGM1State == 0" value="0">disable</option>
+              <option ng-selected="deviceContent.ptpGM1State == 1" value="1">enable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label translate="PTP_Server1_IP_Address" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PTPserver1IP地址</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpGM1Address"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="PTP_Server2_State" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PTPserver2的使能状态</label>
+
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+
+            <select ng-model="deviceContent.ptpGM2State" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpGM2State == 0" value="0">disable</option>
+              <option ng-selected="deviceContent.ptpGM2State == 1" value="1">enable</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label translate="PTP_Server2_IP_Address" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PTPserver2IP地址</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpGM2Address"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Announce_MSG_Interval" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">announce报文间隔</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpAnnIntv"></div>
+        </div>
+
+
+        <div class="form-group">
+          <label translate="sync_MSG_Interval" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">sync报文间隔</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpSyncIntv"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Domain" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">域</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpDomain"></div>
+        </div>
+
+
+      </div>
+
+      <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5 fa15x  b-radius ">
+
+
+        <div class="form-group">
+          <label translate="Local_Priority" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">本地优先级</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpLocalPrio"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Only_Main_Clock" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            主时钟限定
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpMasterOnly" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpMasterOnly == 0" value="0">no</option>
+              <option ng-selected="deviceContent.ptpMasterOnly == 1" value="1">yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Priority2" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">优先级2</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpPriority2"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Send_Delay" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            发送延迟</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpTxDelay"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Receive_Delay" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">接收延迟</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpRxDelay"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="refPriority" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">选源优先级</label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <input type="text" class="excel_value form-control" ng-model="deviceContent.ptpRefPrio"></div>
+        </div>
+
+        <div class="form-group">
+          <label translate="PQL_STATE" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            质量优先级状态
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpPQLState" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpPQLState == 0" value="0">disable</option>
+              <option ng-selected="deviceContent.ptpPQLState == 1" value="1">enable</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label translate="PQL_Enable" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            PQL使能
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpQLCfgValue" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpQLCfgValue == 1" value="1">ql-prc</option>
+              <option ng-selected="deviceContent.ptpQLCfgValue == 2" value="2">ql-unk</option>
+              <option ng-selected="deviceContent.ptpQLCfgValue == 3" value="3">ql-ssut</option>
+              <option ng-selected="deviceContent.ptpQLCfgValue == 6" value="6">ql-ssul</option>
+              <option ng-selected="deviceContent.ptpQLCfgValue == 7" value="7">ql-sec</option>
+              <option ng-selected="deviceContent.ptpQLCfgValue == 9" value="9">ql-dnu</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label translate="Peer_Mode" for="inputEmail3"
+            class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
+            对等模式
+          </label>
+          <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
+            <select ng-model="deviceContent.ptpPeerMode" class="excel_value form-control input-sm">
+              <option translate="PLEASE_SELECT" value="">请选择</option>
+              <option ng-selected="deviceContent.ptpPeerMode == 0" value="0">disable</option>
+              <option ng-selected="deviceContent.ptpPeerMode == 1" value="1">enable</option>
+            </select>
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 fa15x  b-radius ">
+        <div class="form-group" style="border-top:0;text-align: center;">
+          <button ng-if="1 == 1" ng-click="showPTPAnnounce(1)" type="button" class="btn btn-primary">ANNOUNCE报文属性</button>
+          <button ng-disabled="configSubD" ng-click="configSub(deviceContent,'1', '', 'ptpinput1')" translate="SET" type="button"
+            class="btn btn-primary" translate="SET">设置</button>
+          <button ng-disabled="configSubD" class="btn btn-primary btn-md" translate="PRINT" ng-click="PRINTANG('pre')" style="">打印</button>
+          <button ng-disabled="configSubD" class="btn btn-primary btn-md" translate="EXPORT" ng-click="excel_tableFun('ptpinput1')"
+            style="">导出</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

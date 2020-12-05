@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Microsemi - SyncServer S650</title>
+
+  <meta name="description" content="Draggabble Widget Boxes &amp; Containers" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--basic styles-->
+
+  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../assets/css/bootstrap-responsive.min.css" />
+  <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../../assets/css/font-awesome.css" />
+  <link rel="stylesheet" href="../../assets/css/fontcss.css" />
+  <link rel="stylesheet" href="../../assets/css/ace.min.css" />
+  <link rel="stylesheet" href="../../assets/css/ace-responsive.min.css" />
+  <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
+  <script src="../../assets/js/validation.js"></script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    .headclass {
+      font-size: 1em;
+      color: #FFF;
+      font-family: Arial, Verdana, sans-serif;
+    }
+  </style>
+  <script type="text/javascript">
+    var refid;
+
+    function startInterval_top () {
+      refid = setTimeout(topbar_timer, 4000);
+    }
+
+    function clearInterval_top () {
+      clearTimeout(refid);
+      refid = null;
+    }
+
+    topbar_timer = function() {
+
+      refresh_topbar();
+      clearInterval_top();
+      startInterval_top();
+    };
+  </script>
+  <script type='text/javascript'>
+    function leftmenu () {
+      document.getElementById('dashboard_menu').className = 'active open';
+    }
+  </script>
+  <style>
+    .container {
+      overflow: auto;
+      width: 100%;
+    }
+
+    .left {
+      width: 20px;
+      float: left;
+    }
+
+    .right {
+      overflow: hidden;
+
+    }
+  </style>
+  <script src="../../assets/js/jquery-2.2.2.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/jqBarGraph.js"></script>
+  <script type='text/javascript'>
+    window.onbeforeunload = function() {
+      clearTimeout(interval_1);
+      clearTimeout(timerId);
+      clearTimeout(timer);
+      clearInterval(logouttimer);
+    }
+  </script>
+
+
+</head>
+
+<body onLoad="leftmenu();set_interval();sys_info();startInterval_sys();defaultval();" onmousemove="reset_interval();" onclick="reset_interval();"
+  onkeypress="reset_interval();" onscroll="reset_interval();">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container-fluid center">
+
+
+
+
+
+        <input name="" type="image" align="left" src="assets/logo.png">
+        <span class="" style=" font-size:32px;color:#FFF;">
+          <small>
+            <span class="" style="vertical-align: text-bottom">SyncServer S650 </span>
+          </small>
+        </span>
+        <!--/.brand-->
+        <ul class="nav ace-nav pull-right">
+
+          <li id="sync4" class="green" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="icon-lock icon-1x"></i>&nbsp;&nbsp;Sync</span>&nbsp;&nbsp;&nbsp;</li>
+          <li id="sync6" class="label-warning" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="fa fa-rotate-right fa-lg"></i>&nbsp;Sync</span>&nbsp;&nbsp;&nbsp;</li>
+          <li id="sync9" class="red" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="icon-unlock"></i>&nbsp;Sync</span>&nbsp;&nbsp;&nbsp;</li>
+
+          <li id="net1" class="label-warning" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="fa fa-sitemap fa-lg"></i>&nbsp;Net</span>&nbsp;&nbsp;&nbsp;</li>
+          <li id="net2" class="green" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="fa fa-sitemap fa-lg"></i>&nbsp;Net</span>&nbsp;&nbsp;&nbsp;</li>
+
+          <li id="alm1" class="green" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="icon-bell bolder"></i>&nbsp;Alarm</span>&nbsp;&nbsp;&nbsp;</li>
+          <li id="almerr" class="red" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="fa fa-exclamation-triangle fa-lg"></i>&nbsp;Alarm</span>&nbsp;&nbsp;&nbsp;</li>
+          <li id="almmin" class="label-warning" style="display:none"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="fa fa-exclamation-triangle fa-lg"></i>&nbsp;Alarm</span>&nbsp;&nbsp;&nbsp;</li>
+
+          <li id="syncdef" class="green"><span class="white">&nbsp;&nbsp;&nbsp;<i
+                class="icon-lock icon-1x"></i>&nbsp;&nbsp;Sync</span>&nbsp;&nbsp;&nbsp;</li>
+          <li id="netdef" class="green"><span class="white">&nbsp;&nbsp;&nbsp;<i class="fa fa-sitemap fa-lg"></i>&nbsp;Net</span>&nbsp;&nbsp;&nbsp;
+          </li>
+          <li id="almdef" class="green"><span class="white">&nbsp;&nbsp;&nbsp;<i class="icon-bell bolder"></i>&nbsp;Alarm</span>&nbsp;&nbsp;&nbsp;
+          </li>
+
+
+          <li class="light-blue">
+            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+
+              <span class="white">
+                Welcome &nbsp;
+                admin
+              </span>
+              <i class="icon-caret-down"></i>
+            </a>
+            <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+              <li>
+                <a id="logout_link">
+                  <i class="fa fa-sign-out"></i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!--/.ace-nav-->
+      </div>
+      <!--/.container-fluid-->
+    </div>
+    <!--/.navbar-inner-->
+  </div>
+
+  <div class="main-container container-fluid">
+    <a class="menu-toggler" id="menu-toggler" href="#">
+      <span class="menu-text"></span>
+    </a>
+
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+
+          <span class="btn btn-dummy"></span>
+        </div>
+      </div>
+      <!--#sidebar-shortcuts-->
+
+      <ul class="nav nav-list">
+        <li id="dashboard_menu">
+          <a id="dash_link" class="dropdown-toggle ">
+            <i class="fa fa-dashboard fa-1x "></i>
+            <span class="menu-text">&nbsp;&nbsp;Dashboard </span>
+          </a>
+        </li>
+
+        <li id="network_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-sitemap fa-1x"></i>
+            <span class="menu-text">&nbsp; Network </span>
+
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu ">
+            <li id="ethernet_item"><a id="eth_link">
+                <i class="icon-double-angle-right"></i>
+                Ethernet
+              </a>
+            </li>
+
+            <li id="snmp_item"><a id="snmp_link">
+                <i class="icon-double-angle-right"></i>
+                SNMP
+              </a>
+            </li>
+
+            <li id="traps_item"><a id="traps_link">
+                <i class="icon-double-angle-right"></i>
+                SNMP Traps
+              </a>
+            </li>
+
+            <li id="ping_item"><a id="ping_link">
+                <i class="icon-double-angle-right"></i>
+                Ping
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li id="nettime_menu">
+
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-clock-o fa-1x"></i>
+            <span class="menu-text">&nbsp; Network Timing </span>
+
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu ">
+            <li id="sysinfo_item">
+              <a id="sysinfo_link">
+                <i class="icon-double-angle-right"></i>
+                NTPd Sysinfo
+              </a>
+            </li>
+
+            <li id="assoc_item">
+              <a id="assoc_link">
+                <i class="icon-double-angle-right"></i>
+                NTPd Assoc
+              </a>
+            </li>
+
+            <li id="config_item">
+              <a id="config_link">
+                <i class="icon-double-angle-right"></i>
+                NTPd Config
+              </a>
+            </li>
+
+            <li id="timeser_item">
+              <a id="timeser_link">
+                <i class="icon-double-angle-right"></i>
+                NTPr/PTP Config
+              </a>
+            </li>
+
+            <li id="portconfig_item">
+              <a id="reflect_link">
+                <i class="icon-double-angle-right"></i>
+                NTP/PTP Mapping
+              </a>
+            </li>
+
+            <li id="timestatus_item">
+              <a id="timestatus_link">
+                <i class="icon-double-angle-right"></i>
+                NTPr/PTP Status
+              </a>
+            </li>
+
+          </ul>
+
+
+        <li id="timing_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-clock-o fa-1x"></i>
+            <span class="menu-text">&nbsp; Timing </span>
+
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu ">
+
+
+            <li id="inpcon_item"><a id="input_link">
+                <i class="icon-double-angle-right"></i>
+                Input Control
+              </a>
+            </li>
+            <li id="hold_item"><a id="hold_link">
+                <i class="icon-double-angle-right"></i>
+                Holdover
+              </a>
+            </li>
+            <li id="tzone_item"><a id="time_link">
+                <i class="icon-double-angle-right"></i>
+                Time Zone
+              </a>
+            </li>
+            <li id="serial_item"><a id="serial_link">
+                <i class="icon-double-angle-right"></i>
+                Serial
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="ref_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-sign-out fa-1x"></i>
+            <span class="menu-text">&nbsp; References </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li id="refstatus_item"><a id="refstatus_link">
+                <i class="icon-double-angle-right"></i>
+                Status
+              </a>
+            </li>
+
+            <li id="gnssconfig_item"><a id="gnss_link">
+                <i class="icon-double-angle-right"></i>
+                GNSS Config
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="security_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-lock fa-1x"></i>
+            <span class="menu-text">&nbsp;&nbsp; Security </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li id="users_item"><a id="users_link">
+                <i class="icon-double-angle-right"></i>
+                Users
+              </a>
+            </li>
+            <li id="acccon_item"><a id="access_link">
+                <i class="icon-double-angle-right"></i>
+                Access Control
+              </a>
+            </li>
+            <li id="services_item"><a id="services_link">
+                <i class="icon-double-angle-right"></i>
+                Services/Sys. Control
+              </a>
+            </li>
+            <li id="https_item"><a id="https_link">
+                <i class="icon-double-angle-right"></i>
+                HTTPS
+              </a>
+            </li>
+            <li id="ssh_item"><a id="ssh_link">
+                <i class="icon-double-angle-right"></i>
+                SSH
+              </a>
+            </li>
+            <li id="symmkey_item"><a id="symm_link">
+                <i class="icon-double-angle-right"></i>
+                NTPd Symmetric Keys
+              </a>
+            </li>
+
+            <li id="autoserver_item"><a id="autoser_link">
+                <i class="icon-double-angle-right"></i>
+                NTPd Autokey Server
+              </a>
+            </li>
+            <li id="autoclient_item"><a id="autoclint_link">
+                <i class="icon-double-angle-right"></i>
+                NTPd Autokey Client
+              </a>
+            </li>
+            <li id="radius_item"><a id="radius_link">
+                <i class="icon-double-angle-right"></i>
+                RADIUS
+              </a>
+            </li>
+            <li id="tacacs_item"><a id="tacacs_link">
+                <i class="icon-double-angle-right"></i>
+                TACACS+
+              </a>
+            </li>
+            <li id="ldap_item"><a id="ldap_link">
+                <i class="icon-double-angle-right"></i>
+                LDAP
+              </a>
+            </li>
+            <li id="pacmon_item"><a id="packet_link">
+                <i class="icon-double-angle-right"></i>
+                Packet Monitoring
+              </a>
+            </li>
+            <li id="509csr_item"><a id="509csr_link">
+                <i class="icon-double-angle-right"></i>
+                X.509 CSR
+              </a>
+            </li>
+            <li id="509inst_item"><a id="509install_link">
+                <i class="icon-double-angle-right"></i>
+                X.509 Install
+              </a>
+            </li>
+
+          </ul>
+        </li>
+        <li id="admin_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-cog fa-1x"></i>
+            <span class="menu-text">&nbsp; Admin </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li id="general_item"><a id="general_link">
+                <i class="icon-double-angle-right"></i>
+                General
+              </a>
+            </li>
+            <li id="alarmrelay_item"><a id="arelay_link">
+                <i class="icon-double-angle-right"></i>
+                Alarm Relay
+              </a>
+            </li>
+            <li id="alarms_item"><a id="alarms_link">
+                <i class="icon-double-angle-right"></i>
+                Alarms
+              </a>
+            </li>
+            <li id="email_item"><a id="email_link">
+                <i class="icon-double-angle-right"></i>
+                Email
+              </a>
+            </li>
+            <li id="banconfig_item"><a id="banner_link">
+                <i class="icon-double-angle-right"></i>
+                Banner Config
+              </a>
+            </li>
+            <li id="serialconfig_item"><a id="serconfig_link">
+                <i class="icon-double-angle-right"></i>
+                Serial Port Config
+              </a>
+            </li>
+            <li id="upgrade_item"><a id="upgrade_link">
+                <i class="icon-double-angle-right"></i>
+                Upgrade
+              </a>
+            </li>
+            <li id="options_item"><a id="options_link">
+                <i class="icon-double-angle-right"></i>
+                Options
+              </a>
+            </li>
+            <li id="configbackup_item"><a id="backuprestore_link">
+                <i class="icon-double-angle-right"></i>
+                Config Backup/Restore
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="logs_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-list-ul fa-1x "></i>
+            <span class="menu-text">&nbsp; Logs </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li id="logsconfig_item"><a id="logconfig_link">
+                <i class="icon-double-angle-right"></i>
+                Config
+              </a>
+            </li>
+            <li id="events_item"><a id="events_link">
+                <i class="icon-double-angle-right"></i>
+                Events
+              </a>
+            </li>
+            <li id="messages_item"><a id="messages_link">
+                <i class="icon-double-angle-right"></i>
+                Messages
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li id="slota_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-plus-square fa-1x"></i>
+            <span class="menu-text">&nbsp; OPTION SLOT A </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li id="slota_item"><a id="slota_link">
+                <i class="icon-double-angle-right"></i>
+                TIMING I/O CARD
+              </a>
+            </li>
+          </ul>
+
+        </li>
+        <li id="slotb_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-plus-square fa-1x"></i>
+            <span class="menu-text">&nbsp; OPTION SLOT B </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li style="background-color:#d2d0d0"><a onclick="return false;">
+                <i class="icon-double-angle-right"></i>Not Installed</a></li>
+          </ul>
+        </li>
+        <li id="help_menu">
+          <a href="#" class="dropdown-toggle">
+            <i class="fa fa-info-circle fa-1x"></i>
+            <span class="menu-text">&nbsp; Help </span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+          <ul class="submenu ">
+            <li id="contacts_item"><a id="help_link">
+                <i class="icon-double-angle-right"></i>
+                Contacts
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!--/.nav-list-->
+    </div>
+    <div class="main-content">
+      <div class="breadcrumbs header-color-grey" id="breadcrumbs">
+        <!--.breadcrumb-->
+        <div class="" id="breadcrumbs">
+          <ul class="breadcrumb ">
+            <li>
+              <i class="icon-home white"></i>
+              <a href="dashboard" class="white">Dashboard</a>
+
+
+
+
+
+            </li>
+
+
+
+          </ul>
+          <!--.breadcrumb-->
+        </div>
+
+
+
+        <script type="text/javascript">
+          var base_url = "https://192.168.1.108/";
+          var utclocalinterval;
+
+          function clock () {
+
+            var utc = document.getElementById("lblutc").innerHTML;
+            var utcdate = utc.split(" ");
+            var time = utcdate[1].split(":");
+            var sec = Number(time[2]);
+            var min = Number(time[1]);
+            var hrs = Number(time[0]);
+            if (hrs <= 9) { hrs = "0" + hrs; }
+            sec = sec + 1;
+
+            if (sec == 60) {
+              min = min + 1;
+              if (min == 60) {
+                hrs = hrs + 1;
+                if (hrs == 24) {
+
+                  sys_info();
+                } else {
+                  min = 0;
+                  sec = 0;
+                  document.getElementById("lblutc").innerHTML = utcdate[0] + " " + hrs + ":" + min + ":" + sec;
+                }
+              } else {
+                sec = "00";
+                if (min <= 9) {
+                  min = "0" + min;
+                }
+                document.getElementById("lblutc").innerHTML = utcdate[0] + " " + hrs + ":" + min + ":" + sec;
+              }
+
+            } else {
+              if (sec <= 9) {
+                sec = "0" + sec;
+              }
+              if (min <= 9) {
+                min = "0" + min;
+              }
+              document.getElementById("lblutc").innerHTML = utcdate[0] + " " + hrs + ":" + min + ":" + sec;
+            }
+            var loc = document.getElementById("lbllocal").innerHTML;
+            if (loc != "Not Applicable") {
+              local_clock();
+            }
+          }
+
+          function local_clock () {
+            var local = document.getElementById("lbllocal").innerHTML;
+            var localdate = local.split(" ");
+            var time = localdate[1].split(":");
+            var sec = Number(time[2]);
+            var min = Number(time[1]);
+            var hrs = Number(time[0]);
+            if (hrs <= 9) { hrs = "0" + hrs; }
+            sec = sec + 1;
+            if (sec == 60) {
+              min = min + 1;
+              if (min == 60) {
+                hrs = hrs + 1;
+                if (hrs == 24) {
+
+                  sys_info();
+                } else {
+                  min = "0";
+                  sec = "0";
+
+                  document.getElementById("lbllocal").innerHTML = localdate[0] + " " + hrs + ":" + min + ":" + sec;
+                }
+              } else {
+                sec = "00";
+                if (min <= 9) {
+                  min = "0" + min;
+                }
+
+                document.getElementById("lbllocal").innerHTML = localdate[0] + " " + hrs + ":" + min + ":" + sec;
+              }
+
+            } else {
+              if (sec <= 9) {
+                sec = "0" + sec;
+              }
+              if (min <= 9) {
+                min = "0" + min;
+              }
+              document.getElementById("lbllocal").innerHTML = localdate[0] + " " + hrs + ":" + min + ":" + sec;
+            }
+          }
+
+
+          utclocalinterval = setInterval("clock();", 1000);
+        </script>
+
+        <body>
+          <div class="nav-search" id="nav-search">
+            <span class="white"><b><span id="utclable"> UTC</span>:</b> <span id="lblutc"> 0000-00-00 00:00:00</span>&nbsp;&nbsp;
+              <span class="white"><b>LOCAL:</b> <span id="lbllocal"> 0000-00-00 00:00:00</span> &nbsp;</span>
+          </div>
+        </body>
+      </div>
+
+      <div class="page-content">
+        <div class="page-header position-relative">
+          <h1 style="color:#000"><i class=" icon-dashboard  icon-1x "></i>
+            Dashboard
+
+
+          </h1>
+
+
+
+
+        </div>
+        <!--/.page-header-->
+
+        <div class="row-fluid">
+          <div class="span12">
+            <!--PAGE CONTENT BEGINS-->
+
+            <div class="row-fluid">
+              <div class="span4 widget-container-span">
+                <div class="widget-box">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class=" icon-cogs  icon-1x"></i>
+                      System
+                    </h5>
+
+
+                  </div>
+
+                  <div class="widget-body">
+                    <div class="widget-main no-padding" id="sys_container">
+                      <table width="84%" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td width="42%" class=""><i class="icon-time icon-1x" style="padding-top: 3px"></i> &nbsp;&nbsp; Sync</td>
+                            <td width="58%" id="tdsync"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class=""><i class="icon-time icon-1x" style="padding-top: 3px"></i> &nbsp;&nbsp; Stratum</td>
+                            <td id="tdstrat"><input name="" type="image" src="assets/preload.gif">
+                          </tr>
+                          <tr>
+                            <td class=""><i class="fa fa-sitemap fa-lg" style="padding-top: 3px"></i> &nbsp; Network</td>
+                            <td id="tdnet"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class=""><i class="icon-globe icon-1x" style="padding-top: 3px"></i> &nbsp;&nbsp; GNSS</td>
+                            <td id="tdgnss"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class=""><i class="icon-bell icon-1x"></i> &nbsp;&nbsp; Alarm</td>
+                            <td id="tdalarm"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class=""><i class="fa fa-bolt fa-lg" style="padding-top: 3px"></i> &nbsp;&nbsp;&nbsp;&nbsp; Power</td>
+                            <td id="tdpower"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class=""><i class="fa fa-plus-square fa-lg" style="padding-top: 3px"></i> &nbsp;&nbsp; Slot</td>
+                            <td id="tdslots"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="span8 widget-container-span">
+
+
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="icon-time  icon-1x"></i>&nbsp;
+                      Timing
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showtime();" style="color:#000">
+                        <i id="icontime" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="widget-body" id="divtiming">
+                    <div id="timing_container" class="widget-main no-padding">
+                      <table class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td class="">Time of Day Status</td>
+                            <td id="tdtimestatus"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="20%" class="">Current Reference</td>
+                            <td width="80%" id="tdtimecurref"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">Timing References</td>
+                            <td id="tdtimetref"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr id="trholdover">
+                            <td width="20%" class="">Frequency References</td>
+                            <td width="80%" id="tdtimeholdref"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">Leap Pending</td>
+                            <td id="tdtimeleap"><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!--GNSS -->
+
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="icon-globe icon-1x"></i>&nbsp;
+                      GNSS
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showgnss(modelid,gnsslic);" style="color:#000">
+                        <i id="icongnss" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+
+                  </div>
+
+
+                  <div class="widget-body" id="divgnss" style="display:none">
+                    <div class="row-fluid" style="width:100%">
+                      <br>
+                      <br>
+                      <div class="container" id="divgnssgraph" style="display:none">
+                        <div class="left" style="margin-left:5px;margin-top:160px;">
+                          <b class="red">C/N<sub>0</sub></b>
+                        </div>
+                        <div class="right" id="divForGraph">
+                        </div>
+                        <br>
+                        <div id="satid" style="margin-left:60px;">
+                          <b class="red"><span>Satellite ID</span></b>
+                        </div>
+                      </div>
+
+                      <br>
+                      &nbsp;&nbsp&nbsp;&nbsp<span class="label label-large label-primary">&nbsp;&nbsp; </span>&nbsp; GPS
+                      &nbsp;&nbsp&nbsp;&nbsp<span class="label label-large label-gnssgreen">&nbsp;&nbsp; </span>&nbsp; SBAS <span
+                        id="spansbas"></span>
+                      &nbsp;&nbsp&nbsp;&nbsp<span class="label label-large label-important">&nbsp;&nbsp; </span>&nbsp; GLONASS
+                      &nbsp;&nbsp&nbsp;&nbsp<span class="label label-large label-inverse">&nbsp;&nbsp; </span>&nbsp; BeiDou
+                      <br>
+                      <br>
+                    </div>
+
+                    <div class="widget-main no-padding" id="gnssstatus">
+
+                      <table class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td width="44%" class=""><i class="icon-globe icon-1x"></i> &nbsp;GNSS</td>
+                            <td id="tdgnssgps" width="56%"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class=""><i class="fa fa-filter fa-lg"></i> &nbsp;Antenna Status</td>
+                            <td id="tdgnssant"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Receiver Status</td>
+                            <td id="tdgnssrec"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Position Status</td>
+                            <td id="tdgnssposts"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Position </td>
+                            <td id="deg" class="bolder"><b></b><input name="" type="image" src="assets/preload.gif">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="widget-body" id="divgnss650i" style="display:none">
+                    <div class="widget-main no-padding">
+                      <table class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="content">
+                                <div class="alert alert-danger">
+                                  GNSS is not available.
+                                </div>
+                              </div>
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!--Network -->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="fa fa-sitemap fa-1x"></i>&nbsp;
+                      &nbsp;Network
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="shownetwork();" style="color:#000">
+                        <i id="iconnetwork" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="widget-body" id="divnetwork">
+                    <div id="network_container" class="widget-main ">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th width="10%">LAN</th>
+                            <th width="30%">IP</th>
+                            <th width="30%">Subnet Mask/Prefix Length</th>
+                            <th width="30%">Gateway</th>
+                          </tr>
+                        </thead>
+
+                        <tbody id="netbody">
+                          <tr>
+                            <td class=""><input name="" type="image" src="assets/preload.gif"></td>
+                            <td><input name="" type="image" src="assets/preload.gif"></td>
+                            <td><input name="" type="image" src="assets/preload.gif"></td>
+                            <td><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!--NTP / PTP -->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="icon-time icon-1x"></i>&nbsp;
+                      NTP
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showntp();" style="color:#000">
+                        <i id="iconntp" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="widget-body" id="divntp">
+                    <div id="ntp_container" class="widget-main no-padding">
+                      <table class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td width="10%">NTPd</td>
+                            <td width="30%">System Peer</td>
+                            <td width="30%" class="hidden-480" id="tdspeer"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">&nbsp;</td>
+                            <td>System Peer Mode</td>
+                            <td class="hidden-480" id="tdsmode"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">&nbsp;</td>
+                            <td>Leap Indicator</td>
+                            <td class="hidden-480" id="tdlind"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">&nbsp;</td>
+                            <td>Stratum</td>
+                            <td class="hidden-480" id="tdstratum"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">&nbsp;</td>
+                            <td>Reference ID</td>
+                            <td class="hidden-480" id="tdrid"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!--Timing Services -->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="fa fa-sitemap fa-1x"></i>&nbsp;
+                      &nbsp;Timing Services
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showtimingservice();" style="color:#000">
+                        <i id="icontimeser" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="widget-body" id="divtimingser">
+                    <div id="network_container" class="widget-main ">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th width="10%">LAN</th>
+                            <th width="30%">Name</th>
+                            <th width="30%">Timing Service</th>
+                            <th width="30%">IP</th>
+                          </tr>
+                        </thead>
+
+                        <tbody id="timeserbody">
+                          <tr>
+                            <td class=""><input name="" type="image" src="assets/preload.gif"></td>
+                            <td><input name="" type="image" src="assets/preload.gif"></td>
+                            <td><input name="" type="image" src="assets/preload.gif"></td>
+                            <td><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!--Timing Services Status-->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="fa fa-sitemap fa-1x"></i>&nbsp;
+                      &nbsp;Timing Services Status
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showtimingstatus();" style="color:#000">
+                        <i id="icontimesta" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="widget-body" id="divtimingsta">
+                    <div id="network_container" class="widget-main ">
+
+                      <table class="table table-bordered">
+                        <tbody id="timestabody">
+                          <tr>
+                            <td width="35%"><input name="" type="image" src="assets/preload.gif"></td>
+                            <td width="65%"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!--Alarms -->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="icon-bell"></i>&nbsp;
+                      Alarm(s)
+                    </h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showalarm();" style="color:#000">
+                        <i id="iconalarm" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="widget-body" id="divalarm">
+                    <div class="widget-main no-padding">
+                      <div class="slim-scroll" data-height="200">
+                        <div id="alarm_container" class="span6 widget-container-span" style="width:100%">
+                          <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Time </th>
+                                <th>Severity</th>
+                                <th class="hidden-480">Name</th>
+                              </tr>
+                            </thead>
+                            <tbody id="alarmbody">
+
+                              <tr>
+                                <td class=""><input name="" type="image" src="assets/preload.gif"></td>
+                                <td><input name="" type="image" src="assets/preload.gif"></td>
+                                <td><input name="" type="image" src="assets/preload.gif"></td>
+                                <td><input name="" type="image" src="assets/preload.gif"></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Options Modules -->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="fa fa-plus-square fa-1x"></i>&nbsp;
+                      &nbsp;Slot Modules</h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showslot(modelid);" style="color:#000">
+                        <i id="iconslot" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="widget-body" id="divslot" style="display:none">
+                    <div id="slot_container" class="widget-main no-padding">
+                      <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>Slot</th>
+                            <th> Status</th>
+                            <th class="hidden-480">Type</th>
+                            <th class="hidden-480">Configuration</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="">A</td>
+                            <td id="tdslotastatus"><input name="" type="image" src="assets/preload.gif"></td>
+                            <td id="tdslotatype"><input name="" type="image" src="assets/preload.gif"></td>
+                            <td id="tdslotaconfig"><input id="preimgslota" name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">B</td>
+                            <td id="tdslotbstatus"><input name="" type="image" src="assets/preload.gif"></td>
+                            <td id="tdslotbtype"><input name="" type="image" src="assets/preload.gif"></td>
+                            <td id="tdslotbconfig"><input id="preimgslotb" name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="widget-body" id="divslot600" style="display:none">
+                    <div class="widget-main no-padding">
+                      <table class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="content">
+                                <div class="alert alert-danger">
+                                  This Feature is not available for this model.
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+                <!--About -->
+                <div class="widget-box collapsed">
+                  <div class="widget-header header-color-newblue">
+                    <h5 class="bigger" style="color:#000">
+                      <i class="fa fa-info-circle fa-1x"></i>&nbsp;
+                      &nbsp;About</h5>
+                    <div class="widget-toolbar">
+                      <a href="#" onclick="showabout();" style="color:#000">
+                        <i id="iconabout" class="icon-chevron-down"></i>
+                      </a>
+                    </div>
+
+                  </div>
+
+                  <div class="widget-body" id="divabout">
+                    <div id="about_container" class="widget-main no-padding">
+                      <table class="table table-striped table-bordered table-hover">
+                        <tbody>
+                          <tr>
+                            <td width="40%">Hostname</td>
+                            <td id="tdhost" width="60%"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Model</td>
+                            <td id="tdmodel"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Serial Number</td>
+                            <td id="tdserial"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Release Version</td>
+                            <td id="tdrelease"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Up Time</td>
+                            <td id="tduptime"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Memory free </td>
+                            <td id="tdmemfree"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr>
+                            <td class="">Oscillator</td>
+                            <td id="tdoscil"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+                          <tr id="updaterow">
+                            <td width="40%">Update Availability Status</td>
+                            <td width="60%" id="tdupdate"><input name="" type="image" src="assets/preload.gif"></td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!--/span-->
+
+            </div>
+            <!--/row-->
+
+
+
+          </div>
+          <!--/.span-->
+        </div>
+        <!--/.row-fluid-->
+      </div>
+      <!--/.page-content-->
+
+      <!--/#ace-settings-container-->
+    </div>
+    <!--/.main-content-->
+  </div>
+  <!--/.main-container-->
+
+  <script type="text/javascript">
+    $(function() {
+
+
+
+      // scrollables
+      $('.slim-scroll').each(function() {
+        var $this = $(this);
+        $this.slimScroll({
+          height: $this.data('height') || 100,
+          railVisible: true
+        });
+      });
+
+
+
+    });
+  </script>
+
+  <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+    <i class="icon-double-angle-up icon-only bigger-110"></i>
+  </a>
+
+  <footer class="footer" style="position: absolute;  bottom: 0;margin-left: 200px">
+    <div class="container">
+      <h6 class="blue">&copy 2016 Microsemi. All Rights Reserved</h6>
+    </div>
+
+  </footer>
+
+  <script type="text/javascript">
+    timer = "";
+    interval_1 = "";
+    var timerId;
+    var base_url = "https://192.168.1.108/";
+    var web_timeout = "3600000";
+    var slotAlic = "1";
+    var slotBlic = "0";
+    var modelname = "SyncServer S650";
+    var gnsslic = "1";
+    var modelid = "2";
+
+    function startslot () {
+
+
+      timerId = setTimeout("slot_modules();", 4000);
+
+    }
+
+    function slotStop () {
+      clearTimeout(timerId);
+      timerId = null;
+    }
+
+    function startInterval (name) {
+
+      timer = setTimeout(name, 4000);
+
+    }
+
+
+
+    function stopInterval () {
+      if (timer == "") {
+        return;
+      }
+      if (timer) {
+
+        clearTimeout(timer);
+      }
+      timer = null;
+    }
+
+    function startInterval_sys () {
+      interval_1 = setTimeout(global_timer, 4000);
+    }
+
+    function clearInterval_sys () {
+      clearTimeout(interval_1);
+      interval_1 = null;
+    }
+
+
+    global_timer = function() {
+
+
+
+
+      sys_info();
+      clearInterval_sys();
+      startInterval_sys();
+
+    };
+
+
+
+
+    var logouttimer = 0;
+
+    function set_interval () {
+      logouttimer = setInterval("auto_logout()", web_timeout);
+    }
+
+    function reset_interval () {
+      if (logouttimer != 0) {
+        clearInterval(logouttimer);
+        logouttimer = 0;
+        logouttimer = setInterval("auto_logout()", web_timeout);
+      }
+    }
+
+    function auto_logout () {
+      needToConfirm = false;
+      window.location.href = base_url + 'sessionexpired';
+    }
+
+
+
+    function sys_info () {
+      try {
+        document.getElementById('logout_link').href = base_url + 'logout';
+        document.getElementById('dash_link').href = base_url + 'dashboard';
+        document.getElementById('eth_link').href = base_url + 'ethernet';
+        document.getElementById('snmp_link').href = base_url + 'snmp';
+        document.getElementById('traps_link').href = base_url + 'snmptraps';
+        document.getElementById('ping_link').href = base_url + 'ping';
+        document.getElementById('sysinfo_link').href = base_url + 'sysinfo';
+        document.getElementById('assoc_link').href = base_url + 'assoc';
+        document.getElementById('config_link').href = base_url + 'config';
+        document.getElementById('reflect_link').href = base_url + 'portconfig';
+        document.getElementById('input_link').href = base_url + 'inputcontrol';
+        document.getElementById('hold_link').href = base_url + 'holdover';
+        document.getElementById('time_link').href = base_url + 'timezone';
+        document.getElementById('serial_link').href = base_url + 'serial';
+        document.getElementById('refstatus_link').href = base_url + 'refstatus';
+        document.getElementById('users_link').href = base_url + 'users';
+        document.getElementById('access_link').href = base_url + 'accesscontrol';
+        document.getElementById('services_link').href = base_url + 'services';
+        document.getElementById('https_link').href = base_url + 'https';
+        document.getElementById('ssh_link').href = base_url + 'ssh';
+        document.getElementById('symm_link').href = base_url + 'symmetric';
+        document.getElementById('autoser_link').href = base_url + 'autokeyserver';
+        document.getElementById('autoclint_link').href = base_url + 'autokeyclient';
+        document.getElementById('radius_link').href = base_url + 'radius';
+        document.getElementById('tacacs_link').href = base_url + 'tacacs';
+        document.getElementById('ldap_link').href = base_url + 'ldap';
+        document.getElementById('packet_link').href = base_url + 'packetmonitoring';
+        document.getElementById('general_link').href = base_url + 'general';
+        document.getElementById('arelay_link').href = base_url + 'alarmrelay';
+        document.getElementById('alarms_link').href = base_url + 'alarms';
+        document.getElementById('email_link').href = base_url + 'email';
+        document.getElementById('banner_link').href = base_url + 'bannerconfig';
+        document.getElementById('serconfig_link').href = base_url + 'serialconfig';
+        document.getElementById('upgrade_link').href = base_url + 'upgrade';
+        document.getElementById('options_link').href = base_url + 'options';
+        document.getElementById('backuprestore_link').href = base_url + 'configbackuprestore';
+        document.getElementById('logconfig_link').href = base_url + 'logconfig';
+        document.getElementById('events_link').href = base_url + 'events';
+        document.getElementById('messages_link').href = base_url + 'messages';
+        document.getElementById('509csr_link').href = base_url + 'x509csr';
+        document.getElementById('509install_link').href = base_url + 'x509install';
+        document.getElementById('help_link').href = base_url + 'help';
+        document.getElementById('timeser_link').href = base_url + 'timingservice';
+        document.getElementById('timestatus_link').href = base_url + 'timingservicestatus';
+
+        try {
+          if (gnsslic == '0') {
+            document.getElementById('gnss_link').style.display = 'none';
+          } else {
+            document.getElementById('gnss_link').href = base_url + 'gnss';
+          }
+        } catch (e) {}
+
+
+        if (slotAlic != 0) {
+          try {
+            document.getElementById('slota_link').href = base_url + 'slotA';
+          } catch (e) {}
+        }
+        if (slotBlic != 0) {
+          document.getElementById('slotb_link').href = base_url + 'slotB';
+        }
+
+
+      } catch (e) {}
+
+      $.ajax({
+        'url': base_url + '/sys_info',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+
+            var utc = $('#lblutc');
+            var local = $('#lbllocal');
+            var timelbl = $('#utclable');
+
+
+
+            utc.html(data.sysarr[0].utctime);
+            local.html(data.sysarr[0].loctime);
+            timelbl.html(data.sysarr[0].utclbl);
+
+            document.getElementById("syncdef").style.display = "none";
+            document.getElementById("netdef").style.display = "none";
+            document.getElementById("almdef").style.display = "none";
+
+            var container;
+            $('#tdsync').html('');
+            container = $('#tdsync');
+
+            if ((data.sysarr[0].sync == '1') || (data.sysarr[0].sync == '2') || (data.sysarr[0].sync == '3') || (data.sysarr[0].sync == '6') ||
+              (data.sysarr[0].sync == '8') || (data.sysarr[0].sync == '11')) {
+              container.append("<span class='label label-large label-warning'><i class='fa fa-rotate-right fa-lg'></i> &nbsp;" + data.sysarr[0]
+                .lckname + " </span>");
+
+              document.getElementById("sync4").style.display = "none";
+              document.getElementById("sync6").style.display = "block";
+              document.getElementById("sync9").style.display = "none";
+            } else if ((data.sysarr[0].sync == '0') || (data.sysarr[0].sync == '7')) {
+              container.append("<span class='label label-large label-important'><i class='icon-unlock icon-1x'></i> &nbsp;" + data.sysarr[0]
+                .lckname + " </span>");
+
+              document.getElementById("sync4").style.display = "none";
+              document.getElementById("sync6").style.display = "none";
+              document.getElementById("sync9").style.display = "block";
+            } else if ((data.sysarr[0].sync == '4') || (data.sysarr[0].sync == '5') || (data.sysarr[0].sync == '9') || (data.sysarr[0].sync ==
+                '10')) {
+              container.append("<span class='label label-large label-success'><i class='icon-lock icon-1x'></i> &nbsp;" + data.sysarr[0]
+                .lckname + " </span>");
+
+              document.getElementById("sync4").style.display = "block";
+              document.getElementById("sync6").style.display = "none";
+              document.getElementById("sync9").style.display = "none";
+            }
+
+            $('#tdstrat').html('');
+            container = $('#tdstrat');
+
+            if (data.sysarr[0].strt == '1') {
+              container.append("<span class='label label-large label-success'> " + data.sysarr[0].strt + " </span>");
+            } else if (data.sysarr[0].strt == '16') {
+              container.append("<span class='label label-large label-important'>" + data.sysarr[0].strt + " </span>");
+            } else {
+              container.append("<span class='label label-large label-warning'>" + data.sysarr[0].strt + " </span>");
+            }
+
+            $('#tdnet').html('');
+            container = $('#tdnet');
+
+            if (data.sysarr[0].eth1 == '0') {
+              container.append("<span class='label label-large'>1</span>&nbsp;");
+            } else if (data.sysarr[0].eth1 == '1') {
+              container.append("<span class='label label-large label-important'>1</span>&nbsp;");
+            } else if (data.sysarr[0].eth1 == '2') {
+              container.append("<span class='label label-large label-success'>1</span>&nbsp;");
+            }
+
+            if (data.sysarr[0].eth2 == '0') {
+              container.append("<span class='label label-large'>2</span>&nbsp;");
+            } else if (data.sysarr[0].eth2 == '1') {
+              container.append("<span class='label label-large label-important'>2</span>&nbsp;");
+            } else if (data.sysarr[0].eth2 == '2') {
+              container.append("<span class='label label-large label-success'>2</span>&nbsp;");
+            }
+
+            if (data.sysarr[0].eth3 == '0') {
+              container.append("<span class='label label-large'>3</span>&nbsp;");
+            } else if (data.sysarr[0].eth3 == '1') {
+              container.append("<span class='label label-large label-important'>3</span>&nbsp;");
+            } else if (data.sysarr[0].eth3 == '2') {
+              container.append("<span class='label label-large label-success'>3</span>&nbsp;");
+            }
+
+            if (data.sysarr[0].eth4 == '0') {
+              container.append("<span class='label label-large'>4</span>&nbsp;");
+            } else if (data.sysarr[0].eth4 == '1') {
+              container.append("<span class='label label-large label-important'>4</span>&nbsp;");
+            } else if (data.sysarr[0].eth4 == '2') {
+              container.append("<span class='label label-large label-success'>4</span>&nbsp;");
+            }
+            if ((data.sysarr[0].eth1 == '1') || (data.sysarr[0].eth2 == '1') || (data.sysarr[0].eth3 == '1') || (data.sysarr[0].eth4 == '1')) {
+              document.getElementById("net1").style.display = "block";
+              document.getElementById("net2").style.display = "none";
+            } else {
+              document.getElementById("net1").style.display = "none";
+              document.getElementById("net2").style.display = "block";
+            }
+
+
+            if ((document.getElementById('divgnss').style.display == 'none')) {
+
+              $('#tdgnss').html('');
+              container = $('#tdgnss');
+
+              if (gnsslic == '0') {
+                container.append("<span class='label label-large'>Not Installed</span>&nbsp;");
+              } else {
+                if (data.sysarr[0].gstat == '0') {
+                  container.append("<span class='label label-large'>" + data.sysarr[0].gnss + "</span>&nbsp;");
+                } else if (data.sysarr[0].gstat == '1') {
+                  container.append("<span class='label label-large label-important'>" + data.sysarr[0].gnss + "</span>&nbsp;");
+                } else if (data.sysarr[0].gstat == '2') {
+                  container.append("<span class='label label-large label-success'>" + data.sysarr[0].gnss + "</span>&nbsp;");
+                }
+              }
+            }
+
+
+
+            $('#tdalarm').html('');
+            container = $('#tdalarm');
+
+            if (data.sysarr[0].alrmcol == '0') {
+              container.append("<span class='label label-large label-success'>" + data.sysarr[0].alrm + "</span>&nbsp;");
+
+              document.getElementById("alm1").style.display = "block";
+              document.getElementById("almerr").style.display = "none";
+              document.getElementById("almmin").style.display = "none";
+            } else if (data.sysarr[0].alrmcol == '1') {
+              container.append("<span class='label label-large label-warning'>" + data.sysarr[0].alrm + "</span>&nbsp;");
+
+              document.getElementById("alm1").style.display = "none";
+              document.getElementById("almerr").style.display = "none";
+              document.getElementById("almmin").style.display = "block";
+            } else if (data.sysarr[0].alrmcol == '2') {
+              container.append("<span class='label label-large label-important'>" + data.sysarr[0].alrm + "</span>&nbsp;");
+
+              document.getElementById("alm1").style.display = "none";
+              document.getElementById("almerr").style.display = "block";
+              document.getElementById("almmin").style.display = "none";
+            }
+
+            $('#tdpower').html('');
+            container = $('#tdpower')
+
+            if (data.sysarr[0].pwrcnt == '1') {
+              if (data.sysarr[0].pwr1 == '0') {
+                container.append("<span class='label label-large'>&nbsp;<i class='fa fa-ban fa-lg'></i> &nbsp;&nbsp; 1</span>&nbsp;");
+              } else if (data.sysarr[0].pwr1 == '1') {
+                container.append(
+                  "<span class='label label-large label-important'>&nbsp;<i class='fa fa-ban fa-lg'></i> &nbsp;&nbsp; 1</span>&nbsp;");
+              } else if (data.sysarr[0].pwr1 == '2') {
+                container.append(
+                  "<span class='label label-large label-success'>&nbsp;<i class='fa fa-flash fa-lg'></i> &nbsp;&nbsp; 1</span>&nbsp;");
+              }
+            } else if (data.sysarr[0].pwrcnt == '0') {
+              if (data.sysarr[0].pwr1 == '0') {
+                container.append("<span class='label label-large'>&nbsp;<i class='fa fa-ban fa-lg'></i> &nbsp;&nbsp; 1</span>&nbsp;");
+              } else if (data.sysarr[0].pwr1 == '1') {
+                container.append(
+                  "<span class='label label-large label-important'>&nbsp;<i class='fa fa-ban fa-lg'></i> &nbsp;&nbsp; 1</span>&nbsp;");
+              } else if (data.sysarr[0].pwr1 == '2') {
+                container.append(
+                  "<span class='label label-large label-success'>&nbsp;<i class='fa fa-flash fa-lg'></i> &nbsp;&nbsp; 1</span>&nbsp;");
+              }
+
+
+              if (data.sysarr[0].pwr2 == '0') {
+                container.append("<span class='label label-large'>&nbsp;<i class='fa fa-ban fa-lg'></i> &nbsp;&nbsp; 2</span>&nbsp;");
+              } else if (data.sysarr[0].pwr2 == '1') {
+                container.append(
+                  "<span class='label label-large label-important'>&nbsp;<i class='fa fa-ban fa-lg'></i> &nbsp;&nbsp; 2</span>&nbsp;");
+              } else if (data.sysarr[0].pwr2 == '2') {
+                container.append(
+                  "<span class='label label-large label-success'>&nbsp;<i class='fa fa-flash fa-lg'></i> &nbsp;&nbsp; 2</span>&nbsp;");
+              }
+            }
+            $('#tdslots').html('');
+            container = $('#tdslots');
+            if (modelid == '1') {
+              container.append("<span class='label label-large'>Not Installed</span>&nbsp;");
+            } else {
+              if (data.sysarr[0].slta == '0') {
+                container.append(
+                "<span class='label label-large'><i class='fa fa-plus-square fa-lg'></i> &nbsp; A: Not Installed</span>&nbsp;");
+              } else if (data.sysarr[0].slta == '1') {
+                container.append(
+                  "<span class='label label-large label-important'><i class='fa fa-plus-square fa-lg'></i> &nbsp; A</span>&nbsp;");
+              } else if (data.sysarr[0].slta == '2') {
+                container.append("<span class='label label-large label-success'><i class='fa fa-plus-square fa-lg'></i> &nbsp; A</span>&nbsp;");
+              } else if (data.sysarr[0].slta == '3') {
+                container.append("<span class='label label-large label-warning'><i class='fa fa-plus-square fa-lg'></i> &nbsp; A</span>&nbsp;");
+              }
+
+              if (data.sysarr[0].sltb == '0') {
+                container.append(
+                "<span class='label label-large'><i class='fa fa-plus-square fa-lg'></i> &nbsp; B: Not Installed</span>&nbsp;");
+              } else if (data.sysarr[0].sltb == '1') {
+                container.append(
+                  "<span class='label label-large label-important'><i class='fa fa-plus-square fa-lg'></i> &nbsp; B</span>&nbsp;");
+              } else if (data.sysarr[0].sltb == '2') {
+                container.append("<span class='label label-large label-success'><i class='fa fa-plus-square fa-lg'></i> &nbsp; B</span>&nbsp;");
+              } else if (data.sysarr[0].sltb == '3') {
+                container.append("<span class='label label-large label-warning'><i class='fa fa-plus-square fa-lg'></i> &nbsp; B</span>&nbsp;");
+              }
+            }
+
+          }
+        }
+
+      });
+
+    }
+
+    function alarm () {
+
+      $.ajax({
+        'url': base_url + '/alarm_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+            var container;
+            $('#alarmbody').html('');
+            container = $('#alarmbody');
+            var alrmcnt = data.alarmarr.length;
+            for (i = 0; i < alrmcnt; i++) {
+              if (data.alarmarr[i].sev == 'MAJOR') {
+                container.append("<tr><td class=''>" + data.alarmarr[i].indx + "</td><td>" + data.alarmarr[i].time +
+                  "</td><td><span class='label label-large label-important'> &nbsp;" + data.alarmarr[i].sev + "</span></td><td>" + data
+                  .alarmarr[i].name + "</td></tr>");
+              } else if (data.alarmarr[i].sev == 'MINOR') {
+                container.append("<tr><td class=''>" + data.alarmarr[i].indx + "</td><td>" + data.alarmarr[i].time +
+                  "</td><td><span class='label label-large label-yellow'> &nbsp;" + data.alarmarr[i].sev + "</span></td><td>" + data.alarmarr[
+                    i].name + "</td></tr>");
+              } else if (data.alarmarr[i].sev == 'NOTIFY') {
+                container.append("<tr><td class=''>" + data.alarmarr[i].indx + "</td><td>" + data.alarmarr[i].time +
+                  "</td><td><span class='' > &nbsp;" + data.alarmarr[i].sev + "</span></td><td>" + data.alarmarr[i].name + "</td></tr>");
+              } else if (data.alarmarr[i].sev == 'error') {
+                container.append("");
+              }
+            }
+
+            sys_info();
+
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(alarm);
+    }
+
+    function about () {
+
+
+      $.ajax({
+        'url': base_url + '/about_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+            var container;
+            $('#tdhost').html('');
+            container = $('#tdhost');
+            container.append(data.aboutarr[0].host);
+
+            $('#tdmodel').html('');
+            container = $('#tdmodel');
+            container.append(data.aboutarr[0].model);
+
+            $('#tdserial').html('');
+            container = $('#tdserial');
+            container.append(data.aboutarr[0].serno);
+
+            $('#tdrelease').html('');
+            container = $('#tdrelease');
+            container.append(data.aboutarr[0].relver);
+
+            $('#tduptime').html('');
+            container = $('#tduptime');
+            container.append(data.aboutarr[0].uptme);
+
+            $('#tdmemfree').html('');
+            container = $('#tdmemfree');
+            container.append(data.aboutarr[0].memfre);
+
+            $('#tdoscil').html('');
+            container = $('#tdoscil');
+            container.append(data.aboutarr[0].osc);
+            if (data.aboutarr[0].update != "Not Configured") {
+
+              $('#tdupdate').html('');
+              container = $('#tdupdate');
+              container.append(data.aboutarr[0].update);
+            } else {
+              document.getElementById("updaterow").style.display = "none";
+            }
+
+
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(about);
+    }
+
+    function network () {
+
+      $.ajax({
+        'url': base_url + '/network_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+
+            var container;
+            $('#netbody').html('');
+            container = $('#netbody');
+            var eth1cnt = data.netarr['eth1'].length;
+            if (eth1cnt != '0') {
+              for (i = 0; i < eth1cnt; i++) {
+                if ((i == '0') && (data.netarr['eth1'][i].ip != '')) {
+                  container.append("<tr><td rowspan=" + eth1cnt + " class=''>" + data.netarr['eth1'][i].port + "</td><td>" + data.netarr['eth1']
+                    [i].ip + "</td><td>" + data.netarr['eth1'][i].mask + "</td><td>" + data.netarr['eth1'][i].gate + "</td></tr>");
+                } else if (data.netarr['eth1'][i].ip != '') {
+                  container.append("<tr><td>" + data.netarr['eth1'][i].ip + "</td><td>" + data.netarr['eth1'][i].mask + "</td><td>" + data
+                    .netarr['eth1'][i].gate + "</td></tr>");
+                }
+
+              }
+            }
+
+            var eth2cnt = data.netarr['eth2'].length;
+            if (eth2cnt != '0') {
+              for (i = 0; i < eth2cnt; i++) {
+                if ((i == '0') && (data.netarr['eth2'][i].ip != '')) {
+                  container.append("<tr><td rowspan=" + eth2cnt + " class=''>" + data.netarr['eth2'][i].port + "</td><td>" + data.netarr['eth2']
+                    [i].ip + "</td><td>" + data.netarr['eth2'][i].mask + "</td><td>" + data.netarr['eth2'][i].gate + "</td></tr>");
+                } else if (data.netarr['eth2'][i].ip != '') {
+                  container.append("<tr><td>" + data.netarr['eth2'][i].ip + "</td><td>" + data.netarr['eth2'][i].mask + "</td><td>" + data
+                    .netarr['eth2'][i].gate + "</td></tr>");
+                }
+
+              }
+            }
+
+            var eth3cnt = data.netarr['eth3'].length;
+            if (eth3cnt != '0') {
+              for (i = 0; i < eth3cnt; i++) {
+                if ((i == '0') && (data.netarr['eth3'][i].ip != '')) {
+                  container.append("<tr><td rowspan=" + eth3cnt + " class=''>" + data.netarr['eth3'][i].port + "</td><td>" + data.netarr['eth3']
+                    [i].ip + "</td><td>" + data.netarr['eth3'][i].mask + "</td><td>" + data.netarr['eth3'][i].gate + "</td></tr>");
+                } else if (data.netarr['eth3'][i].ip != '') {
+                  container.append("<tr><td>" + data.netarr['eth3'][i].ip + "</td><td>" + data.netarr['eth3'][i].mask + "</td><td>" + data
+                    .netarr['eth3'][i].gate + "</td></tr>");
+                }
+
+              }
+            }
+
+            var eth4cnt = data.netarr['eth4'].length;
+            if (eth4cnt != '0') {
+              for (i = 0; i < eth4cnt; i++) {
+                if ((i == '0') && (data.netarr['eth4'][i].ip != '')) {
+                  container.append("<tr><td rowspan=" + eth4cnt + " class=''>" + data.netarr['eth4'][i].port + "</td><td>" + data.netarr['eth4']
+                    [i].ip + "</td><td>" + data.netarr['eth4'][i].mask + "</td><td>" + data.netarr['eth4'][i].gate + "</td></tr>");
+                } else if (data.netarr['eth4'][i].ip != '') {
+                  container.append("<tr><td>" + data.netarr['eth4'][i].ip + "</td><td>" + data.netarr['eth4'][i].mask + "</td><td>" + data
+                    .netarr['eth4'][i].gate + "</td></tr>");
+                }
+
+              }
+            }
+
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(network);
+    }
+
+
+    function timingservice () {
+
+      $.ajax({
+        'url': base_url + '/timeservice_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+            var container;
+            $('#timeserbody').html('');
+            container = $('#timeserbody');
+            var portcnt = data.length;
+
+            if (portcnt != '0') {
+              for (i = 0; i < portcnt; i++) {
+                if (data[i].svc_def_type == 'timing_service_ntpr') {
+                  sertype = "NTP reflector";
+                } else if (data[i].svc_def_type == 'timing_service_ptp') {
+                  sertype = "PTP master";
+                } else if (data[i].svc_def_type == 'timing_service_ntpd') {
+                  sertype = "NTPd";
+                }
+                container.append("<tr><td >LAN" + data[i].port_name + "</td><td>" + '(' + data[i].service_id + ')&nbsp&nbsp' + data[i]
+                  .svc_def_name + "</td><td>" + sertype + "</td><td>" + data[i].addr_transport + "</td></tr>");
+
+              }
+            }
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(timingservice);
+    }
+
+    function timingstatus () {
+
+      $.ajax({
+        'url': base_url + '/get_time_serv_dash_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+            var container;
+            $('#timestabody').html('');
+            container = $('#timestabody');
+            //NTPd
+            if (data[0].config == '0') {
+              container.append("<tr><td>See Network Timing - > <a href=" + base_url + "sysinfo>NTPd Sysinfo </a>  for NTPd status</td></tr>");
+            } else if (data[0].config == '2') {
+              // PTP
+              container.append("<tr><td width='35%' class=''>Attached to</td><td width='65%'>" + data[0].port + "</td></tr>");
+              container.append("<tr><td >Service </td><td>PTP master, Enterprise</td></tr>");
+              container.append("<tr><td >Port identity</td><td>" + data[0].portid + "</td></tr>");
+              container.append("<tr><td >Clock class</td><td>" + data[0].clkclass + "</td></tr>");
+              container.append("<tr><td >Clock accuracy</td><td>" + data[0].clkacc + "</td></tr>");
+              container.append("<tr><td >Rx Packets/second</td><td>" + data[0].packsec + "</td></tr>");
+            } else if (data[0].config == '1') {
+              // Ntpr
+              container.append("<tr><td width='35%' class=''>Attached to</td><td width='65%'>" + data[0].port + "</td></tr>");
+              container.append("<tr><td >Service </td><td>NTP Reflector</td></tr>");
+              container.append("<tr><td >Leap Indicator</td><td>" + data[0].clkclass + "</td></tr>");
+              container.append("<tr><td >Stratum</td><td>" + data[0].ptpclients + "</td></tr>");
+              container.append("<tr><td >Reference ID</td><td>" + data[0].timesrc + "</td></tr>");
+              container.append("<tr><td >Rx Packets/second</td><td>" + data[0].packsec + "</td></tr>");
+            }
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(timingstatus);
+    }
+
+    function timing () {
+
+      $.ajax({
+        'url': base_url + '/time_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          var container;
+          if (data) {
+            $('#tdtimestatus').html('');
+            container = $('#tdtimestatus');
+
+            if ((data.timearr[0].lck == '1') || (data.timearr[0].lck == '2') || (data.timearr[0].lck == '3') || (data.timearr[0].lck == '6') ||
+              (data.timearr[0].lck == '8') || (data.timearr[0].lck == '11')) {
+              container.append("<span class='label label-large label-warning'><i class='fa fa-rotate-right fa-lg'></i> &nbsp;" + data.timearr[0]
+                .lckname + " </span>");
+            } else if ((data.timearr[0].lck == '0') || (data.timearr[0].lck == '7')) {
+              container.append("<span class='label label-large label-important'><i class='icon-unlock icon-1x'></i> &nbsp;" + data.timearr[0]
+                .lckname + " </span>");
+            } else if ((data.timearr[0].lck == '4') || (data.timearr[0].lck == '5') || (data.timearr[0].lck == '9') || (data.timearr[0].lck ==
+                '10')) {
+              container.append("<span class='label label-large label-success'><i class='icon-lock icon-1x'></i> &nbsp;" + data.timearr[0]
+                .lckname + " </span>");
+            }
+
+            $('#tdtimecurref').html('');
+            container = $('#tdtimecurref');
+
+            if ((data.timearr[0].src == '10') || (data.timearr[0].src == '11') || (data.timearr[0].src == '12')) {
+              container.append("<span class='label label-large label-warning'> " + data.timearr[0].srcname + " </span>");
+            } else {
+              if (data.timearr[0].srcname != '') {
+                container.append("<span class='label label-large label-success'> " + data.timearr[0].srcname + " </span>");
+              }
+            }
+
+            $('#tdtimetref').html('');
+            container = $('#tdtimetref');
+
+            for (i = 0; i < data.timearr.length; i++) {
+              if ((data.timearr[i].tsrcno == '0') || (data.timearr[i].tsrcno == '1') || (data.timearr[i].tsrcno == '2') || (data.timearr[i]
+                  .tsrcno == '9')) {
+                if (data.timearr[i].col == '1') {
+                  container.append("<span class='label label-large label-important'> " + data.timearr[i].tsrc + " </span>&nbsp;");
+                } else if (data.timearr[i].col == '0') {
+                  container.append("<span class='label label-large label-success'> " + data.timearr[i].tsrc + "</span>&nbsp;");
+                }
+              }
+            }
+
+            if (data.modelid != '1') {
+              $('#tdtimeholdref').html('');
+              container = $('#tdtimeholdref');
+
+              for (i = 0; i < data.timearr.length; i++) {
+                if ((data.timearr[i].tsrcno != '0') && (data.timearr[i].tsrcno != '1') && (data.timearr[i].tsrcno != '2') && (data.timearr[i]
+                    .tsrcno != '9')) {
+                  if ((data.timearr[i].col == '1') && (data.timearr[i].tsrc != '')) {
+                    container.append("<span class='label label-large label-important'> " + data.timearr[i].tsrc + " (" + data.timearr[i].sig +
+                      ") </span>&nbsp;");
+                  } else if ((data.timearr[i].col == '0') && (data.timearr[i].tsrc != '')) {
+                    container.append("<span class='label label-large label-success'> " + data.timearr[i].tsrc + " (" + data.timearr[i].sig +
+                      ") </span>&nbsp;");
+                  }
+                }
+              }
+            } else {
+              document.getElementById("trholdover").style.display = "none";
+            }
+
+            $('#tdtimeleap').html('');
+            container = $('#tdtimeleap');
+
+            if (data.timearr[0].leap == 'None') {
+              container.append("<span class='label label-large label-success'> &nbsp;" + data.timearr[0].leap + "</span>&nbsp;");
+            } else {
+              container.append("<span class='label label-large label-warning'> &nbsp;" + data.timearr[0].leap + "</span>&nbsp;");
+            }
+
+
+
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(timing);
+    }
+
+    function ntp () {
+
+      $.ajax({
+        'url': base_url + '/ntp_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+            var container;
+            $('#tdspeer').html('');
+            container = $('#tdspeer');
+            container.append(data.ntparr[0].speer);
+
+            $('#tdsmode').html('');
+            container = $('#tdsmode');
+            container.append(data.ntparr[0].smode);
+
+            $('#tdlind').html('');
+            container = $('#tdlind');
+            container.append(data.ntparr[0].lind);
+
+            $('#tdstratum').html('');
+            container = $('#tdstratum');
+            container.append(data.ntparr[0].strat);
+
+            $('#tdrid').html('');
+            container = $('#tdrid');
+            container.append(data.ntparr[0].rid);
+
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(ntp);
+    }
+
+    function slot_modules () {
+
+      $.ajax({
+        'url': base_url + '/slot_refresh_data',
+        'type': 'POST',
+        'dataType': 'JSON',
+        'success': function(data) {
+          if (data) {
+            var container;
+            $('#tdslotastatus').html('');
+            container = $('#tdslotastatus');
+
+            if (data.slotAinstal == '0') {
+              container.append("<span class='label label-large'> Not installed</span>");
+            } else if (data.slotAinstal == '1') {
+              container.append("<span class='label label-large label-important'> Installed</span>");
+            } else if (data.slotAinstal == '2') {
+              container.append("<span class='label label-large label-success'> Installed</span>");
+            } else if (data.slotAinstal == '3') {
+              container.append("<span class='label label-large label-warning'> Installing</span>");
+            }
+
+            $('#tdslotatype').html('');
+            container = $('#tdslotatype');
+
+            if (data.slotAtype == '1') {
+              container.append("TIMING I/O CARD");
+            } else if (data.slotAtype == '2') {
+              container.append("LPN Card");
+            }
+
+            if (data.slotAinstal != '0') {
+
+              $('#tdslotaconfig').html('');
+              container = $('#tdslotaconfig');
+
+              if (data.dashioarr[0].inp != '') {
+                container.append("Inputs : " + data.dashioarr[0].inp + ";  Outputs : " + data.dashioarr[0].out);
+              }
+            } else {
+              document.getElementById("preimgslota").style.display = "none";
+            }
+            $('#tdslotbstatus').html('');
+            container = $('#tdslotbstatus');
+
+
+            if (data.slotBinstal == '0') {
+              container.append("<span class='label label-large'> Not installed</span>");
+            } else if (data.slotBinstal == '1') {
+              container.append("<span class='label label-large label-important'> Installed</span>");
+            } else if (data.slotBinstal == '2') {
+              container.append("<span class='label label-large label-success'> Installed</span>");
+            } else if (data.slotBinstal == '3') {
+              container.append("<span class='label label-large label-warning'> Installing</span>");
+            }
+
+            $('#tdslotbtype').html('');
+            container = $('#tdslotbtype');
+
+            if (data.slotBtype == '1') {
+              container.append("TIMING I/O CARD");
+            } else if (data.slotBtype == '2') {
+              container.append("LPN Card");
+            }
+
+            if (data.slotBinstal != '0') {
+
+              $('#tdslotbconfig').html('');
+              container = $('#tdslotbconfig');
+
+              if (data.dashioarr[1].inp != '') {
+                container.append("Inputs : " + data.dashioarr[1].inp + ";  Outputs : " + data.dashioarr[1].out);
+              }
+            } else {
+              document.getElementById("preimgslotb").style.display = "none";
+            }
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timerId);
+      startslot();
+
+    }
+
+
+    function gnssdata () {
+      $.ajax({
+        'url': base_url + '/gnss_data',
+        'type': 'POST',
+        'success': function(data) {
+          var jsonData = JSON.parse(data);
+          var marginvalue = 80;
+          if (data) {
+
+            $('#divForGraph').html('');
+            $('#spansbas').html('');
+
+            if (jsonData.arr2 !== null && jsonData.arr2[0] != "") {
+              document.getElementById("divgnssgraph").style.display = "block";
+
+              $('#divForGraph').jqBarGraph({ data: jsonData.arr2 });
+
+              if (jsonData.arr2.length < 6) {
+                document.getElementById("satid").style.marginLeft = '60px';
+              } else {
+                for (i = 6; i <= 16; i++) {
+                  marginvalue = marginvalue + 15;
+                  if (i == jsonData.arr2.length) {
+                    document.getElementById("satid").style.marginLeft = marginvalue + 'px';
+                  }
+                }
+              }
+
+
+            }
+            if (jsonData.arr !== null && jsonData.arr[0] != "") {
+              $('#tdgnss').html('');
+              container = $('#tdgnss');
+
+              if (jsonData.arr[0]['gstat'] == '0') {
+                if (jsonData.arr2 !== null && jsonData.arr2[0] != "") {
+                  container.append("<span class='label label-large'>" + jsonData.arr2.length + "</span>&nbsp;");
+                } else {
+                  container.append("<span class='label label-large'>0</span>&nbsp;");
+                }
+              } else if (jsonData.arr[0]['gstat'] == '1') {
+                if (jsonData.arr2 !== null && jsonData.arr2[0] != "") {
+                  container.append("<span class='label label-large label-important'>" + jsonData.arr2.length + "</span>&nbsp;");
+                } else {
+                  container.append("<span class='label label-large label-important'>0</span>&nbsp;");
+                }
+              } else if (jsonData.arr[0]['gstat'] == '2') {
+                if (jsonData.arr2 !== null && jsonData.arr2[0] != "") {
+                  container.append("<span class='label label-large label-success'>" + jsonData.arr2.length + "</span>&nbsp;");
+                } else {
+                  container.append("<span class='label label-large label-success'>0</span>&nbsp;");
+                }
+              }
+
+              $('#tdgnssgps').html('');
+              container = $('#tdgnssgps');
+              if (jsonData.arr2 !== null && jsonData.arr2[0] != "") {
+                container.append("<span class='label label-large label-success'> " + jsonData.arr2.length + '\u00A0' + 'Satellites' +
+                  " </span>&nbsp;");
+              } else {
+                container.append("<span class='label label-large label-success'> " + '0' + '\u00A0' + 'Satellites' + " </span>&nbsp;");
+              }
+
+              $('#tdgnssant').html('');
+              container = $('#tdgnssant');
+
+              if (jsonData.arr[0]['antena'] == "OPEN") {
+                container.append("<span class='label label-large label-important'> " + '\u00A0' + jsonData.arr[0]['antena'] + " </span>&nbsp;");
+              } else if (jsonData.arr[0]['antena'] == "SHORT") {
+                container.append("<span class='label label-large label-important'> " + '\u00A0' + jsonData.arr[0]['antena'] + " </span>&nbsp;");
+              } else if (jsonData.arr[0]['antena'] == "INITIALIZING") {
+                container.append("<span class='label label-large label-warning'> " + '\u00A0' + jsonData.arr[0]['antena'] + " </span>&nbsp;");
+              } else if (jsonData.arr[0]['antena'] == "...") {
+                container.append("<span class='label label-large label-warning'> " + '\u00A0' + jsonData.arr[0]['antena'] + " </span>&nbsp;");
+              } else if (jsonData.arr[0]['antena'] == "OK") {
+                container.append("<span class='label label-large label-success'> " + '\u00A0' + jsonData.arr[0]['antena'] + " </span>&nbsp;");
+              } else {
+                container.append("<span class='label label-large label-important'> " + '\u00A0' + jsonData.arr[0]['antena'] + " </span>&nbsp;");
+              }
+
+              $('#tdgnssrec').html('');
+              container = $('#tdgnssrec');
+              container.append("<span class='label label-large label-success'><i class='icon-time icon-1x'></i> " + '\u00A0' + jsonData.arr[0][
+                'recstat'
+              ] + " </span>&nbsp;");
+
+              $('#tdgnssposts').html('');
+              container = $('#tdgnssposts');
+              container.append("<span class='label label-large label-success'> " + '\u00A0' + jsonData.arr[0]['mode'] + " </span>&nbsp;");
+
+              $('#deg').text(jsonData.arr[0]['latdeg'] + "\u00B0" + jsonData.arr[0]['latmin'] + "'" + jsonData.arr[0]['latsec'] + '"' + jsonData
+                .arr[0]['latpos'] + " " + jsonData.arr[0]['londeg'] + "\u00B0" + jsonData.arr[0]['lonmin'] + "'" + jsonData.arr[0]['lonsec'] +
+                '"' + jsonData.arr[0]['lonpos'] + "\u00A0\u00A0\u00A0" + jsonData.arr[0]['alt']);
+
+              if (jsonData.arr[0]['sbas'] != "" && jsonData.arr[0]['sbas'] != "Not Tracking") {
+                $('#spansbas').html('');
+                var sbaslbl = $('#spansbas');
+                sbaslbl.html(': ' + jsonData.arr[0]['sbas']);
+              }
+            } else {
+              document.getElementById("divgnssgraph").style.display = "none";
+            }
+
+            sys_info();
+          }
+        }
+      });
+      clearTimeout(timer);
+      startInterval(gnssdata);
+    }
+  </script>
+
+
+
+  <script type="text/javascript">
+    window.jQuery || document.write("<script src='../../assets/js/jquery-2.2.2.min.js'>" + "<" + "/script>");
+  </script>
+
+  <script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+  </script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="../../assets/js/jquery.ui.touch-punch.min.js"></script>
+  <script src="../../assets/js/jquery.slimscroll.min.js"></script>
+  <script src="../../assets/js/ace-elements.min.js"></script>
+  <script src="../../assets/js/ace.min.js"></script>
+
+  </form>
+</body>
+
+</html>

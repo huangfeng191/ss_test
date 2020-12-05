@@ -1,0 +1,5 @@
+index.STFS1000Cofing.STFS1000Inp 6 STFS输入信号
+index.STFS1000Cofing.STFS1000Satellite 8 STFS卫星信息 
+index.STFS1000Cofing.STFS1000Limit 10 STFS频偏告警门限
+index.STFS1000Cofing.STFS1000SSM 7 STFS使用通道
+

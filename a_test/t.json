@@ -1,28 +1,117 @@
 {
-    "path": {
-        "aNe": "192.168.5.133",
-        "zNe": "192.168.1.33",
-        "pathName": "",
-        "pathType": "2",
-        "remark": "五七二二",
-        "isBackup": "false",
-        "id": "554976c3-dc04-4164-ac34-0bfa9008e30e"
-    },
-    "pathLinkIdList": [{
-        "aNode": "192.168.5.133",
-        "zNode": "192.168.1.33",
-        "aSlot": "qwe",
-        "zSlot": "Slot1-1",
-        
-        "remark": "五七二二",
-        "linkName": 0,
-        
+    "code": 100000,
+    "data": {
+        "info": {
+            "aid": "GGR-1",
+            "num": "01",
+            "utctime": "075810.00",
+            "ns": "N",
+            "ew": "E",
+            "high": "+01522.90",
+            "version": "3.00",
+            "model": "GGR",
+            "lat": "3604.006500",
+            "long": "10346.591900"
+        },
+        "status": {
+            "aid": "GGR-1",
+            "qq": "01",
+            "pp": "66",
+            "ss": "00",
+            "h": "-"
+        }
+    }
+}
 
-        "aPort": "89.09,30.71",
-        "zPort": "105.98,31.32",
-        
-        "linkStatus": 0,
-        "linkType": 2,
-        "id": "0ed452de-3917-41f2-a574-3ba0f7260698"
+?
+info_aid ? info_aid ?
+    info_num ? info_num ?
+    info_utctime ? info_utctime ?
+    info_ns ? info_ns ?
+    info_ew ? info_ew ?
+    info_high ? info_high ?
+    info_version ? info_version ?
+    info_model ? info_model ?
+    info_lat ? info_lat ?
+    info_long ? info_long ?
+    status_qq ? status_qq ?
+    status_pp ? status_pp ?
+    status_ss ? status_ss ?
+    status_h ? status_h
+
+
+
+
+{
+    "code": 100000,
+    "data": [
+        { "inptype": "NA", "SSM_onoff": "SA4", "SSM_lever": "NA", "SSM_sach": "OPEN", "aid": "INP-1", "mask": "0" }
+    ]
+}
+
+
+
+{
+    "code": 100000,
+    "data": [{
+        "inptype": "NA",
+        "SSM_onoff": "SA4",
+        "SSM_lever": "NA",
+        "SSM_sach": "OPEN",
+        "aid": "INP-1",
+        "mask": "1"
     }]
 }
+
+
+?
+inptype ? inptype ?
+    SSM_onoff ? SSM_onoff ?
+    SSM_lever ? SSM_lever ?
+    SSM_sach ? SSM_sach ?
+    aid ? aid ?
+    mask ? mask
+
+
+
+{
+    "code": 100000,
+    "data": {
+        "clocksys": {
+            "aid": "E1-1",
+            "clocklevel": "ST3",
+            "ssmth": "ST3"
+        },
+        "ssm": {
+            "aid": "E1-1",
+            "switch_a": "AUTO",
+            "ssm_lever": "PRS",
+            "ssm_sach": "10000"
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?clocksys_aid?clocksys_aid
+?clocksys_clocklevel?clocksys_clocklevel
+?clocksys_ssmth?clocksys_ssmth
+?ssm_switch_a?ssm_switch_a
+?ssm_ssm_lever?ssm_ssm_lever
+?ssm_ssm_sach?ssm_ssm_sach
+
+
+?aid?aid
+?threshold?threshold
