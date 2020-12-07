@@ -1,0 +1,52 @@
+#s650_dashboard .label-grey,#s650_dashboard .badge-grey {
+   background-color: #a0a0a0!important
+}
+
+#s650_dashboard .label-info,#s650_dashboard .badge-info {
+   background-color: #3a87ad!important
+}
+
+#s650_dashboard .label-primary,#s650_dashboard .badge-primary {
+   background-color: #2283c5!important
+}
+
+#s650_dashboard .label-success,#s650_dashboard .badge-success {
+   background-color: #00802B!important
+}
+
+#s650_dashboard .label-important,#s650_dashboard .badge-important {
+   background-color: #CF2917!important
+}
+
+#s650_dashboard .label-inverse,#s650_dashboard .badge-inverse {
+   background-color: #333!important
+}
+
+#s650_dashboard .label-warning,#s650_dashboard .badge-warning {
+   background-color: #f89406!important
+}
+
+#s650_dashboard .label-pink,#s650_dashboard .badge-pink {
+   background-color: #d6487e!important
+}
+
+#s650_dashboard .label-purple,#s650_dashboard .badge-purple {
+   background-color: #9585bf!important
+}
+
+#s650_dashboard .label-yellow,#s650_dashboard .badge-yellow {
+   background-color: #FEDA6C!important
+}
+
+#s650_dashboard .label-light,#s650_dashboard .badge-light {
+   background-color: #e7e7e7!important
+}
+
+#s650_dashboard .badge-yellow,#s650_dashboard .label-yellow {
+   color: #963!important;
+   border-color: #fee188
+}
+
+#s650_dashboard .badge-light,#s650_dashboard .label-light {
+   color: #888!important
+}
