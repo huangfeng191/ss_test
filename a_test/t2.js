@@ -1,312 +1,56 @@
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">使能</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpState"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">配置模式</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpProfile"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label"> PTPserver1的使能状态</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpGM1State"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PTPserver1IP地址</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpGM1Address"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PTPserver2的使能状态</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpGM2State"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PTPserver2IP地址</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpGM2Address"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">announce报文间隔</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpAnnIntv"></div>
-</div>
-
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">sync报文间隔</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpSyncIntv"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">域</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpDomain"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">ptpLocalPrio</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpLocalPrio"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">ptpMasterOnly</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpMasterOnly"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">优先级2</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpPriority2"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label"> 发送延迟</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpTxDelay"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">接收延迟</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpRxDelay"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">选源优先级</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpRefPrio"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label"> 质量优先级状态</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpPQLState"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">PQL使能</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpQLCfgValue"></div>
-</div>
-
-<div class="form-group">
-<label for="inputEmail3" 
-  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">对等模式</label>
-<div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-  <input type="text"  class="excel_value form-control" ng-model="deviceContent.ptpPeerMode"></div>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-          使能
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpState" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpState == 0" value="0">disable</option>
-            <option ng-selected="deviceContent.ptpState == 1" value="1">enable</option>
-          </select>
-        </div>
-</div>
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        PTPserver1的使能状态
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpGM1State" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpGM1State == 0" value="0">disable</option>
-            <option ng-selected="deviceContent.ptpGM1State == 1" value="1">enable</option>
-          </select>
-        </div>
-</div>
-
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        主时钟限定
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpMasterOnly" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpMasterOnly == 0" value="0">no</option>
-            <option ng-selected="deviceContent.ptpMasterOnly == 1" value="1">yes</option>
-          </select>
-        </div>
-</div>
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        质量优先级状态
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpPQLState" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpPQLState == 0" value="0">disable</option>
-            <option ng-selected="deviceContent.ptpPQLState == 1" value="1">enable</option>
-          </select>
-        </div>
-</div>
-
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        配置模式
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpProfile" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpProfile == 0" value="0">default</option>
-            <option ng-selected="deviceContent.ptpProfile == 1" value="1">telecom2008</option>
-            <option ng-selected="deviceContent.ptpProfile == 2" value="2">ethernet-default</option>
-            <option ng-selected="deviceContent.ptpProfile == 3" value="3">itu-g8275-1</option>
-            <option ng-selected="deviceContent.ptpProfile == 4" value="4">cm-5g-spec</option>
-          </select>
-        </div>
-</div>
-
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        PQL使能
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpQLCfgValue" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpQLCfgValue == 1" value="1">ql-prc</option>
-            <option ng-selected="deviceContent.ptpQLCfgValue == 2" value="2">ql-unk</option>
-            <option ng-selected="deviceContent.ptpQLCfgValue == 3" value="3">ql-ssut</option>
-            <option ng-selected="deviceContent.ptpQLCfgValue == 6" value="6">ql-ssul</option>
-            <option ng-selected="deviceContent.ptpQLCfgValue == 7" value="7">ql-sec</option>
-            <option ng-selected="deviceContent.ptpQLCfgValue == 9" value="9">ql-dnu</option>
-          </select>
-        </div>
-</div>
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        对等模式
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpPeerMode" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpPeerMode == 0" value="0">disable</option>
-            <option ng-selected="deviceContent.ptpPeerMode == 1" value="1">enable</option>
-          </select>
-        </div>
-</div>
-
-<div class="form-group">
-        <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-        对等模式
-        </label>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-          <select ng-model="deviceContent.ptpPeerMode" class="excel_value form-control input-sm">
-            <option translate="PLEASE_SELECT" value="">请选择</option>
-            <option ng-selected="deviceContent.ptpPeerMode == 0" value="0">disable</option>
-            <option ng-selected="deviceContent.ptpPeerMode == 1" value="1">enable</option>
-          </select>
-        </div>
-</div>
-
-
-
-
-配置模式
-
-ptpProfile     
-
-default(0),
-telecom2008(1),
-ethernet-default(2),
-itu-g8275-1(3),
-cm-5g-spec(4)
-
-
-
-syncePQLPort1
-
-ql-prc(1),
-ql-unk(2),
-ql-ssut(3),
-ql-ssul(6),
-ql-sec(7),
-ql-dnu(9)
-
-
- syncePQLPort2   
-
- ql-prc(1),
-ql-unk(2),
-ql-ssut(3),
-ql-ssul(6),
-ql-sec(7),
-ql-dnu(9)
-
-
-
- ptpQLCfgValue
-
-
-ql-prc(1),
-ql-unk(2),
-ql-ssut(3),
-ql-ssul(6),
-ql-sec(7),
-ql-dnu(9)
-
-
-
-
-syncePQLPort1   ClkQL (INTEGER) {
-ql-prc(1),
-ql-unk(2),
-ql-ssut(3),
-ql-ssul(6),
-ql-sec(7),
-ql-dnu(9)
-}
-
-
-
-
-
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-22831633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Dashboard', '1', 'index.s650.Dashboard', '', NULL, 0, 'S650Dashboard', 'S650Dashboard');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-12688633cf7', 0, '2020-12-07 09:38:33', '2', 'S650Network', '1', 'index.s650.Network', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650Network', 'S650Network');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-782401633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Ethernet', '1', 'index.s650.Ethernet', 'c5babc44-5361-4b9d-b730-12688633cf7', NULL, 0, 'S650Ethernet', 'S650Ethernet');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-744757633cf7', 0, '2020-12-07 09:38:33', '3', 'S650SNMP', '1', 'index.s650.SNMP', 'c5babc44-5361-4b9d-b730-12688633cf7', NULL, 0, 'S650SNMP', 'S650SNMP');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-916411633cf7', 0, '2020-12-07 09:38:33', '3', 'S650SNMPTraps', '1', 'index.s650.SNMPTraps', 'c5babc44-5361-4b9d-b730-12688633cf7', NULL, 0, 'S650SNMPTraps', 'S650SNMPTraps');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-81826633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Ping', '1', 'index.s650.Ping', 'c5babc44-5361-4b9d-b730-12688633cf7', NULL, 0, 'S650Ping', 'S650Ping');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-731422633cf7', 0, '2020-12-07 09:38:33', '2', 'S650NetworkTiming', '1', 'index.s650.NetworkTiming', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650NetworkTiming', 'S650NetworkTiming');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-528539633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPdSysinfo', '1', 'index.s650.NTPdSysinfo', 'c5babc44-5361-4b9d-b730-731422633cf7', NULL, 0, 'S650NTPdSysinfo', 'S650NTPdSysinfo');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-450789633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPdAssoc', '1', 'index.s650.NTPdAssoc', 'c5babc44-5361-4b9d-b730-731422633cf7', NULL, 0, 'S650NTPdAssoc', 'S650NTPdAssoc');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-669618633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPdConfig', '1', 'index.s650.NTPdConfig', 'c5babc44-5361-4b9d-b730-731422633cf7', NULL, 0, 'S650NTPdConfig', 'S650NTPdConfig');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-377234633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPr_PTPConfig', '1', 'index.s650.NTPr_PTPConfig', 'c5babc44-5361-4b9d-b730-731422633cf7', NULL, 0, 'S650NTPr_PTPConfig', 'S650NTPr_PTPConfig');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-972908633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTP_PTPMapping', '1', 'index.s650.NTP_PTPMapping', 'c5babc44-5361-4b9d-b730-731422633cf7', NULL, 0, 'S650NTP_PTPMapping', 'S650NTP_PTPMapping');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-137741633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPr_PTPStatus', '1', 'index.s650.NTPr_PTPStatus', 'c5babc44-5361-4b9d-b730-731422633cf7', NULL, 0, 'S650NTPr_PTPStatus', 'S650NTPr_PTPStatus');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-12085633cf7', 0, '2020-12-07 09:38:33', '2', 'S650Timing', '1', 'index.s650.Timing', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650Timing', 'S650Timing');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-920783633cf7', 0, '2020-12-07 09:38:33', '3', 'S650InputControl', '1', 'index.s650.InputControl', 'c5babc44-5361-4b9d-b730-12085633cf7', NULL, 0, 'S650InputControl', 'S650InputControl');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-751924633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Holdover', '1', 'index.s650.Holdover', 'c5babc44-5361-4b9d-b730-12085633cf7', NULL, 0, 'S650Holdover', 'S650Holdover');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-498034633cf7', 0, '2020-12-07 09:38:33', '3', 'S650TimeZone', '1', 'index.s650.TimeZone', 'c5babc44-5361-4b9d-b730-12085633cf7', NULL, 0, 'S650TimeZone', 'S650TimeZone');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-137900633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Serial', '1', 'index.s650.Serial', 'c5babc44-5361-4b9d-b730-12085633cf7', NULL, 0, 'S650Serial', 'S650Serial');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-123515633cf7', 0, '2020-12-07 09:38:33', '2', 'S650References', '1', 'index.s650.References', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650References', 'S650References');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-163112633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Status', '1', 'index.s650.Status', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650Status', 'S650Status');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-874412633cf7', 0, '2020-12-07 09:38:33', '3', 'S650GNSSConfig', '1', 'index.s650.GNSSConfig', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650GNSSConfig', 'S650GNSSConfig');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-41012633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Security', '1', 'index.s650.Security', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650Security', 'S650Security');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-899976633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Users', '1', 'index.s650.Users', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650Users', 'S650Users');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-780515633cf7', 0, '2020-12-07 09:38:33', '3', 'S650AccessControl', '1', 'index.s650.AccessControl', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650AccessControl', 'S650AccessControl');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-954478633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Services_SysControl', '1', 'index.s650.Services_SysControl', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650Services_SysControl', 'S650Services_SysControl');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-314564633cf7', 0, '2020-12-07 09:38:33', '3', 'S650HTTPS', '1', 'index.s650.HTTPS', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650HTTPS', 'S650HTTPS');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-614041633cf7', 0, '2020-12-07 09:38:33', '3', 'S650SSH', '1', 'index.s650.SSH', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650SSH', 'S650SSH');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-259294633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPdSymmetricKeys', '1', 'index.s650.NTPdSymmetricKeys', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650NTPdSymmetricKeys', 'S650NTPdSymmetricKeys');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-420707633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPdAutokeyServer', '1', 'index.s650.NTPdAutokeyServer', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650NTPdAutokeyServer', 'S650NTPdAutokeyServer');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-368707633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NTPdAutokeyClient', '1', 'index.s650.NTPdAutokeyClient', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650NTPdAutokeyClient', 'S650NTPdAutokeyClient');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-642336633cf7', 0, '2020-12-07 09:38:33', '3', 'S650RADIUS', '1', 'index.s650.RADIUS', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650RADIUS', 'S650RADIUS');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-361410633cf7', 0, '2020-12-07 09:38:33', '3', 'S650TACACS+', '1', 'index.s650.TACACS+', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650TACACS+', 'S650TACACS+');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-36678633cf7', 0, '2020-12-07 09:38:33', '3', 'S650LDAP', '1', 'index.s650.LDAP', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650LDAP', 'S650LDAP');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-14451633cf7', 0, '2020-12-07 09:38:33', '3', 'S650PacketMonitoring', '1', 'index.s650.PacketMonitoring', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650PacketMonitoring', 'S650PacketMonitoring');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-366171633cf7', 0, '2020-12-07 09:38:33', '3', 'S650X509CSR', '1', 'index.s650.X509CSR', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650X509CSR', 'S650X509CSR');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-775832633cf7', 0, '2020-12-07 09:38:33', '3', 'S650X509Install', '1', 'index.s650.X509Install', 'c5babc44-5361-4b9d-b730-123515633cf7', NULL, 0, 'S650X509Install', 'S650X509Install');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-833212633cf7', 0, '2020-12-07 09:38:33', '2', 'S650Admin', '1', 'index.s650.Admin', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650Admin', 'S650Admin');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-936415633cf7', 0, '2020-12-07 09:38:33', '3', 'S650General', '1', 'index.s650.General', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650General', 'S650General');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-278179633cf7', 0, '2020-12-07 09:38:33', '3', 'S650AlarmRelay', '1', 'index.s650.AlarmRelay', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650AlarmRelay', 'S650AlarmRelay');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-198788633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Alarms', '1', 'index.s650.Alarms', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650Alarms', 'S650Alarms');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-760634633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Email', '1', 'index.s650.Email', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650Email', 'S650Email');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-589397633cf7', 0, '2020-12-07 09:38:33', '3', 'S650BannerConfig', '1', 'index.s650.BannerConfig', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650BannerConfig', 'S650BannerConfig');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-180927633cf7', 0, '2020-12-07 09:38:33', '3', 'S650SerialPortConfig', '1', 'index.s650.SerialPortConfig', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650SerialPortConfig', 'S650SerialPortConfig');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-794431633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Upgrade', '1', 'index.s650.Upgrade', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650Upgrade', 'S650Upgrade');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-354012633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Options', '1', 'index.s650.Options', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650Options', 'S650Options');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-507017633cf7', 0, '2020-12-07 09:38:33', '3', 'S650ConfigBackup_Restore', '1', 'index.s650.ConfigBackup_Restore', 'c5babc44-5361-4b9d-b730-833212633cf7', NULL, 0, 'S650ConfigBackup_Restore', 'S650ConfigBackup_Restore');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-389273633cf7', 0, '2020-12-07 09:38:33', '2', 'S650Logs', '1', 'index.s650.Logs', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650Logs', 'S650Logs');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-313793633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Config', '1', 'index.s650.Config', 'c5babc44-5361-4b9d-b730-389273633cf7', NULL, 0, 'S650Config', 'S650Config');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-917203633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Events', '1', 'index.s650.Events', 'c5babc44-5361-4b9d-b730-389273633cf7', NULL, 0, 'S650Events', 'S650Events');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-237161633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Messages', '1', 'index.s650.Messages', 'c5babc44-5361-4b9d-b730-389273633cf7', NULL, 0, 'S650Messages', 'S650Messages');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-2429633cf7', 0, '2020-12-07 09:38:33', '2', 'S650OPTIONSLOTA', '1', 'index.s650.OPTIONSLOTA', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650OPTIONSLOTA', 'S650OPTIONSLOTA');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-714525633cf7', 0, '2020-12-07 09:38:33', '3', 'S650TIMINGI_OCARD', '1', 'index.s650.TIMINGI_OCARD', 'c5babc44-5361-4b9d-b730-2429633cf7', NULL, 0, 'S650TIMINGI_OCARD', 'S650TIMINGI_OCARD');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-364645633cf7', 0, '2020-12-07 09:38:33', '2', 'S650OPTIONSLOTB', '1', 'index.s650.OPTIONSLOTB', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650OPTIONSLOTB', 'S650OPTIONSLOTB');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-574483633cf7', 0, '2020-12-07 09:38:33', '3', 'S650NotInstalled', '1', 'index.s650.NotInstalled', 'c5babc44-5361-4b9d-b730-364645633cf7', NULL, 0, 'S650NotInstalled', 'S650NotInstalled');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-812883633cf7', 0, '2020-12-07 09:38:33', '2', 'S650Help', '1', 'index.s650.Help', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650Help', 'S650Help');
+INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ('c5babc44-5361-4b9d-b730-393160633cf7', 0, '2020-12-07 09:38:33', '3', 'S650Contacts', '1', 'index.s650.Contacts', 'c5babc44-5361-4b9d-b730-812883633cf7', NULL, 0, 'S650Contacts', 'S650Contacts');

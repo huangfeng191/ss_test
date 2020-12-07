@@ -1,86 +1,82 @@
-ptpInput1: function(m, y, t) {
-    var str = this.nullFun(t),
-        s = t.use() === 'ch' ? "请选择" : "Please select ";
-    if (verifyFun.isNull(m.synceStatePort2)) {
-        y.ngAlert(s + t.instant("PORT_ENABLE"), "warning")
-        return false;
-    }
-    if (verifyFun.isNull(m["syncePrioPort2"])) {
-        y.ngAlert("优先级" + str, "warning")
-        return false;
-    }
-    if (!verifyFun.isNumber(m["syncePrioPort2"]) || !verifyFun.between(m["syncePrioPort2"], 0, 16)) {
-        y.ngAlert(this.fe("优先级", 0, 16,t), "warning")
-        return false;
-    }
-
-    if (verifyFun.isNull(m.ethSrcTypePort2)) {
-        y.ngAlert(s + t.instant("PTPCKLX"), "warning")
-        return false;
-    }
+a=[
+    "Dashboard",
+    " Network",
+    "Ethernet",
+    "SNMP",
+    "SNMPTraps",
+    "Ping",
+    " NetworkTiming",
+    "NTPdSysinfo",
+    "NTPdAssoc",
+    "NTPdConfig",
+    "NTPr_PTPConfig",
+    "NTP_PTPMapping",
+    "NTPr_PTPStatus",
+    " Timing",
+    "InputControl",
+    "Holdover",
+    "TimeZone",
+    "Serial",
+    " References",
+    "Status",
+    "GNSSConfig",
+    "Security",
+    "Users",
+    "AccessControl",
+    "Services_SysControl",
+    "HTTPS",
+    "SSH",
+    "NTPdSymmetricKeys",
+    "NTPdAutokeyServer",
+    "NTPdAutokeyClient",
+    "RADIUS",
+    "TACACS+",
+    "LDAP",
+    "PacketMonitoring",
+    "X509CSR",
+    "X509Install",
+    " Admin",
+    "General",
+    "AlarmRelay",
+    "Alarms",
+    "Email",
+    "BannerConfig",
+    "SerialPortConfig",
+    "Upgrade",
+    "Options",
+    "ConfigBackup_Restore",
+    " Logs",
+    "Config",
+    "Events",
+    "Messages",
+    " OPTIONSLOTA",
+    "TIMINGI_OCARD",
+    " OPTIONSLOTB",
+    "NotInstalled",
+    " Help",
+    "Contacts"
+  ]
+  
+  
+  var b=[]
+  var pid=""
+  a.forEach(function(v,i){
+    var c=""
+    var id=Math.round(Math.random()*1000000)
     
-
-    if (verifyFun.isNull(m["syncePQLPort2"])) {
-        y.ngAlert(t.instant("PQL_VALUE") + str, "warning")
-        return false;
+    if(v[0]==" "){
+        v=v.replace(" ","")
+    c=`'c5babc44-5361-4b9d-b730-${id}633cf7', 0, '2020-12-07 09:38:33', '2', 'S650${v}', '1', 'index.s650.${v}', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650${v}', 'S650${v}'`
+      pid=`c5babc44-5361-4b9d-b730-${id}633cf7`
+    }else{
+        c=`'c5babc44-5361-4b9d-b730-${id}633cf7', 0, '2020-12-07 09:38:33', '3', 'S650${v}', '1', 'index.s650.${v}', '${pid}', NULL, 0, 'S650${v}', 'S650${v}'`
     }
-    if (!verifyFun.isNumber(m["syncePQLPort2"]) || !verifyFun.between(m["syncePQLPort2"], 1, 3)) {
-        y.ngAlert(this.fe(t.instant("PQL_VALUE"), 1, 3,t), "warning")
-        return false;
-    }
-    return true;
-},
+    b.push(c)
+  
+  })
+  var d=[]
+b.forEach(function(v){
+    d.push("INSERT INTO `nms2.0`.`menu`(`id`, `isDelete`, `timestamp`, `level`, `menuName`, `type`, `url`, `parentId`, `name`, `menuIndex`, `menuNameCn`, `menuNameEN`) VALUES ("+v+");")
+})
 
-
-
-
-
-ptpPortID           端口号 port-1(1) or port-2(2)
-
-
-ptpState 使能  disable(0) or enable(1)
-ptpProfile 配置模式 
-ptpGM1State  PTPserver1的使能状态 disable(0) or enable(1)
-ptpGM1Address PTPserver1IP地址
-ptpGM2State PTPserver2的使能状态
-ptpGM2Address PTPserver2IP地址
-ptpAnnIntv announce报文间隔 
-ptpSyncIntv sync报文间隔 
-ptpDomain 域
-ptpLocalPrio ptpLocalPrio
-ptpMasterOnly ptpMasterOnly   no(0) or yes(1)
-ptpPriority2 优先级2
-ptpTxDelay  发送延迟
-ptpRxDelay 接收延迟
-ptpRefPrio 选源优先级
-ptpPQLState  质量优先级状态 disable(0) or enable(1)
-ptpQLCfgValue PQL使能
-ptpPeerMode 对等模式 disable(0) or enable(1)
-
-
-
-
-EnableDisable  enable(1), disable(0)
-
-
-
-ntpServerListEnable   s INTEGER32 {nothing(0), whitelist(1), blacklist(2)}
-ntpServerAutoKeyEnable s  INTEGER32 {enable(1), disable(0) }
-ntpServerAutoKeyVlue  
-ntpServerMd5Enable s INTEGER32 {enable(1), disable(0) }
-ntpServerMd5Value  
-ntpServerBroadcastEnable s  INTEGER32 {enable(1), disable(0) }
-ntpServerBroadcastAddr  ip
-ntpServerBroadcastInterval   INTEGER32 (3..17)
-ntpServerManycastEnable  s INTEGER32 {enable(1), disable(0) }
-ntpServerManycastAddr     ip
-ntpServerManycastInterval  INTEGER32 (3..17)
-ntpServerPortIPaddress   
-ntpServerConfigPortState s  INTEGER32 {disable(0), enable(1), restart(2) }
-ntpServerPortMACaddress   
-ntpServerPortIPv6address   
-ntpServerPortIPv6gateway         The format is :fe80::6aca::1.
-ntpServerPortIPv6configaddress   The format is :fe80::6aca::1/64.
-
-
-
+  copy(d.join("\n"))

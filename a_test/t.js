@@ -1,18 +1,81 @@
-
-1  国网：各模块分页调整，ie兼容调整，网络拓扑显示位置调整
-
-
-1  国网：分页plugin 添加每页条数，网络拓扑每列最多记录数调整
+var a=[] ;
+$(".nav-list .menu-text").each(function(i,v){a.push(v.innerHTML.replace(/&nbsp;/g,'').replace(/ /g,''))})
+copy(a)
 
 
-1  国网：限制用户角色只能修改对应的菜单类别、密码复杂度控制、xss js 控制
+[
+  "Dashboard",
+  "Network",
+  "NetworkTiming",
+  "Timing",
+  "References",
+  "Security",
+  "Admin",
+  "Logs",
+  "OPTIONSLOTA",
+  "OPTIONSLOTB",
+  "Help"
+]
 
-1  国网：南瑞测试问题修改，问题沟通
 
-1  国网：南瑞测试问题修改，问题沟通
-2 SyncServer S600 系统整理
-
-
-
-1  国网：南瑞测试问题修改:分页插件、用户管理、xss控制、ie兼容性、网络拓扑模块
-2 SyncServer S600 dashboard 模块开发
+var a=[] ;
+$(".nav-list a ").each(function(i,v){a.push(v.innerText.replace(/  /g,'').replace(/\n/g,'').replace(/\//g,'_').replace(/ /g,'').replace(/\./g,''))})
+copy(a)
+[
+  "Dashboard",
+  " Network",
+  "Ethernet",
+  "SNMP",
+  "SNMPTraps",
+  "Ping",
+  " NetworkTiming",
+  "NTPdSysinfo",
+  "NTPdAssoc",
+  "NTPdConfig",
+  "NTPr_PTPConfig",
+  "NTP_PTPMapping",
+  "NTPr_PTPStatus",
+  " Timing",
+  "InputControl",
+  "Holdover",
+  "TimeZone",
+  "Serial",
+  " References",
+  "Status",
+  "GNSSConfig",
+  "Security",
+  "Users",
+  "AccessControl",
+  "Services_SysControl",
+  "HTTPS",
+  "SSH",
+  "NTPdSymmetricKeys",
+  "NTPdAutokeyServer",
+  "NTPdAutokeyClient",
+  "RADIUS",
+  "TACACS+",
+  "LDAP",
+  "PacketMonitoring",
+  "X509CSR",
+  "X509Install",
+  " Admin",
+  "General",
+  "AlarmRelay",
+  "Alarms",
+  "Email",
+  "BannerConfig",
+  "SerialPortConfig",
+  "Upgrade",
+  "Options",
+  "ConfigBackup_Restore",
+  " Logs",
+  "Config",
+  "Events",
+  "Messages",
+  " OPTIONSLOTA",
+  "TIMINGI_OCARD",
+  " OPTIONSLOTB",
+  "NotInstalled",
+  " Help",
+  "Contacts"
+]
