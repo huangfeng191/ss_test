@@ -1,0 +1,27 @@
+<div class="content-s">
+   <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 querySeach">
+     <div>
+       <label translate="CURRENT_DEVICE" class="control-label">当前设备</label>
+       : {{devIP}}
+       <select ng-model="devID" style="width:120px;height: 26px;" class="form-inline input-sm"
+         ng-options="m.name group by m.area.name for m in deviceInfo" ng-change="macChange(devID)">
+         <option value="" translate="PLEASE_SELECT">请选择</option>
+       </select>
+ 
+       <button class="btn btn-primary btn-md" translate="SEARCH" ng-click="search()" style="">搜索</button>
+     </div>
+     <br>
+   </div>
+   <br>
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ </div>
+ 
+ 
+ 
+ 

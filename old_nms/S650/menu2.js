@@ -20,7 +20,7 @@ a=[
     " References",
     "Status",
     "GNSSConfig",
-    "Security",
+    " Security",
     "Users",
     "AccessControl",
     "Services_SysControl",
@@ -66,7 +66,7 @@ a=[
     
     if(v[0]==" "){
         v=v.replace(" ","")
-    c=`'c5babc44-5361-4b9d-b730-${id}633cf7', 0, '2020-12-07 09:38:33', '2', 'S650${v}', '1', 'index.s650.${v}', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650${v}', 'S650${v}'`
+    c=`'c5babc44-5361-4b9d-b730-${id}633cf7', 0, '2020-12-07 09:38:33', '2', 'S650${v}', '0', 'index.s650.${v}', 'c99a5a42-4f75-4c51-9185-5db0ba795d7a', NULL, 0, 'S650${v}', 'S650${v}'`
       pid=`c5babc44-5361-4b9d-b730-${id}633cf7`
     }else{
         c=`'c5babc44-5361-4b9d-b730-${id}633cf7', 0, '2020-12-07 09:38:33', '3', 'S650${v}', '1', 'index.s650.${v}', '${pid}', NULL, 0, 'S650${v}', 'S650${v}'`

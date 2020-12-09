@@ -24,7 +24,7 @@ copy(a)
   " References",
   "Status",
   "GNSSConfig",
-  "Security",
+  " Security",
   "Users",
   "AccessControl",
   "Services_SysControl",
