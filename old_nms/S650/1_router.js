@@ -20,7 +20,7 @@ a=[
    " References",
    "Status",
    "GNSSConfig",
-   " Security",
+   " Security",
    "Users",
    "AccessControl",
    "Services_SysControl",
@@ -89,22 +89,17 @@ var out={}
    ` 
 
    extract.search=`
-   <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12 querySeach">
-   <div>
-     <label  translate="CURRENT_DEVICE" class="control-label" >当前设备</label>
-     : {{devIP}}
-     <select ng-model="devID" style="width:120px;height: 26px;"  class="form-inline input-sm" ng-options="m.name group by m.area.name for m in deviceInfo"  ng-change="macChange(devID)">
-       <option value="" translate="PLEASE_SELECT">请选择</option>
-     </select>
-  
-     <button  class="btn btn-primary btn-md" translate="SEARCH" ng-click="search('${extract.file}')" style="">搜索</button>         
-   </div>
-   <br></div>
-   
-
-   else if(x="${extract.file}"){
-      url="/nms/spring/deviceConfig/"+$scope.selectedDevice.id+"/s650/sysinfo_ref_data"
+   else if($stateParams.tp=="${extract.file}"){
+      url="/nms/spring/deviceConfig/"+$scope.selectedDevice.id+"/s650/${extract.file.toLowerCase()}"
    }
+
+
+   else if($stateParams.tp=="${extract.file}"){
+     special="${extract.file.toLowerCase()}"
+    url="/nms/spring/deviceConfig/"+$scope.selectedDevice.id+"/s650/${extract.file.toLowerCase()}"
+ }
+
+
    `
 
 
@@ -119,8 +114,23 @@ var out={}
 //  console.log(outO["NTPdAssoc"].search )
 
 
-console.log(outO["NTPdConfig"].route)
-console.log(outO["NTPdConfig"].search )
+// console.log(outO["Holdover"].route)
+// console.log(outO["Holdover"].search )
+
+
+// console.log(outO["TimeZone"].route)
+// console.log(outO["TimeZone"].search )
+
+// console.log(outO["Serial"].route)
+// console.log(outO["Serial"].search)
+
+// console.log(outO["AccessControl"].route )
+// console.log(outO["AccessControl"].search )
+
+// console.log(outO["Status"].route )
+// console.log(outO["Status"].search )
+console.log(outO["Services_SysControl"].route )
+console.log(outO["Services_SysControl"].search )
 
 
 

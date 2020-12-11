@@ -156,4 +156,16 @@ t = temp_table({ data: r,title:title, prefix: "st1list", table_title: "", isCRUD
 t=temp_modual({ data: r,title:title, prefix: "st1list", table_title: "", isCRUD: 1 })
 
 
+field=`
+
+    <th width="30%">Input Reference(s)</th>
+      <th width="15%">State</th>
+    <th width="50%">Type</th>
+   
+`
+r = getTitle(field);
+t=temp_modual({ data: r,title:"Status", prefix: "InputReference", table_title: "", isCRUD: 0 })
+
 console.log(t)
+
+

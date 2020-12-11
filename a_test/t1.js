@@ -1,26 +1,23 @@
-<div class="row tableTs" id="pre">
-  <span>
-    Hardware Reference Clock
-  </span>
-  <div class="col-md-12">
-    <table class="excel table table-striped table-bordered table-hover table-condensed">
-      <thead>
-        <tr class="table-tr-title">
-          <th class="excel_key t-middle" style="width:100px">槽位号</th>
+function deleteNodeGroup(groupId) {
+    $.ajax({
+        url: "/nms/spring/viewData/deleteNodeGroup?groupId=" + groupId+"&pageObject=2",
+        headers: {'token': seD,"repeat":1},
+        type: "GET",
+        async: false,
+        dataType: "json",
+        contentType: "application/json;charset=UTF-8",
+        success: function (result) {
+            frames.parent.getAllDeviceInfo()
+            queryDevice();
+            $('#myModalTips').html(tips("操作成功"));
 
+            $('#myModalTips').modal('show')
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) { // 状态码
+            $('#myModalTips').html(tips("操作失败"));
+            $('#myModalTips').modal('show')
+            queryDevice();
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in frameConfigList">
-          <td class="excel_value">{{item.ioStatusSlotID}}</td>
-        </tr>
-        <tr ng-if="frameConfigList.length == 0">
-          <td colspan="8" class="textCenter">
-            <span translate="NULL_DATA">暂无数据！</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+        }
+    });
+}
