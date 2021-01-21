@@ -48,8 +48,14 @@ a=[
 {"field":"txtalt","name":"Altitude (for Position Hold)"},
 {"field":"txtdely","name":"Antenna Cable Delay (ns)"},
 ]
-console.log(getVerify({"file":"GNSSConfig","isNullFields":a}))
+// console.log(getVerify({"file":"GNSSConfig","isNullFields":a}))
 
+
+a=[
+   {"field":"Address","name":"Address"}
+]
+
+console.log(getVerify({"file":"NTPdConfig","isNullFields":a}))
 
 // if (!verifyFun.isNumber(m["txtlonsec"]) || !verifyFun.between(m["txtlonsec"],0, 59.999)) {
 //    y.ngAlert(this.fe("txtlonsec", 0, 59.999,t), "warning")

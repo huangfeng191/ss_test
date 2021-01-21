@@ -1,14 +1,13 @@
-chkprefer0  取消状态报文：
-
+chkprefer0  选 中状态报文：
 POST /config HTTP/1.1
 Host: 192.168.1.109
 Connection: close
-Content-Length: 5870
+Content-Length: 5974
 Pragma: no-cache
 Cache-Control: no-cache
 Upgrade-Insecure-Requests: 1
 Origin: https://192.168.1.109
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryShBXdVvDATd98KKq
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryS9JlxEbjp1ClnyAq
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
 Sec-Fetch-Site: same-origin
@@ -87,7 +86,7 @@ LAN3
 
 Content-Disposition: form-data; name="tempprefer1"
 
-enable
+disable
 
 Content-Disposition: form-data; name="tempburst1"
 
@@ -173,6 +172,10 @@ Content-Disposition: form-data; name="ddlport0"
 
 LAN3
 
+Content-Disposition: form-data; name="chkprefer0"
+
+enable
+
 Content-Disposition: form-data; name="ddlburst0"
 
 NA
@@ -257,6 +260,3 @@ Content-Disposition: form-data; name="action"
 
 editrecord
 --
-
-
-

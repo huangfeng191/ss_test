@@ -1,52 +1,8 @@
-
-{"key":"txttimecnt","value":"3"},
-{"key":"txttimeid0","value":"0"},
-{"key":"txttimeid1","value":"1"},
-{"key":"txtholdcnt","value":"3"},
-
-
-
-
-{"key":"txtholdid0","value":"0"},
-{"key":"txtholdid1","value":"12"},
-
-
-{"key":"inppriradio","value":"1"}, // 1 2
-
-{"key":"chktime0","value":"on"},
-{"key":"chktime1","value":"on"}, 
-
-{"key":"chkcorr","value":"on"}, 
-
-
-{"key":"chkhold0","value":"on"},
-{"key":"chkhold1","value":"on"},
-
-{"key":"ddlmonths","value":"12"},
-{"key":"txtdate","value":"07"},
-{"key":"txtyear","value":"2020"},
-{"key":"txthr","value":"01"},
-{"key":"txtmin","value":"00"},
-{"key":"txtsec","value":"55"},
-
-
-{"key":"txtirigyear","value":"2020"},
-{"key":"txtutcoffset","value":"0"},
-
-
-{"key":"manual_leap_year_radio","value":"0"},  1 -1 0
-{"key":"manual-date-radio","value":"0"},
-
-{"key":"action","value":"applyinput"} 0 1
-
-
-
-
-
-
-
-
-
-
-
-
+国网前端编译：
+    1 功能
+      采用gulp对前端js代码压缩优化、ie11兼容、调试信息删除
+    2 步骤
+      1 下载 Node.js  
+      2 试用国内 node 源： npm install -g cnpm --registry=https://registry.npm.taobao.org
+      3 安装 npm 库: 在项目目录 src\main\webapp 下执行 cnpm i 
+      4 编译代码  gulp build 

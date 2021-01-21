@@ -1,33 +1,241 @@
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="chkprefer"
 
-var data=[
-   {"key":"inppriradio","name":"Input Control","type":"select","options":[{"name":"External Input Sources","value":"1"},{"name":"Forced Manual Time Entry","value":"2"}]}, 
-   {"key":"chktime0","name":"GNSS","type":"select","options":[{"name":"disable","value":"0"},{"name":"enable","value":"1"}]}, 
-   {"key":"chktime1","name":"	Slot A J1 Timecode","type":"select","options":[{"name":"disable","value":"0"},{"name":"enable","value":"1"}]}, 
-   {"key":"chkcorr","name":"Ignore UTC corrections from GPS reference","type":"select","options":[{"name":"disable","value":"0"},{"name":"enable","value":"1"}]}, 
-   {"key":"chkhold0","name":"Slot A J2 (Frequency)","type":"select","options":[{"name":"disable","value":"0"},{"name":"enable","value":"1"}]}, 
-   {"key":"chkhold1","name":"Slot A J1 (10MPPS, 1PPS)","type":"select","options":[{"name":"disable","value":"0"},{"name":"enable","value":"1"}]}, 
-
-   {"key":"txtirigyear","value":"2020","name":"Manual IRIG Year Input  Year"},
-   {"key":"txtutcoffset","value":"0","name":"Manual UTC Offset from TAI Offset (s)"},
-         
-   {"key":"manual_leap_year_radio","name":"Adjustment","type":"select","options":[{"name":"+1 Second","value":"1"},{"name":"1 Second","value":"-1"},{"name":"None","value":"0"},]},    
-   {"key":"manual-date-radio","name":"Date (at midnight)","type":"select","options":[{"name":"June 30","value":"0"},{"name":"December 31","value":"1"}]},
-
-]
+enable
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtid"
 
 
-// Forced Manual Time Entry
-
-{"key":"ddlmonths","value":"12"},
-{"key":"txtdate","value":"07"},
-{"key":"txtyear","value":"2020"},
-{"key":"txthr","value":"01"},
-{"key":"txtmin","value":"00"},
-{"key":"txtsec","value":"55"},
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtsid0"
 
 
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="temprole0"
+
+peer
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempadd0"
+
+1.1.1.2
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempport0"
+
+LAN3
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempprefer0"
+
+disable
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempburst0"
+
+NA
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempmin0"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempmax0"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempmd50"
+
+-1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempttl0"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtsid1"
 
 
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="temprole1"
+
+peer
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempadd1"
+
+2.1.1.2
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempport1"
+
+LAN3
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempprefer1"
+
+disable
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempburst1"
+
+NA
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempmin1"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempmax1"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempmd51"
+
+-1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="tempttl1"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtrowno"
+
+1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtnewno"
+
+1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtdeletenos"
 
 
-           
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno1"
+
+1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno2"
+
+1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno3"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno4"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno5"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno6"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno7"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno8"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno9"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtserno10"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlrole0"
+
+peer
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtipadd0"
+
+1.1.1.2
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlport0"
+
+LAN3
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="chkprefer0"
+
+enable
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlburst0"
+
+NA
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlminpoll0"
+
+00
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlmaxpoll0"
+
+00
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlmd50"
+
+-1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtstatus0"
+
+edit
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlrole1"
+
+peer
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtipadd1"
+
+2.1.1.2
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlport1"
+
+LAN3
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlburst1"
+
+NA
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlminpoll1"
+
+00
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlmaxpoll1"
+
+00
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlmd51"
+
+-1
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtstatus1"
+
+edit
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlrolenew"
+
+server
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="txtipaddnew"
+
+
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlportnew"
+
+DEFAULT
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlburstnew"
+
+NA
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlminpollnew"
+
+00
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlmaxpollnew"
+
+00
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="ddlmd5new"
+
+0
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq
+Content-Disposition: form-data; name="action"
+
+editrecord
+------WebKitFormBoundaryS9JlxEbjp1ClnyAq--

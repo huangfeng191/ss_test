@@ -1,103 +1,60 @@
-
-       <div class="form-group">
-       <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-       NTP名单控制
-       </label>
-       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-         <select ng-model="deviceContent.ntpServerListEnable" class="excel_value form-control input-sm">
-           <option translate="PLEASE_SELECT" value="">请选择</option>
-           <option ng-selected="deviceContent.ntpServerListEnable == 0" value="0">不使用名单</option>
-<option ng-selected="deviceContent.ntpServerListEnable == 1" value="1">使用白名单</option>
-<option ng-selected="deviceContent.ntpServerListEnable == 2" value="2">使用黑名单</option>
-
-
-         </select>
-       </div>
-     </div>
-
-           
-
-      <div class="form-group">
-       <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-       Autokey控制
-       </label>
-       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-         <select ng-model="deviceContent.ntpServerAutoKeyEnable" class="excel_value form-control input-sm">
-           <option translate="PLEASE_SELECT" value="">请选择</option>
-           <option ng-selected="deviceContent.ntpServerAutoKeyEnable == 0" value="0">不使用autokey加密</option>
-<option ng-selected="deviceContent.ntpServerAutoKeyEnable == 1" value="1">使用autokey加密</option>
-
-
-         </select>
-       </div>
-     </div>
-
-           
-
-      <div class="form-group">
-       <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-       MD5控制
-       </label>
-       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-         <select ng-model="deviceContent.ntpServerMd5Enable" class="excel_value form-control input-sm">
-           <option translate="PLEASE_SELECT" value="">请选择</option>
-           <option ng-selected="deviceContent.ntpServerMd5Enable == 0" value="0">不使用MD5加密</option>
-<option ng-selected="deviceContent.ntpServerMd5Enable == 1" value="1">使用MD5加密</option>
-
-
-
-         </select>
-       </div>
-     </div>
-
-           
-
-      <div class="form-group">
-       <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-       NTP广播控制
-       </label>
-       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-         <select ng-model="deviceContent.ntpServerBroadcastEnable" class="excel_value form-control input-sm">
-           <option translate="PLEASE_SELECT" value="">请选择</option>
-           <option ng-selected="deviceContent.ntpServerBroadcastEnable == 0" value="0">不使用广播授时</option>
-<option ng-selected="deviceContent.ntpServerBroadcastEnable == 1" value="1">使用广播授时</option>
-
-         </select>
-       </div>
-     </div>
-
-           
-
-      <div class="form-group">
-       <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-       NTP组播控制
-       </label>
-       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-         <select ng-model="deviceContent.ntpServerManycastEnable" class="excel_value form-control input-sm">
-           <option translate="PLEASE_SELECT" value="">请选择</option>
-           <option ng-selected="deviceContent.ntpServerManycastEnable == 0" value="0">不使用组播授时</option>
-<option ng-selected="deviceContent.ntpServerManycastEnable == 1" value="1">使用组播授时</option>
-
-
-
-         </select>
-       </div>
-     </div>
-
-           
-
-      <div class="form-group">
-       <label for="inputEmail3"  class="excel_key col-xs-5 col-sm-5 col-lg-5 col-md-5 col-lg-offset-1 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 control-label">
-       NTP网口状态控制
-       </label>
-       <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 ">
-         <select ng-model="deviceContent.ntpServerConfigPortState" class="excel_value form-control input-sm">
-           <option translate="PLEASE_SELECT" value="">请选择</option>
-           <option ng-selected="deviceContent.ntpServerConfigPortState == 0" value="0">禁用</option>
-<option ng-selected="deviceContent.ntpServerConfigPortState == 1" value="1">启用</option>
-<option ng-selected="deviceContent.ntpServerConfigPortState == 2" value="2">重启</option>
-         </select>
-       </div>
-     </div>
-
-           
+a={}
+a["chkprefer"]=$("#chkprefer").val()||""
+a["txtid"]=$("#txtid").val()||""
+a["txtsid0"]=$("#txtsid0").val()||""
+a["temprole0"]=$("#temprole0").val()||""
+a["tempadd0"]=$("#tempadd0").val()||""
+a["tempport0"]=$("#tempport0").val()||""
+a["tempprefer0"]=$("#tempprefer0").val()||""
+a["tempburst0"]=$("#tempburst0").val()||""
+a["tempmin0"]=$("#tempmin0").val()||""
+a["tempmax0"]=$("#tempmax0").val()||""
+a["tempmd50"]=$("#tempmd50").val()||""
+a["tempttl0"]=$("#tempttl0").val()||""
+a["txtsid1"]=$("#txtsid1").val()||""
+a["temprole1"]=$("#temprole1").val()||""
+a["tempadd1"]=$("#tempadd1").val()||""
+a["tempport1"]=$("#tempport1").val()||""
+a["tempprefer1"]=$("#tempprefer1").val()||""
+a["tempburst1"]=$("#tempburst1").val()||""
+a["tempmin1"]=$("#tempmin1").val()||""
+a["tempmax1"]=$("#tempmax1").val()||""
+a["tempmd51"]=$("#tempmd51").val()||""
+a["tempttl1"]=$("#tempttl1").val()||""
+a["txtrowno"]=$("#txtrowno").val()||""
+a["txtnewno"]=$("#txtnewno").val()||""
+a["txtdeletenos"]=$("#txtdeletenos").val()||""
+a["txtserno1"]=$("#txtserno1").val()||""
+a["txtserno2"]=$("#txtserno2").val()||""
+a["txtserno3"]=$("#txtserno3").val()||""
+a["txtserno4"]=$("#txtserno4").val()||""
+a["txtserno5"]=$("#txtserno5").val()||""
+a["txtserno6"]=$("#txtserno6").val()||""
+a["txtserno7"]=$("#txtserno7").val()||""
+a["txtserno8"]=$("#txtserno8").val()||""
+a["txtserno9"]=$("#txtserno9").val()||""
+a["txtserno10"]=$("#txtserno10").val()||""
+a["ddlrole0"]=$("#ddlrole0").val()||""
+a["txtipadd0"]=$("#txtipadd0").val()||""
+a["ddlport0"]=$("#ddlport0").val()||""
+a["chkprefer0"]=$("#chkprefer0").val()||""
+a["ddlburst0"]=$("#ddlburst0").val()||""
+a["ddlminpoll0"]=$("#ddlminpoll0").val()||""
+a["ddlmaxpoll0"]=$("#ddlmaxpoll0").val()||""
+a["ddlmd50"]=$("#ddlmd50").val()||""
+a["txtstatus0"]=$("#txtstatus0").val()||""
+a["ddlrole1"]=$("#ddlrole1").val()||""
+a["txtipadd1"]=$("#txtipadd1").val()||""
+a["ddlport1"]=$("#ddlport1").val()||""
+a["ddlburst1"]=$("#ddlburst1").val()||""
+a["ddlminpoll1"]=$("#ddlminpoll1").val()||""
+a["ddlmaxpoll1"]=$("#ddlmaxpoll1").val()||""
+a["ddlmd51"]=$("#ddlmd51").val()||""
+a["txtstatus1"]=$("#txtstatus1").val()||""
+a["ddlrolenew"]=$("#ddlrolenew").val()||""
+a["txtipaddnew"]=$("#txtipaddnew").val()||""
+a["ddlportnew"]=$("#ddlportnew").val()||""
+a["ddlburstnew"]=$("#ddlburstnew").val()||""
+a["ddlminpollnew"]=$("#ddlminpollnew").val()||""
+a["ddlmaxpollnew"]=$("#ddlmaxpollnew").val()||""
+a["ddlmd5new"]=$("#ddlmd5new").val()||""
